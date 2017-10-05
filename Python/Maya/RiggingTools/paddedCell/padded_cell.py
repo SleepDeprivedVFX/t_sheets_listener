@@ -115,6 +115,7 @@ class padded_cell(qtGUI.QWidget):
 
     def prep_patch(self):
         print 'Prepping Patch---'
+        print 'Patch does not currently work'
 
     def patch_mode(self, set_mode=None):
         child = self.ui.match_child.isChecked()
