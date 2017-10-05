@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>paddedCellForm</class>
+ <widget class="QWidget" name="paddedCellForm">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1154</width>
+    <height>594</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1154</width>
+    <height>594</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Padded Cell</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qradialgradient(spread:pad, cx:0.525, cy:0.54, radius:0.886, fx:0.525, fy:0.534, stop:0.407563 rgba(0, 0, 0, 255), stop:1 rgba(198, 86, 0, 255));
+border-color: rgba(0, 0, 0, 0);
+selection-background-color: rgb(255, 106, 0);
+selection-color: rgb(255, 106, 0);</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_6">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QFrame" name="column_1">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>400</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 75 12pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinAndMaxSize</enum>
+        </property>
+        <item>
+         <widget class="QLabel" name="title">
+          <property name="minimumSize">
+           <size>
+            <width>350</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>400</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 75 24pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+          </property>
+          <property name="text">
+           <string>Padded Cell</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="subtitle">
+          <property name="maximumSize">
+           <size>
+            <width>400</width>
+            <height>45</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+          </property>
+          <property name="text">
+           <string>Fight hierarchy padding insanity</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="BuildAPad_GRP">
+          <property name="minimumSize">
+           <size>
+            <width>491</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 75 12pt &quot;Orbitron&quot;;
+border-color: rgb(255, 129, 2);
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+          </property>
+          <property name="title">
+           <string>Build Standard Group Pads</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <property name="topMargin">
+            <number>20</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="build_controls">
+             <property name="styleSheet">
+              <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);
+border: rgb(198, 86, 0);</string>
+             </property>
+             <layout class="QGridLayout" name="build_padding_layout">
+              <item row="0" column="0" rowspan="2">
+               <widget class="QFrame" name="pad_diagram">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>230</width>
+                  <height>145</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(0, 0, 0, 0);
+background-image: url(:/icons/folder_diagram.png);
+background-repeat: none;</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <widget class="QLabel" name="pad_label">
+                 <property name="geometry">
+                  <rect>
+                   <x>50</x>
+                   <y>70</y>
+                   <width>43</width>
+                   <height>25</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);
+background-image: url(:/icons/spacer.png);</string>
+                 </property>
+                 <property name="text">
+                  <string>Pad</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>pad_name</cstring>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="offset_label">
+                 <property name="geometry">
+                  <rect>
+                   <x>30</x>
+                   <y>30</y>
+                   <width>69</width>
+                   <height>25</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-image: url(:/icons/spacer.png);
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+                 </property>
+                 <property name="text">
+                  <string>Offset</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>offset_name</cstring>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="offset_name">
+                 <property name="geometry">
+                  <rect>
+                   <x>100</x>
+                   <y>30</y>
+                   <width>111</width>
+                   <height>32</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 12pt &quot;Orbitron&quot;;
+background-image: url(:/icons/spacer.png);
+alternate-background-color: rgb(0, 0, 0);
+color: rgb(255, 106, 0);
+background-color: rgba(255, 106, 0, 75);
+selection-background-color: rgb(0, 0, 0);
+selection-color: rgba(0, 0, 0, 0);
+border: None;</string>
+                 </property>
+                 <property name="text">
+                  <string>OFF</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="your_object">
+                 <property name="geometry">
+                  <rect>
+                   <x>70</x>
+                   <y>110</y>
+                   <width>130</width>
+                   <height>25</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);
+background-image: url(:/icons/spacer.png);</string>
+                 </property>
+                 <property name="text">
+                  <string>Your Object</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="pad_name">
+                 <property name="geometry">
+                  <rect>
+                   <x>100</x>
+                   <y>70</y>
+                   <width>111</width>
+                   <height>32</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 12pt &quot;Orbitron&quot;;
+alternate-background-color: rgb(0, 0, 0);
+color: rgb(255, 106, 0);
+background-color: rgba(255, 106, 0, 75);
+selection-background-color: rgb(0, 0, 0);
+selection-color: rgba(0, 0, 0, 0);
+border: None;
+background-image: url(:/icons/spacer.png);</string>
+                 </property>
+                 <property name="text">
+                  <string>PAD</string>
+                 </property>
+                </widget>
+                <zorder>pad_label</zorder>
+                <zorder>offset_label</zorder>
+                <zorder>offset_name</zorder>
+                <zorder>your_object</zorder>
+                <zorder>pad_name</zorder>
+                <zorder>build_btn</zorder>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>15</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="build_output">
+             <item>
+              <layout class="QHBoxLayout" name="new_offset_layout">
+               <item>
+                <widget class="QLabel" name="new_offset_label">
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+                 </property>
+                 <property name="text">
+                  <string>New Offset:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="new_offset_name">
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);
+font-weight: bold;</string>
+                 </property>
+                 <property name="text">
+                  <string>your_object_OFF</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="new_name_layout">
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Preferred</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="new_pad_label">
+                 <property name="maximumSize">
+                  <size>
+                   <width>150</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+                 </property>
+                 <property name="text">
+                  <string>New Pad:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="new_pad_name">
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);
+font-weight: bold;</string>
+                 </property>
+                 <property name="text">
+                  <string>your_object_PAD</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="column_2">
+       <property name="styleSheet">
+        <string notr="true">font: 75 12pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QGroupBox" name="AddAPad_GRP">
+          <property name="styleSheet">
+           <string notr="true">font: 75 12pt &quot;Orbitron&quot;;
+border-color: rgb(255, 129, 2);
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+          </property>
+          <property name="title">
+           <string>Add-a-Pad</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>497</width>
+             <height>171</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="addapad_">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+              </property>
+              <property name="text">
+               <string>Insert a pad above your currently selected object.
+Uses the Offset or Pad as filters.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QLabel" name="suffix_name">
+                <property name="styleSheet">
+                 <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+                </property>
+                <property name="text">
+                 <string>Suffix/Tag Name:</string>
+                </property>
+                <property name="buddy">
+                 <cstring>addapad_name</cstring>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="addapad_name">
+                <property name="styleSheet">
+                 <string notr="true">font: 75 12pt &quot;Orbitron&quot;;
+alternate-background-color: rgb(0, 0, 0);
+color: rgb(255, 106, 0);
+background-color: rgba(255, 106, 0, 75);
+selection-background-color: rgb(0, 0, 0);
+selection-color: rgba(0, 0, 0, 0);
+border: None;</string>
+                </property>
+                <property name="text">
+                 <string>ANIM</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="addapad_out_label">
+                <property name="styleSheet">
+                 <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+                </property>
+                <property name="text">
+                 <string>New Pad:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="addapad_output">
+                <property name="styleSheet">
+                 <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);
+font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>your_object_ANIM</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="PatchAPad_GRP">
+          <property name="styleSheet">
+           <string notr="true">font: 75 12pt &quot;Orbitron&quot;;
+border-color: rgb(255, 129, 2);
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+          </property>
+          <property name="title">
+           <string>Patch-a-Pad</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>508</width>
+             <height>129</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QLabel" name="instructions">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+              </property>
+              <property name="text">
+               <string>Fix existing pad pivots and freeze translations</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="match_child">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+              </property>
+              <property name="text">
+               <string>Match Pivot to Child</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="match_parent">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+              </property>
+              <property name="text">
+               <string>Match Pivot to Parent</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="freeze_trans">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Orbitron&quot;;
+background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 129, 2);</string>
+              </property>
+              <property name="text">
+               <string>Freeze Transforms</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="cancel_btn">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 106, 0);
+font: 75 8pt &quot;Orbitron&quot;;
+color: rgb(0, 0, 0);
+padding: 5px;</string>
+       </property>
+       <property name="text">
+        <string>Cancel
+Close</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="reset_btn">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 106, 0);
+font: 75 8pt &quot;Orbitron&quot;;
+color: rgb(0, 0, 0);
+padding: 5px;</string>
+       </property>
+       <property name="text">
+        <string>Reset
+Selection</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="build_btn">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 106, 0);
+font: 75 8pt &quot;Orbitron&quot;;
+color: rgb(0, 0, 0);
+padding: 5px;</string>
+       </property>
+       <property name="text">
+        <string>Build
+Padding</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../bgs.qrc"/>
+ </resources>
+ <connections/>
+</ui>
