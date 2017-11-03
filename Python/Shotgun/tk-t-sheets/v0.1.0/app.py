@@ -36,6 +36,7 @@ else:
 
 url = 'https://rest.tsheets.com/api/v1/'
 
+
 class t_sheets_connect(Application):
     """
     The app entry point. This class is responsible for intializing and tearing down
@@ -46,7 +47,7 @@ class t_sheets_connect(Application):
         """
         Called as the application is being initialized
         """
-        
+
         # first, we use the special import_module command to access the app module
         # that resides inside the python folder in the app. This is where the actual UI
         # and business logic of the app is kept. By using the import_module command,
@@ -70,12 +71,12 @@ class t_sheets_connect(Application):
         }
 
         # now register a *command*, which is normally a menu entry of some kind on a Shotgun
-        # menu (but it depends on the engine). The engine will manage this command and 
+        # menu (but it depends on the engine). The engine will manage this command and
         # whenever the user requests the command, it will call out to the callback.
 
         # first, set up our callback, calling out to a method inside the app module contained
         # in the python folder of the app
-        menu_callback = lambda : app_payload.tsheets_dialog.show_dialog(self)
+        menu_callback = lambda: app_payload.tsheets_dialog.show_dialog(self)
 
         # now register the command with the engine
         self.engine.register_command("T-Sheets Connection...", menu_callback)
@@ -244,7 +245,8 @@ class t_sheets_connect(Application):
                                             task_active = task_data['active']
                                             tasks[task_id] = {'type': 'Shot_Task', 'name': task_name,
                                                               'active': task_active}
-                                    shots[shot_id] = {'type': 'Shot', 'name': shot_name, 'has_children': shot_has_children,
+                                    shots[shot_id] = {'type': 'Shot', 'name': shot_name,
+                                                      'has_children': shot_has_children,
                                                       'active': shot_active, 'tasks': tasks,
                                                       'parent_id': shot_parent_id}
                             sequences[seq_id] = {'type': 'Seq', 'name': seq_name, 'has_children': seq_has_children,
@@ -263,7 +265,8 @@ class t_sheets_connect(Application):
         Collect all active Shotgun Users
         :return: (dict) sg_users[email] = {'name': name, 'computer': sg_computer}
         """
-        people = self.sg.shotgun.find(entity_type='HumanUser', filters=[['sg_status_list', 'is', 'act']], fields=['email', 'name', 'sg_computer'])
+        people = self.sg.shotgun.find(entity_type='HumanUser', filters=[['sg_status_list', 'is', 'act']],
+                                      fields=['email', 'name', 'sg_computer'])
         sg_users = {}
         for jerk in people:
             sg_users[jerk['email']] = {'name': jerk['name'], 'computer': jerk['sg_computer']}
@@ -271,7 +274,8 @@ class t_sheets_connect(Application):
 
     def get_shotgun_projects(self):
         projects = {}
-        find_projects = self.sg.shotgun.find(entity_type='Project', filters=[['sg_status', 'is', 'Active']], fields=['id', 'name'])
+        find_projects = self.sg.shotgun.find(entity_type='Project', filters=[['sg_status', 'is', 'Active']],
+                                             fields=['id', 'name'])
         for project in find_projects:
             proj_data = project
             proj_id = proj_data['id']
@@ -289,7 +293,7 @@ class t_sheets_connect(Application):
             fields = [
                 'code'
             ]
-            find_seq = self.sg.find('Sequence', filters, fields)
+            find_seq = self.sg.shotgun.find('Sequence', filters, fields)
             for seq in find_seq:
                 sequences[seq['id']] = seq['code']
             return sequences
@@ -313,7 +317,7 @@ class t_sheets_connect(Application):
                 fields = [
                     'code'
                 ]
-                find_shots = self.sg.find('Shot', filters, fields)
+                find_shots = self.sg.shotgun.find('Shot', filters, fields)
                 for shot in find_shots:
                     shots[shot['id']] = {'shot': shot['code'], 'seq_id': sequence}
             return shots
@@ -327,7 +331,7 @@ class t_sheets_connect(Application):
                 ['project', 'is', {'type': 'Project', 'id': project}]
             ]
             fields = ['code', 'id']
-            find_sequences = self.sg.find('Sequence', filters=filters, fields=fields)
+            find_sequences = self.sg.shotgun.find('Sequence', filters=filters, fields=fields)
             for seq in find_sequences:
                 sequences[seq['id']] = seq['code']
             return sequences
@@ -341,7 +345,7 @@ class t_sheets_connect(Application):
                 ['project', 'is', {'type': 'Project', 'id': project}]
             ]
             fields = ['code', 'id']
-            find_assets = self.sg.find('Asset', filters=filters, fields=fields)
+            find_assets = self.sg.shotgun.find('Asset', filters=filters, fields=fields)
             for asset in find_assets:
                 assets[asset['id']] = asset['code']
             return assets
@@ -492,16 +496,16 @@ class t_sheets_connect(Application):
                                         # print 'Adding shot for new sequence %s' % sg_seq
                                         self.add_sub_folders(parent_id=new_id, sub_folder_name=sg_shot_name['shot'])
 
-            # ***************************************************************************************
-            # END Shotgun to T-Sheets data comparison
-            # ***************************************************************************************
+                                        # ***************************************************************************************
+                                        # END Shotgun to T-Sheets data comparison
+                                        # ***************************************************************************************
 
     def get_ts_user_timesheet(self, email=None):
         timesheet = {}
         _start_date = datetime.date((datetime.today() - timedelta(days=2)))
         current_user = self.get_ts_current_user_status(email=email)
         username = current_user['username']
-        name = (current_user['name'][0] + ' ' +  current_user['name'][1])
+        name = (current_user['name'][0] + ' ' + current_user['name'][1])
         first_name = current_user['name'][0]
         last_name = current_user['name'][1]
         ts_email = current_user['email']
