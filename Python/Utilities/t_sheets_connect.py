@@ -147,73 +147,82 @@ class t_sheets_connect:
 
     def get_ts_subs(self, project_id=None):
         subs = {}
-        sj_jobs_data = self.return_subs(project_id)
         if project_id:
+            sj_jobs_data = self.return_subs(project_id)
             # Project ID from T-Sheets
-            if __name__ == '__main__':
-                for shot_asset in sj_jobs_data:
-                    # This level only has Top Level categories: Assets, Design, Production Admin, Shots, VFX
-                    sj_data = sj_jobs_data[shot_asset]
-                    sj_name = sj_data['name']
-                    sj_has_children = sj_data['has_children']
-                    sj_id = sj_data['id']
-                    if sj_name == 'Assets':
-                        # List assets
-                        if sj_has_children:
-                            asset_children = self.return_subs(sj_id)
-                            assets = {}
-                            for asset_id, asset_data in asset_children.items():
-                                # asset_id returns the ID of the asset child
-                                asset_has_children = asset_data['has_children']
-                                asset_name = asset_data['name']
-                                asset_active = asset_data['active']
-                                tasks = {}
-                                if asset_has_children:
-                                    # This will look for Tasks when and if they exist
-                                    asset_tasks = self.return_subs(asset_id)
-                                    for task_id, task_data in asset_tasks.items():
-                                        task_name = task_data['name']
-                                        task_active = task_data['active']
-                                        tasks[task_id] = {'type': 'Asset_Task', 'name': task_name,
-                                                          'active': task_active}
-                                assets[asset_id] = {'type': 'Asset', 'name': asset_name, 'has_children': asset_has_children,
-                                                    'active': asset_active, 'tasks': tasks}
-                            subs[sj_id] = {'type': sj_name, 'data': assets}
-                    elif sj_name == 'Shots':
-                        # List Sequences.  Then sub and list shots
-                        if sj_has_children:
-                            # Return a list of sequences
-                            sequence_data = self.return_subs(sj_id)
-                            sequences = {}
-                            for seq_id, seq_data in sequence_data.items():
-                                # List the ID and Name of Sequences
-                                seq_has_children = seq_data['has_children']
-                                seq_name = seq_data['name']
-                                seq_active = seq_data['active']
-                                shots = {}
-                                if seq_has_children:
-                                    # This will find Shots
-                                    shots_data = self.return_subs(seq_id)
-                                    for shot_id, shot_data in shots_data.items():
-                                        shot_has_children = shot_data['has_children']
-                                        shot_name = shot_data['name']
-                                        shot_active = shot_data['active']
-                                        tasks = {}
-                                        if shot_has_children:
-                                            shot_tasks = self.return_subs(shot_id)
-                                            for task_id, task_data in shot_tasks.items():
-                                                task_name = task_data['name']
-                                                task_active = task_data['active']
-                                                tasks[task_id] = {'type': 'Shot_Task', 'name': task_name,
-                                                                  'active': task_active}
-                                        shots[shot_id] = {'type': 'Shot', 'name': shot_name, 'has_children': shot_has_children,
-                                                          'active': shot_active, 'tasks': tasks}
-                                sequences[seq_id] = {'type': 'Seq', 'name': seq_name, 'has_children': seq_has_children,
-                                                     'active': seq_active, 'shots': shots}
-                            subs[sj_id] = {'type': sj_name, 'data': sequences}
-                    elif sj_name == 'Design' or sj_name == 'VFX':
-                        # I think we'll pass this up
-                        pass
+            for shot_asset in sj_jobs_data:
+                # This level only has Top Level categories: Assets, Design, Production Admin, Shots, VFX
+                sj_data = sj_jobs_data[shot_asset]
+                sj_name = sj_data['name']
+                sj_has_children = sj_data['has_children']
+                sj_id = sj_data['id']
+                if sj_name == 'Assets':
+                    assets = {}
+                    # List assets
+                    if sj_has_children:
+                        asset_children = self.return_subs(sj_id)
+                        for asset_id, asset_data in asset_children.items():
+                            # asset_id returns the ID of the asset child
+                            asset_has_children = asset_data['has_children']
+                            asset_name = asset_data['name']
+                            asset_active = asset_data['active']
+                            asset_parent_id = asset_data['parent_id']
+                            tasks = {}
+                            if asset_has_children:
+                                # This will look for Tasks when and if they exist
+                                asset_tasks = self.return_subs(asset_id)
+                                for task_id, task_data in asset_tasks.items():
+                                    task_name = task_data['name']
+                                    task_active = task_data['active']
+                                    tasks[task_id] = {'type': 'Asset_Task', 'name': task_name,
+                                                      'active': task_active}
+                            assets[asset_id] = {'type': 'Asset', 'name': asset_name,
+                                                'has_children': asset_has_children,
+                                                'active': asset_active, 'tasks': tasks,
+                                                'parent_id': asset_parent_id}
+                        subs[sj_id] = {'type': sj_name, 'data': assets}
+                    else:
+                        subs[sj_id] = {'type': sj_name, 'data': assets}
+                elif sj_name == 'Shots':
+                    sequences = {}
+                    # List Sequences.  Then sub and list shots
+                    if sj_has_children:
+                        # Return a list of sequences
+                        sequence_data = self.return_subs(sj_id)
+                        for seq_id, seq_data in sequence_data.items():
+                            # List the ID and Name of Sequences
+                            seq_has_children = seq_data['has_children']
+                            seq_name = seq_data['name']
+                            seq_active = seq_data['active']
+                            seq_parent_id = seq_data['parent_id']
+                            shots = {}
+                            if seq_has_children:
+                                # This will find Shots
+                                shots_data = self.return_subs(seq_id)
+                                for shot_id, shot_data in shots_data.items():
+                                    shot_has_children = shot_data['has_children']
+                                    shot_name = shot_data['name']
+                                    shot_active = shot_data['active']
+                                    shot_parent_id = shot_data['parent_id']
+                                    tasks = {}
+                                    if shot_has_children:
+                                        shot_tasks = self.return_subs(shot_id)
+                                        for task_id, task_data in shot_tasks.items():
+                                            task_name = task_data['name']
+                                            task_active = task_data['active']
+                                            tasks[task_id] = {'type': 'Shot_Task', 'name': task_name,
+                                                              'active': task_active}
+                                    shots[shot_id] = {'type': 'Shot', 'name': shot_name, 'has_children': shot_has_children,
+                                                      'active': shot_active, 'tasks': tasks,
+                                                      'parent_id': shot_parent_id}
+                            sequences[seq_id] = {'type': 'Seq', 'name': seq_name, 'has_children': seq_has_children,
+                                                 'active': seq_active, 'shots': shots, 'parent_id': seq_parent_id}
+                        subs[sj_id] = {'type': sj_name, 'data': sequences}
+                    else:
+                        subs[sj_id] = {'type': sj_name, 'data': sequences}
+                elif sj_name == 'Design' or sj_name == 'VFX':
+                    # I think we'll pass this up
+                    pass
             return subs
         return False
 
@@ -240,7 +249,7 @@ class t_sheets_connect:
 
     # Added 10-23-17
     def get_shotgun_sequence(self, project=None):
-        print 'Return Shotgun Sequences for a particular project'
+        # print 'Return Shotgun Sequences for a particular project'
         if project:
             sequences = {}
             filters = [
@@ -262,7 +271,7 @@ class t_sheets_connect:
         :param sequence: (int) sequence ID number
         :return: shots: (dict) { shot_id: {'shot': shotname, 'seq_id': sequence ID}
         """
-        print 'Return active shots for a given project'
+        # print 'Return active shots for a given project'
         if project and sequence:
             shots = {}
             if sequence:
@@ -279,29 +288,8 @@ class t_sheets_connect:
             return shots
         return False
 
-    def get_ts_sequences(self, project_name=None):
-        print 'get ts sequences'
-        '''
-        So, T-Sheets projects are basically just a JSON hierarchy.
-
-        Project
-            Design
-            Production Admin
-            Shots
-                Seq #
-                    Shot #
-                        Task #
-            Assets
-                Asset #
-                    Task #
-
-        Thus...
-        {'project': [ 'Design': [], 'Project Admin': [], 'Shots': ['Shot #': [Task #]], 'Asset': []'
-
-        '''
-
     def compare_project_sequences(self, project=None):
-        print 'Comparing Shotgun to T-Sheets Sequences...'
+        # print 'Comparing Shotgun to T-Sheets Sequences...'
         if project:
             sequences = {}
             filters = [
@@ -317,7 +305,7 @@ class t_sheets_connect:
     # End ------------------------------------------------------------------------
 
     def get_shotgun_assets(self, project=None):
-        print 'Return the assets associated with a particular project, or shot'
+        # print 'Return the assets associated with a particular project, or shot'
         if project:
             assets = {}
             filters = [
@@ -363,6 +351,8 @@ class t_sheets_connect:
             sg_project_assets = self.get_shotgun_assets(project=sg_id)
             sg_project_seq = self.get_shotgun_sequence(project=sg_id)
             # After get_shotgun_sequence() call each shot from within the sequence loop.
+
+            # ts_project_jobcodes contains the ID for both the 'Assets' and 'Shots' folders in the keys
             ts_project_jobcodes = self.get_ts_subs(project_id=ts_project_id)
 
             # ==========================================================================
@@ -385,17 +375,19 @@ class t_sheets_connect:
                     sub_data = data['data']
 
                     if data_type == 'Assets':
+                        assets_folder_id = base_id
                         for asset_id, asset_data in sub_data.items():
                             # Split up the sub_data
                             # asset_id = id number of the T-Sheets jobcode
                             # asset_data = Dictionary of values from the specific jobcode.
-                            ts_assets[asset_id] = asset_data['name']
+                            ts_assets[asset_id] = {'asset': asset_data['name'], 'parent_id': asset_data['parent_id']}
 
                     elif data_type == 'Shots':
+                        shots_folder_id = base_id
                         # First up is sequences
                         for seq_id, seq_data in sub_data.items():
                             # Each sequence gets saved into the ts_seq dictionary
-                            ts_seq[seq_id] = seq_data['name']
+                            ts_seq[seq_id] = {'seq': seq_data['name'], 'parent_id': seq_data['parent_id']}
 
                             # Cycle through sequence data to collect and package shots associated with each sequence
                             for shot_id, shot_data in seq_data['shots'].items():
@@ -414,45 +406,66 @@ class t_sheets_connect:
                         sg_asset_found = False
                         for ts_asset in ts_assets.values():
                             # Cycling through the assets in the ts_asset dictionary. If a match is found, set to True
-                            if ts_asset == sg_asset:
+                            if ts_asset['asset'] == sg_asset:
                                 sg_asset_found = True
                                 break
                         # Check if the asset is found
                         if not sg_asset_found:
+                            # print 'sg_asset_found = FALSE'
                             # If the asset isn't found in T-Sheets, add it to the database
-                            print 'FAIL!!! SHOTGUN ASSET NOT FOUND: %s' % sg_asset
-                            print 'Sending to the function that will create the Asset in T-Sheets'
+                            self.add_sub_folders(parent_id=assets_folder_id, sub_folder_name=sg_asset)
 
                 if sg_project_seq:
                     # If there are sequences listed in Shotgun
-                    if __name__ == '__main__':
-                        for sg_seq_id, sg_seq in sg_project_seq.items():
-                            # Set the sg_seq_found to False until a match is found
-                            sg_seq_found = False
-                            # Cycle through ts_seq to look for a match
-                            for tsid, tsseq in ts_seq.items():
-                                if tsseq == sg_seq:
-                                    # If the sequence is found, search through for shots and set to True
-                                    sg_seq_found = True
-                                    sg_shots = self.get_shotgun_shots(project=sg_id, sequence=sg_seq_id)
-                                    if sg_shots:
-                                        for sg_shot_name in sg_shots.values():
-                                            for tsshot, tsdata in ts_shots.items():
-                                                # print 'test: %s, %s, %s' % (sg_seq, sg_shot_name, tsdata['shot'])
-                                                if sg_seq == tsdata['seq_name'] and sg_shot_name['shot'] == tsdata['shot']:
-                                                    print 'SHOTGUN SHOT %s FOUND IN T-Sheets!' % sg_shot_name
-                                                    # break if the shot is found
-                                                    break
-                                    # break if the sequence is found
-                                    break
-                            if not sg_seq_found:
-                                # If the sequence isn't found in T-Sheets, then add it to the database
-                                # and then add any shots that may also exist in Shotgun
-                                print 'Add shit to the database.'
+                    for sg_seq_id, sg_seq in sg_project_seq.items():
+                        # Set the sg_seq_found to False until a match is found
+                        sg_seq_found = False
+                        # Cycle through ts_seq to look for a match
+                        for tsid, tsseq in ts_seq.items():
+                            if tsseq['seq'] == sg_seq:
+                                # If the sequence is found, search through for shots and set to True
+                                sg_seq_found = True
+                                sg_shots = self.get_shotgun_shots(project=sg_id, sequence=sg_seq_id)
+                                if sg_shots:
+                                    for sg_shot_name in sg_shots.values():
+                                        sg_shot_found = False
+                                        for tsshot, tsdata in ts_shots.items():
+                                            # print 'test: %s, %s, %s' % (sg_seq, sg_shot_name, tsdata['shot'])
+                                            if sg_seq == tsseq['seq'] and sg_shot_name['shot'] == tsdata['shot']:
+                                                # Set True and break if the shot is found
+                                                # print 'Shot Found: %s' % sg_shot_name['shot']
+                                                sg_shot_found = True
+                                                break
 
-                # ***************************************************************************************
-                # END Shotgun to T-Sheets data comparison
-                # ***************************************************************************************
+                                        # The reason this won't work is taht tsdata['seq_name'] is already looped out.
+                                        if sg_seq == tsseq['seq'] and not sg_shot_found:
+                                            # Add the shot to the T-Sheets DB
+                                            # print 'Sequence found, but shot not found!'
+                                            # print 'sg_seq: %s | tsseq["seq"]: %s | sg_shot_name["shot"]: %s' % (sg_seq, tsseq['seq'], sg_shot_name['shot'])
+                                            # print '=' * 150
+                                            self.add_sub_folders(parent_id=tsid,
+                                                                 sub_folder_name=sg_shot_name['shot'])
+
+                                # break if the sequence is found
+                                break
+                        if not sg_seq_found:
+                            # If the sequence isn't found in T-Sheets, then add it to the database
+                            # and then add any shots that may also exist in Shotgun
+                            # print 'sg_seq_found = FALSE | %s' % sg_seq
+                            new_seq_id = self.add_sub_folders(parent_id=shots_folder_id,
+                                                              sub_folder_name=sg_seq)
+                            sg_shots = self.get_shotgun_shots(project=sg_id, sequence=sg_seq_id)
+                            new_id = new_seq_id['results']['jobcodes']['1']['id']
+                            # print 'NEW SEQUENCE ID: %s' % new_id
+                            if new_id:
+                                if sg_shots:
+                                    for sg_shot_name in sg_shots.values():
+                                        # print 'Adding shot for new sequence %s' % sg_seq
+                                        self.add_sub_folders(parent_id=new_id, sub_folder_name=sg_shot_name['shot'])
+
+            # ***************************************************************************************
+            # END Shotgun to T-Sheets data comparison
+            # ***************************************************************************************
 
     def get_ts_user_timesheet(self, email=None):
         timesheet = {}
@@ -480,22 +493,8 @@ class t_sheets_connect:
                     # For the moment, this may be how the test is achieve to trigger a different clock in response.
         return timesheet
 
-    def add_new_ts_sequence(self, name=None, parent_id=None):
-        print 'Add a new sequence from Shotgun. %s' % name
-        # This may be done with the add_sub_folders() method
-        data = {
-            "data":
-                [
-                    {
-                        "name": "%s" % name,
-                        "billable": "yes",
-                        "assigned_to_all": "yes"
-                    }
-                ]
-        }
-
     def add_new_ts_project(self, name=None):
-        print 'Add a new job from Shotgun. %s' % name
+        # print 'Add a new job from Shotgun. %s' % name
         data = {
             "data":
                 [
@@ -514,10 +513,10 @@ class t_sheets_connect:
         check = response_data['results']['jobcodes']['1']['_status_message']
         new_id = response_data['results']['jobcodes']['1']['id']
         if check == 'Created':
-            self.add_sub_folders(proj_id=new_id, sub_folder_name='Design')
-            self.add_sub_folders(proj_id=new_id, sub_folder_name='Assets')
-            self.add_sub_folders(proj_id=new_id, sub_folder_name='Shots')
-            self.add_sub_folders(proj_id=new_id, sub_folder_name='Production Admin')
+            self.add_sub_folders(parent_id=new_id, sub_folder_name='Design')
+            self.add_sub_folders(parent_id=new_id, sub_folder_name='Assets')
+            self.add_sub_folders(parent_id=new_id, sub_folder_name='Shots')
+            self.add_sub_folders(parent_id=new_id, sub_folder_name='Production Admin')
             return new_id
         return False
 
@@ -529,10 +528,12 @@ class t_sheets_connect:
             'code'
         ]
         auth_search = sg.find('CustomNonProjectEntity06', filters, fields)
-        print auth_search
+        # print auth_search
 
-    def add_sub_folders(self, proj_id=None, sub_folder_name=None):
-        print 'Add Sub Folders'
+    def add_sub_folders(self, parent_id=None, sub_folder_name=None):
+        # print 'Add Sub Folders: %s' % sub_folder_name
+        # print 'parent_id: %s' % parent_id
+        # print '-' * 150
         data = {
             "data":
                 [
@@ -540,7 +541,7 @@ class t_sheets_connect:
                         "name": "%s" % sub_folder_name,
                         "billable": "yes",
                         "assigned_to_all": "yes",
-                        "parent_id": "%s" % proj_id
+                        "parent_id": "%s" % parent_id
                     }
                 ]
         }
@@ -557,9 +558,9 @@ run = t_sheets_connect()
 # out_data = run.get_ts_user_timesheet(email='adamb@asc-vfx.com')
 out_data = run.compare_active_projects()
 # out_data = run.get_shotgun_sequence(168)
-print out_data
+# print out_data
 # for sid, seq in out_data.items():
 #     out_data2 = run.get_shotgun_shots(168, sid)
 #     print out_data2
 
-print os.environ['COMPUTERNAME']
+# print os.environ['COMPUTERNAME']
