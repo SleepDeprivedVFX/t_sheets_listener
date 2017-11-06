@@ -1,4 +1,4 @@
-import sys, os, platform, time
+import sys, os, platform, time, getpass
 import logging as logger
 import subprocess
 import re
@@ -19,9 +19,11 @@ osSystem = platform.system()
 if osSystem == 'Windows':
     base = '//hal'
     env_user = 'USERNAME'
+    computername = 'COMPUTERNAME'
 else:
     base = '/Volumes'
     env_user = 'USER'
+    computername = 'HOSTNAME'
 
 # Build Shotgun connection string.  This will be obsolete in the main version
 shotgun_conf = {
@@ -30,7 +32,6 @@ shotgun_conf = {
     'key':'55b685383cfc7bfaad304dfd26d55a2685ee7e5efa03ca4f34408192b8ac288c'
     }
 
-sg = sgtk.Shotgun(shotgun_conf['url'], shotgun_conf['name'], shotgun_conf['key'])
 
 # T-Sheets Authorization.  This needs to be acquired from Shotgun.
 authorization = 'S.4__b0c48a6b9e2e5bc810e2c402496f5549df7fb16a'
@@ -53,15 +54,25 @@ class t_sheets_connect:
         self.jobs_list = urllib.urlencode(jobs_params)
         self.jobs_request = urllib2.Request('%sjobcodes?%s' % (url, self.jobs_list), headers=headers)
 
+        self.sg = sgtk.Shotgun(shotgun_conf['url'], shotgun_conf['name'], shotgun_conf['key'])
+
+        self.timezone = '-7:00'
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # T-Sheets Web Connection IO
+    # ------------------------------------------------------------------------------------------------------------------
     def _send_to_tsheets(self, page=None, data=None):
         if page:
             if data:
-                packed_data = json.dumps(data)
-                request = urllib2.Request('%s%s' % (url, page), headers=headers, data=packed_data)
-                request.add_header('Content-Type', 'application/json')
-                response = urllib2.urlopen(request)
-                response_data = json.loads(response.read())
-                return response_data
+                try:
+                    packed_data = json.dumps(data)
+                    request = urllib2.Request('%s%s' % (url, page), headers=headers, data=packed_data)
+                    request.add_header('Content-Type', 'application/json')
+                    response = urllib2.urlopen(request)
+                    response_data = json.loads(response.read())
+                    return response_data
+                except Exception, e:
+                    print 'Web connection failed!  Error: %s' % e
             else:
                 return False
         else:
@@ -70,11 +81,32 @@ class t_sheets_connect:
     def _return_from_tsheets(self, page=None, data=None):
         if page:
             if data:
-                data_list = urllib.urlencode(data)
-                request = urllib2.Request('%s%s?%s' % (url, page, data_list), headers=self.headers)
-                response = urllib2.urlopen(request)
-                response_data = json.loads(response.read())
-                return response_data
+                try:
+                    data_list = urllib.urlencode(data)
+                    request = urllib2.Request('%s%s?%s' % (url, page, data_list), headers=headers)
+                    response = urllib2.urlopen(request)
+                    response_data = json.loads(response.read())
+                    return response_data
+                except Exception, e:
+                    print 'Web Connection Failed!  Error: %s' % e
+            else:
+                return False
+        else:
+            return False
+
+    def _edit_tsheets(self, page=None, data=None):
+        if page:
+            if data:
+                try:
+                    packed_data = json.dumps(data)
+                    request = urllib2.Request('%s%s' % (url, page), headers=headers, data=packed_data)
+                    request.add_header('Content-Type', 'application/json')
+                    request.get_method = lambda: 'PUT'
+                    response = urllib2.urlopen(request)
+                    response_data = json.loads(response.read())
+                    return response_data
+                except Exception, e:
+                    print 'Web Connection Failed! Error: %s' % e
             else:
                 return False
         else:
@@ -97,42 +129,12 @@ class t_sheets_connect:
             return False
         return False
 
-    def get_ts_active_users(self):
-        ts_users = {}
-        user_params = {'per_page': '50', 'active': 'yes'}
-        user_js = self._return_from_tsheets(page='users', data=user_params)
-        if user_js:
-            for l_type, result_data in user_js.items():
-                if l_type == 'results':
-                    user_data = result_data['users']
-                    for user in user_data:
-                        data = user_data[user]
-                        first_name = data['first_name']
-                        last_name = data['last_name']
-                        email = data['email']
-                        last_active = data['last_active']
-                        active = data['active']
-                        username = data['username']
-                        user_id = data['id']
-                        name = first_name, last_name
-                        ts_users[email] = {'name': name, 'last_active': last_active, 'active': active,
-                                           'username': username, 'email': email, 'id': user_id}
-            return ts_users
-        return False
-
-    def get_ts_current_user_status(self, email=None):
-        data = {}
-        username = email
-        # Send the Username from a script that already loads the shotgun data.  This returns the T-Sheets status of a
-        # single user.
-        all_users = self.get_ts_active_users()
-        if username in all_users.keys():
-            data = all_users[username]
-        return data
-
+    # ------------------------------------------------------------------------------------------------------------------
+    # T-Sheets Jobcode Workers
+    # ------------------------------------------------------------------------------------------------------------------
     def get_ts_active_projects(self):
         ts_projects = {}
-        jobs_js = json.loads(urllib2.urlopen(self.jobs_request).read())
+        jobs_js = self._return_from_tsheets(page='jobcodes', data=jobs_params)
         for j_type, result_data in jobs_js.items():
             if j_type == 'results':
                 jobs_data = result_data['jobcodes']
@@ -226,20 +228,76 @@ class t_sheets_connect:
             return subs
         return False
 
-    def get_shotgun_people(self):
-        """
-        Collect all active Shotgun Users
-        :return: (dict) sg_users[email] = {'name': name, 'computer': sg_computer}
-        """
-        people = sg.find(entity_type='HumanUser', filters=[['sg_status_list', 'is', 'act']], fields=['email', 'name', 'sg_computer'])
-        sg_users = {}
-        for jerk in people:
-            sg_users[jerk['email']] = {'name': jerk['name'], 'computer': jerk['sg_computer']}
-        return sg_users
+    def add_new_ts_project(self, name=None):
+        # print 'Add a new job from Shotgun. %s' % name
+        data = {
+            "data":
+                [
+                    {
+                        "name": "%s" % name,
+                        "billable": "yes",
+                        "assigned_to_all": "yes"
+                    }
+                ]
+        }
+        packed_data = json.dumps(data)
+        request = urllib2.Request('%sjobcodes' % url, headers=headers, data=packed_data)
+        request.add_header('Content-Type', 'application/json')
+        response = urllib2.urlopen(request)
+        response_data = json.loads(response.read())
+        check = response_data['results']['jobcodes']['1']['_status_message']
+        new_id = response_data['results']['jobcodes']['1']['id']
+        if check == 'Created':
+            self.add_sub_folders(parent_id=new_id, sub_folder_name='Design')
+            self.add_sub_folders(parent_id=new_id, sub_folder_name='Assets')
+            self.add_sub_folders(parent_id=new_id, sub_folder_name='Shots')
+            self.add_sub_folders(parent_id=new_id, sub_folder_name='Production Admin')
+            return new_id
+        return False
 
+    def add_sub_folders(self, parent_id=None, sub_folder_name=None):
+        # print 'Add Sub Folders: %s' % sub_folder_name
+        # print 'parent_id: %s' % parent_id
+        # print '-' * 150
+        data = {
+            "data":
+                [
+                    {
+                        "name": "%s" % sub_folder_name,
+                        "billable": "yes",
+                        "assigned_to_all": "yes",
+                        "parent_id": "%s" % parent_id
+                    }
+                ]
+        }
+        response_data = self._send_to_tsheets(page='jobcodes', data=data)
+        return response_data
+
+    def get_ts_jobcode(self, jobcode=None):
+        # print 'Get Jobcode %s' % jobcode
+        jobcode_data = {}
+        if jobcode:
+            data = {'ids': jobcode}
+            get_jobcode = self._return_from_tsheets(page='jobcodes', data=data)
+            for keys in get_jobcode:
+                if keys == 'results':
+                    job_data = get_jobcode[keys]['jobcodes']
+                    for job_id, job_info in job_data.items():
+                        jobid = job_id
+                        job_tasks = job_info['filtered_customfielditems'].keys()[0]
+                        job_name = job_info['name']
+                        has_children = job_info['has_children']
+                        parent_id = job_info['parent_id']
+                        jobcode_data[jobid] = {'tasks': job_tasks, 'name': job_name, 'has_children': has_children,
+                                               'parent_id': parent_id}
+        return jobcode_data
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # Shotgun Projects, Assets, Sequences & Shots Workers
+    # ------------------------------------------------------------------------------------------------------------------
     def get_shotgun_projects(self):
         projects = {}
-        find_projects = sg.find(entity_type='Project', filters=[['sg_status', 'is', 'Active']], fields=['id', 'name'])
+        find_projects = self.sg.find(entity_type='Project', filters=[['sg_status', 'is', 'Active']], fields=['id', 'name'])
         for project in find_projects:
             proj_data = project
             proj_id = proj_data['id']
@@ -247,7 +305,6 @@ class t_sheets_connect:
             projects[proj_id] = proj_name
         return projects
 
-    # Added 10-23-17
     def get_shotgun_sequence(self, project=None):
         # print 'Return Shotgun Sequences for a particular project'
         if project:
@@ -258,7 +315,7 @@ class t_sheets_connect:
             fields = [
                 'code'
             ]
-            find_seq = sg.find('Sequence', filters, fields)
+            find_seq = self.sg.find('Sequence', filters, fields)
             for seq in find_seq:
                 sequences[seq['id']] = seq['code']
             return sequences
@@ -282,27 +339,11 @@ class t_sheets_connect:
                 fields = [
                     'code'
                 ]
-                find_shots = sg.find('Shot', filters, fields)
+                find_shots = self.sg.find('Shot', filters, fields)
                 for shot in find_shots:
                     shots[shot['id']] = {'shot': shot['code'], 'seq_id': sequence}
             return shots
         return False
-
-    def compare_project_sequences(self, project=None):
-        # print 'Comparing Shotgun to T-Sheets Sequences...'
-        if project:
-            sequences = {}
-            filters = [
-                ['project', 'is', {'type': 'Project', 'id': project}]
-            ]
-            fields = ['code', 'id']
-            find_sequences = sg.find('Sequence', filters=filters, fields=fields)
-            for seq in find_sequences:
-                sequences[seq['id']] = seq['code']
-            return sequences
-        return False
-
-    # End ------------------------------------------------------------------------
 
     def get_shotgun_assets(self, project=None):
         # print 'Return the assets associated with a particular project, or shot'
@@ -312,7 +353,7 @@ class t_sheets_connect:
                 ['project', 'is', {'type': 'Project', 'id': project}]
             ]
             fields = ['code', 'id']
-            find_assets = sg.find('Asset', filters=filters, fields=fields)
+            find_assets = self.sg.find('Asset', filters=filters, fields=fields)
             for asset in find_assets:
                 assets[asset['id']] = asset['code']
             return assets
@@ -321,13 +362,22 @@ class t_sheets_connect:
     def get_shotgun_tasks(asset=None, project=None, shot=None):
         print 'Return the Shotgun tasks'
 
-    def compare_active_users(self):
-        ts_users = self.get_ts_active_users()
-        sg_users = self.get_shotgun_people()
-        for sg_user in sg_users.keys():
-            if sg_user in ts_users.keys():
-                print 'USER FOUND: %s' % sg_users[sg_user]['name']
-                print 'COMPUTER: %s' % sg_users[sg_user]['computer']
+    # ------------------------------------------------------------------------------------------------------------------
+    # Shotgun to T-Sheets Project, Asset, Shots and Jobcodes Workers
+    # ------------------------------------------------------------------------------------------------------------------
+    def compare_project_sequences(self, project=None):
+        # print 'Comparing Shotgun to T-Sheets Sequences...'
+        if project:
+            sequences = {}
+            filters = [
+                ['project', 'is', {'type': 'Project', 'id': project}]
+            ]
+            fields = ['code', 'id']
+            find_sequences = self.sg.find('Sequence', filters=filters, fields=fields)
+            for seq in find_sequences:
+                sequences[seq['id']] = seq['code']
+            return sequences
+        return False
 
     def compare_active_projects(self):
         ts_projects = self.get_ts_active_projects()
@@ -467,6 +517,161 @@ class t_sheets_connect:
             # END Shotgun to T-Sheets data comparison
             # ***************************************************************************************
 
+    # ------------------------------------------------------------------------------------------------------------------
+    # Shotgun and T-Sheets User Information
+    # ------------------------------------------------------------------------------------------------------------------
+    def get_shotgun_people(self):
+        """
+        Collect all active Shotgun Users
+        :return: (dict) sg_users[email] = {'name': name, 'computer': sg_computer}
+        """
+        people = self.sg.find(entity_type='HumanUser', filters=[['sg_status_list', 'is', 'act']], fields=['email', 'name', 'sg_computer'])
+        sg_users = {}
+        for jerk in people:
+            sg_users[jerk['email']] = {'name': jerk['name'], 'computer': jerk['sg_computer']}
+        return sg_users
+
+    def get_sg_user(self, userid=None, name=None, email=None, sg_login=None, sg_computer=None):
+        """
+        Get a specific Shotgun User's details from any basic input.
+        Only the first detected value will be searched.  If all 3 values are added, only the ID will be searched.
+        :param userid: (int) Shotgun User ID number
+        :param name:   (str) First and Last Name
+        :param email:  (str) email@asc-vfx.com
+        :return: user: (dict) Basic details
+        """
+
+        user = {}
+        if userid or name or email or sg_login or sg_computer:
+            filters = [
+                ['sg_status_list', 'is', 'act']
+            ]
+            if userid:
+                filters.append(['id', 'is', userid])
+            elif name:
+                filters.append(['name', 'is', name])
+            elif email:
+                filters.append(['email', 'is', email])
+            elif sg_login:
+                filters.append(['login', 'is', sg_login])
+            elif sg_computer:
+                filters.append(['sg_computer', 'is', sg_computer])
+            fields = [
+                'email',
+                'name',
+                'sg_computer',
+                'login',
+                'permission_rule_set',
+                'projects',
+                'groups'
+            ]
+            find_user = self.sg.find_one('HumanUser', filters, fields)
+            if find_user:
+                user_id = find_user['id']
+                sg_email = find_user['email']
+                computer = find_user['sg_computer']
+                sg_name = find_user['name']
+                # Dictionary {'type': 'PermissionRuleSet', 'id': 8 'name': 'Artist'}
+                permissions = find_user['permission_rule_set']
+                # List of Dictionaries [{'type': 'Group', 'id': 7, 'name':'VFX'}]
+                groups = find_user['groups']
+                login = find_user['login']
+                # List of Dictionaries [{'type': 'Project', 'id': 168, 'name': 'masterTemplate'}]
+                projects = find_user['projects']
+
+                user[user_id] = {'name': sg_name, 'email': sg_email, 'computer': computer, 'permissions': permissions,
+                                 'groups': groups, 'login': login, 'project': projects}
+        return user
+
+    def get_ts_active_users(self):
+        ts_users = {}
+        user_params = {'per_page': '50', 'active': 'yes'}
+        user_js = self._return_from_tsheets(page='users', data=user_params)
+        if user_js:
+            for l_type, result_data in user_js.items():
+                if l_type == 'results':
+                    user_data = result_data['users']
+                    for user in user_data:
+                        data = user_data[user]
+                        first_name = data['first_name']
+                        last_name = data['last_name']
+                        email = data['email']
+                        last_active = data['last_active']
+                        active = data['active']
+                        username = data['username']
+                        user_id = data['id']
+                        name = first_name, last_name
+                        ts_users[email] = {'name': name, 'last_active': last_active, 'active': active,
+                                           'username': username, 'email': email, 'id': user_id}
+            return ts_users
+        return False
+
+    def get_ts_current_user_status(self, email=None):
+        data = {}
+        username = email
+        # Send the Username from a script that already loads the shotgun data.  This returns the T-Sheets status of a
+        # single user.
+        all_users = self.get_ts_active_users()
+        if username in all_users.keys():
+            data = all_users[username]
+        return data
+
+    def compare_active_users(self):
+        ts_users = self.get_ts_active_users()
+        sg_users = self.get_shotgun_people()
+        for sg_user in sg_users.keys():
+            if sg_user in ts_users.keys():
+                print 'USER FOUND: %s' % sg_users[sg_user]['name']
+                print 'COMPUTER: %s' % sg_users[sg_user]['computer']
+
+    def get_sg_people_from_department(self, grp_id=None):
+        """
+        This will return a list of people associated with a given group.
+        :param          dept:           (str) Department code
+        :return:        people:         (dict) List of people associated with a department
+        """
+        people = {}
+        if grp_id:
+            filters = [
+                ['id', 'is', grp_id]
+            ]
+            fields = [
+                'users'
+            ]
+            find_people = self.sg.find_one('Department', filters, fields)
+            if find_people:
+                data = find_people['users']
+                for user in data:
+                    people[user['id']] = user['name']
+        return people
+
+    def confirm_user(self):
+        current_user = os.environ[env_user]
+        current_comp = os.environ[computername]
+        confirmed_user = False
+        get_current_user = self.get_sg_user(sg_login=current_user)
+        get_current_computer = self.get_sg_user(sg_computer=current_comp)
+        if get_current_computer == get_current_user:
+            user_data = get_current_user.values()[0]
+            user_email = user_data['email']
+            user_name = user_data['name']
+            get_ts_user = self.get_ts_current_user_status(email=user_email)
+            if get_ts_user:
+                ts_user = '%s %s' % (get_ts_user['name'][0], get_ts_user['name'][1])
+                if user_name == ts_user:
+                    confirmed_user = get_ts_user
+        return confirmed_user
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # T-Sheets Timesheet Workers
+    # ------------------------------------------------------------------------------------------------------------------
+    def get_iso_timestamp(self):
+        iso_date = datetime.date(datetime.now()).isoformat()
+        iso_time = '%02d:%02d:%02d' % (datetime.now().hour, datetime.now().minute, datetime.now().second)
+        iso_tz = self.timezone
+        clock_out = iso_date + 'T' + iso_time + iso_tz
+        return clock_out
+
     def get_ts_user_timesheet(self, email=None):
         timesheet = {}
         _start_date = datetime.date((datetime.today() - timedelta(days=2)))
@@ -489,65 +694,190 @@ class t_sheets_connect:
                         if info['on_the_clock']:
                             timesheet[card] = {'name': name, 'username': username, 'user_id': user_id, 'timecard': info}
                 except AttributeError:
-                    print 'Shithead is not clocked in'
-                    # For the moment, this may be how the test is achieve to trigger a different clock in response.
+                    # User Not clocked in
+                    pass
         return timesheet
 
-    def add_new_ts_project(self, name=None):
-        # print 'Add a new job from Shotgun. %s' % name
-        data = {
-            "data":
-                [
-                    {
-                        "name": "%s" % name,
-                        "billable": "yes",
-                        "assigned_to_all": "yes"
-                    }
-                ]
+    def check_sg_timesheet_status(self):
+        confirmed_user = self.confirm_user()
+        if confirmed_user:
+            user_timesheet = self.get_ts_user_timesheet(email=confirmed_user['username'])
+            context = self.get_sg_current_context()
+            if user_timesheet:
+                new_ts = False
+                # timesheet_id is for changing the timesheet if it turns out that it ain't the same.
+                timesheet_id = user_timesheet.keys()[0]
+                timesheet_data = user_timesheet.values()[0]
+                jobcode = timesheet_data['timecard']['jobcode_id']
+                # Get jobcode_id from T-Sheets. This includes the job name which can be compared to shotgun
+                jobcode_data = self.get_ts_jobcode(jobcode=jobcode)
+                ctx_name = context[context.keys()[0]]['name']
+                ctx_task = context[context.keys()[0]]['task']
+                ts_name = jobcode_data[jobcode_data.keys()[0]]['name']
+                ts_task = jobcode_data[jobcode_data.keys()[0]]['tasks']
+                ts_job_task = timesheet_data['timecard']['customfields'][ts_task]
+                tran_task = self.get_sg_translator(sg_task=ctx_task)['task']
+                if ctx_name == ts_name:
+                    if tran_task != ts_job_task:
+                        new_ts = True
+                else:
+                    new_ts = True
+
+                if new_ts:
+                    # This will actually need to go into the User Interface before calling
+                    self.change_ts_timesheet(timesheet_id=timesheet_id, ctx=context, jobcode_id=jobcode)
+            else:
+                # This will actually need to go into the User Interface before calling
+                self.clock_in_ts_timesheet(ctx=context)
+
+    def change_ts_timesheet(self, timesheet_id=None, ctx=None, jobcode_id=None):
+        new_ts = {}
+        confirmed_user = self.confirm_user()
+        if confirmed_user:
+            if timesheet_id and ctx:
+                user_email = confirmed_user['username']
+                current_timesheet = self.get_ts_user_timesheet(email=user_email)
+                end_time = current_timesheet[current_timesheet.keys()[0]]['timecard']['end']
+                if not end_time:
+                    clock_out_timesheet = self.clock_out_ts_timesheet(timesheet_id=timesheet_id, jobcode_id=jobcode_id)
+                    if clock_out_timesheet:
+                        clock_in_timesheet = self.clock_in_ts_timesheet(ctx=ctx)
+                        if clock_in_timesheet:
+                            if clock_in_timesheet['results']['timesheets']['1']['_status_message'] == 'Created':
+                                new_ts = True
+        return new_ts
+
+    def clock_in_ts_timesheet(self, ctx=None):
+        """
+        Clock_in_ts_timesheet is going to be a little tricky.
+        It will have to split out the context, and then find the jobcode_id based on the project, shot/asset & job task.
+        The user_id, start time and other things will have to be collected as well.
+        :param ctx:
+        :return:
+        """
+        new_ts = {}
+        confirmed_user = self.confirm_user()
+        if confirmed_user:
+            if ctx:
+                print ctx
+                user_id = confirmed_user['id']
+                start = self.get_iso_timestamp()
+                project_id = ctx.keys()[0]
+                ctx_data = ctx[project_id]
+                project = ctx_data['project']
+                project_jobcode = None
+                task = ctx_data['task']
+                shot_or_asset = ctx_data['name']
+                context = ctx_data['context']
+                if context == 'Asset':
+                    ts_folder = 'Assets'
+                elif context == 'Shot':
+                    ts_folder = 'Shots'
+                ts_projects = self.get_ts_active_projects()
+                for pid, proj in ts_projects.items():
+                    if proj == project:
+                        project_jobcode = pid
+                        break
+
+                print user_id
+                print start
+        return new_ts
+
+    def clock_out_ts_timesheet(self, timesheet_id=None, jobcode_id=None):
+        print 'START'
+        confirm_user = self.confirm_user()
+        print 'Confirmed User 3', confirm_user
+        user_email = confirm_user['username']
+        print 'Confirmed_user Email', user_email
+        clocked_out = False
+        # current_timesheet = self.get_ts_user_timesheet(email=user_email)
+        if confirm_user:
+            clock_out = self.get_iso_timestamp()
+            print 'clock_out', clock_out
+            data = {
+                "data":
+                    [
+                        {
+                            "id": int(timesheet_id),
+                            "end": "%s" % clock_out,
+                            "jobcode_id": int(jobcode_id)
+                        }
+                    ]
+            }
+            print 'Send to _edit_tsheets'
+            success = self._edit_tsheets(page='timesheets', data=data)
+            print 'RETURN from _edit_tsheets', success
+            if success:
+                if success['results']['timesheets']['1']['_status_message'] == 'Updated':
+                    clocked_out = True
+
+        return clocked_out
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # Shotgun to T-Sheets Job Task Workers
+    # ------------------------------------------------------------------------------------------------------------------
+    def get_ts_job_tasks(self):
+        pass
+
+    def get_sg_current_context(self):
+        context = {}
+        # Temporary context info until I can get Shotgun connected.  This is just junk for testing purposes.
+        # This will return the taks name, shot/asset name, which may take some fanegeling on T-Sheets part.
+        context[140] = {
+            'task': 'model.main',
+            'context': 'Asset',
+            'name': 'Remnant',
+            'project': 'Asura'
         }
-        packed_data = json.dumps(data)
-        request = urllib2.Request('%sjobcodes' % url, headers=headers, data=packed_data)
-        request.add_header('Content-Type', 'application/json')
-        response = urllib2.urlopen(request)
-        response_data = json.loads(response.read())
-        check = response_data['results']['jobcodes']['1']['_status_message']
-        new_id = response_data['results']['jobcodes']['1']['id']
-        if check == 'Created':
-            self.add_sub_folders(parent_id=new_id, sub_folder_name='Design')
-            self.add_sub_folders(parent_id=new_id, sub_folder_name='Assets')
-            self.add_sub_folders(parent_id=new_id, sub_folder_name='Shots')
-            self.add_sub_folders(parent_id=new_id, sub_folder_name='Production Admin')
-            return new_id
-        return False
+        return context
 
-    def get_ts_authorization(self):
-        filters = [
-            ['id', 'is', 3]
-        ]
-        fields = [
-            'code'
-        ]
-        auth_search = sg.find('CustomNonProjectEntity06', filters, fields)
-        # print auth_search
+    def get_sg_translator(self, sg_task=None):
+        """
+        The T-Sheets Translator requires a special Shotgun page to be created.
+        The fields in the database are as follows:
+        Database Name:  code:                (str) A casual name of the database.
+        sgtask:         sg_sgtask:          (str-unique) The shotgun task. Specifically, '.main' namespaces are removed.
+        tstask:         sg_tstask:          (str) The T-Sheets name for a task
+        ts_short_code:  sg_ts_short_code:   (str) The ironically long name for a 3 letter code.
+        task_depts:     sg_task_grp:        (multi-entity) Returns the groups that are associated with tasks
+        people_override:sg_people_override: (multi-entity) Returns individuals assigned to specific tasks
 
-    def add_sub_folders(self, parent_id=None, sub_folder_name=None):
-        # print 'Add Sub Folders: %s' % sub_folder_name
-        # print 'parent_id: %s' % parent_id
-        # print '-' * 150
-        data = {
-            "data":
-                [
-                    {
-                        "name": "%s" % sub_folder_name,
-                        "billable": "yes",
-                        "assigned_to_all": "yes",
-                        "parent_id": "%s" % parent_id
-                    }
-                ]
-        }
-        response_data = self._send_to_tsheets(page='jobcodes', data=data)
-        return response_data
+         :param:        sg_task:            (str) Shotgun task name from context
+        :return:        translation:        (dict) {
+                                                    task: sg_tstask
+                                                    short: sg_ts_short_code
+                                                    dept: sg_task_depts
+                                                    people: sg_people_override
+                                                    }
+        """
+        translation = {}
+        if sg_task:
+            if '.main' in sg_task:
+                task_name = sg_task.replace('.main', '')
+            else:
+                task_name = sg_task
 
+            task_name = task_name.lower()
+
+            filters = [
+                ['sg_sgtask', 'is', task_name]
+            ]
+            fields = [
+                'sg_sgtask',
+                'sg_tstask',
+                'sg_ts_short_code',
+                'sg_task_grp',
+                'sg_people_override'
+            ]
+            translation_data = self.sg.find_one('CustomNonProjectEntity07', filters, fields=fields)
+
+            if translation_data:
+                task = translation_data['sg_tstask']
+                short = translation_data['sg_ts_short_code']
+                group = translation_data['sg_task_grp']
+                people = translation_data['sg_people_override']
+                translation = {'task': task, 'short': short, 'group': group, 'people': people}
+        return translation
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Test Triggers
@@ -556,11 +886,16 @@ run = t_sheets_connect()
 
 # out_data = run.get_ts_user_timesheet(email='adam@sdvfx.com')
 # out_data = run.get_ts_user_timesheet(email='adamb@asc-vfx.com')
-out_data = run.compare_active_projects()
+# out_data = run.compare_active_projects()
 # out_data = run.get_shotgun_sequence(168)
-# print out_data
+# out_data = run.get_sg_translator('model.main')
+# out_data = run.get_sg_user(sg_login='Adam')
+out_data = run.check_sg_timesheet_status()
+print out_data
 # for sid, seq in out_data.items():
 #     out_data2 = run.get_shotgun_shots(168, sid)
 #     print out_data2
 
 # print os.environ['COMPUTERNAME']
+# print os.environ['USERNAME']
+print getpass.getuser()
