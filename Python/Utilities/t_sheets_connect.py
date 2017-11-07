@@ -1,4 +1,4 @@
-import sys, os, platform, time, getpass
+import sys, os, platform, time
 import logging as logger
 import subprocess
 import re
@@ -27,9 +27,9 @@ else:
 
 # Build Shotgun connection string.  This will be obsolete in the main version
 shotgun_conf = {
-    'url':'https://asc.shotgunstudio.com',
-    'name':'runThis',
-    'key':'55b685383cfc7bfaad304dfd26d55a2685ee7e5efa03ca4f34408192b8ac288c'
+    'url': 'https://asc.shotgunstudio.com',
+    'name': 'runThis',
+    'key': '55b685383cfc7bfaad304dfd26d55a2685ee7e5efa03ca4f34408192b8ac288c'
     }
 
 
@@ -43,7 +43,6 @@ headers = {
 }
 
 user_params = {'per_page': '50', 'active': 'yes'}
-jobs_params = {'active': 'yes'}
 
 
 class t_sheets_connect:
@@ -51,6 +50,7 @@ class t_sheets_connect:
     Connect T-Sheets databases to Shotgun to compare projects, shots, designs and assets, and people
     """
     def __init__(self):
+        jobs_params = {'active': 'yes'}
         self.jobs_list = urllib.urlencode(jobs_params)
         self.jobs_request = urllib2.Request('%sjobcodes?%s' % (url, self.jobs_list), headers=headers)
 
@@ -98,11 +98,12 @@ class t_sheets_connect:
         if page:
             if data:
                 try:
+                    opener = urllib2.build_opener(urllib2.HTTPHandler)
                     packed_data = json.dumps(data)
                     request = urllib2.Request('%s%s' % (url, page), headers=headers, data=packed_data)
                     request.add_header('Content-Type', 'application/json')
                     request.get_method = lambda: 'PUT'
-                    response = urllib2.urlopen(request)
+                    response = opener.open(request)
                     response_data = json.loads(response.read())
                     return response_data
                 except Exception, e:
@@ -133,6 +134,7 @@ class t_sheets_connect:
     # T-Sheets Jobcode Workers
     # ------------------------------------------------------------------------------------------------------------------
     def get_ts_active_projects(self):
+        jobs_params = {'active': 'yes'}
         ts_projects = {}
         jobs_js = self._return_from_tsheets(page='jobcodes', data=jobs_params)
         for j_type, result_data in jobs_js.items():
@@ -227,6 +229,23 @@ class t_sheets_connect:
                     pass
             return subs
         return False
+
+    def get_ts_jobtasks(self, task_id=None):
+        task_info = {}
+        if task_id:
+            data = {
+                "data":
+                    [
+                        {
+                            "customfield_id": "%s" % task_id
+                        }
+                    ]
+            }
+            get_data = self._return_from_tsheets('customfielditems', data=data)
+            if get_data:
+                print get_data
+
+        return task_info
 
     def add_new_ts_project(self, name=None):
         # print 'Add a new job from Shotgun. %s' % name
@@ -683,9 +702,7 @@ class t_sheets_connect:
         ts_email = current_user['email']
         user_id = current_user['id']
         tsheet_param = {'start_date': _start_date, 'user_ids': user_id, 'on_the_clock': 'yes'}
-        tsheet_list = urllib.urlencode(tsheet_param)
-        tsheets_request = urllib2.Request('%stimesheets?%s' % (url, tsheet_list), headers=headers)
-        tsheets_json = json.loads(urllib2.urlopen(tsheets_request).read())
+        tsheets_json = self._return_from_tsheets(page='timesheets', data=tsheet_param)
         for type, data in tsheets_json.items():
             if type == 'results':
                 ts_data = data.values()
@@ -768,6 +785,7 @@ class t_sheets_connect:
                 project_jobcode = None
                 task = ctx_data['task']
                 shot_or_asset = ctx_data['name']
+                sequence = ctx_data['sequence']
                 context = ctx_data['context']
                 if context == 'Asset':
                     ts_folder = 'Assets'
@@ -778,22 +796,42 @@ class t_sheets_connect:
                     if proj == project:
                         project_jobcode = pid
                         break
-
-                print user_id
-                print start
+                if project_jobcode:
+                    ts_proj_subs = self.return_subs(project_jobcode)
+                    if ts_proj_subs:
+                        for folder_id, folder_data in ts_proj_subs.items():
+                            if folder_data['name'] == ts_folder:
+                                if folder_data['has_children']:
+                                    assets_seqs = self.return_subs(folder_id)
+                                    if assets_seqs:
+                                        for ass_seq_id, ass_seq_data in assets_seqs.items():
+                                            if ts_folder == 'Assets':
+                                                if ass_seq_data['name'] == shot_or_asset:
+                                                    jobcode_id = ass_seq_id
+                                                    break
+                                            elif ts_folder == 'Shots':
+                                                if ass_seq_data['name'] == sequence:
+                                                    if ass_seq_data['has_children']:
+                                                        get_shots = self.return_subs(ass_seq_id)
+                                                        for shot_id, shot_data in get_shots.items():
+                                                            if shot_data['name'] == shot_or_asset:
+                                                                jobcode_id = shot_id
+                                                                break
+                                break
+                    jobcode_data = self.get_ts_jobcode(jobcode_id)
+                    print jobcode_data
+                    task_id = jobcode_data[jobcode_data.keys()[0]]['tasks']
+                    print task_id
+                    get_task = self.get_ts_jobtasks(task_id=task_id)
         return new_ts
 
     def clock_out_ts_timesheet(self, timesheet_id=None, jobcode_id=None):
-        print 'START'
         confirm_user = self.confirm_user()
-        print 'Confirmed User 3', confirm_user
         user_email = confirm_user['username']
-        print 'Confirmed_user Email', user_email
         clocked_out = False
-        # current_timesheet = self.get_ts_user_timesheet(email=user_email)
+        current_timesheet = self.get_ts_user_timesheet(email=user_email)
         if confirm_user:
             clock_out = self.get_iso_timestamp()
-            print 'clock_out', clock_out
             data = {
                 "data":
                     [
@@ -804,9 +842,8 @@ class t_sheets_connect:
                         }
                     ]
             }
-            print 'Send to _edit_tsheets'
             success = self._edit_tsheets(page='timesheets', data=data)
-            print 'RETURN from _edit_tsheets', success
+            print success
             if success:
                 if success['results']['timesheets']['1']['_status_message'] == 'Updated':
                     clocked_out = True
@@ -820,14 +857,28 @@ class t_sheets_connect:
         pass
 
     def get_sg_current_context(self):
+        """
+        import sgtk
+        tk = sgtk
+        engine = tk.platform.current_engine()
+        sg = engine.sgtk
+        ctx = engine.context
+        taskName = str(ctx).split(',')[0]
+        project = ctx.project['name']
+        entity = ctx.entity['type']
+        print project, entity, taskName
+        print ctx
+        :return:
+        """
         context = {}
         # Temporary context info until I can get Shotgun connected.  This is just junk for testing purposes.
         # This will return the taks name, shot/asset name, which may take some fanegeling on T-Sheets part.
         context[140] = {
-            'task': 'model.main',
-            'context': 'Asset',
-            'name': 'Remnant',
-            'project': 'Asura'
+            'task': 'fx.main',
+            'context': 'Shot',
+            'name': '125_SAF_0015',
+            'project': 'Asura',
+            'sequence': '125_SAF'
         }
         return context
 
@@ -890,7 +941,8 @@ run = t_sheets_connect()
 # out_data = run.get_shotgun_sequence(168)
 # out_data = run.get_sg_translator('model.main')
 # out_data = run.get_sg_user(sg_login='Adam')
-out_data = run.check_sg_timesheet_status()
+# out_data = run.check_sg_timesheet_status()
+out_data = run.get_sg_current_context()
 print out_data
 # for sid, seq in out_data.items():
 #     out_data2 = run.get_shotgun_shots(168, sid)
@@ -898,4 +950,3 @@ print out_data
 
 # print os.environ['COMPUTERNAME']
 # print os.environ['USERNAME']
-print getpass.getuser()
