@@ -1,36 +1,24 @@
 from libs.pynput import mouse
 import time
+import ctypes
+from ctypes import windll
+import multiprocessing as mp
 
-
-class t_sheets_listener:
+class ts_timer:
     def __init__(self):
-        self.h = 0
-        self.m = 0
-        self.s = 0
-        self.ts_timer = True
-        self.run_loop()
+        self.ts_timer, self.ts_mouse = mp.Pipe()
+        self.run_time = True
+        self.run_timer()
 
-    def run_loop(self):
-        while self.ts_timer:
-            self.s += 1
-            print self.s
-            time.sleep(1)
-            if self.s > 20:
-                self.ts_timer = False
+    def run_timer(self):
+        s = 0
+        while self.run_time:
+            s += 0
+            self.ts_timer.recv()
 
+    def mouse_check(self):
+        while self.run_time:
+            if ctypes.windll.user32.GetKeyState(0x01) not in [0, 1]:
+                self.ts_mouse.send(0)
 
-# def on_click(x, y, button, pressed):
-#     # print('{0} at {1}'.format('Pressed' if pressed else 'Released', (x, y)))
-#     s = 0
-#     m = 0
-#     h = 0
-#     if pressed:
-#         print 'Pressed'
-
-# Collect events until released
-# with mouse.Listener(on_click=on_click) as listener:
-#     # d = t_sheets_listener()
-#     listener.join()
-
-mouse.Listener(on_click=on_click)
-
+ts_timer()
