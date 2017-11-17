@@ -3,20 +3,31 @@ import ctypes
 import sys
 import time
 from datetime import datetime
+import threading as th
 
-from Python.Utilities.t_sheets_listener.ui.PySide import QtGui
+# from ui.PySide import QtGui, QtCore
+from PySide import QtGui, QtCore
 from ui import alert_dialog as ad
 
 
-class ts_alert(QtGui.QWidget):
-    def __init__(self):
-        QtGui.QWidget.__init__(self)
-        print 'Fucking worked!'
+class ts_alert(QtGui.QDialog):
+    def __init__(self, parent=None, *arg, **kwargs):
+        super(ts_alert, self).__init__(parent)
+        print 'what the fuck!?'
+        print kwargs
+        if kwargs:
+            print kwargs
         self.ui = ad.Ui_Dialog()
         self.ui.setupUi(self)
+        self.ui.ok_btn.clicked.connect(self.shut_off)
+        self.show()
+
+    def shut_off(self):
+        self.close()
+        return
 
 
-class ts_timer:
+class ts_timer(QtCore.QObject):
     """
     T-Sheets Listener Utility.
     This tool runs in the background of a computer to listen for mouse clicks at certain times of day, in order to run
@@ -29,10 +40,15 @@ class ts_timer:
     It's after 7 and there has been no activity for 15 minutes.  Pops up a dialog with a count-down asking if the user
     is still working.  If no activity is detected again, it will clock them out and start their slave.
     """
-    def __init__(self):
+
+    def __init__(self, parent=None):
+        super(ts_timer, self).__init__(parent)
+        # self.ui = ad.Ui_Dialog()
+        # self.ui.setupUi(self)
         self.run_time = True
         self.run_timer()
         self.alert_message = None
+        self.q_thread = None
 
     def run_timer(self):
         s = 0
@@ -63,15 +79,21 @@ class ts_timer:
                 print '%s:%s:%s' % (h, m, s)
                 now_time = datetime.strptime('%s:%s' % (now_hour, now_min), '%H:%M')
                 lunch_start = datetime.strptime('12:00', '%H:%M')
-                lunch_end = datetime.strptime('15:35', '%H:%M')
-                if s >= 10 and not break_timer:
+                lunch_end = datetime.strptime('19:35', '%H:%M')
+                if s >= 5 and not break_timer:
                     if lunch_start <= now_time < lunch_end:
                         # this will eventually be set to 15 minutes
                         start_break = datetime.now()  # - timedelta(minutes=1)
                         print 'Start Break At: %s' % start_break
                         break_timer = True
 
-                        self.alert_message = ts_alert()
+                        # ready = QtCore.Signal(object)
+                        # self.q_thread = QtCore.QThread()
+                        # self.q_thread.ready.connect(ts_alert.exec_())
+                        # self.q_thread.start()
+                        a_type = {'a_type': 'ot'}
+                        self.alert_message = th.Thread(target=ts_alert().exec_(), name='Popup', kwargs=a_type)
+                        self.alert_message.start()
                         # Test launch slave
                         # The os.startfile works, but we'll need to test processor functions
                         # print dir(ctypes.windll.kernel32)
@@ -92,7 +114,7 @@ class ts_timer:
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
-    run = ts_timer()
+    myapp = ts_timer()
+    myapp.show()
     sys.exit(app.exec_())
-
 
