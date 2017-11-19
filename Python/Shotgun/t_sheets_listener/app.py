@@ -6,28 +6,33 @@ from datetime import datetime
 import threading as th
 
 # from ui.PySide import QtGui, QtCore
-from PySide import QtGui, QtCore
+from PySide.QtGui import *
+from PySide.QtCore import *
 from ui import alert_dialog as ad
 
 
-class ts_alert(QtGui.QDialog):
-    def __init__(self, parent=None, *arg, **kwargs):
-        super(ts_alert, self).__init__(parent)
-        print 'what the fuck!?'
-        print kwargs
-        if kwargs:
-            print kwargs
+class ts_signal(QObject):
+    sig = Signal(str)
+
+
+class ts_alert(QThread):
+    def __init__(self, parent=None):
+        QThread.__init__(self, parent)
         self.ui = ad.Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.ok_btn.clicked.connect(self.shut_off)
+        self.signal = ts_signal()
         self.show()
+
+    def run(self):
+        self.signal.sig.emit('Shitballs!')
 
     def shut_off(self):
         self.close()
         return
 
 
-class ts_timer(QtCore.QObject):
+class ts_timer(QObject):
     """
     T-Sheets Listener Utility.
     This tool runs in the background of a computer to listen for mouse clicks at certain times of day, in order to run
@@ -78,8 +83,8 @@ class ts_timer(QtCore.QObject):
                         s = 0
                 print '%s:%s:%s' % (h, m, s)
                 now_time = datetime.strptime('%s:%s' % (now_hour, now_min), '%H:%M')
-                lunch_start = datetime.strptime('12:00', '%H:%M')
-                lunch_end = datetime.strptime('19:35', '%H:%M')
+                lunch_start = datetime.strptime('0:00', '%H:%M')
+                lunch_end = datetime.strptime('23:59', '%H:%M')
                 if s >= 5 and not break_timer:
                     if lunch_start <= now_time < lunch_end:
                         # this will eventually be set to 15 minutes
@@ -87,8 +92,8 @@ class ts_timer(QtCore.QObject):
                         print 'Start Break At: %s' % start_break
                         break_timer = True
 
-                        # ready = QtCore.Signal(object)
-                        # self.q_thread = QtCore.QThread()
+                        # ready = Signal(object)
+                        # self.q_thread = QThread()
                         # self.q_thread.ready.connect(ts_alert.exec_())
                         # self.q_thread.start()
                         a_type = {'a_type': 'ot'}
@@ -113,7 +118,7 @@ class ts_timer(QtCore.QObject):
             time.sleep(0.001)
 
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     myapp = ts_timer()
     myapp.show()
     sys.exit(app.exec_())
