@@ -4,35 +4,37 @@ import sys
 import time
 from datetime import datetime
 import threading as th
+import multiprocessing as mp
 
 # from ui.PySide import QtGui, QtCore
-from PySide.QtGui import *
-from PySide.QtCore import *
+from PySide import QtGui, QtCore
 from ui import alert_dialog as ad
 
+# NOTE: 7 Hours and 45 minutes = 27,900 seconds
+#       8 hours = 28,800 seconds
+#       T-Sheets measures total day time in seconds.
 
-class ts_signal(QObject):
-    sig = Signal(str)
 
-
-class ts_alert(QThread):
-    def __init__(self, parent=None):
-        QThread.__init__(self, parent)
+class ts_alert(QtGui.QDialog):
+    def __init__(self, parent=None, *arg, **kwargs):
+        super(ts_alert, self).__init__(parent)
+        print 'what the fuck!?'
+        print kwargs
+        if kwargs:
+            print kwargs
         self.ui = ad.Ui_Dialog()
         self.ui.setupUi(self)
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         self.ui.ok_btn.clicked.connect(self.shut_off)
-        self.signal = ts_signal()
         self.show()
 
-    def run(self):
-        self.signal.sig.emit('Shitballs!')
-
     def shut_off(self):
+
         self.close()
         return
 
 
-class ts_timer(QObject):
+class ts_timer(QtCore.QObject):
     """
     T-Sheets Listener Utility.
     This tool runs in the background of a computer to listen for mouse clicks at certain times of day, in order to run
@@ -83,7 +85,7 @@ class ts_timer(QObject):
                         s = 0
                 print '%s:%s:%s' % (h, m, s)
                 now_time = datetime.strptime('%s:%s' % (now_hour, now_min), '%H:%M')
-                lunch_start = datetime.strptime('0:00', '%H:%M')
+                lunch_start = datetime.strptime('00:00', '%H:%M')
                 lunch_end = datetime.strptime('23:59', '%H:%M')
                 if s >= 5 and not break_timer:
                     if lunch_start <= now_time < lunch_end:
@@ -92,13 +94,10 @@ class ts_timer(QObject):
                         print 'Start Break At: %s' % start_break
                         break_timer = True
 
-                        # ready = Signal(object)
-                        # self.q_thread = QThread()
+                        # ready = QtCore.Signal(object)
+                        # self.q_thread = QtCore.QThread()
                         # self.q_thread.ready.connect(ts_alert.exec_())
                         # self.q_thread.start()
-                        a_type = {'a_type': 'ot'}
-                        self.alert_message = th.Thread(target=ts_alert().exec_(), name='Popup', kwargs=a_type)
-                        self.alert_message.start()
                         # Test launch slave
                         # The os.startfile works, but we'll need to test processor functions
                         # print dir(ctypes.windll.kernel32)
@@ -108,8 +107,11 @@ class ts_timer(QObject):
                 if break_timer:
                     end_break = datetime.now()
                     break_time = end_break - start_break
-                    print 'Open Lunch Menu'
+                    a_type = {'a_type': 'ot'}
+                    self.alert_message = th.Thread(target=ts_alert().exec_(), name='Popup', kwargs=a_type)
+                    self.alert_message.start()
                     break_timer = False
+
                     print 'Break Time: %s' % break_time
 
                 s = 0
@@ -118,7 +120,7 @@ class ts_timer(QObject):
             time.sleep(0.001)
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QtGui.QApplication(sys.argv)
     myapp = ts_timer()
     myapp.show()
     sys.exit(app.exec_())
