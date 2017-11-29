@@ -1,4 +1,3 @@
-#!/usr/bin/env python2
 
 import sys, time
 from PySide.QtGui import *
@@ -50,8 +49,6 @@ class MainWindow(QMainWindow):
                 self.vbox.addWidget(self.label2)
                 self.setCentralWidget(self.centralwidget)
                 self.centralwidget.setLayout(self.vbox)
-
-                # Thread shit
                 self.thread = MyThread()
                 self.longthread = MyLongThread()
                 self.batchbutton.clicked.connect(self.handletoggle)
@@ -60,6 +57,7 @@ class MainWindow(QMainWindow):
                 self.thread.finished.connect(self.finished)
                 self.thread.terminated.connect(self.terminated)
                 self.longthread.signal.sig.connect(self.longoperationcomplete)
+                self.longoperation()
 
         def started(self):
                 self.label1.setText('Continuous batch started')
@@ -103,5 +101,6 @@ class MainWindow(QMainWindow):
 if __name__=='__main__':
         app = QApplication(sys.argv)
         window = MainWindow()
-        window.handletoggle()
+        # window.show()
+        window.hide()
         sys.exit(app.exec_())
