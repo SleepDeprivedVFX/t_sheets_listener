@@ -7,17 +7,27 @@ from datetime import datetime
 from PySide import QtCore, QtGui
 from ui import alert_dialog as ad
 
+lunch_start_time = '00:00'
+lunch_end_time = '23:59'
 
-class ts_alert(QtGui.QWidget):
+
+class ts_alert(QtGui.QDialog):
     def __init__(self):
-        QtGui.QWidget.__init__(self)
+        QtGui.QDialog.__init__(self)
         print 'Fucking worked!'
         self.ui = ad.Ui_Dialog()
         self.ui.setupUi(self)
-        self.show()
+        self.ui.ok_btn.clicked.connect(self.cancel)
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+
+    def run(self):
+        self.exec_()
+
+    def cancel(self):
+        self.close()
 
 
-class ts_timer:
+class ts_timer(QtCore.QObject):
     """
     T-Sheets Listener Utility.
     This tool runs in the background of a computer to listen for mouse clicks at certain times of day, in order to run
@@ -31,9 +41,10 @@ class ts_timer:
     is still working.  If no activity is detected again, it will clock them out and start their slave.
     """
     def __init__(self):
+        QtCore.QObject.__init__(self)
         self.run_time = True
-        self.run_timer()
         self.alert_message = None
+        self.run_timer()
 
     def run_timer(self):
         s = 0
@@ -50,6 +61,7 @@ class ts_timer:
             now_min = datetime.now().minute
             r += 1.0
             t = float(r/1000)
+            a = None
             if t.is_integer():
                 if s < 59:
                     s += 1
@@ -63,20 +75,14 @@ class ts_timer:
                         s = 0
                 print '%s:%s:%s' % (h, m, s)
                 now_time = datetime.strptime('%s:%s' % (now_hour, now_min), '%H:%M')
-                lunch_start = datetime.strptime('12:00', '%H:%M')
-                lunch_end = datetime.strptime('15:35', '%H:%M')
+                lunch_start = datetime.strptime(lunch_start_time, '%H:%M')
+                lunch_end = datetime.strptime(lunch_end_time, '%H:%M')
                 if s >= 5 and not break_timer:
                     if lunch_start <= now_time < lunch_end:
                         # this will eventually be set to 15 minutes
                         start_break = datetime.now()  # - timedelta(minutes=1)
-                        print 'Start Break At: %s' % start_break
                         break_timer = True
-
-                        self.alert_message = ts_alert()
-                        # Test launch slave
-                        # The os.startfile works, but we'll need to test processor functions
-                        # print dir(ctypes.windll.kernel32)
-                        # os.startfile(r'C:\Program Files\Thinkbox\Deadline9\bin\deadlineslave.exe')
+                        print 'Start Break At: %s' % start_break
 
             if ctypes.windll.user32.GetKeyState(0x01) not in [0, 1]:
                 if break_timer:
@@ -85,10 +91,16 @@ class ts_timer:
                     print 'Open Lunch Menu'
                     break_timer = False
                     print 'Break Time: %s' % break_time
+                    # self.alert_message = ts_alert()
+                    # self.alert_message.show()
+                    a = ts_alert()
+                    a.run()
 
                 s = 0
                 m = 0
                 h = 0
+            if a:
+                del a
             time.sleep(0.001)
 
 if __name__ == '__main__':
