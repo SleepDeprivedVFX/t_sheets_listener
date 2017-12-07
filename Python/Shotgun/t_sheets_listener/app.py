@@ -1,111 +1,157 @@
-# from libs.pynput import mouse
+
 import ctypes
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
-from PySide import QtCore, QtGui
 from ui import alert_dialog as ad
+from ui import lunch_break_dialog as lbd
 
-lunch_start_time = '00:00'
-lunch_end_time = '23:59'
+import sys, time
+from PySide.QtGui import *
+from PySide.QtCore import *
+
+######################################################################################
+# This updated test will work to use a time-subtraction based timer, instead of the
+# additive timer I have now.
+# In other words:
+# While (ts_click_time - datetime.now()) < 15 minutes:
+#   (mouse click) ------>
+#   Set timer to now: ts_click_time = datetime.now()
+# if datetime.now() > 15 minutes:
+#   Send signal to Dialog
+#   Set timer to now: ts_click_time = datetime.now()
+#
+# Feature List:
+# 1. Create a Shotgun Database with parameters in it.  Allowing for remotely updating
+#       the timers, break times, End of Day conditions.  Any hard coded variable.
+# 2.
+######################################################################################
+
+# Create a SG Database for the following.
+lunch_start_time = datetime.strptime('00:00:00', '%H:%M:%S')
+lunch_end_time = datetime.strptime('23:59:59', '%H:%M:%S')
+timer_seconds = 240
+ts_buffer = QWaitCondition()
+buffer_not_full = QWaitCondition()
+mutex = QMutex()
 
 
-class ts_alert(QtGui.QDialog):
+class ts_signal(QObject):
+    sig = Signal(str)
+    lunch = Signal(str)
+    alert = Signal(str)
+
+
+class ts_timer(QThread):
     def __init__(self):
-        QtGui.QDialog.__init__(self)
-        print 'Fucking worked!'
-        self.ui = ad.Ui_Dialog()
-        self.ui.setupUi(self)
-        self.ui.ok_btn.clicked.connect(self.cancel)
-        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+        QThread.__init__(self)
+        self.running = True
+        self.signal = ts_signal()
+        self.lunch_break = False
+        ch = datetime.now().hour
+        cm = datetime.now().minute
+        cs = datetime.now().second
+        self.click_time = datetime.strptime('%s:%s:%s' % (ch, cm, cs), '%H:%M:%S')
 
-    def run(self):
-        self.exec_()
-
-    def cancel(self):
-        self.close()
-
-
-class ts_timer(QtCore.QObject):
-    """
-    T-Sheets Listener Utility.
-    This tool runs in the background of a computer to listen for mouse clicks at certain times of day, in order to run
-    tasks that are dependent on a users login status.
-    A user is clocked in and the time is between 12 and 2:30 - The timer starts looking for inactivity.  If inactive for
-    more than 15 minutes, it will start a "lunch break" timer.  At the next click, it will assume the lunch break is
-    over and will bring up a dialog box for confirmation.
-    The user is clocked in and nearing their 8 hours - The timer pops up informing them that they have 15 minutes until
-    they go into overtime.  This dialog does nothing else.
-    It's after 7 and there has been no activity for 15 minutes.  Pops up a dialog with a count-down asking if the user
-    is still working.  If no activity is detected again, it will clock them out and start their slave.
-    """
-    def __init__(self):
-        QtCore.QObject.__init__(self)
-        self.run_time = True
-        self.alert_message = None
-        self.run_timer()
-
-    def run_timer(self):
-        s = 0
-        m = 0
-        h = 0
-        r = 0.0
+    def run(self, *args, **kwargs):
         break_timer = False
-        start_break = None
-        end_break = None
-        ot_timer = False
-        eod_timer = False
-        while self.run_time:
-            now_hour = datetime.now().hour
-            now_min = datetime.now().minute
-            r += 1.0
-            t = float(r/1000)
-            a = None
-            if t.is_integer():
-                if s < 59:
-                    s += 1
-                else:
-                    if m < 59:
-                        s = 0
-                        m += 1
-                    elif m == 59 and h <= 22:
-                        h += 1
-                        m = 0
-                        s = 0
-                print '%s:%s:%s' % (h, m, s)
-                now_time = datetime.strptime('%s:%s' % (now_hour, now_min), '%H:%M')
-                lunch_start = datetime.strptime(lunch_start_time, '%H:%M')
-                lunch_end = datetime.strptime(lunch_end_time, '%H:%M')
-                if s >= 5 and not break_timer:
-                    if lunch_start <= now_time < lunch_end:
-                        # this will eventually be set to 15 minutes
-                        start_break = datetime.now()  # - timedelta(minutes=1)
-                        break_timer = True
-                        print 'Start Break At: %s' % start_break
+        break_start = None
+        break_end = None
+        while self.running:
+            ch = datetime.now().hour
+            cm = datetime.now().minute
+            cs = datetime.now().second
+            ct = datetime.strptime('%s:%s:%s' % (ch, cm, cs), '%H:%M:%S')
+            if ctypes.windll.user32.GetKeyState(0x01) not in [0, 1] and not break_timer:
+                self.click_time = ct
+            elapsed = (ct - self.click_time).seconds
+            if elapsed >= timer_seconds and not break_timer:
+                if lunch_start_time <= ct < lunch_end_time:
+                    break_timer = True
+                    break_start = ct
+                    print 'Break Start: %s' % break_start
+            if ctypes.windll.user32.GetKeyState(0x01) not in [0, 1] and break_timer:
+                break_end = ct
+                print 'Break End: %s' % break_end
+                self.click_time = ct
+                self.signal.lunch.emit('{"start": %s, "end": %s' % (break_start, break_end))
+                break_timer = False
+                break_start = None
+                break_end = None
 
-            if ctypes.windll.user32.GetKeyState(0x01) not in [0, 1]:
-                if break_timer:
-                    end_break = datetime.now()
-                    break_time = end_break - start_break
-                    print 'Open Lunch Menu'
-                    break_timer = False
-                    print 'Break Time: %s' % break_time
-                    # self.alert_message = ts_alert()
-                    # self.alert_message.show()
-                    a = ts_alert()
-                    a.run()
 
-                s = 0
-                m = 0
-                h = 0
-            if a:
-                del a
-            time.sleep(0.001)
+class ts_main(QMainWindow):
+    """
+    Opens from the if __name__ == '__main__' routine
+    """
+    def __init__(self, parent=None):
+        QMainWindow.__init__(self, parent)
 
-if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
-    run = ts_timer()
+        self.centralwidget = QWidget(self)
+        self.batchbutton = QPushButton('Start batch',self)
+        self.longbutton = QPushButton('Start long (10 seconds) operation',self)
+        self.label1 = QLabel('Continuos batch')
+        self.label2 = QLabel('Long batch')
+        self.vbox = QVBoxLayout()
+        self.vbox.addWidget(self.batchbutton)
+        self.vbox.addWidget(self.longbutton)
+        self.vbox.addWidget(self.label1)
+        self.vbox.addWidget(self.label2)
+        self.setCentralWidget(self.centralwidget)
+        self.centralwidget.setLayout(self.vbox)
+        self.lunch_dialog = None
+        self.lunch_ui = None
+
+        # Connect the Threads
+        # self.thread = ts_thread()
+        self.run_ts_timer = ts_timer()
+        self.run_ts_timer.signal.lunch.connect(self.open_lunch_break)
+        self.start_ts_timer()
+
+    def started(self):
+        self.label1.setText('Continuous batch started')
+
+    def finished(self):
+        print 'Finished...'
+
+    def terminated(self):
+        print 'terminated!'
+
+    def start_ts_timer(self):
+        # This method simply starts the timer.
+        if not self.run_ts_timer.isRunning():
+            self.run_ts_timer.exiting=False
+            self.run_ts_timer.start()
+
+    def open_lunch_break(self, data=None):
+        print data
+        ts_buffer.wakeAll()
+        self.lunch_dialog = QDialog(self)
+        self.lunch_ui = lbd.Ui_Dialog()
+        self.lunch_ui.setupUi(self.lunch_dialog)
+        self.lunch_ui.yes_btn.clicked.connect(self.save_lunch_break)
+        self.lunch_dialog.exec_()
+
+    def save_lunch_break(self):
+        print 'Save lunch break'
+        # mutex.lock()
+        # ts_buffer.wait(mutex)
+        test_signal = self.lunch_dialog.finished
+        if test_signal:
+            self.lunch_dialog.hide()
+            # self.run_ts_timer.exiting = False
+            if not self.run_ts_timer.isRunning():
+                print 'Not running...'
+                # self.run_ts_timer.run()
+        # mutex.unlock()
+
+
+if __name__=='__main__':
+    # Set up the app
+    app = QApplication(sys.argv)
+    # Run ts_main hidden
+    window = ts_main()
+    # window.show()
+    window.hide()
     sys.exit(app.exec_())
-
-
