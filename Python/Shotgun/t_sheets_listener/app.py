@@ -1,4 +1,5 @@
 import ctypes
+import msvcrt as ms
 import logging
 import os
 import platform
@@ -6,7 +7,8 @@ import sys
 import json
 import urllib
 import urllib2
-from datetime import datetime
+import time
+from datetime import datetime, timedelta
 
 from PySide.QtCore import *
 from PySide.QtGui import *
@@ -67,13 +69,35 @@ fields = [
     'sg_on_off'
 ]
 
+# -----------------------------------------------------------------------------------------------------------------
+#  SG Variables Set
+# -----------------------------------------------------------------------------------------------------------------
 lunch_start = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'lunch_start']], fields=fields)
 lunch_end = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'lunch_end']], fields=fields)
 lunch_start_time = datetime.strptime(lunch_start['sg_time'], '%H:%M:%S').time()
 lunch_end_time = datetime.strptime(lunch_end['sg_time'], '%H:%M:%S').time()
-timer_seconds = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'lunch_timer']], fields=fields)['sg_seconds']
+
+lunch_params = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'lunch_timer']], fields=fields)
+lunch_active = lunch_params['sg_on_off']
+timer_seconds = lunch_params['sg_seconds']
+
 start_slave = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'start_slave']], fields=fields)['sg_on_off']
+end_of_day = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'end_of_day']], fields=fields)
+eod_time = datetime.strptime(end_of_day['sg_time'], '%H:%M:%S').time()
+eod_params = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'eod_timer']], fields=fields)
+eod_timer = eod_params['sg_seconds']
+eod_active = eod_params['sg_on_off']
+overtime = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'overtime']], fields=fields)
+ot_time = datetime.strptime(overtime['sg_time'], '%H:%M:%S').time()
+ot_params = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'ot_timer']], fields=fields)
+ot_timer = ot_params['sg_seconds']
+ot_active = ot_params['sg_on_off']
+reset = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'reset_time']], fields=fields)
+reset_time = datetime.strptime(reset['sg_time'], '%H:%M:%S').time()
+get_param_timer = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'param_reset_timer']], fields=fields)
+param_timer = get_param_timer['sg_seconds']
 logger.debug('Timers set from Shotgun.')
+
 
 # Add buffers
 logger.debug('Create Buffers...')
@@ -195,6 +219,7 @@ class ts_portal:
         logger.warning('return_subs data not processed!')
         return False
 
+
 # -----------------------------------------------------------------------------------------------------------------
 # Main Engines
 # -----------------------------------------------------------------------------------------------------------------
@@ -202,6 +227,10 @@ class ts_signal(QObject):
     sig = Signal(str)
     lunch = Signal(str)
     alert = Signal(str)
+    eod = Signal(str)
+    stop_eod = Signal(str)
+    clock_out = Signal(str)
+    reset = Signal(int)
 
 
 class ts_timer(QThread):
@@ -210,36 +239,138 @@ class ts_timer(QThread):
         self.running = True
         self.signal = ts_signal()
         self.lunch_break = False
+        self.eod = False
+        self.break_timer = False
+        self.eod_tally = []
+        self.break_tally = []
+        ch = datetime.now().hour
+        cm = datetime.now().minute
+        cs = datetime.now().second
+        self.click_time = datetime.strptime('%s:%s:%s' % (ch, cm, cs), '%H:%M:%S')
+        self.param_timer = (self.click_time + timedelta(seconds=param_timer))
+        print self.param_timer.time()
+        self.signal.stop_eod.connect(self.kill_eod)
+
+    def reset(self):
+        self.running = False
+        self.signal.reset.emit(0)
+        self.running = True
+        time.sleep(2)
+
+    def run(self, *args, **kwargs):
+        print 'Running...'
+        # setup tests
+        break_start = None
+        break_end = None
+        overtimer = False
+        eod_start = None
+        ot_diff = None
+        mouse = ctypes.windll.user32
+
+        # Start the main timer
+        while self.running:
+            # Set Click Timers
+            ch = datetime.now().hour
+            cm = datetime.now().minute
+            cs = datetime.now().second
+            ct = datetime.strptime('%s:%s:%s' % (ch, cm, cs), '%H:%M:%S')
+
+            # Day Reset
+            if ct.time() == reset_time:
+                time.sleep(2)
+                self.reset()
+
+            # Reset Params
+            if ct.time() == self.param_timer.time():
+                self.param_timer = (ct + timedelta(seconds=param_timer))
+                time.sleep(1)
+                self.reset_variables()
+
+            # Regular Click Check
+            if mouse.GetKeyState(0x01) not in [0, 1] and not self.break_timer and not self.eod:
+                self.click_time = ct
+
+            elapsed = (ct - self.click_time).seconds
+
+            # EOD Timer:
+            eod_end = eod_timer * 2
+            if ct.time() > eod_time and not self.eod and eod_timer <= elapsed < eod_end \
+                    and len(self.eod_tally) < 1 and eod_active:
+                self.eod = True
+                self.eod_tally.append(True)
+                eod_start = ct.time()
+                print 'End of Day: %s' % eod_start
+                stopped_working = (ct - timedelta(seconds=ot_timer)).time()
+                self.signal.eod.emit('%s' % stopped_working)
+            elif ct.time() > eod_time and elapsed > eod_end and len(self.eod_tally) == 1 and self.eod and eod_active:
+                self.eod = False
+                eod_start = ct.time()
+                print 'Time clock out occurred: %s' % eod_start
+                stopped_working = (ct - timedelta(seconds=elapsed)).time()
+                self.signal.clock_out.emit('%s' % stopped_working)
+
+            # Lunch Break Check 1
+            if elapsed >= timer_seconds and not self.break_timer and len(self.break_tally) < 1 and lunch_active:
+                if lunch_start_time <= ct.time() < lunch_end_time:
+                    self.break_timer = True
+                    self.break_tally.append(True)
+                    break_start = ct.time()
+                    print 'Break Start: %s' % break_start
+
+            # Lunch Break Check 2
+            if mouse.GetKeyState(0x01) not in [0, 1] and self.break_timer and lunch_active:
+                break_end = ct.time()
+                print 'Break End: %s' % break_end
+                self.click_time = ct
+                self.signal.lunch.emit('{"start": "%s", "end": "%s"}' % (break_start, break_end))
+                self.break_timer = False
+                break_start = None
+                break_end = None
+
+    def kill_eod(self):
+        self.eod = False
+        self.eod_tally = []
         ch = datetime.now().hour
         cm = datetime.now().minute
         cs = datetime.now().second
         self.click_time = datetime.strptime('%s:%s:%s' % (ch, cm, cs), '%H:%M:%S')
 
-    def run(self, *args, **kwargs):
-        break_timer = False
-        break_start = None
-        break_end = None
-        while self.running:
-            ch = datetime.now().hour
-            cm = datetime.now().minute
-            cs = datetime.now().second
-            ct = datetime.strptime('%s:%s:%s' % (ch, cm, cs), '%H:%M:%S')
-            if ctypes.windll.user32.GetKeyState(0x01) not in [0, 1] and not break_timer:
-                self.click_time = ct
-            elapsed = (ct - self.click_time).seconds
-            if elapsed >= timer_seconds and not break_timer:
-                if lunch_start_time <= ct.time() < lunch_end_time:
-                    break_timer = True
-                    break_start = ct.time()
-                    print 'Break Start: %s' % break_start
-            if ctypes.windll.user32.GetKeyState(0x01) not in [0, 1] and break_timer:
-                break_end = ct.time()
-                print 'Break End: %s' % break_end
-                self.click_time = ct
-                self.signal.lunch.emit('{"start": "%s", "end": "%s"}' % (break_start, break_end))
-                break_timer = False
-                break_start = None
-                break_end = None
+    # -----------------------------------------------------------------------------------------------------------------
+    #  SG Variables Reset
+    # -----------------------------------------------------------------------------------------------------------------
+    def reset_variables(self):
+        global lunch_active, lunch_start_time, lunch_end_time, timer_seconds, start_slave, eod_time, eod_timer, eod_active
+        global ot_time, ot_timer, ot_active, reset_time, param_timer
+        print 'Reset variables'
+
+        lunch_start = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'lunch_start']], fields=fields)
+        lunch_end = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'lunch_end']], fields=fields)
+        lunch_start_time = datetime.strptime(lunch_start['sg_time'], '%H:%M:%S').time()
+        lunch_end_time = datetime.strptime(lunch_end['sg_time'], '%H:%M:%S').time()
+
+        lunch_params = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'lunch_timer']], fields=fields)
+        lunch_active = lunch_params['sg_on_off']
+        timer_seconds = lunch_params['sg_seconds']
+
+        start_slave = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'start_slave']], fields=fields)[
+            'sg_on_off']
+        end_of_day = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'end_of_day']], fields=fields)
+        eod_time = datetime.strptime(end_of_day['sg_time'], '%H:%M:%S').time()
+        eod_params = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'eod_timer']], fields=fields)
+        eod_timer = eod_params['sg_seconds']
+        eod_active = eod_params['sg_on_off']
+        overtime = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'overtime']], fields=fields)
+        ot_time = datetime.strptime(overtime['sg_time'], '%H:%M:%S').time()
+        ot_params = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'ot_timer']], fields=fields)
+        ot_timer = ot_params['sg_seconds']
+        ot_active = ot_params['sg_on_off']
+        reset = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'reset_time']], fields=fields)
+        reset_time = datetime.strptime(reset['sg_time'], '%H:%M:%S').time()
+        get_param_timer = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'param_reset_timer']], fields=fields)
+        param_timer = get_param_timer['sg_seconds']
+        logger.debug('Timers reset from Shotgun.')
+        print 'Done'
+        return True
 
 
 class ts_main(QMainWindow):
@@ -263,12 +394,17 @@ class ts_main(QMainWindow):
         self.centralwidget.setLayout(self.vbox)
         self.lunch_dialog = None
         self.lunch_ui = None
+        self.alert_dialog = None
+        self.alert_ui = None
         self.portal = ts_portal()
 
         # Connect the Threads
         # self.thread = ts_thread()
         self.run_ts_timer = ts_timer()
         self.run_ts_timer.signal.lunch.connect(self.open_lunch_break)
+        self.run_ts_timer.signal.eod.connect(self.eod)
+        self.run_ts_timer.signal.clock_out.connect(self.clock_out)
+        self.run_ts_timer.signal.reset.connect(self.reset)
         self.start_ts_timer()
 
     def started(self):
@@ -285,6 +421,48 @@ class ts_main(QMainWindow):
         if not self.run_ts_timer.isRunning():
             self.run_ts_timer.exiting=False
             self.run_ts_timer.start()
+
+    def reset(self):
+        self.run_ts_timer = None
+        self.run_ts_timer = ts_timer()
+        self.run_ts_timer.signal.lunch.connect(self.open_lunch_break)
+        self.run_ts_timer.signal.eod.connect(self.eod)
+        self.run_ts_timer.signal.clock_out.connect(self.clock_out)
+        self.run_ts_timer.signal.reset.connect(self.reset)
+        self.start_ts_timer()
+
+    def eod(self, data=None):
+        print 'You stopped working at %s' % data
+        cot = data.split(':')
+        print cot
+        clock_out_time = QTime(int(cot[0]), int(cot[1]), int(cot[2]))
+        confirm_user = self.confirm_user()
+        name = '%s %s' % (confirm_user['name'][0], confirm_user['name'][1])
+        email = confirm_user['email']
+        red_message = 'Are you still working?'
+        main_message = 'No activity has been detected. Unless you click OK, you will be clocked out at the listed time.'
+        sub_message = 'You can always clock back in, if this is in error.  You are responsible for your own timesheet!'
+        self.alert_dialog = QDialog(self)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)
+        self.alert_ui = ad.Ui_Dialog()
+        self.alert_ui.setupUi(self.alert_dialog)
+        self.alert_ui.eod_timer.setTime(clock_out_time)
+        self.alert_ui.employee_name.setText(name)
+        self.alert_ui.alert.setText(red_message)
+        self.alert_ui.statement.setText(main_message)
+        self.alert_ui.statement_2.setText(sub_message)
+        self.alert_ui.ok_btn.clicked.connect(self.stay_clocked_in)
+        self.alert_dialog.exec_()
+
+    def stay_clocked_in(self):
+        self.run_ts_timer.signal.stop_eod.emit(0)
+        test_signal = self.alert_dialog.finished
+        if test_signal:
+            self.alert_dialog.hide()
+
+    def clock_out(self, data=None):
+        print 'Clocked Out At: %s' % data
+        self.alert_dialog.hide()
 
     def open_lunch_break(self, data=None):
         t_data = eval(data)
@@ -351,7 +529,7 @@ class ts_main(QMainWindow):
                 'projects',
                 'groups'
             ]
-            find_user = self.sg.shotgun.find_one('HumanUser', filters, fields)
+            find_user = sg.find_one('HumanUser', filters, fields)
             if find_user:
                 user_id = find_user['id']
                 sg_email = find_user['email']
@@ -370,6 +548,29 @@ class ts_main(QMainWindow):
         else:
             logger.warning('No data passed to get_sg_user()!  Nothing processed!')
         return user
+
+    def get_ts_active_users(self):
+        ts_users = {}
+        user_params = {'per_page': '50', 'active': 'yes'}
+        user_js = self.portal._return_from_tsheets(page='users', data=user_params)
+        if user_js:
+            for l_type, result_data in user_js.items():
+                if l_type == 'results':
+                    user_data = result_data['users']
+                    for user in user_data:
+                        data = user_data[user]
+                        first_name = data['first_name']
+                        last_name = data['last_name']
+                        email = data['email']
+                        last_active = data['last_active']
+                        active = data['active']
+                        username = data['username']
+                        user_id = data['id']
+                        name = first_name, last_name
+                        ts_users[email] = {'name': name, 'last_active': last_active, 'active': active,
+                                           'username': username, 'email': email, 'id': user_id}
+            return ts_users
+        return False
 
     def get_ts_current_user_status(self, email=None):
         data = {}
