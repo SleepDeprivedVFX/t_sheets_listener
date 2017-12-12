@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '\\hal\tools\shotgun\mastertemplate_clone\install\manual\tk-t-sheets\v1.0.0\resources\lunch_break_dialog.ui'
 #
-# Created: Thu Nov 16 13:53:10 2017
+# Created: Mon Dec 11 11:01:28 2017
 #      by: pyside-uic 0.2.14 running on PySide 1.2.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,6 +13,9 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(356, 166)
+        Dialog.setStyleSheet("background-color: rgb(68, 68, 68);\n"
+"color: rgb(193, 193, 193);\n"
+"font: 8pt \"Arial\";")
         self.verticalLayout_3 = QtGui.QVBoxLayout(Dialog)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.employee_name = QtGui.QLabel(Dialog)
@@ -31,6 +34,7 @@ class Ui_Dialog(object):
         self.start_label.setObjectName("start_label")
         self.verticalLayout_2.addWidget(self.start_label)
         self.start_time = QtGui.QTimeEdit(Dialog)
+        self.start_time.setStyleSheet("background-color: rgb(93, 93, 93);")
         self.start_time.setObjectName("start_time")
         self.verticalLayout_2.addWidget(self.start_time)
         self.horizontalLayout_2.addLayout(self.verticalLayout_2)
@@ -40,6 +44,7 @@ class Ui_Dialog(object):
         self.end_label.setObjectName("end_label")
         self.verticalLayout.addWidget(self.end_label)
         self.end_time = QtGui.QTimeEdit(Dialog)
+        self.end_time.setStyleSheet("background-color: rgb(93, 93, 93);")
         self.end_time.setObjectName("end_time")
         self.verticalLayout.addWidget(self.end_time)
         self.horizontalLayout_2.addLayout(self.verticalLayout)
@@ -49,7 +54,8 @@ class Ui_Dialog(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.yes_btn = QtGui.QPushButton(Dialog)
-        self.yes_btn.setStyleSheet("background-color: rgb(85, 170, 0);font: 75 10pt \"Arial\";")
+        self.yes_btn.setStyleSheet("background-color: rgb(85, 170, 0);\n"
+"font: 75 10pt \"Arial\";")
         self.yes_btn.setObjectName("yes_btn")
         self.horizontalLayout.addWidget(self.yes_btn)
         self.no_btn = QtGui.QPushButton(Dialog)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '\\hal\tools\shotgun\mastertemplate_clone\install\manual\tk-t-sheets\v1.0.0\resources\alert_dialog.ui'
 #
-# Created: Thu Nov 16 13:53:28 2017
+# Created: Mon Dec 11 11:00:44 2017
 #      by: pyside-uic 0.2.14 running on PySide 1.2.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,6 +13,9 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(321, 200)
+        Dialog.setStyleSheet("background-color: rgb(68, 68, 68);\n"
+"color: rgb(193, 193, 193);\n"
+"font: 8pt \"Arial\";")
         self.verticalLayout = QtGui.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.employee_name = QtGui.QLabel(Dialog)
@@ -21,7 +24,7 @@ class Ui_Dialog(object):
         self.verticalLayout.addWidget(self.employee_name)
         self.alert = QtGui.QLabel(Dialog)
         self.alert.setStyleSheet("font: 75 14pt \"Arial\";\n"
-"color: rgb(255, 0, 0);\n"
+"color: rgb(200, 0, 0);\n"
 "")
         self.alert.setAlignment(QtCore.Qt.AlignCenter)
         self.alert.setObjectName("alert")
@@ -35,6 +38,7 @@ class Ui_Dialog(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.eod_timer = QtGui.QTimeEdit(Dialog)
+        self.eod_timer.setStyleSheet("background-color: rgb(93, 93, 93);")
         self.eod_timer.setButtonSymbols(QtGui.QAbstractSpinBox.NoButtons)
         self.eod_timer.setObjectName("eod_timer")
         self.horizontalLayout_2.addWidget(self.eod_timer)
@@ -50,7 +54,7 @@ class Ui_Dialog(object):
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
         self.ok_btn = QtGui.QPushButton(Dialog)
-        self.ok_btn.setStyleSheet("background-color: rgb(85, 170, 0);\n"
+        self.ok_btn.setStyleSheet("background-color: rgb(93, 93, 93);\n"
 "font: 75 10pt \"Arial\";")
         self.ok_btn.setObjectName("ok_btn")
         self.horizontalLayout.addWidget(self.ok_btn)
