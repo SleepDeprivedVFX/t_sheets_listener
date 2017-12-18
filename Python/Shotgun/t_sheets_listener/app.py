@@ -97,6 +97,8 @@ get_param_timer = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'param
 param_timer = get_param_timer['sg_seconds']
 get_debugging = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'debug']], fields=fields)
 set_debugging = get_debugging['sg_on_off']
+ot_seconds = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'overtime_seconds']], fields=fields)['sg_seconds']
+
 
 if set_debugging:
     logger.setLevel(logging.DEBUG)
@@ -108,9 +110,7 @@ logger.debug('Timers set from Shotgun.')
 
 # Add buffers
 logger.debug('Create Buffers...')
-ts_buffer = QWaitCondition()
-buffer_not_full = QWaitCondition()
-mutex = QMutex()
+ts_buffer = QSemaphore(1)
 
 # Define system variables
 osSystem = platform.system()
@@ -499,8 +499,6 @@ class ts_timer(QThread):
                 self.break_timer = False
                 break_start = None
                 break_end = None
-                mutex.tryLock()
-                ts_buffer.wait(mutex)
 
     def kill_eod(self):
         self.eod = False
@@ -545,6 +543,7 @@ class ts_timer(QThread):
         param_timer = get_param_timer['sg_seconds']
         get_debugging = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'debug']], fields=fields)
         set_debugging = get_debugging['sg_on_off']
+        ot_seconds = sg.find_one('CustomNonProjectEntity08', [['code', 'is', 'overtime_seconds']], fields=fields)['sg_seconds']
 
         if set_debugging:
             logger.setLevel(logging.DEBUG)
@@ -583,6 +582,8 @@ class ts_main(QMainWindow):
         self.vbox.addWidget(self.label1)
         self.vbox.addWidget(self.label2)
         self.setCentralWidget(self.centralwidget)
+        self.setWindowFlags(Qt.CustomizeWindowHint)
+        self.setWindowFlags(Qt.WindowCloseButtonHint)
         self.centralwidget.setLayout(self.vbox)
         self.lunch_dialog = None
         self.lunch_ui = None
@@ -590,6 +591,7 @@ class ts_main(QMainWindow):
         self.alert_ui = None
         self.ot = None
         self.ot_ui = None
+        self._close = False
         self.portal = ts_portal()
 
         # Connect the Threads
@@ -601,6 +603,28 @@ class ts_main(QMainWindow):
         self.run_ts_timer.signal.reset.connect(self.reset)
         self.run_ts_timer.signal.ot.connect(self.check_ot)
         self.start_ts_timer()
+
+    def close(self, evnt, *args, **kwargs):
+        print 'close Detected'
+        evnt.ignore()
+        # self.lunch_dialog.ignore()
+        # self.alert_dialog.ignore()
+        # self.ot.ignore()
+        # self.hide()
+        # self.lunch_dialog.hide()
+        # self.alert_dialog.hide()
+        # self.ot.hide()
+
+    def closeEvent(self, evnt, *args, **kwargs):
+        print 'closeEvent detected!'
+        evnt.ignore()
+        # self.lunch_dialog.closeEvent.ignore()
+        # self.alert_dialog.closeEvent.ignore()
+        # self.ot.closeEvent.ignore()
+        # self.hide()
+        # self.lunch_dialog.hide()
+        # self.alert_dialog.hide()
+        # self.ot.hide()
 
     def started(self):
         self.label1.setText('Continuous batch started')
@@ -639,10 +663,11 @@ class ts_main(QMainWindow):
         main_message = 'No activity has been detected. Unless you click OK, you will be clocked out at the listed time.'
         sub_message = 'You can always clock back in, if this is in error.  You are responsible for your own timesheet!'
         self.alert_dialog = QDialog(self)
-        self.setWindowFlags(Qt.WindowStaysOnTopHint)
-        self.setWindowFlags(Qt.WindowMinimizeButtonHint)
         self.alert_ui = ad.Ui_Dialog()
         self.alert_ui.setupUi(self.alert_dialog)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(Qt.CustomizeWindowHint)
+        self.setWindowFlags(Qt.WindowCloseButtonHint)
         self.alert_ui.eod_timer.setTime(clock_out_time)
         self.alert_ui.employee_name.setText(name)
         self.alert_ui.alert.setText(red_message)
@@ -690,6 +715,7 @@ class ts_main(QMainWindow):
         self.alert_dialog.hide()
 
     def open_lunch_break(self, data=None):
+        self.run_ts_timer.running = False
         t_data = eval(data)
         set_start = t_data['start']
         set_end = t_data['end']
@@ -698,9 +724,11 @@ class ts_main(QMainWindow):
         start = QTime(int(s[0]), int(s[1]), int(s[2]))
         end = QTime(int(e[0]), int(e[1]), int(e[2]))
         self.lunch_dialog = QDialog(self)
-        self.setWindowFlags(Qt.WindowStaysOnTopHint)
         self.lunch_ui = lbd.Ui_Dialog()
         self.lunch_ui.setupUi(self.lunch_dialog)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(Qt.CustomizeWindowHint)
+        self.setWindowFlags(Qt.WindowCloseButtonHint)
         self.lunch_ui.start_time.setTime(start)
         self.lunch_ui.end_time.setTime(end)
         self.lunch_ui.yes_btn.clicked.connect(self.save_lunch_break)
@@ -724,11 +752,6 @@ class ts_main(QMainWindow):
         test_signal = self.lunch_dialog.finished
         if test_signal:
             self.lunch_dialog.hide()
-            ts_buffer.wakeAll()
-
-    def close(self, *args, **kwargs):
-        print 'Fuck'
-        ts_buffer.wakeAll()
 
     def lunch_break_id(self):
         break_id = None
@@ -742,20 +765,44 @@ class ts_main(QMainWindow):
 
     def check_ot(self, data=None):
         logger.info('Checking overtime status...')
+        print 'checking overtime status...'
         confirm_user = self.portal.confirm_user()
+        print 'User confirmed'
         email = confirm_user['email']
         user_id = confirm_user['id']
         print user_id
-        user_data = {'on_the_clock': 'both', 'user_id': user_id}
-        ot_data = self.portal._return_from_tsheets(page='reports/current_totals', data=user_data)
-        print ot_data
+        user_data = {
+            "data":
+                [
+                    {'on_the_clock': 'both',
+                     'user_ids': user_id
+                     }
+                ]
+        }
+        ot_data = self.portal._send_to_tsheets(page='reports/current_totals', data=user_data)
+        parsed_data = ot_data['results']['current_totals']
+        day_seconds = parsed_data['%s' % user_id]['day_seconds']
+        # Seconds in an 8 hour day = 28,800
+        if day_seconds >= ot_seconds:
+            print 'OVERTIME!!!!'
+            self.ot_alert()
 
     def ot_alert(self):
         logger.info('Overtime Alert Active...')
         self.ot = QDialog(self)
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(Qt.CustomizeWindowHint)
+        self.setWindowFlags(Qt.WindowCloseButtonHint)
         self.ot_ui = ad.Ui_Dialog()
         self.ot_ui.setupUi(self.ot)
+        self.ot_ui.ok_btn.clicked.connect(self.pass_ot)
+        self.ot.exec_()
+
+    def pass_ot(self):
+        self.run_ts_timer.signal.ot_clear.emit(0)
+        test_signal = self.ot.finished
+        if test_signal:
+            self.ot.hide()
 
 
 if __name__=='__main__':
