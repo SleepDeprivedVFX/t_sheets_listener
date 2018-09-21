@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine\ui\attribute_machine_ui.ui'
 #
-# Created: Wed Sep 19 23:40:26 2018
+# Created: Thu Sep 20 22:18:41 2018
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_machine(object):
     def setupUi(self, machine):
         machine.setObjectName("machine")
-        machine.resize(853, 585)
+        machine.resize(853, 587)
         machine.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout_3 = QtGui.QVBoxLayout(machine)
@@ -24,22 +24,25 @@ class Ui_machine(object):
         self.modes_group = QtGui.QGroupBox(machine)
         self.modes_group.setMinimumSize(QtCore.QSize(0, 75))
         self.modes_group.setObjectName("modes_group")
-        self.widget = QtGui.QWidget(self.modes_group)
-        self.widget.setGeometry(QtCore.QRect(30, 30, 271, 31))
-        self.widget.setObjectName("widget")
-        self.horizontalLayout = QtGui.QHBoxLayout(self.widget)
+        self.layoutWidget = QtGui.QWidget(self.modes_group)
+        self.layoutWidget.setGeometry(QtCore.QRect(30, 30, 481, 31))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.add_mode = QtGui.QRadioButton(self.widget)
+        self.add_mode = QtGui.QRadioButton(self.layoutWidget)
         self.add_mode.setChecked(True)
         self.add_mode.setObjectName("add_mode")
         self.horizontalLayout.addWidget(self.add_mode)
-        self.set_mode = QtGui.QRadioButton(self.widget)
+        self.set_mode = QtGui.QRadioButton(self.layoutWidget)
         self.set_mode.setObjectName("set_mode")
         self.horizontalLayout.addWidget(self.set_mode)
-        self.connect_mode = QtGui.QRadioButton(self.widget)
+        self.connect_mode = QtGui.QRadioButton(self.layoutWidget)
         self.connect_mode.setObjectName("connect_mode")
         self.horizontalLayout.addWidget(self.connect_mode)
+        self.command_mode = QtGui.QRadioButton(self.layoutWidget)
+        self.command_mode.setObjectName("command_mode")
+        self.horizontalLayout.addWidget(self.command_mode)
         self.verticalLayout_3.addWidget(self.modes_group)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -91,14 +94,15 @@ class Ui_machine(object):
         QtCore.QMetaObject.connectSlotsByName(machine)
 
     def retranslateUi(self, machine):
-        machine.setWindowTitle(QtGui.QApplication.translate("machine", "Attribute Machine", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("machine", "Attribute Machine", None, QtGui.QApplication.UnicodeUTF8))
-        self.modes_group.setTitle(QtGui.QApplication.translate("machine", "Modes", None, QtGui.QApplication.UnicodeUTF8))
-        self.add_mode.setText(QtGui.QApplication.translate("machine", "Add", None, QtGui.QApplication.UnicodeUTF8))
-        self.set_mode.setText(QtGui.QApplication.translate("machine", "Set", None, QtGui.QApplication.UnicodeUTF8))
-        self.connect_mode.setText(QtGui.QApplication.translate("machine", "Connect", None, QtGui.QApplication.UnicodeUTF8))
-        self.out_attr.setTitle(QtGui.QApplication.translate("machine", "Out Attribute", None, QtGui.QApplication.UnicodeUTF8))
-        self.in_attr.setTitle(QtGui.QApplication.translate("machine", "In Attributes", None, QtGui.QApplication.UnicodeUTF8))
-        self.do_it.setText(QtGui.QApplication.translate("machine", "Do It", None, QtGui.QApplication.UnicodeUTF8))
-        self.dont_do_it.setText(QtGui.QApplication.translate("machine", "Don\'t Do It", None, QtGui.QApplication.UnicodeUTF8))
+        machine.setWindowTitle(QtGui.QApplication.translate("machine", "Attribute Machine", None))
+        self.label.setText(QtGui.QApplication.translate("machine", "Attribute Machine", None))
+        self.modes_group.setTitle(QtGui.QApplication.translate("machine", "Modes", None))
+        self.add_mode.setText(QtGui.QApplication.translate("machine", "Add", None))
+        self.set_mode.setText(QtGui.QApplication.translate("machine", "Set", None))
+        self.connect_mode.setText(QtGui.QApplication.translate("machine", "Connect", None))
+        self.command_mode.setText(QtGui.QApplication.translate("machine", "Command", None))
+        self.out_attr.setTitle(QtGui.QApplication.translate("machine", "Out Attribute", None))
+        self.in_attr.setTitle(QtGui.QApplication.translate("machine", "In Attributes", None))
+        self.do_it.setText(QtGui.QApplication.translate("machine", "Do It", None))
+        self.dont_do_it.setText(QtGui.QApplication.translate("machine", "Don\'t Do It", None))
 
