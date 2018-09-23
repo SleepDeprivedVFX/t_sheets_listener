@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>machine</class>
  <widget class="QWidget" name="machine">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -25,6 +28,13 @@ color: rgb(230, 230, 230);</string>
      </property>
      <property name="text">
       <string>Attribute Machine</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="Descriptor">
+     <property name="text">
+      <string>Works on Parent -&gt; Child selection set where necessary.</string>
      </property>
     </widget>
    </item>
@@ -85,7 +95,7 @@ color: rgb(230, 230, 230);</string>
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="attr_type">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -344,7 +354,7 @@ QLabel:enabled {
 }</string>
        </property>
        <property name="text">
-        <string>Enum List (Comma Delineated)</string>
+        <string>Enum List (Colon Delineated : )</string>
        </property>
       </widget>
      </item>
@@ -361,7 +371,7 @@ QLineEdit:enabled {
 }</string>
        </property>
        <property name="text">
-        <string>Hi,Low</string>
+        <string>Hi:Low</string>
        </property>
       </widget>
      </item>
@@ -371,6 +381,14 @@ QLineEdit:enabled {
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="out_attr_label">
+       <property name="styleSheet">
+        <string notr="true">QLabel:disabled {
+	color: rgb(117, 117, 177);
+}
+QLabel:enabled {
+	color: rgb(255, 255, 255);
+}</string>
+       </property>
        <property name="text">
         <string>Out Attribute List</string>
        </property>
@@ -391,6 +409,14 @@ QLineEdit:enabled {
      </item>
      <item>
       <widget class="QLabel" name="in_attr_label">
+       <property name="styleSheet">
+        <string notr="true">QLabel:disabled {
+	color: rgb(117, 117, 177);
+}
+QLabel:enabled {
+	color: rgb(255, 255, 255);
+}</string>
+       </property>
        <property name="text">
         <string>In Attribute List</string>
        </property>
@@ -401,7 +427,16 @@ QLineEdit:enabled {
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QComboBox" name="out_attrs"/>
+      <widget class="QComboBox" name="out_attrs">
+       <property name="styleSheet">
+        <string notr="true">QComboBox:disabled {
+	color: rgb(117, 117, 177);
+}
+QComboBox:enabled {
+	color: rgb(255, 255, 255);
+}</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="Line" name="ConnectionLine">
@@ -420,12 +455,29 @@ QLineEdit:enabled {
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="in_attrs"/>
+      <widget class="QComboBox" name="in_attrs">
+       <property name="styleSheet">
+        <string notr="true">QComboBox:disabled {
+	color: rgb(117, 117, 177);
+}
+QComboBox:enabled {
+	color: rgb(255, 255, 255);
+}</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
    <item>
     <widget class="QLabel" name="value_label">
+     <property name="styleSheet">
+      <string notr="true">QLabel:disabled {
+	color: rgb(117, 117, 177);
+}
+QLabel:enabled {
+	color: rgb(255, 255, 255);
+}</string>
+     </property>
      <property name="text">
       <string>Values To Apply</string>
      </property>
@@ -433,6 +485,14 @@ QLineEdit:enabled {
    </item>
    <item>
     <widget class="QPlainTextEdit" name="values">
+     <property name="styleSheet">
+      <string notr="true">QPlainTextEdit:disabled {
+	color: rgb(117, 117, 177);
+}
+QPlainTextEdit:enabled {
+	color: rgb(255, 255, 255);
+}</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::Box</enum>
      </property>
@@ -440,6 +500,9 @@ QLineEdit:enabled {
       <number>2</number>
      </property>
      <property name="documentTitle">
+      <string/>
+     </property>
+     <property name="plainText">
       <string/>
      </property>
     </widget>
@@ -460,16 +523,9 @@ QLineEdit:enabled {
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="reset_btn">
-       <property name="text">
-        <string>Reset Selection</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="dont_do_it">
        <property name="text">
-        <string>Don't Do It</string>
+        <string>Done</string>
        </property>
       </widget>
      </item>

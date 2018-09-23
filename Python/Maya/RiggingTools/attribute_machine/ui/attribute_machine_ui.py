@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine\ui\attribute_machine_ui.ui'
 #
-# Created: Sat Sep 22 14:53:05 2018
+# Created: Sun Sep 23 14:13:02 2018
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,6 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_machine(object):
     def setupUi(self, machine):
         machine.setObjectName("machine")
+        machine.setWindowModality(QtCore.Qt.WindowModal)
         machine.resize(731, 727)
         machine.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
@@ -21,6 +22,9 @@ class Ui_machine(object):
         self.Title.setStyleSheet("font: 75 22pt \"BankGothic\";")
         self.Title.setObjectName("Title")
         self.verticalLayout_6.addWidget(self.Title)
+        self.Descriptor = QtGui.QLabel(machine)
+        self.Descriptor.setObjectName("Descriptor")
+        self.verticalLayout_6.addWidget(self.Descriptor)
         self.modes_group = QtGui.QGroupBox(machine)
         self.modes_group.setMinimumSize(QtCore.QSize(0, 75))
         self.modes_group.setObjectName("modes_group")
@@ -44,10 +48,10 @@ class Ui_machine(object):
         self.command_mode.setObjectName("command_mode")
         self.horizontalLayout.addWidget(self.command_mode)
         self.verticalLayout_6.addWidget(self.modes_group)
-        self.groupBox = QtGui.QGroupBox(machine)
-        self.groupBox.setMinimumSize(QtCore.QSize(0, 100))
-        self.groupBox.setObjectName("groupBox")
-        self.widget = QtGui.QWidget(self.groupBox)
+        self.attr_type = QtGui.QGroupBox(machine)
+        self.attr_type.setMinimumSize(QtCore.QSize(0, 100))
+        self.attr_type.setObjectName("attr_type")
+        self.widget = QtGui.QWidget(self.attr_type)
         self.widget.setGeometry(QtCore.QRect(30, 20, 641, 65))
         self.widget.setObjectName("widget")
         self.verticalLayout_5 = QtGui.QVBoxLayout(self.widget)
@@ -113,7 +117,7 @@ class Ui_machine(object):
         self.enum_btn.setObjectName("enum_btn")
         self.horizontalLayout_6.addWidget(self.enum_btn)
         self.verticalLayout_5.addLayout(self.horizontalLayout_6)
-        self.verticalLayout_6.addWidget(self.groupBox)
+        self.verticalLayout_6.addWidget(self.attr_type)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.verticalLayout = QtGui.QVBoxLayout()
@@ -216,17 +220,35 @@ class Ui_machine(object):
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.out_attr_label = QtGui.QLabel(machine)
+        self.out_attr_label.setStyleSheet("QLabel:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QLabel:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.out_attr_label.setObjectName("out_attr_label")
         self.horizontalLayout_4.addWidget(self.out_attr_label)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
         self.in_attr_label = QtGui.QLabel(machine)
+        self.in_attr_label.setStyleSheet("QLabel:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QLabel:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.in_attr_label.setObjectName("in_attr_label")
         self.horizontalLayout_4.addWidget(self.in_attr_label)
         self.verticalLayout_6.addLayout(self.horizontalLayout_4)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.out_attrs = QtGui.QComboBox(machine)
+        self.out_attrs.setStyleSheet("QComboBox:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QComboBox:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.out_attrs.setObjectName("out_attrs")
         self.horizontalLayout_2.addWidget(self.out_attrs)
         self.ConnectionLine = QtGui.QFrame(machine)
@@ -236,25 +258,41 @@ class Ui_machine(object):
         self.ConnectionLine.setObjectName("ConnectionLine")
         self.horizontalLayout_2.addWidget(self.ConnectionLine)
         self.in_attrs = QtGui.QComboBox(machine)
+        self.in_attrs.setStyleSheet("QComboBox:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QComboBox:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.in_attrs.setObjectName("in_attrs")
         self.horizontalLayout_2.addWidget(self.in_attrs)
         self.verticalLayout_6.addLayout(self.horizontalLayout_2)
         self.value_label = QtGui.QLabel(machine)
+        self.value_label.setStyleSheet("QLabel:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QLabel:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.value_label.setObjectName("value_label")
         self.verticalLayout_6.addWidget(self.value_label)
         self.values = QtGui.QPlainTextEdit(machine)
+        self.values.setStyleSheet("QPlainTextEdit:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QPlainTextEdit:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
         self.values.setFrameShape(QtGui.QFrame.Box)
         self.values.setLineWidth(2)
         self.values.setDocumentTitle("")
+        self.values.setPlainText("")
         self.values.setObjectName("values")
         self.verticalLayout_6.addWidget(self.values)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem1)
-        self.reset_btn = QtGui.QPushButton(machine)
-        self.reset_btn.setObjectName("reset_btn")
-        self.horizontalLayout_3.addWidget(self.reset_btn)
         self.dont_do_it = QtGui.QPushButton(machine)
         self.dont_do_it.setObjectName("dont_do_it")
         self.horizontalLayout_3.addWidget(self.dont_do_it)
@@ -269,12 +307,13 @@ class Ui_machine(object):
     def retranslateUi(self, machine):
         machine.setWindowTitle(QtGui.QApplication.translate("machine", "Attribute Machine", None))
         self.Title.setText(QtGui.QApplication.translate("machine", "Attribute Machine", None))
+        self.Descriptor.setText(QtGui.QApplication.translate("machine", "Works on Parent -> Child selection set where necessary.", None))
         self.modes_group.setTitle(QtGui.QApplication.translate("machine", "Modes", None))
         self.add_mode.setText(QtGui.QApplication.translate("machine", "Add", None))
         self.set_mode.setText(QtGui.QApplication.translate("machine", "Set", None))
         self.connect_mode.setText(QtGui.QApplication.translate("machine", "Connect", None))
         self.command_mode.setText(QtGui.QApplication.translate("machine", "Command", None))
-        self.groupBox.setTitle(QtGui.QApplication.translate("machine", "Attribute Type", None))
+        self.attr_type.setTitle(QtGui.QApplication.translate("machine", "Attribute Type", None))
         self.vector_btn.setText(QtGui.QApplication.translate("machine", "Vector", None))
         self.int_btn.setText(QtGui.QApplication.translate("machine", "Integer", None))
         self.string_btn.setText(QtGui.QApplication.translate("machine", "String", None))
@@ -287,12 +326,11 @@ class Ui_machine(object):
         self.max_val.setText(QtGui.QApplication.translate("machine", "1", None))
         self.default_val_label.setText(QtGui.QApplication.translate("machine", "Default", None))
         self.default_val.setText(QtGui.QApplication.translate("machine", "0", None))
-        self.enum_label.setText(QtGui.QApplication.translate("machine", "Enum List (Comma Delineated)", None))
-        self.enum_list.setText(QtGui.QApplication.translate("machine", "Hi,Low", None))
+        self.enum_label.setText(QtGui.QApplication.translate("machine", "Enum List (Colon Delineated : )", None))
+        self.enum_list.setText(QtGui.QApplication.translate("machine", "Hi:Low", None))
         self.out_attr_label.setText(QtGui.QApplication.translate("machine", "Out Attribute List", None))
         self.in_attr_label.setText(QtGui.QApplication.translate("machine", "In Attribute List", None))
         self.value_label.setText(QtGui.QApplication.translate("machine", "Values To Apply", None))
-        self.reset_btn.setText(QtGui.QApplication.translate("machine", "Reset Selection", None))
-        self.dont_do_it.setText(QtGui.QApplication.translate("machine", "Don\'t Do It", None))
+        self.dont_do_it.setText(QtGui.QApplication.translate("machine", "Done", None))
         self.do_it.setText(QtGui.QApplication.translate("machine", "Do It", None))
 
