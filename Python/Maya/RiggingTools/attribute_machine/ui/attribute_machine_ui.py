@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine\ui\attribute_machine_ui.ui'
 #
-# Created: Sun Sep 23 14:13:02 2018
+# Created: Sun Sep 23 15:56:04 2018
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -118,6 +118,37 @@ class Ui_machine(object):
         self.horizontalLayout_6.addWidget(self.enum_btn)
         self.verticalLayout_5.addLayout(self.horizontalLayout_6)
         self.verticalLayout_6.addWidget(self.attr_type)
+        self.horizontalLayout_8 = QtGui.QHBoxLayout()
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.keyable = QtGui.QCheckBox(machine)
+        self.keyable.setStyleSheet("QCheckBox:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QCheckBox:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
+        self.keyable.setChecked(True)
+        self.keyable.setObjectName("keyable")
+        self.horizontalLayout_8.addWidget(self.keyable)
+        self.hidden = QtGui.QCheckBox(machine)
+        self.hidden.setStyleSheet("QCheckBox:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QCheckBox:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
+        self.hidden.setObjectName("hidden")
+        self.horizontalLayout_8.addWidget(self.hidden)
+        self.parent_child = QtGui.QCheckBox(machine)
+        self.parent_child.setStyleSheet("QCheckBox:disabled {\n"
+"    color: rgb(117, 117, 177);\n"
+"}\n"
+"QCheckBox:enabled {\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
+        self.parent_child.setObjectName("parent_child")
+        self.horizontalLayout_8.addWidget(self.parent_child)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_8)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.verticalLayout = QtGui.QVBoxLayout()
@@ -312,7 +343,7 @@ class Ui_machine(object):
         self.add_mode.setText(QtGui.QApplication.translate("machine", "Add", None))
         self.set_mode.setText(QtGui.QApplication.translate("machine", "Set", None))
         self.connect_mode.setText(QtGui.QApplication.translate("machine", "Connect", None))
-        self.command_mode.setText(QtGui.QApplication.translate("machine", "Command", None))
+        self.command_mode.setText(QtGui.QApplication.translate("machine", "Expression", None))
         self.attr_type.setTitle(QtGui.QApplication.translate("machine", "Attribute Type", None))
         self.vector_btn.setText(QtGui.QApplication.translate("machine", "Vector", None))
         self.int_btn.setText(QtGui.QApplication.translate("machine", "Integer", None))
@@ -320,6 +351,9 @@ class Ui_machine(object):
         self.float_btn.setText(QtGui.QApplication.translate("machine", "Float", None))
         self.bool_btn.setText(QtGui.QApplication.translate("machine", "Boolean", None))
         self.enum_btn.setText(QtGui.QApplication.translate("machine", "Enum", None))
+        self.keyable.setText(QtGui.QApplication.translate("machine", "Keyable", None))
+        self.hidden.setText(QtGui.QApplication.translate("machine", "Hidden", None))
+        self.parent_child.setText(QtGui.QApplication.translate("machine", "Parent/Child", None))
         self.min_val_label.setText(QtGui.QApplication.translate("machine", "Min", None))
         self.min_val.setText(QtGui.QApplication.translate("machine", "0", None))
         self.max_val_label.setText(QtGui.QApplication.translate("machine", "Max", None))

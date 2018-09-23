@@ -86,7 +86,7 @@ color: rgb(230, 230, 230);</string>
        <item>
         <widget class="QRadioButton" name="command_mode">
          <property name="text">
-          <string>Command</string>
+          <string>Expression</string>
          </property>
         </widget>
        </item>
@@ -216,6 +216,43 @@ QRadioButton:enabled {
       </layout>
      </widget>
     </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QCheckBox" name="keyable">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox:disabled {
+	color: rgb(117, 117, 177);
+}
+QCheckBox:enabled {
+	color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string>Keyable</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="hidden">
+       <property name="styleSheet">
+        <string notr="true">QCheckBox:disabled {
+	color: rgb(117, 117, 177);
+}
+QCheckBox:enabled {
+	color: rgb(255, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string>Hidden</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">

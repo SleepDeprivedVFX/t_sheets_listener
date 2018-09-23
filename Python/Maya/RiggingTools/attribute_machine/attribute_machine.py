@@ -55,6 +55,9 @@ class attr_mach_ui(QtGui.QWidget):
         self.ui.value_label.setEnabled(False)
         self.ui.in_attr_label.setEnabled(False)
         self.ui.out_attr_label.setEnabled(False)
+        self.ui.keyable.setEnabled(False)
+        self.ui.hidden.setEnabled(False)
+        self.ui.parent_child.setEnabled(False)
 
     def set_sub_modes(self):
         vector_btn = self.ui.vector_btn.isChecked()
@@ -124,8 +127,10 @@ class attr_mach_ui(QtGui.QWidget):
             self.ui.int_btn.setEnabled(True)
             self.ui.enum_btn.setEnabled(True)
             self.ui.bool_btn.setEnabled(True)
+            self.ui.hidden.setEnabled(True)
+            self.ui.keyable.setEnabled(True)
             self.set_sub_modes()
-
+            self.ui.value_label.setText('Attribute Name')
         elif set:
             self.disable_all()
             self.ui.values.setEnabled(True)
@@ -143,17 +148,31 @@ class attr_mach_ui(QtGui.QWidget):
             self.ui.int_btn.setEnabled(True)
             self.ui.enum_btn.setEnabled(True)
             self.ui.bool_btn.setEnabled(True)
-
+            self.ui.value_label.setText('Value')
         elif connect:
             self.disable_all()
             self.ui.in_attrs.setEnabled(True)
             self.ui.in_attr_label.setEnabled(True)
             self.ui.out_attr_label.setEnabled(True)
             self.ui.out_attrs.setEnabled(True)
+            parent = selected.pop(0)
+            children = selected
+            p_attrs = self.collect_attributes(selected=[parent])
+            if p_attrs:
+                for p_attr in p_attrs:
+                    self.ui.out_attrs.addItem(p_attr)
+            c_attrs = self.collect_attributes(selected=children)
+            if c_attrs:
+                for c_attr in c_attrs:
+                    self.ui.in_attrs.addItem(c_attr)
+
+            self.ui.value_label.setText('')
         elif command:
             self.disable_all()
             self.ui.value_label.setEnabled(True)
             self.ui.values.setEnabled(True)
+            self.ui.parent_child.setEnabled(True)
+            self.ui.value_label.setText('Expression')
 
     def pop_up(self, message=None):
         if message:
@@ -173,6 +192,8 @@ class attr_mach_ui(QtGui.QWidget):
     def add_attr(self, obj=None, value=None, attr_type=None, min=None, max=None, enum_list=None,
                  default=None):
         self.func_running = True
+        keyable = self.ui.keyable.isChecked()
+        hidden = self.ui.hidden.isChecked()
         if value:
             value = value.replace(' ', '_')
         if obj:
@@ -180,28 +201,30 @@ class attr_mach_ui(QtGui.QWidget):
             if attr_type:
                 if attr_type in ['float', '']:
                     if min and max:
-                        cmds.addAttr(obj, ln=value, min=float(min), max=float(max), dv=float(default))
+                        cmds.addAttr(obj, ln=value, min=float(min), max=float(max), dv=float(default), k=keyable,
+                                     hidden=hidden)
                     else:
-                        cmds.addAttr(obj, ln=value)
+                        cmds.addAttr(obj, ln=value, k=keyable, hidden=hidden)
                 elif attr_type == 'int':
                     if min and max:
-                        cmds.addAttr(obj, ln=value, min=int(min), max=int(max), dv=int(default))
+                        cmds.addAttr(obj, ln=value, min=int(min), max=int(max), dv=int(default), k=keyable,
+                                     hidden=hidden)
                     else:
-                        cmds.addAttr(ln=value)
+                        cmds.addAttr(ln=value, k=keyable, hidden=hidden)
                 elif attr_type == 'vectorArray':
-                    cmds.addAttr(obj, ln=value, at='double3')
+                    cmds.addAttr(obj, ln=value, at='double3', k=keyable, hidden=hidden)
                     x = '%sX' % value
                     y = '%sY' % value
                     z = '%sZ' % value
-                    cmds.addAttr(obj, ln=x, at='double', p=value)
-                    cmds.addAttr(obj, ln=y, at='double', p=value)
-                    cmds.addAttr(obj, ln=z, at='double', p=value)
+                    cmds.addAttr(obj, ln=x, at='double', p=value, k=keyable, hidden=hidden)
+                    cmds.addAttr(obj, ln=y, at='double', p=value, k=keyable, hidden=hidden)
+                    cmds.addAttr(obj, ln=z, at='double', p=value, k=keyable, hidden=hidden)
                 elif attr_type == 'bool':
-                    cmds.addAttr(obj, ln=value, at='bool')
+                    cmds.addAttr(obj, ln=value, at='bool', k=keyable, hidden=hidden)
                 elif attr_type == 'string':
-                    cmds.addAttr(obj, ln=value, dt='string')
+                    cmds.addAttr(obj, ln=value, dt='string', k=keyable, hidden=hidden)
                 elif attr_type == 'enum':
-                    cmds.addAttr(obj, ln=value, at='enum', en=enum_list)
+                    cmds.addAttr(obj, ln=value, at='enum', en=enum_list, k=keyable, hidden=hidden)
 
     def set_attr(self, obj=None, value=None, attr_type=None, attribute=None):
         self.func_running = True
@@ -265,10 +288,28 @@ class attr_mach_ui(QtGui.QWidget):
                         self.pop_up('Wrong data type')
 
     def connect_attr(self, parent=None, children=[], out_attr=None, in_attr=None):
-        pass
+        if children:
+            for child in children:
+                try:
+                    cmds.connectAttr('%s.%s' % (parent, out_attr), '%s.%s' % (child, in_attr))
+                except (RuntimeError, ValueError, AttributeError):
+                    self.pop_up('These attributes will not connect!')
+                    break
+        else:
+            self.pop_up('You need to select something to connect to.')
 
-    def run_command(self, parent=None, children=None):
-        pass
+    def run_command(self):
+        value = self.ui.values.toPlainText()
+        expression = value
+        selection = cmds.ls(sl=True)
+        if selection:
+            for selected in selection:
+                try:
+                    cmds.expression(s=expression, o=selected, ae=True, uc='all')
+                except (RuntimeError, ValueError):
+                    self.pop_up('Cannot apply the expression to %s.  Cancelling operation.' % selected)
+                    break
+
 
     def run_it(self):
         add_mode = self.ui.add_mode.isChecked()
@@ -324,6 +365,7 @@ class attr_mach_ui(QtGui.QWidget):
                                 break
                 else:
                     self.pop_up('There is no Name value for the new Attribute!')
+                self.ui.values.setPlainText('')
             elif set_mode:
                 vector_btn = self.ui.vector_btn.isChecked()
                 float_btn = self.ui.float_btn.isChecked()
@@ -365,6 +407,17 @@ class attr_mach_ui(QtGui.QWidget):
                                 break
                 else:
                     self.pop_up('There is no Name value to set!')
+                self.ui.values.setPlainText('')
+            elif conn_mode:
+                parent = selection.pop(0)
+                children = selection
+                out_attr = self.ui.out_attrs.currentText()
+                in_attr = self.ui.in_attrs.currentText()
+                self.connect_attr(parent, children, out_attr, in_attr)
+                self.ui.values.setPlainText('')
+            elif comm_mode:
+                self.run_command()
+                self.ui.values.setPlainText('')
             cmds.select(selection, r=True)
         else:
             self.pop_up('Nothing is selected!')
