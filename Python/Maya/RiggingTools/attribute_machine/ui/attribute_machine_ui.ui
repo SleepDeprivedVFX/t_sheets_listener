@@ -46,6 +46,10 @@ color: rgb(230, 230, 230);</string>
        <height>75</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(100, 100, 100);
+color: rgb(230, 230, 230);</string>
+     </property>
      <property name="title">
       <string>Modes</string>
      </property>
@@ -102,10 +106,15 @@ color: rgb(230, 230, 230);</string>
        <height>100</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(100, 100, 100);
+color: rgb(230, 230, 230);
+</string>
+     </property>
      <property name="title">
       <string>Attribute Type</string>
      </property>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>30</x>

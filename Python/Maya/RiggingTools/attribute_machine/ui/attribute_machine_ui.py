@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine\ui\attribute_machine_ui.ui'
 #
-# Created: Sun Sep 23 15:56:04 2018
+# Created: Mon Sep 24 13:58:31 2018
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,8 @@ class Ui_machine(object):
         self.verticalLayout_6.addWidget(self.Descriptor)
         self.modes_group = QtGui.QGroupBox(machine)
         self.modes_group.setMinimumSize(QtCore.QSize(0, 75))
+        self.modes_group.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
         self.modes_group.setObjectName("modes_group")
         self.layoutWidget = QtGui.QWidget(self.modes_group)
         self.layoutWidget.setGeometry(QtCore.QRect(30, 30, 481, 31))
@@ -50,16 +52,19 @@ class Ui_machine(object):
         self.verticalLayout_6.addWidget(self.modes_group)
         self.attr_type = QtGui.QGroupBox(machine)
         self.attr_type.setMinimumSize(QtCore.QSize(0, 100))
+        self.attr_type.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);\n"
+"")
         self.attr_type.setObjectName("attr_type")
-        self.widget = QtGui.QWidget(self.attr_type)
-        self.widget.setGeometry(QtCore.QRect(30, 20, 641, 65))
-        self.widget.setObjectName("widget")
-        self.verticalLayout_5 = QtGui.QVBoxLayout(self.widget)
+        self.layoutWidget1 = QtGui.QWidget(self.attr_type)
+        self.layoutWidget1.setGeometry(QtCore.QRect(30, 20, 641, 65))
+        self.layoutWidget1.setObjectName("layoutWidget1")
+        self.verticalLayout_5 = QtGui.QVBoxLayout(self.layoutWidget1)
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.horizontalLayout_7 = QtGui.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.vector_btn = QtGui.QRadioButton(self.widget)
+        self.vector_btn = QtGui.QRadioButton(self.layoutWidget1)
         self.vector_btn.setStyleSheet("QRadioButton:disabled {\n"
 "    color: rgb(117, 117, 177);\n"
 "}\n"
@@ -68,7 +73,7 @@ class Ui_machine(object):
 "}")
         self.vector_btn.setObjectName("vector_btn")
         self.horizontalLayout_7.addWidget(self.vector_btn)
-        self.int_btn = QtGui.QRadioButton(self.widget)
+        self.int_btn = QtGui.QRadioButton(self.layoutWidget1)
         self.int_btn.setStyleSheet("QRadioButton:disabled {\n"
 "    color: rgb(117, 117, 177);\n"
 "}\n"
@@ -77,7 +82,7 @@ class Ui_machine(object):
 "}")
         self.int_btn.setObjectName("int_btn")
         self.horizontalLayout_7.addWidget(self.int_btn)
-        self.string_btn = QtGui.QRadioButton(self.widget)
+        self.string_btn = QtGui.QRadioButton(self.layoutWidget1)
         self.string_btn.setStyleSheet("QRadioButton:disabled {\n"
 "    color: rgb(117, 117, 177);\n"
 "}\n"
@@ -89,7 +94,7 @@ class Ui_machine(object):
         self.verticalLayout_5.addLayout(self.horizontalLayout_7)
         self.horizontalLayout_6 = QtGui.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.float_btn = QtGui.QRadioButton(self.widget)
+        self.float_btn = QtGui.QRadioButton(self.layoutWidget1)
         self.float_btn.setStyleSheet("QRadioButton:disabled {\n"
 "    color: rgb(117, 117, 177);\n"
 "}\n"
@@ -98,7 +103,7 @@ class Ui_machine(object):
 "}")
         self.float_btn.setObjectName("float_btn")
         self.horizontalLayout_6.addWidget(self.float_btn)
-        self.bool_btn = QtGui.QRadioButton(self.widget)
+        self.bool_btn = QtGui.QRadioButton(self.layoutWidget1)
         self.bool_btn.setStyleSheet("QRadioButton:disabled {\n"
 "    color: rgb(117, 117, 177);\n"
 "}\n"
@@ -107,7 +112,7 @@ class Ui_machine(object):
 "}")
         self.bool_btn.setObjectName("bool_btn")
         self.horizontalLayout_6.addWidget(self.bool_btn)
-        self.enum_btn = QtGui.QRadioButton(self.widget)
+        self.enum_btn = QtGui.QRadioButton(self.layoutWidget1)
         self.enum_btn.setStyleSheet("QRadioButton:disabled {\n"
 "    color: rgb(117, 117, 177);\n"
 "}\n"
@@ -139,15 +144,6 @@ class Ui_machine(object):
 "}")
         self.hidden.setObjectName("hidden")
         self.horizontalLayout_8.addWidget(self.hidden)
-        self.parent_child = QtGui.QCheckBox(machine)
-        self.parent_child.setStyleSheet("QCheckBox:disabled {\n"
-"    color: rgb(117, 117, 177);\n"
-"}\n"
-"QCheckBox:enabled {\n"
-"    color: rgb(255, 255, 255);\n"
-"}")
-        self.parent_child.setObjectName("parent_child")
-        self.horizontalLayout_8.addWidget(self.parent_child)
         self.verticalLayout_6.addLayout(self.horizontalLayout_8)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
@@ -353,7 +349,6 @@ class Ui_machine(object):
         self.enum_btn.setText(QtGui.QApplication.translate("machine", "Enum", None))
         self.keyable.setText(QtGui.QApplication.translate("machine", "Keyable", None))
         self.hidden.setText(QtGui.QApplication.translate("machine", "Hidden", None))
-        self.parent_child.setText(QtGui.QApplication.translate("machine", "Parent/Child", None))
         self.min_val_label.setText(QtGui.QApplication.translate("machine", "Min", None))
         self.min_val.setText(QtGui.QApplication.translate("machine", "0", None))
         self.max_val_label.setText(QtGui.QApplication.translate("machine", "Max", None))
