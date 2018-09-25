@@ -1,18 +1,43 @@
-from PySide import QtCore, QtGui
-from maya import cmds
+# ATTRIBUTE MACHINE
+# This version was configured to work specifically at ASC.  Minor adjustments would
+# need to be made to run elsewhere.
+
+__author__ = 'Adam Benson'
+__version__ = '1.0.0'
+
 import sys
+try:
+    from PySide import QtCore, QtGui
+    from shiboken import wrapInstance
+    from pysideuic import compileUi
+except:
+    from PySide2 import QtCore, QtGui, QtWidgets
+    from shiboken2 import wrapInstance
+    from pyside2uic import compileUi
+
+
+if 'pyside2uic' in sys.modules:
+    qtGUI = QtWidgets
+elif 'pysideuic' in sys.modules:
+    qtGUI = QtGui
+else:
+    qtGUI = None
+    print 'FUCK!!!'
+
+from maya import cmds
 import os
-sys.path.append(r'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine')
+# sys.path.append(r'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine')
 from ui import attribute_machine_ui as amu
 reload(amu)
 
-class attr_mach_ui(QtGui.QWidget):
+class attr_mach_ui(qtGUI.QWidget):
     """
     Attribute Machine UI.
     """
     def __init__(self, parent=None):
         # Preliminary things
-        QtGui.QWidget.__init__(self, parent)
+        qtGUI.QWidget.__init__(self, parent)
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         self.ui = amu.Ui_machine()
         self.ui.setupUi(self)
         self.ui.do_it.clicked.connect(self.run_it)
@@ -57,7 +82,6 @@ class attr_mach_ui(QtGui.QWidget):
         self.ui.out_attr_label.setEnabled(False)
         self.ui.keyable.setEnabled(False)
         self.ui.hidden.setEnabled(False)
-        self.ui.parent_child.setEnabled(False)
 
     def set_sub_modes(self):
         vector_btn = self.ui.vector_btn.isChecked()
@@ -171,12 +195,12 @@ class attr_mach_ui(QtGui.QWidget):
             self.disable_all()
             self.ui.value_label.setEnabled(True)
             self.ui.values.setEnabled(True)
-            self.ui.parent_child.setEnabled(True)
             self.ui.value_label.setText('Expression')
 
     def pop_up(self, message=None):
         if message:
-            m = QtGui.QMessageBox()
+            m = qtGUI.QMessageBox()
+            m.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
             m.setText(message)
             m.exec_()
 
@@ -422,15 +446,19 @@ class attr_mach_ui(QtGui.QWidget):
         else:
             self.pop_up('Nothing is selected!')
 
-
-if __name__ == '__main__':
-    try:
-        app = QtGui.QApplication(sys.argv)
-        window = attr_mach_ui()
-        window.show()
-        sys.exit(app.exec_())
-    except:
-        app = QtGui.QApplication.instance()
-        window = attr_mach_ui()
-        window.show()
+try:
+    app = qtGUI.QApplication(sys.argv)
+    sys.exit(app.exec_())
+except:
+    app = qtGUI.QApplication.instance()
+# if __name__ == '__main__':
+#     try:
+#         app = QtGui.QApplication(sys.argv)
+#         window = attr_mach_ui()
+#         window.show()
+#         sys.exit(app.exec_())
+#     except:
+#         app = QtGui.QApplication.instance()
+#         window = attr_mach_ui()
+#         window.show()
 
