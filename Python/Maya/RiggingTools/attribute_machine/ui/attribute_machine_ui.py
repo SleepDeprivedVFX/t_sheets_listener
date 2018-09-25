@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine\ui\attribute_machine_ui.ui'
 #
-# Created: Mon Sep 24 13:58:31 2018
+# Created: Tue Sep 25 13:48:25 2018
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -30,7 +30,8 @@ class Ui_machine(object):
     def setupUi(self, machine):
         machine.setObjectName("machine")
         machine.setWindowModality(QtCore.Qt.WindowModal)
-        machine.resize(731, 727)
+        machine.resize(537, 729)
+        machine.setMinimumSize(QtCore.QSize(537, 729))
         machine.setStyleSheet("background-color: rgb(73, 73, 73);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout_6 = qtGUI.QVBoxLayout(machine)
@@ -48,7 +49,7 @@ class Ui_machine(object):
 "color: rgb(230, 230, 230);")
         self.modes_group.setObjectName("modes_group")
         self.layoutWidget = qtGUI.QWidget(self.modes_group)
-        self.layoutWidget.setGeometry(QtCore.QRect(30, 30, 481, 31))
+        self.layoutWidget.setGeometry(QtCore.QRect(10, 20, 491, 31))
         self.layoutWidget.setObjectName("layoutWidget")
         self.layoutWidget.setStyleSheet("background-color: rgb(73, 73, 73);\n"
 "color: rgb(230, 230, 230);")
@@ -68,6 +69,9 @@ class Ui_machine(object):
         self.command_mode = qtGUI.QRadioButton(self.layoutWidget)
         self.command_mode.setObjectName("command_mode")
         self.horizontalLayout.addWidget(self.command_mode)
+        self.python_mode = qtGUI.QRadioButton(self.layoutWidget)
+        self.python_mode.setObjectName("python_mode")
+        self.horizontalLayout.addWidget(self.python_mode)
         self.verticalLayout_6.addWidget(self.modes_group)
         self.attr_type = qtGUI.QGroupBox(machine)
         self.attr_type.setMinimumSize(QtCore.QSize(0, 100))
@@ -76,7 +80,7 @@ class Ui_machine(object):
 "")
         self.attr_type.setObjectName("attr_type")
         self.layoutWidget1 = qtGUI.QWidget(self.attr_type)
-        self.layoutWidget1.setGeometry(QtCore.QRect(30, 20, 641, 65))
+        self.layoutWidget1.setGeometry(QtCore.QRect(10, 20, 491, 65))
         self.layoutWidget1.setObjectName("layoutWidget1")
         self.verticalLayout_5 = qtGUI.QVBoxLayout(self.layoutWidget1)
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
@@ -163,6 +167,8 @@ class Ui_machine(object):
 "}")
         self.hidden.setObjectName("hidden")
         self.horizontalLayout_8.addWidget(self.hidden)
+        spacerItem = qtGUI.QSpacerItem(40, 20, qtGUI.QSizePolicy.Expanding, qtGUI.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem)
         self.verticalLayout_6.addLayout(self.horizontalLayout_8)
         self.horizontalLayout_5 = qtGUI.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
@@ -274,8 +280,8 @@ class Ui_machine(object):
 "}")
         self.out_attr_label.setObjectName("out_attr_label")
         self.horizontalLayout_4.addWidget(self.out_attr_label)
-        spacerItem = qtGUI.QSpacerItem(40, 20, qtGUI.QSizePolicy.Expanding, qtGUI.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem)
+        spacerItem1 = qtGUI.QSpacerItem(40, 20, qtGUI.QSizePolicy.Expanding, qtGUI.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem1)
         self.in_attr_label = qtGUI.QLabel(machine)
         self.in_attr_label.setStyleSheet("QLabel:disabled {\n"
 "    color: rgb(117, 117, 177);\n"
@@ -293,7 +299,7 @@ class Ui_machine(object):
 "    color: rgb(117, 117, 177);\nbackground-color: rgb(100, 100, 100);\n"
 "}\n"
 "QComboBox:enabled {\n"
-"    color: rgb(255, 255, 255);\n\nbackground-color: rgb(100, 100, 100);"
+"    color: rgb(255, 255, 255);\nbackground-color: rgb(100, 100, 100);"
 "}")
         self.out_attrs.setObjectName("out_attrs")
         self.horizontalLayout_2.addWidget(self.out_attrs)
@@ -337,8 +343,8 @@ class Ui_machine(object):
         self.verticalLayout_6.addWidget(self.values)
         self.horizontalLayout_3 = qtGUI.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem1 = qtGUI.QSpacerItem(40, 20, qtGUI.QSizePolicy.Expanding, qtGUI.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem1)
+        spacerItem2 = qtGUI.QSpacerItem(40, 20, qtGUI.QSizePolicy.Expanding, qtGUI.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem2)
         self.dont_do_it = qtGUI.QPushButton(machine)
         self.dont_do_it.setObjectName("dont_do_it")
         self.horizontalLayout_3.addWidget(self.dont_do_it)
@@ -356,6 +362,7 @@ class Ui_machine(object):
         self.Descriptor.setText(qtGUI.QApplication.translate("machine", "Add, Set, Connect and Script Attributes en "
                                                                         "masse.\nWorks on Parent -> Child selection "
                                                                         "set where necessary.", None))
+        self.python_mode.setText(qtGUI.QApplication.translate("machine", "Python Loop"))
         self.modes_group.setTitle(qtGUI.QApplication.translate("machine", "Modes", None))
         self.add_mode.setText(qtGUI.QApplication.translate("machine", "Add", None))
         self.set_mode.setText(qtGUI.QApplication.translate("machine", "Set", None))

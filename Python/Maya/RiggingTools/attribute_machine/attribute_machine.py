@@ -5,30 +5,26 @@
 __author__ = 'Adam Benson'
 __version__ = '1.0.0'
 
+from maya import cmds
 import sys
 try:
     from PySide import QtCore, QtGui
-    from shiboken import wrapInstance
-    from pysideuic import compileUi
 except:
     from PySide2 import QtCore, QtGui, QtWidgets
-    from shiboken2 import wrapInstance
-    from pyside2uic import compileUi
 
 
-if 'pyside2uic' in sys.modules:
-    qtGUI = QtWidgets
-elif 'pysideuic' in sys.modules:
+if 'PySide' in sys.modules:
     qtGUI = QtGui
+elif 'PySide2' in sys.modules:
+    qtGUI = QtWidgets
 else:
     qtGUI = None
     print 'FUCK!!!'
 
-from maya import cmds
-import os
-# sys.path.append(r'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine')
+sys.path.append(r'C:\Users\sleep\OneDrive\Documents\Scripts\Python\Maya\RiggingTools\attribute_machine')
 from ui import attribute_machine_ui as amu
 reload(amu)
+
 
 class attr_mach_ui(qtGUI.QWidget):
     """
@@ -46,6 +42,7 @@ class attr_mach_ui(qtGUI.QWidget):
         self.ui.set_mode.clicked.connect(self.set_mode)
         self.ui.connect_mode.clicked.connect(self.set_mode)
         self.ui.command_mode.clicked.connect(self.set_mode)
+        self.ui.python_mode.clicked.connect(self.set_mode)
         self.ui.vector_btn.clicked.connect(self.set_sub_modes)
         self.ui.float_btn.clicked.connect(self.set_sub_modes)
         self.ui.int_btn.clicked.connect(self.set_sub_modes)
@@ -141,6 +138,7 @@ class attr_mach_ui(qtGUI.QWidget):
         set = self.ui.set_mode.isChecked()
         connect = self.ui.connect_mode.isChecked()
         command = self.ui.command_mode.isChecked()
+        loop = self.ui.python_mode.isChecked()
         selected = cmds.ls(sl=True)
         if add:
             self.disable_all()
@@ -196,6 +194,11 @@ class attr_mach_ui(qtGUI.QWidget):
             self.ui.value_label.setEnabled(True)
             self.ui.values.setEnabled(True)
             self.ui.value_label.setText('Expression')
+        elif loop:
+            self.disable_all()
+            self.ui.value_label.setEnabled(True)
+            self.ui.values.setEnabled(True)
+            self.ui.value_label.setText('Python Loop - "{}" is the iterator (in quotes)! Save it to another variable.')
 
     def pop_up(self, message=None):
         if message:
@@ -273,8 +276,8 @@ class attr_mach_ui(qtGUI.QWidget):
                             if ',' not in value:
                                 cmds.setAttr('%s.%s' % (obj, attribute), float(value))
                             else:
-                                raise ValueError
                                 self.func_running = False
+                                raise ValueError
                         else:
                             if ',' in value:
                                 split = value.split(',')
@@ -334,12 +337,17 @@ class attr_mach_ui(qtGUI.QWidget):
                     self.pop_up('Cannot apply the expression to %s.  Cancelling operation.' % selected)
                     break
 
+    def loop_command(self, obj=None):
+        command = self.ui.values.toPlainText()
+        command = command.format(obj)
+        exec command
 
     def run_it(self):
         add_mode = self.ui.add_mode.isChecked()
         set_mode = self.ui.set_mode.isChecked()
         conn_mode = self.ui.connect_mode.isChecked()
         comm_mode = self.ui.command_mode.isChecked()
+        loop_mode = self.ui.python_mode.isChecked()
         value = self.ui.values.toPlainText()
         min_val = self.ui.min_val.text()
         max_val = self.ui.max_val.text()
@@ -442,23 +450,32 @@ class attr_mach_ui(qtGUI.QWidget):
             elif comm_mode:
                 self.run_command()
                 self.ui.values.setPlainText('')
+            elif loop_mode:
+                loop_sel = cmds.ls(sl=True)
+                for obj in loop_sel:
+                    try:
+                        self.loop_command(obj=obj)
+                    except:
+                        self.pop_up('This code doesn\'t work.  Remmber you are writing python in a string format!')
+                        break
+                self.ui.values.setPlainText('')
             cmds.select(selection, r=True)
         else:
             self.pop_up('Nothing is selected!')
 
-try:
-    app = qtGUI.QApplication(sys.argv)
-    sys.exit(app.exec_())
-except:
-    app = qtGUI.QApplication.instance()
-# if __name__ == '__main__':
-#     try:
-#         app = QtGui.QApplication(sys.argv)
-#         window = attr_mach_ui()
-#         window.show()
-#         sys.exit(app.exec_())
-#     except:
-#         app = QtGui.QApplication.instance()
-#         window = attr_mach_ui()
-#         window.show()
+# try:
+#     app = qtGUI.QApplication(sys.argv)
+#     sys.exit(app.exec_())
+# except:
+#     app = qtGUI.QApplication.instance()
+if __name__ == '__main__':
+    try:
+        app = qtGUI.QApplication(sys.argv)
+        window = attr_mach_ui()
+        window.show()
+        sys.exit(app.exec_())
+    except:
+        app = qtGUI.QApplication.instance()
+        window = attr_mach_ui()
+        window.show()
 
