@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>switchwitch</class>
+ <widget class="QWidget" name="switchwitch">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>316</width>
+    <height>355</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Switch Witch</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(100, 100, 100);
+color: rgb(230, 230, 230);</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_6">
+   <item>
+    <widget class="QLabel" name="title_card">
+     <property name="styleSheet">
+      <string notr="true">font: 75 18pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Switch Witch</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QLabel" name="driver_object_name">
+       <property name="toolTip">
+        <string>Select the object that has the FK-IK Switch Slider</string>
+       </property>
+       <property name="text">
+        <string>No Selection</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="select_controller">
+       <property name="toolTip">
+        <string>Select the object that has the FK-IK Switch Slider</string>
+       </property>
+       <property name="text">
+        <string>Select Controller</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="switch_attr_labels">
+       <property name="toolTip">
+        <string>Select the Slider Attribute that will control the FK-IK Switch</string>
+       </property>
+       <property name="text">
+        <string>Control Attribute</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="switch_attributes">
+       <property name="toolTip">
+        <string>Select the Slider Attribute that will control the FK-IK Switch</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="tag_1_label">
+         <property name="text">
+          <string>Tag 1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="tag_1">
+         <property name="toolTip">
+          <string>Set Tag value. Ex: arm_joint_[tag]</string>
+         </property>
+         <property name="text">
+          <string>IK</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="tag_2_label">
+         <property name="text">
+          <string>Tag 2</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="tag_2">
+         <property name="toolTip">
+          <string>Set Tag value. Ex: arm_joint_[tag]</string>
+         </property>
+         <property name="text">
+          <string>FK</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="tag_3_label">
+         <property name="text">
+          <string>Tag 3</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="tag_3">
+         <property name="toolTip">
+          <string>Set Tag value. Ex: arm_joint_[tag]</string>
+         </property>
+         <property name="text">
+          <string>BND</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QRadioButton" name="create_new">
+       <property name="toolTip">
+        <string>Create a new matching joint chain</string>
+       </property>
+       <property name="text">
+        <string>Create New Joints</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="use_existing">
+       <property name="toolTip">
+        <string>Use existing joints</string>
+       </property>
+       <property name="text">
+        <string>Use Existing</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="done">
+       <property name="text">
+        <string>Done</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="build">
+       <property name="text">
+        <string>Build Switches</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
