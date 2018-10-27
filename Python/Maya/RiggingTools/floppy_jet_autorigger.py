@@ -15,6 +15,8 @@ class floppy_jet_builder:
         search_distance = d * threshold
         edges = []
         start_side = None
+        end_side = None
+        is_max = False
         if pv == 'x':
             min_max = [0, 3]
             print 'min_max X'
@@ -77,7 +79,7 @@ class floppy_jet_builder:
         return primary_vector
 
     def get_center(self):
-        loop_bb = cmds.xform(q=True, bb=True)
+        loop_bb = cmds.xform(q=True, bb=True, ws=True)
         x_center = ((loop_bb[3] - loop_bb[0]) / 2) + loop_bb[0]
         y_center = ((loop_bb[4] - loop_bb[1]) / 2) + loop_bb[1]
         z_center = ((loop_bb[5] - loop_bb[2]) / 2) + loop_bb[2]
@@ -102,7 +104,7 @@ class floppy_jet_builder:
                 selected_edges.append(edge)
             cmds.select(edges, r=True)
             center = self.get_center()
-            print center
+            print 'Center: %s' % center
             # obj_centers.append(center)
 
             if direction == 'x':
@@ -139,14 +141,15 @@ class floppy_jet_builder:
                         print 'search_distance: %s' % search_distance
                     if new < (previous - search_distance):
                         print '&' * 50
-                        print new
-                        print (previous - search_distance)
-                        print previous
+                        print 'new point NEG: %s' % new
+                        print 'previous search distance NEG: %s' % (previous - search_distance)
+                        print 'previous point NEG: %s' % previous
                         print '^' * 50
                         selected_edges.append(new_edges)
                         center = new_center
                         obj_centers.append(new_center)
                     else:
+                        print 'NEG - new was not less than the previous search dist: %s | %s' % (new, (previous - search_distance))
                         start_search = False
                 else:
                     if not search_distance and new != previous:
@@ -154,9 +157,9 @@ class floppy_jet_builder:
                         print 'search_distance: %s' % search_distance
                     if new > (previous + search_distance):
                         print '&' * 50
-                        print new
-                        print (previous + search_distance)
-                        print previous
+                        print 'new point: %s' % new
+                        print 'previous search distance: %s' % (previous + search_distance)
+                        print 'previous point: %s' % previous
                         print '^' * 50
                         selected_edges.append(new_edges)
                         center = new_center
@@ -189,21 +192,22 @@ class floppy_jet_builder:
             is_max = border_edges[2]
             end_point = border_edges[3]
             delta = ((end_point - starting_point) ** 2) ** 0.5
-            print delta
+            print 'absolute delta end to start: %s' % delta
             edge_selection = self.get_edgeloops_and_build(edges=border_edge, direction=primary_vector, is_max=is_max,
                                                           delta=delta)
-            print edge_selection
+            # print 'Edge Selection: %s' % edge_selection
+            cmds.selectMode(component=True)
             cmds.select(cl=True)
             for sel in edge_selection[0]:
                 cmds.select(sel, tgl=True)
-            cmds.selectMode(component=True)
             centers = edge_selection[1]
-            print centers
+            print 'centers: %s' % centers
+            cmds.select(cl=True)
             cmds.selectMode(object=True)
             cmds.select(cl=True)
             joints = self.create_joints_from_centers(centers=centers, obj=obj)
             cmds.select(cl=True)
-            print joints
+            print 'joints: %s' % joints
 
             print '=' * 200
 
