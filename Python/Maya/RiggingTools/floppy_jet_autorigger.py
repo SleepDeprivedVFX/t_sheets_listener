@@ -11,9 +11,10 @@ class floppy_jet_builder:
         self.start_engine()
 
     def get_border_edges(self, obj=None, bb=None, pv=None, d=None):
-        threshold = 1.0
+        threshold = 0.005
         # search_distance is essentially the same as the Block size
         search_distance = d * threshold
+        print 'get boarder search distance: %s' % search_distance
         edges = []
         start_side = None
         end_side = None
@@ -62,29 +63,13 @@ class floppy_jet_builder:
                 cmds.select(edges, r=True)
                 cmds.select(obj, tgl=True)
                 cmds.selectMode(component=True)
+        print 'FROM GET BORDER EDGES\n-------------------------------------------'
+        print edges
+        print start_side
+        print is_max
+        print end_side
+        print 'DONE --------------------------------------------------------'
         return edges, start_side, is_max, end_side
-
-    def get_primary_vector(self, bb=None):
-        # Returns the longest direction of the bounding box, providing the primary vector
-        primary_vector = None
-        if bb:
-            xMin = bb[0]
-            yMin = bb[1]
-            zMin = bb[2]
-            xMax = bb[3]
-            yMax = bb[4]
-            zMax = bb[5]
-
-            xDelta = xMax - xMin
-            yDelta = yMax - yMin
-            zDelta = zMax - zMin
-            deltas = {'x': xDelta, 'y': yDelta, 'z': zDelta}
-            max_delta = max(deltas.values())
-            print 'deltas: %s' % deltas
-            print 'max_delta: %s' % max_delta
-            primary_vector = [[k for k, v in deltas.items() if v == max_delta][0], max_delta]
-            print 'primary_vector: %s' % primary_vector
-        return primary_vector
 
     def get_center(self):
         loop_bb = cmds.xform(q=True, bb=True, ws=True)
@@ -147,6 +132,7 @@ class floppy_jet_builder:
             # The remaining collection of centers will be where the average centers come from.
             searched_loops = []  # This is r below
             current_selection = selected_edges
+            cmds.pickWalk(d='right', type='edgeloop')
             while current_selection not in searched_loops:
                 searched_loops.append(current_selection)
                 cmds.pickWalk(d='right', type='edgeloop')
@@ -264,13 +250,18 @@ class floppy_jet_builder:
     def start_engine(self):
         selected_objects = cmds.ls(sl=True)
         for obj in selected_objects:
+            print 'start engine: object: %s' % obj
             bb = cmds.xform(obj, q=True, bb=True)
+            print 'start engine: bb    : %s' % bb
             get_primary_vector = self.get_primary_vector(bb=bb)
+            print 'start engine: p vect: %s' % get_primary_vector
             primary_vector = get_primary_vector[0]
             distance = get_primary_vector[1]
             border_edges = self.get_border_edges(obj=obj, bb=bb, pv=primary_vector, d=distance)
+            print 'start engine: edges : %s' % border_edges
             border_edge = border_edges[0]
             starting_point = border_edges[1]
+            print 'start engine: border: %s' % border_edge
             is_max = border_edges[2]
             end_point = border_edges[3]
             print 'dookie'
