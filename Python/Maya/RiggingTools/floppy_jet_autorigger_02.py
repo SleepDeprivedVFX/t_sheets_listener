@@ -79,9 +79,10 @@ class floppy_jet_builder:
 
     def get_center(self):
         loop_bb = cmds.xform(q=True, bb=True, ws=True)
-        x_center = ((loop_bb[3] - loop_bb[0]) / 2) + loop_bb[0]
-        y_center = ((loop_bb[4] - loop_bb[1]) / 2) + loop_bb[1]
-        z_center = ((loop_bb[5] - loop_bb[2]) / 2) + loop_bb[2]
+        print 'LOOP BB: %s' % loop_bb
+        x_center = loop_bb[0] + ((loop_bb[3] - loop_bb[0]) / 2)
+        y_center = loop_bb[1] + ((loop_bb[4] - loop_bb[1]) / 2)
+        z_center = loop_bb[2] + ((loop_bb[5] - loop_bb[2]) / 2)
         center = [x_center, y_center, z_center]
         print 'center: %s' % center
         return center
@@ -106,7 +107,7 @@ class floppy_jet_builder:
             point_count = len(points)
             print 'number of points: %s' % point_count
             for avg in points:
-                print 'adding point: %s' % avg
+                # print 'adding point: %s' % avg
                 avg_x += avg[0]
                 avg_y += avg[1]
                 avg_z += avg[2]
@@ -130,31 +131,28 @@ class floppy_jet_builder:
         if centers:
             # There are a list of center points: [[1.0, 1.0, 1.0], [2.0, 2.0, 2.0]]
             for center in centers:
+                eval_center = False
+                eval_buffer = False
                 local_averages = []
-                # The vector is an integer value that selects the input 0 = x, 1 = y, 2 = z
-                # Thus:
-                # vector = 2
-                # center[vector] = center[2] = 1.0
-                # This gives us the position along the bounding box length
                 axis_point = center[vector]
 
-                # Now, if it within the buffer zones, we add it to the buffer list
-                # If it is within the bounds of the slice being analyzed, then it's added the main list
                 if min < axis_point < max:
                     print 'IN BOUNDS %s TO %s: %s' % (min, max, center)
-                    in_bounds.append(center)
+                    if center not in in_bounds:
+                        in_bounds.append(center)
+                        eval_center = True
                 elif bufferMin < axis_point < bufferMax:
-                    in_bounds.append(center)
-                # So, if we have points in the range of our search area...
-                if in_bounds:
-                    # I set the "zero distance" point for the difference equation
+                    if center not in in_buffer:
+                        in_buffer.append(center)
+                        eval_buffer = True
+                else:
+                    eval_center = False
+                    eval_buffer = False
+                if in_bounds and eval_center:
                     x1 = center[0]
                     y1 = center[1]
                     z1 = center[2]
-                    # Now, even though I'm already looping through the list, I still have to loop back through the same
-                    # list, because I am comparing it's current point to points all around itself.
-                    # If those points are within the search threshold, then they should be added to the primary search
-                    # list.  That list will have only one center per slice, getting the average from this list.
+
                     for compare in centers:
                         if compare != center:
                             in_threshold = False
@@ -162,8 +160,6 @@ class floppy_jet_builder:
                             y2 = compare[1]
                             z2 = compare[2]
                             point_dist = ((x2 - x1) ** 3) + ((y2 - y1) ** 3) + ((z2 - z1) ** 3)
-                            # point_dist **= 2
-                            # point_dist **= 0.5
                             try:
                                 point_dist **= 0.3333333333333
                             except ValueError:
@@ -177,22 +173,19 @@ class floppy_jet_builder:
                     if local_averages:
                         if center not in local_averages:
                             local_averages.append(center)
-                        # print 'local_averages: %s' % local_averages
 
                         # Time to sort through the locals and find the one true center.
                         new_center = self.average_points(points=local_averages)
-                        print 'new_center: %s' % new_center
+                        print 'new_center from average: %s' % new_center
                         if new_center not in local_centers:
-                            # print 'new_center: %s' % new_center
+                            print 'new_center ADDED: %s' % new_center
                             local_centers.append(new_center)
 
             print 'RAW local_centers: %s' % local_centers
             if local_centers:
                 if len(local_centers) > 1:
                     local_centers = self.average_points(points=local_centers)
-                    # local_centers = self.find_local_centers(min=min, max=max, threshold=threshold,
-                    #                                         centers=local_centers, bufferMin=bufferMin,
-                    #                                         bufferMax=bufferMax, vector=vector)
+                    print 'LOCAL CENTERS: %s' % local_centers
                 print '=' * 200
                 # print 'local_centers: %s' % local_centers
                 print 'From %s' % min
@@ -200,12 +193,12 @@ class floppy_jet_builder:
                 #     print 'local average collection: %s' % avg
                 print 'To %s' % max
                 print 'At Threshold %s' % threshold
-            # else:
-            #     local_centers = self.find_local_centers(min=min, max=max, threshold=threshold, centers=in_buffer,
-            #                                             bufferMin=bufferMin, bufferMax=bufferMax, vector=vector)
+            else:
+                local_centers = self.find_local_centers(min=min, max=max, threshold=threshold, centers=in_buffer,
+                                                        bufferMin=bufferMin, bufferMax=bufferMax, vector=vector)
         return local_centers
 
-    def start_engine(self, threshold=0.02, joints=1, buffer_size=0.5):
+    def start_engine(self, threshold=0.02, joints=10, buffer_size=0.5):
         selected_objects = cmds.ls(sl=True)
         for obj in selected_objects:
             """
@@ -213,11 +206,12 @@ class floppy_jet_builder:
             all these freaking calculations.
             """
             cmds.select(obj, r=True)
-            bb = cmds.xform(q=True, bb=True)
+            bb = cmds.xform(q=True, bb=True, ws=True)
             primary_vector = self.get_primary_vector(bb=bb)
             directional_axis = primary_vector[0]
             total_length = primary_vector[1]
             section_depth = total_length / joints
+            print 'section depth: %s' % section_depth
             width_height = self.width_height(direction=directional_axis, bb=bb)
             width = width_height['width']
             height = width_height['height']
@@ -275,8 +269,8 @@ class floppy_jet_builder:
                 end += section_depth
                 block += 1
                 print '^' * 200
-
+    cmds.selectMode(object=True)
 
 if __name__ == '__main__':
-    run = floppy_jet_builder(threshold=0.02, joints=10, buffer_size=0.25)
+    run = floppy_jet_builder(threshold=0.02, joints=10, buffer_size=0.5)
 
