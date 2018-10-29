@@ -18,8 +18,8 @@ class floppy_jet_builder:
             cmds.selectType(pe=True)
             cmds.polySelectConstraint(m=3, t=0x8000, bo=True)
             cmds.polySelectConstraint(m=3, t=0x8000, pp=3)
-            cmds.pickWalk(d='right', type='edgeloop')
             selection = cmds.ls(sl=True)
+            cmds.pickWalk(d='left', type='edgeloop')
             queue = []
             for edge in selection:
                 queue.append(edge)
@@ -107,7 +107,7 @@ class floppy_jet_builder:
             point_count = len(points)
             print 'number of points: %s' % point_count
             for avg in points:
-                # print 'adding point: %s' % avg
+                print 'adding point: %s' % avg
                 avg_x += avg[0]
                 avg_y += avg[1]
                 avg_z += avg[2]
@@ -128,12 +128,13 @@ class floppy_jet_builder:
         local_centers = []
         in_buffer = []
         in_bounds = []
+        center = []
         if centers:
             # There are a list of center points: [[1.0, 1.0, 1.0], [2.0, 2.0, 2.0]]
+            local_averages = []
             for center in centers:
                 eval_center = False
                 eval_buffer = False
-                local_averages = []
                 axis_point = center[vector]
 
                 if min < axis_point < max:
@@ -152,40 +153,46 @@ class floppy_jet_builder:
                     x1 = center[0]
                     y1 = center[1]
                     z1 = center[2]
+                    break
 
-                    for compare in centers:
-                        if compare != center:
-                            in_threshold = False
-                            x2 = compare[0]
-                            y2 = compare[1]
-                            z2 = compare[2]
-                            point_dist = ((x2 - x1) ** 3) + ((y2 - y1) ** 3) + ((z2 - z1) ** 3)
-                            try:
-                                point_dist **= 0.3333333333333
-                            except ValueError:
-                                point_dist *= -1
-                                point_dist **= 0.3333333333333
-                                point_dist *= -1
-                            if point_dist < threshold:
-                                in_threshold = True
-                            if in_threshold and compare not in local_averages:
-                                local_averages.append(compare)
-                    if local_averages:
-                        if center not in local_averages:
-                            local_averages.append(center)
+            if in_bounds:
+                for compare in centers:
+                    if compare != center:
+                        in_threshold = False
+                        x2 = compare[0]
+                        y2 = compare[1]
+                        z2 = compare[2]
+                        point_dist = ((x2 - x1) ** 3) + ((y2 - y1) ** 3) + ((z2 - z1) ** 3)
+                        try:
+                            point_dist **= 0.3333333333333
+                        except ValueError:
+                            point_dist *= -1
+                            point_dist **= 0.3333333333333
+                            point_dist *= -1
+                        if point_dist < threshold:
+                            if min < compare[vector] < max:
+                                if compare not in local_averages:
+                                    local_averages.append(compare)
+                            elif bufferMin < compare[vector] < bufferMax:
+                                if compare not in local_averages:
+                                    local_averages.append(compare)
 
-                        # Time to sort through the locals and find the one true center.
-                        new_center = self.average_points(points=local_averages)
-                        print 'new_center from average: %s' % new_center
-                        if new_center not in local_centers:
-                            print 'new_center ADDED: %s' % new_center
-                            local_centers.append(new_center)
+            if local_averages:
+                if center not in local_averages:
+                    local_averages.append(center)
+
+                # Time to sort through the locals and find the one true center.
+                new_center = self.average_points(points=local_averages)
+                print 'new_center from average: %s' % new_center
+                if new_center not in local_centers:
+                    print 'new_center ADDED: %s' % new_center
+                    local_centers.append(new_center)
 
             print 'RAW local_centers: %s' % local_centers
             if local_centers:
                 if len(local_centers) > 1:
                     local_centers = self.average_points(points=local_centers)
-                    print 'LOCAL CENTERS: %s' % local_centers
+                    print 'RE-AVERAGING LOCAL CENTERS: %s' % local_centers
                 print '=' * 200
                 # print 'local_centers: %s' % local_centers
                 print 'From %s' % min
@@ -193,9 +200,9 @@ class floppy_jet_builder:
                 #     print 'local average collection: %s' % avg
                 print 'To %s' % max
                 print 'At Threshold %s' % threshold
-            else:
-                local_centers = self.find_local_centers(min=min, max=max, threshold=threshold, centers=in_buffer,
-                                                        bufferMin=bufferMin, bufferMax=bufferMax, vector=vector)
+            # else:
+            #     local_centers = self.find_local_centers(min=min, max=max, threshold=threshold, centers=in_buffer,
+            #                                             bufferMin=bufferMin, bufferMax=bufferMax, vector=vector)
         return local_centers
 
     def start_engine(self, threshold=0.02, joints=10, buffer_size=0.5):
@@ -215,10 +222,17 @@ class floppy_jet_builder:
             width_height = self.width_height(direction=directional_axis, bb=bb)
             width = width_height['width']
             height = width_height['height']
-            Threshold = (width * height) * threshold
+            # Perhaps the threshold value needs to not be based on the area, but rather on percentage of the hypotenuse?
+            # Threshold = (width * height) * threshold
+            # Threshold = (((width ** 2) + (height ** 2)) ** 0.5) * threshold
+            # Or, perhaps it needs to be based on an average of base and height
+            Threshold = ((width + height) / 2) * threshold
+            print 'Width: %s' % width
+            print 'Height: %s' % height
             print 'Threshold: %s' % Threshold
 
             selected_edges = self.select_edge_loops(obj=obj)
+            burf
             print 'primary vector: %s' % primary_vector
             print 'selected_eges: %s' % selected_edges
             centers = self.centers(selected_edges=selected_edges, threshold=Threshold)
@@ -272,5 +286,5 @@ class floppy_jet_builder:
     cmds.selectMode(object=True)
 
 if __name__ == '__main__':
-    run = floppy_jet_builder(threshold=0.02, joints=10, buffer_size=0.5)
+    run = floppy_jet_builder(threshold=0.05, joints=10, buffer_size=1.0)
 

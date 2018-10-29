@@ -71,6 +71,27 @@ class floppy_jet_builder:
         print 'DONE --------------------------------------------------------'
         return edges, start_side, is_max, end_side
 
+    def get_primary_vector(self, bb=None):
+        primary_vector = None
+        if bb:
+            xMin = bb[0]
+            yMin = bb[1]
+            zMin = bb[2]
+            xMax = bb[3]
+            yMax = bb[4]
+            zMax = bb[5]
+
+            xDelta = xMax - xMin
+            yDelta = yMax - yMin
+            zDelta = zMax - zMin
+            deltas = {'x': xDelta, 'y': yDelta, 'z': zDelta}
+            max_delta = max(deltas.values())
+            print 'deltas: %s' % deltas
+            print 'max_delta: %s' % max_delta
+            primary_vector = [[k for k, v in deltas.items() if v == max_delta][0], max_delta]
+            print 'primary_vector: %s' % primary_vector
+        return primary_vector
+
     def get_center(self):
         loop_bb = cmds.xform(q=True, bb=True, ws=True)
         x_center = ((loop_bb[3] - loop_bb[0]) / 2) + loop_bb[0]
@@ -117,124 +138,59 @@ class floppy_jet_builder:
                 height = bb[5] - bb[2]
             else:
                 c = 2
-                bbMin = bb[2]
-                bbMax = bb[5]
-                width = bb[3] - bb[0]
-                height = bb[4] - bb[1]
-            length = bbMax - bbMin
-            primary_delta = bbMax - bbMin
-            T = (width * height) * threshold
-            section_depth = length/joint_division
-            start_point = center[c]
-            next_point = start_point + section_depth
-            # Next I need to collect ALL the edge loops as iteratables.
-            # Then, I need to run the center/threshold algorithm for each of those centers.
-            # The remaining collection of centers will be where the average centers come from.
-            searched_loops = []  # This is r below
-            current_selection = selected_edges
-            cmds.pickWalk(d='right', type='edgeloop')
-            while current_selection not in searched_loops:
-                searched_loops.append(current_selection)
-                cmds.pickWalk(d='right', type='edgeloop')
-                current_selection = []
-                new_loop = cmds.ls(sl=True)
-                obj_centers.append(self.get_center())
-                for sel in new_loop:
-                    current_selection.append(sel)
-            cmds.select(cl=True)
-            for point in obj_centers:
-                print point
-        #
-        #     # --------------------------- From Maya
-        #     objs = cmds.ls(sl=True)
-        #     for obj in objs:
-        #         cmds.selectType(pe=True)
-        #         cmds.polySelectConstraint(m=3, t=0x8000, bo=True)
-        #         cmds.polySelectConstraint(m=3, t=0x8000, pp=3)
-        #         cmds.pickWalk(d='right', type='edgeloop')
-        #         p = cmds.ls(sl=True)
-        #         # Already have everything above
-        #         # Also Already have the q list called selected_edges
-        #         q = []
-        #         for tp in p:
-        #             q.append(tp)
-        #         # Ok, so r is basically the list of acceptable edges.  For everything in selected_edges, if it's not in
-        #         # r then the loop continues
-        #         # So, our r will be something like, searched_loops
-        #         r = []
-        #         print 'original q: %s' % q
-        #         while q not in r:
-        #             r.append(q)
-        #             cmds.pickWalk(d='right', type='edgeloop')
-        #             q = []
-        #             p = cmds.ls(sl=True)
-        #             for tp in p:
-        #                 q.append(tp)
-        #             print q
-        #         cmds.select(cl=True)
-        #         for d in r:
-        #             cmds.select(d, tgl=True)
-        #         cmds.select(obj, tgl=True)
-        #         cmds.selectMode(co=True)
-        #     cmds.polySelectConstraint(dis=True)
-        #     # -------------------------------------End from maya
-        #
-        #     print 'First CENTER: %s' % center
-        #     # This may be where I need to start injecting the Threshold and other shit from my notes and tests.
-        #     # It's also possible that the direction bit is unnecessary with the new algorithm
-        #     if is_max and direction == 'x' or direction == 'y':
-        #         d = 'left'
-        #         neg = True
-        #     elif is_max and direction == 'z':
-        #         d = 'right'
-        #         neg = True
-        #     elif not is_max and direction != 'z':
-        #         d = 'right'
-        #         neg = False
-        #     else:
-        #         neg = False
-        #         d = 'left'
-        #     start_search = True
-        #     cmds.pickWalk(d=d, type='edgeloop')
-        #     # This is where I need to switch my edge/center collection algorithm
-        #
-        #     while start_search:
-        #         cmds.pickWalk(d=d, type='edgeloop')
-        #         new_edges = cmds.ls(sl=True)
-        #         new_center = self.get_center()
-        #         previous = center[c]
-        #         new = new_center[c]
-        #         if neg:
-        #             if not search_distance and new != previous:
-        #                 search_distance = (((delta / (new - previous))) ** 2) ** 0.5
-        #                 print 'search_distance: %s' % search_distance
-        #             if new < (previous - search_distance):
-        #                 print '&' * 50
-        #                 print 'new point NEG: %s' % new
-        #                 print 'previous search distance NEG: %s' % (previous - search_distance)
-        #                 print 'previous point NEG: %s' % previous
-        #                 print '^' * 50
-        #                 selected_edges.append(new_edges)
-        #                 center = new_center
-        #                 obj_centers.append(new_center)
-        #             else:
-        #                 print 'NEG - new was not less than the previous search dist: %s | %s' % (new, (previous - search_distance))
-        #                 start_search = False
-        #         else:
-        #             if not search_distance and new != previous:
-        #                 search_distance = ((delta / (new - previous)) ** 2) ** 0.5
-        #                 print 'search_distance: %s' % search_distance
-        #             if new > (previous + search_distance):
-        #                 print '&' * 50
-        #                 print 'new point: %s' % new
-        #                 print 'previous search distance: %s' % (previous + search_distance)
-        #                 print 'previous point: %s' % previous
-        #                 print '^' * 50
-        #                 selected_edges.append(new_edges)
-        #                 center = new_center
-        #                 obj_centers.append(new_center)
-        #             else:
-        #                 start_search = False
+
+            print 'First CENTER: %s' % center
+            if is_max and direction == 'x' or direction == 'y':
+                d = 'left'
+                neg = True
+            elif is_max and direction == 'z':
+                d = 'right'
+                neg = True
+            elif not is_max and direction != 'z':
+                d = 'right'
+                neg = False
+            else:
+                neg = False
+                d = 'left'
+            start_search = True
+            cmds.pickWalk(d=d, type='edgeloop')
+            while start_search:
+                cmds.pickWalk(d=d, type='edgeloop')
+                new_edges = cmds.ls(sl=True)
+                new_center = self.get_center()
+                previous = center[c]
+                new = new_center[c]
+                if neg:
+                    if not search_distance and new != previous:
+                        search_distance = (((delta / (new - previous))) ** 2) ** 0.5
+                        print 'search_distance: %s' % search_distance
+                    if new < (previous - search_distance):
+                        print '&' * 50
+                        print 'new point NEG: %s' % new
+                        print 'previous search distance NEG: %s' % (previous - search_distance)
+                        print 'previous point NEG: %s' % previous
+                        print '^' * 50
+                        selected_edges.append(new_edges)
+                        center = new_center
+                        obj_centers.append(new_center)
+                    else:
+                        print 'NEG - new was not less than the previous search dist: %s | %s' % (new, (previous - search_distance))
+                        start_search = False
+                else:
+                    if not search_distance and new != previous:
+                        search_distance = ((delta / (new - previous)) ** 2) ** 0.5
+                        print 'search_distance: %s' % search_distance
+                    if new > (previous + search_distance):
+                        print '&' * 50
+                        print 'new point: %s' % new
+                        print 'previous search distance: %s' % (previous + search_distance)
+                        print 'previous point: %s' % previous
+                        print '^' * 50
+                        selected_edges.append(new_edges)
+                        center = new_center
+                        obj_centers.append(new_center)
+                    else:
+                        start_search = False
         return selected_edges, obj_centers
 
     def create_joints_from_centers(self, centers=None, obj=None):
