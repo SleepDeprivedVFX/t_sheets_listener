@@ -11,19 +11,63 @@ class floppy_jet_builder:
     def __init__(self, threshold=0.02, joints=10, buffer_size=0.5):
         self.start_engine(threshold=threshold, joints=joints, buffer_size=buffer_size)
 
-    def select_edge_loops(self, obj=None):
+    def select_edge_loops(self, obj=None, bb=None, pv=None, d=None, threshold=0.05):
         select_edges = []
+        primary_edges = []
+        search_distance = d * threshold
+        start_side = None
+        end_side = None
+        is_max = False
+        if pv == 'x':
+            min_max = [0, 3]
+            print 'min_max X'
+        elif pv == 'y':
+            min_max = [1, 4]
+            print 'min_max Y'
+        else:
+            min_max = [2, 5]
+            print 'min_max Z'
+        search_min = bb[min_max[0]] + search_distance
+        search_max = bb[min_max[1]] - search_distance
+        print 'search_min: %s' % search_min
+        print 'SEARCH_MAX: %s' % search_max
+
         if obj:
             cmds.select(obj, r=True)
+            cmds.selectMode(component=True)
             cmds.selectType(pe=True)
             cmds.polySelectConstraint(m=3, t=0x8000, bo=True)
             cmds.polySelectConstraint(m=3, t=0x8000, pp=3)
+            initial_selection = cmds.ls(sl=True)
+
+            for selection in initial_selection:
+                cmds.select(r=True)
+                position = cmds.xform(selection, q=True, t=True, ws=True)
+                print 'sub_selection position: %s' % position
+                search_point = position[min_max[0]]
+                print 'search_point: %s' % search_point
+                if bb[min_max[0]] < search_point < search_min:
+                    print 'Minimum'
+                    primary_edges.append(selection)
+                    start_side = bb[min_max[0]]
+                    end_side = bb[min_max[1]]
+                    is_max = False
+                elif search_max < search_point < bb[min_max[1]]:
+                    print 'Maximum'
+                    primary_edges.append(selection)
+                    start_side = bb[min_max[1]]
+                    end_side = bb[min_max[0]]
+                    is_max = True
+
+            cmds.select(cl=True)
+            cmds.select(primary_edges, r=True)
             selection = cmds.ls(sl=True)
-            cmds.pickWalk(d='left', type='edgeloop')
+            cmds.pickWalk(d='right', type='edgeloop')
             queue = []
             for edge in selection:
                 queue.append(edge)
 
+            cmds.polySelectConstraint(dis=True)
             while queue not in select_edges:
                 select_edges.append(queue)
                 cmds.pickWalk(d='right', type='edgeloop')
@@ -231,8 +275,8 @@ class floppy_jet_builder:
             print 'Height: %s' % height
             print 'Threshold: %s' % Threshold
 
-            selected_edges = self.select_edge_loops(obj=obj)
-            burf
+            selected_edges = self.select_edge_loops(obj=obj, bb=bb, pv=directional_axis, d=section_depth,
+                                                    threshold=threshold)
             print 'primary vector: %s' % primary_vector
             print 'selected_eges: %s' % selected_edges
             centers = self.centers(selected_edges=selected_edges, threshold=Threshold)
