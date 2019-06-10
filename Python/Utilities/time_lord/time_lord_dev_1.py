@@ -36,7 +36,8 @@ right_now = datetime.datetime.now()
 # List by a specific user
 filters = [
     ['user', 'is', {'type': 'HumanUser', 'id': 41}],
-    ['sg_task_end', 'is', None]
+    ['sg_task_end', 'is', None],
+    ['sg_task_start', 'is_not', None]
 ]
 fields = [
     'user',
@@ -46,7 +47,47 @@ fields = [
 ]
 test = sg.find('TimeLog', filters, fields)
 i = 1
-for t in test:
+if len(test) > 1:
+    # Check for too many active time cards
+    flag = 'A red flag!  Too many empty times!'
+    print flag
+    # sort them so that they are in order of start time (manual entries can be anything!)
+    tested = sorted(test, key=lambda i: i['sg_task_start'])
+    # Pop the latest time sheet into it's own variable.  This will be our "master" time sheet.
+    latest = tested[-1]
+    print 'The latest: %s' % latest
+    print 'length of test: %s' % len(tested)
+
+    # Now reverse the order of the list for some additive comparisons.
+    # test = sorted(test, reverse=-1)
+    # print 'reversed test = %s' % test
+    # Go through the errant time sheets and set the clock out times.
+    # TODO: Eventually this will need to check against previous day and weekend times.  But for now...
+    for ot in range(0, len(tested)):
+        print 'ot: %s' % ot
+        # Get the current time sheet's start time
+        try:
+            new_end = tested[ot + 1]['sg_task_start']
+            print 'new_end: %s' % new_end
+            # Apply it or the latest time sheet's start time to the last time sheet's end time.
+            try:
+                tested[(ot)]['sg_task_end'] = new_end
+                data = {
+                    'sg_task_end': new_end
+                }
+                t_id = tested[(ot)]['id']
+                sg.update('TimeLog', t_id, data)
+            except IndexError, KeyError:
+                tested[(ot)]['sg_task_end'] = latest['sg_task_start']
+                data = {
+                    'sg_task_end': latest['sg_task_start']
+                }
+                t_id = tested[(ot)]['id']
+                sg.update('TimeLog', t_id, data)
+            print 'task end: %s' % tested[(ot)]['sg_task_end']
+        except:
+            pass
+for t in tested:
     if t['sg_task_start']:
         # Check the current start time against the first of the week.
 
@@ -61,16 +102,14 @@ for t in test:
         #   cut off dates for old time sheets has a limit.
         start_time = t['sg_task_start']
         start_time = start_time.replace(tzinfo=None)
-        print start_time
-        print week_start
+        print 'start_time: %s' % start_time
+        print 't[sg_task_end]: %s' % t['sg_task_end']
+        print 'week start: %s' % week_start
         if start_time > week_start:
             # At this point checks for multiple time sheets can come into play.
-
-            print i, t['user']
-            print '  ', t['date']
-            print '  ', t['sg_task_start']
-            print '  ', t['sg_task_end']
-            i += 1
+            user = t['user']
+            ts_date = t['date']
+            end_time = t['sg_task_end']
 
 
 

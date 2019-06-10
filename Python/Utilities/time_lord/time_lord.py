@@ -24,8 +24,29 @@ from datetime import datetime
 import time
 import requests
 from PySide import QtGui, QtCore
+import ConfigParser
 
 from ui import time_lord_clock as tlu
+
+sys_path = sys.path
+config_file = 'dalek.cfg'
+try:
+    print 'Finding configuration file...'
+    config_path = [f for f in sys_path if os.path.isfile(f + '/' + config_file)][0] + '/' + config_file
+    config_path = config_path.replace('\\', '/')
+    print 'Configuration found!'
+except IndexError, e:
+    raise e
+
+configuration = ConfigParser.ConfigParser()
+print 'Reading the configuration file...'
+configuration.read(config_path)
+
+cfg_sg_url = configuration.get('Shotgun', 'sg_url')
+cfg_sg_key = configuration.get('Shotgun', 'sg_key')
+cfg_sg_name = configuration.get('Shotgun', 'sg_name')
+
+sg = sgapi.Shotgun(cfg_sg_url, cfg_sg_name, cfg_sg_key)
 
 
 class time_lord_ui(QtGui.QMainWindow):
@@ -41,18 +62,18 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.setupUi(self)
         self.ui.daily_total_progress.setValue(12)
 
-    def paintEvent(self, event):
-        qp = QtGui.QPainter()
-        qp.begin(self.ui.time_lord_title)
-        qp.setPen('red')
-        qp.setFont(QtGui.QFont('Decorative', 12))
-        x = 30
-        y = 30
-
-        qp.translate(x, y)
-        qp.rotate(45)
-        qp.drawText(0, 0, 'TIME LORD')
-        qp.end()
+    # def paintEvent(self, event):
+    #     qp = QtGui.QPainter()
+    #     qp.begin(self.ui.time_lord_title)
+    #     qp.setPen('red')
+    #     qp.setFont(QtGui.QFont('Decorative', 12))
+    #     x = 30
+    #     y = 30
+    #
+    #     qp.translate(x, y)
+    #     qp.rotate(45)
+    #     qp.drawText(0, 0, 'TIME LORD')
+    #     qp.end()
 
 
 if __name__ == '__main__':
