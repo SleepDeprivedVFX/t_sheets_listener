@@ -57,33 +57,11 @@ QMenuBar::item:pressed {
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="AnalogClock" name="analogClock">
+   <widget class="QLabel" name="time_lord_title">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>500</x>
       <y>70</y>
-      <width>141</width>
-      <height>131</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>The current time</string>
-    </property>
-    <property name="whatsThis">
-     <string>The analog clock widget displays the current time.</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhNone</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>10</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -95,7 +73,7 @@ QMenuBar::item:pressed {
      <string>Time Lord</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="project_label">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -108,7 +86,7 @@ QMenuBar::item:pressed {
      <string>Project</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="project_dropdown">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -118,7 +96,7 @@ QMenuBar::item:pressed {
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="asset_shot_label">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -131,7 +109,7 @@ QMenuBar::item:pressed {
      <string>Asset / Shot</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="asset_shot_progress">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -141,7 +119,7 @@ QMenuBar::item:pressed {
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="task_label">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -154,7 +132,7 @@ QMenuBar::item:pressed {
      <string>Task</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_3">
+   <widget class="QComboBox" name="task_progress">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -164,7 +142,7 @@ QMenuBar::item:pressed {
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="start_time_label">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -177,7 +155,7 @@ QMenuBar::item:pressed {
      <string>Start Time</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="end_time_label">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -190,7 +168,7 @@ QMenuBar::item:pressed {
      <string>End Time</string>
     </property>
    </widget>
-   <widget class="QDateTimeEdit" name="dateTimeEdit">
+   <widget class="QDateTimeEdit" name="start_time">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -200,7 +178,7 @@ QMenuBar::item:pressed {
      </rect>
     </property>
    </widget>
-   <widget class="QDateTimeEdit" name="dateTimeEdit_2">
+   <widget class="QDateTimeEdit" name="end_time">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -210,7 +188,7 @@ QMenuBar::item:pressed {
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="clock_button">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -223,7 +201,7 @@ QMenuBar::item:pressed {
      <string>Clock In</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="switch_button">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -236,7 +214,7 @@ QMenuBar::item:pressed {
      <string>Switch</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_7">
+   <widget class="QLabel" name="artist_label">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -249,7 +227,7 @@ QMenuBar::item:pressed {
      <string>Artist</string>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar">
+   <widget class="QProgressBar" name="daily_total_progress">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -262,7 +240,7 @@ QMenuBar::item:pressed {
      <number>24</number>
     </property>
    </widget>
-   <widget class="QLabel" name="label_8">
+   <widget class="QLabel" name="daily_total_label">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -275,7 +253,7 @@ QMenuBar::item:pressed {
      <string>Daily Total</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_9">
+   <widget class="QLabel" name="weekly_total_label">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -288,7 +266,7 @@ QMenuBar::item:pressed {
      <string>Weekly Total</string>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar_2">
+   <widget class="QProgressBar" name="weekly_total_progress">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -299,38 +277,6 @@ QMenuBar::item:pressed {
     </property>
     <property name="value">
      <number>24</number>
-    </property>
-   </widget>
-   <widget class="AnalogClock" name="start_time_clock">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>230</y>
-      <width>100</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>The current time</string>
-    </property>
-    <property name="whatsThis">
-     <string>The analog clock widget displays the current time.</string>
-    </property>
-   </widget>
-   <widget class="AnalogClock" name="end_time_clock">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>220</y>
-      <width>100</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>The current time</string>
-    </property>
-    <property name="whatsThis">
-     <string>The analog clock widget displays the current time.</string>
     </property>
    </widget>
   </widget>
@@ -358,13 +304,6 @@ QMenuBar::item:pressed {
    </property>
   </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>AnalogClock</class>
-   <extends>QWidget</extends>
-   <header>analogclock.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
