@@ -37,7 +37,8 @@ right_now = datetime.datetime.now()
 filters = [
     ['user', 'is', {'type': 'HumanUser', 'id': 41}],
     ['sg_task_end', 'is', None],
-    ['sg_task_start', 'is_not', None]
+    ['sg_task_start', 'is_not', None],
+    ['sg_task_start', 'greater_than', week_start]
 ]
 fields = [
     'user',
@@ -45,49 +46,91 @@ fields = [
     'sg_task_start',
     'sg_task_end'
 ]
-test = sg.find('TimeLog', filters, fields)
+no_out_time = sg.find('TimeLog', filters, fields)
+print no_out_time
+
+filters = [
+    ['user', 'is', {'type': 'HumanUser', 'id': 41}],
+    ['sg_task_start', 'is_not', None],
+    ['sg_task_start', 'greater_than', week_start]
+]
+all_recent_time = sg.find('TimeLog', filters, fields)
+print all_recent_time
 i = 1
-if len(test) > 1:
+if len(no_out_time) > 1:
     # Check for too many active time cards
     flag = 'A red flag!  Too many empty times!'
     print flag
     # sort them so that they are in order of start time (manual entries can be anything!)
-    tested = sorted(test, key=lambda i: i['sg_task_start'])
-    # Pop the latest time sheet into it's own variable.  This will be our "master" time sheet.
-    latest = tested[-1]
-    print 'The latest: %s' % latest
-    print 'length of test: %s' % len(tested)
+    sorted_no_out_time = sorted(no_out_time, key=lambda i: i['sg_task_start'])
+    sorted_all_recent_time = sorted(all_recent_time, key=lambda i: i['sg_task_start'])
+
+    # save the latest time sheet into it's own variable.  This will be our "master" time sheet.
+    # Compare the latest empty to the latest all records
+    latest_no_out_time = sorted_no_out_time[-1]
+    latest_all_recent_time = sorted_all_recent_time[-1]
+    print 'The latest empty: %s' % latest_no_out_time
+    print 'The latest all records: %s' % latest_all_recent_time
+    if latest_all_recent_time != latest_no_out_time:
+        print 'OH FUCK!!!!'
+    print 'length of test: %s' % len(sorted_no_out_time)
 
     # Now reverse the order of the list for some additive comparisons.
     # test = sorted(test, reverse=-1)
     # print 'reversed test = %s' % test
     # Go through the errant time sheets and set the clock out times.
     # TODO: Eventually this will need to check against previous day and weekend times.  But for now...
-    for ot in range(0, len(tested)):
+    #       This will also need to check for skipped time entries:
+    #           Clockin: Friday @ 10am - Clockout: None
+    #           Clockin: Monday @ 10am - Clockout: Monday @ 1pm
+    #           Clockin: Monday @ 2pm  - Clockout: Monday @ 3pm
+    #           Clockin: Monday @ 3pm  - Clockout: None
+    #       It will have to be able to check not only previous times, but previous records.
+    #       This might take several comparable databases or entry comparisons.
+    for ot in range(0, len(sorted_no_out_time)):
         print 'ot: %s' % ot
-        # Get the current time sheet's start time
+        # Now to get the previous start time. To do this, I will need to get the ID from the sorted_no_out_time and
+        # then cycle through the sorted_all_recent_time list to find a matching ID number AND index from the
+        # sorted_all_recent_time record, so that I can add 1 to that index and retrieve the next start time from there.
+        no_out_ID = sorted_no_out_time[ot]['id']
+        next_start_time = None
+        for this in sorted_all_recent_time:
+            if this['id'] == no_out_ID:
+                recent_id = sorted_all_recent_time.index(this)
+                next_id = recent_id + 1
+
+                # Check to see if the list is longer than the indexes
+                if next_id > (len(sorted_all_recent_time) - 1):
+                    print 'LIST TOO LONG: %s' % len(sorted_all_recent_time)
+                    break
+                next_start_time = sorted_all_recent_time[next_id]['sg_task_start']
+                break
+
         try:
-            new_end = tested[ot + 1]['sg_task_start']
+            if next_start_time:
+                new_end = next_start_time
+            else:
+                new_end = sorted_no_out_time[ot + 1]['sg_task_start']
             print 'new_end: %s' % new_end
             # Apply it or the latest time sheet's start time to the last time sheet's end time.
             try:
-                tested[(ot)]['sg_task_end'] = new_end
+                sorted_no_out_time[ot]['sg_task_end'] = new_end
                 data = {
                     'sg_task_end': new_end
                 }
-                t_id = tested[(ot)]['id']
+                t_id = sorted_no_out_time[ot]['id']
                 sg.update('TimeLog', t_id, data)
             except IndexError, KeyError:
-                tested[(ot)]['sg_task_end'] = latest['sg_task_start']
+                sorted_no_out_time[ot]['sg_task_end'] = latest_no_out_time['sg_task_start']
                 data = {
-                    'sg_task_end': latest['sg_task_start']
+                    'sg_task_end': latest_no_out_time['sg_task_start']
                 }
-                t_id = tested[(ot)]['id']
+                t_id = sorted_no_out_time[ot]['id']
                 sg.update('TimeLog', t_id, data)
-            print 'task end: %s' % tested[(ot)]['sg_task_end']
+            print 'task end: %s' % sorted_no_out_time[ot]['sg_task_end']
         except:
             pass
-for t in tested:
+for t in sorted_no_out_time:
     if t['sg_task_start']:
         # Check the current start time against the first of the week.
 
