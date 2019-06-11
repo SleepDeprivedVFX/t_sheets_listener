@@ -7,6 +7,9 @@ import requests
 from PySide import QtGui, QtCore
 import ConfigParser
 
+# Engines
+from time_continuum import continuum
+
 sys_path = sys.path
 config_file = 'dalek.cfg'
 try:
@@ -27,9 +30,12 @@ cfg_sg_name = configuration.get('Shotgun', 'sg_name')
 
 sg = sgapi.Shotgun(cfg_sg_url, cfg_sg_name, cfg_sg_key)
 
+# set the continuum
+cont = continuum(user_id=41, sg=sg)
+print cont.compare_latest_records()
+
 # Get the first day of the week
-week_start = datetime.datetime.today() - datetime.timedelta(days=datetime.datetime.today().isoweekday() % 7)
-week_start = week_start.replace(tzinfo=None)
+week_start = cont.start_of_week()
 
 right_now = datetime.datetime.now()
 
