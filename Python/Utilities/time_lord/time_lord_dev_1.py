@@ -2,13 +2,10 @@ import shotgun_api3 as sgapi
 import os
 import sys
 import datetime
-import time
-import requests
-from PySide import QtGui, QtCore
 import ConfigParser
 
 # Engines
-from time_continuum import continuum
+from bin.time_continuum import continuum
 
 sys_path = sys.path
 config_file = 'dalek.cfg'
@@ -31,8 +28,7 @@ cfg_sg_name = configuration.get('Shotgun', 'sg_name')
 sg = sgapi.Shotgun(cfg_sg_url, cfg_sg_name, cfg_sg_key)
 
 # set the continuum
-cont = continuum(user_id=41, sg=sg)
-print cont.compare_latest_records()
+cont = continuum()
 
 # Get the first day of the week
 week_start = cont.start_of_week()
@@ -63,13 +59,15 @@ filters = [
 all_recent_time = sg.find('TimeLog', filters, fields)
 print all_recent_time
 i = 1
-if len(no_out_time) > 1:
+
+# sort them so that they are in order of start time (manual entries can be anything!)
+sorted_no_out_time = sorted(no_out_time, key=lambda i: i['sg_task_start'])
+sorted_all_recent_time = sorted(all_recent_time, key=lambda i: i['sg_task_start'])
+
+if len(sorted_no_out_time) > 1:
     # Check for too many active time cards
     flag = 'A red flag!  Too many empty times!'
     print flag
-    # sort them so that they are in order of start time (manual entries can be anything!)
-    sorted_no_out_time = sorted(no_out_time, key=lambda i: i['sg_task_start'])
-    sorted_all_recent_time = sorted(all_recent_time, key=lambda i: i['sg_task_start'])
 
     # save the latest time sheet into it's own variable.  This will be our "master" time sheet.
     # Compare the latest empty to the latest all records
@@ -136,6 +134,8 @@ if len(no_out_time) > 1:
             print 'task end: %s' % sorted_no_out_time[ot]['sg_task_end']
         except:
             pass
+
+
 for t in sorted_no_out_time:
     if t['sg_task_start']:
         # Check the current start time against the first of the week.
