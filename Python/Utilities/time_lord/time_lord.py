@@ -18,6 +18,14 @@ Here is a list of it's basic requirements:
             to make the new file clock in at 12:30 and out at 3:30.
 Without the need for doubling up the database in T-Sheets the new system should actually be much lighter, since it will
 only be running simple shotgun commands on things.
+
+NOTES:
+    1. The user is always the main entry point.  No user, no time log.  Thus:
+        a. The main UI running on someone's computer will take their login account to get the user
+        b. The IAP account will get it's user data from the server upon drag-n-drop
+
+REQUIREMENTS:
+    1. This tool will most likely require ActiveState python to be installed on everyone's systems.
 """
 
 import shotgun_api3 as sgapi
@@ -73,25 +81,26 @@ cfg_log_path = configuration.get('Logging', 'log_path')
 # ------------------------------------------------------------------------------------------------------
 log_file = 'psychic_paper.log'
 log_path = os.path.join(cfg_log_path, log_file)
-
-logger = logging.getLogger('psychic_paper')
-if cfg_debug_logging == 'True' or True:
-    logger.setLevel(logging.DEBUG)
+if cfg_debug_logging == 'True' or 'true' or True:
+    level = logging.DEBUG
 else:
-    logger.setLevel(logging.INFO)
-fh = logging.FileHandler(log_path)
-lf = logging.Formatter('%(asctime)s - :%(lineno)d - %(message)s')
-logger.addHandler(lf)
+    level = logging.INFO
+logger = logging.getLogger('psychic_paper')
+logger.setLevel(level=level)
+fh = logging.FileHandler(filename=log_path)
+fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
+fh.setFormatter(fm)
 logger.addHandler(fh)
 
 logger.info('The Time Lord has started!')
 
 # Setup Shotgun Connection
 sg = sgapi.Shotgun(cfg_sg_url, cfg_sg_name, cfg_sg_key)
+logger.debug('Shotgun is connected.')
 
 # setup continuum
 cont = continuum()
-
+print cont.start_of_week()
 
 # ------------------------------------------------------------------------------------------------------
 # Signal Emitters
