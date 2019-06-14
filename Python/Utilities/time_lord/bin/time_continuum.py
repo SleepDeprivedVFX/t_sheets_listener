@@ -10,7 +10,6 @@ or that appropriate pop ups can be issued reminding the user to update their tim
 This engine is going to handle the logic only.  Calls to users will be handled by other engines.
 """
 
-import shotgun_api3 as sgapi
 import os
 import sys
 import datetime
@@ -19,9 +18,10 @@ from dateutil import parser
 
 
 class continuum(object):
-    def __init__(self):
+    def __init__(self, sg=None):
         self.logger = logging.getLogger('psychic_paper.continuum')
         self.logger.info('Continuum Activated!')
+        self.sg = sg
 
         # Days of the week in an iteratable list
         self.weekdays = [

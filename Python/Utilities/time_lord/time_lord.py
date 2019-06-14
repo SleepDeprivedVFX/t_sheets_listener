@@ -37,51 +37,18 @@ import logging
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
-
+from bin.companions import companions
+from bin import configuration
 from ui import time_lord_clock as tlu
 
-sys_path = sys.path
-config_file = 'dalek.cfg'
-try:
-    print 'Finding configuration file...'
-    config_path = [f for f in sys_path if os.path.isfile(f + '/' + config_file)][0] + '/' + config_file
-    config_path = config_path.replace('\\', '/')
-    print 'Configuration found!'
-except IndexError, e:
-    raise e
-
-# Create the configuration connection
-configuration = ConfigParser.ConfigParser()
-print 'Reading the configuration file...'
-configuration.read(config_path)
-
-# Parse out the configuration to local variables
-# Shotgun
-cfg_sg_url = configuration.get('Shotgun', 'sg_url')
-cfg_sg_key = configuration.get('Shotgun', 'sg_key')
-cfg_sg_name = configuration.get('Shotgun', 'sg_name')
-
-# Time Lord
-cfg_regular_days = configuration.get('Time Lord', 'regular_days')
-cfg_weekend_days = configuration.get('Time Lord', 'weekend_days')
-cfg_regular_start = configuration.get('Time Lord', 'regular_start')
-cfg_regular_end = configuration.get('Time Lord', 'regular_end')
-cfg_approx_lunch_start = configuration.get('Time Lord', 'approx_lunch_start')
-cfg_approx_lunch_end = configuration.get('Time Lord', 'approx_lunch_end')
-cfg_ot_type = configuration.get('Time Lord', 'ot_type')
-cfg_ot_hours = configuration.get('Time Lord', 'ot_hours')
-cfg_dt_hours = configuration.get('Time Lord', 'dt_hours')
-
-# Logging
-cfg_debug_logging = configuration.get('Logging', 'debugging')
-cfg_log_path = configuration.get('Logging', 'log_path')
+config = configuration.get_configuration()
 
 # ------------------------------------------------------------------------------------------------------
 # Create logging system
 # ------------------------------------------------------------------------------------------------------
 log_file = 'psychic_paper.log'
-log_path = os.path.join(cfg_log_path, log_file)
-if cfg_debug_logging == 'True' or 'true' or True:
+log_path = os.path.join(config['log_path'], log_file)
+if config['debug_logging'] == 'True' or 'true' or True:
     level = logging.DEBUG
 else:
     level = logging.INFO
@@ -95,12 +62,20 @@ logger.addHandler(fh)
 logger.info('The Time Lord has started!')
 
 # Setup Shotgun Connection
-sg = sgapi.Shotgun(cfg_sg_url, cfg_sg_name, cfg_sg_key)
+sg = sgapi.Shotgun(config['sg_url'], config['sg_name'], config['sg_key'])
 logger.debug('Shotgun is connected.')
 
 # setup continuum
-cont = continuum()
-print cont.start_of_week()
+cont = continuum(sg)
+
+# setup companions
+users = companions(sg)
+user = users.get_user_from_computer()
+if user:
+    print user['name']
+else:
+    print 'User could not be found!'
+
 
 # ------------------------------------------------------------------------------------------------------
 # Signal Emitters
