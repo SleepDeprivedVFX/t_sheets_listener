@@ -56,13 +56,14 @@ class continuum(object):
         :param date: (str) a string formatted date
         :return: (tuple) (True/False, "day" string) - True if a weekday, False if not. Name returned either way.
         '''
-        if type(date) == datetime:
+        print type(date)
+        if type(date) == datetime or datetime.datetime:
             date = str(date)
         weekday = parser.parse(date).weekday()
         day = self.weekdays[weekday]
         if weekday < 5:
-            return (True, day)
-        return (False, day)
+            return True, day
+        return False, day
 
     def aint_today(self, date=None):
         '''
@@ -78,4 +79,18 @@ class continuum(object):
             return True
         return False
 
+    def get_previous_work_day(self, date=None, regular_days=[]):
+        '''
+        This method will take a date and return the previous working day.
+        :param date: A date to count back from
+        :param regular_days: [list] A list of active days from the config file
+        :return: previous_day: a date
+        '''
+        if date:
+            if not type(date) == datetime:
+                date = parser.parse(date)
+            is_last_week = self.time_from_last_week(start_time=date)
+            print 'is last week? %s' % is_last_week
 
+            is_weekday = self.date_is_weekday(date=date)
+            print 'is_weekday: %s' % is_weekday[1]

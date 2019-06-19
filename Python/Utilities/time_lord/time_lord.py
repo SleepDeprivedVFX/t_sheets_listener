@@ -32,7 +32,6 @@ import shotgun_api3 as sgapi
 import os
 import sys
 from PySide import QtGui, QtCore
-import ConfigParser
 import logging
 
 # Time Lord Libraries
@@ -61,14 +60,19 @@ logger.addHandler(fh)
 
 logger.info('The Time Lord has started!')
 
+# --------------------------------------------------------------------------------------------------
 # Setup Shotgun Connection
+# --------------------------------------------------------------------------------------------------
 sg = sgapi.Shotgun(config['sg_url'], config['sg_name'], config['sg_key'])
 logger.debug('Shotgun is connected.')
 
+# --------------------------------------------------------------------------------------------------
+# Connect Time Lord Components
+# --------------------------------------------------------------------------------------------------
 # setup continuum
 cont = continuum(sg)
 
-# setup companions
+# Setup and get users
 users = companions(sg)
 user = users.get_user_from_computer()
 if user:
@@ -110,6 +114,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
         self.ui.daily_total_progress.setValue(12)
+        # The following test line will need to be automatically filled in future
+        cont.get_previous_work_day('06-14-2019', regular_days=config['regular_days'])
 
 
 if __name__ == '__main__':
