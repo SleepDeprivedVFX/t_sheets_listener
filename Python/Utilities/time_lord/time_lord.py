@@ -115,7 +115,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.setupUi(self)
         self.ui.daily_total_progress.setValue(12)
         # The following test line will need to be automatically filled in future
-        cont.get_previous_work_day('06-14-2019', regular_days=config['regular_days'])
+        cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
 
 
 if __name__ == '__main__':
