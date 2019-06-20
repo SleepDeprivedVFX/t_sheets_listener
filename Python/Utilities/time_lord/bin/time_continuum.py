@@ -15,6 +15,7 @@ import sys
 import datetime
 import logging
 from dateutil import parser
+from dateutil import relativedelta
 
 
 class continuum(object):
@@ -56,7 +57,6 @@ class continuum(object):
         :param date: (str) a string formatted date
         :return: (tuple) (True/False, "day" string) - True if a weekday, False if not. Name returned either way.
         '''
-        print type(date)
         if type(date) == datetime or datetime.datetime:
             date = str(date)
         weekday = parser.parse(date).weekday()
@@ -86,11 +86,34 @@ class continuum(object):
         :param regular_days: [list] A list of active days from the config file
         :return: previous_day: a date
         '''
+        prev_day = None
         if date:
             if not type(date) == datetime:
                 date = parser.parse(date)
-            is_last_week = self.time_from_last_week(start_time=date)
-            print 'is last week? %s' % is_last_week
 
-            is_weekday = self.date_is_weekday(date=date)
-            print 'is_weekday: %s' % is_weekday[1]
+            # subtract a day
+            prev_day = date - relativedelta.relativedelta(days=1)
+            self.logger.info('prev_day: %s' % prev_day)
+
+            is_last_week = self.time_from_last_week(start_time=prev_day)
+            self.logger.info('is last week? %s' % is_last_week)
+
+            is_weekday = self.date_is_weekday(date=prev_day)
+            is_wd = is_weekday[0]
+            weekday = is_weekday[1]
+            if is_wd:
+                self.logger.info('is_weekday: %s' % weekday)
+                if weekday in regular_days:
+                    self.logger.info('Regular day %s' % weekday)
+            else:
+                self.logger.info('NOT a weekday! %s' % weekday)
+                while weekday not in regular_days:
+                    prev_day = prev_day - relativedelta.relativedelta(days=1)
+                    is_weekday = self.date_is_weekday(date=prev_day)
+                    weekday = is_weekday[1]
+                self.logger.info('Now the weekday is: %s' % weekday)
+                self.logger.info('And the new date is: %s' % prev_day)
+
+        return prev_day
+
+
