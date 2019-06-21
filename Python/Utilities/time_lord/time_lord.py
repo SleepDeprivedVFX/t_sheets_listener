@@ -33,6 +33,7 @@ import os
 import sys
 from PySide import QtGui, QtCore
 import logging
+from datetime import datetime
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
@@ -88,18 +89,31 @@ class time_signals(QtCore.QObject):
     log = QtCore.Signal(str)
     error = QtCore.Signal(str)
     debug = QtCore.Signal(str)
+    kill_signal = QtCore.Signal(bool)
+    main_clock = QtCore.Signal(str)
+    in_clock = QtCore.Signal(str)
+    out_clock = QtCore.Signal(str)
 
 
 # ------------------------------------------------------------------------------------------------------
 # Primary Issues
 # ------------------------------------------------------------------------------------------------------
 class time_engine(QtCore.QThread):
-    pass
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+        self.time_signal = time_signals()
+        self.kill_it = False
+        self.kill_signal = self.time_signal.kill_signal.connect(self.kill)
 
+    def kill(self):
+        self.kill_it = True
 
-class time_lord:
-    def __init__(self):
-        pass
+    def run(self, *args, **kwargs):
+        self.run_the_clock()
+
+    def run_the_clock(self):
+        while not self.kill_it:
+            self.time_signal.main_clock.emit(str(int(datetime.now().second)))
 
 
 class time_lord_ui(QtGui.QMainWindow):
@@ -110,12 +124,29 @@ class time_lord_ui(QtGui.QMainWindow):
         # Setup settings system
         self.settings = QtCore.QSettings('AdamBenson', 'TimeLord')
 
+        # Signal setup
+        self.time_signal = time_signals()
+
+        # Setup Engine
+        self.time_engine = time_engine()
+
         # Setup UI
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
         self.ui.daily_total_progress.setValue(12)
+        self.ui.clock_button.clicked.connect(self.start_time)
+        self.time_engine.time_signal.main_clock.connect(self.main_clock)
+        self.ui.test_counter.setText('12')
+
         # The following test line will need to be automatically filled in future
-        cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
+        # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
+
+    def start_time(self):
+        self.time_engine.kill_it = False
+        self.time_engine.start()
+
+    def main_clock(self, in_time):
+        self.ui.test_counter.setText(in_time)
 
 
 if __name__ == '__main__':

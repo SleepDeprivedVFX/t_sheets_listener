@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Fri Jun 07 17:02:16 2019
+# Created: Thu Jun 20 17:31:22 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -113,6 +113,9 @@ class Ui_TimeLord(object):
         self.weekly_total_progress.setGeometry(QtCore.QRect(430, 160, 118, 23))
         self.weekly_total_progress.setProperty("value", 24)
         self.weekly_total_progress.setObjectName("weekly_total_progress")
+        self.test_counter = QtGui.QLabel(self.centralwidget)
+        self.test_counter.setGeometry(QtCore.QRect(100, 30, 46, 13))
+        self.test_counter.setObjectName("test_counter")
         TimeLord.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(TimeLord)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 687, 30))
@@ -144,6 +147,7 @@ class Ui_TimeLord(object):
         self.artist_label.setText(QtGui.QApplication.translate("TimeLord", "Artist", None, QtGui.QApplication.UnicodeUTF8))
         self.daily_total_label.setText(QtGui.QApplication.translate("TimeLord", "Daily Total", None, QtGui.QApplication.UnicodeUTF8))
         self.weekly_total_label.setText(QtGui.QApplication.translate("TimeLord", "Weekly Total", None, QtGui.QApplication.UnicodeUTF8))
+        self.test_counter.setText(QtGui.QApplication.translate("TimeLord", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
         self.menuOptions.setTitle(QtGui.QApplication.translate("TimeLord", "Options", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCrash_Computer.setText(QtGui.QApplication.translate("TimeLord", "Crash Computer", None, QtGui.QApplication.UnicodeUTF8))
 
