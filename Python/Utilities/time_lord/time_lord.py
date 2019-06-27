@@ -112,8 +112,11 @@ class time_engine(QtCore.QThread):
         self.run_the_clock()
 
     def run_the_clock(self):
+        second = int(datetime.now().second)
         while not self.kill_it:
-            self.time_signal.main_clock.emit(str(int(datetime.now().second)))
+            if int(datetime.now().second) != second:
+                second = int(datetime.now().second)
+                self.time_signal.main_clock.emit(str(second))
 
 
 class time_lord_ui(QtGui.QMainWindow):
@@ -133,10 +136,19 @@ class time_lord_ui(QtGui.QMainWindow):
         # Setup UI
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
-        self.ui.daily_total_progress.setValue(12)
+
+        # Set main user info
+        self.ui.artist_label.setText(user['name'])
+
+        # self.ui.daily_total_progress.setValue(12)
         self.ui.clock_button.clicked.connect(self.start_time)
+
+        # Connect the signals to the functions below
         self.time_engine.time_signal.main_clock.connect(self.main_clock)
-        self.ui.test_counter.setText('12')
+
+        test = QtGui.QTransform()
+        test.rotate(45)
+        self.ui.time_hour.setTransform(test)
 
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
@@ -146,7 +158,14 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.start()
 
     def main_clock(self, in_time):
-        self.ui.test_counter.setText(in_time)
+        # Function that automatically updates UI when triggered by a signal
+        # self.ui.test_counter.setText(in_time)
+        angle = int(in_time) * 6
+        test = QtGui.QTransform()
+        test.rotate(angle)
+        self.ui.time_hour.setTransform(test)
+        self.ui.time_hour.update()
+        print angle
 
 
 if __name__ == '__main__':

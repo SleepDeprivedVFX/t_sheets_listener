@@ -10,8 +10,6 @@ or that appropriate pop ups can be issued reminding the user to update their tim
 This engine is going to handle the logic only.  Calls to users will be handled by other engines.
 """
 
-import os
-import sys
 import datetime
 import logging
 from dateutil import parser

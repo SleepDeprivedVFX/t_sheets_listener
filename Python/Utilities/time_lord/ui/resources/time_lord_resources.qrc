@@ -1,0 +1,30 @@
+<RCC>
+  <qresource prefix="backgrounds">
+    <file>screen_bg.png</file>
+    <file>project_bar.png</file>
+    <file>task_bar.png</file>
+    <file>AssetShot_bar.png</file>
+    <file>artist_background.png</file>
+    <file>red_InOut_button.png</file>
+    <file>pre-rendered_image.jpg</file>
+  </qresource>
+  <qresource prefix="vaccuum_tube_numbers">
+    <file>vt_0.png</file>
+    <file>vt_1.png</file>
+    <file>vt_2.png</file>
+    <file>vt_3.png</file>
+    <file>vt_4.png</file>
+    <file>vt_5.png</file>
+    <file>vt_6.png</file>
+    <file>vt_7.png</file>
+    <file>vt_8.png</file>
+    <file>vt_9.png</file>
+  </qresource>
+  <qresource prefix="roller_numbers"/>
+  <qresource prefix="dial hands">
+    <file>meter_dial.png</file>
+    <file>clock_hour_hand.png</file>
+    <file>clock_minute_hand.png</file>
+  </qresource>
+  <qresource prefix="lights buttons"/>
+</RCC>

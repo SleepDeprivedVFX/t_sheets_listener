@@ -6,16 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>687</width>
-    <height>572</height>
+    <width>1305</width>
+    <height>1073</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1305</width>
+    <height>1073</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1305</width>
+    <height>1073</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Time Lord</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
-background-color: rgb(100, 100, 100);
+background-image: url(:/backgrounds/pre-rendered_image.jpg);
+background-repeat: none;
+background-color: rgba(100, 100, 100, 0);
 selection-color: rgb(115, 115, 115);
 selection-background-color: rgb(100, 100, 100);
 color: rgb(230, 230, 230);
@@ -54,14 +68,15 @@ QMenuBar::item:pressed {
 
 
 
+
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="time_lord_title">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>70</y>
+      <x>530</x>
+      <y>20</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -73,106 +88,56 @@ QMenuBar::item:pressed {
      <string>Time Lord</string>
     </property>
    </widget>
-   <widget class="QLabel" name="project_label">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>340</y>
-      <width>46</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Project</string>
-    </property>
-   </widget>
    <widget class="QComboBox" name="project_dropdown">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>340</y>
-      <width>69</width>
-      <height>22</height>
+      <x>198</x>
+      <y>731</y>
+      <width>331</width>
+      <height>51</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLabel" name="asset_shot_label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>380</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Asset / Shot</string>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/backgrounds/project_bar.png);
+image: url(:/backgrounds/project_bar.png);
+</string>
     </property>
    </widget>
    <widget class="QComboBox" name="asset_shot_progress">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>380</y>
-      <width>69</width>
-      <height>22</height>
+      <x>200</x>
+      <y>820</y>
+      <width>321</width>
+      <height>51</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLabel" name="task_label">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>420</y>
-      <width>46</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Task</string>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/backgrounds/AssetShot_bar.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
     </property>
    </widget>
    <widget class="QComboBox" name="task_progress">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>410</y>
-      <width>69</width>
-      <height>22</height>
+      <x>200</x>
+      <y>910</y>
+      <width>321</width>
+      <height>51</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLabel" name="start_time_label">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>360</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Start Time</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="end_time_label">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>350</y>
-      <width>46</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>End Time</string>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/backgrounds/task_bar.png);
+background-repeat: none;
+background-color: rgba(0, 0, 1, 0);</string>
     </property>
    </widget>
    <widget class="QDateTimeEdit" name="start_time">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>380</y>
+      <x>640</x>
+      <y>750</y>
       <width>194</width>
       <height>22</height>
      </rect>
@@ -181,8 +146,8 @@ QMenuBar::item:pressed {
    <widget class="QDateTimeEdit" name="end_time">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>380</y>
+      <x>970</x>
+      <y>750</y>
       <width>194</width>
       <height>22</height>
      </rect>
@@ -191,132 +156,297 @@ QMenuBar::item:pressed {
    <widget class="QPushButton" name="clock_button">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>450</y>
-      <width>75</width>
-      <height>23</height>
+      <x>1060</x>
+      <y>860</y>
+      <width>111</width>
+      <height>121</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/backgrounds/red_InOut_button.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
     <property name="text">
-     <string>Clock In</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="switch_button">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>450</y>
-      <width>75</width>
-      <height>23</height>
+      <x>574</x>
+      <y>862</y>
+      <width>121</width>
+      <height>121</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/backgrounds/red_InOut_button.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
     <property name="text">
-     <string>Switch</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="artist_label">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>290</y>
-      <width>46</width>
-      <height>13</height>
+      <x>205</x>
+      <y>572</y>
+      <width>331</width>
+      <height>91</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/backgrounds/artist_background.png);
+font: 22pt &quot;Calisto MT&quot;;</string>
+    </property>
     <property name="text">
-     <string>Artist</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;Artist&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QProgressBar" name="daily_total_progress">
+   <widget class="QPlainTextEdit" name="output_window">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>900</x>
+      <y>110</y>
+      <width>311</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/backgrounds/screen_bg.png);
+border-color: rgba(255, 255, 255, 0);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="run_hour_ten">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>350</y>
+      <width>61</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/vt_0.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="run_hour_one">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>350</y>
+      <width>61</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/vt_4.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="run_minute_ten">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>350</y>
+      <width>61</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/vt_1.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="run_minute_one">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>350</y>
+      <width>61</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/vt_6.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="run_second_ten">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>350</y>
+      <width>61</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/vt_5.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="run_second_one">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>350</y>
+      <width>61</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/vt_9.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="week_meter">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
       <y>160</y>
-      <width>118</width>
-      <height>23</height>
+      <width>20</width>
+      <height>81</height>
      </rect>
     </property>
-    <property name="value">
-     <number>24</number>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/dial hands/meter_dial.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="daily_total_label">
+   <widget class="QGraphicsView" name="day_meter">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>130</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Daily Total</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="weekly_total_label">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>130</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Weekly Total</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="weekly_total_progress">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
+      <x>520</x>
       <y>160</y>
-      <width>118</width>
-      <height>23</height>
+      <width>20</width>
+      <height>81</height>
      </rect>
     </property>
-    <property name="value">
-     <number>24</number>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/dial hands/meter_dial.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="test_counter">
+   <widget class="QGraphicsView" name="time_minute">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>30</y>
-      <width>46</width>
-      <height>13</height>
+      <x>240</x>
+      <y>170</y>
+      <width>31</width>
+      <height>181</height>
      </rect>
     </property>
-    <property name="text">
-     <string>TextLabel</string>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/dial hands/clock_minute_hand.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="time_hour">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>180</y>
+      <width>31</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/dial hands/clock_hour_hand.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>687</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuOptions">
-    <property name="title">
-     <string>Options</string>
-    </property>
-    <addaction name="actionCrash_Computer"/>
-   </widget>
-   <addaction name="menuOptions"/>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionCrash_Computer">
    <property name="text">
     <string>Crash Computer</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources/time_lord_resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
