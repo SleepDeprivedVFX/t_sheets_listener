@@ -39,6 +39,7 @@ from datetime import datetime
 from bin.time_continuum import continuum
 from bin.companions import companions
 from bin import configuration
+from bin import shotgun_collect
 from ui import time_lord_clock as tlu
 
 config = configuration.get_configuration()
@@ -76,10 +77,9 @@ cont = continuum(sg)
 # Setup and get users
 users = companions(sg)
 user = users.get_user_from_computer()
-if user:
-    print user['name']
-else:
-    print 'User could not be found!'
+
+# setup shotgun data connection
+sg_data = shotgun_collect.sg_data(sg)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -95,10 +95,20 @@ class time_signals(QtCore.QObject):
     out_clock = QtCore.Signal(str)
 
 
+# class time_engine(QtCore.QThread):
+#     # This bit is trial and error.  It may have to go into the main UI, but my fear is that
+#     # the process will hang up the UI.
+#     def __init__(self, parent=None):
+#         super(time_engine, self).__init__(parent)
+#         timer = QtCore.QTimer(self)
+#         timer.timeout.connect(self.update)
+#         timer.start(1000)
+
+
 # ------------------------------------------------------------------------------------------------------
-# Primary Issues
+# Primary Engine
 # ------------------------------------------------------------------------------------------------------
-class time_engine(QtCore.QThread):
+class time_lord(QtCore.QThread):
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
         self.time_signal = time_signals()
@@ -124,14 +134,21 @@ class time_lord_ui(QtGui.QMainWindow):
     def __init__(self):
         super(time_lord_ui, self).__init__(parent=None)
 
+        # Initialize UI timer
+        timer = QtCore.QTimer(self)
+        timer.timeout.connect(self.update)
+        timer.start(1000)
+
+        self.tick = QtCore.QTime.currentTime()
+
         # Setup settings system
         self.settings = QtCore.QSettings('AdamBenson', 'TimeLord')
 
         # Signal setup
         self.time_signal = time_signals()
 
-        # Setup Engine
-        self.time_engine = time_engine()
+        # Setup Time Engine
+        self.time_lord = time_lord()
 
         # Setup UI
         self.ui = tlu.Ui_TimeLord()
@@ -140,22 +157,29 @@ class time_lord_ui(QtGui.QMainWindow):
         # Set main user info
         self.ui.artist_label.setText(user['name'])
 
+        # Set the project list.
+        active_projects = sg_data.get_active_projects()
+        if active_projects:
+            for project in active_projects:
+                self.ui.project_dropdown.addItem('%s - %s' % (project['code'], project['name']))
+
         # self.ui.daily_total_progress.setValue(12)
         self.ui.clock_button.clicked.connect(self.start_time)
 
         # Connect the signals to the functions below
-        self.time_engine.time_signal.main_clock.connect(self.main_clock)
+        self.time_lord.time_signal.main_clock.connect(self.main_clock)
 
         test = QtGui.QTransform()
-        test.rotate(45)
+        test.rotate(30 * (self.tick.second()))
         self.ui.time_hour.setTransform(test)
+        self.ui.time_hour.update()
 
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
 
     def start_time(self):
-        self.time_engine.kill_it = False
-        self.time_engine.start()
+        self.time_lord.kill_it = False
+        self.time_lord.start()
 
     def main_clock(self, in_time):
         # Function that automatically updates UI when triggered by a signal
