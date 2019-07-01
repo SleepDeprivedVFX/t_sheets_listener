@@ -27,6 +27,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
+
 background-image: url(:/backgrounds/time_lord_bg.png);
 background-repeat: none;
 background-color: rgba(100, 100, 100, 0);

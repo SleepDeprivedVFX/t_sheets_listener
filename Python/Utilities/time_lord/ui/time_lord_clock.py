@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Mon Jul 01 10:47:18 2019
+# Created: Mon Jul 01 11:27:09 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -16,6 +16,7 @@ class Ui_TimeLord(object):
         TimeLord.setMinimumSize(QtCore.QSize(978, 807))
         TimeLord.setMaximumSize(QtCore.QSize(978, 807))
         TimeLord.setStyleSheet("QWidget{\n"
+"\n"
 "background-image: url(:/backgrounds/time_lord_bg.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(100, 100, 100, 0);\n"
