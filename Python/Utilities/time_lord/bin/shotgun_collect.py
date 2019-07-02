@@ -8,8 +8,9 @@ import logging
 class sg_data(object):
     def __init__(self, sg=None):
         self.logger = logging.getLogger('psychic_paper.sg_data')
-        self.logger.info('Shotgun Data Collection Activated!')
         self.sg = sg
+        self.logger.debug('Shotgun sub-loaded.')
+        self.logger.info('Shotgun Data Collection Activated!')
 
     def get_active_projects(self):
         self.logger.info('Getting active projects')
@@ -29,12 +30,83 @@ class sg_data(object):
     def get_project_assets(self, proj_id=None):
         if proj_id:
             self.logger.info('Getting project assets...')
+            filters = [
+                ['project', 'is', {'type': 'Project', 'id': proj_id}]
+            ]
+            fields = [
+                'code'
+            ]
+            assets = self.sg.find('Asset', filters, fields)
+            self.logger.info('Assets collected.')
+            self.logger.debug('Assets List: %s' % assets)
+            return assets
 
     def get_project_shots(self, proj_id=None):
         if proj_id:
             self.logger.info('Getting project shots...')
+            filters = [
+                ['project', 'is', {'type': 'Project', 'id': proj_id}]
+            ]
+            fields = [
+                'code'
+            ]
+            shots = self.sg.find('Shot', filters, fields)
+            self.logger.info('Shots collected')
+            self.logger.debug('Shots List: %s' % shots)
+            return shots
 
     def get_entity_tasks(self, entity_id=None):
         if entity_id:
-            self.logger.info('Getting tasks...')
+            self.logger.info('Getting tasks for entity ID %s...' % entity_id)
+            filters = [
+                {
+                    'filter_operator': 'any',
+                    'filters': [
+                        ['entity', 'is', {'type': 'Asset', 'id': entity_id}],
+                        ['entity', 'is', {'type': 'Shot', 'id': entity_id}]
+                    ]
+                }
+            ]
+            fields = [
+                'content',
+                'step'
+            ]
+            tasks = self.sg.find('Task', filters, fields)
+            self.logger.info('Tasks collected')
+            self.logger.debug('Tasks List: %s' % tasks)
+            return tasks
 
+    def get_context_from_UI(self):
+        pass
+
+    def get_context_from_path(self, path=None):
+        pass
+
+    def get_sg_configuration(self, proj_id):
+        """
+        Get the Pipeline configuration from the Project ID.  This gets the windows_path to where the pipeline config files
+        exist on the server
+        :param proj_id:
+        :return: config_path
+        """
+        self.logger.debug(('%' * 35) + 'get_configuration' + ('%' * 35))
+        try:
+            if proj_id:
+                filters = [
+                    ['project', 'is', {'type': 'Project', 'id': proj_id}],
+                    ['code', 'is', 'Primary']
+                ]
+                fields = [
+                    'windows_path'
+                ]
+                get_config = self.sg.find_one('PipelineConfiguration', filters, fields)
+                if get_config:
+                    config_path = get_config['windows_path']
+                    config_path = config_path.replace('\\', '/')
+
+                    self.logger.debug(('.' * 35) + 'END get_configuration' + ('.' * 35))
+                    return config_path
+            return
+        except Exception, e:
+            self.logger.error('Some shit when down! %s' % e)
+            return False

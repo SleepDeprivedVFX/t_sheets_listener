@@ -69,8 +69,11 @@ class continuum(object):
         :param date: a date value
         :return: True or False
         '''
-        if type(date) == datetime:
+        self.logger.debug('Date type: %s' % type(date))
+        if type(date) == datetime or datetime.datetime:
+            self.logger.debug('datetime detected.  Converting date to string...')
             date = str(date)
+            self.logger.info('Date converted: %s' % date)
         in_date = parser.parse(date).date()
         now_date = datetime.datetime.now().date()
         if in_date != now_date:
@@ -85,8 +88,10 @@ class continuum(object):
         :return: previous_day: a date
         '''
         prev_day = None
+        self.logger.info('Getting the previous work day...')
         if date:
-            if not type(date) == datetime:
+            if type(date) == str:
+                self.logger.debug('String type date detected.  Converting...')
                 date = parser.parse(date)
 
             # subtract a day
@@ -114,4 +119,60 @@ class continuum(object):
 
         return prev_day
 
+    def get_last_timesheet(self, user=None):
+        if user:
+            self.logger.info('Finding the last timesheet for %s' % user['name'])
+            user_id = user['id']
 
+            # List all the timesheets for the user
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user_id}]
+            ]
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end'
+            ]
+            last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
+                                                                                  'direction': 'desc'}])
+            return last_timesheet
+
+    def assume_end_time(self, start_time=None, eod=None):
+        self.logger.info('Assuming an end time from the date and configuration...')
+        if start_time:
+            if type(eod) == str:
+                self.logger.debug('Converting time to datetime type...')
+                eod = parser.parse(eod).time()
+            raw_date = datetime.datetime.date(start_time)
+            new_datetime = datetime.datetime.combine(raw_date, eod)
+            self.logger.debug('End date assumed: %s' % new_datetime)
+            return new_datetime
+
+    def clock_out_time_sheet(self, timesheet=None, clock_out=None):
+        if timesheet:
+            self.logger.debug('Timesheet: %s' % timesheet)
+            data = {
+                'sg_task_end': clock_out
+            }
+            self.sg.update('TimeLog', timesheet['id'], data)
+            self.logger.info('Timesheet updated.')
+
+    def create_new_timesheet(self, user=None, context=None):
+        if user and context:
+            project_id = context['Project']['id']
+            project_name = context['Project']['name']
+            task_id = context['Task']['id']
+            task_name = context['Task']['content']
+            entity_id = context['Entity']['id']
+            entity_name = context['Entity']['code']
+            user_id = user['id']
+
+            data = {
+                'entity': {'type': 'Task', 'id': task_id},
+                'sg_task_start': datetime.datetime.now(),
+                'user': {'type': 'HumanUser', 'id': user_id},
+                'project': {'type': 'Project', 'id': project_id}
+            }
+            timesheet = self.sg.create('TimeLog', data)
+            return timesheet
