@@ -9,16 +9,16 @@
     <file>time_lord_bg.png</file>
   </qresource>
   <qresource prefix="vaccuum_tube_numbers">
-    <file>elements/eight_8.png</file>
-    <file>elements/five_5.png</file>
-    <file>elements/four_4.png</file>
-    <file>elements/nine_9.png</file>
-    <file>elements/one_1.png</file>
-    <file>elements/seven_7.png</file>
-    <file>elements/six_6.png</file>
-    <file>elements/three_3.png</file>
-    <file>elements/two_2.png</file>
-    <file>elements/zero_0.png</file>
+    <file>elements/vt_0.png</file>
+    <file>elements/vt_1.png</file>
+    <file>elements/vt_2.png</file>
+    <file>elements/vt_3.png</file>
+    <file>elements/vt_4.png</file>
+    <file>elements/vt_5.png</file>
+    <file>elements/vt_6.png</file>
+    <file>elements/vt_7.png</file>
+    <file>elements/vt_8.png</file>
+    <file>elements/vt_9.png</file>
   </qresource>
   <qresource prefix="roller_numbers">
     <file>elements/end_d_ones_eight_8.png</file>

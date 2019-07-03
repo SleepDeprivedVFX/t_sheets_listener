@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Mon Jul 01 11:27:09 2019
+# Created: Tue Jul 02 16:46:23 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,9 +44,9 @@ class Ui_TimeLord(object):
 "background-color: rgba(0, 0, 0, 0);")
         self.project_dropdown.setObjectName("project_dropdown")
         self.project_dropdown.addItem("")
-        self.asset_shot_progress = QtGui.QComboBox(self.centralwidget)
-        self.asset_shot_progress.setGeometry(QtCore.QRect(160, 610, 221, 41))
-        self.asset_shot_progress.setStyleSheet("background-image: url(:/backgrounds/elements/entity_bg.png);\n"
+        self.entity_dropdpwn = QtGui.QComboBox(self.centralwidget)
+        self.entity_dropdpwn.setGeometry(QtCore.QRect(160, 610, 221, 41))
+        self.entity_dropdpwn.setStyleSheet("background-image: url(:/backgrounds/elements/entity_bg.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);\n"
 "padding-left: 25px;\n"
@@ -54,10 +54,11 @@ class Ui_TimeLord(object):
 "subcontrol-position: top right;\n"
 "font: 16pt \"Calisto MT\";\n"
 "color: rgb(56, 9, 8);")
-        self.asset_shot_progress.setObjectName("asset_shot_progress")
-        self.task_name = QtGui.QComboBox(self.centralwidget)
-        self.task_name.setGeometry(QtCore.QRect(160, 680, 221, 31))
-        self.task_name.setStyleSheet("background-image: url(:/backgrounds/elements/task_bg.png);\n"
+        self.entity_dropdpwn.setObjectName("entity_dropdpwn")
+        self.entity_dropdpwn.addItem("")
+        self.task_dropdown = QtGui.QComboBox(self.centralwidget)
+        self.task_dropdown.setGeometry(QtCore.QRect(160, 680, 221, 31))
+        self.task_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/task_bg.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 1, 0);\n"
 "padding-left: 25px;\n"
@@ -65,7 +66,8 @@ class Ui_TimeLord(object):
 "subcontrol-position: top right;\n"
 "font: 16pt \"Calisto MT\";\n"
 "color: rgb(56, 9, 8);")
-        self.task_name.setObjectName("task_name")
+        self.task_dropdown.setObjectName("task_dropdown")
+        self.task_dropdown.addItem("")
         self.clock_button = QtGui.QPushButton(self.centralwidget)
         self.clock_button.setGeometry(QtCore.QRect(790, 640, 91, 91))
         self.clock_button.setStyleSheet("background-image: url(:/lights buttons/elements/red_in_out_button.png);\n"
@@ -102,13 +104,20 @@ class Ui_TimeLord(object):
         self.output_window.setStyleSheet("background-image: url(:/backgrounds/elements/output_monitor_top.png);\n"
 "border-color: rgba(255, 255, 255, 0);\n"
 "background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 7pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);")
         self.output_window.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_window.setFrameShadow(QtGui.QFrame.Plain)
+        self.output_window.setLineWidth(1)
+        self.output_window.setMidLineWidth(0)
+        self.output_window.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_window.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_window.setBackgroundVisible(False)
         self.output_window.setObjectName("output_window")
         self.run_hour_ten = QtGui.QGraphicsView(self.centralwidget)
         self.run_hour_ten.setGeometry(QtCore.QRect(280, 270, 41, 61))
-        self.run_hour_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/zero_0.png);\n"
+        self.run_hour_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_0.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.run_hour_ten.setFrameShape(QtGui.QFrame.NoFrame)
@@ -116,7 +125,7 @@ class Ui_TimeLord(object):
         self.run_hour_ten.setObjectName("run_hour_ten")
         self.run_hour_one = QtGui.QGraphicsView(self.centralwidget)
         self.run_hour_one.setGeometry(QtCore.QRect(340, 270, 41, 61))
-        self.run_hour_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/three_3.png);\n"
+        self.run_hour_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_3.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.run_hour_one.setFrameShape(QtGui.QFrame.NoFrame)
@@ -124,7 +133,7 @@ class Ui_TimeLord(object):
         self.run_hour_one.setObjectName("run_hour_one")
         self.run_minute_ten = QtGui.QGraphicsView(self.centralwidget)
         self.run_minute_ten.setGeometry(QtCore.QRect(415, 270, 41, 61))
-        self.run_minute_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/five_5.png);\n"
+        self.run_minute_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_5.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.run_minute_ten.setFrameShape(QtGui.QFrame.NoFrame)
@@ -132,7 +141,7 @@ class Ui_TimeLord(object):
         self.run_minute_ten.setObjectName("run_minute_ten")
         self.run_minute_one = QtGui.QGraphicsView(self.centralwidget)
         self.run_minute_one.setGeometry(QtCore.QRect(480, 270, 41, 61))
-        self.run_minute_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/nine_9.png);\n"
+        self.run_minute_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_9.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.run_minute_one.setFrameShape(QtGui.QFrame.NoFrame)
@@ -140,7 +149,7 @@ class Ui_TimeLord(object):
         self.run_minute_one.setObjectName("run_minute_one")
         self.run_second_ten = QtGui.QGraphicsView(self.centralwidget)
         self.run_second_ten.setGeometry(QtCore.QRect(550, 270, 51, 61))
-        self.run_second_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/two_2.png);\n"
+        self.run_second_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_2.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.run_second_ten.setFrameShape(QtGui.QFrame.NoFrame)
@@ -148,7 +157,7 @@ class Ui_TimeLord(object):
         self.run_second_ten.setObjectName("run_second_ten")
         self.run_second_one = QtGui.QGraphicsView(self.centralwidget)
         self.run_second_one.setGeometry(QtCore.QRect(610, 270, 41, 61))
-        self.run_second_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/one_1.png);\n"
+        self.run_second_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_1.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.run_second_one.setFrameShape(QtGui.QFrame.NoFrame)
@@ -302,14 +311,6 @@ class Ui_TimeLord(object):
         self.end_clock_hour.setFrameShape(QtGui.QFrame.NoFrame)
         self.end_clock_hour.setFrameShadow(QtGui.QFrame.Plain)
         self.end_clock_hour.setObjectName("end_clock_hour")
-        self.lower_output = QtGui.QGraphicsView(self.centralwidget)
-        self.lower_output.setGeometry(QtCore.QRect(690, 160, 211, 181))
-        self.lower_output.setStyleSheet("background-image: url(:/backgrounds/elements/output_monitor_bottom.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.lower_output.setFrameShape(QtGui.QFrame.NoFrame)
-        self.lower_output.setFrameShadow(QtGui.QFrame.Plain)
-        self.lower_output.setObjectName("lower_output")
         self.red_light = QtGui.QGraphicsView(self.centralwidget)
         self.red_light.setGeometry(QtCore.QRect(805, 350, 71, 61))
         self.red_light.setStyleSheet("background-image: url(:/lights buttons/elements/red_light_on.png);\n"
@@ -362,6 +363,25 @@ class Ui_TimeLord(object):
 "background-color: rgba(0, 0, 0, 0);")
         self.end_date_button.setText("")
         self.end_date_button.setObjectName("end_date_button")
+        self.lower_output = QtGui.QPlainTextEdit(self.centralwidget)
+        self.lower_output.setGeometry(QtCore.QRect(690, 160, 201, 161))
+        self.lower_output.setStyleSheet("\n"
+"QPlainTextEdit{\n"
+"background-image: url(:/backgrounds/elements/output_monitor_bottom.png);\n"
+"background-repeat: none;\n"
+"border-color: rgba(255, 255, 255, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 8pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);\n"
+"opacity: .5;\n"
+"}\n"
+"")
+        self.lower_output.setFrameShape(QtGui.QFrame.NoFrame)
+        self.lower_output.setFrameShadow(QtGui.QFrame.Plain)
+        self.lower_output.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.lower_output.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.lower_output.setDocumentTitle("")
+        self.lower_output.setObjectName("lower_output")
         TimeLord.setCentralWidget(self.centralwidget)
         self.actionCrash_Computer = QtGui.QAction(TimeLord)
         self.actionCrash_Computer.setObjectName("actionCrash_Computer")
@@ -372,7 +392,15 @@ class Ui_TimeLord(object):
     def retranslateUi(self, TimeLord):
         TimeLord.setWindowTitle(QtGui.QApplication.translate("TimeLord", "Time Lord", None, QtGui.QApplication.UnicodeUTF8))
         self.project_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Project", None, QtGui.QApplication.UnicodeUTF8))
+        self.entity_dropdpwn.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
+        self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))
         self.artist_label.setText(QtGui.QApplication.translate("TimeLord", "Artist", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_window.setPlainText(QtGui.QApplication.translate("TimeLord", "OUTPUT MONITOR\n"
+"------------------------------------\n"
+"TRT: 00:12:24\n"
+"Start: 07/02/19 - End:\n"
+"USER CLOCKED IN", None, QtGui.QApplication.UnicodeUTF8))
+        self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "Raw Data Ouput", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCrash_Computer.setText(QtGui.QApplication.translate("TimeLord", "Crash Computer", None, QtGui.QApplication.UnicodeUTF8))
 
 from resources import time_lord_resources_rc

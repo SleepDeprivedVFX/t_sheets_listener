@@ -22,7 +22,8 @@ class sg_data(object):
             'tank_name',
             'code'
         ]
-        active_projects = self.sg.find('Project', filters, fields)
+        active_projects = self.sg.find('Project', filters, fields, order=[{'field_name': 'name',
+                                                                           'direction': 'asc'}])
         self.logger.info('Projects collected!')
         self.logger.debug('Project List: %s' % active_projects)
         return active_projects
@@ -75,6 +76,21 @@ class sg_data(object):
             self.logger.info('Tasks collected')
             self.logger.debug('Tasks List: %s' % tasks)
             return tasks
+
+    def get_project_details_by_name(self, proj_name=None):
+        if proj_name:
+            filters = [
+                ['name', 'is', proj_name]
+            ]
+            fields = [
+                'id',
+                'tank_name',
+                'sg_description',
+                'code'
+            ]
+            project = self.sg.find_one('Project', filters, fields)
+            return project
+        return None
 
     def get_context_from_UI(self):
         pass

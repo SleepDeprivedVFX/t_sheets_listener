@@ -132,7 +132,9 @@ class continuum(object):
                 'user',
                 'date',
                 'sg_task_start',
-                'sg_task_end'
+                'sg_task_end',
+                'project',
+                'entity'
             ]
             last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
                                                                                   'direction': 'desc'}])

@@ -72,7 +72,7 @@ logger.debug('Shotgun is connected.')
 # Connect Time Lord Components
 # --------------------------------------------------------------------------------------------------
 # setup continuum
-cont = continuum(sg)
+tl_time = continuum(sg)
 
 # Setup and get users
 users = companions(sg)
@@ -93,6 +93,10 @@ class time_signals(QtCore.QObject):
     main_clock = QtCore.Signal(str)
     in_clock = QtCore.Signal(str)
     out_clock = QtCore.Signal(str)
+    upper_output = QtCore.Signal(str)
+    lower_output = QtCore.Signal(str)
+    error_state = QtCore.Signal(bool)
+    steady_state = QtCore.Signal(bool)
 
 
 # class time_engine(QtCore.QThread):
@@ -113,6 +117,9 @@ class time_lord(QtCore.QThread):
         QtCore.QThread.__init__(self, parent)
         self.time_signal = time_signals()
         self.kill_it = False
+        self.clocked_in = False
+        self.error_state = False
+        self.steady_state = True
         self.kill_signal = self.time_signal.kill_signal.connect(self.kill)
 
     def kill(self):
@@ -122,11 +129,21 @@ class time_lord(QtCore.QThread):
         self.run_the_clock()
 
     def run_the_clock(self):
+        # TODO: This will need to make sure that the UI is ready to start running. Project, Entity and Task are set
+        #       and kick it back if they are not. Set the error light to red, display output, don't start the clock.
         second = int(datetime.now().second)
         while not self.kill_it:
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
                 self.time_signal.main_clock.emit(str(second))
+
+    def set_upper_output(self, trt=None, start=None, end=None, user=None):
+        set_message = 'OUTPUT MONITOR\n' \
+                      '------------------------------------\n' \
+                      'TRT: %s\n' \
+                      'Start: %s - End: %s\n' \
+                      '%s CLOCKED IN' % (trt, start, end, user['name'])
+        self.time_signal.upper_output.emit(set_message)
 
 
 class time_lord_ui(QtGui.QMainWindow):
@@ -143,6 +160,9 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Setup settings system
         self.settings = QtCore.QSettings('AdamBenson', 'TimeLord')
+        self.last_project = self.settings.value('last_project', '.')
+        self.last_entity = self.settings.value('last_entity', '.')
+        self.last_task = self.settings.value('last_task', '.')
 
         # Signal setup
         self.time_signal = time_signals()
@@ -154,20 +174,74 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
 
+        # Connect the signals to the functions below
+        self.time_lord.time_signal.main_clock.connect(self.main_clock)
+        self.time_lord.time_signal.upper_output.connect(self.upper_output)
+        self.time_lord.time_signal.error_state.connect(self.error_state)
+        self.time_lord.time_signal.steady_state.connect(self.steady_state)
+
+        # Start the output window
+        # TODO: Update this with actual data instead of presets
+        self.time_lord.set_upper_output(trt='00:00:00', start='date & time 1', end='Clock out time', user=user)
+
+        # Check if the user is clocked in and set those values.
+        last_timesheet = tl_time.get_last_timesheet(user=user)
+        if not last_timesheet['sg_task_end']:
+            self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
+                                               'red_in_out_button.png);')
+            # Let the engine know that it is clocked in.
+            self.time_lord.clocked_in = True
+        else:
+            self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
+                                               'green_in_out_button.png);')
+            # Let the engine know that it is clocked out.
+            self.time_lord.clocked_in = False
+
+        # Set state buttons
+        if self.time_lord.error_state:
+            self.error_state(True)
+        else:
+            self.error_state(False)
+
+        if self.time_lord.steady_state:
+            self.steady_state(True)
+        else:
+            self.steady_state(False)
+
         # Set main user info
         self.ui.artist_label.setText(user['name'])
 
+        # ------------------------------------------------------------------------------------------------------------
         # Set the project list.
+        # ------------------------------------------------------------------------------------------------------------
+        logger.debug('Adding projects to project drop down...')
         active_projects = sg_data.get_active_projects()
         if active_projects:
             for project in active_projects:
                 self.ui.project_dropdown.addItem('%s - %s' % (project['code'], project['name']))
+        logger.debug('Getting default selection from settings.')
+        proj_index = self.ui.project_dropdown.findText(self.last_project)
+        if proj_index >= 0:
+            logger.debug('Setting project to last project listed.')
+            self.ui.project_dropdown.setCurrentIndex(proj_index)
+
+        # Connect the drop-down to an on-change event.
+        self.ui.project_dropdown.currentIndexChanged.connect(self.update_entities)
+
+        # ------------------------------------------------------------------------------------------------------------
+        # Use the project selection to get a list of Entities
+        # ------------------------------------------------------------------------------------------------------------
+        logger.debug('Getting entities for project %s' % self.last_project)
+        if not self.ui.project_dropdown.currentText() == 'Select Project':
+            proj_name = str(self.last_project).split(' - ')[1]
+            logger.debug('proj_name = %s' % proj_name)
+            logger.debug('last_timesheet project = %s' % last_timesheet['project']['name'])
+            if proj_name != last_timesheet['project']['name']:
+                logger.debug('The project names do not match!  Please select the project again.')
+                # This would indicate that the switch should be activated, or that the wrong thing is clocked in.
 
         # self.ui.daily_total_progress.setValue(12)
         self.ui.clock_button.clicked.connect(self.start_time)
-
-        # Connect the signals to the functions below
-        self.time_lord.time_signal.main_clock.connect(self.main_clock)
 
         test = QtGui.QTransform()
         test.rotate(30 * (self.tick.second()))
@@ -179,7 +253,40 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def start_time(self):
         self.time_lord.kill_it = False
+        self.settings.setValue('last_project', self.ui.project_dropdown.currentText())
+        self.settings.setValue('last_entity', self.ui.entity_dropdpwn.currentText())
+        self.settings.setValue('last_task', self.ui.task_dropdown.currentText())
         self.time_lord.start()
+
+    def update_entities(self):
+        selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
+        logger.debug('selected project is %s' % selected_proj)
+        project = sg_data.get_project_details_by_name(proj_name=selected_proj)
+        if project:
+            # Collect assets and shots.
+            asset_entities = sg_data.get_project_assets(proj_id=project['id'])
+            logger.debug('Assets collected: %s' % asset_entities)
+            shot_entities = sg_data.get_project_shots(proj_id=project['id'])
+            logger.debug('Shots Collected: %s' % shot_entities)
+
+            # Put in the Assets first... Oh!  Use the categories and Sequences?
+
+    def upper_output(self, message):
+        self.ui.output_window.setPlainText(message)
+
+    def error_state(self, message):
+        # This method turns on or off the red error state light
+        if message:
+            self.ui.red_light.setVisible(True)
+        else:
+            self.ui.red_light.setVisible(False)
+
+    def steady_state(self, message):
+        # This method turns on or off the green steady state light.?
+        if message:
+            self.ui.green_light.setVisible(True)
+        else:
+            self.ui.green_light.setVisible(False)
 
     def main_clock(self, in_time):
         # Function that automatically updates UI when triggered by a signal

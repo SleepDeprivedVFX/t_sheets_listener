@@ -68,7 +68,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      </property>
     </item>
    </widget>
-   <widget class="QComboBox" name="asset_shot_progress">
+   <widget class="QComboBox" name="entity_dropdpwn">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -87,8 +87,13 @@ subcontrol-position: top right;
 font: 16pt &quot;Calisto MT&quot;;
 color: rgb(56, 9, 8);</string>
     </property>
+    <item>
+     <property name="text">
+      <string>Select Asset/Shot</string>
+     </property>
+    </item>
    </widget>
-   <widget class="QComboBox" name="task_name">
+   <widget class="QComboBox" name="task_dropdown">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -107,6 +112,11 @@ subcontrol-position: top right;
 font: 16pt &quot;Calisto MT&quot;;
 color: rgb(56, 9, 8);</string>
     </property>
+    <item>
+     <property name="text">
+      <string>Select Task</string>
+     </property>
+    </item>
    </widget>
    <widget class="QPushButton" name="clock_button">
     <property name="geometry">
@@ -193,13 +203,37 @@ background-color: rgba(0, 0, 0, 0);</string>
      <string notr="true">background-image: url(:/backgrounds/elements/output_monitor_top.png);
 border-color: rgba(255, 255, 255, 0);
 background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
+background-color: rgba(0, 0, 0, 0);
+font: 75 7pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="plainText">
+     <string>OUTPUT MONITOR
+------------------------------------
+TRT: 00:12:24
+Start: 07/02/19 - End:
+USER CLOCKED IN</string>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QGraphicsView" name="run_hour_ten">
@@ -212,7 +246,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/zero_0.png);
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_0.png);
 background-repeat: none;
 background-color: rgba(0, 0, 0, 0);</string>
     </property>
@@ -233,7 +267,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/three_3.png);
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_3.png);
 background-repeat: none;
 background-color: rgba(0, 0, 0, 0);</string>
     </property>
@@ -254,7 +288,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/five_5.png);
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_5.png);
 background-repeat: none;
 background-color: rgba(0, 0, 0, 0);</string>
     </property>
@@ -275,7 +309,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/nine_9.png);
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_9.png);
 background-repeat: none;
 background-color: rgba(0, 0, 0, 0);</string>
     </property>
@@ -296,7 +330,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/two_2.png);
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_2.png);
 background-repeat: none;
 background-color: rgba(0, 0, 0, 0);</string>
     </property>
@@ -317,7 +351,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/one_1.png);
+     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_1.png);
 background-repeat: none;
 background-color: rgba(0, 0, 0, 0);</string>
     </property>
@@ -718,27 +752,6 @@ background-color: rgba(0, 0, 0, 0);</string>
      <enum>QFrame::Plain</enum>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="lower_output">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>160</y>
-      <width>211</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/backgrounds/elements/output_monitor_bottom.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
    <widget class="QGraphicsView" name="red_light">
     <property name="geometry">
      <rect>
@@ -877,9 +890,50 @@ background-color: rgba(0, 0, 0, 0);</string>
      <string/>
     </property>
    </widget>
+   <widget class="QPlainTextEdit" name="lower_output">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>160</y>
+      <width>201</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPlainTextEdit{
+background-image: url(:/backgrounds/elements/output_monitor_bottom.png);
+background-repeat: none;
+border-color: rgba(255, 255, 255, 0);
+background-color: rgba(0, 0, 0, 0);
+font: 75 8pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);
+opacity: .5;
+}
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="documentTitle">
+     <string/>
+    </property>
+    <property name="plainText">
+     <string>Raw Data Ouput</string>
+    </property>
+   </widget>
    <zorder>project_dropdown</zorder>
-   <zorder>asset_shot_progress</zorder>
-   <zorder>task_name</zorder>
+   <zorder>entity_dropdpwn</zorder>
+   <zorder>task_dropdown</zorder>
    <zorder>clock_button</zorder>
    <zorder>switch_button</zorder>
    <zorder>output_window</zorder>
@@ -907,7 +961,6 @@ background-color: rgba(0, 0, 0, 0);</string>
    <zorder>end_ones_year</zorder>
    <zorder>start_clock_hour</zorder>
    <zorder>end_clock_hour</zorder>
-   <zorder>lower_output</zorder>
    <zorder>red_light</zorder>
    <zorder>green_light</zorder>
    <zorder>start_clock_minute</zorder>
@@ -915,6 +968,7 @@ background-color: rgba(0, 0, 0, 0);</string>
    <zorder>start_date_button</zorder>
    <zorder>end_date_button</zorder>
    <zorder>artist_label</zorder>
+   <zorder>lower_output</zorder>
   </widget>
   <action name="actionCrash_Computer">
    <property name="text">
