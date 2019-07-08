@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Wed Jul 03 18:29:39 2019
+# Created: Mon Jul 08 13:36:26 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -40,9 +40,9 @@ class Ui_TimeLord(object):
 "background-color: rgba(0, 0, 0, 0);")
         self.project_dropdown.setObjectName("project_dropdown")
         self.project_dropdown.addItem("")
-        self.entity_dropdpwn = QtGui.QComboBox(self.centralwidget)
-        self.entity_dropdpwn.setGeometry(QtCore.QRect(160, 610, 221, 41))
-        self.entity_dropdpwn.setStyleSheet("background-image: url(:/backgrounds/elements/entity_bg.png);\n"
+        self.entity_dropdown = QtGui.QComboBox(self.centralwidget)
+        self.entity_dropdown.setGeometry(QtCore.QRect(160, 610, 221, 41))
+        self.entity_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/entity_bg.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);\n"
 "padding-left: 25px;\n"
@@ -50,8 +50,8 @@ class Ui_TimeLord(object):
 "subcontrol-position: top right;\n"
 "font: 16pt \"Calisto MT\";\n"
 "color: rgb(56, 9, 8);")
-        self.entity_dropdpwn.setObjectName("entity_dropdpwn")
-        self.entity_dropdpwn.addItem("")
+        self.entity_dropdown.setObjectName("entity_dropdpwn")
+        self.entity_dropdown.addItem("")
         self.task_dropdown = QtGui.QComboBox(self.centralwidget)
         self.task_dropdown.setGeometry(QtCore.QRect(160, 680, 221, 31))
         self.task_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/task_bg.png);\n"
@@ -65,8 +65,8 @@ class Ui_TimeLord(object):
         self.task_dropdown.setObjectName("task_dropdown")
         self.task_dropdown.addItem("")
         self.clock_button = QtGui.QPushButton(self.centralwidget)
-        self.clock_button.setGeometry(QtCore.QRect(617, 626, 118, 119))
-        self.clock_button.setStyleSheet("background-image: url(:/lights buttons/elements/red_in_out_button.png);\n"
+        self.clock_button.setGeometry(QtCore.QRect(622, 625, 118, 119))
+        self.clock_button.setStyleSheet("background-image: url(:/lights buttons/elements/clock_button_1.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);\n"
 "border-color: rgba(0, 0, 0, 0);")
@@ -188,7 +188,7 @@ class Ui_TimeLord(object):
         self.time_hour.setObjectName("time_hour")
         self.start_tens_month = QtGui.QGraphicsView(self.centralwidget)
         self.start_tens_month.setGeometry(QtCore.QRect(462, 551, 31, 44))
-        self.start_tens_month.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_tens_zero_0.png);\n"
+        self.start_tens_month.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_tens_0.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.start_tens_month.setFrameShape(QtGui.QFrame.NoFrame)
@@ -196,7 +196,7 @@ class Ui_TimeLord(object):
         self.start_tens_month.setObjectName("start_tens_month")
         self.start_ones_month = QtGui.QGraphicsView(self.centralwidget)
         self.start_ones_month.setGeometry(QtCore.QRect(490, 552, 31, 42))
-        self.start_ones_month.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_ones_six_6.png);\n"
+        self.start_ones_month.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_ones_6.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.start_ones_month.setFrameShape(QtGui.QFrame.NoFrame)
@@ -204,7 +204,7 @@ class Ui_TimeLord(object):
         self.start_ones_month.setObjectName("start_ones_month")
         self.start_tens_day = QtGui.QGraphicsView(self.centralwidget)
         self.start_tens_day.setGeometry(QtCore.QRect(531, 551, 21, 43))
-        self.start_tens_day.setStyleSheet("background-image: url(:/roller_numbers/elements/start_d_tens_zero_0.png);\n"
+        self.start_tens_day.setStyleSheet("background-image: url(:/roller_numbers/elements/start_d_tens_0.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.start_tens_day.setFrameShape(QtGui.QFrame.NoFrame)
@@ -212,7 +212,7 @@ class Ui_TimeLord(object):
         self.start_tens_day.setObjectName("start_tens_day")
         self.start_ones_day = QtGui.QGraphicsView(self.centralwidget)
         self.start_ones_day.setGeometry(QtCore.QRect(557, 552, 24, 39))
-        self.start_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_ones_four_4.png);\n"
+        self.start_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_ones_4.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.start_ones_day.setFrameShape(QtGui.QFrame.NoFrame)
@@ -220,7 +220,7 @@ class Ui_TimeLord(object):
         self.start_ones_day.setObjectName("start_ones_day")
         self.start_tens_year = QtGui.QGraphicsView(self.centralwidget)
         self.start_tens_year.setGeometry(QtCore.QRect(600, 550, 21, 43))
-        self.start_tens_year.setStyleSheet("background-image: url(:/roller_numbers/elements/start_s_tens_one_1.png);\n"
+        self.start_tens_year.setStyleSheet("background-image: url(:/roller_numbers/elements/start_y_tens_1.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.start_tens_year.setFrameShape(QtGui.QFrame.NoFrame)
@@ -228,7 +228,7 @@ class Ui_TimeLord(object):
         self.start_tens_year.setObjectName("start_tens_year")
         self.start_ones_year = QtGui.QGraphicsView(self.centralwidget)
         self.start_ones_year.setGeometry(QtCore.QRect(632, 551, 21, 41))
-        self.start_ones_year.setStyleSheet("background-image: url(:/roller_numbers/elements/start_s_ones_nine_9.png);\n"
+        self.start_ones_year.setStyleSheet("background-image: url(:/roller_numbers/elements/start_y_ones_9.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.start_ones_year.setFrameShape(QtGui.QFrame.NoFrame)
@@ -236,7 +236,7 @@ class Ui_TimeLord(object):
         self.start_ones_year.setObjectName("start_ones_year")
         self.end_tens_month = QtGui.QGraphicsView(self.centralwidget)
         self.end_tens_month.setGeometry(QtCore.QRect(702, 552, 30, 41))
-        self.end_tens_month.setStyleSheet("background-image: url(:/roller_numbers/elements/end_m_tens_zero_0.png);\n"
+        self.end_tens_month.setStyleSheet("background-image: url(:/roller_numbers/elements/end_m_tens_0.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.end_tens_month.setFrameShape(QtGui.QFrame.NoFrame)
@@ -244,7 +244,7 @@ class Ui_TimeLord(object):
         self.end_tens_month.setObjectName("end_tens_month")
         self.end_ones_month = QtGui.QGraphicsView(self.centralwidget)
         self.end_ones_month.setGeometry(QtCore.QRect(730, 552, 31, 39))
-        self.end_ones_month.setStyleSheet("background-image: url(:/roller_numbers/elements/end_m_ones_six_6.png);\n"
+        self.end_ones_month.setStyleSheet("background-image: url(:/roller_numbers/elements/end_m_ones_6.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.end_ones_month.setFrameShape(QtGui.QFrame.NoFrame)
@@ -252,7 +252,7 @@ class Ui_TimeLord(object):
         self.end_ones_month.setObjectName("end_ones_month")
         self.end_tens_day = QtGui.QGraphicsView(self.centralwidget)
         self.end_tens_day.setGeometry(QtCore.QRect(770, 550, 21, 41))
-        self.end_tens_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_tens_zer_0.png);\n"
+        self.end_tens_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_tens_0.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.end_tens_day.setFrameShape(QtGui.QFrame.NoFrame)
@@ -260,7 +260,7 @@ class Ui_TimeLord(object):
         self.end_tens_day.setObjectName("end_tens_day")
         self.end_ones_day = QtGui.QGraphicsView(self.centralwidget)
         self.end_ones_day.setGeometry(QtCore.QRect(800, 552, 21, 39))
-        self.end_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_ones_four_4.png);\n"
+        self.end_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_ones_4.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.end_ones_day.setFrameShape(QtGui.QFrame.NoFrame)
@@ -268,7 +268,7 @@ class Ui_TimeLord(object):
         self.end_ones_day.setObjectName("end_ones_day")
         self.end_tens_year = QtGui.QGraphicsView(self.centralwidget)
         self.end_tens_year.setGeometry(QtCore.QRect(830, 552, 31, 39))
-        self.end_tens_year.setStyleSheet("background-image: url(:/roller_numbers/elements/end_s_tens_one_1.png);\n"
+        self.end_tens_year.setStyleSheet("background-image: url(:/roller_numbers/elements/end_y_tens_1.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.end_tens_year.setFrameShape(QtGui.QFrame.NoFrame)
@@ -276,7 +276,7 @@ class Ui_TimeLord(object):
         self.end_tens_year.setObjectName("end_tens_year")
         self.end_ones_year = QtGui.QGraphicsView(self.centralwidget)
         self.end_ones_year.setGeometry(QtCore.QRect(860, 552, 31, 39))
-        self.end_ones_year.setStyleSheet("background-image: url(:/roller_numbers/elements/end_s_ones_nine_9.png);\n"
+        self.end_ones_year.setStyleSheet("background-image: url(:/roller_numbers/elements/end_y_ones_9.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.end_ones_year.setFrameShape(QtGui.QFrame.NoFrame)
@@ -379,7 +379,7 @@ class Ui_TimeLord(object):
     def retranslateUi(self, TimeLord):
         TimeLord.setWindowTitle(QtGui.QApplication.translate("TimeLord", "Time Lord", None, QtGui.QApplication.UnicodeUTF8))
         self.project_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Project", None, QtGui.QApplication.UnicodeUTF8))
-        self.entity_dropdpwn.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
+        self.entity_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
         self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))
         self.artist_label.setText(QtGui.QApplication.translate("TimeLord", "Artist", None, QtGui.QApplication.UnicodeUTF8))
         self.output_window.setPlainText(QtGui.QApplication.translate("TimeLord", "OUTPUT MONITOR\n"

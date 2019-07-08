@@ -97,6 +97,7 @@ class time_signals(QtCore.QObject):
     lower_output = QtCore.Signal(str)
     error_state = QtCore.Signal(bool)
     steady_state = QtCore.Signal(bool)
+    clock_state = QtCore.Signal(int)
 
 
 # class time_engine(QtCore.QThread):
@@ -169,13 +170,16 @@ class time_lord_ui(QtGui.QMainWindow):
         self.tick = QtCore.QTime.currentTime()
 
         # --------------------------------------------------------------------------------------------------------
-        # Find a current time-sheet and use it for defaults or, use the last saved information
-        # --------------------------------------------------------------------------------------------------------
         # Set the saved settings
+        # --------------------------------------------------------------------------------------------------------
         self.settings = QtCore.QSettings('AdamBenson', 'TimeLord')
         self.last_project = self.settings.value('last_project', '.')
         self.last_entity = self.settings.value('last_entity', '.')
         self.last_task = self.settings.value('last_task', '.')
+
+        # --------------------------------------------------------------------------------------------------------
+        # Find a current time-sheet and use it for defaults or, use the last saved information
+        # --------------------------------------------------------------------------------------------------------
         # Get the last timesheet
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
         print 'LAST TIMESHEET: %s' % self.last_timesheet
@@ -235,13 +239,11 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.upper_output.connect(self.upper_output)
         self.time_lord.time_signal.error_state.connect(self.error_state)
         self.time_lord.time_signal.steady_state.connect(self.steady_state)
+        self.time_lord.time_signal.clock_state.connect(self.clock_in_button_state)
 
         # Start the output window
         # TODO: Update this with actual data instead of presets
         self.time_lord.set_upper_output(trt='00:00:00', start='date & time 1', end='Clock out time', user=user)
-
-        # set button state
-        self.clock_in_button_state(self.last_out_time)
 
         # Set state buttons
         if self.time_lord.error_state:
@@ -276,20 +278,23 @@ class time_lord_ui(QtGui.QMainWindow):
         # Then run it for the first time.
         self.update_entities()
         # Now check that the last or currently clocked-in entity is selected
-        entity_index = self.ui.entity_dropdpwn.findText(self.last_entity)
+        entity_index = self.ui.entity_dropdown.findText(self.last_entity)
         if entity_index >= 0:
             logger.debug('Setting Entity to the last project clocked into...')
-            self.ui.entity_dropdpwn.setCurrentIndex(entity_index)
+            self.ui.entity_dropdown.setCurrentIndex(entity_index)
 
         # Run the task check for the first time
         self.update_tasks()
         # Then connect the Entity drop-down to an on-change event
-        self.ui.entity_dropdpwn.currentIndexChanged.connect(self.update_tasks)
+        self.ui.entity_dropdown.currentIndexChanged.connect(self.update_tasks)
         # Now check that the last task is selected
         task_index = self.ui.task_dropdown.findText(self.last_task)
         if task_index >= 0:
             logger.debug('Setting the task to the last clocked into...')
             self.ui.task_dropdown.setCurrentIndex(task_index)
+
+        # Lastly, connect the Task to an on-change event
+        self.ui.task_dropdown.currentIndexChanged.connect(self.switch_tasks)
 
         # ------------------------------------------------------------------------------------------------------------
         # Start making sure the correct thing is the active clock
@@ -303,6 +308,18 @@ class time_lord_ui(QtGui.QMainWindow):
                 logger.debug('The project names do not match!  Please select the project again.')
                 # This would indicate that the switch should be activated, or that the wrong thing is clocked in.
 
+        # set button state
+        if self.last_out_time:
+            state = 0
+        elif not self.last_out_time:
+            if self.ui.project_dropdown.currentText().split(' - ')[-1] == self.last_project_name\
+                    and self.ui.entity_dropdown.currentText() == self.last_entity\
+                    and self.ui.task_dropdown.currentText() == self.last_task:
+                state = 1
+            else:
+                state = 2
+        self.clock_in_button_state(state)
+
         # self.ui.daily_total_progress.setValue(12)
         self.ui.clock_button.clicked.connect(self.start_time)
 
@@ -314,17 +331,63 @@ class time_lord_ui(QtGui.QMainWindow):
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
 
-    def start_time(self):
-        self.time_lord.kill_it = False
+    def update_settings(self):
         self.settings.setValue('last_project', self.ui.project_dropdown.currentText())
-        self.settings.setValue('last_entity', self.ui.entity_dropdpwn.currentText())
+        self.settings.setValue('last_entity', self.ui.entity_dropdown.currentText())
         self.settings.setValue('last_task', self.ui.task_dropdown.currentText())
+
+    def start_time(self):
+        # TODO: Add features that start other processes as well.  Change the button connections, et cetera
+        self.time_lord.kill_it = False
+        self.update_settings()
+        # TODO: The following .start() line may need to be moved up to the init
         self.time_lord.start()
+        self.clock_in()
+
+    def stop_time(self):
+        self.time_lord.kill_it = True
+        self.update_settings()
+        self.clock_out()
+
+    def switch_time(self):
+        self.time_lord.kill_it = False  # Or should this be True? Do I need to kill the clock?
+        self.update_settings()
+
+    def clock_out(self, message=None):
+        print 'Clocking out...'
+        self.ui.clock_button.clicked.disconnect(self.stop_time)
+        self.ui.clock_button.clicked.connect(self.start_time)
+        self.time_lord.time_signal.clock_state.emit(0)
+
+    def clock_in(self, message=None):
+        print 'Clocking in...'
+        self.ui.clock_button.clicked.disconnect(self.start_time)
+        self.ui.clock_button.clicked.connect(self.stop_time)
+        self.time_lord.time_signal.clock_state.emit(1)
+
+    def clock_switch(self, message=None):
+        print 'Switching the clock...'
+        # self.ui.clock_button.clicked.disconnect(self.start_time)
+        # self.ui.clock_button.clicked.disconnect(self.stop_time)
+        # self.ui.clock_button.clicked.connect(self.)  # NOT SURE ABOUT ALL THIS YET
+        self.time_lord.time_signal.clock_state.emit(2)
 
     def update_entities(self):
+        # TODO: Add a button update routine for switching tasks that are not current.
+        #       Or, just automatically change it to switch?  What about start up?
         selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
         logger.debug('selected project is %s' % selected_proj)
         project = sg_data.get_project_details_by_name(proj_name=selected_proj)
+
+        # Emit the button states
+        if project['code'] != self.last_project_name and self.time_lord.clocked_in:
+            self.time_lord.time_signal.clock_state.emit(2)
+        else:
+            if self.time_lord.clocked_in:
+                self.time_lord.time_signal.clock_state.emit(1)
+            else:
+                self.time_lord.time_signal.clock_state.emit(0)
+
         if project:
             # Collect assets and shots.
             asset_entities = sg_data.get_project_assets(proj_id=project['id'])
@@ -333,57 +396,79 @@ class time_lord_ui(QtGui.QMainWindow):
             logger.debug('Shots Collected: %s' % shot_entities)
 
             # Put in the Assets first... Oh!  Use the categories and Sequences?
-            self.ui.entity_dropdpwn.clear()
-            self.ui.entity_dropdpwn.addItem('Select Asset/Shot')
+            self.ui.entity_dropdown.clear()
+            self.ui.entity_dropdown.addItem('Select Asset/Shot')
             for asset in asset_entities:
-                self.ui.entity_dropdpwn.addItem(asset['code'])
+                self.ui.entity_dropdown.addItem(asset['code'])
             for shot in shot_entities:
-                self.ui.entity_dropdpwn.addItem(shot['code'])
+                self.ui.entity_dropdown.addItem(shot['code'])
 
     def update_tasks(self):
+        # TODO: Add a button update routine for switching tasks that are not current.
         logger.debug('Getting tasks...')
         tasks = sg_data.get_entity_tasks(self.last_entity_id)
+        entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.last_task, self.last_task_id)
+        if entity:
+            if entity['entity']['name'] != self.ui.entity_dropdown.currentText() and self.time_lord.clocked_in:
+                self.time_lord.time_signal.clock_state.emit(2)
+            else:
+                if self.time_lord.clocked_in:
+                    self.time_lord.time_signal.clock_state.emit(1)
+                else:
+                    self.time_lord.time_signal.clock_state.emit(0)
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task')
             for task in tasks:
                 self.ui.task_dropdown.addItem(task['content'])
 
-    def upper_output(self, message):
+    def switch_tasks(self):
+        logger.debug('Switching tasks...')
+        if self.last_task != self.ui.task_dropdown.currentText() and self.time_lord.clocked_in:
+            self.time_lord.time_signal.clock_state.emit(2)
+        else:
+            if self.time_lord.clocked_in:
+                self.time_lord.time_signal.clock_state.emit(1)
+            else:
+                self.time_lord.time_signal.clock_state.emit(0)
+
+    def upper_output(self, message=None):
         self.ui.output_window.setPlainText(message)
 
-    def error_state(self, message):
+    def error_state(self, message=None):
         # This method turns on or off the red error state light
         if message:
             self.ui.red_light.setVisible(True)
         else:
             self.ui.red_light.setVisible(False)
 
-    def clock_in_button_state(self, message):
-        # A value of None for message means that there is not clock-out time and the sheet is still active.
-        if not message:
-            self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
-                                               'red_in_out_button.png);'
-                                               'background-repeat: none;'
-                                               'background-color: rgba(0, 0, 0, 0);'
-                                               'border-color: rgba(0, 0, 0, 0);')
-            # Let the engine know that it is clocked in.
-            self.time_lord.clocked_in = True
-        else:
-            self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
-                                               'green_in_out_button.png);'
-                                               'background-repeat: none;'
-                                               'background-color: rgba(0, 0, 0, 0);'
-                                               'border-color: rgba(0, 0, 0, 0);')
-            # Let the engine know that it is clocked out.
-            self.time_lord.clocked_in = False
-
-    def steady_state(self, message):
+    def steady_state(self, message=None):
         # This method turns on or off the green steady state light.?
         if message:
             self.ui.green_light.setVisible(True)
         else:
             self.ui.green_light.setVisible(False)
+
+    def clock_in_button_state(self, message=None):
+        '''
+        Takes an integer value between 0 and 2
+        :param message: (int) 0 = clocked out, 1 = clocked in, 2 = clock switch
+        :return:
+        '''
+        # A value of None for message means that there is not clock-out time and the sheet is still active.
+        self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
+                                           'clock_button_%i.png);'
+                                           'background-repeat: none;'
+                                           'background-color: rgba(0, 0, 0, 0);'
+                                           'border-color: rgba(0, 0, 0, 0);' % message)
+        if message >= 1:
+            # Let the engine know that it is clocked in.
+            self.time_lord.clocked_in = True
+            # self.clock_out()
+        else:
+            # Let the engine know that it is clocked out.
+            self.time_lord.clocked_in = False
+            # self.clock_switch()
 
     def main_clock(self, in_time):
         # Function that automatically updates UI when triggered by a signal
