@@ -76,6 +76,7 @@ class sg_data(object):
             self.logger.info('Tasks collected')
             self.logger.debug('Tasks List: %s' % tasks)
             return tasks
+        return None
 
     def get_project_details_by_name(self, proj_name=None):
         if proj_name:
@@ -90,6 +91,18 @@ class sg_data(object):
             ]
             project = self.sg.find_one('Project', filters, fields)
             return project
+        return None
+
+    def get_entity_links(self, ent_type=None, name=None, ent_id=None):
+        if ent_type and name and ent_id:
+            filters = [
+                ['id', 'is', ent_id]
+            ]
+            fields = [
+                'entity'
+            ]
+            link = self.sg.find_one(ent_type, filters, fields)
+            return link
         return None
 
     def get_context_from_UI(self):

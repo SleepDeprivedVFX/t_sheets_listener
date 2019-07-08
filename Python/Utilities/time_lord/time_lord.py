@@ -169,12 +169,50 @@ class time_lord_ui(QtGui.QMainWindow):
         self.tick = QtCore.QTime.currentTime()
 
         # --------------------------------------------------------------------------------------------------------
-        # Setup settings system
+        # Find a current time-sheet and use it for defaults or, use the last saved information
         # --------------------------------------------------------------------------------------------------------
+        # Set the saved settings
         self.settings = QtCore.QSettings('AdamBenson', 'TimeLord')
         self.last_project = self.settings.value('last_project', '.')
         self.last_entity = self.settings.value('last_entity', '.')
         self.last_task = self.settings.value('last_task', '.')
+        # Get the last timesheet
+        self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        print 'LAST TIMESHEET: %s' % self.last_timesheet
+
+        # Get last start and end times
+        self.last_out_time = self.last_timesheet['sg_task_end']
+        self.last_in_time = self.last_timesheet['sg_task_start']
+
+        if not self.last_out_time:
+            # The timesheet is still clocked in.
+            self.last_project_name = self.last_timesheet['project']['name']
+            last_project_details = sg_data.get_project_details_by_name(self.last_project_name)
+            self.last_project_code = last_project_details['code']
+            self.last_project_id = last_project_details['id']
+            self.last_project = '%s - %s' % (self.last_project_code, self.last_project_name)
+            self.last_task = self.last_timesheet['entity']['name']
+            self.last_task_id = self.last_timesheet['entity']['id']
+            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
+                                                                self.last_task,
+                                                                self.last_timesheet['entity']['id'])
+            if last_entity_details:
+                self.last_entity_type = last_entity_details['entity']['type']
+                self.last_entity_id = last_entity_details['entity']['id']
+                self.last_entity = last_entity_details['entity']['name']
+        else:
+            self.last_project_name = self.last_project.split(' - ')[-1]
+            self.last_project_code = self.last_project.split(' - ')[0]
+            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
+                                                           self.last_timesheet['entity']['name'],
+                                                           self.last_timesheet['entity']['id'])
+            if last_entity_details:
+                self.last_entity_type = last_entity_details['entity']['type']
+                self.last_entity_id = last_entity_details['entity']['id']
+            else:
+                self.last_entity_type = None
+                self.last_entity_id = None
+            self.last_project_id = sg_data.get_project_details_by_name(self.last_project_name)['id']
 
         # --------------------------------------------------------------------------------------------------------
         # Signal setup
@@ -201,13 +239,6 @@ class time_lord_ui(QtGui.QMainWindow):
         # Start the output window
         # TODO: Update this with actual data instead of presets
         self.time_lord.set_upper_output(trt='00:00:00', start='date & time 1', end='Clock out time', user=user)
-
-        # --------------------------------------------------------------------------------------------------------
-        # Find a current time-sheet and use it for defaults instead of the last saved
-        # --------------------------------------------------------------------------------------------------------
-        self.last_timesheet = tl_time.get_last_timesheet(user=user)
-        self.last_out_time = self.last_timesheet['sg_task_end']
-        self.last_in_time = self.last_timesheet['sg_task_start']
 
         # set button state
         self.clock_in_button_state(self.last_out_time)
@@ -245,19 +276,27 @@ class time_lord_ui(QtGui.QMainWindow):
         # Then run it for the first time.
         self.update_entities()
         # Now check that the last or currently clocked-in entity is selected
+        entity_index = self.ui.entity_dropdpwn.findText(self.last_entity)
+        if entity_index >= 0:
+            logger.debug('Setting Entity to the last project clocked into...')
+            self.ui.entity_dropdpwn.setCurrentIndex(entity_index)
 
-
-        # Connect the Entity drop-down to an on-change event
-        self.ui.entity_dropdpwn.currentIndexChanged.connect(self.update_tasks)
-        # Then run it for the first time
+        # Run the task check for the first time
         self.update_tasks()
+        # Then connect the Entity drop-down to an on-change event
+        self.ui.entity_dropdpwn.currentIndexChanged.connect(self.update_tasks)
+        # Now check that the last task is selected
+        task_index = self.ui.task_dropdown.findText(self.last_task)
+        if task_index >= 0:
+            logger.debug('Setting the task to the last clocked into...')
+            self.ui.task_dropdown.setCurrentIndex(task_index)
 
         # ------------------------------------------------------------------------------------------------------------
-        # Use the project selection to get a list of Entities
+        # Start making sure the correct thing is the active clock
         # ------------------------------------------------------------------------------------------------------------
         logger.debug('Getting entities for project %s' % self.last_project)
         if not self.ui.project_dropdown.currentText() == 'Select Project':
-            proj_name = str(self.last_project).split(' - ')[1]
+            proj_name = str(self.last_project).split(' - ')[-1]
             logger.debug('proj_name = %s' % proj_name)
             logger.debug('last_timesheet project = %s' % self.last_timesheet['project']['name'])
             if proj_name != self.last_timesheet['project']['name']:
@@ -302,8 +341,13 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.ui.entity_dropdpwn.addItem(shot['code'])
 
     def update_tasks(self):
-        selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
-        selected_entity = self.ui.entity_dropdpwn.currentText()
+        logger.debug('Getting tasks...')
+        tasks = sg_data.get_entity_tasks(self.last_entity_id)
+        if tasks:
+            self.ui.task_dropdown.clear()
+            self.ui.task_dropdown.addItem('Select Task')
+            for task in tasks:
+                self.ui.task_dropdown.addItem(task['content'])
 
     def upper_output(self, message):
         self.ui.output_window.setPlainText(message)
