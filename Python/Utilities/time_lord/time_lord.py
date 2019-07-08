@@ -275,6 +275,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Connect the project drop-down to an on-change event.
         self.ui.project_dropdown.currentIndexChanged.connect(self.update_entities)
+        self.ui.project_dropdown.currentIndexChanged.connect(self.switch_state)
         # Then run it for the first time.
         self.update_entities()
         # Now check that the last or currently clocked-in entity is selected
@@ -287,6 +288,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.update_tasks()
         # Then connect the Entity drop-down to an on-change event
         self.ui.entity_dropdown.currentIndexChanged.connect(self.update_tasks)
+        self.ui.entity_dropdown.currentIndexChanged.connect(self.switch_state)
         # Now check that the last task is selected
         task_index = self.ui.task_dropdown.findText(self.last_task)
         if task_index >= 0:
@@ -294,7 +296,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.task_dropdown.setCurrentIndex(task_index)
 
         # Lastly, connect the Task to an on-change event
-        self.ui.task_dropdown.currentIndexChanged.connect(self.switch_tasks)
+        self.ui.task_dropdown.currentIndexChanged.connect(self.switch_state)
 
         # ------------------------------------------------------------------------------------------------------------
         # Start making sure the correct thing is the active clock
@@ -373,20 +375,9 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.clock_state.emit(2)
 
     def update_entities(self):
-        # TODO: Add a button update routine for switching tasks that are not current.
-        #       Or, just automatically change it to switch?  What about start up?
         selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
         logger.debug('selected project is %s' % selected_proj)
         project = sg_data.get_project_details_by_name(proj_name=selected_proj)
-
-        # Emit the button states
-        if project['code'] != self.last_project_name and self.time_lord.clocked_in:
-            self.time_lord.time_signal.clock_state.emit(2)
-        else:
-            if self.time_lord.clocked_in:
-                self.time_lord.time_signal.clock_state.emit(1)
-            else:
-                self.time_lord.time_signal.clock_state.emit(0)
 
         if project:
             # Collect assets and shots.
@@ -404,18 +395,8 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.ui.entity_dropdown.addItem(shot['code'])
 
     def update_tasks(self):
-        # TODO: Add a button update routine for switching tasks that are not current.
         logger.debug('Getting tasks...')
         tasks = sg_data.get_entity_tasks(self.last_entity_id)
-        entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.last_task, self.last_task_id)
-        if entity:
-            if entity['entity']['name'] != self.ui.entity_dropdown.currentText() and self.time_lord.clocked_in:
-                self.time_lord.time_signal.clock_state.emit(2)
-            else:
-                if self.time_lord.clocked_in:
-                    self.time_lord.time_signal.clock_state.emit(1)
-                else:
-                    self.time_lord.time_signal.clock_state.emit(0)
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task')
@@ -431,6 +412,34 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.time_lord.time_signal.clock_state.emit(1)
             else:
                 self.time_lord.time_signal.clock_state.emit(0)
+
+    def switch_state(self):
+        match = True
+
+        selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
+        project = sg_data.get_project_details_by_name(proj_name=selected_proj)
+
+        # Check that the project matches
+        if self.ui.project_dropdown.currentText().split(' - ')[-1] != self.last_project_name:
+            match = False
+
+        # I get the entity, because it does not come with last_timesheet data
+        entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.last_task, self.last_task_id)
+        if entity:
+            if entity['entity']['name'] != self.ui.entity_dropdown.currentText():
+                match = False
+        elif self.last_entity != self.ui.entity_dropdown.currentText():
+            match = False
+
+        if self.last_task != self.ui.task_dropdown.currentText():
+            match = False
+
+        if match and self.time_lord.clocked_in:
+            self.time_lord.time_signal.clock_state.emit(1)
+        elif not match and self.time_lord.clocked_in:
+            self.time_lord.time_signal.clock_state.emit(2)
+        elif not self.time_lord.clocked_in:
+            self.time_lord.time_signal.clock_state.emit(0)
 
     def upper_output(self, message=None):
         self.ui.output_window.setPlainText(message)
