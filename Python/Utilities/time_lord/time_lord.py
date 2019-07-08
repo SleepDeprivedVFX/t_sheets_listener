@@ -127,6 +127,14 @@ class time_lord(QtCore.QThread):
 
     def run(self, *args, **kwargs):
         self.run_the_clock()
+        if self.clocked_in:
+            # TODO: Add the things that an already clocked in user would need.
+            #       For instance, they would NOT use the last thing they clocked into, only what is currently active.
+            pass
+        else:
+            # Setup the things that an un-clocked in person would need.  Last thing they were clocked to, that sort of
+            # jazz.
+            pass
 
     def run_the_clock(self):
         # TODO: This will need to make sure that the UI is ready to start running. Project, Entity and Task are set
@@ -151,26 +159,36 @@ class time_lord_ui(QtGui.QMainWindow):
     def __init__(self):
         super(time_lord_ui, self).__init__(parent=None)
 
+        # --------------------------------------------------------------------------------------------------------
         # Initialize UI timer
+        # --------------------------------------------------------------------------------------------------------
         timer = QtCore.QTimer(self)
         timer.timeout.connect(self.update)
         timer.start(1000)
 
         self.tick = QtCore.QTime.currentTime()
 
+        # --------------------------------------------------------------------------------------------------------
         # Setup settings system
+        # --------------------------------------------------------------------------------------------------------
         self.settings = QtCore.QSettings('AdamBenson', 'TimeLord')
         self.last_project = self.settings.value('last_project', '.')
         self.last_entity = self.settings.value('last_entity', '.')
         self.last_task = self.settings.value('last_task', '.')
 
+        # --------------------------------------------------------------------------------------------------------
         # Signal setup
+        # --------------------------------------------------------------------------------------------------------
         self.time_signal = time_signals()
 
+        # --------------------------------------------------------------------------------------------------------
         # Setup Time Engine
+        # --------------------------------------------------------------------------------------------------------
         self.time_lord = time_lord()
 
+        # --------------------------------------------------------------------------------------------------------
         # Setup UI
+        # --------------------------------------------------------------------------------------------------------
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
 
@@ -184,18 +202,15 @@ class time_lord_ui(QtGui.QMainWindow):
         # TODO: Update this with actual data instead of presets
         self.time_lord.set_upper_output(trt='00:00:00', start='date & time 1', end='Clock out time', user=user)
 
-        # Check if the user is clocked in and set those values.
-        last_timesheet = tl_time.get_last_timesheet(user=user)
-        if not last_timesheet['sg_task_end']:
-            self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
-                                               'red_in_out_button.png);')
-            # Let the engine know that it is clocked in.
-            self.time_lord.clocked_in = True
-        else:
-            self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
-                                               'green_in_out_button.png);')
-            # Let the engine know that it is clocked out.
-            self.time_lord.clocked_in = False
+        # --------------------------------------------------------------------------------------------------------
+        # Find a current time-sheet and use it for defaults instead of the last saved
+        # --------------------------------------------------------------------------------------------------------
+        self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        self.last_out_time = self.last_timesheet['sg_task_end']
+        self.last_in_time = self.last_timesheet['sg_task_start']
+
+        # set button state
+        self.clock_in_button_state(self.last_out_time)
 
         # Set state buttons
         if self.time_lord.error_state:
@@ -225,8 +240,17 @@ class time_lord_ui(QtGui.QMainWindow):
             logger.debug('Setting project to last project listed.')
             self.ui.project_dropdown.setCurrentIndex(proj_index)
 
-        # Connect the drop-down to an on-change event.
+        # Connect the project drop-down to an on-change event.
         self.ui.project_dropdown.currentIndexChanged.connect(self.update_entities)
+        # Then run it for the first time.
+        self.update_entities()
+        # Now check that the last or currently clocked-in entity is selected
+
+
+        # Connect the Entity drop-down to an on-change event
+        self.ui.entity_dropdpwn.currentIndexChanged.connect(self.update_tasks)
+        # Then run it for the first time
+        self.update_tasks()
 
         # ------------------------------------------------------------------------------------------------------------
         # Use the project selection to get a list of Entities
@@ -235,8 +259,8 @@ class time_lord_ui(QtGui.QMainWindow):
         if not self.ui.project_dropdown.currentText() == 'Select Project':
             proj_name = str(self.last_project).split(' - ')[1]
             logger.debug('proj_name = %s' % proj_name)
-            logger.debug('last_timesheet project = %s' % last_timesheet['project']['name'])
-            if proj_name != last_timesheet['project']['name']:
+            logger.debug('last_timesheet project = %s' % self.last_timesheet['project']['name'])
+            if proj_name != self.last_timesheet['project']['name']:
                 logger.debug('The project names do not match!  Please select the project again.')
                 # This would indicate that the switch should be activated, or that the wrong thing is clocked in.
 
@@ -270,6 +294,16 @@ class time_lord_ui(QtGui.QMainWindow):
             logger.debug('Shots Collected: %s' % shot_entities)
 
             # Put in the Assets first... Oh!  Use the categories and Sequences?
+            self.ui.entity_dropdpwn.clear()
+            self.ui.entity_dropdpwn.addItem('Select Asset/Shot')
+            for asset in asset_entities:
+                self.ui.entity_dropdpwn.addItem(asset['code'])
+            for shot in shot_entities:
+                self.ui.entity_dropdpwn.addItem(shot['code'])
+
+    def update_tasks(self):
+        selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
+        selected_entity = self.ui.entity_dropdpwn.currentText()
 
     def upper_output(self, message):
         self.ui.output_window.setPlainText(message)
@@ -280,6 +314,25 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.red_light.setVisible(True)
         else:
             self.ui.red_light.setVisible(False)
+
+    def clock_in_button_state(self, message):
+        # A value of None for message means that there is not clock-out time and the sheet is still active.
+        if not message:
+            self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
+                                               'red_in_out_button.png);'
+                                               'background-repeat: none;'
+                                               'background-color: rgba(0, 0, 0, 0);'
+                                               'border-color: rgba(0, 0, 0, 0);')
+            # Let the engine know that it is clocked in.
+            self.time_lord.clocked_in = True
+        else:
+            self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
+                                               'green_in_out_button.png);'
+                                               'background-repeat: none;'
+                                               'background-color: rgba(0, 0, 0, 0);'
+                                               'border-color: rgba(0, 0, 0, 0);')
+            # Let the engine know that it is clocked out.
+            self.time_lord.clocked_in = False
 
     def steady_state(self, message):
         # This method turns on or off the green steady state light.?
