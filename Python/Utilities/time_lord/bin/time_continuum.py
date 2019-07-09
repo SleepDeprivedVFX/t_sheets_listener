@@ -169,6 +169,7 @@ class continuum(object):
             entity_id = context['Entity']['id']
             entity_name = context['Entity']['code']
             user_id = user['id']
+            print context
 
             if start_time and type(start_time) == datetime or datetime.datetime:
                 task_start = start_time

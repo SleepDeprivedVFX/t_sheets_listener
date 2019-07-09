@@ -208,6 +208,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # Connect the signals to the functions below
         self.time_lord.time_signal.main_clock.connect(self.main_clock)
         self.time_lord.time_signal.upper_output.connect(self.upper_output)
+        self.time_lord.time_signal.lower_output.connect(self.lower_output)
         self.time_lord.time_signal.error_state.connect(self.error_state)
         self.time_lord.time_signal.steady_state.connect(self.steady_state)
         self.time_lord.time_signal.clock_state.connect(self.clock_in_button_state)
@@ -387,6 +388,8 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def clock_out(self, message=None):
         print 'Clocking out...'
+        if not self.selection_check():
+            return False
         try:
             self.ui.clock_button.clicked.disconnect(self.stop_time)
         except:
@@ -398,9 +401,12 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.clock_button.clicked.connect(self.start_time)
         self.time_lord.time_signal.clock_state.emit(0)
         tl_time.clock_out_time_sheet(timesheet=self.last_timesheet, clock_out=datetime.now())
+        self.time_lord.time_signal.lower_output.emit('You have clocked out!')
 
     def clock_in(self, message=None):
         print 'Clocking in...'
+        if not self.selection_check():
+            return False
         try:
             self.ui.clock_button.clicked.disconnect(self.start_time)
         except:
@@ -411,6 +417,7 @@ class time_lord_ui(QtGui.QMainWindow):
             pass
         self.ui.clock_button.clicked.connect(self.stop_time)
         self.time_lord.time_signal.clock_state.emit(1)
+        self.time_lord.time_signal.lower_output.emit('New Timesheet created!')
 
         # Create context
         project_selection = self.ui.project_dropdown.currentText().split(' - ')[-1]
@@ -439,12 +446,43 @@ class time_lord_ui(QtGui.QMainWindow):
         tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
         self.set_last_timesheet()
 
+    def selection_check(self):
+        if self.ui.project_dropdown.currentText() == 'Select Project' or self.ui.project_dropdown.currentIndex() == 0:
+            self.time_lord.time_signal.error_state.emit(True)
+            self.time_lord.time_signal.steady_state.emit(False)
+            self.time_lord.time_signal.lower_output.emit('You must select a Project!')
+            return False
+        else:
+            self.time_lord.time_signal.error_state.emit(False)
+            self.time_lord.time_signal.steady_state.emit(True)
+        if self.ui.entity_dropdown.currentText() == 'Select Asset/Shot' or self.ui.entity_dropdown.currentIndex() == 0:
+            self.time_lord.time_signal.error_state.emit(True)
+            self.time_lord.time_signal.steady_state.emit(False)
+            self.time_lord.time_signal.lower_output.emit('You must select an entity!')
+            return False
+        else:
+            self.time_lord.time_signal.error_state.emit(False)
+            self.time_lord.time_signal.steady_state.emit(True)
+        if self.ui.task_dropdown.currentText() == 'Select Task' or self.ui.task_dropdown.currentIndex() == 0:
+            self.time_lord.time_signal.error_state.emit(True)
+            self.time_lord.time_signal.steady_state.emit(False)
+            self.time_lord.time_signal.lower_output.emit('You must select a Task!')
+            return False
+        else:
+            self.time_lord.time_signal.error_state.emit(False)
+            self.time_lord.time_signal.steady_state.emit(True)
+        return True
+
     def update_entities(self):
+        # TODO: I think this is not updating because it is not a signal.  Thus it's all frozen or some shit
+        #       since now I'm start()ing the whole thing in the init.
         selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
         logger.debug('selected project is %s' % selected_proj)
         project = sg_data.get_project_details_by_name(proj_name=selected_proj)
 
         if project:
+            self.time_lord.time_signal.error_state.emit(False)
+            self.time_lord.time_signal.steady_state.emit(True)
             # Collect assets and shots.
             asset_entities = sg_data.get_project_assets(proj_id=project['id'])
             logger.debug('Assets collected: %s' % asset_entities)
@@ -458,6 +496,10 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.ui.entity_dropdown.addItem(asset['code'])
             for shot in shot_entities:
                 self.ui.entity_dropdown.addItem(shot['code'])
+        else:
+            self.time_lord.time_signal.lower_output.emit('Project Dump: %s' % project)
+            self.time_lord.time_signal.error_state.emit(True)
+            self.time_lord.time_signal.steady_state.emit(False)
 
     def update_tasks(self):
         logger.debug('Getting tasks...')
@@ -508,6 +550,9 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def upper_output(self, message=None):
         self.ui.output_window.setPlainText(message)
+
+    def lower_output(self, message=None):
+        self.ui.lower_output.setPlainText(message)
 
     def error_state(self, message=None):
         # This method turns on or off the red error state light
