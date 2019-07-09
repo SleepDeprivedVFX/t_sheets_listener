@@ -177,56 +177,27 @@ class time_lord_ui(QtGui.QMainWindow):
         self.last_entity = self.settings.value('last_entity', '.')
         self.last_task = self.settings.value('last_task', '.')
 
-        # --------------------------------------------------------------------------------------------------------
-        # Find a current time-sheet and use it for defaults or, use the last saved information
-        # --------------------------------------------------------------------------------------------------------
-        # Get the last timesheet
-        self.last_timesheet = tl_time.get_last_timesheet(user=user)
-        print 'LAST TIMESHEET: %s' % self.last_timesheet
-
-        # Get last start and end times
-        self.last_out_time = self.last_timesheet['sg_task_end']
-        self.last_in_time = self.last_timesheet['sg_task_start']
-
-        if not self.last_out_time:
-            # The timesheet is still clocked in.
-            self.last_project_name = self.last_timesheet['project']['name']
-            last_project_details = sg_data.get_project_details_by_name(self.last_project_name)
-            self.last_project_code = last_project_details['code']
-            self.last_project_id = last_project_details['id']
-            self.last_project = '%s - %s' % (self.last_project_code, self.last_project_name)
-            self.last_task = self.last_timesheet['entity']['name']
-            self.last_task_id = self.last_timesheet['entity']['id']
-            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
-                                                                self.last_task,
-                                                                self.last_timesheet['entity']['id'])
-            if last_entity_details:
-                self.last_entity_type = last_entity_details['entity']['type']
-                self.last_entity_id = last_entity_details['entity']['id']
-                self.last_entity = last_entity_details['entity']['name']
-        else:
-            self.last_project_name = self.last_project.split(' - ')[-1]
-            self.last_project_code = self.last_project.split(' - ')[0]
-            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
-                                                           self.last_timesheet['entity']['name'],
-                                                           self.last_timesheet['entity']['id'])
-            if last_entity_details:
-                self.last_entity_type = last_entity_details['entity']['type']
-                self.last_entity_id = last_entity_details['entity']['id']
-            else:
-                self.last_entity_type = None
-                self.last_entity_id = None
-            self.last_project_id = sg_data.get_project_details_by_name(self.last_project_name)['id']
-
-        # --------------------------------------------------------------------------------------------------------
-        # Signal setup
-        # --------------------------------------------------------------------------------------------------------
-        self.time_signal = time_signals()
+        # # --------------------------------------------------------------------------------------------------------
+        # # Signal setup
+        # # --------------------------------------------------------------------------------------------------------
+        # self.time_signal = time_signals()
 
         # --------------------------------------------------------------------------------------------------------
         # Setup Time Engine
         # --------------------------------------------------------------------------------------------------------
         self.time_lord = time_lord()
+
+        # Setup and connect the last timesheet.
+        self.last_timesheet = None
+        self.last_out_time = None
+        self.last_in_time = None
+        self.last_task_id = None
+        self.last_project_name = None
+        self.last_project_code = None
+        self.last_project_id = None
+        self.last_entity_type = None
+        self.last_entity_id = None
+        self.set_last_timesheet()
 
         # --------------------------------------------------------------------------------------------------------
         # Setup UI
@@ -313,6 +284,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # set button state
         if self.last_out_time:
             state = 0
+            self.ui.clock_button.clicked.connect(self.start_time)
         elif not self.last_out_time:
             if self.ui.project_dropdown.currentText().split(' - ')[-1] == self.last_project_name\
                     and self.ui.entity_dropdown.currentText() == self.last_entity\
@@ -320,10 +292,10 @@ class time_lord_ui(QtGui.QMainWindow):
                 state = 1
             else:
                 state = 2
+            self.ui.clock_button.clicked.connect(self.stop_time)
         self.clock_in_button_state(state)
 
         # self.ui.daily_total_progress.setValue(12)
-        self.ui.clock_button.clicked.connect(self.start_time)
 
         test = QtGui.QTransform()
         test.rotate(30 * (self.tick.second()))
@@ -333,17 +305,73 @@ class time_lord_ui(QtGui.QMainWindow):
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
 
+        # if self.time_lord.clocked_in:
+        self.time_lord.start()
+
+    def set_last_timesheet(self):
+        # --------------------------------------------------------------------------------------------------------
+        # Find a current time-sheet and use it for defaults or, use the last saved information
+        # --------------------------------------------------------------------------------------------------------
+        # Get the last timesheet
+        self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        print 'LAST TIMESHEET: %s' % self.last_timesheet
+
+        # Get last start and end times
+        self.last_out_time = self.last_timesheet['sg_task_end']
+        self.last_in_time = self.last_timesheet['sg_task_start']
+
+        if not self.last_out_time:
+            # The timesheet is still clocked in.
+            self.time_lord.clocked_in = True
+            self.last_project_name = self.last_timesheet['project']['name']
+            last_project_details = sg_data.get_project_details_by_name(self.last_project_name)
+            self.last_project_code = last_project_details['code']
+            self.last_project_id = last_project_details['id']
+            self.last_project = '%s - %s' % (self.last_project_code, self.last_project_name)
+            self.last_task = self.last_timesheet['entity']['name']
+            self.last_task_id = self.last_timesheet['entity']['id']
+            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
+                                                           self.last_task,
+                                                           self.last_timesheet['entity']['id'])
+            if last_entity_details:
+                self.last_entity_type = last_entity_details['entity']['type']
+                self.last_entity_id = last_entity_details['entity']['id']
+                self.last_entity = last_entity_details['entity']['name']
+        else:
+            self.time_lord.clocked_in = False
+            self.last_project_name = self.last_project.split(' - ')[-1]
+            self.last_project_code = self.last_project.split(' - ')[0]
+            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
+                                                           self.last_timesheet['entity']['name'],
+                                                           self.last_timesheet['entity']['id'])
+            if last_entity_details:
+                self.last_entity_type = last_entity_details['entity']['type']
+                self.last_entity_id = last_entity_details['entity']['id']
+            else:
+                self.last_entity_type = None
+                self.last_entity_id = None
+            self.last_project_id = sg_data.get_project_details_by_name(self.last_project_name)['id']
+
     def update_settings(self):
         self.settings.setValue('last_project', self.ui.project_dropdown.currentText())
         self.settings.setValue('last_entity', self.ui.entity_dropdown.currentText())
         self.settings.setValue('last_task', self.ui.task_dropdown.currentText())
 
+    def get_user_start_time(self):
+        '''
+        Eventually, this should return a user set start time from the UI.  Not sure right off hand yet how to do that.
+        :return:
+        '''
+        return None
+
     def start_time(self):
         # TODO: Add features that start other processes as well.  Change the button connections, et cetera
         self.time_lord.kill_it = False
         self.update_settings()
-        # TODO: The following .start() line may need to be moved up to the init
+        # TODO: Add check to see if the service is already running first
         self.time_lord.start()
+        # if not self.time_lord.clocked_in:
+        #     self.clock_in()
         self.clock_in()
 
     def stop_time(self):
@@ -354,25 +382,62 @@ class time_lord_ui(QtGui.QMainWindow):
     def switch_time(self):
         self.time_lord.kill_it = False  # Or should this be True? Do I need to kill the clock?
         self.update_settings()
+        self.clock_out()
+        self.clock_in()
 
     def clock_out(self, message=None):
         print 'Clocking out...'
-        self.ui.clock_button.clicked.disconnect(self.stop_time)
+        try:
+            self.ui.clock_button.clicked.disconnect(self.stop_time)
+        except:
+            pass
+        try:
+            self.ui.clock_button.clicked.disconnect(self.switch_time)
+        except:
+            pass
         self.ui.clock_button.clicked.connect(self.start_time)
         self.time_lord.time_signal.clock_state.emit(0)
+        tl_time.clock_out_time_sheet(timesheet=self.last_timesheet, clock_out=datetime.now())
 
     def clock_in(self, message=None):
         print 'Clocking in...'
-        self.ui.clock_button.clicked.disconnect(self.start_time)
+        try:
+            self.ui.clock_button.clicked.disconnect(self.start_time)
+        except:
+            pass
+        try:
+            self.ui.clock_button.clicked.disconnect(self.switch_time)
+        except:
+            pass
         self.ui.clock_button.clicked.connect(self.stop_time)
         self.time_lord.time_signal.clock_state.emit(1)
 
-    def clock_switch(self, message=None):
-        print 'Switching the clock...'
-        # self.ui.clock_button.clicked.disconnect(self.start_time)
-        # self.ui.clock_button.clicked.disconnect(self.stop_time)
-        # self.ui.clock_button.clicked.connect(self.)  # NOT SURE ABOUT ALL THIS YET
-        self.time_lord.time_signal.clock_state.emit(2)
+        # Create context
+        project_selection = self.ui.project_dropdown.currentText().split(' - ')[-1]
+        project_details = sg_data.get_project_details_by_name(proj_name=project_selection)
+        project_id = project_details['id']
+        project_name = project_details['code']
+        entity_id = sg_data.get_entity_id(proj_id=project_id, entity_name=self.ui.entity_dropdown.currentText())
+        task_id = sg_data.get_task_id(entity_id=entity_id, task_name=self.ui.task_dropdown.currentText())
+        context = {
+            'Project': {
+                'id': project_id,
+                'name': project_name,
+            },
+            'Task': {
+                'id': task_id,
+                'content': self.ui.task_dropdown.currentText()
+            },
+            'Entity': {
+                'id': entity_id,
+                'code': self.ui.entity_dropdown.currentText()
+            }
+        }
+        start_time = self.get_user_start_time()
+        if not start_time:
+            start_time = datetime.now()
+        tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
+        self.set_last_timesheet()
 
     def update_entities(self):
         selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
@@ -473,6 +538,16 @@ class time_lord_ui(QtGui.QMainWindow):
         if message >= 1:
             # Let the engine know that it is clocked in.
             self.time_lord.clocked_in = True
+            if message == 2:
+                try:
+                    self.ui.clock_button.clicked.disconnect(self.start_time)
+                except:
+                    pass
+                try:
+                    self.ui.clock_button.clicked.disconnect(self.stop_time)
+                except:
+                    pass
+                self.ui.clock_button.clicked.connect(self.switch_time)
             # self.clock_out()
         else:
             # Let the engine know that it is clocked out.

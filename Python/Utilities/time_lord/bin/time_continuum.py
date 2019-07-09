@@ -160,7 +160,7 @@ class continuum(object):
             self.sg.update('TimeLog', timesheet['id'], data)
             self.logger.info('Timesheet updated.')
 
-    def create_new_timesheet(self, user=None, context=None):
+    def create_new_timesheet(self, user=None, context=None, start_time=None):
         if user and context:
             project_id = context['Project']['id']
             project_name = context['Project']['name']
@@ -170,9 +170,14 @@ class continuum(object):
             entity_name = context['Entity']['code']
             user_id = user['id']
 
+            if start_time and type(start_time) == datetime or datetime.datetime:
+                task_start = start_time
+            else:
+                task_start = datetime.datetime.now()
+
             data = {
                 'entity': {'type': 'Task', 'id': task_id},
-                'sg_task_start': datetime.datetime.now(),
+                'sg_task_start': task_start,
                 'user': {'type': 'HumanUser', 'id': user_id},
                 'project': {'type': 'Project', 'id': project_id}
             }

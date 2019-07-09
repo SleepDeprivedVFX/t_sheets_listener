@@ -139,3 +139,26 @@ class sg_data(object):
         except Exception, e:
             self.logger.error('Some shit when down! %s' % e)
             return False
+
+    def get_entity_id(self, proj_id=None, entity_name=None):
+        entity_id = None
+        if proj_id and entity_name:
+            assets = self.get_project_assets(proj_id=proj_id)
+            shots = self.get_project_shots(proj_id=proj_id)
+            entities = assets + shots
+            for entity in entities:
+                if entity['code'] == entity_name:
+                    entity_id = entity['id']
+                    break
+        return entity_id
+
+    def get_task_id(self, entity_id=None, task_name=None):
+        task_id = None
+        if entity_id and task_name:
+            tasks = self.get_entity_tasks(entity_id=entity_id)
+            if tasks:
+                for task in tasks:
+                    if task['content'] == task_name:
+                        task_id = task['id']
+                        break
+        return task_id
