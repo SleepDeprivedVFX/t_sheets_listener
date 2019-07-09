@@ -129,23 +129,27 @@ class time_lord(QtCore.QThread):
 
     def run(self, *args, **kwargs):
         self.run_the_clock()
-        if self.clocked_in:
-            # TODO: Add the things that an already clocked in user would need.
-            #       For instance, they would NOT use the last thing they clocked into, only what is currently active.
-            pass
-        else:
-            # Setup the things that an un-clocked in person would need.  Last thing they were clocked to, that sort of
-            # jazz.
-            pass
+        # if self.clocked_in:
+        #     # TODO: Add the things that an already clocked in user would need.
+        #     #       For instance, they would NOT use the last thing they clocked into, only what is currently active.
+        #     pass
+        # else:
+        #     # Setup the things that an un-clocked in person would need.  Last thing they were clocked to, that sort of
+        #     # jazz.
+        #     pass
 
     def run_the_clock(self):
         # TODO: This will need to make sure that the UI is ready to start running. Project, Entity and Task are set
         #       and kick it back if they are not. Set the error light to red, display output, don't start the clock.
+        running_time = None
         second = int(datetime.now().second)
         while not self.kill_it:
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
                 self.time_signal.main_clock.emit(str(second))
+            # while self.clocked_in:
+            #     if not running_time:
+            #         running_time = tl_time.get_running_time(tl_time.get_last_timesheet(user=user))
 
     def set_upper_output(self, trt=None, start=None, end=None, user=None):
         set_message = 'OUTPUT MONITOR\n' \
@@ -435,9 +439,9 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Create context
         project_selection = self.ui.project_dropdown.currentText().split(' - ')[-1]
-        print project_selection
+        print 'selected project: %s' % project_selection
         project_details = sg_data.get_project_details_by_name(proj_name=project_selection)
-        print project_details
+        print 'returns project_details: %s' % project_details
         project_id = project_details['id']
         project_name = project_selection
         print project_name

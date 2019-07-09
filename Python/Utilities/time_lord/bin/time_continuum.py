@@ -136,9 +136,10 @@ class continuum(object):
                 'project',
                 'entity'
             ]
-            last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
-                                                                                  'direction': 'desc'}])
-            return last_timesheet
+            last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+            if last_timesheet:
+                return last_timesheet
+            return None
 
     def assume_end_time(self, start_time=None, eod=None):
         self.logger.info('Assuming an end time from the date and configuration...')
@@ -196,3 +197,18 @@ class continuum(object):
             }
             timesheet = self.sg.create('TimeLog', data)
             return timesheet
+
+    def get_running_time(self, timesheet=None):
+        '''
+        Calculate the total running time since clocked in.
+        :param timesheet: (dict) a timesheet from Shotgun
+        :return: running_time: (str) a six digit string object
+        '''
+        running_time = '000000'
+        if timesheet:
+            if not timesheet['sg_task_end']:
+                start_datetime = timesheet['sg_task_start']
+                start_time = start_datetime.time()
+                print start_time
+        return running_time
+

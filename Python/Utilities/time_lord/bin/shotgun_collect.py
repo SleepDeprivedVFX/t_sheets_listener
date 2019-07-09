@@ -79,7 +79,13 @@ class sg_data(object):
         return None
 
     def get_project_details_by_name(self, proj_name=None):
+        '''
+        Get details of a project when you only have its name.
+        :param proj_name: (str) The name of a valid Project
+        :return: (dict) a dictionary of values pertinent to the project
+        '''
         if proj_name:
+            self.logger.debug('Checking for project name %s' % proj_name)
             filters = [
                 ['name', 'is', proj_name]
             ]
@@ -89,8 +95,26 @@ class sg_data(object):
                 'sg_description',
                 'code'
             ]
-            project = self.sg.find_one('Project', filters, fields)
-            return project
+            try:
+                self.logger.debug('Searching...')
+                project = self.sg.find_one('Project', filters, fields)
+                print 'immediate: %s' % project
+                self.logger.debug('Project Details found: %s' % project)
+                return project
+            except (AttributeError, TypeError), e:
+                self.logger.error('Could not get the project: %s' % e)
+                try:
+                    self.logger.debug('Trying again...')
+                    tryagain = self.sg.find('Project', filters, fields)
+                    print 'secondary: %s' % tryagain
+                    if tryagain:
+                        project = tryagain[0]
+                        self.logger.debug('Project Details Found: %s' % project)
+                        return project
+                    self.logger.debug('Still couldn\'t find shit! %s' % tryagain)
+                except (AttributeError, TypeError), e:
+                    self.logger.error('Well, Fuck.  %s' % e)
+        self.logger.debug('No Project found!')
         return None
 
     def get_entity_links(self, ent_type=None, name=None, ent_id=None, proj_id=None):
