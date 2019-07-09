@@ -93,6 +93,7 @@ class time_signals(QtCore.QObject):
     main_clock = QtCore.Signal(str)
     in_clock = QtCore.Signal(str)
     out_clock = QtCore.Signal(str)
+    running_clock = QtCore.Signal(str)
     upper_output = QtCore.Signal(str)
     lower_output = QtCore.Signal(str)
     error_state = QtCore.Signal(bool)
@@ -212,6 +213,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.error_state.connect(self.error_state)
         self.time_lord.time_signal.steady_state.connect(self.steady_state)
         self.time_lord.time_signal.clock_state.connect(self.clock_in_button_state)
+        self.time_lord.time_signal.running_clock.connect(self.set_runtime_clock)
 
         # Start the output window
         # TODO: Update this with actual data instead of presets
@@ -234,6 +236,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # ------------------------------------------------------------------------------------------------------------
         # Set the project list.
         # ------------------------------------------------------------------------------------------------------------
+        ''' This may need to become its own routine. '''
         logger.debug('Adding projects to project drop down...')
         active_projects = sg_data.get_active_projects()
         if active_projects:
@@ -296,6 +299,12 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.clock_button.clicked.connect(self.stop_time)
         self.clock_in_button_state(state)
 
+        # Set the running time clock.
+        # TODO: First routine should get the current running time. Start Time - Now()
+        #       Perhaps return it as a 6 digit string.
+        #       Second routine should set the value to the clock.
+        self.set_runtime_clock()
+
         # self.ui.daily_total_progress.setValue(12)
 
         test = QtGui.QTransform()
@@ -333,25 +342,30 @@ class time_lord_ui(QtGui.QMainWindow):
             self.last_task_id = self.last_timesheet['entity']['id']
             last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
                                                            self.last_task,
-                                                           self.last_timesheet['entity']['id'])
+                                                           self.last_timesheet['entity']['id'],
+                                                           self.last_project_id)
+            print 'in', last_entity_details
             if last_entity_details:
                 self.last_entity_type = last_entity_details['entity']['type']
                 self.last_entity_id = last_entity_details['entity']['id']
                 self.last_entity = last_entity_details['entity']['name']
+                self.last_project = '%s - %s' % (self.last_project_code, self.last_project_name)
         else:
             self.time_lord.clocked_in = False
             self.last_project_name = self.last_project.split(' - ')[-1]
             self.last_project_code = self.last_project.split(' - ')[0]
+            self.last_project_id = sg_data.get_project_details_by_name(self.last_project_name)['id']
             last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
                                                            self.last_timesheet['entity']['name'],
-                                                           self.last_timesheet['entity']['id'])
+                                                           self.last_timesheet['entity']['id'],
+                                                           self.last_project_id)
+            print 'out', last_entity_details
             if last_entity_details:
                 self.last_entity_type = last_entity_details['entity']['type']
                 self.last_entity_id = last_entity_details['entity']['id']
             else:
                 self.last_entity_type = None
                 self.last_entity_id = None
-            self.last_project_id = sg_data.get_project_details_by_name(self.last_project_name)['id']
 
     def update_settings(self):
         self.settings.setValue('last_project', self.ui.project_dropdown.currentText())
@@ -421,9 +435,12 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Create context
         project_selection = self.ui.project_dropdown.currentText().split(' - ')[-1]
+        print project_selection
         project_details = sg_data.get_project_details_by_name(proj_name=project_selection)
+        print project_details
         project_id = project_details['id']
-        project_name = project_details['code']
+        project_name = project_selection
+        print project_name
         entity_id = sg_data.get_entity_id(proj_id=project_id, entity_name=self.ui.entity_dropdown.currentText())
         task_id = sg_data.get_task_id(entity_id=entity_id, task_name=self.ui.task_dropdown.currentText())
         context = {
@@ -473,7 +490,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.steady_state.emit(True)
         return True
 
-    def update_entities(self):
+    def update_entities(self, message=None):
         # TODO: I think this is not updating because it is not a signal.  Thus it's all frozen or some shit
         #       since now I'm start()ing the whole thing in the init.
         selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
@@ -504,11 +521,15 @@ class time_lord_ui(QtGui.QMainWindow):
     def update_tasks(self):
         logger.debug('Getting tasks...')
         tasks = sg_data.get_entity_tasks(self.last_entity_id)
+        print tasks
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task')
             for task in tasks:
                 self.ui.task_dropdown.addItem(task['content'])
+        else:
+            self.ui.task_dropdown.clear()
+            self.ui.task_dropdown.addItem('Select Task')
 
     def switch_tasks(self):
         logger.debug('Switching tasks...')
@@ -531,7 +552,8 @@ class time_lord_ui(QtGui.QMainWindow):
             match = False
 
         # I get the entity, because it does not come with last_timesheet data
-        entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.last_task, self.last_task_id)
+        entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.last_task, self.last_task_id,
+                                          self.last_project_id)
         if entity:
             if entity['entity']['name'] != self.ui.entity_dropdown.currentText():
                 match = False
@@ -598,6 +620,38 @@ class time_lord_ui(QtGui.QMainWindow):
             # Let the engine know that it is clocked out.
             self.time_lord.clocked_in = False
             # self.clock_switch()
+
+    def get_running_time(self):
+        '''
+        This may actually need to move into the time_continuum and get run in the thread.
+        set_runtime_clock would then be the connected listener.
+        :return:
+        '''
+        ts = self.last_timesheet
+        if not ts['sg_task_end']:
+            full_start = ts['sg_task_start']
+
+    def set_runtime_clock(self, t='000000'):
+        '''
+        Sets the running time clock.
+        :param t: (str) - While this is a number value, it must be exactly 6 digits long, thus string to maintain
+                            the number of zeros needed for the default.
+        :return: Running time.
+        '''
+        if len(t) == 6:
+            logger.debug('Setting the runtime clock to %s' % t)
+            self.ui.run_hour_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                               'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[0])
+            self.ui.run_hour_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                               'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[1])
+            self.ui.run_minute_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                                 'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[2])
+            self.ui.run_minute_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                                 'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[3])
+            self.ui.run_second_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                                 'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[4])
+            self.ui.run_second_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                                 'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[5])
 
     def main_clock(self, in_time):
         # Function that automatically updates UI when triggered by a signal

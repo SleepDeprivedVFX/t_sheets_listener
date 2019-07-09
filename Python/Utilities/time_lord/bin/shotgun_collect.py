@@ -93,10 +93,11 @@ class sg_data(object):
             return project
         return None
 
-    def get_entity_links(self, ent_type=None, name=None, ent_id=None):
+    def get_entity_links(self, ent_type=None, name=None, ent_id=None, proj_id=None):
         if ent_type and name and ent_id:
             filters = [
-                ['id', 'is', ent_id]
+                ['id', 'is', ent_id],
+                ['project', 'is', {'type': 'Project', 'id': proj_id}]
             ]
             fields = [
                 'entity'

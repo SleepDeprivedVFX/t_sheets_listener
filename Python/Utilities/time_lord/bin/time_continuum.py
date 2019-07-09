@@ -160,7 +160,18 @@ class continuum(object):
             self.sg.update('TimeLog', timesheet['id'], data)
             self.logger.info('Timesheet updated.')
 
-    def create_new_timesheet(self, user=None, context=None, start_time=None):
+    def create_new_timesheet(self, user=None, context=None, start_time=None, entry='User'):
+        '''
+        Creates a new timesheet.  Works with Stand alone, DCC and drag-n-drop publisher
+        :param user: (dict) Contains the Shotgun User ID number
+        :param context: (dict) A Shotgun Context Object. Can be built manually.
+        :param start_time: (datetime) a date and time to start the clock, usually datetime.now()
+        :param entry: (str) This tells the system where it camer from:
+                                User = Standalone
+                                DCC  = SG Integrated Software
+                                Auto = Drag-n-Drop Publisher
+        :return: New timesheet.
+        '''
         if user and context:
             project_id = context['Project']['id']
             project_name = context['Project']['name']
@@ -180,7 +191,8 @@ class continuum(object):
                 'entity': {'type': 'Task', 'id': task_id},
                 'sg_task_start': task_start,
                 'user': {'type': 'HumanUser', 'id': user_id},
-                'project': {'type': 'Project', 'id': project_id}
+                'project': {'type': 'Project', 'id': project_id},
+                'description': 'Time Lord %s Entry' % entry
             }
             timesheet = self.sg.create('TimeLog', data)
             return timesheet
