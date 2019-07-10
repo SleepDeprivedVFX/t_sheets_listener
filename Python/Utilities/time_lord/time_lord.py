@@ -145,20 +145,26 @@ class time_lord(QtCore.QThread):
         #       and kick it back if they are not. Set the error light to red, display output, don't start the clock.
         second = int(datetime.now().second)
         while self.clocked_in:
+            # Make sure the loop only functions on a whole second
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
                 self.time_signal.main_clock.emit(str(second))
-                print self.clocked_in
                 if self.clocked_in:
-                    running_time = tl_time.get_running_time(timesheet=self.last_timesheet)
+                    rt = tl_time.get_running_time(timesheet=self.last_timesheet)
+                    running_time = rt['rt']
                     # Here we take the running time and emit it to the display.
                     self.time_signal.running_clock.emit(running_time)
+                    trt = '%s:%s:%s' % (rt['h'], rt['m'], rt['s'])
+                    start_time = self.last_timesheet['sg_task_start']
+                    start = '%s %s' % (start_time.date(), start_time.time())
+                    end = '%s %s' % (datetime.now().date(), datetime.now().time())
+                    self.set_upper_output(trt=trt, start=start, end=end, user=user)
 
     def set_upper_output(self, trt=None, start=None, end=None, user=None):
         set_message = 'OUTPUT MONITOR\n' \
                       '------------------------------------\n' \
                       'TRT: %s\n' \
-                      'Start: %s - End: %s\n' \
+                      'Start: %s\nEnd: %s\n' \
                       '%s CLOCKED IN' % (trt, start, end, user['name'])
         self.time_signal.upper_output.emit(set_message)
 
@@ -504,8 +510,6 @@ class time_lord_ui(QtGui.QMainWindow):
         return True
 
     def update_entities(self, message=None):
-        # TODO: I think this is not updating because it is not a signal.  Thus it's all frozen or some shit
-        #       since now I'm start()ing the whole thing in the init.
         selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
         logger.debug('selected project is %s' % selected_proj)
         project = sg_data.get_project_details_by_name(proj_name=selected_proj)

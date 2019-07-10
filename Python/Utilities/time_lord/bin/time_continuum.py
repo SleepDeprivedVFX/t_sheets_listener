@@ -204,7 +204,12 @@ class continuum(object):
         :param timesheet: (dict) a timesheet from Shotgun
         :return: running_time: (str) a six digit string object
         '''
-        running_time = '000000'
+        running_time = {
+            'rt': '000000',
+            'h': '00',
+            'm': '00',
+            's': '00'
+        }
         if timesheet:
             try:
                 if not timesheet['sg_task_end']:
@@ -219,7 +224,13 @@ class continuum(object):
                     m = '%02d' % int(split_time[1])
                     s = float(split_time[2])
                     s = '%02d' % int(s)
-                    running_time = h + m + s
+                    rt = h + m + s
+                    running_time = {
+                        'rt': rt,
+                        'h': h,
+                        'm': m,
+                        's': s
+                    }
             except TypeError, e:
                 self.logger.error('Yeah, the shit hit the fan: %s' % e)
         return running_time
