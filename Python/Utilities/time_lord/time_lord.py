@@ -412,8 +412,8 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def clock_out(self, message=None):
         print 'Clocking out...'
-        if not self.selection_check():
-            return False
+        # if not self.selection_check():
+        #     return False
         try:
             self.ui.clock_button.clicked.disconnect(self.stop_time)
         except:
@@ -477,6 +477,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
             self.time_lord.time_signal.lower_output.emit('You must select a Project!')
+            self.time_lord.clocked_in = False
             return False
         else:
             self.time_lord.time_signal.error_state.emit(False)
@@ -485,6 +486,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
             self.time_lord.time_signal.lower_output.emit('You must select an entity!')
+            self.time_lord.clocked_in = False
             return False
         else:
             self.time_lord.time_signal.error_state.emit(False)
@@ -493,6 +495,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
             self.time_lord.time_signal.lower_output.emit('You must select a Task!')
+            self.time_lord.clocked_in = False
             return False
         else:
             self.time_lord.time_signal.error_state.emit(False)
