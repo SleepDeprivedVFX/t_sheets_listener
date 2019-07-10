@@ -57,6 +57,7 @@ class sg_data(object):
             return shots
 
     def get_entity_tasks(self, entity_id=None):
+        print 'entity_id: %s' % entity_id
         if entity_id:
             self.logger.info('Getting tasks for entity ID %s...' % entity_id)
             filters = [

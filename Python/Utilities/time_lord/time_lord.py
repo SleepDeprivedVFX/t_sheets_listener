@@ -405,10 +405,11 @@ class time_lord_ui(QtGui.QMainWindow):
         self.clock_out()
 
     def switch_time(self):
-        self.time_lord.kill_it = False  # Or should this be True? Do I need to kill the clock?
+        self.time_lord.clocked_in = False  # Or should this be True? Do I need to kill the clock?
         self.update_settings()
         self.clock_out()
         self.clock_in()
+        self.time_lord.start()
 
     def clock_out(self, message=None):
         print 'Clocking out...'
@@ -532,8 +533,13 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def update_tasks(self):
         logger.debug('Getting tasks...')
+        if not self.last_entity_id:
+            # Here is where I will ensure the selection from the UI and retry to get
+            # the entity_id:
+            current_entity = self.ui.entity_dropdown.currentText()
+            self.last_entity_id = sg_data.get_entity_id(proj_id=self.last_project_id,
+                                                        entity_name=current_entity)
         tasks = sg_data.get_entity_tasks(self.last_entity_id)
-        print tasks
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task')
