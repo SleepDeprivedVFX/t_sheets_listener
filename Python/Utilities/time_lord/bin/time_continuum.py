@@ -206,9 +206,21 @@ class continuum(object):
         '''
         running_time = '000000'
         if timesheet:
-            if not timesheet['sg_task_end']:
-                start_datetime = timesheet['sg_task_start']
-                start_time = start_datetime.time()
-                print start_time
+            try:
+                if not timesheet['sg_task_end']:
+                    start_datetime = timesheet['sg_task_start']
+                    start_date = start_datetime.date()
+                    start_time = start_datetime.time()
+                    start = parser.parse('%s %s' % (start_date, start_time))
+                    current_date = datetime.datetime.now()
+                    date_diff = current_date - start
+                    split_time = str(date_diff).split(':')
+                    h = '%02d' % int(split_time[0])
+                    m = '%02d' % int(split_time[1])
+                    s = float(split_time[2])
+                    s = '%02d' % int(s)
+                    running_time = h + m + s
+            except TypeError, e:
+                self.logger.error('Yeah, the shit hit the fan: %s' % e)
         return running_time
 

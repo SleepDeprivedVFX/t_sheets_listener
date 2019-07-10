@@ -123,11 +123,13 @@ class time_lord(QtCore.QThread):
         self.error_state = False
         self.steady_state = True
         self.kill_signal = self.time_signal.kill_signal.connect(self.kill)
+        self.last_timesheet = tl_time.get_last_timesheet(user=user)
 
     def kill(self):
         self.kill_it = True
 
     def run(self, *args, **kwargs):
+
         self.run_the_clock()
         # if self.clocked_in:
         #     # TODO: Add the things that an already clocked in user would need.
@@ -141,15 +143,16 @@ class time_lord(QtCore.QThread):
     def run_the_clock(self):
         # TODO: This will need to make sure that the UI is ready to start running. Project, Entity and Task are set
         #       and kick it back if they are not. Set the error light to red, display output, don't start the clock.
-        running_time = None
         second = int(datetime.now().second)
-        while not self.kill_it:
+        while self.clocked_in:
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
                 self.time_signal.main_clock.emit(str(second))
-            # while self.clocked_in:
-            #     if not running_time:
-            #         running_time = tl_time.get_running_time(tl_time.get_last_timesheet(user=user))
+                print self.clocked_in
+                if self.clocked_in:
+                    running_time = tl_time.get_running_time(timesheet=self.last_timesheet)
+                    # Here we take the running time and emit it to the display.
+                    self.time_signal.running_clock.emit(running_time)
 
     def set_upper_output(self, trt=None, start=None, end=None, user=None):
         set_message = 'OUTPUT MONITOR\n' \
@@ -328,6 +331,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # --------------------------------------------------------------------------------------------------------
         # Get the last timesheet
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        self.time_lord.last_timesheet = self.last_timesheet
         print 'LAST TIMESHEET: %s' % self.last_timesheet
 
         # Get last start and end times
@@ -385,15 +389,17 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def start_time(self):
         # TODO: Add features that start other processes as well.  Change the button connections, et cetera
+        self.time_lord.clocked_in = True
         self.time_lord.kill_it = False
         self.update_settings()
         # TODO: Add check to see if the service is already running first
-        self.time_lord.start()
         # if not self.time_lord.clocked_in:
         #     self.clock_in()
         self.clock_in()
+        self.time_lord.start()
 
     def stop_time(self):
+        self.time_lord.clocked_in = False
         self.time_lord.kill_it = True
         self.update_settings()
         self.clock_out()
@@ -423,6 +429,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def clock_in(self, message=None):
         print 'Clocking in...'
+        self.time_lord.clocked_in = True
         if not self.selection_check():
             return False
         try:
@@ -434,17 +441,15 @@ class time_lord_ui(QtGui.QMainWindow):
         except:
             pass
         self.ui.clock_button.clicked.connect(self.stop_time)
+        # self.time_lord.last_timesheet = tl_time.get_last_timesheet(user=user)
         self.time_lord.time_signal.clock_state.emit(1)
         self.time_lord.time_signal.lower_output.emit('New Timesheet created!')
 
         # Create context
         project_selection = self.ui.project_dropdown.currentText().split(' - ')[-1]
-        print 'selected project: %s' % project_selection
         project_details = sg_data.get_project_details_by_name(proj_name=project_selection)
-        print 'returns project_details: %s' % project_details
         project_id = project_details['id']
         project_name = project_selection
-        print project_name
         entity_id = sg_data.get_entity_id(proj_id=project_id, entity_name=self.ui.entity_dropdown.currentText())
         task_id = sg_data.get_task_id(entity_id=entity_id, task_name=self.ui.task_dropdown.currentText())
         context = {
