@@ -927,6 +927,27 @@ color: rgb(130, 231, 130);
      <string>Raw Data Ouput</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>98</x>
+      <y>107</y>
+      <width>26</width>
+      <height>172</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image:none;
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_1_hour.png</pixmap>
+    </property>
+   </widget>
    <zorder>lower_output</zorder>
    <zorder>task_dropdown</zorder>
    <zorder>end_ones_month</zorder>
@@ -964,6 +985,7 @@ color: rgb(130, 231, 130);
    <zorder>run_minute_ten</zorder>
    <zorder>output_window</zorder>
    <zorder>start_tens_month</zorder>
+   <zorder>label</zorder>
   </widget>
   <action name="actionCrash_Computer">
    <property name="text">
