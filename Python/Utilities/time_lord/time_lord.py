@@ -101,14 +101,16 @@ class time_signals(QtCore.QObject):
     clock_state = QtCore.Signal(int)
 
 
-# class time_engine(QtCore.QThread):
-#     # This bit is trial and error.  It may have to go into the main UI, but my fear is that
-#     # the process will hang up the UI.
-#     def __init__(self, parent=None):
-#         super(time_engine, self).__init__(parent)
-#         timer = QtCore.QTimer(self)
-#         timer.timeout.connect(self.update)
-#         timer.start(1000)
+class time_engine(QtCore.QThread):
+    # This bit is trial and error.  It may have to go into the main UI, but my fear is that
+    # the process will hang up the UI.
+    def __init__(self, parent=None):
+        super(time_engine, self).__init__(parent)
+        timer = QtCore.QTimer(self)
+        timer.timeout.connect(self.update)
+        timer.start(1000)
+
+        self.time_signal = time_signals()
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -129,20 +131,9 @@ class time_lord(QtCore.QThread):
         self.kill_it = True
 
     def run(self, *args, **kwargs):
-
         self.run_the_clock()
-        # if self.clocked_in:
-        #     # TODO: Add the things that an already clocked in user would need.
-        #     #       For instance, they would NOT use the last thing they clocked into, only what is currently active.
-        #     pass
-        # else:
-        #     # Setup the things that an un-clocked in person would need.  Last thing they were clocked to, that sort of
-        #     # jazz.
-        #     pass
 
     def run_the_clock(self):
-        # TODO: This will need to make sure that the UI is ready to start running. Project, Entity and Task are set
-        #       and kick it back if they are not. Set the error light to red, display output, don't start the clock.
         second = int(datetime.now().second)
         while self.clocked_in:
             # Make sure the loop only functions on a whole second
@@ -161,11 +152,15 @@ class time_lord(QtCore.QThread):
                     self.set_upper_output(trt=trt, start=start, end=end, user=user)
 
     def set_upper_output(self, trt=None, start=None, end=None, user=None):
+        if self.clocked_in:
+            status = 'IN'
+        else:
+            status = 'OUT'
         set_message = 'OUTPUT MONITOR\n' \
                       '------------------------------------\n' \
                       'TRT: %s\n' \
                       'Start: %s\nEnd: %s\n' \
-                      '%s CLOCKED IN' % (trt, start, end, user['name'])
+                      '%s CLOCKED %s' % (trt, start, end, user['name'], status)
         self.time_signal.upper_output.emit(set_message)
 
 
@@ -230,7 +225,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Start the output window
         # TODO: Update this with actual data instead of presets
-        self.time_lord.set_upper_output(trt='00:00:00', start='date & time 1', end='Clock out time', user=user)
+        self.time_lord.set_upper_output(trt='00:00:00', start='00:00:00', end='00:00:00', user=user)
 
         # Set state buttons
         if self.time_lord.error_state:
@@ -264,6 +259,10 @@ class time_lord_ui(QtGui.QMainWindow):
         # Connect the project drop-down to an on-change event.
         self.ui.project_dropdown.currentIndexChanged.connect(self.update_entities)
         self.ui.project_dropdown.currentIndexChanged.connect(self.switch_state)
+
+        # Change the selection highlight to none
+        self.ui.project_dropdown.setFocus()
+
         # Then run it for the first time.
         self.update_entities()
         # Now check that the last or currently clocked-in entity is selected
@@ -591,6 +590,9 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.clock_state.emit(2)
         elif not self.time_lord.clocked_in:
             self.time_lord.time_signal.clock_state.emit(0)
+
+    def set_start_datetime_clock(self, start_time=None):
+        pass
 
     def upper_output(self, message=None):
         self.ui.output_window.setPlainText(message)

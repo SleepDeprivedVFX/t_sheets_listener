@@ -56,15 +56,31 @@ subcontrol-position: top right;
 font: 16pt &quot;Calisto MT&quot;;
 color: rgb(56, 9, 8);
 background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
+background-color: rgba(118, 104, 79, 0);
+selection-background-color: rgba(118, 104, 79, 0);</string>
+    </property>
+    <property name="editable">
+     <bool>false</bool>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
     </property>
     <item>
      <property name="text">
       <string>Select Project</string>
      </property>
+     <property name="icon">
+      <iconset resource="resources/time_lord_resources.qrc">
+       <normaloff>:/backgrounds/elements/project_bg.png</normaloff>
+       <normalon>:/backgrounds/elements/project_bg.png</normalon>
+       <activeoff>:/backgrounds/elements/project_bg.png</activeoff>
+       <activeon>:/backgrounds/elements/project_bg.png</activeon>
+       <selectedoff>:/backgrounds/elements/project_bg.png</selectedoff>
+       <selectedon>:/backgrounds/elements/project_bg.png</selectedon>:/backgrounds/elements/project_bg.png</iconset>
+     </property>
     </item>
    </widget>
-   <widget class="QComboBox" name="entity_dropdpwn">
+   <widget class="QComboBox" name="entity_dropdown">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -76,12 +92,13 @@ background-color: rgba(0, 0, 0, 0);</string>
     <property name="styleSheet">
      <string notr="true">background-image: url(:/backgrounds/elements/entity_bg.png);
 background-repeat: none;
-background-color: rgba(0, 0, 0, 0);
+background-color: rgba(118, 104, 79, 0);
 padding-left: 25px;
 subcontrol-origin: padding;
 subcontrol-position: top right;
 font: 16pt &quot;Calisto MT&quot;;
-color: rgb(56, 9, 8);</string>
+color: rgb(56, 9, 8);
+selection-background-color: rgba(0, 0, 0, 0);</string>
     </property>
     <item>
      <property name="text">
@@ -101,12 +118,13 @@ color: rgb(56, 9, 8);</string>
     <property name="styleSheet">
      <string notr="true">background-image: url(:/backgrounds/elements/task_bg.png);
 background-repeat: none;
-background-color: rgba(0, 0, 1, 0);
+background-color: rgba(118, 104, 79, 0);
 padding-left: 25px;
 subcontrol-origin: padding;
 subcontrol-position: top right;
 font: 16pt &quot;Calisto MT&quot;;
-color: rgb(56, 9, 8);</string>
+color: rgb(56, 9, 8);
+selection-background-color: rgba(0, 0, 0, 0);</string>
     </property>
     <item>
      <property name="text">
@@ -934,7 +952,7 @@ color: rgb(130, 231, 130);
    <zorder>run_minute_one</zorder>
    <zorder>red_light</zorder>
    <zorder>day_meter</zorder>
-   <zorder>entity_dropdpwn</zorder>
+   <zorder>entity_dropdown</zorder>
    <zorder>time_hour</zorder>
    <zorder>end_date_button</zorder>
    <zorder>clock_button</zorder>
@@ -953,6 +971,44 @@ color: rgb(130, 231, 130);
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>clock_button</tabstop>
+  <tabstop>project_dropdown</tabstop>
+  <tabstop>entity_dropdown</tabstop>
+  <tabstop>task_dropdown</tabstop>
+  <tabstop>start_date_button</tabstop>
+  <tabstop>end_date_button</tabstop>
+  <tabstop>run_hour_ten</tabstop>
+  <tabstop>run_hour_one</tabstop>
+  <tabstop>run_minute_ten</tabstop>
+  <tabstop>run_minute_one</tabstop>
+  <tabstop>run_second_ten</tabstop>
+  <tabstop>run_second_one</tabstop>
+  <tabstop>day_meter</tabstop>
+  <tabstop>start_tens_month</tabstop>
+  <tabstop>start_ones_month</tabstop>
+  <tabstop>start_tens_day</tabstop>
+  <tabstop>start_ones_day</tabstop>
+  <tabstop>start_tens_year</tabstop>
+  <tabstop>start_ones_year</tabstop>
+  <tabstop>end_tens_month</tabstop>
+  <tabstop>end_ones_month</tabstop>
+  <tabstop>end_tens_day</tabstop>
+  <tabstop>end_ones_day</tabstop>
+  <tabstop>end_tens_year</tabstop>
+  <tabstop>end_ones_year</tabstop>
+  <tabstop>start_clock_hour</tabstop>
+  <tabstop>end_clock_hour</tabstop>
+  <tabstop>red_light</tabstop>
+  <tabstop>green_light</tabstop>
+  <tabstop>start_clock_minute</tabstop>
+  <tabstop>end_clock_minute</tabstop>
+  <tabstop>output_window</tabstop>
+  <tabstop>week_meter</tabstop>
+  <tabstop>lower_output</tabstop>
+  <tabstop>time_minute</tabstop>
+  <tabstop>time_hour</tabstop>
+ </tabstops>
  <resources>
   <include location="resources/time_lord_resources.qrc"/>
  </resources>

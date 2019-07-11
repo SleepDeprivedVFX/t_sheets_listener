@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Mon Jul 08 13:36:26 2019
+# Created: Wed Jul 10 19:25:49 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,31 +37,43 @@ class Ui_TimeLord(object):
 "font: 16pt \"Calisto MT\";\n"
 "color: rgb(56, 9, 8);\n"
 "background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
+"background-color: rgba(118, 104, 79, 0);\n"
+"selection-background-color: rgba(118, 104, 79, 0);")
+        self.project_dropdown.setEditable(False)
+        self.project_dropdown.setFrame(True)
         self.project_dropdown.setObjectName("project_dropdown")
-        self.project_dropdown.addItem("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Selected, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Selected, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Active, QtGui.QIcon.On)
+        self.project_dropdown.addItem(icon, "")
         self.entity_dropdown = QtGui.QComboBox(self.centralwidget)
         self.entity_dropdown.setGeometry(QtCore.QRect(160, 610, 221, 41))
         self.entity_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/entity_bg.png);\n"
 "background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(118, 104, 79, 0);\n"
 "padding-left: 25px;\n"
 "subcontrol-origin: padding;\n"
 "subcontrol-position: top right;\n"
 "font: 16pt \"Calisto MT\";\n"
-"color: rgb(56, 9, 8);")
-        self.entity_dropdown.setObjectName("entity_dropdpwn")
+"color: rgb(56, 9, 8);\n"
+"selection-background-color: rgba(0, 0, 0, 0);")
+        self.entity_dropdown.setObjectName("entity_dropdown")
         self.entity_dropdown.addItem("")
         self.task_dropdown = QtGui.QComboBox(self.centralwidget)
         self.task_dropdown.setGeometry(QtCore.QRect(160, 680, 221, 31))
         self.task_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/task_bg.png);\n"
 "background-repeat: none;\n"
-"background-color: rgba(0, 0, 1, 0);\n"
+"background-color: rgba(118, 104, 79, 0);\n"
 "padding-left: 25px;\n"
 "subcontrol-origin: padding;\n"
 "subcontrol-position: top right;\n"
 "font: 16pt \"Calisto MT\";\n"
-"color: rgb(56, 9, 8);")
+"color: rgb(56, 9, 8);\n"
+"selection-background-color: rgba(0, 0, 0, 0);")
         self.task_dropdown.setObjectName("task_dropdown")
         self.task_dropdown.addItem("")
         self.clock_button = QtGui.QPushButton(self.centralwidget)
@@ -375,6 +387,41 @@ class Ui_TimeLord(object):
 
         self.retranslateUi(TimeLord)
         QtCore.QMetaObject.connectSlotsByName(TimeLord)
+        TimeLord.setTabOrder(self.clock_button, self.project_dropdown)
+        TimeLord.setTabOrder(self.project_dropdown, self.entity_dropdown)
+        TimeLord.setTabOrder(self.entity_dropdown, self.task_dropdown)
+        TimeLord.setTabOrder(self.task_dropdown, self.start_date_button)
+        TimeLord.setTabOrder(self.start_date_button, self.end_date_button)
+        TimeLord.setTabOrder(self.end_date_button, self.run_hour_ten)
+        TimeLord.setTabOrder(self.run_hour_ten, self.run_hour_one)
+        TimeLord.setTabOrder(self.run_hour_one, self.run_minute_ten)
+        TimeLord.setTabOrder(self.run_minute_ten, self.run_minute_one)
+        TimeLord.setTabOrder(self.run_minute_one, self.run_second_ten)
+        TimeLord.setTabOrder(self.run_second_ten, self.run_second_one)
+        TimeLord.setTabOrder(self.run_second_one, self.day_meter)
+        TimeLord.setTabOrder(self.day_meter, self.start_tens_month)
+        TimeLord.setTabOrder(self.start_tens_month, self.start_ones_month)
+        TimeLord.setTabOrder(self.start_ones_month, self.start_tens_day)
+        TimeLord.setTabOrder(self.start_tens_day, self.start_ones_day)
+        TimeLord.setTabOrder(self.start_ones_day, self.start_tens_year)
+        TimeLord.setTabOrder(self.start_tens_year, self.start_ones_year)
+        TimeLord.setTabOrder(self.start_ones_year, self.end_tens_month)
+        TimeLord.setTabOrder(self.end_tens_month, self.end_ones_month)
+        TimeLord.setTabOrder(self.end_ones_month, self.end_tens_day)
+        TimeLord.setTabOrder(self.end_tens_day, self.end_ones_day)
+        TimeLord.setTabOrder(self.end_ones_day, self.end_tens_year)
+        TimeLord.setTabOrder(self.end_tens_year, self.end_ones_year)
+        TimeLord.setTabOrder(self.end_ones_year, self.start_clock_hour)
+        TimeLord.setTabOrder(self.start_clock_hour, self.end_clock_hour)
+        TimeLord.setTabOrder(self.end_clock_hour, self.red_light)
+        TimeLord.setTabOrder(self.red_light, self.green_light)
+        TimeLord.setTabOrder(self.green_light, self.start_clock_minute)
+        TimeLord.setTabOrder(self.start_clock_minute, self.end_clock_minute)
+        TimeLord.setTabOrder(self.end_clock_minute, self.output_window)
+        TimeLord.setTabOrder(self.output_window, self.week_meter)
+        TimeLord.setTabOrder(self.week_meter, self.lower_output)
+        TimeLord.setTabOrder(self.lower_output, self.time_minute)
+        TimeLord.setTabOrder(self.time_minute, self.time_hour)
 
     def retranslateUi(self, TimeLord):
         TimeLord.setWindowTitle(QtGui.QApplication.translate("TimeLord", "Time Lord", None, QtGui.QApplication.UnicodeUTF8))

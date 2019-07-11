@@ -57,7 +57,6 @@ class sg_data(object):
             return shots
 
     def get_entity_tasks(self, entity_id=None):
-        print 'entity_id: %s' % entity_id
         if entity_id:
             self.logger.info('Getting tasks for entity ID %s...' % entity_id)
             filters = [
@@ -99,7 +98,6 @@ class sg_data(object):
             try:
                 self.logger.debug('Searching...')
                 project = self.sg.find_one('Project', filters, fields)
-                print 'immediate: %s' % project
                 self.logger.debug('Project Details found: %s' % project)
                 return project
             except (AttributeError, TypeError), e:
