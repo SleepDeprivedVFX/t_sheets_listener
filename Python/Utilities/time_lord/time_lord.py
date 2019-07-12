@@ -262,7 +262,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.steady_state.connect(self.steady_state)
         self.time_lord.time_signal.clock_state.connect(self.clock_in_button_state)
         self.time_lord.time_signal.running_clock.connect(self.set_runtime_clock)
-        self.time_lord.time_signal.in_date.connect(self.set_date_rollers)
+        self.time_lord.time_signal.in_date.connect(self.set_start_date_rollers)
 
         # Start the output window
         # TODO: Update this with actual data instead of presets
@@ -278,6 +278,12 @@ class time_lord_ui(QtGui.QMainWindow):
             self.steady_state(True)
         else:
             self.steady_state(False)
+
+        # Set the rollers
+        now = datetime.now()
+        d = now.strftime('%m-%d-%y')
+        self.set_start_date_rollers(d=d)
+        self.set_end_date_rollers(d=d)
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])
@@ -730,7 +736,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.run_second_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
                                                  'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[5])
 
-    def set_date_rollers(self, d='00-00-00', which='start'):
+    def set_start_date_rollers(self, d='00-00-00'):
         '''
         Sets the date rollers.
         :param d: (str) A MM-DD-YY date format string.
@@ -738,12 +744,6 @@ class time_lord_ui(QtGui.QMainWindow):
         :return:
         '''
         # set the start date roller
-        # Make a more dynamic set system with loopable constants.
-        mdy = ['month', 'day', 'year']
-        t_o = ['tens', 'ones']
-        date_segs = {}
-
-        # start parsing
         if d and d != '00-00-00':
 
             split_date = d.split('-')
@@ -751,33 +751,60 @@ class time_lord_ui(QtGui.QMainWindow):
             d = split_date[1]
             y = split_date[2]
 
-            date_segs['m_tens'] = int(m[0])
-            date_segs['m_ones'] = int(m[1])
-            date_segs['d_tens'] = int(d[0])
-            date_segs['d_ones'] = int(d[1])
-            date_segs['y_tens'] = int(y[0])
-            date_segs['y_ones'] = int(y[1])
-            for seg in mdy:
-                for w in t_o:
-                    s = seg[0]
+            m_tens = int(m[0])
+            m_ones = int(m[1])
+            d_tens = int(d[0])
+            d_ones = int(d[1])
+            y_tens = int(y[0])
+            y_ones = int(y[1])
 
-                    style = 'background-image: url(:/roller_numbers/elements/' \
-                            '%s_%s_%s_%s.png;' % (which, s, w, date_segs['%s_%s' % (s, w)])
-                    command = "self.ui.%s_%s_%s.setStyleSheet('%s')" % (which, w, seg, style)
-                    print command
-                    eval(command)
-                    # self.ui.start_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                    #                                        'start_m_tens_%s.png);' % m_tens)
-                    # self.ui.start_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                    #                                        'start_m_ones_%s.png);' % m_ones)
-                    # self.ui.start_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                    #                                      'start_d_tens_%s.png);' % d_tens)
-                    # self.ui.start_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                    #                                      'start_d_ones_%s.png);' % d_ones)
-                    # self.ui.start_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                    #                                       'start_y_tens_%s.png);' % y_tens)
-                    # self.ui.start_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                    #                                       'start_y_ones_%s.png);' % y_ones)
+            self.ui.start_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                   'start_m_tens_%s.png);' % m_tens)
+            self.ui.start_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                   'start_m_ones_%s.png);' % m_ones)
+            self.ui.start_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                 'start_d_tens_%s.png);' % d_tens)
+            self.ui.start_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                 'start_d_ones_%s.png);' % d_ones)
+            self.ui.start_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                  'start_y_tens_%s.png);' % y_tens)
+            self.ui.start_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                  'start_y_ones_%s.png);' % y_ones)
+
+    def set_end_date_rollers(self, d='00-00-00'):
+            '''
+            Sets the date rollers.
+            :param d: (str) A MM-DD-YY date format string.
+            :param which: (str) One of two acceptable values: 'start', 'end'
+            :return:
+            '''
+            # set the end date roller
+            if d and d != '00-00-00':
+
+                split_date = d.split('-')
+                m = split_date[0]
+                d = split_date[1]
+                y = split_date[2]
+
+                m_tens = int(m[0])
+                m_ones = int(m[1])
+                d_tens = int(d[0])
+                d_ones = int(d[1])
+                y_tens = int(y[0])
+                y_ones = int(y[1])
+
+                self.ui.end_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                     'end_m_tens_%s.png);' % m_tens)
+                self.ui.end_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                     'end_m_ones_%s.png);' % m_ones)
+                self.ui.end_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                   'end_d_tens_%s.png);' % d_tens)
+                self.ui.end_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                   'end_d_ones_%s.png);' % d_ones)
+                self.ui.end_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                    'end_y_tens_%s.png);' % y_tens)
+                self.ui.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                    'end_y_ones_%s.png);' % y_ones)
 
     def main_clock(self, in_time):
         # Function that automatically updates UI when triggered by a signal

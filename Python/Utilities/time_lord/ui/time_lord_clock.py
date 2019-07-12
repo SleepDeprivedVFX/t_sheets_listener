@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Wed Jul 10 19:25:49 2019
+# Created: Thu Jul 11 17:57:10 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,25 +12,323 @@ from PySide import QtCore, QtGui
 class Ui_TimeLord(object):
     def setupUi(self, TimeLord):
         TimeLord.setObjectName("TimeLord")
-        TimeLord.resize(978, 807)
-        TimeLord.setMinimumSize(QtCore.QSize(978, 807))
-        TimeLord.setMaximumSize(QtCore.QSize(978, 807))
-        TimeLord.setStyleSheet("background-image: url(:/backgrounds/time_lord_bg.png);\n"
-"background-repeat: none;\n"
-"selection-color: rgb(115, 115, 115);\n"
-"selection-background-color: rgb(100, 100, 100);\n"
-"color: rgb(230, 230, 230);\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"")
+        TimeLord.resize(978, 805)
+        TimeLord.setMinimumSize(QtCore.QSize(978, 805))
+        TimeLord.setMaximumSize(QtCore.QSize(978, 805))
+        TimeLord.setStyleSheet("")
         self.centralwidget = QtGui.QWidget(TimeLord)
         self.centralwidget.setObjectName("centralwidget")
-        self.project_dropdown = QtGui.QComboBox(self.centralwidget)
-        self.project_dropdown.setGeometry(QtCore.QRect(160, 550, 221, 31))
+        self.bg = QtGui.QFrame(self.centralwidget)
+        self.bg.setGeometry(QtCore.QRect(0, 0, 978, 805))
+        self.bg.setStyleSheet("QFrame {\n"
+"    image: url(:/backgrounds/time_lord_bg.png);\n"
+"    \n"
+"    border-color: rgb(0, 0, 0);\n"
+"}")
+        self.bg.setFrameShape(QtGui.QFrame.Box)
+        self.bg.setFrameShadow(QtGui.QFrame.Plain)
+        self.bg.setLineWidth(5)
+        self.bg.setObjectName("bg")
+        self.start_tens_month = QtGui.QGraphicsView(self.bg)
+        self.start_tens_month.setGeometry(QtCore.QRect(463, 551, 31, 43))
+        self.start_tens_month.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_tens_0.png);")
+        self.start_tens_month.setFrameShape(QtGui.QFrame.NoFrame)
+        self.start_tens_month.setFrameShadow(QtGui.QFrame.Plain)
+        self.start_tens_month.setObjectName("start_tens_month")
+        self.start_tens_year = QtGui.QGraphicsView(self.bg)
+        self.start_tens_year.setGeometry(QtCore.QRect(602, 551, 21, 43))
+        self.start_tens_year.setStyleSheet("background-image: url(:/roller_numbers/elements/start_y_tens_1.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.start_tens_year.setFrameShape(QtGui.QFrame.NoFrame)
+        self.start_tens_year.setFrameShadow(QtGui.QFrame.Plain)
+        self.start_tens_year.setObjectName("start_tens_year")
+        self.end_date_button = QtGui.QPushButton(self.bg)
+        self.end_date_button.setGeometry(QtCore.QRect(848, 508, 27, 28))
+        self.end_date_button.setStyleSheet("background-image: url(:/lights buttons/elements/end_date_button.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_date_button.setText("")
+        self.end_date_button.setObjectName("end_date_button")
+        self.run_hour_one = QtGui.QGraphicsView(self.bg)
+        self.run_hour_one.setGeometry(QtCore.QRect(341, 269, 41, 61))
+        self.run_hour_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_3.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.run_hour_one.setFrameShape(QtGui.QFrame.NoFrame)
+        self.run_hour_one.setFrameShadow(QtGui.QFrame.Plain)
+        self.run_hour_one.setObjectName("run_hour_one")
+        self.start_clock_hour = QtGui.QGraphicsView(self.bg)
+        self.start_clock_hour.setGeometry(QtCore.QRect(558, 408, 21, 111))
+        self.start_clock_hour.setStyleSheet("background-image: url(:/dial hands/elements/clock_2_hour.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.start_clock_hour.setFrameShape(QtGui.QFrame.NoFrame)
+        self.start_clock_hour.setFrameShadow(QtGui.QFrame.Plain)
+        self.start_clock_hour.setTransformationAnchor(QtGui.QGraphicsView.NoAnchor)
+        self.start_clock_hour.setResizeAnchor(QtGui.QGraphicsView.NoAnchor)
+        self.start_clock_hour.setObjectName("start_clock_hour")
+        self.red_light = QtGui.QGraphicsView(self.bg)
+        self.red_light.setGeometry(QtCore.QRect(805, 352, 71, 61))
+        self.red_light.setStyleSheet("background-image: url(:/lights buttons/elements/red_light_on.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.red_light.setFrameShape(QtGui.QFrame.NoFrame)
+        self.red_light.setFrameShadow(QtGui.QFrame.Plain)
+        self.red_light.setObjectName("red_light")
+        self.start_ones_month = QtGui.QGraphicsView(self.bg)
+        self.start_ones_month.setGeometry(QtCore.QRect(491, 551, 31, 42))
+        self.start_ones_month.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_ones_6.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.start_ones_month.setFrameShape(QtGui.QFrame.NoFrame)
+        self.start_ones_month.setFrameShadow(QtGui.QFrame.Plain)
+        self.start_ones_month.setObjectName("start_ones_month")
+        self.artist_label = QtGui.QLabel(self.bg)
+        self.artist_label.setGeometry(QtCore.QRect(161, 440, 231, 40))
+        font = QtGui.QFont()
+        font.setFamily("Calisto MT")
+        font.setPointSize(22)
+        font.setWeight(50)
+        font.setItalic(False)
+        font.setBold(False)
+        self.artist_label.setFont(font)
+        self.artist_label.setStyleSheet("background-image: url(:/backgrounds/elements/artist_name.png);\n"
+"font:22pt \"Calisto MT\";\n"
+"color: rgb(56, 9, 8);\n"
+"background-repeat: none;\n"
+"background-color: transparent;\n"
+"image: none;")
+        self.artist_label.setTextFormat(QtCore.Qt.AutoText)
+        self.artist_label.setMargin(0)
+        self.artist_label.setObjectName("artist_label")
+        self.start_tens_day = QtGui.QGraphicsView(self.bg)
+        self.start_tens_day.setGeometry(QtCore.QRect(531, 550, 22, 45))
+        self.start_tens_day.setStyleSheet("background-image: url(:/roller_numbers/elements/start_d_tens_0.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.start_tens_day.setFrameShape(QtGui.QFrame.NoFrame)
+        self.start_tens_day.setFrameShadow(QtGui.QFrame.Plain)
+        self.start_tens_day.setObjectName("start_tens_day")
+        self.run_hour_ten = QtGui.QGraphicsView(self.bg)
+        self.run_hour_ten.setGeometry(QtCore.QRect(281, 269, 41, 61))
+        self.run_hour_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_0.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.run_hour_ten.setFrameShape(QtGui.QFrame.NoFrame)
+        self.run_hour_ten.setFrameShadow(QtGui.QFrame.Plain)
+        self.run_hour_ten.setObjectName("run_hour_ten")
+        self.output_window = QtGui.QPlainTextEdit(self.bg)
+        self.output_window.setGeometry(QtCore.QRect(694, 89, 205, 57))
+        self.output_window.setStyleSheet("border-image: url(:/backgrounds/elements/output_monitor_top.png);\n"
+"border-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 7pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);")
+        self.output_window.setFrameShape(QtGui.QFrame.NoFrame)
+        self.output_window.setFrameShadow(QtGui.QFrame.Plain)
+        self.output_window.setLineWidth(0)
+        self.output_window.setMidLineWidth(0)
+        self.output_window.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_window.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_window.setBackgroundVisible(False)
+        self.output_window.setObjectName("output_window")
+        self.end_ones_day = QtGui.QGraphicsView(self.bg)
+        self.end_ones_day.setGeometry(QtCore.QRect(800, 551, 17, 40))
+        self.end_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_ones_4.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_ones_day.setFrameShape(QtGui.QFrame.NoFrame)
+        self.end_ones_day.setFrameShadow(QtGui.QFrame.Plain)
+        self.end_ones_day.setObjectName("end_ones_day")
+        self.time_minute = QtGui.QGraphicsView(self.bg)
+        self.time_minute.setGeometry(QtCore.QRect(181, 104, 31, 171))
+        self.time_minute.setStyleSheet("background-image: url(:/dial hands/elements/clock_1_minute.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.time_minute.setFrameShape(QtGui.QFrame.NoFrame)
+        self.time_minute.setFrameShadow(QtGui.QFrame.Plain)
+        self.time_minute.setObjectName("time_minute")
+        self.end_tens_month = QtGui.QGraphicsView(self.bg)
+        self.end_tens_month.setGeometry(QtCore.QRect(702, 551, 32, 41))
+        self.end_tens_month.setStyleSheet("background-image: url(:/roller_numbers/elements/end_m_tens_0.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_tens_month.setFrameShape(QtGui.QFrame.NoFrame)
+        self.end_tens_month.setFrameShadow(QtGui.QFrame.Plain)
+        self.end_tens_month.setObjectName("end_tens_month")
+        self.run_minute_one = QtGui.QGraphicsView(self.bg)
+        self.run_minute_one.setGeometry(QtCore.QRect(481, 269, 41, 61))
+        self.run_minute_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_9.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.run_minute_one.setFrameShape(QtGui.QFrame.NoFrame)
+        self.run_minute_one.setFrameShadow(QtGui.QFrame.Plain)
+        self.run_minute_one.setObjectName("run_minute_one")
+        self.end_tens_day = QtGui.QGraphicsView(self.bg)
+        self.end_tens_day.setGeometry(QtCore.QRect(771, 550, 21, 43))
+        self.end_tens_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_tens_0.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_tens_day.setFrameShape(QtGui.QFrame.NoFrame)
+        self.end_tens_day.setFrameShadow(QtGui.QFrame.Plain)
+        self.end_tens_day.setObjectName("end_tens_day")
+        self.run_second_ten = QtGui.QGraphicsView(self.bg)
+        self.run_second_ten.setGeometry(QtCore.QRect(554, 269, 51, 61))
+        self.run_second_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_2.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.run_second_ten.setFrameShape(QtGui.QFrame.NoFrame)
+        self.run_second_ten.setFrameShadow(QtGui.QFrame.Plain)
+        self.run_second_ten.setObjectName("run_second_ten")
+        self.end_clock_hour = QtGui.QGraphicsView(self.bg)
+        self.end_clock_hour.setGeometry(QtCore.QRect(772, 409, 21, 111))
+        self.end_clock_hour.setStyleSheet("background-image: url(:/dial hands/elements/clock_3_hour.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_clock_hour.setFrameShape(QtGui.QFrame.NoFrame)
+        self.end_clock_hour.setFrameShadow(QtGui.QFrame.Plain)
+        self.end_clock_hour.setObjectName("end_clock_hour")
+        self.start_ones_year = QtGui.QGraphicsView(self.bg)
+        self.start_ones_year.setGeometry(QtCore.QRect(632, 551, 20, 42))
+        self.start_ones_year.setStyleSheet("background-image: url(:/roller_numbers/elements/start_y_ones_9.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.start_ones_year.setFrameShape(QtGui.QFrame.NoFrame)
+        self.start_ones_year.setFrameShadow(QtGui.QFrame.Plain)
+        self.start_ones_year.setObjectName("start_ones_year")
+        self.day_meter = QtGui.QGraphicsView(self.bg)
+        self.day_meter.setGeometry(QtCore.QRect(392, 101, 21, 81))
+        self.day_meter.setStyleSheet("background-image: url(:/dial hands/elements/meter_1_needle.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.day_meter.setFrameShape(QtGui.QFrame.NoFrame)
+        self.day_meter.setFrameShadow(QtGui.QFrame.Plain)
+        self.day_meter.setObjectName("day_meter")
+        self.start_ones_day = QtGui.QGraphicsView(self.bg)
+        self.start_ones_day.setGeometry(QtCore.QRect(558, 551, 26, 40))
+        self.start_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_ones_4.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.start_ones_day.setFrameShape(QtGui.QFrame.NoFrame)
+        self.start_ones_day.setFrameShadow(QtGui.QFrame.Plain)
+        self.start_ones_day.setObjectName("start_ones_day")
+        self.end_tens_year = QtGui.QGraphicsView(self.bg)
+        self.end_tens_year.setGeometry(QtCore.QRect(831, 551, 31, 39))
+        self.end_tens_year.setStyleSheet("background-image: url(:/roller_numbers/elements/end_y_tens_1.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_tens_year.setFrameShape(QtGui.QFrame.NoFrame)
+        self.end_tens_year.setFrameShadow(QtGui.QFrame.Plain)
+        self.end_tens_year.setObjectName("end_tens_year")
+        self.clock_button = QtGui.QPushButton(self.bg)
+        self.clock_button.setGeometry(QtCore.QRect(619, 623, 118, 119))
+        self.clock_button.setStyleSheet("background-image: url(:/lights buttons/elements/clock_button_1.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"border-color: rgba(0, 0, 0, 0);")
+        self.clock_button.setText("")
+        self.clock_button.setObjectName("clock_button")
+        self.run_minute_ten = QtGui.QGraphicsView(self.bg)
+        self.run_minute_ten.setGeometry(QtCore.QRect(420, 267, 41, 61))
+        self.run_minute_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_5.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.run_minute_ten.setFrameShape(QtGui.QFrame.NoFrame)
+        self.run_minute_ten.setFrameShadow(QtGui.QFrame.Plain)
+        self.run_minute_ten.setObjectName("run_minute_ten")
+        self.start_date_button = QtGui.QPushButton(self.bg)
+        self.start_date_button.setGeometry(QtCore.QRect(631, 509, 31, 28))
+        self.start_date_button.setStyleSheet("background-image: url(:/lights buttons/elements/start_date_button.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.start_date_button.setText("")
+        self.start_date_button.setObjectName("start_date_button")
+        self.green_light = QtGui.QGraphicsView(self.bg)
+        self.green_light.setEnabled(True)
+        self.green_light.setGeometry(QtCore.QRect(720, 353, 61, 61))
+        self.green_light.setStyleSheet("background-image: url(:/lights buttons/elements/green_light_on.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.green_light.setFrameShape(QtGui.QFrame.NoFrame)
+        self.green_light.setFrameShadow(QtGui.QFrame.Plain)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.NoBrush)
+        self.green_light.setBackgroundBrush(brush)
+        self.green_light.setObjectName("green_light")
+        self.lower_output = QtGui.QPlainTextEdit(self.bg)
+        self.lower_output.setGeometry(QtCore.QRect(694, 161, 207, 178))
+        self.lower_output.setStyleSheet("QPlainTextEdit{\n"
+"border-image: url(:/backgrounds/elements/output_monitor_bottom.png);\n"
+"border-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 8pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);\n"
+"}\n"
+"")
+        self.lower_output.setFrameShape(QtGui.QFrame.NoFrame)
+        self.lower_output.setFrameShadow(QtGui.QFrame.Plain)
+        self.lower_output.setLineWidth(0)
+        self.lower_output.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.lower_output.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.lower_output.setDocumentTitle("")
+        self.lower_output.setObjectName("lower_output")
+        self.end_clock_minute = QtGui.QGraphicsView(self.bg)
+        self.end_clock_minute.setGeometry(QtCore.QRect(772, 409, 21, 111))
+        self.end_clock_minute.setStyleSheet("background-image: url(:/dial hands/elements/clock_3_minute.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_clock_minute.setFrameShape(QtGui.QFrame.NoFrame)
+        self.end_clock_minute.setFrameShadow(QtGui.QFrame.Plain)
+        self.end_clock_minute.setObjectName("end_clock_minute")
+        self.entity_dropdown = QtGui.QComboBox(self.bg)
+        self.entity_dropdown.setGeometry(QtCore.QRect(165, 609, 227, 42))
+        self.entity_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/entity_bg.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(118, 104, 79, 0);\n"
+"padding-left: 25px;\n"
+"subcontrol-origin: padding;\n"
+"subcontrol-position: top right;\n"
+"font: 16pt \"Calisto MT\";\n"
+"color: rgb(56, 9, 8);\n"
+"selection-background-color: rgba(0, 0, 0, 0);")
+        self.entity_dropdown.setObjectName("entity_dropdown")
+        self.entity_dropdown.addItem("")
+        self.end_ones_month = QtGui.QGraphicsView(self.bg)
+        self.end_ones_month.setGeometry(QtCore.QRect(731, 551, 31, 39))
+        self.end_ones_month.setStyleSheet("background-image: url(:/roller_numbers/elements/end_m_ones_6.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_ones_month.setFrameShape(QtGui.QFrame.NoFrame)
+        self.end_ones_month.setFrameShadow(QtGui.QFrame.Plain)
+        self.end_ones_month.setObjectName("end_ones_month")
+        self.task_dropdown = QtGui.QComboBox(self.bg)
+        self.task_dropdown.setGeometry(QtCore.QRect(160, 679, 221, 31))
+        self.task_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/task_bg.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(118, 104, 79, 0);\n"
+"padding-left: 25px;\n"
+"subcontrol-origin: padding;\n"
+"subcontrol-position: top right;\n"
+"font: 16pt \"Calisto MT\";\n"
+"color: rgb(56, 9, 8);\n"
+"selection-background-color: rgba(0, 0, 0, 0);")
+        self.task_dropdown.setObjectName("task_dropdown")
+        self.task_dropdown.addItem("")
+        self.start_clock_minute = QtGui.QGraphicsView(self.bg)
+        self.start_clock_minute.setGeometry(QtCore.QRect(558, 408, 21, 111))
+        self.start_clock_minute.setStyleSheet("background-image: url(:/dial hands/elements/clock_2_minute.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.start_clock_minute.setFrameShape(QtGui.QFrame.NoFrame)
+        self.start_clock_minute.setFrameShadow(QtGui.QFrame.Plain)
+        self.start_clock_minute.setTransformationAnchor(QtGui.QGraphicsView.NoAnchor)
+        self.start_clock_minute.setResizeAnchor(QtGui.QGraphicsView.NoAnchor)
+        self.start_clock_minute.setObjectName("start_clock_minute")
+        self.project_dropdown = QtGui.QComboBox(self.bg)
+        self.project_dropdown.setGeometry(QtCore.QRect(161, 549, 221, 31))
         self.project_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/project_bg.png);\n"
-"image: url(:/backgrounds/project_bar.png);\n"
+"image: url(:/backgrounds/elements/project_bar.png);\n"
 "padding-left: 25px;\n"
 "subcontrol-origin: padding;\n"
 "subcontrol-position: top right;\n"
@@ -50,122 +348,24 @@ class Ui_TimeLord(object):
         icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Selected, QtGui.QIcon.On)
         icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Active, QtGui.QIcon.On)
         self.project_dropdown.addItem(icon, "")
-        self.entity_dropdown = QtGui.QComboBox(self.centralwidget)
-        self.entity_dropdown.setGeometry(QtCore.QRect(160, 610, 221, 41))
-        self.entity_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/entity_bg.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(118, 104, 79, 0);\n"
-"padding-left: 25px;\n"
-"subcontrol-origin: padding;\n"
-"subcontrol-position: top right;\n"
-"font: 16pt \"Calisto MT\";\n"
-"color: rgb(56, 9, 8);\n"
-"selection-background-color: rgba(0, 0, 0, 0);")
-        self.entity_dropdown.setObjectName("entity_dropdown")
-        self.entity_dropdown.addItem("")
-        self.task_dropdown = QtGui.QComboBox(self.centralwidget)
-        self.task_dropdown.setGeometry(QtCore.QRect(160, 680, 221, 31))
-        self.task_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/task_bg.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(118, 104, 79, 0);\n"
-"padding-left: 25px;\n"
-"subcontrol-origin: padding;\n"
-"subcontrol-position: top right;\n"
-"font: 16pt \"Calisto MT\";\n"
-"color: rgb(56, 9, 8);\n"
-"selection-background-color: rgba(0, 0, 0, 0);")
-        self.task_dropdown.setObjectName("task_dropdown")
-        self.task_dropdown.addItem("")
-        self.clock_button = QtGui.QPushButton(self.centralwidget)
-        self.clock_button.setGeometry(QtCore.QRect(622, 625, 118, 119))
-        self.clock_button.setStyleSheet("background-image: url(:/lights buttons/elements/clock_button_1.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);\n"
-"border-color: rgba(0, 0, 0, 0);")
-        self.clock_button.setText("")
-        self.clock_button.setObjectName("clock_button")
-        self.artist_label = QtGui.QLabel(self.centralwidget)
-        self.artist_label.setGeometry(QtCore.QRect(160, 440, 231, 41))
-        font = QtGui.QFont()
-        font.setFamily("Calisto MT")
-        font.setPointSize(22)
-        font.setWeight(50)
-        font.setItalic(False)
-        font.setBold(False)
-        self.artist_label.setFont(font)
-        self.artist_label.setStyleSheet("background-image: url(:/backgrounds/elements/artist_name.png);\n"
-"font:22pt \"Calisto MT\";\n"
-"color: rgb(56, 9, 8);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.artist_label.setTextFormat(QtCore.Qt.AutoText)
-        self.artist_label.setMargin(0)
-        self.artist_label.setObjectName("artist_label")
-        self.output_window = QtGui.QPlainTextEdit(self.centralwidget)
-        self.output_window.setGeometry(QtCore.QRect(690, 89, 211, 62))
-        self.output_window.setStyleSheet("border-image: url(:/backgrounds/elements/output_monitor_top.png);\n"
-"border-color: rgba(0, 0, 0, 0);\n"
-"background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 7pt \"MS UI Gothic\";\n"
-"color: rgb(130, 231, 130);")
-        self.output_window.setFrameShape(QtGui.QFrame.NoFrame)
-        self.output_window.setFrameShadow(QtGui.QFrame.Plain)
-        self.output_window.setLineWidth(0)
-        self.output_window.setMidLineWidth(0)
-        self.output_window.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.output_window.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.output_window.setBackgroundVisible(False)
-        self.output_window.setObjectName("output_window")
-        self.run_hour_ten = QtGui.QGraphicsView(self.centralwidget)
-        self.run_hour_ten.setGeometry(QtCore.QRect(280, 270, 41, 61))
-        self.run_hour_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_0.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.run_hour_ten.setFrameShape(QtGui.QFrame.NoFrame)
-        self.run_hour_ten.setFrameShadow(QtGui.QFrame.Plain)
-        self.run_hour_ten.setObjectName("run_hour_ten")
-        self.run_hour_one = QtGui.QGraphicsView(self.centralwidget)
-        self.run_hour_one.setGeometry(QtCore.QRect(340, 270, 41, 61))
-        self.run_hour_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_3.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.run_hour_one.setFrameShape(QtGui.QFrame.NoFrame)
-        self.run_hour_one.setFrameShadow(QtGui.QFrame.Plain)
-        self.run_hour_one.setObjectName("run_hour_one")
-        self.run_minute_ten = QtGui.QGraphicsView(self.centralwidget)
-        self.run_minute_ten.setGeometry(QtCore.QRect(419, 268, 41, 61))
-        self.run_minute_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_5.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.run_minute_ten.setFrameShape(QtGui.QFrame.NoFrame)
-        self.run_minute_ten.setFrameShadow(QtGui.QFrame.Plain)
-        self.run_minute_ten.setObjectName("run_minute_ten")
-        self.run_minute_one = QtGui.QGraphicsView(self.centralwidget)
-        self.run_minute_one.setGeometry(QtCore.QRect(480, 270, 41, 61))
-        self.run_minute_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_9.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.run_minute_one.setFrameShape(QtGui.QFrame.NoFrame)
-        self.run_minute_one.setFrameShadow(QtGui.QFrame.Plain)
-        self.run_minute_one.setObjectName("run_minute_one")
-        self.run_second_ten = QtGui.QGraphicsView(self.centralwidget)
-        self.run_second_ten.setGeometry(QtCore.QRect(553, 270, 51, 61))
-        self.run_second_ten.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_2.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.run_second_ten.setFrameShape(QtGui.QFrame.NoFrame)
-        self.run_second_ten.setFrameShadow(QtGui.QFrame.Plain)
-        self.run_second_ten.setObjectName("run_second_ten")
-        self.run_second_one = QtGui.QGraphicsView(self.centralwidget)
-        self.run_second_one.setGeometry(QtCore.QRect(610, 270, 41, 61))
+        self.run_second_one = QtGui.QGraphicsView(self.bg)
+        self.run_second_one.setGeometry(QtCore.QRect(611, 269, 41, 61))
         self.run_second_one.setStyleSheet("background-image: url(:/vaccuum_tube_numbers/elements/vt_1.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
         self.run_second_one.setFrameShape(QtGui.QFrame.NoFrame)
         self.run_second_one.setFrameShadow(QtGui.QFrame.Plain)
         self.run_second_one.setObjectName("run_second_one")
-        self.week_meter = QtGui.QGraphicsView(self.centralwidget)
-        self.week_meter.setGeometry(QtCore.QRect(566, 104, 20, 81))
+        self.end_ones_year = QtGui.QGraphicsView(self.bg)
+        self.end_ones_year.setGeometry(QtCore.QRect(859, 551, 33, 39))
+        self.end_ones_year.setStyleSheet("background-image: url(:/roller_numbers/elements/end_y_ones_9.png);\n"
+"background-repeat: none;\n"
+"background-color: rgba(0, 0, 0, 0);")
+        self.end_ones_year.setFrameShape(QtGui.QFrame.NoFrame)
+        self.end_ones_year.setFrameShadow(QtGui.QFrame.Plain)
+        self.end_ones_year.setObjectName("end_ones_year")
+        self.week_meter = QtGui.QGraphicsView(self.bg)
+        self.week_meter.setGeometry(QtCore.QRect(567, 102, 20, 81))
         self.week_meter.setStyleSheet("background-image: url(:/dial hands/elements/meter_1_needle.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);")
@@ -174,213 +374,14 @@ class Ui_TimeLord(object):
         self.week_meter.setRenderHints(QtGui.QPainter.SmoothPixmapTransform|QtGui.QPainter.TextAntialiasing)
         self.week_meter.setTransformationAnchor(QtGui.QGraphicsView.AnchorViewCenter)
         self.week_meter.setObjectName("week_meter")
-        self.day_meter = QtGui.QGraphicsView(self.centralwidget)
-        self.day_meter.setGeometry(QtCore.QRect(391, 103, 21, 81))
-        self.day_meter.setStyleSheet("background-image: url(:/dial hands/elements/meter_1_needle.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.day_meter.setFrameShape(QtGui.QFrame.NoFrame)
-        self.day_meter.setFrameShadow(QtGui.QFrame.Plain)
-        self.day_meter.setObjectName("day_meter")
-        self.time_minute = QtGui.QGraphicsView(self.centralwidget)
-        self.time_minute.setGeometry(QtCore.QRect(180, 105, 31, 171))
-        self.time_minute.setStyleSheet("background-image: url(:/dial hands/elements/clock_1_minute.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.time_minute.setFrameShape(QtGui.QFrame.NoFrame)
-        self.time_minute.setFrameShadow(QtGui.QFrame.Plain)
-        self.time_minute.setObjectName("time_minute")
-        self.time_hour = QtGui.QGraphicsView(self.centralwidget)
-        self.time_hour.setGeometry(QtCore.QRect(180, 105, 31, 171))
-        self.time_hour.setStyleSheet("background-image: url(:/dial hands/elements/clock_1_hour.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.time_hour.setFrameShape(QtGui.QFrame.NoFrame)
-        self.time_hour.setFrameShadow(QtGui.QFrame.Plain)
+        self.time_hour = QtGui.QLabel(self.bg)
+        self.time_hour.setGeometry(QtCore.QRect(180, 110, 31, 161))
+        self.time_hour.setStyleSheet("image: url(:/dial hands/elements/clock_1_hour.png);")
+        self.time_hour.setText("")
+        self.time_hour.setTextFormat(QtCore.Qt.PlainText)
+        self.time_hour.setScaledContents(True)
+        self.time_hour.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.time_hour.setObjectName("time_hour")
-        self.start_tens_month = QtGui.QGraphicsView(self.centralwidget)
-        self.start_tens_month.setGeometry(QtCore.QRect(462, 551, 31, 44))
-        self.start_tens_month.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_tens_0.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_tens_month.setFrameShape(QtGui.QFrame.NoFrame)
-        self.start_tens_month.setFrameShadow(QtGui.QFrame.Plain)
-        self.start_tens_month.setObjectName("start_tens_month")
-        self.start_ones_month = QtGui.QGraphicsView(self.centralwidget)
-        self.start_ones_month.setGeometry(QtCore.QRect(490, 552, 31, 42))
-        self.start_ones_month.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_ones_6.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_ones_month.setFrameShape(QtGui.QFrame.NoFrame)
-        self.start_ones_month.setFrameShadow(QtGui.QFrame.Plain)
-        self.start_ones_month.setObjectName("start_ones_month")
-        self.start_tens_day = QtGui.QGraphicsView(self.centralwidget)
-        self.start_tens_day.setGeometry(QtCore.QRect(531, 551, 21, 43))
-        self.start_tens_day.setStyleSheet("background-image: url(:/roller_numbers/elements/start_d_tens_0.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_tens_day.setFrameShape(QtGui.QFrame.NoFrame)
-        self.start_tens_day.setFrameShadow(QtGui.QFrame.Plain)
-        self.start_tens_day.setObjectName("start_tens_day")
-        self.start_ones_day = QtGui.QGraphicsView(self.centralwidget)
-        self.start_ones_day.setGeometry(QtCore.QRect(557, 552, 24, 39))
-        self.start_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/start_m_ones_4.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_ones_day.setFrameShape(QtGui.QFrame.NoFrame)
-        self.start_ones_day.setFrameShadow(QtGui.QFrame.Plain)
-        self.start_ones_day.setObjectName("start_ones_day")
-        self.start_tens_year = QtGui.QGraphicsView(self.centralwidget)
-        self.start_tens_year.setGeometry(QtCore.QRect(600, 550, 21, 43))
-        self.start_tens_year.setStyleSheet("background-image: url(:/roller_numbers/elements/start_y_tens_1.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_tens_year.setFrameShape(QtGui.QFrame.NoFrame)
-        self.start_tens_year.setFrameShadow(QtGui.QFrame.Plain)
-        self.start_tens_year.setObjectName("start_tens_year")
-        self.start_ones_year = QtGui.QGraphicsView(self.centralwidget)
-        self.start_ones_year.setGeometry(QtCore.QRect(632, 551, 21, 41))
-        self.start_ones_year.setStyleSheet("background-image: url(:/roller_numbers/elements/start_y_ones_9.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_ones_year.setFrameShape(QtGui.QFrame.NoFrame)
-        self.start_ones_year.setFrameShadow(QtGui.QFrame.Plain)
-        self.start_ones_year.setObjectName("start_ones_year")
-        self.end_tens_month = QtGui.QGraphicsView(self.centralwidget)
-        self.end_tens_month.setGeometry(QtCore.QRect(702, 552, 30, 41))
-        self.end_tens_month.setStyleSheet("background-image: url(:/roller_numbers/elements/end_m_tens_0.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_tens_month.setFrameShape(QtGui.QFrame.NoFrame)
-        self.end_tens_month.setFrameShadow(QtGui.QFrame.Plain)
-        self.end_tens_month.setObjectName("end_tens_month")
-        self.end_ones_month = QtGui.QGraphicsView(self.centralwidget)
-        self.end_ones_month.setGeometry(QtCore.QRect(730, 552, 31, 39))
-        self.end_ones_month.setStyleSheet("background-image: url(:/roller_numbers/elements/end_m_ones_6.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_ones_month.setFrameShape(QtGui.QFrame.NoFrame)
-        self.end_ones_month.setFrameShadow(QtGui.QFrame.Plain)
-        self.end_ones_month.setObjectName("end_ones_month")
-        self.end_tens_day = QtGui.QGraphicsView(self.centralwidget)
-        self.end_tens_day.setGeometry(QtCore.QRect(770, 550, 21, 41))
-        self.end_tens_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_tens_0.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_tens_day.setFrameShape(QtGui.QFrame.NoFrame)
-        self.end_tens_day.setFrameShadow(QtGui.QFrame.Plain)
-        self.end_tens_day.setObjectName("end_tens_day")
-        self.end_ones_day = QtGui.QGraphicsView(self.centralwidget)
-        self.end_ones_day.setGeometry(QtCore.QRect(800, 552, 21, 39))
-        self.end_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_ones_4.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_ones_day.setFrameShape(QtGui.QFrame.NoFrame)
-        self.end_ones_day.setFrameShadow(QtGui.QFrame.Plain)
-        self.end_ones_day.setObjectName("end_ones_day")
-        self.end_tens_year = QtGui.QGraphicsView(self.centralwidget)
-        self.end_tens_year.setGeometry(QtCore.QRect(830, 552, 31, 39))
-        self.end_tens_year.setStyleSheet("background-image: url(:/roller_numbers/elements/end_y_tens_1.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_tens_year.setFrameShape(QtGui.QFrame.NoFrame)
-        self.end_tens_year.setFrameShadow(QtGui.QFrame.Plain)
-        self.end_tens_year.setObjectName("end_tens_year")
-        self.end_ones_year = QtGui.QGraphicsView(self.centralwidget)
-        self.end_ones_year.setGeometry(QtCore.QRect(860, 552, 31, 39))
-        self.end_ones_year.setStyleSheet("background-image: url(:/roller_numbers/elements/end_y_ones_9.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_ones_year.setFrameShape(QtGui.QFrame.NoFrame)
-        self.end_ones_year.setFrameShadow(QtGui.QFrame.Plain)
-        self.end_ones_year.setObjectName("end_ones_year")
-        self.start_clock_hour = QtGui.QGraphicsView(self.centralwidget)
-        self.start_clock_hour.setGeometry(QtCore.QRect(559, 407, 21, 111))
-        self.start_clock_hour.setStyleSheet("background-image: url(:/dial hands/elements/clock_2_hour.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_clock_hour.setFrameShape(QtGui.QFrame.NoFrame)
-        self.start_clock_hour.setFrameShadow(QtGui.QFrame.Plain)
-        self.start_clock_hour.setTransformationAnchor(QtGui.QGraphicsView.NoAnchor)
-        self.start_clock_hour.setResizeAnchor(QtGui.QGraphicsView.NoAnchor)
-        self.start_clock_hour.setObjectName("start_clock_hour")
-        self.end_clock_hour = QtGui.QGraphicsView(self.centralwidget)
-        self.end_clock_hour.setGeometry(QtCore.QRect(773, 408, 21, 111))
-        self.end_clock_hour.setStyleSheet("background-image: url(:/dial hands/elements/clock_3_hour.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_clock_hour.setFrameShape(QtGui.QFrame.NoFrame)
-        self.end_clock_hour.setFrameShadow(QtGui.QFrame.Plain)
-        self.end_clock_hour.setObjectName("end_clock_hour")
-        self.red_light = QtGui.QGraphicsView(self.centralwidget)
-        self.red_light.setGeometry(QtCore.QRect(809, 352, 71, 61))
-        self.red_light.setStyleSheet("background-image: url(:/lights buttons/elements/red_light_on.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.red_light.setFrameShape(QtGui.QFrame.NoFrame)
-        self.red_light.setFrameShadow(QtGui.QFrame.Plain)
-        self.red_light.setObjectName("red_light")
-        self.green_light = QtGui.QGraphicsView(self.centralwidget)
-        self.green_light.setEnabled(True)
-        self.green_light.setGeometry(QtCore.QRect(720, 353, 61, 61))
-        self.green_light.setStyleSheet("background-image: url(:/lights buttons/elements/green_light_on.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.green_light.setFrameShape(QtGui.QFrame.NoFrame)
-        self.green_light.setFrameShadow(QtGui.QFrame.Plain)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
-        brush.setStyle(QtCore.Qt.NoBrush)
-        self.green_light.setBackgroundBrush(brush)
-        self.green_light.setObjectName("green_light")
-        self.start_clock_minute = QtGui.QGraphicsView(self.centralwidget)
-        self.start_clock_minute.setGeometry(QtCore.QRect(559, 407, 21, 111))
-        self.start_clock_minute.setStyleSheet("background-image: url(:/dial hands/elements/clock_2_minute.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_clock_minute.setFrameShape(QtGui.QFrame.NoFrame)
-        self.start_clock_minute.setFrameShadow(QtGui.QFrame.Plain)
-        self.start_clock_minute.setTransformationAnchor(QtGui.QGraphicsView.NoAnchor)
-        self.start_clock_minute.setResizeAnchor(QtGui.QGraphicsView.NoAnchor)
-        self.start_clock_minute.setObjectName("start_clock_minute")
-        self.end_clock_minute = QtGui.QGraphicsView(self.centralwidget)
-        self.end_clock_minute.setGeometry(QtCore.QRect(773, 408, 21, 111))
-        self.end_clock_minute.setStyleSheet("background-image: url(:/dial hands/elements/clock_3_minute.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_clock_minute.setFrameShape(QtGui.QFrame.NoFrame)
-        self.end_clock_minute.setFrameShadow(QtGui.QFrame.Plain)
-        self.end_clock_minute.setObjectName("end_clock_minute")
-        self.start_date_button = QtGui.QPushButton(self.centralwidget)
-        self.start_date_button.setGeometry(QtCore.QRect(630, 510, 31, 28))
-        self.start_date_button.setStyleSheet("background-image: url(:/lights buttons/elements/start_date_button.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.start_date_button.setText("")
-        self.start_date_button.setObjectName("start_date_button")
-        self.end_date_button = QtGui.QPushButton(self.centralwidget)
-        self.end_date_button.setGeometry(QtCore.QRect(850, 508, 27, 28))
-        self.end_date_button.setStyleSheet("background-image: url(:/lights buttons/elements/end_date_button.png);\n"
-"background-repeat: none;\n"
-"background-color: rgba(0, 0, 0, 0);")
-        self.end_date_button.setText("")
-        self.end_date_button.setObjectName("end_date_button")
-        self.lower_output = QtGui.QPlainTextEdit(self.centralwidget)
-        self.lower_output.setGeometry(QtCore.QRect(687, 163, 216, 177))
-        self.lower_output.setStyleSheet("QPlainTextEdit{\n"
-"border-image: url(:/backgrounds/elements/output_monitor_bottom.png);\n"
-"border-color: rgba(0, 0, 0, 0);\n"
-"background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 8pt \"MS UI Gothic\";\n"
-"color: rgb(130, 231, 130);\n"
-"}\n"
-"")
-        self.lower_output.setFrameShape(QtGui.QFrame.NoFrame)
-        self.lower_output.setFrameShadow(QtGui.QFrame.Plain)
-        self.lower_output.setLineWidth(0)
-        self.lower_output.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.lower_output.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.lower_output.setDocumentTitle("")
-        self.lower_output.setObjectName("lower_output")
         TimeLord.setCentralWidget(self.centralwidget)
         self.actionCrash_Computer = QtGui.QAction(TimeLord)
         self.actionCrash_Computer.setObjectName("actionCrash_Computer")
@@ -421,13 +422,9 @@ class Ui_TimeLord(object):
         TimeLord.setTabOrder(self.output_window, self.week_meter)
         TimeLord.setTabOrder(self.week_meter, self.lower_output)
         TimeLord.setTabOrder(self.lower_output, self.time_minute)
-        TimeLord.setTabOrder(self.time_minute, self.time_hour)
 
     def retranslateUi(self, TimeLord):
         TimeLord.setWindowTitle(QtGui.QApplication.translate("TimeLord", "Time Lord", None, QtGui.QApplication.UnicodeUTF8))
-        self.project_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Project", None, QtGui.QApplication.UnicodeUTF8))
-        self.entity_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
-        self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))
         self.artist_label.setText(QtGui.QApplication.translate("TimeLord", "Artist", None, QtGui.QApplication.UnicodeUTF8))
         self.output_window.setPlainText(QtGui.QApplication.translate("TimeLord", "OUTPUT MONITOR\n"
 "------------------------------------\n"
@@ -435,6 +432,9 @@ class Ui_TimeLord(object):
 "Start: 07/02/19 - End:\n"
 "USER CLOCKED IN", None, QtGui.QApplication.UnicodeUTF8))
         self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "Raw Data Ouput", None, QtGui.QApplication.UnicodeUTF8))
+        self.entity_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
+        self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))
+        self.project_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Project", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCrash_Computer.setText(QtGui.QApplication.translate("TimeLord", "Crash Computer", None, QtGui.QApplication.UnicodeUTF8))
 
 from resources import time_lord_resources_rc

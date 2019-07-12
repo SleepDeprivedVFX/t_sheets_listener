@@ -7,49 +7,821 @@
     <x>0</x>
     <y>0</y>
     <width>978</width>
-    <height>807</height>
+    <height>805</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>978</width>
-    <height>807</height>
+    <height>805</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>978</width>
-    <height>807</height>
+    <height>805</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Time Lord</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/backgrounds/time_lord_bg.png);
-background-repeat: none;
-selection-color: rgb(115, 115, 115);
-selection-background-color: rgb(100, 100, 100);
-color: rgb(230, 230, 230);
-
-
-
-
-</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QComboBox" name="project_dropdown">
+   <widget class="QFrame" name="bg">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>550</y>
-      <width>221</width>
-      <height>31</height>
+      <x>0</x>
+      <y>0</y>
+      <width>978</width>
+      <height>805</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/backgrounds/elements/project_bg.png);
-image: url(:/backgrounds/project_bar.png);
+     <string notr="true">QFrame {
+	image: url(:/backgrounds/time_lord_bg.png);
+	
+	border-color: rgb(0, 0, 0);
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>5</number>
+    </property>
+    <widget class="QGraphicsView" name="start_tens_month">
+     <property name="geometry">
+      <rect>
+       <x>463</x>
+       <y>551</y>
+       <width>31</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/start_m_tens_0.png);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="start_tens_year">
+     <property name="geometry">
+      <rect>
+       <x>602</x>
+       <y>551</y>
+       <width>21</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/start_y_tens_1.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="end_date_button">
+     <property name="geometry">
+      <rect>
+       <x>848</x>
+       <y>508</y>
+       <width>27</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/lights buttons/elements/end_date_button.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="run_hour_one">
+     <property name="geometry">
+      <rect>
+       <x>341</x>
+       <y>269</y>
+       <width>41</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_3.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="start_clock_hour">
+     <property name="geometry">
+      <rect>
+       <x>558</x>
+       <y>408</y>
+       <width>21</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/dial hands/elements/clock_2_hour.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="transformationAnchor">
+      <enum>QGraphicsView::NoAnchor</enum>
+     </property>
+     <property name="resizeAnchor">
+      <enum>QGraphicsView::NoAnchor</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="red_light">
+     <property name="geometry">
+      <rect>
+       <x>805</x>
+       <y>352</y>
+       <width>71</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/lights buttons/elements/red_light_on.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="start_ones_month">
+     <property name="geometry">
+      <rect>
+       <x>491</x>
+       <y>551</y>
+       <width>31</width>
+       <height>42</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/start_m_ones_6.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="artist_label">
+     <property name="geometry">
+      <rect>
+       <x>161</x>
+       <y>440</y>
+       <width>231</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Calisto MT</family>
+       <pointsize>22</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/backgrounds/elements/artist_name.png);
+font:22pt &quot;Calisto MT&quot;;
+color: rgb(56, 9, 8);
+background-repeat: none;
+background-color: transparent;
+image: none;</string>
+     </property>
+     <property name="text">
+      <string>Artist</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="start_tens_day">
+     <property name="geometry">
+      <rect>
+       <x>531</x>
+       <y>550</y>
+       <width>22</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/start_d_tens_0.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="run_hour_ten">
+     <property name="geometry">
+      <rect>
+       <x>281</x>
+       <y>269</y>
+       <width>41</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_0.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="output_window">
+     <property name="geometry">
+      <rect>
+       <x>694</x>
+       <y>89</y>
+       <width>205</width>
+       <height>57</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/backgrounds/elements/output_monitor_top.png);
+border-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+font: 75 7pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="plainText">
+      <string>OUTPUT MONITOR
+------------------------------------
+TRT: 00:12:24
+Start: 07/02/19 - End:
+USER CLOCKED IN</string>
+     </property>
+     <property name="backgroundVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="end_ones_day">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>551</y>
+       <width>17</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/end_d_ones_4.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="time_minute">
+     <property name="geometry">
+      <rect>
+       <x>181</x>
+       <y>104</y>
+       <width>31</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/dial hands/elements/clock_1_minute.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="end_tens_month">
+     <property name="geometry">
+      <rect>
+       <x>702</x>
+       <y>551</y>
+       <width>32</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/end_m_tens_0.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="run_minute_one">
+     <property name="geometry">
+      <rect>
+       <x>481</x>
+       <y>269</y>
+       <width>41</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_9.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="end_tens_day">
+     <property name="geometry">
+      <rect>
+       <x>771</x>
+       <y>550</y>
+       <width>21</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/end_d_tens_0.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="run_second_ten">
+     <property name="geometry">
+      <rect>
+       <x>554</x>
+       <y>269</y>
+       <width>51</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_2.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="end_clock_hour">
+     <property name="geometry">
+      <rect>
+       <x>772</x>
+       <y>409</y>
+       <width>21</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/dial hands/elements/clock_3_hour.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="start_ones_year">
+     <property name="geometry">
+      <rect>
+       <x>632</x>
+       <y>551</y>
+       <width>20</width>
+       <height>42</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/start_y_ones_9.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="day_meter">
+     <property name="geometry">
+      <rect>
+       <x>392</x>
+       <y>101</y>
+       <width>21</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/dial hands/elements/meter_1_needle.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="start_ones_day">
+     <property name="geometry">
+      <rect>
+       <x>558</x>
+       <y>551</y>
+       <width>26</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/start_m_ones_4.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="end_tens_year">
+     <property name="geometry">
+      <rect>
+       <x>831</x>
+       <y>551</y>
+       <width>31</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/end_y_tens_1.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clock_button">
+     <property name="geometry">
+      <rect>
+       <x>619</x>
+       <y>623</y>
+       <width>118</width>
+       <height>119</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/lights buttons/elements/clock_button_1.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);
+border-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="run_minute_ten">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>267</y>
+       <width>41</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_5.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="start_date_button">
+     <property name="geometry">
+      <rect>
+       <x>631</x>
+       <y>509</y>
+       <width>31</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/lights buttons/elements/start_date_button.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="green_light">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>720</x>
+       <y>353</y>
+       <width>61</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/lights buttons/elements/green_light_on.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="backgroundBrush">
+      <brush brushstyle="NoBrush">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="lower_output">
+     <property name="geometry">
+      <rect>
+       <x>694</x>
+       <y>161</y>
+       <width>207</width>
+       <height>178</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPlainTextEdit{
+border-image: url(:/backgrounds/elements/output_monitor_bottom.png);
+border-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+font: 75 8pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);
+}
+</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="documentTitle">
+      <string/>
+     </property>
+     <property name="plainText">
+      <string>Raw Data Ouput</string>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="end_clock_minute">
+     <property name="geometry">
+      <rect>
+       <x>772</x>
+       <y>409</y>
+       <width>21</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/dial hands/elements/clock_3_minute.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="entity_dropdown">
+     <property name="geometry">
+      <rect>
+       <x>165</x>
+       <y>609</y>
+       <width>227</width>
+       <height>42</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/backgrounds/elements/entity_bg.png);
+background-repeat: none;
+background-color: rgba(118, 104, 79, 0);
+padding-left: 25px;
+subcontrol-origin: padding;
+subcontrol-position: top right;
+font: 16pt &quot;Calisto MT&quot;;
+color: rgb(56, 9, 8);
+selection-background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Select Asset/Shot</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QGraphicsView" name="end_ones_month">
+     <property name="geometry">
+      <rect>
+       <x>731</x>
+       <y>551</y>
+       <width>31</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/end_m_ones_6.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="task_dropdown">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>679</y>
+       <width>221</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/backgrounds/elements/task_bg.png);
+background-repeat: none;
+background-color: rgba(118, 104, 79, 0);
+padding-left: 25px;
+subcontrol-origin: padding;
+subcontrol-position: top right;
+font: 16pt &quot;Calisto MT&quot;;
+color: rgb(56, 9, 8);
+selection-background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Select Task</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QGraphicsView" name="start_clock_minute">
+     <property name="geometry">
+      <rect>
+       <x>558</x>
+       <y>408</y>
+       <width>21</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/dial hands/elements/clock_2_minute.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="transformationAnchor">
+      <enum>QGraphicsView::NoAnchor</enum>
+     </property>
+     <property name="resizeAnchor">
+      <enum>QGraphicsView::NoAnchor</enum>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="project_dropdown">
+     <property name="geometry">
+      <rect>
+       <x>161</x>
+       <y>549</y>
+       <width>221</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/backgrounds/elements/project_bg.png);
+image: url(:/backgrounds/elements/project_bar.png);
 padding-left: 25px;
 subcontrol-origin: padding;
 subcontrol-position: top right;
@@ -58,934 +830,123 @@ color: rgb(56, 9, 8);
 background-repeat: none;
 background-color: rgba(118, 104, 79, 0);
 selection-background-color: rgba(118, 104, 79, 0);</string>
-    </property>
-    <property name="editable">
-     <bool>false</bool>
-    </property>
-    <property name="frame">
-     <bool>true</bool>
-    </property>
-    <item>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="frame">
+      <bool>true</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>Select Project</string>
+      </property>
+      <property name="icon">
+       <iconset resource="resources/time_lord_resources.qrc">
+        <normaloff>:/backgrounds/elements/project_bg.png</normaloff>
+        <normalon>:/backgrounds/elements/project_bg.png</normalon>
+        <activeoff>:/backgrounds/elements/project_bg.png</activeoff>
+        <activeon>:/backgrounds/elements/project_bg.png</activeon>
+        <selectedoff>:/backgrounds/elements/project_bg.png</selectedoff>
+        <selectedon>:/backgrounds/elements/project_bg.png</selectedon>:/backgrounds/elements/project_bg.png</iconset>
+      </property>
+     </item>
+    </widget>
+    <widget class="QGraphicsView" name="run_second_one">
+     <property name="geometry">
+      <rect>
+       <x>611</x>
+       <y>269</y>
+       <width>41</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_1.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="end_ones_year">
+     <property name="geometry">
+      <rect>
+       <x>859</x>
+       <y>551</y>
+       <width>33</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/roller_numbers/elements/end_y_ones_9.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="week_meter">
+     <property name="geometry">
+      <rect>
+       <x>567</x>
+       <y>102</y>
+       <width>20</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/dial hands/elements/meter_1_needle.png);
+background-repeat: none;
+background-color: rgba(0, 0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="renderHints">
+      <set>QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
+     </property>
+     <property name="transformationAnchor">
+      <enum>QGraphicsView::AnchorViewCenter</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="time_hour">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>110</y>
+       <width>31</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/dial hands/elements/clock_1_hour.png);</string>
+     </property>
      <property name="text">
-      <string>Select Project</string>
+      <string/>
      </property>
-     <property name="icon">
-      <iconset resource="resources/time_lord_resources.qrc">
-       <normaloff>:/backgrounds/elements/project_bg.png</normaloff>
-       <normalon>:/backgrounds/elements/project_bg.png</normalon>
-       <activeoff>:/backgrounds/elements/project_bg.png</activeoff>
-       <activeon>:/backgrounds/elements/project_bg.png</activeon>
-       <selectedoff>:/backgrounds/elements/project_bg.png</selectedoff>
-       <selectedon>:/backgrounds/elements/project_bg.png</selectedon>:/backgrounds/elements/project_bg.png</iconset>
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
      </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="entity_dropdown">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>610</y>
-      <width>221</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/backgrounds/elements/entity_bg.png);
-background-repeat: none;
-background-color: rgba(118, 104, 79, 0);
-padding-left: 25px;
-subcontrol-origin: padding;
-subcontrol-position: top right;
-font: 16pt &quot;Calisto MT&quot;;
-color: rgb(56, 9, 8);
-selection-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <item>
-     <property name="text">
-      <string>Select Asset/Shot</string>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="task_dropdown">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>680</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/backgrounds/elements/task_bg.png);
-background-repeat: none;
-background-color: rgba(118, 104, 79, 0);
-padding-left: 25px;
-subcontrol-origin: padding;
-subcontrol-position: top right;
-font: 16pt &quot;Calisto MT&quot;;
-color: rgb(56, 9, 8);
-selection-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <item>
-     <property name="text">
-      <string>Select Task</string>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
-    </item>
+    </widget>
    </widget>
-   <widget class="QPushButton" name="clock_button">
-    <property name="geometry">
-     <rect>
-      <x>622</x>
-      <y>625</y>
-      <width>118</width>
-      <height>119</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/lights buttons/elements/clock_button_1.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);
-border-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="artist_label">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>440</y>
-      <width>231</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calisto MT</family>
-      <pointsize>22</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-      <kerning>true</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/backgrounds/elements/artist_name.png);
-font:22pt &quot;Calisto MT&quot;;
-color: rgb(56, 9, 8);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>Artist</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
-    </property>
-    <property name="margin">
-     <number>0</number>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="output_window">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>89</y>
-      <width>211</width>
-      <height>62</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: url(:/backgrounds/elements/output_monitor_top.png);
-border-color: rgba(0, 0, 0, 0);
-background-color: rgba(0, 0, 0, 0);
-font: 75 7pt &quot;MS UI Gothic&quot;;
-color: rgb(130, 231, 130);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>0</number>
-    </property>
-    <property name="midLineWidth">
-     <number>0</number>
-    </property>
-    <property name="verticalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOff</enum>
-    </property>
-    <property name="horizontalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOff</enum>
-    </property>
-    <property name="plainText">
-     <string>OUTPUT MONITOR
-------------------------------------
-TRT: 00:12:24
-Start: 07/02/19 - End:
-USER CLOCKED IN</string>
-    </property>
-    <property name="backgroundVisible">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="run_hour_ten">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>270</y>
-      <width>41</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_0.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="run_hour_one">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>270</y>
-      <width>41</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_3.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="run_minute_ten">
-    <property name="geometry">
-     <rect>
-      <x>419</x>
-      <y>268</y>
-      <width>41</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_5.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="run_minute_one">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>270</y>
-      <width>41</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_9.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="run_second_ten">
-    <property name="geometry">
-     <rect>
-      <x>553</x>
-      <y>270</y>
-      <width>51</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_2.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="run_second_one">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>270</y>
-      <width>41</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/vaccuum_tube_numbers/elements/vt_1.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="week_meter">
-    <property name="geometry">
-     <rect>
-      <x>566</x>
-      <y>104</y>
-      <width>20</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/dial hands/elements/meter_1_needle.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="renderHints">
-     <set>QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
-    </property>
-    <property name="transformationAnchor">
-     <enum>QGraphicsView::AnchorViewCenter</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="day_meter">
-    <property name="geometry">
-     <rect>
-      <x>391</x>
-      <y>103</y>
-      <width>21</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/dial hands/elements/meter_1_needle.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="time_minute">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>105</y>
-      <width>31</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/dial hands/elements/clock_1_minute.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="time_hour">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>105</y>
-      <width>31</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/dial hands/elements/clock_1_hour.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="start_tens_month">
-    <property name="geometry">
-     <rect>
-      <x>462</x>
-      <y>551</y>
-      <width>31</width>
-      <height>44</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/start_m_tens_0.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="start_ones_month">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>552</y>
-      <width>31</width>
-      <height>42</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/start_m_ones_6.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="start_tens_day">
-    <property name="geometry">
-     <rect>
-      <x>531</x>
-      <y>551</y>
-      <width>21</width>
-      <height>43</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/start_d_tens_0.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="start_ones_day">
-    <property name="geometry">
-     <rect>
-      <x>557</x>
-      <y>552</y>
-      <width>24</width>
-      <height>39</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/start_m_ones_4.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="start_tens_year">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>550</y>
-      <width>21</width>
-      <height>43</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/start_y_tens_1.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="start_ones_year">
-    <property name="geometry">
-     <rect>
-      <x>632</x>
-      <y>551</y>
-      <width>21</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/start_y_ones_9.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="end_tens_month">
-    <property name="geometry">
-     <rect>
-      <x>702</x>
-      <y>552</y>
-      <width>30</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/end_m_tens_0.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="end_ones_month">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>552</y>
-      <width>31</width>
-      <height>39</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/end_m_ones_6.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="end_tens_day">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
-      <y>550</y>
-      <width>21</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/end_d_tens_0.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="end_ones_day">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>552</y>
-      <width>21</width>
-      <height>39</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/end_d_ones_4.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="end_tens_year">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>552</y>
-      <width>31</width>
-      <height>39</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/end_y_tens_1.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="end_ones_year">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>552</y>
-      <width>31</width>
-      <height>39</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/roller_numbers/elements/end_y_ones_9.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="start_clock_hour">
-    <property name="geometry">
-     <rect>
-      <x>559</x>
-      <y>407</y>
-      <width>21</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/dial hands/elements/clock_2_hour.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="transformationAnchor">
-     <enum>QGraphicsView::NoAnchor</enum>
-    </property>
-    <property name="resizeAnchor">
-     <enum>QGraphicsView::NoAnchor</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="end_clock_hour">
-    <property name="geometry">
-     <rect>
-      <x>773</x>
-      <y>408</y>
-      <width>21</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/dial hands/elements/clock_3_hour.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="red_light">
-    <property name="geometry">
-     <rect>
-      <x>809</x>
-      <y>352</y>
-      <width>71</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/lights buttons/elements/red_light_on.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="green_light">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>353</y>
-      <width>61</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/lights buttons/elements/green_light_on.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="backgroundBrush">
-     <brush brushstyle="NoBrush">
-      <color alpha="255">
-       <red>0</red>
-       <green>0</green>
-       <blue>0</blue>
-      </color>
-     </brush>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="start_clock_minute">
-    <property name="geometry">
-     <rect>
-      <x>559</x>
-      <y>407</y>
-      <width>21</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/dial hands/elements/clock_2_minute.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="transformationAnchor">
-     <enum>QGraphicsView::NoAnchor</enum>
-    </property>
-    <property name="resizeAnchor">
-     <enum>QGraphicsView::NoAnchor</enum>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="end_clock_minute">
-    <property name="geometry">
-     <rect>
-      <x>773</x>
-      <y>408</y>
-      <width>21</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/dial hands/elements/clock_3_minute.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="start_date_button">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>510</y>
-      <width>31</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/lights buttons/elements/start_date_button.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="end_date_button">
-    <property name="geometry">
-     <rect>
-      <x>850</x>
-      <y>508</y>
-      <width>27</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/lights buttons/elements/end_date_button.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="lower_output">
-    <property name="geometry">
-     <rect>
-      <x>687</x>
-      <y>163</y>
-      <width>216</width>
-      <height>177</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPlainTextEdit{
-border-image: url(:/backgrounds/elements/output_monitor_bottom.png);
-border-color: rgba(0, 0, 0, 0);
-background-color: rgba(0, 0, 0, 0);
-font: 75 8pt &quot;MS UI Gothic&quot;;
-color: rgb(130, 231, 130);
-}
-</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>0</number>
-    </property>
-    <property name="verticalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOff</enum>
-    </property>
-    <property name="horizontalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOff</enum>
-    </property>
-    <property name="documentTitle">
-     <string/>
-    </property>
-    <property name="plainText">
-     <string>Raw Data Ouput</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>98</x>
-      <y>107</y>
-      <width>26</width>
-      <height>172</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image:none;
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_1_hour.png</pixmap>
-    </property>
-   </widget>
-   <zorder>lower_output</zorder>
-   <zorder>task_dropdown</zorder>
-   <zorder>end_ones_month</zorder>
-   <zorder>end_tens_day</zorder>
-   <zorder>start_ones_day</zorder>
-   <zorder>week_meter</zorder>
-   <zorder>start_clock_minute</zorder>
-   <zorder>end_ones_year</zorder>
-   <zorder>start_clock_hour</zorder>
-   <zorder>green_light</zorder>
-   <zorder>end_clock_hour</zorder>
-   <zorder>end_tens_year</zorder>
-   <zorder>start_tens_day</zorder>
-   <zorder>run_hour_ten</zorder>
-   <zorder>start_tens_year</zorder>
-   <zorder>run_hour_one</zorder>
-   <zorder>run_second_ten</zorder>
-   <zorder>time_minute</zorder>
-   <zorder>start_ones_month</zorder>
-   <zorder>start_ones_year</zorder>
-   <zorder>end_ones_day</zorder>
-   <zorder>end_tens_month</zorder>
-   <zorder>run_minute_one</zorder>
-   <zorder>red_light</zorder>
-   <zorder>day_meter</zorder>
-   <zorder>entity_dropdown</zorder>
-   <zorder>time_hour</zorder>
-   <zorder>end_date_button</zorder>
-   <zorder>clock_button</zorder>
-   <zorder>end_clock_minute</zorder>
-   <zorder>artist_label</zorder>
-   <zorder>project_dropdown</zorder>
-   <zorder>run_second_one</zorder>
-   <zorder>start_date_button</zorder>
-   <zorder>run_minute_ten</zorder>
-   <zorder>output_window</zorder>
-   <zorder>start_tens_month</zorder>
-   <zorder>label</zorder>
   </widget>
   <action name="actionCrash_Computer">
    <property name="text">
@@ -1029,7 +990,6 @@ background-color: rgba(0, 0, 0, 0);</string>
   <tabstop>week_meter</tabstop>
   <tabstop>lower_output</tabstop>
   <tabstop>time_minute</tabstop>
-  <tabstop>time_hour</tabstop>
  </tabstops>
  <resources>
   <include location="resources/time_lord_resources.qrc"/>
