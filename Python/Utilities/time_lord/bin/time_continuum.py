@@ -153,10 +153,20 @@ class continuum(object):
             return new_datetime
 
     def clock_out_time_sheet(self, timesheet=None, clock_out=None):
+        start = timesheet['sg_task_start']
+        start_time = start.time()
+        start_date = start.date()
+        clock_in = parser.parse('%s %s' % (start_date, start_time))
+        print 'start_time: %s' % clock_in
+        print 'clock_out: %s' % clock_out
+        diff = clock_out - clock_in
+
+        total = (diff.total_seconds() / 60)
         if timesheet:
             self.logger.debug('Timesheet: %s' % timesheet)
             data = {
-                'sg_task_end': clock_out
+                'sg_task_end': clock_out,
+                'duration': total
             }
             self.sg.update('TimeLog', timesheet['id'], data)
             self.logger.info('Timesheet updated.')
@@ -234,4 +244,19 @@ class continuum(object):
             except TypeError, e:
                 self.logger.error('Yeah, the shit hit the fan: %s' % e)
         return running_time
+
+    def get_daily_total(self, user=None):
+        '''
+        This method will search all of the timesheets for a given user, for a given day, and total up the hours.
+        :param user: (dict) The main user data
+        :return: A total daily hours number
+        '''
+        pass
+
+    def get_weekly_total(self, user=None):
+        '''
+        This method will find all the time sheets for a given user for the week and total them all up.
+        :param user:
+        :return:
+        '''
 
