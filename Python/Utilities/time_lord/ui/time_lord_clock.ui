@@ -133,33 +133,6 @@ background-color: rgba(0, 0, 0, 0);</string>
       <enum>QFrame::Plain</enum>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="start_clock_hour">
-     <property name="geometry">
-      <rect>
-       <x>558</x>
-       <y>408</y>
-       <width>21</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-image: url(:/dial hands/elements/clock_2_hour.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="transformationAnchor">
-      <enum>QGraphicsView::NoAnchor</enum>
-     </property>
-     <property name="resizeAnchor">
-      <enum>QGraphicsView::NoAnchor</enum>
-     </property>
-    </widget>
     <widget class="QGraphicsView" name="red_light">
      <property name="geometry">
       <rect>
@@ -347,27 +320,6 @@ background-color: rgba(0, 0, 0, 0);</string>
       <enum>QFrame::Plain</enum>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="time_minute">
-     <property name="geometry">
-      <rect>
-       <x>181</x>
-       <y>104</y>
-       <width>31</width>
-       <height>171</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-image: url(:/dial hands/elements/clock_1_minute.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-    </widget>
     <widget class="QGraphicsView" name="end_tens_month">
      <property name="geometry">
       <rect>
@@ -452,27 +404,6 @@ background-color: rgba(0, 0, 0, 0);</string>
       <enum>QFrame::Plain</enum>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="end_clock_hour">
-     <property name="geometry">
-      <rect>
-       <x>772</x>
-       <y>409</y>
-       <width>21</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-image: url(:/dial hands/elements/clock_3_hour.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-    </widget>
     <widget class="QGraphicsView" name="start_ones_year">
      <property name="geometry">
       <rect>
@@ -494,33 +425,12 @@ background-color: rgba(0, 0, 0, 0);</string>
       <enum>QFrame::Plain</enum>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="day_meter">
-     <property name="geometry">
-      <rect>
-       <x>392</x>
-       <y>101</y>
-       <width>21</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-image: url(:/dial hands/elements/meter_1_needle.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-    </widget>
     <widget class="QGraphicsView" name="start_ones_day">
      <property name="geometry">
       <rect>
-       <x>558</x>
+       <x>559</x>
        <y>551</y>
-       <width>26</width>
+       <width>25</width>
        <height>40</height>
       </rect>
      </property>
@@ -689,27 +599,6 @@ color: rgb(130, 231, 130);
       <string>Raw Data Ouput</string>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="end_clock_minute">
-     <property name="geometry">
-      <rect>
-       <x>772</x>
-       <y>409</y>
-       <width>21</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-image: url(:/dial hands/elements/clock_3_minute.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-    </widget>
     <widget class="QComboBox" name="entity_dropdown">
      <property name="geometry">
       <rect>
@@ -782,33 +671,6 @@ selection-background-color: rgba(0, 0, 0, 0);</string>
        <string>Select Task</string>
       </property>
      </item>
-    </widget>
-    <widget class="QGraphicsView" name="start_clock_minute">
-     <property name="geometry">
-      <rect>
-       <x>558</x>
-       <y>408</y>
-       <width>21</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-image: url(:/dial hands/elements/clock_2_minute.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="transformationAnchor">
-      <enum>QGraphicsView::NoAnchor</enum>
-     </property>
-     <property name="resizeAnchor">
-      <enum>QGraphicsView::NoAnchor</enum>
-     </property>
     </widget>
     <widget class="QComboBox" name="project_dropdown">
      <property name="geometry">
@@ -894,44 +756,20 @@ background-color: rgba(0, 0, 0, 0);</string>
       <enum>QFrame::Plain</enum>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="week_meter">
-     <property name="geometry">
-      <rect>
-       <x>567</x>
-       <y>102</y>
-       <width>20</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-image: url(:/dial hands/elements/meter_1_needle.png);
-background-repeat: none;
-background-color: rgba(0, 0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="renderHints">
-      <set>QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
-     </property>
-     <property name="transformationAnchor">
-      <enum>QGraphicsView::AnchorViewCenter</enum>
-     </property>
-    </widget>
     <widget class="QLabel" name="time_hour">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>110</x>
        <y>110</y>
-       <width>31</width>
-       <height>161</height>
+       <width>168</width>
+       <height>168</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/dial hands/elements/clock_1_hour.png);</string>
+      <string notr="true">image: none;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="text">
       <string/>
@@ -939,11 +777,168 @@ background-color: rgba(0, 0, 0, 0);</string>
      <property name="textFormat">
       <enum>Qt::PlainText</enum>
      </property>
+     <property name="pixmap">
+      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_1_hour.png</pixmap>
+     </property>
      <property name="scaledContents">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="time_minute">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>110</y>
+       <width>168</width>
+       <height>168</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_1_minute.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="day_meter">
+     <property name="geometry">
+      <rect>
+       <x>331</x>
+       <y>103</y>
+       <width>136</width>
+       <height>136</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="week_meter">
+     <property name="geometry">
+      <rect>
+       <x>507</x>
+       <y>103</y>
+       <width>136</width>
+       <height>136</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="start_clock_minute">
+     <property name="geometry">
+      <rect>
+       <x>512</x>
+       <y>404</y>
+       <width>115</width>
+       <height>115</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_2_minute.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="start_clock_hour">
+     <property name="geometry">
+      <rect>
+       <x>512</x>
+       <y>404</y>
+       <width>115</width>
+       <height>115</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_2_hour.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="end_clock_hour">
+     <property name="geometry">
+      <rect>
+       <x>724</x>
+       <y>406</y>
+       <width>115</width>
+       <height>115</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_3_hour.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="end_clock_minute">
+     <property name="geometry">
+      <rect>
+       <x>724</x>
+       <y>406</y>
+       <width>115</width>
+       <height>115</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: none;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_3_minute.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -967,7 +962,6 @@ background-color: rgba(0, 0, 0, 0);</string>
   <tabstop>run_minute_one</tabstop>
   <tabstop>run_second_ten</tabstop>
   <tabstop>run_second_one</tabstop>
-  <tabstop>day_meter</tabstop>
   <tabstop>start_tens_month</tabstop>
   <tabstop>start_ones_month</tabstop>
   <tabstop>start_tens_day</tabstop>
@@ -980,16 +974,10 @@ background-color: rgba(0, 0, 0, 0);</string>
   <tabstop>end_ones_day</tabstop>
   <tabstop>end_tens_year</tabstop>
   <tabstop>end_ones_year</tabstop>
-  <tabstop>start_clock_hour</tabstop>
-  <tabstop>end_clock_hour</tabstop>
   <tabstop>red_light</tabstop>
   <tabstop>green_light</tabstop>
-  <tabstop>start_clock_minute</tabstop>
-  <tabstop>end_clock_minute</tabstop>
   <tabstop>output_window</tabstop>
-  <tabstop>week_meter</tabstop>
   <tabstop>lower_output</tabstop>
-  <tabstop>time_minute</tabstop>
  </tabstops>
  <resources>
   <include location="resources/time_lord_resources.qrc"/>

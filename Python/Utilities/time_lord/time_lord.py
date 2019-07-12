@@ -40,7 +40,7 @@ TODO:
     5. Fix drop down appearance.
     6. Figure out how to make this into an exe file, or some kind of other "run" function that hides the python
     7. Automatically check for lunch breaks - Maybe have the button turn yellow again...
-    8. Get the date rollers to work.
+    8. Build in a rolling log file
     9. Have the start and end clocks do the following:
         a. If not clocked in...  hmmm. wait... I was going to say, if not clocked in, have it mirror the main time,
             but, perhaps it should only reflect the last in and out times?  Thus, those clocks don't usually move.
@@ -365,8 +365,11 @@ class time_lord_ui(QtGui.QMainWindow):
 
         test = QtGui.QTransform()
         test.rotate(30 * (self.tick.second()))
-        # self.ui.time_hour.
-        # self.ui.time_hour.update()
+
+        shit = self.ui.time_hour.pixmap()
+        shat = shit.transformed(test)
+        self.ui.time_hour.setPixmap(shat)
+        self.ui.time_hour.update()
 
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
