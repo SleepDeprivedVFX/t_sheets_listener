@@ -112,9 +112,9 @@ class time_signals(QtCore.QObject):
     error = QtCore.Signal(str)
     debug = QtCore.Signal(str)
     kill_signal = QtCore.Signal(bool)
-    main_clock = QtCore.Signal(str)
-    in_clock = QtCore.Signal(str)
-    out_clock = QtCore.Signal(str)
+    main_clock = QtCore.Signal(tuple)
+    in_clock = QtCore.Signal(tuple)
+    out_clock = QtCore.Signal(tuple)
     in_date = QtCore.Signal(str)
     out_date = QtCore.Signal(str)
     running_clock = QtCore.Signal(str)
@@ -130,11 +130,33 @@ class time_engine(QtCore.QThread):
     # the process will hang up the UI.
     def __init__(self, parent=None):
         super(time_engine, self).__init__(parent)
-        timer = QtCore.QTimer(self)
-        timer.timeout.connect(self.update)
-        timer.start(1000)
+        # timer = QtCore.QTimer(self)
+        # timer.timeout.connect(self.update)
+        # timer.start(1000)
 
         self.time_signal = time_signals()
+        self.kill_it = False
+        self.kill_signal = self.time_signal.kill_signal.connect(self.kill)
+        self.tick = QtCore.QTime.currentTime()
+
+    def kill(self):
+        self.kill_it = True
+
+    def run(self, *args, **kwargs):
+        self.chronograph()
+
+    def chronograph(self):
+        second = int(datetime.now().second)
+        while not self.kill_it:
+            if int(datetime.now().second) != second:
+                second = int(datetime.now().second)
+                self.tick = QtCore.QTime.currentTime()
+                hours = (30 * (self.tick.hour() + (self.tick.minute() / 60.0)))
+                minutes = (6 * (self.tick.minute() + (self.tick.second() / 60.0)))
+                time = (hours, minutes)
+                self.time_signal.main_clock.emit(time)
+                self.time_signal.in_clock.emit(time)
+                self.time_signal.out_clock.emit(time)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -159,11 +181,11 @@ class time_lord(QtCore.QThread):
 
     def run_the_clock(self):
         second = int(datetime.now().second)
-        while self.clocked_in:
+        while self.clocked_in and not self.kill_it:
             # Make sure the loop only functions on a whole second
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
-                self.time_signal.main_clock.emit(str(second))
+                # self.time_signal.main_clock.emit(str(second))
                 if self.clocked_in:
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
                     running_time = rt['rt']
@@ -209,14 +231,14 @@ class time_lord_ui(QtGui.QMainWindow):
     def __init__(self):
         super(time_lord_ui, self).__init__(parent=None)
 
-        # --------------------------------------------------------------------------------------------------------
-        # Initialize UI timer
-        # --------------------------------------------------------------------------------------------------------
-        timer = QtCore.QTimer(self)
-        timer.timeout.connect(self.update)
-        timer.start(1000)
-
-        self.tick = QtCore.QTime.currentTime()
+        # # --------------------------------------------------------------------------------------------------------
+        # # Initialize UI timer
+        # # --------------------------------------------------------------------------------------------------------
+        # timer = QtCore.QTimer(self)
+        # timer.timeout.connect(self.update)
+        # timer.start(1000)
+        #
+        # self.tick = QtCore.QTime.currentTime()
 
         # --------------------------------------------------------------------------------------------------------
         # Set the saved settings
@@ -235,6 +257,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # Setup Time Engine
         # --------------------------------------------------------------------------------------------------------
         self.time_lord = time_lord()
+        self.time_engine = time_engine()
 
         # Setup and connect the last timesheet.
         self.last_timesheet = None
@@ -255,7 +278,9 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.setupUi(self)
 
         # Connect the signals to the functions below
-        self.time_lord.time_signal.main_clock.connect(self.main_clock)
+        self.time_engine.time_signal.main_clock.connect(self.main_clock)
+        self.time_engine.time_signal.in_clock.connect(self.set_in_clock)
+        self.time_engine.time_signal.out_clock.connect(self.set_out_clock)
         self.time_lord.time_signal.upper_output.connect(self.upper_output)
         self.time_lord.time_signal.lower_output.connect(self.lower_output)
         self.time_lord.time_signal.error_state.connect(self.error_state)
@@ -363,19 +388,20 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # self.ui.daily_total_progress.setValue(12)
 
-        test = QtGui.QTransform()
-        test.rotate(30 * (self.tick.second()))
-
-        shit = self.ui.time_hour.pixmap()
-        shat = shit.transformed(test)
-        self.ui.time_hour.setPixmap(shat)
-        self.ui.time_hour.update()
+        # test = QtGui.QTransform()
+        # test.rotate(30 * (self.tick.second()))
+        #
+        # shit = self.ui.time_hour.pixmap()
+        # shat = shit.transformed(test)
+        # self.ui.time_hour.setPixmap(shat)
+        # self.ui.time_hour.update()
 
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
 
         # if self.time_lord.clocked_in:
         self.time_lord.start()
+        self.time_engine.start()
 
     def set_last_timesheet(self):
         # --------------------------------------------------------------------------------------------------------
@@ -812,12 +838,92 @@ class time_lord_ui(QtGui.QMainWindow):
     def main_clock(self, in_time):
         # Function that automatically updates UI when triggered by a signal
         # self.ui.test_counter.setText(in_time)
-        angle = int(in_time) * 6
-        test = QtGui.QTransform()
-        test.rotate(angle)
-        # self.ui.time_hour.setTransform(test)
-        # self.ui.time_hour.update()
-        print angle
+        hour = in_time[0]
+        minute = in_time[1]
+        hour_rot = QtGui.QTransform()
+        minute_rot = QtGui.QTransform()
+        hour_rot.rotate(hour)
+        minute_rot.rotate(minute)
+
+        hour_hand = QtGui.QPixmap(":/dial hands/elements/clock_1_hour.png")
+        minute_hand = QtGui.QPixmap(":/dial hands/elements/clock_1_minute.png")
+        hour_hand_rot = hour_hand.transformed(hour_rot)
+        minute_hand_rot = minute_hand.transformed(minute_rot)
+
+        self.ui.time_hour.setPixmap(hour_hand_rot)
+        self.ui.time_minute.setPixmap(minute_hand_rot)
+        self.ui.time_hour.update()
+        self.ui.time_minute.update()
+
+    def set_in_clock(self, in_time):
+        '''
+        This will check if the user is clocked in or not, and then set the clock accordingly.
+        If they are clocked in, display clock in time.  Otherwise, display current time.
+        Where it gets tricky is introducing a user set time.  i.e. user changes the time.
+        TODO: Figure out the user set time interruption.
+        :param in_time: (tuple) (hour, minute)
+        :return:
+        '''
+        if self.time_lord.clocked_in:
+            start_time = self.last_timesheet['sg_task_start']
+            hour = start_time.time().hour
+            minute = start_time.time().minute
+            second = start_time.time().second
+            hours = (30 * (hour + (minute / 60.0)))
+            minutes = (6 * (minute + (second / 60.0)))
+        else:
+            hours = in_time[0]
+            minutes = in_time[1]
+
+        hour_rot = QtGui.QTransform()
+        minute_rot = QtGui.QTransform()
+        hour_rot.rotate(hours)
+        minute_rot.rotate(minutes)
+
+        hour_hand = QtGui.QPixmap(":/dial hands/elements/clock_2_hour.png")
+        minute_hand = QtGui.QPixmap(":/dial hands/elements/clock_2_minute.png")
+        hour_hand_rot = hour_hand.transformed(hour_rot)
+        minute_hand_rot = minute_hand.transformed(minute_rot)
+
+        self.ui.start_clock_hour.setPixmap(hour_hand_rot)
+        self.ui.start_clock_minute.setPixmap(minute_hand_rot)
+        self.ui.start_clock_hour.update()
+        self.ui.start_clock_minute.update()
+
+    def set_out_clock(self, in_time):
+        '''
+        This will check if the user is clocked in or not, and then set the clock accordingly.
+        If they are clocked in, display clock in time.  Otherwise, display current time.
+        Where it gets tricky is introducing a user set time.  i.e. user changes the time.
+        TODO: Figure out the user set time interruption.
+        :param in_time: (tuple) (hour, minute)
+        :return:
+        '''
+        if not self.time_lord.clocked_in:
+            end_time = self.last_timesheet['sg_task_end']
+            hour = end_time.time().hour
+            minute = end_time.time().minute
+            second = end_time.time().second
+            hours = (30 * (hour + (minute / 60.0)))
+            minutes = (6 * (minute + (second / 60.0)))
+        else:
+            hours = in_time[0]
+            minutes = in_time[1]
+
+        hour_rot = QtGui.QTransform()
+        minute_rot = QtGui.QTransform()
+        hour_rot.rotate(hours)
+        minute_rot.rotate(minutes)
+
+        hour_hand = QtGui.QPixmap(":/dial hands/elements/clock_3_hour.png")
+        minute_hand = QtGui.QPixmap(":/dial hands/elements/clock_3_minute.png")
+        hour_hand_rot = hour_hand.transformed(hour_rot)
+        minute_hand_rot = minute_hand.transformed(minute_rot)
+
+        self.ui.end_clock_hour.setPixmap(hour_hand_rot)
+        self.ui.end_clock_minute.setPixmap(minute_hand_rot)
+        self.ui.end_clock_hour.update()
+        self.ui.end_clock_minute.update()
 
 
 if __name__ == '__main__':
@@ -827,5 +933,6 @@ if __name__ == '__main__':
     app.setApplicationName('TimeLord')
     window = time_lord_ui()
     window.show()
+    # sys.excepthook()
     sys.exit(app.exec_())
 
