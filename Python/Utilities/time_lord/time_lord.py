@@ -26,6 +26,28 @@ NOTES:
 
 REQUIREMENTS:
     1. This tool will most likely require ActiveState python to be installed on everyone's systems.
+
+TODO:
+    1. Have the thing auto-clock out if it detects a timesheet from the day before. aint_today()
+        a. Get the latest time from the previous timesheet and add maybe 10 minutes?  (if the start time is before 7)
+    2. Get the main clock to work
+    3. Create a date-picker to set the start and end time clocks.
+        a. If the thing is not clocked in
+        b. If the user sets start and end times
+        c. Make the button yellow
+        d. Add a completed time sheet.  Append create_new_timesheet() to include an end_time parameter
+    4. Setup a live stream feed for limited data to the lower output.  Like Bullgozer and Rollout Machine
+    5. Fix drop down appearance.
+    6. Figure out how to make this into an exe file, or some kind of other "run" function that hides the python
+    7. Automatically check for lunch breaks - Maybe have the button turn yellow again...
+    8. Get the date rollers to work.
+    9. Have the start and end clocks do the following:
+        a. If not clocked in...  hmmm. wait... I was going to say, if not clocked in, have it mirror the main time,
+            but, perhaps it should only reflect the last in and out times?  Thus, those clocks don't usually move.
+            However... if we want a user to clock in "now" then it should run the current time.  But, if the user
+            pre-sets the time using the "set date-time" button, then that start time would hold (unless it conflicted
+            with a previous entry.  Which brings about item...
+    10. Have the clock in process ensure that the recorded in time is not prior to a previous out time.
 """
 
 import shotgun_api3 as sgapi
@@ -93,6 +115,8 @@ class time_signals(QtCore.QObject):
     main_clock = QtCore.Signal(str)
     in_clock = QtCore.Signal(str)
     out_clock = QtCore.Signal(str)
+    in_date = QtCore.Signal(str)
+    out_date = QtCore.Signal(str)
     running_clock = QtCore.Signal(str)
     upper_output = QtCore.Signal(str)
     lower_output = QtCore.Signal(str)
@@ -150,6 +174,22 @@ class time_lord(QtCore.QThread):
                     start = '%s %s' % (start_time.date(), start_time.time())
                     end = '%s %s' % (datetime.now().date(), datetime.now().time())
                     self.set_upper_output(trt=trt, start=start, end=end, user=user)
+
+                    # Set the start time date rollers:
+                    ts_start = self.last_timesheet['sg_task_start']
+                    start_date = ts_start.strftime('%m-%d-%y')
+                    self.time_signal.in_date.emit(start_date)
+                else:
+                    # Set the start time date rollers:
+                    ts_start = datetime.now()
+                    start_date = ts_start.strftime('%m-%d-%y')
+                    self.time_signal.in_date.emit(start_date)
+                    start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+                                       self.last_timesheet['sg_task_start'].time())
+                    end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+                                     self.last_timesheet['sg_task_end'].time())
+                    self.set_upper_output(trt='00:00:00', start=start, end=end, user=user)
+                    break
 
     def set_upper_output(self, trt=None, start=None, end=None, user=None):
         if self.clocked_in:
@@ -222,6 +262,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.steady_state.connect(self.steady_state)
         self.time_lord.time_signal.clock_state.connect(self.clock_in_button_state)
         self.time_lord.time_signal.running_clock.connect(self.set_runtime_clock)
+        self.time_lord.time_signal.in_date.connect(self.set_date_rollers)
 
         # Start the output window
         # TODO: Update this with actual data instead of presets
@@ -312,17 +353,14 @@ class time_lord_ui(QtGui.QMainWindow):
         self.clock_in_button_state(state)
 
         # Set the running time clock.
-        # TODO: First routine should get the current running time. Start Time - Now()
-        #       Perhaps return it as a 6 digit string.
-        #       Second routine should set the value to the clock.
         self.set_runtime_clock()
 
         # self.ui.daily_total_progress.setValue(12)
 
         test = QtGui.QTransform()
         test.rotate(30 * (self.tick.second()))
-        self.ui.time_hour.setTransform(test)
-        self.ui.time_hour.update()
+        # self.ui.time_hour.
+        # self.ui.time_hour.update()
 
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
@@ -432,6 +470,16 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.clock_state.emit(0)
         tl_time.clock_out_time_sheet(timesheet=self.last_timesheet, clock_out=datetime.now())
         self.time_lord.time_signal.lower_output.emit('You have clocked out!')
+        self.last_timesheet = tl_time.get_last_timesheet(user=user)
+
+        ts_start = self.last_timesheet['sg_task_start']
+        start_date = ts_start.strftime('%m-%d-%y')
+        self.time_lord.time_signal.in_date.emit(start_date)
+        start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+                           self.last_timesheet['sg_task_start'].time())
+        end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+                         self.last_timesheet['sg_task_end'].time())
+        self.time_lord.set_upper_output(trt='00:00:00', start=start, end=end, user=user)
 
     def clock_in(self, message=None):
         print 'Clocking in...'
@@ -592,6 +640,11 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.clock_state.emit(0)
 
     def set_start_datetime_clock(self, start_time=None):
+        '''
+        This will pop up a ui to set the start datetime.
+        :param start_time:
+        :return:
+        '''
         pass
 
     def upper_output(self, message=None):
@@ -677,14 +730,63 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.run_second_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
                                                  'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[5])
 
+    def set_date_rollers(self, d='00-00-00', which='start'):
+        '''
+        Sets the date rollers.
+        :param d: (str) A MM-DD-YY date format string.
+        :param which: (str) One of two acceptable values: 'start', 'end'
+        :return:
+        '''
+        # set the start date roller
+        # Make a more dynamic set system with loopable constants.
+        mdy = ['month', 'day', 'year']
+        t_o = ['tens', 'ones']
+        date_segs = {}
+
+        # start parsing
+        if d and d != '00-00-00':
+
+            split_date = d.split('-')
+            m = split_date[0]
+            d = split_date[1]
+            y = split_date[2]
+
+            date_segs['m_tens'] = int(m[0])
+            date_segs['m_ones'] = int(m[1])
+            date_segs['d_tens'] = int(d[0])
+            date_segs['d_ones'] = int(d[1])
+            date_segs['y_tens'] = int(y[0])
+            date_segs['y_ones'] = int(y[1])
+            for seg in mdy:
+                for w in t_o:
+                    s = seg[0]
+
+                    style = 'background-image: url(:/roller_numbers/elements/' \
+                            '%s_%s_%s_%s.png;' % (which, s, w, date_segs['%s_%s' % (s, w)])
+                    command = "self.ui.%s_%s_%s.setStyleSheet('%s')" % (which, w, seg, style)
+                    print command
+                    eval(command)
+                    # self.ui.start_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                    #                                        'start_m_tens_%s.png);' % m_tens)
+                    # self.ui.start_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                    #                                        'start_m_ones_%s.png);' % m_ones)
+                    # self.ui.start_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                    #                                      'start_d_tens_%s.png);' % d_tens)
+                    # self.ui.start_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                    #                                      'start_d_ones_%s.png);' % d_ones)
+                    # self.ui.start_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                    #                                       'start_y_tens_%s.png);' % y_tens)
+                    # self.ui.start_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                    #                                       'start_y_ones_%s.png);' % y_ones)
+
     def main_clock(self, in_time):
         # Function that automatically updates UI when triggered by a signal
         # self.ui.test_counter.setText(in_time)
         angle = int(in_time) * 6
         test = QtGui.QTransform()
         test.rotate(angle)
-        self.ui.time_hour.setTransform(test)
-        self.ui.time_hour.update()
+        # self.ui.time_hour.setTransform(test)
+        # self.ui.time_hour.update()
         print angle
 
 
