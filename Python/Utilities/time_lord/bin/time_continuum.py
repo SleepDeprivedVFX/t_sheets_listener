@@ -157,8 +157,6 @@ class continuum(object):
         start_time = start.time()
         start_date = start.date()
         clock_in = parser.parse('%s %s' % (start_date, start_time))
-        print 'start_time: %s' % clock_in
-        print 'clock_out: %s' % clock_out
         diff = clock_out - clock_in
 
         total = (diff.total_seconds() / 60)
@@ -251,7 +249,23 @@ class continuum(object):
         :param user: (dict) The main user data
         :return: A total daily hours number
         '''
-        pass
+        total_duration = 0.0
+        if user:
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user['id']}],
+                ['sg_task_start', 'in_calendar_day', 0]
+            ]
+            fields = [
+                'user',
+                'duration',
+                'sg_task_start',
+                'sg_task_end'
+            ]
+            timesheets = self.sg.find('TimeLog', filters, fields)
+            if timesheets:
+                for timesheet in timesheets:
+                    total_duration += timesheet['duration']
+        return total_duration
 
     def get_weekly_total(self, user=None):
         '''

@@ -815,7 +815,7 @@ background-color: rgba(0, 0, 0, 0);</string>
        <x>331</x>
        <y>103</y>
        <width>136</width>
-       <height>136</height>
+       <height>84</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -828,7 +828,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
      </property>
      <property name="alignment">
-      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+      <set>Qt::AlignBottom|Qt::AlignHCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="week_meter">
@@ -837,7 +837,7 @@ background-color: rgba(0, 0, 0, 0);</string>
        <x>507</x>
        <y>103</y>
        <width>136</width>
-       <height>136</height>
+       <height>82</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -850,7 +850,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
      </property>
      <property name="alignment">
-      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+      <set>Qt::AlignBottom|Qt::AlignHCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="start_clock_minute">

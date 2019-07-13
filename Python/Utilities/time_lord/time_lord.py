@@ -123,6 +123,8 @@ class time_signals(QtCore.QObject):
     error_state = QtCore.Signal(bool)
     steady_state = QtCore.Signal(bool)
     clock_state = QtCore.Signal(int)
+    daily_total = QtCore.Signal(float)
+    weekly_total = QtCore.Signal(float)
 
 
 class time_engine(QtCore.QThread):
@@ -147,8 +149,11 @@ class time_engine(QtCore.QThread):
 
     def chronograph(self):
         second = int(datetime.now().second)
+        hour = datetime.now().hour
+        minute = datetime.now().minute
         while not self.kill_it:
             if int(datetime.now().second) != second:
+                # Set the clocks
                 second = int(datetime.now().second)
                 self.tick = QtCore.QTime.currentTime()
                 hours = (30 * (self.tick.hour() + (self.tick.minute() / 60.0)))
@@ -157,6 +162,21 @@ class time_engine(QtCore.QThread):
                 self.time_signal.main_clock.emit(time)
                 self.time_signal.in_clock.emit(time)
                 self.time_signal.out_clock.emit(time)
+
+                # FIXME: The following is a test only.  Remove.
+                import time
+                for x in range(0, 100):
+                    d = x / 100.00
+                    print d
+                    self.time_signal.daily_total.emit(d)
+                    time.sleep(0.5)
+
+                # Set the meters
+                if datetime.now().minute != minute:
+                    daily_total = tl_time.get_daily_total(user=user)
+                    minute = datetime.now().minute
+                    if daily_total:
+                        self.time_signal.daily_total.emit(daily_total)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -288,6 +308,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.clock_state.connect(self.clock_in_button_state)
         self.time_lord.time_signal.running_clock.connect(self.set_runtime_clock)
         self.time_lord.time_signal.in_date.connect(self.set_start_date_rollers)
+        self.time_engine.time_signal.daily_total.connect(self.set_daily_total)
 
         # Start the output window
         # TODO: Update this with actual data instead of presets
@@ -386,15 +407,9 @@ class time_lord_ui(QtGui.QMainWindow):
         # Set the running time clock.
         self.set_runtime_clock()
 
+        # Setup the daily total meter
+        # The formula (totalHours/dailyMax) * degrees(70) or (35) - 35  # -35 is for the offset rotation of the graphic.
         # self.ui.daily_total_progress.setValue(12)
-
-        # test = QtGui.QTransform()
-        # test.rotate(30 * (self.tick.second()))
-        #
-        # shit = self.ui.time_hour.pixmap()
-        # shat = shit.transformed(test)
-        # self.ui.time_hour.setPixmap(shat)
-        # self.ui.time_hour.update()
 
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
@@ -452,6 +467,19 @@ class time_lord_ui(QtGui.QMainWindow):
             else:
                 self.last_entity_type = None
                 self.last_entity_id = None
+
+    def set_daily_total(self, total):
+        if total:
+            print 'total in set_daily_total: %s' % total
+            angle = ((total / (float(config['ot_hours']) * 2.0)) * 70) - 35 # I know my graphic spans 70 degrees.
+            meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
+            needle_rot = QtGui.QTransform()
+
+            needle_rot.rotate(angle)
+            meter_needle_rot = meter_needle.transformed(needle_rot)
+
+            self.ui.day_meter.setPixmap(meter_needle_rot)
+            self.ui.day_meter.update()
 
     def update_settings(self):
         self.settings.setValue('last_project', self.ui.project_dropdown.currentText())
@@ -933,6 +961,6 @@ if __name__ == '__main__':
     app.setApplicationName('TimeLord')
     window = time_lord_ui()
     window.show()
-    # sys.excepthook()
+    # sys.excepthook()  # TODO: Get this to work.
     sys.exit(app.exec_())
 
