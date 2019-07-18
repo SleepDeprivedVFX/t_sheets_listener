@@ -590,7 +590,7 @@ class time_lord_ui(QtGui.QMainWindow):
         project_name = project_selection
         entity_id = sg_data.get_entity_id(proj_id=project_id, entity_name=self.ui.entity_dropdown.currentText())
         task_id = sg_data.get_task_id(entity_id=entity_id, task_name=self.ui.task_dropdown.currentText(),
-                                      entity_name=self.ui.entity_dropdown.currentText())
+                                      entity_name=self.ui.entity_dropdown.currentText(), proj_id=project_id)
         context = {
             'Project': {
                 'id': project_id,
@@ -676,7 +676,8 @@ class time_lord_ui(QtGui.QMainWindow):
         current_entity = self.ui.entity_dropdown.currentText()
         self.last_entity_id = sg_data.get_entity_id(proj_id=self.last_project_id,
                                                     entity_name=current_entity)
-        tasks = sg_data.get_entity_tasks(entity_id=self.last_entity_id, entity_name=current_entity)
+        tasks = sg_data.get_entity_tasks(entity_id=self.last_entity_id, entity_name=current_entity,
+                                         proj_id=self.last_project_id)
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task')
