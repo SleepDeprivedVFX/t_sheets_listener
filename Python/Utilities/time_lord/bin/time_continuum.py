@@ -183,11 +183,7 @@ class continuum(object):
         '''
         if user and context:
             project_id = context['Project']['id']
-            project_name = context['Project']['name']
             task_id = context['Task']['id']
-            task_name = context['Task']['content']
-            entity_id = context['Entity']['id']
-            entity_name = context['Entity']['code']
             user_id = user['id']
             print context
 
@@ -195,7 +191,6 @@ class continuum(object):
                 task_start = start_time
             else:
                 task_start = datetime.datetime.now()
-
             data = {
                 'entity': {'type': 'Task', 'id': task_id},
                 'sg_task_start': task_start,
@@ -253,7 +248,13 @@ class continuum(object):
         if user:
             filters = [
                 ['user', 'is', {'type': 'HumanUser', 'id': user['id']}],
-                ['sg_task_start', 'in_calendar_day', 0]
+                {
+                    "filter_operator": "any",
+                    "filters": [
+                        ['sg_task_start', 'in_calendar_day', 0],
+                        ['sg_task_start', 'in_calendar_day', -1]
+                    ]
+                }
             ]
             fields = [
                 'user',
@@ -264,7 +265,21 @@ class continuum(object):
             timesheets = self.sg.find('TimeLog', filters, fields)
             if timesheets:
                 for timesheet in timesheets:
-                    total_duration += timesheet['duration']
+                    if not self.aint_today(timesheet['sg_task_start']):
+                        if timesheet['sg_task_end']:
+                            end_datetime = timesheet['sg_task_end']
+                            end_date = end_datetime.date()
+                            end_time = end_datetime.time()
+                            end = parser.parse('%s %s' % (end_date, end_time))
+                        else:
+                            end = datetime.datetime.now()
+                        start_datetime = timesheet['sg_task_start']
+                        start_date = start_datetime.date()
+                        start_time = start_datetime.time()
+                        start = parser.parse('%s %s' % (start_date, start_time))
+
+                        diff = end - start
+                        total_duration += ((diff.total_seconds() / 60.0) / 60)
         return total_duration
 
     def get_weekly_total(self, user=None):
@@ -273,4 +288,40 @@ class continuum(object):
         :param user:
         :return:
         '''
+        total_duration = 0.0
+        if user:
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user['id']}],
+                {
+                    "filter_operator": "any",
+                    "filters": [
+                        ['sg_task_start', 'in_calendar_week', 0]
+                    ]
+                }
+            ]
+            fields = [
+                'user',
+                'duration',
+                'sg_task_start',
+                'sg_task_end'
+            ]
+            timesheets = self.sg.find('TimeLog', filters, fields)
+            if timesheets:
+                for timesheet in timesheets:
+                    this_date = timesheet['sg_task_start'].date()
+                    if this_date > self.start_of_week().date():
+                        if timesheet['sg_task_end']:
+                            end_datetime = timesheet['sg_task_end']
+                            end_date = end_datetime.date()
+                            end_time = end_datetime.time()
+                            end = parser.parse('%s %s' % (end_date, end_time))
+                        else:
+                            end = datetime.datetime.now()
+                        start_datetime = timesheet['sg_task_start']
+                        start_date = start_datetime.date()
+                        start_time = start_datetime.time()
+                        start = parser.parse('%s %s' % (start_date, start_time))
 
+                        diff = end - start
+                        total_duration += ((diff.total_seconds() / 60.0) / 60)
+        return total_duration

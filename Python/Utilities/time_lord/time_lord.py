@@ -163,20 +163,16 @@ class time_engine(QtCore.QThread):
                 self.time_signal.in_clock.emit(time)
                 self.time_signal.out_clock.emit(time)
 
-                # FIXME: The following is a test only.  Remove.
-                import time
-                for x in range(0, 100):
-                    d = x / 100.00
-                    print d
-                    self.time_signal.daily_total.emit(d)
-                    time.sleep(0.5)
-
-                # Set the meters
                 if datetime.now().minute != minute:
                     daily_total = tl_time.get_daily_total(user=user)
+                    weekly_total = tl_time.get_weekly_total(user=user)
+                    print 'daily total: %s' % daily_total
+                    print 'weekely total: %s' % weekly_total
                     minute = datetime.now().minute
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
+                    if weekly_total:
+                        self.time_signal.weekly_total.emit(weekly_total)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -278,6 +274,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # --------------------------------------------------------------------------------------------------------
         self.time_lord = time_lord()
         self.time_engine = time_engine()
+        self.time_signal = time_signals()
 
         # Setup and connect the last timesheet.
         self.last_timesheet = None
@@ -309,6 +306,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.running_clock.connect(self.set_runtime_clock)
         self.time_lord.time_signal.in_date.connect(self.set_start_date_rollers)
         self.time_engine.time_signal.daily_total.connect(self.set_daily_total)
+        self.time_engine.time_signal.weekly_total.connect(self.set_weekly_total)
 
         # Start the output window
         # TODO: Update this with actual data instead of presets
@@ -409,7 +407,8 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Setup the daily total meter
         # The formula (totalHours/dailyMax) * degrees(70) or (35) - 35  # -35 is for the offset rotation of the graphic.
-        # self.ui.daily_total_progress.setValue(12)
+        daily_total = tl_time.get_daily_total(user=user)
+        self.time_engine.time_signal.daily_total.emit(daily_total)
 
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
@@ -470,8 +469,13 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def set_daily_total(self, total):
         if total:
-            print 'total in set_daily_total: %s' % total
-            angle = ((total / (float(config['ot_hours']) * 2.0)) * 70) - 35 # I know my graphic spans 70 degrees.
+            total -= 5.0
+            angle = ((total / (float(config['ot_hours']) * 2.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
+
+            if angle < -50.0:
+                angle = -50.0
+            elif angle > 50.0:
+                angle = 50.0
             meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
             needle_rot = QtGui.QTransform()
 
@@ -480,6 +484,23 @@ class time_lord_ui(QtGui.QMainWindow):
 
             self.ui.day_meter.setPixmap(meter_needle_rot)
             self.ui.day_meter.update()
+
+    def set_weekly_total(self, total):
+        if total:
+            total -= 5.0
+            angle = ((total / (float(config['ot_hours']) * 10.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
+            if angle < -50.0:
+                angle = -50.0
+            elif angle > 50.0:
+                angle = 50.0
+            meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
+            needle_rot = QtGui.QTransform()
+
+            needle_rot.rotate(angle)
+            meter_needle_rot = meter_needle.transformed(needle_rot)
+
+            self.ui.week_meter.setPixmap(meter_needle_rot)
+            self.ui.week_meter.update()
 
     def update_settings(self):
         self.settings.setValue('last_project', self.ui.project_dropdown.currentText())
@@ -568,7 +589,8 @@ class time_lord_ui(QtGui.QMainWindow):
         project_id = project_details['id']
         project_name = project_selection
         entity_id = sg_data.get_entity_id(proj_id=project_id, entity_name=self.ui.entity_dropdown.currentText())
-        task_id = sg_data.get_task_id(entity_id=entity_id, task_name=self.ui.task_dropdown.currentText())
+        task_id = sg_data.get_task_id(entity_id=entity_id, task_name=self.ui.task_dropdown.currentText(),
+                                      entity_name=self.ui.entity_dropdown.currentText())
         context = {
             'Project': {
                 'id': project_id,
@@ -640,6 +662,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.ui.entity_dropdown.addItem(asset['code'])
             for shot in shot_entities:
                 self.ui.entity_dropdown.addItem(shot['code'])
+            self.ui.entity_dropdown.update()
         else:
             self.time_lord.time_signal.lower_output.emit('Project Dump: %s' % project)
             self.time_lord.time_signal.error_state.emit(True)
@@ -647,17 +670,18 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def update_tasks(self):
         logger.debug('Getting tasks...')
-        if not self.last_entity_id:
-            # Here is where I will ensure the selection from the UI and retry to get
-            # the entity_id:
-            current_entity = self.ui.entity_dropdown.currentText()
-            self.last_entity_id = sg_data.get_entity_id(proj_id=self.last_project_id,
-                                                        entity_name=current_entity)
-        tasks = sg_data.get_entity_tasks(self.last_entity_id)
+        # if not self.last_entity_id:
+        # Here is where I will ensure the selection from the UI and retry to get
+        # the entity_id:
+        current_entity = self.ui.entity_dropdown.currentText()
+        self.last_entity_id = sg_data.get_entity_id(proj_id=self.last_project_id,
+                                                    entity_name=current_entity)
+        tasks = sg_data.get_entity_tasks(entity_id=self.last_entity_id, entity_name=current_entity)
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task')
             for task in tasks:
+                print 'adding task: %s' % task['content']
                 self.ui.task_dropdown.addItem(task['content'])
         else:
             self.ui.task_dropdown.clear()

@@ -651,7 +651,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <rect>
        <x>160</x>
        <y>679</y>
-       <width>221</width>
+       <width>226</width>
        <height>31</height>
       </rect>
      </property>
@@ -677,27 +677,33 @@ selection-background-color: rgba(0, 0, 0, 0);</string>
       <rect>
        <x>161</x>
        <y>549</y>
-       <width>221</width>
-       <height>31</height>
+       <width>224</width>
+       <height>28</height>
       </rect>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background-image: url(:/backgrounds/elements/project_bg.png);
-image: url(:/backgrounds/elements/project_bar.png);
-padding-left: 25px;
-subcontrol-origin: padding;
-subcontrol-position: top right;
-font: 16pt &quot;Calisto MT&quot;;
-color: rgb(56, 9, 8);
+      <string notr="true">border-image: url(:/backgrounds/elements/project_bar.png);
+padding-left: 5px;
 background-repeat: none;
 background-color: rgba(118, 104, 79, 0);
+font: 16pt &quot;Calisto MT&quot;;
+color: rgb(56, 9, 8);
 selection-background-color: rgba(118, 104, 79, 0);</string>
      </property>
      <property name="editable">
       <bool>false</bool>
      </property>
+     <property name="insertPolicy">
+      <enum>QComboBox::InsertAlphabetically</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToContents</enum>
+     </property>
      <property name="frame">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <item>
       <property name="text">
@@ -711,6 +717,71 @@ selection-background-color: rgba(118, 104, 79, 0);</string>
         <activeon>:/backgrounds/elements/project_bg.png</activeon>
         <selectedoff>:/backgrounds/elements/project_bg.png</selectedoff>
         <selectedon>:/backgrounds/elements/project_bg.png</selectedon>:/backgrounds/elements/project_bg.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>testing 1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>testing 2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Testing 23</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Testin 5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Steging slkd</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>fuckdlsk</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cherries</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dook</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>turdy butt</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>phanto</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>jackvat</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>lookie loo</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Tardis</string>
       </property>
      </item>
     </widget>
@@ -812,10 +883,10 @@ background-color: rgba(0, 0, 0, 0);</string>
     <widget class="QLabel" name="day_meter">
      <property name="geometry">
       <rect>
-       <x>331</x>
-       <y>103</y>
-       <width>136</width>
-       <height>84</height>
+       <x>304</x>
+       <y>78</y>
+       <width>192</width>
+       <height>192</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -827,17 +898,20 @@ background-color: rgba(0, 0, 0, 0);</string>
      <property name="pixmap">
       <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
      </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
      <property name="alignment">
-      <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="week_meter">
      <property name="geometry">
       <rect>
-       <x>507</x>
-       <y>103</y>
-       <width>136</width>
-       <height>82</height>
+       <x>480</x>
+       <y>107</y>
+       <width>192</width>
+       <height>192</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -850,7 +924,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
      </property>
      <property name="alignment">
-      <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
     </widget>
     <widget class="QLabel" name="start_clock_minute">

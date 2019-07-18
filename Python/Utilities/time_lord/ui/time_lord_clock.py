@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Fri Jul 12 16:03:48 2019
+# Created: Tue Jul 16 14:18:30 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -330,18 +330,19 @@ class Ui_TimeLord(object):
         self.time_minute.setAlignment(QtCore.Qt.AlignCenter)
         self.time_minute.setObjectName("time_minute")
         self.day_meter = QtGui.QLabel(self.bg)
-        self.day_meter.setGeometry(QtCore.QRect(331, 103, 136, 84))
+        self.day_meter.setGeometry(QtCore.QRect(304, 78, 192, 192))
         self.day_meter.setStyleSheet("image: none;")
         self.day_meter.setText("")
         self.day_meter.setPixmap(QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png"))
-        self.day_meter.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.day_meter.setScaledContents(False)
+        self.day_meter.setAlignment(QtCore.Qt.AlignCenter)
         self.day_meter.setObjectName("day_meter")
         self.week_meter = QtGui.QLabel(self.bg)
-        self.week_meter.setGeometry(QtCore.QRect(507, 103, 136, 82))
+        self.week_meter.setGeometry(QtCore.QRect(480, 107, 192, 192))
         self.week_meter.setStyleSheet("image: none;")
         self.week_meter.setText("")
         self.week_meter.setPixmap(QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png"))
-        self.week_meter.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.week_meter.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.week_meter.setObjectName("week_meter")
         self.start_clock_minute = QtGui.QLabel(self.bg)
         self.start_clock_minute.setGeometry(QtCore.QRect(512, 404, 115, 115))
