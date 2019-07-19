@@ -284,6 +284,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.last_project = self.settings.value('last_project', '.')
         self.last_entity = self.settings.value('last_entity', '.')
         self.last_task = self.settings.value('last_task', '.')
+        self.window_position = self.settings.value('geometry', '')
+        self.restoreGeometry(self.window_position)
 
         # # --------------------------------------------------------------------------------------------------------
         # # Signal setup
@@ -505,7 +507,7 @@ class time_lord_ui(QtGui.QMainWindow):
     def set_daily_total(self, total):
         if total:
             self.time_lord.set_daily_output(total)
-            total -= 5.0
+            total -= 4.5
             angle = ((total / (float(config['ot_hours']) * 2.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
 
             if angle < -50.0:
@@ -524,8 +526,10 @@ class time_lord_ui(QtGui.QMainWindow):
     def set_weekly_total(self, total):
         self.time_lord.set_weekly_output(total)
         if total:
-            total -= 5.0
+            total -= 4.5
+            print 'ot_hours = %s' % float(config['ot_hours'])
             angle = ((total / (float(config['ot_hours']) * 10.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
+            print 'angle: %s' % angle
             if angle < -50.0:
                 angle = -50.0
             elif angle > 50.0:
@@ -602,8 +606,11 @@ class time_lord_ui(QtGui.QMainWindow):
                            self.last_timesheet['sg_task_start'].time())
         end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
                          self.last_timesheet['sg_task_end'].time())
-        self.time_lord.set_upper_output(trt='00:00:00', start=start, end=end, user=user, total_hours=daily_total,
-                                        week_total=weekly_total)
+        self.time_lord.set_trt_output(trt='00:00:00')
+        self.time_lord.set_start_end_output(start=start, end=end)
+        self.time_lord.set_user_output(user=user)
+        self.time_lord.set_daily_output(daily=daily_total)
+        self.time_lord.set_weekly_output(weekly=weekly_total)
 
     def clock_in(self, message=None):
         print 'Clocking in...'
@@ -650,6 +657,7 @@ class time_lord_ui(QtGui.QMainWindow):
             start_time = datetime.now()
         tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
         self.set_last_timesheet()
+        self.time_lord.set_user_output(user=user)
 
     def selection_check(self):
         if self.ui.project_dropdown.currentText() == 'Select Project' or self.ui.project_dropdown.currentIndex() == 0:
@@ -835,17 +843,6 @@ class time_lord_ui(QtGui.QMainWindow):
         else:
             # Let the engine know that it is clocked out.
             self.time_lord.clocked_in = False
-            # self.clock_switch()
-
-    def get_running_time(self):
-        '''
-        This may actually need to move into the time_continuum and get run in the thread.
-        set_runtime_clock would then be the connected listener.
-        :return:
-        '''
-        ts = self.last_timesheet
-        if not ts['sg_task_end']:
-            full_start = ts['sg_task_start']
 
     def set_runtime_clock(self, t='000000'):
         '''
@@ -1028,6 +1025,12 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.end_clock_minute.setPixmap(minute_hand_rot)
         self.ui.end_clock_hour.update()
         self.ui.end_clock_minute.update()
+
+    def closeEvent(self, *args, **kwargs):
+        self.time_lord.kill_it = True
+        self.time_engine.kill_it = True
+        geometry = self.saveGeometry()
+        self.settings.setValue('geometry', geometry)
 
 
 if __name__ == '__main__':
