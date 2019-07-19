@@ -280,6 +280,7 @@ class continuum(object):
 
                         diff = end - start
                         total_duration += ((diff.total_seconds() / 60.0) / 60)
+        print 'daily: %s' % total_duration
         return total_duration
 
     def get_weekly_total(self, user=None):
@@ -324,4 +325,5 @@ class continuum(object):
 
                         diff = end - start
                         total_duration += ((diff.total_seconds() / 60.0) / 60)
+        print 'weekly: %s' % total_duration
         return total_duration

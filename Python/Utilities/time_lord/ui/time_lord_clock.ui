@@ -254,13 +254,13 @@ background-color: rgba(0, 0, 0, 0);</string>
       <enum>QFrame::Plain</enum>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="output_window">
+    <widget class="QPlainTextEdit" name="output_monitor">
      <property name="geometry">
       <rect>
        <x>694</x>
        <y>89</y>
        <width>205</width>
-       <height>82</height>
+       <height>26</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -290,12 +290,7 @@ color: rgb(130, 231, 130);</string>
      </property>
      <property name="plainText">
       <string>OUTPUT MONITOR
-------------------------------------
-TRT: 00:12:24
-Start: 07/02/19 - End:
-USER CLOCKED IN
-Total Hours: 10
-Week Total: 20</string>
+------------------------------------</string>
      </property>
      <property name="backgroundVisible">
       <bool>false</bool>
@@ -564,9 +559,9 @@ background-color: rgba(0, 0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>694</x>
-       <y>176</y>
+       <y>187</y>
        <width>206</width>
-       <height>163</height>
+       <height>152</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -700,8 +695,8 @@ selection-background-color: rgba(118, 104, 79, 0);</string>
      <property name="styleSheet">
       <string notr="true">image: url(:/backgrounds/elements/project_bar.png);
 padding-left: 5px;
-background-repeat: none;
 background-color: rgba(118, 104, 79, 80);
+background-repeat: none;
 font: 16pt &quot;Calisto MT&quot;;
 color: rgb(56, 9, 8);
 subcontrol-origin: padding;
@@ -830,8 +825,8 @@ background-color: rgba(0, 0, 0, 0);</string>
     <widget class="QLabel" name="day_meter">
      <property name="geometry">
       <rect>
-       <x>304</x>
-       <y>78</y>
+       <x>305</x>
+       <y>77</y>
        <width>192</width>
        <height>192</height>
       </rect>
@@ -856,7 +851,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>481</x>
-       <y>78</y>
+       <y>76</y>
        <width>192</width>
        <height>192</height>
       </rect>
@@ -962,6 +957,216 @@ background-color: rgba(0, 0, 0, 0);</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QPlainTextEdit" name="output_trt">
+     <property name="geometry">
+      <rect>
+       <x>695</x>
+       <y>111</y>
+       <width>205</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+font: 75 7pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="plainText">
+      <string>TRT: 00:12:24
+</string>
+     </property>
+     <property name="backgroundVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="output_start_end">
+     <property name="geometry">
+      <rect>
+       <x>695</x>
+       <y>122</y>
+       <width>204</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+font: 75 7pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QPlainTextEdit::NoWrap</enum>
+     </property>
+     <property name="plainText">
+      <string>Start: 07/02/19
+End:</string>
+     </property>
+     <property name="backgroundVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="output_user">
+     <property name="geometry">
+      <rect>
+       <x>695</x>
+       <y>145</y>
+       <width>204</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+font: 75 7pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="plainText">
+      <string>USER CLOCKED IN</string>
+     </property>
+     <property name="backgroundVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="output_daily">
+     <property name="geometry">
+      <rect>
+       <x>695</x>
+       <y>157</y>
+       <width>204</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+font: 75 7pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="plainText">
+      <string>Daily Total: 6</string>
+     </property>
+     <property name="backgroundVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="output_weekly">
+     <property name="geometry">
+      <rect>
+       <x>695</x>
+       <y>168</y>
+       <width>204</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+font: 75 7pt &quot;MS UI Gothic&quot;;
+color: rgb(130, 231, 130);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="plainText">
+      <string>Weekly Total: 18</string>
+     </property>
+     <property name="backgroundVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <action name="actionCrash_Computer">
@@ -997,7 +1202,7 @@ background-color: rgba(0, 0, 0, 0);</string>
   <tabstop>end_ones_year</tabstop>
   <tabstop>red_light</tabstop>
   <tabstop>green_light</tabstop>
-  <tabstop>output_window</tabstop>
+  <tabstop>output_monitor</tabstop>
   <tabstop>lower_output</tabstop>
  </tabstops>
  <resources>

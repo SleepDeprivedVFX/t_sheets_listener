@@ -118,7 +118,11 @@ class time_signals(QtCore.QObject):
     in_date = QtCore.Signal(str)
     out_date = QtCore.Signal(str)
     running_clock = QtCore.Signal(str)
-    upper_output = QtCore.Signal(str)
+    trt_output = QtCore.Signal(str)
+    start_end_output = QtCore.Signal(str)
+    user_output = QtCore.Signal(str)
+    daily_output = QtCore.Signal(str)
+    weekly_output = QtCore.Signal(str)
     lower_output = QtCore.Signal(str)
     error_state = QtCore.Signal(bool)
     steady_state = QtCore.Signal(bool)
@@ -200,50 +204,63 @@ class time_lord(QtCore.QThread):
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
                 # self.time_signal.main_clock.emit(str(second))
-                daily_total = tl_time.get_daily_total(user=user)
-                weekly_total = tl_time.get_weekly_total(user=user)
+                # daily_total = tl_time.get_daily_total(user=user)
+                # weekly_total = tl_time.get_weekly_total(user=user)
                 if self.clocked_in:
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
                     running_time = rt['rt']
                     # Here we take the running time and emit it to the display.
                     self.time_signal.running_clock.emit(running_time)
                     trt = '%s:%s:%s' % (rt['h'], rt['m'], rt['s'])
+                    self.set_trt_output(trt=trt)
                     start_time = self.last_timesheet['sg_task_start']
                     start = '%s %s' % (start_time.date(), start_time.time())
                     end = '%s %s' % (datetime.now().date(), datetime.now().time())
-                    self.set_upper_output(trt=trt, start=start, end=end, user=user, total_hours=daily_total,
-                                          week_total=weekly_total)
+                    self.set_start_end_output(start=start, end=end)
+                    # self.set_upper_output(trt=trt, start=start, end=end, user=user, total_hours=daily_total,
+                    #                       week_total=weekly_total)
 
                     # Set the start time date rollers:
                     ts_start = self.last_timesheet['sg_task_start']
                     start_date = ts_start.strftime('%m-%d-%y')
                     self.time_signal.in_date.emit(start_date)
                 else:
+                    self.set_trt_output(trt='00:00:00')
                     # Set the start time date rollers:
-                    ts_start = datetime.now()
-                    start_date = ts_start.strftime('%m-%d-%y')
-                    self.time_signal.in_date.emit(start_date)
-                    start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
-                                       self.last_timesheet['sg_task_start'].time())
-                    end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
-                                     self.last_timesheet['sg_task_end'].time())
-                    self.set_upper_output(trt='00:00:00', start=start, end=end, user=user, total_hours=daily_total,
-                                          week_total=weekly_total)
+                    # ts_start = datetime.now()
+                    # start_date = ts_start.strftime('%m-%d-%y')
+                    # self.time_signal.in_date.emit(start_date)
+                    # start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+                    #                    self.last_timesheet['sg_task_start'].time())
+                    # end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+                    #                  self.last_timesheet['sg_task_end'].time())
+                    # self.set_upper_output(trt='00:00:00', start=start, end=end, user=user, total_hours=daily_total,
+                    #                       week_total=weekly_total)
                     break
 
-    def set_upper_output(self, trt=None, start=None, end=None, user=None, total_hours=None, week_total=None):
+    def set_trt_output(self, trt=None):
+        set_message = 'TRT: %s' % trt
+        self.time_signal.trt_output.emit(set_message)
+
+    def set_start_end_output(self, start=None, end=None):
+        set_message = 'Start: %s\nEnd: %s' % (start, end)
+        self.time_signal.start_end_output.emit(set_message)
+
+    def set_user_output(self, user=None):
         if self.clocked_in:
-            status = 'IN'
+            in_out = 'IN'
         else:
-            status = 'OUT'
-        set_message = 'OUTPUT MONITOR\n' \
-                      '------------------------------------\n' \
-                      'TRT: %s\n' \
-                      'Start: %s\nEnd: %s\n' \
-                      '%s CLOCKED %s\n' \
-                      'Total Hours: %s\n' \
-                      'Week Total: %s' % (trt, start, end, user['name'], status, total_hours, week_total)
-        self.time_signal.upper_output.emit(set_message)
+            in_out = 'OUT'
+        set_message = '%s CLOCKED %s' % (user['name'], in_out)
+        self.time_signal.user_output.emit(set_message)
+
+    def set_daily_output(self, daily=None):
+        set_message = 'Daily Total: %0.2f Hours' % daily
+        self.time_signal.daily_output.emit(set_message)
+
+    def set_weekly_output(self, weekly=None):
+        set_message = 'Weekly Total: %0.2f Hours' % weekly
+        self.time_signal.weekly_output.emit(set_message)
 
 
 class time_lord_ui(QtGui.QMainWindow):
@@ -302,7 +319,11 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.time_signal.main_clock.connect(self.main_clock)
         self.time_engine.time_signal.in_clock.connect(self.set_in_clock)
         self.time_engine.time_signal.out_clock.connect(self.set_out_clock)
-        self.time_lord.time_signal.upper_output.connect(self.upper_output)
+        self.time_lord.time_signal.trt_output.connect(self.trt_output)
+        self.time_lord.time_signal.start_end_output.connect(self.start_end_output)
+        self.time_lord.time_signal.user_output.connect(self.user_output)
+        self.time_lord.time_signal.daily_output.connect(self.daily_output)
+        self.time_lord.time_signal.weekly_output.connect(self.weekly_output)
         self.time_lord.time_signal.lower_output.connect(self.lower_output)
         self.time_lord.time_signal.error_state.connect(self.error_state)
         self.time_lord.time_signal.steady_state.connect(self.steady_state)
@@ -322,8 +343,11 @@ class time_lord_ui(QtGui.QMainWindow):
                              self.last_timesheet['sg_task_end'].time())
         else:
             end = '%s %s' % (datetime.now().date(), datetime.now().time())
-        self.time_lord.set_upper_output(trt='00:00:00', start=start, end=end, user=user,
-                                        total_hours=daily_total, week_total=weekly_total)
+        self.time_lord.set_trt_output(trt='00:00:00')
+        self.time_lord.set_start_end_output(start=start, end=end)
+        self.time_lord.set_user_output(user=user)
+        self.time_lord.set_daily_output(daily=daily_total)
+        self.time_lord.set_weekly_output(weekly=weekly_total)
 
         # Set state buttons
         if self.time_lord.error_state:
@@ -480,6 +504,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def set_daily_total(self, total):
         if total:
+            self.time_lord.set_daily_output(total)
             total -= 5.0
             angle = ((total / (float(config['ot_hours']) * 2.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
 
@@ -497,6 +522,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.day_meter.update()
 
     def set_weekly_total(self, total):
+        self.time_lord.set_weekly_output(total)
         if total:
             total -= 5.0
             angle = ((total / (float(config['ot_hours']) * 10.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
@@ -748,8 +774,20 @@ class time_lord_ui(QtGui.QMainWindow):
         '''
         pass
 
-    def upper_output(self, message=None):
-        self.ui.output_window.setPlainText(message)
+    def trt_output(self, message=None):
+        self.ui.output_trt.setPlainText(message)
+
+    def start_end_output(self, message=None):
+        self.ui.output_start_end.setPlainText(message)
+
+    def user_output(self, message=None):
+        self.ui.output_user.setPlainText(message)
+
+    def daily_output(self, message=None):
+        self.ui.output_daily.setPlainText(message)
+
+    def weekly_output(self, message=None):
+        self.ui.output_weekly.setPlainText(message)
 
     def lower_output(self, message=None):
         self.ui.lower_output.setPlainText(message)

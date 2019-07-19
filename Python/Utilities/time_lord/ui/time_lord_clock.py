@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Thu Jul 18 19:22:28 2019
+# Created: Fri Jul 19 12:15:52 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -108,21 +108,21 @@ class Ui_TimeLord(object):
         self.run_hour_ten.setFrameShape(QtGui.QFrame.NoFrame)
         self.run_hour_ten.setFrameShadow(QtGui.QFrame.Plain)
         self.run_hour_ten.setObjectName("run_hour_ten")
-        self.output_window = QtGui.QPlainTextEdit(self.bg)
-        self.output_window.setGeometry(QtCore.QRect(694, 89, 205, 82))
-        self.output_window.setStyleSheet("\n"
+        self.output_monitor = QtGui.QPlainTextEdit(self.bg)
+        self.output_monitor.setGeometry(QtCore.QRect(694, 89, 205, 26))
+        self.output_monitor.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
 "font: 75 7pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
-        self.output_window.setFrameShape(QtGui.QFrame.NoFrame)
-        self.output_window.setFrameShadow(QtGui.QFrame.Plain)
-        self.output_window.setLineWidth(0)
-        self.output_window.setMidLineWidth(0)
-        self.output_window.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.output_window.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.output_window.setBackgroundVisible(False)
-        self.output_window.setObjectName("output_window")
+        self.output_monitor.setFrameShape(QtGui.QFrame.NoFrame)
+        self.output_monitor.setFrameShadow(QtGui.QFrame.Plain)
+        self.output_monitor.setLineWidth(0)
+        self.output_monitor.setMidLineWidth(0)
+        self.output_monitor.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_monitor.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_monitor.setBackgroundVisible(False)
+        self.output_monitor.setObjectName("output_monitor")
         self.end_ones_day = QtGui.QGraphicsView(self.bg)
         self.end_ones_day.setGeometry(QtCore.QRect(800, 551, 17, 40))
         self.end_ones_day.setStyleSheet("background-image: url(:/roller_numbers/elements/end_d_ones_4.png);\n"
@@ -188,7 +188,7 @@ class Ui_TimeLord(object):
         self.end_tens_year.setFrameShadow(QtGui.QFrame.Plain)
         self.end_tens_year.setObjectName("end_tens_year")
         self.clock_button = QtGui.QPushButton(self.bg)
-        self.clock_button.setGeometry(QtCore.QRect(619, 623, 118, 119))
+        self.clock_button.setGeometry(QtCore.QRect(619, 626, 118, 119))
         self.clock_button.setStyleSheet("background-image: url(:/lights buttons/elements/clock_button_1.png);\n"
 "background-repeat: none;\n"
 "background-color: rgba(0, 0, 0, 0);\n"
@@ -223,7 +223,7 @@ class Ui_TimeLord(object):
         self.green_light.setBackgroundBrush(brush)
         self.green_light.setObjectName("green_light")
         self.lower_output = QtGui.QPlainTextEdit(self.bg)
-        self.lower_output.setGeometry(QtCore.QRect(694, 176, 206, 163))
+        self.lower_output.setGeometry(QtCore.QRect(694, 187, 206, 152))
         self.lower_output.setStyleSheet("QPlainTextEdit{\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
@@ -281,8 +281,8 @@ class Ui_TimeLord(object):
         self.project_dropdown.setAutoFillBackground(False)
         self.project_dropdown.setStyleSheet("image: url(:/backgrounds/elements/project_bar.png);\n"
 "padding-left: 5px;\n"
-"background-repeat: none;\n"
 "background-color: rgba(118, 104, 79, 80);\n"
+"background-repeat: none;\n"
 "font: 16pt \"Calisto MT\";\n"
 "color: rgb(56, 9, 8);\n"
 "subcontrol-origin: padding;\n"
@@ -334,7 +334,7 @@ class Ui_TimeLord(object):
         self.time_minute.setAlignment(QtCore.Qt.AlignCenter)
         self.time_minute.setObjectName("time_minute")
         self.day_meter = QtGui.QLabel(self.bg)
-        self.day_meter.setGeometry(QtCore.QRect(304, 78, 192, 192))
+        self.day_meter.setGeometry(QtCore.QRect(305, 77, 192, 192))
         self.day_meter.setStyleSheet("image: none;")
         self.day_meter.setText("")
         self.day_meter.setPixmap(QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png"))
@@ -342,7 +342,7 @@ class Ui_TimeLord(object):
         self.day_meter.setAlignment(QtCore.Qt.AlignCenter)
         self.day_meter.setObjectName("day_meter")
         self.week_meter = QtGui.QLabel(self.bg)
-        self.week_meter.setGeometry(QtCore.QRect(481, 78, 192, 192))
+        self.week_meter.setGeometry(QtCore.QRect(481, 76, 192, 192))
         self.week_meter.setStyleSheet("image: none;")
         self.week_meter.setText("")
         self.week_meter.setPixmap(QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png"))
@@ -376,6 +376,82 @@ class Ui_TimeLord(object):
         self.end_clock_minute.setPixmap(QtGui.QPixmap(":/dial hands/elements/clock_3_minute.png"))
         self.end_clock_minute.setAlignment(QtCore.Qt.AlignCenter)
         self.end_clock_minute.setObjectName("end_clock_minute")
+        self.output_trt = QtGui.QPlainTextEdit(self.bg)
+        self.output_trt.setGeometry(QtCore.QRect(695, 111, 205, 17))
+        self.output_trt.setStyleSheet("\n"
+"border-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 7pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);")
+        self.output_trt.setFrameShape(QtGui.QFrame.NoFrame)
+        self.output_trt.setFrameShadow(QtGui.QFrame.Plain)
+        self.output_trt.setLineWidth(0)
+        self.output_trt.setMidLineWidth(0)
+        self.output_trt.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_trt.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_trt.setBackgroundVisible(False)
+        self.output_trt.setObjectName("output_trt")
+        self.output_start_end = QtGui.QPlainTextEdit(self.bg)
+        self.output_start_end.setGeometry(QtCore.QRect(695, 122, 204, 28))
+        self.output_start_end.setStyleSheet("\n"
+"border-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 7pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);")
+        self.output_start_end.setFrameShape(QtGui.QFrame.NoFrame)
+        self.output_start_end.setFrameShadow(QtGui.QFrame.Plain)
+        self.output_start_end.setLineWidth(0)
+        self.output_start_end.setMidLineWidth(0)
+        self.output_start_end.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_start_end.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_start_end.setLineWrapMode(QtGui.QPlainTextEdit.NoWrap)
+        self.output_start_end.setBackgroundVisible(False)
+        self.output_start_end.setObjectName("output_start_end")
+        self.output_user = QtGui.QPlainTextEdit(self.bg)
+        self.output_user.setGeometry(QtCore.QRect(695, 145, 204, 20))
+        self.output_user.setStyleSheet("\n"
+"border-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 7pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);")
+        self.output_user.setFrameShape(QtGui.QFrame.NoFrame)
+        self.output_user.setFrameShadow(QtGui.QFrame.Plain)
+        self.output_user.setLineWidth(0)
+        self.output_user.setMidLineWidth(0)
+        self.output_user.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_user.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_user.setBackgroundVisible(False)
+        self.output_user.setObjectName("output_user")
+        self.output_daily = QtGui.QPlainTextEdit(self.bg)
+        self.output_daily.setGeometry(QtCore.QRect(695, 157, 204, 17))
+        self.output_daily.setStyleSheet("\n"
+"border-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 7pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);")
+        self.output_daily.setFrameShape(QtGui.QFrame.NoFrame)
+        self.output_daily.setFrameShadow(QtGui.QFrame.Plain)
+        self.output_daily.setLineWidth(0)
+        self.output_daily.setMidLineWidth(0)
+        self.output_daily.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_daily.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_daily.setBackgroundVisible(False)
+        self.output_daily.setObjectName("output_daily")
+        self.output_weekly = QtGui.QPlainTextEdit(self.bg)
+        self.output_weekly.setGeometry(QtCore.QRect(695, 168, 204, 17))
+        self.output_weekly.setStyleSheet("\n"
+"border-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 7pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);")
+        self.output_weekly.setFrameShape(QtGui.QFrame.NoFrame)
+        self.output_weekly.setFrameShadow(QtGui.QFrame.Plain)
+        self.output_weekly.setLineWidth(0)
+        self.output_weekly.setMidLineWidth(0)
+        self.output_weekly.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_weekly.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_weekly.setBackgroundVisible(False)
+        self.output_weekly.setObjectName("output_weekly")
         TimeLord.setCentralWidget(self.centralwidget)
         self.actionCrash_Computer = QtGui.QAction(TimeLord)
         self.actionCrash_Computer.setObjectName("actionCrash_Computer")
@@ -407,23 +483,25 @@ class Ui_TimeLord(object):
         TimeLord.setTabOrder(self.end_tens_year, self.end_ones_year)
         TimeLord.setTabOrder(self.end_ones_year, self.red_light)
         TimeLord.setTabOrder(self.red_light, self.green_light)
-        TimeLord.setTabOrder(self.green_light, self.output_window)
-        TimeLord.setTabOrder(self.output_window, self.lower_output)
+        TimeLord.setTabOrder(self.green_light, self.output_monitor)
+        TimeLord.setTabOrder(self.output_monitor, self.lower_output)
 
     def retranslateUi(self, TimeLord):
         TimeLord.setWindowTitle(QtGui.QApplication.translate("TimeLord", "Time Lord", None, QtGui.QApplication.UnicodeUTF8))
         self.artist_label.setText(QtGui.QApplication.translate("TimeLord", "Artist", None, QtGui.QApplication.UnicodeUTF8))
-        self.output_window.setPlainText(QtGui.QApplication.translate("TimeLord", "OUTPUT MONITOR\n"
-"------------------------------------\n"
-"TRT: 00:12:24\n"
-"Start: 07/02/19 - End:\n"
-"USER CLOCKED IN\n"
-"Total Hours: 10\n"
-"Week Total: 20", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_monitor.setPlainText(QtGui.QApplication.translate("TimeLord", "OUTPUT MONITOR\n"
+"------------------------------------", None, QtGui.QApplication.UnicodeUTF8))
         self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "Raw Data Ouput", None, QtGui.QApplication.UnicodeUTF8))
         self.entity_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
         self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))
         self.project_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Project", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_trt.setPlainText(QtGui.QApplication.translate("TimeLord", "TRT: 00:12:24\n"
+"", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_start_end.setPlainText(QtGui.QApplication.translate("TimeLord", "Start: 07/02/19\n"
+"End:", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_user.setPlainText(QtGui.QApplication.translate("TimeLord", "USER CLOCKED IN", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_daily.setPlainText(QtGui.QApplication.translate("TimeLord", "Daily Total: 6", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_weekly.setPlainText(QtGui.QApplication.translate("TimeLord", "Weekly Total: 18", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCrash_Computer.setText(QtGui.QApplication.translate("TimeLord", "Crash Computer", None, QtGui.QApplication.UnicodeUTF8))
 
 from resources import time_lord_resources_rc
