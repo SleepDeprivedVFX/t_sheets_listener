@@ -183,7 +183,11 @@ class continuum(object):
         '''
         if user and context:
             project_id = context['Project']['id']
+            project_name = context['Project']['name']
             task_id = context['Task']['id']
+            task_name = context['Task']['content']
+            entity_id = context['Entity']['id']
+            entity_name = context['Entity']['code']
             user_id = user['id']
             print context
 
@@ -191,6 +195,7 @@ class continuum(object):
                 task_start = start_time
             else:
                 task_start = datetime.datetime.now()
+
             data = {
                 'entity': {'type': 'Task', 'id': task_id},
                 'sg_task_start': task_start,
@@ -262,12 +267,7 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            # try:
             timesheets = self.sg.find('TimeLog', filters, fields)
-            # except AttributeError, e:
-            #     timesheets = None
-            #     self.logger.error('Can not get Timelogs: %s' % e)
-            #     print 'can\'t get timelogs: %s' % e
             if timesheets:
                 for timesheet in timesheets:
                     if not self.aint_today(timesheet['sg_task_start']):
@@ -310,12 +310,7 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            # try:
             timesheets = self.sg.find('TimeLog', filters, fields)
-            # except AttributeError, e:
-            #     timesheets = None
-            #     self.logger.error('Can not get Timelogs: %s' % e)
-            #     print 'can\'t get timelogs: %s' % e
             if timesheets:
                 for timesheet in timesheets:
                     this_date = timesheet['sg_task_start'].date()

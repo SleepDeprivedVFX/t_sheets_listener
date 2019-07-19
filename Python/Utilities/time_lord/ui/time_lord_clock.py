@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Thu Jul 18 16:32:18 2019
+# Created: Tue Jul 16 14:18:30 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!

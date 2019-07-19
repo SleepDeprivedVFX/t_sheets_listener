@@ -56,10 +56,9 @@ class sg_data(object):
             self.logger.debug('Shots List: %s' % shots)
             return shots
 
-    def get_entity_tasks(self, entity_id=None, entity_name=None):
+    def get_entity_tasks(self, entity_id=None):
         if entity_id:
             self.logger.info('Getting tasks for entity ID %s...' % entity_id)
-            print entity_id
             filters = [
                 {
                     'filter_operator': 'any',
@@ -71,15 +70,9 @@ class sg_data(object):
             ]
             fields = [
                 'content',
-                'step',
-                'entity'
+                'step'
             ]
             tasks = self.sg.find('Task', filters, fields)
-            for task in tasks:
-                if task['entity']['name'] == entity_name:
-                    tid = tasks.index(task)
-                    tasks.pop(tid)
-                    print task
             self.logger.info('Tasks collected')
             self.logger.debug('Tasks List: %s' % tasks)
             return tasks
@@ -183,10 +176,10 @@ class sg_data(object):
                     break
         return entity_id
 
-    def get_task_id(self, entity_id=None, task_name=None, entity_name=None):
+    def get_task_id(self, entity_id=None, task_name=None):
         task_id = None
         if entity_id and task_name:
-            tasks = self.get_entity_tasks(entity_id=entity_id, entity_name=entity_name)
+            tasks = self.get_entity_tasks(entity_id=entity_id)
             if tasks:
                 for task in tasks:
                     if task['content'] == task_name:
