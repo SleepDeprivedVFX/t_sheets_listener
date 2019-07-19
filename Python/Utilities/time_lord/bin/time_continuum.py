@@ -267,12 +267,7 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            # try:
             timesheets = self.sg.find('TimeLog', filters, fields)
-            # except AttributeError, e:
-            #     timesheets = None
-            #     self.logger.error('Can not get Timelogs: %s' % e)
-            #     print 'can\'t get timelogs: %s' % e
             if timesheets:
                 for timesheet in timesheets:
                     if not self.aint_today(timesheet['sg_task_start']):
@@ -315,12 +310,7 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            # try:
             timesheets = self.sg.find('TimeLog', filters, fields)
-            # except AttributeError, e:
-            #     timesheets = None
-            #     self.logger.error('Can not get Timelogs: %s' % e)
-            #     print 'can\'t get timelogs: %s' % e
             if timesheets:
                 for timesheet in timesheets:
                     this_date = timesheet['sg_task_start'].date()

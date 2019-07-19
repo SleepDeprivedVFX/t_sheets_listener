@@ -260,11 +260,11 @@ background-color: rgba(0, 0, 0, 0);</string>
        <x>694</x>
        <y>89</y>
        <width>205</width>
-       <height>82</height>
+       <height>57</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">
+      <string notr="true">border-image: url(:/backgrounds/elements/output_monitor_top.png);
 border-color: rgba(0, 0, 0, 0);
 background-color: rgba(0, 0, 0, 0);
 font: 75 7pt &quot;MS UI Gothic&quot;;
@@ -293,9 +293,7 @@ color: rgb(130, 231, 130);</string>
 ------------------------------------
 TRT: 00:12:24
 Start: 07/02/19 - End:
-USER CLOCKED IN
-Total Hours: 10
-Week Total: 20</string>
+USER CLOCKED IN</string>
      </property>
      <property name="backgroundVisible">
       <bool>false</bool>
@@ -564,13 +562,14 @@ background-color: rgba(0, 0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>694</x>
-       <y>176</y>
-       <width>206</width>
-       <height>163</height>
+       <y>161</y>
+       <width>207</width>
+       <height>178</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">QPlainTextEdit{
+border-image: url(:/backgrounds/elements/output_monitor_bottom.png);
 border-color: rgba(0, 0, 0, 0);
 background-color: rgba(0, 0, 0, 0);
 font: 75 8pt &quot;MS UI Gothic&quot;;
@@ -603,28 +602,22 @@ color: rgb(130, 231, 130);
     <widget class="QComboBox" name="entity_dropdown">
      <property name="geometry">
       <rect>
-       <x>151</x>
+       <x>165</x>
        <y>609</y>
-       <width>242</width>
-       <height>39</height>
+       <width>227</width>
+       <height>42</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background-image: url(:/backgrounds/elements/entity_bg.png);
-padding-left: 5px;
 background-repeat: none;
-background-color: rgba(118, 104, 79, 80);
-font: 16pt &quot;Calisto MT&quot;;
-color: rgb(56, 9, 8);
+background-color: rgba(118, 104, 79, 0);
+padding-left: 25px;
 subcontrol-origin: padding;
 subcontrol-position: top right;
-selection-background-color: rgba(118, 104, 79, 0);</string>
-     </property>
-     <property name="insertPolicy">
-      <enum>QComboBox::InsertAlphabetically</enum>
-     </property>
-     <property name="frame">
-      <bool>false</bool>
+font: 16pt &quot;Calisto MT&quot;;
+color: rgb(56, 9, 8);
+selection-background-color: rgba(0, 0, 0, 0);</string>
      </property>
      <item>
       <property name="text">
@@ -656,28 +649,22 @@ background-color: rgba(0, 0, 0, 0);</string>
     <widget class="QComboBox" name="task_dropdown">
      <property name="geometry">
       <rect>
-       <x>151</x>
+       <x>160</x>
        <y>679</y>
-       <width>242</width>
-       <height>34</height>
+       <width>226</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background-image: url(:/backgrounds/elements/task_bg.png);
-padding-left: 5px;
-background-color: rgba(118, 104, 79, 80);
 background-repeat: none;
-font: 16pt &quot;Calisto MT&quot;;
-color: rgb(56, 9, 8);
+background-color: rgba(118, 104, 79, 0);
+padding-left: 25px;
 subcontrol-origin: padding;
 subcontrol-position: top right;
-selection-background-color: rgba(118, 104, 79, 0);</string>
-     </property>
-     <property name="insertPolicy">
-      <enum>QComboBox::InsertAlphabetically</enum>
-     </property>
-     <property name="frame">
-      <bool>false</bool>
+font: 16pt &quot;Calisto MT&quot;;
+color: rgb(56, 9, 8);
+selection-background-color: rgba(0, 0, 0, 0);</string>
      </property>
      <item>
       <property name="text">
@@ -688,24 +675,22 @@ selection-background-color: rgba(118, 104, 79, 0);</string>
     <widget class="QComboBox" name="project_dropdown">
      <property name="geometry">
       <rect>
-       <x>153</x>
-       <y>547</y>
-       <width>240</width>
-       <height>33</height>
+       <x>161</x>
+       <y>549</y>
+       <width>224</width>
+       <height>28</height>
       </rect>
      </property>
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/backgrounds/elements/project_bar.png);
+      <string notr="true">border-image: url(:/backgrounds/elements/project_bar.png);
 padding-left: 5px;
 background-repeat: none;
-background-color: rgba(118, 104, 79, 80);
+background-color: rgba(118, 104, 79, 0);
 font: 16pt &quot;Calisto MT&quot;;
 color: rgb(56, 9, 8);
-subcontrol-origin: padding;
-subcontrol-position: top right;
 selection-background-color: rgba(118, 104, 79, 0);</string>
      </property>
      <property name="editable">
@@ -713,6 +698,9 @@ selection-background-color: rgba(118, 104, 79, 0);</string>
      </property>
      <property name="insertPolicy">
       <enum>QComboBox::InsertAlphabetically</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToContents</enum>
      </property>
      <property name="frame">
       <bool>false</bool>
@@ -729,6 +717,71 @@ selection-background-color: rgba(118, 104, 79, 0);</string>
         <activeon>:/backgrounds/elements/project_bg.png</activeon>
         <selectedoff>:/backgrounds/elements/project_bg.png</selectedoff>
         <selectedon>:/backgrounds/elements/project_bg.png</selectedon>:/backgrounds/elements/project_bg.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>testing 1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>testing 2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Testing 23</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Testin 5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Steging slkd</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>fuckdlsk</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cherries</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dook</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>turdy butt</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>phanto</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>jackvat</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>lookie loo</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Tardis</string>
       </property>
      </item>
     </widget>
@@ -855,8 +908,8 @@ background-color: rgba(0, 0, 0, 0);</string>
     <widget class="QLabel" name="week_meter">
      <property name="geometry">
       <rect>
-       <x>481</x>
-       <y>78</y>
+       <x>480</x>
+       <y>107</y>
        <width>192</width>
        <height>192</height>
       </rect>
@@ -871,7 +924,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
     </widget>
     <widget class="QLabel" name="start_clock_minute">
