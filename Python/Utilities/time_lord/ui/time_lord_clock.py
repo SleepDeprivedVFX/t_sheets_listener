@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Tue Jul 16 14:18:30 2019
+# Created: Thu Jul 18 19:22:28 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -109,8 +109,8 @@ class Ui_TimeLord(object):
         self.run_hour_ten.setFrameShadow(QtGui.QFrame.Plain)
         self.run_hour_ten.setObjectName("run_hour_ten")
         self.output_window = QtGui.QPlainTextEdit(self.bg)
-        self.output_window.setGeometry(QtCore.QRect(694, 89, 205, 57))
-        self.output_window.setStyleSheet("border-image: url(:/backgrounds/elements/output_monitor_top.png);\n"
+        self.output_window.setGeometry(QtCore.QRect(694, 89, 205, 82))
+        self.output_window.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
 "font: 75 7pt \"MS UI Gothic\";\n"
@@ -223,9 +223,8 @@ class Ui_TimeLord(object):
         self.green_light.setBackgroundBrush(brush)
         self.green_light.setObjectName("green_light")
         self.lower_output = QtGui.QPlainTextEdit(self.bg)
-        self.lower_output.setGeometry(QtCore.QRect(694, 161, 207, 178))
+        self.lower_output.setGeometry(QtCore.QRect(694, 176, 206, 163))
         self.lower_output.setStyleSheet("QPlainTextEdit{\n"
-"border-image: url(:/backgrounds/elements/output_monitor_bottom.png);\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
 "font: 75 8pt \"MS UI Gothic\";\n"
@@ -240,16 +239,18 @@ class Ui_TimeLord(object):
         self.lower_output.setDocumentTitle("")
         self.lower_output.setObjectName("lower_output")
         self.entity_dropdown = QtGui.QComboBox(self.bg)
-        self.entity_dropdown.setGeometry(QtCore.QRect(165, 609, 227, 42))
+        self.entity_dropdown.setGeometry(QtCore.QRect(151, 609, 242, 39))
         self.entity_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/entity_bg.png);\n"
+"padding-left: 5px;\n"
 "background-repeat: none;\n"
-"background-color: rgba(118, 104, 79, 0);\n"
-"padding-left: 25px;\n"
-"subcontrol-origin: padding;\n"
-"subcontrol-position: top right;\n"
+"background-color: rgba(118, 104, 79, 80);\n"
 "font: 16pt \"Calisto MT\";\n"
 "color: rgb(56, 9, 8);\n"
-"selection-background-color: rgba(0, 0, 0, 0);")
+"subcontrol-origin: padding;\n"
+"subcontrol-position: top right;\n"
+"selection-background-color: rgba(118, 104, 79, 0);")
+        self.entity_dropdown.setInsertPolicy(QtGui.QComboBox.InsertAlphabetically)
+        self.entity_dropdown.setFrame(False)
         self.entity_dropdown.setObjectName("entity_dropdown")
         self.entity_dropdown.addItem("")
         self.end_ones_month = QtGui.QGraphicsView(self.bg)
@@ -261,32 +262,35 @@ class Ui_TimeLord(object):
         self.end_ones_month.setFrameShadow(QtGui.QFrame.Plain)
         self.end_ones_month.setObjectName("end_ones_month")
         self.task_dropdown = QtGui.QComboBox(self.bg)
-        self.task_dropdown.setGeometry(QtCore.QRect(160, 679, 221, 31))
+        self.task_dropdown.setGeometry(QtCore.QRect(151, 679, 242, 34))
         self.task_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/task_bg.png);\n"
+"padding-left: 5px;\n"
+"background-color: rgba(118, 104, 79, 80);\n"
 "background-repeat: none;\n"
-"background-color: rgba(118, 104, 79, 0);\n"
-"padding-left: 25px;\n"
-"subcontrol-origin: padding;\n"
-"subcontrol-position: top right;\n"
 "font: 16pt \"Calisto MT\";\n"
 "color: rgb(56, 9, 8);\n"
-"selection-background-color: rgba(0, 0, 0, 0);")
+"subcontrol-origin: padding;\n"
+"subcontrol-position: top right;\n"
+"selection-background-color: rgba(118, 104, 79, 0);")
+        self.task_dropdown.setInsertPolicy(QtGui.QComboBox.InsertAlphabetically)
+        self.task_dropdown.setFrame(False)
         self.task_dropdown.setObjectName("task_dropdown")
         self.task_dropdown.addItem("")
         self.project_dropdown = QtGui.QComboBox(self.bg)
-        self.project_dropdown.setGeometry(QtCore.QRect(161, 549, 221, 31))
-        self.project_dropdown.setStyleSheet("background-image: url(:/backgrounds/elements/project_bg.png);\n"
-"image: url(:/backgrounds/elements/project_bar.png);\n"
-"padding-left: 25px;\n"
-"subcontrol-origin: padding;\n"
-"subcontrol-position: top right;\n"
+        self.project_dropdown.setGeometry(QtCore.QRect(153, 547, 240, 33))
+        self.project_dropdown.setAutoFillBackground(False)
+        self.project_dropdown.setStyleSheet("image: url(:/backgrounds/elements/project_bar.png);\n"
+"padding-left: 5px;\n"
+"background-repeat: none;\n"
+"background-color: rgba(118, 104, 79, 80);\n"
 "font: 16pt \"Calisto MT\";\n"
 "color: rgb(56, 9, 8);\n"
-"background-repeat: none;\n"
-"background-color: rgba(118, 104, 79, 0);\n"
+"subcontrol-origin: padding;\n"
+"subcontrol-position: top right;\n"
 "selection-background-color: rgba(118, 104, 79, 0);")
         self.project_dropdown.setEditable(False)
-        self.project_dropdown.setFrame(True)
+        self.project_dropdown.setInsertPolicy(QtGui.QComboBox.InsertAlphabetically)
+        self.project_dropdown.setFrame(False)
         self.project_dropdown.setObjectName("project_dropdown")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/backgrounds/elements/project_bg.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
@@ -338,11 +342,11 @@ class Ui_TimeLord(object):
         self.day_meter.setAlignment(QtCore.Qt.AlignCenter)
         self.day_meter.setObjectName("day_meter")
         self.week_meter = QtGui.QLabel(self.bg)
-        self.week_meter.setGeometry(QtCore.QRect(480, 107, 192, 192))
+        self.week_meter.setGeometry(QtCore.QRect(481, 78, 192, 192))
         self.week_meter.setStyleSheet("image: none;")
         self.week_meter.setText("")
         self.week_meter.setPixmap(QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png"))
-        self.week_meter.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.week_meter.setAlignment(QtCore.Qt.AlignCenter)
         self.week_meter.setObjectName("week_meter")
         self.start_clock_minute = QtGui.QLabel(self.bg)
         self.start_clock_minute.setGeometry(QtCore.QRect(512, 404, 115, 115))
@@ -413,7 +417,9 @@ class Ui_TimeLord(object):
 "------------------------------------\n"
 "TRT: 00:12:24\n"
 "Start: 07/02/19 - End:\n"
-"USER CLOCKED IN", None, QtGui.QApplication.UnicodeUTF8))
+"USER CLOCKED IN\n"
+"Total Hours: 10\n"
+"Week Total: 20", None, QtGui.QApplication.UnicodeUTF8))
         self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "Raw Data Ouput", None, QtGui.QApplication.UnicodeUTF8))
         self.entity_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
         self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))

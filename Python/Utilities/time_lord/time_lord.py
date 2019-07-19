@@ -166,8 +166,6 @@ class time_engine(QtCore.QThread):
                 if datetime.now().minute != minute:
                     daily_total = tl_time.get_daily_total(user=user)
                     weekly_total = tl_time.get_weekly_total(user=user)
-                    print 'daily total: %s' % daily_total
-                    print 'weekely total: %s' % weekly_total
                     minute = datetime.now().minute
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
@@ -202,6 +200,8 @@ class time_lord(QtCore.QThread):
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
                 # self.time_signal.main_clock.emit(str(second))
+                daily_total = tl_time.get_daily_total(user=user)
+                weekly_total = tl_time.get_weekly_total(user=user)
                 if self.clocked_in:
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
                     running_time = rt['rt']
@@ -211,7 +211,8 @@ class time_lord(QtCore.QThread):
                     start_time = self.last_timesheet['sg_task_start']
                     start = '%s %s' % (start_time.date(), start_time.time())
                     end = '%s %s' % (datetime.now().date(), datetime.now().time())
-                    self.set_upper_output(trt=trt, start=start, end=end, user=user)
+                    self.set_upper_output(trt=trt, start=start, end=end, user=user, total_hours=daily_total,
+                                          week_total=weekly_total)
 
                     # Set the start time date rollers:
                     ts_start = self.last_timesheet['sg_task_start']
@@ -226,10 +227,11 @@ class time_lord(QtCore.QThread):
                                        self.last_timesheet['sg_task_start'].time())
                     end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
                                      self.last_timesheet['sg_task_end'].time())
-                    self.set_upper_output(trt='00:00:00', start=start, end=end, user=user)
+                    self.set_upper_output(trt='00:00:00', start=start, end=end, user=user, total_hours=daily_total,
+                                          week_total=weekly_total)
                     break
 
-    def set_upper_output(self, trt=None, start=None, end=None, user=None):
+    def set_upper_output(self, trt=None, start=None, end=None, user=None, total_hours=None, week_total=None):
         if self.clocked_in:
             status = 'IN'
         else:
@@ -238,7 +240,9 @@ class time_lord(QtCore.QThread):
                       '------------------------------------\n' \
                       'TRT: %s\n' \
                       'Start: %s\nEnd: %s\n' \
-                      '%s CLOCKED %s' % (trt, start, end, user['name'], status)
+                      '%s CLOCKED %s\n' \
+                      'Total Hours: %s\n' \
+                      'Week Total: %s' % (trt, start, end, user['name'], status, total_hours, week_total)
         self.time_signal.upper_output.emit(set_message)
 
 
@@ -309,8 +313,17 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.time_signal.weekly_total.connect(self.set_weekly_total)
 
         # Start the output window
-        # TODO: Update this with actual data instead of presets
-        self.time_lord.set_upper_output(trt='00:00:00', start='00:00:00', end='00:00:00', user=user)
+        daily_total = tl_time.get_daily_total(user=user)
+        weekly_total = tl_time.get_weekly_total(user=user)
+        start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+                           self.last_timesheet['sg_task_start'].time())
+        if self.last_timesheet['sg_task_end']:
+            end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+                             self.last_timesheet['sg_task_end'].time())
+        else:
+            end = '%s %s' % (datetime.now().date(), datetime.now().time())
+        self.time_lord.set_upper_output(trt='00:00:00', start=start, end=end, user=user,
+                                        total_hours=daily_total, week_total=weekly_total)
 
         # Set state buttons
         if self.time_lord.error_state:
@@ -424,7 +437,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # Get the last timesheet
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
         self.time_lord.last_timesheet = self.last_timesheet
-        print 'LAST TIMESHEET: %s' % self.last_timesheet
+        logger.debug('LAST TIMESHEET: %s' % self.last_timesheet)
 
         # Get last start and end times
         self.last_out_time = self.last_timesheet['sg_task_end']
@@ -444,7 +457,6 @@ class time_lord_ui(QtGui.QMainWindow):
                                                            self.last_task,
                                                            self.last_timesheet['entity']['id'],
                                                            self.last_project_id)
-            print 'in', last_entity_details
             if last_entity_details:
                 self.last_entity_type = last_entity_details['entity']['type']
                 self.last_entity_id = last_entity_details['entity']['id']
@@ -459,7 +471,6 @@ class time_lord_ui(QtGui.QMainWindow):
                                                            self.last_timesheet['entity']['name'],
                                                            self.last_timesheet['entity']['id'],
                                                            self.last_project_id)
-            print 'out', last_entity_details
             if last_entity_details:
                 self.last_entity_type = last_entity_details['entity']['type']
                 self.last_entity_id = last_entity_details['entity']['id']
@@ -552,6 +563,8 @@ class time_lord_ui(QtGui.QMainWindow):
             pass
         self.ui.clock_button.clicked.connect(self.start_time)
         self.time_lord.time_signal.clock_state.emit(0)
+        daily_total = tl_time.get_daily_total(user=user)
+        weekly_total = tl_time.get_weekly_total(user=user)
         tl_time.clock_out_time_sheet(timesheet=self.last_timesheet, clock_out=datetime.now())
         self.time_lord.time_signal.lower_output.emit('You have clocked out!')
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
@@ -563,7 +576,8 @@ class time_lord_ui(QtGui.QMainWindow):
                            self.last_timesheet['sg_task_start'].time())
         end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
                          self.last_timesheet['sg_task_end'].time())
-        self.time_lord.set_upper_output(trt='00:00:00', start=start, end=end, user=user)
+        self.time_lord.set_upper_output(trt='00:00:00', start=start, end=end, user=user, total_hours=daily_total,
+                                        week_total=weekly_total)
 
     def clock_in(self, message=None):
         print 'Clocking in...'
@@ -590,7 +604,7 @@ class time_lord_ui(QtGui.QMainWindow):
         project_name = project_selection
         entity_id = sg_data.get_entity_id(proj_id=project_id, entity_name=self.ui.entity_dropdown.currentText())
         task_id = sg_data.get_task_id(entity_id=entity_id, task_name=self.ui.task_dropdown.currentText(),
-                                      entity_name=self.ui.entity_dropdown.currentText())
+                                      entity_name=self.ui.entity_dropdown.currentText(), proj_id=project_id)
         context = {
             'Project': {
                 'id': project_id,
@@ -676,12 +690,12 @@ class time_lord_ui(QtGui.QMainWindow):
         current_entity = self.ui.entity_dropdown.currentText()
         self.last_entity_id = sg_data.get_entity_id(proj_id=self.last_project_id,
                                                     entity_name=current_entity)
-        tasks = sg_data.get_entity_tasks(entity_id=self.last_entity_id, entity_name=current_entity)
+        tasks = sg_data.get_entity_tasks(entity_id=self.last_entity_id, entity_name=current_entity,
+                                         proj_id=self.last_project_id)
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task')
             for task in tasks:
-                print 'adding task: %s' % task['content']
                 self.ui.task_dropdown.addItem(task['content'])
         else:
             self.ui.task_dropdown.clear()

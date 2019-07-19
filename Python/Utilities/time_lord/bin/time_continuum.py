@@ -183,11 +183,7 @@ class continuum(object):
         '''
         if user and context:
             project_id = context['Project']['id']
-            project_name = context['Project']['name']
             task_id = context['Task']['id']
-            task_name = context['Task']['content']
-            entity_id = context['Entity']['id']
-            entity_name = context['Entity']['code']
             user_id = user['id']
             print context
 
@@ -195,7 +191,6 @@ class continuum(object):
                 task_start = start_time
             else:
                 task_start = datetime.datetime.now()
-
             data = {
                 'entity': {'type': 'Task', 'id': task_id},
                 'sg_task_start': task_start,
