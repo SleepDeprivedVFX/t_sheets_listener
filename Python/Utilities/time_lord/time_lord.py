@@ -166,12 +166,10 @@ class time_engine(QtCore.QThread):
                 if datetime.now().minute != minute:
                     daily_total = tl_time.get_daily_total(user=user)
                     weekly_total = tl_time.get_weekly_total(user=user)
-                    print weekly_total
                     minute = datetime.now().minute
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
                     if weekly_total:
-                        print 'wt: %s' % weekly_total
                         self.time_signal.weekly_total.emit(weekly_total)
 
 
@@ -438,9 +436,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.set_runtime_clock()
 
         # Setup the daily total meter
-        # The formula (totalHours/dailyMax) * degrees(70) or (35) - 35  # -35 is for the offset rotation of the graphic.
-        daily_total = tl_time.get_daily_total(user=user)
         self.time_engine.time_signal.daily_total.emit(daily_total)
+        self.time_engine.time_signal.weekly_total.emit(weekly_total)
 
         # The following test line will need to be automatically filled in future
         # cont.get_previous_work_day('06-17-2019', regular_days=config['regular_days'])
@@ -519,7 +516,6 @@ class time_lord_ui(QtGui.QMainWindow):
     def set_weekly_total(self, total):
         self.time_lord.set_weekly_output(total)
         if total:
-            total -= 4.0
             angle = ((100 / (float(config['ot_hours']) * 10.0)) * total) - 50
             if angle < -50.0:
                 angle = -50.0
@@ -564,11 +560,12 @@ class time_lord_ui(QtGui.QMainWindow):
         self.clock_out()
 
     def switch_time(self):
-        self.time_lord.clocked_in = False  # Or should this be True? Do I need to kill the clock?
-        self.update_settings()
-        self.clock_out()
-        self.clock_in()
-        self.time_lord.start()
+        if self.selection_check():
+            self.time_lord.clocked_in = False
+            self.update_settings()
+            self.clock_out()
+            self.clock_in()
+            self.time_lord.start()
 
     def clock_out(self, message=None):
         print 'Clocking out...'
@@ -655,7 +652,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
             self.time_lord.time_signal.lower_output.emit('You must select a Project!')
-            self.time_lord.clocked_in = False
+            # self.time_lord.clocked_in = False
             return False
         else:
             self.time_lord.time_signal.error_state.emit(False)
@@ -664,7 +661,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
             self.time_lord.time_signal.lower_output.emit('You must select an entity!')
-            self.time_lord.clocked_in = False
+            # self.time_lord.clocked_in = False
             return False
         else:
             self.time_lord.time_signal.error_state.emit(False)
@@ -673,7 +670,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
             self.time_lord.time_signal.lower_output.emit('You must select a Task!')
-            self.time_lord.clocked_in = False
+            # self.time_lord.clocked_in = False
             return False
         else:
             self.time_lord.time_signal.error_state.emit(False)
@@ -743,7 +740,7 @@ class time_lord_ui(QtGui.QMainWindow):
         project = sg_data.get_project_details_by_name(proj_name=selected_proj)
 
         # Check that the project matches
-        if self.ui.project_dropdown.currentText().split(' - ')[-1] != self.last_project_name:
+        if selected_proj != self.last_project_name:
             match = False
 
         # I get the entity, because it does not come with last_timesheet data

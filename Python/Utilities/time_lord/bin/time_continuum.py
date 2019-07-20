@@ -185,7 +185,7 @@ class continuum(object):
             project_id = context['Project']['id']
             task_id = context['Task']['id']
             user_id = user['id']
-            print context
+            self.logger.debug(context)
 
             if start_time and type(start_time) == datetime or datetime.datetime:
                 task_start = start_time
@@ -280,7 +280,6 @@ class continuum(object):
 
                         diff = end - start
                         total_duration += ((diff.total_seconds() / 60.0) / 60)
-        print 'daily: %s' % total_duration
         return total_duration
 
     def get_weekly_total(self, user=None):
@@ -326,5 +325,4 @@ class continuum(object):
 
                         diff = end - start
                         total_duration += ((diff.total_seconds() / 60.0) / 60)
-        print 'weekly: %s' % total_duration
         return total_duration
