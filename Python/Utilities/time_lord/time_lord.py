@@ -136,9 +136,6 @@ class time_engine(QtCore.QThread):
     # the process will hang up the UI.
     def __init__(self, parent=None):
         super(time_engine, self).__init__(parent)
-        # timer = QtCore.QTimer(self)
-        # timer.timeout.connect(self.update)
-        # timer.start(1000)
 
         self.time_signal = time_signals()
         self.kill_it = False
@@ -153,7 +150,6 @@ class time_engine(QtCore.QThread):
 
     def chronograph(self):
         second = int(datetime.now().second)
-        hour = datetime.now().hour
         minute = datetime.now().minute
         while not self.kill_it:
             if int(datetime.now().second) != second:
@@ -170,10 +166,12 @@ class time_engine(QtCore.QThread):
                 if datetime.now().minute != minute:
                     daily_total = tl_time.get_daily_total(user=user)
                     weekly_total = tl_time.get_weekly_total(user=user)
+                    print weekly_total
                     minute = datetime.now().minute
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
                     if weekly_total:
+                        print 'wt: %s' % weekly_total
                         self.time_signal.weekly_total.emit(weekly_total)
 
 
@@ -203,9 +201,6 @@ class time_lord(QtCore.QThread):
             # Make sure the loop only functions on a whole second
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
-                # self.time_signal.main_clock.emit(str(second))
-                # daily_total = tl_time.get_daily_total(user=user)
-                # weekly_total = tl_time.get_weekly_total(user=user)
                 if self.clocked_in:
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
                     running_time = rt['rt']
@@ -217,8 +212,6 @@ class time_lord(QtCore.QThread):
                     start = '%s %s' % (start_time.date(), start_time.time())
                     end = '%s %s' % (datetime.now().date(), datetime.now().time())
                     self.set_start_end_output(start=start, end=end)
-                    # self.set_upper_output(trt=trt, start=start, end=end, user=user, total_hours=daily_total,
-                    #                       week_total=weekly_total)
 
                     # Set the start time date rollers:
                     ts_start = self.last_timesheet['sg_task_start']
@@ -507,7 +500,7 @@ class time_lord_ui(QtGui.QMainWindow):
     def set_daily_total(self, total):
         if total:
             self.time_lord.set_daily_output(total)
-            total -= 4.5
+            total -= 4.0
             angle = ((total / (float(config['ot_hours']) * 2.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
 
             if angle < -50.0:
@@ -526,10 +519,8 @@ class time_lord_ui(QtGui.QMainWindow):
     def set_weekly_total(self, total):
         self.time_lord.set_weekly_output(total)
         if total:
-            total -= 4.5
-            print 'ot_hours = %s' % float(config['ot_hours'])
-            angle = ((total / (float(config['ot_hours']) * 10.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
-            print 'angle: %s' % angle
+            total -= 4.0
+            angle = ((100 / (float(config['ot_hours']) * 10.0)) * total) - 50
             if angle < -50.0:
                 angle = -50.0
             elif angle > 50.0:
