@@ -16,6 +16,7 @@ import shotgun_api3 as sgapi
 import time
 
 from bin import companions, configuration, time_continuum, shotgun_collect
+from ui import tardis_ui as tui
 
 sys_path = sys.path
 
@@ -73,27 +74,7 @@ def query_mouse_position():
     return {"x": pt.x, "y": pt.y}
 
 
-class tardis(win32serviceutil.ServiceFramework):
-    _svc_name_ = 'tardis'
-    _svc_display_name_ = 'TARDIS'
-    _svc_description_ = 'Time Lord Tardis Listener'
-
-    def __init__(self, args):
-        win32serviceutil.ServiceFramework.__init__(self, args)
-        self.hWaitStop = win32event.CreateEvent(None, 0, 0, None)
-        socket.setdefaulttimeout(60)
-        self.time_flies = True
-
-    def SvcStop(self):
-        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
-        win32event.SetEvent(self.hWaitStop)
-
-    def SvcDoRun(self):
-        servicemanager.LogMsg(servicemanager.EVENTLOG_INFORMATION_TYPE,
-                              servicemanager.PYS_SERVICE_STARTED,
-                              (self._svc_name_, ''))
-        self.main()
-
+class tardis(QtGui.QMainWindow):
 
 
     # def on_move(self, x, y):
@@ -146,4 +127,5 @@ class tardis(win32serviceutil.ServiceFramework):
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     w = QtGui.QWidget()
-    win32serviceutil.HandleCommandLine(tardis)
+    w.show()
+    sys.exit(app.exec_())
