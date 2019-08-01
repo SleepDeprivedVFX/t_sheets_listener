@@ -1,28 +1,82 @@
-#!/usr/bin/env python
-# Module     : SysTrayIcon.py
-# Synopsis   : Windows System tray icon.
-# Programmer : Simon Brunning - simon@brunningonline.net
-# Date       : 11 April 2005
-# Notes      : Based on (i.e. ripped off from) Mark Hammond's
-#              win32gui_taskbar.py and win32gui_menu.py demos from PyWin32
-'''TODO
-
-For now, the demo at the bottom shows how to use it...'''
-
 import os
 import sys
 import win32api
 import win32con
 import win32gui_struct
+import itertools
+import glob
+import subprocess
+import logging
+import threading
+import shotgun_api3 as sgapi
+from PySide import QtCore, QtGui
+from ctypes import windll, Structure, c_long, byref
+
+from bin import companions, configuration, time_continuum, shotgun_collect
 
 try:
     import winxpgui as win32gui
 except ImportError:
     import win32gui
 
+# Setup Tardis systems
+sys_path = sys.path
+
+config = configuration.get_configuration()
+
+# ------------------------------------------------------------------------------------------------------
+# Create logging system
+# ------------------------------------------------------------------------------------------------------
+log_file = 'tardis_report.log'
+log_path = os.path.join(config['log_path'], log_file)
+if config['debug_logging'] == 'True' or 'true' or True:
+    level = logging.DEBUG
+else:
+    level = logging.INFO
+logger = logging.getLogger('tardis_report')
+logger.setLevel(level=level)
+fh = logging.FileHandler(filename=log_path)
+fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
+fh.setFormatter(fm)
+logger.addHandler(fh)
+
+logger.info('The TARDIS has started!')
+
+# --------------------------------------------------------------------------------------------------
+# Setup Shotgun Connection
+# --------------------------------------------------------------------------------------------------
+sg = sgapi.Shotgun(config['sg_url'], config['sg_name'], config['sg_key'])
+logger.debug('Shotgun is connected.')
+
+# --------------------------------------------------------------------------------------------------
+# Connect Time Lord Components
+# --------------------------------------------------------------------------------------------------
+# setup continuum
+logger.info('Opening a portal to the time continuum...')
+# tl_time = time_continuum(sg)
+logger.info('time_continuum is opened...')
+
+# Setup and get users
+# users = companions(sg)
+# user = users.get_user_from_computer()
+logger.info('User information collected...')
+
+# setup shotgun data connection
+# sg_data = shotgun_collect.sg_data(sg)
+logger.info('Shotgun commands brought in.')
+
+
+class POINT(Structure):
+    _fields_ = [("x", c_long), ("y", c_long)]
+
+
+def query_mouse_position():
+    pt = POINT()
+    windll.user32.GetCursorPos(byref(pt))
+    return {"x": pt.x, "y": pt.y}
+
 
 class SysTrayIcon(object):
-    '''TODO'''
     QUIT = 'QUIT'
     SPECIAL_ACTIONS = [QUIT]
 
@@ -81,6 +135,9 @@ class SysTrayIcon(object):
         self.refresh_icon()
 
         win32gui.PumpMessages()
+
+        # TODO: Here I may be able to have the tardis launch certain processes in a thread, simultaneously
+        #       with the System Tray
 
     def _add_ids_to_menu_options(self, menu_options):
         result = []
@@ -226,34 +283,38 @@ def non_string_iterable(obj):
 # Minimal self test. You'll need a bunch of ICO files in the current working
 # directory in order for this to work...
 if __name__ == '__main__':
-    import itertools, glob
 
-    icons = itertools.cycle(glob.glob('*.ico'))
+    icons = itertools.cycle(glob.glob('icons/*.ico'))
     # for i in icons:
     #     print i
-    hover_text = "SysTrayIcon.py Demo"
+    hover_text = "Time Lord TARDIS"
 
 
-    def hello(sysTrayIcon): print "Hello World."
+    def run_time_lord(sysTrayIcon):
+        # This will launch the Time Lord in a completely separate process
+        path = sys.path[0]
+        time_lord_path = os.path.join(path, 'time_lord.py')
+        subprocess.Popen('python.exe %s' % time_lord_path)
 
 
-    def simon(sysTrayIcon): print "Hello Simon."
+    def overtime(sysTrayIcon):
+        print "overtime."
 
 
-    def switch_icon(sysTrayIcon):
-        sysTrayIcon.icon = icons.next()
-        sysTrayIcon.refresh_icon()
+    def lunch(sysTrayIcon):
+        print 'lunch'
 
 
-    menu_options = (('Say Hello', icons.next(), hello),
-                    ('Switch Icon', None, switch_icon),
-                    ('A sub-menu', icons.next(), (('Say Hello to Simon', icons.next(), simon),
-                                                  ('Switch Icon', icons.next(), switch_icon),
-                                                  ))
+    menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
+                    ('Tools', icons.next(), (('Overtime Tool', icons.next(), overtime),
+                                             ('Lunch Break', icons.next(), lunch),
+                                             ))
                     )
 
 
-    def bye(sysTrayIcon): print 'Bye, then.'
+    def bye(sysTrayIcon):
+        # Tardis killer.  May need to eventually kill all other processes as well.
+        print 'Why you quiting bro?'
 
 
-    SysTrayIcon(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=1)
+    SysTrayIcon(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0)

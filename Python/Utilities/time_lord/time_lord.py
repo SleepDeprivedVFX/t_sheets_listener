@@ -307,6 +307,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # --------------------------------------------------------------------------------------------------------
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
 
         # Connect the signals to the functions below
         self.time_engine.time_signal.main_clock.connect(self.main_clock)

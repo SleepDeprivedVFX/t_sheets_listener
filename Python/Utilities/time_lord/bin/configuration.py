@@ -9,7 +9,7 @@ import os
 
 def get_configuration():
     sys_path = sys.path
-    config_file = 'dalek.cfg'
+    config_file = 'tardis_config.cfg'
     try:
         print 'Finding configuration file...'
         config_path = [f for f in sys_path if os.path.isfile(f + '/' + config_file)][0] + '/' + config_file
