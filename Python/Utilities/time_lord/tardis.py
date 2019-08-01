@@ -8,9 +8,13 @@ import glob
 import subprocess
 import logging
 import threading
+import queue
 import shotgun_api3 as sgapi
 from PySide import QtCore, QtGui
 from ctypes import windll, Structure, c_long, byref
+import time
+from datetime import datetime, timedelta
+from dateutil import parser, relativedelta
 
 from bin import companions, configuration, time_continuum, shotgun_collect
 
@@ -54,16 +58,16 @@ logger.debug('Shotgun is connected.')
 # --------------------------------------------------------------------------------------------------
 # setup continuum
 logger.info('Opening a portal to the time continuum...')
-# tl_time = time_continuum(sg)
+tl_time = time_continuum(sg)
 logger.info('time_continuum is opened...')
 
 # Setup and get users
-# users = companions(sg)
-# user = users.get_user_from_computer()
+users = companions(sg)
+user = users.get_user_from_computer()
 logger.info('User information collected...')
 
 # setup shotgun data connection
-# sg_data = shotgun_collect.sg_data(sg)
+sg_data = shotgun_collect.sg_data(sg)
 logger.info('Shotgun commands brought in.')
 
 
@@ -75,6 +79,66 @@ def query_mouse_position():
     pt = POINT()
     windll.user32.GetCursorPos(byref(pt))
     return {"x": pt.x, "y": pt.y}
+
+
+def chronograph():
+    '''
+    This thread will process the timer events throughout the day.
+    :return:
+    '''
+    set_timer = None
+    sleep = 0.1
+    trigger = (int(config['timer']) * 60) / sleep
+    start_time = parser.parse(config['approx_lunch_start']).time()
+    end_time = parser.parse(config['approx_lunch_end']).time()
+    lunch_start = None
+    lunch_end = None
+    lunch_timer = int(config['lunch_minutes'])
+    lunch_break = lunch_timer * 60
+    print timedelta(seconds=lunch_break)
+    while True:
+        pos = query_mouse_position()
+        print pos
+        print datetime.now().time()
+        time.sleep(sleep)
+        if pos == query_mouse_position():
+            if not set_timer:
+                set_timer = 1
+            else:
+                if set_timer > trigger and start_time < datetime.now().time() < end_time and not lunch_start:
+                    logger.info('Start the Lunch Timer')
+                    lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
+                    print 'LUNCH HAS STARTED: %s' % lunch_start
+                    time.sleep(1.0)
+                set_timer += 1
+        else:
+            if set_timer > trigger and start_time < datetime.now().time() < end_time and lunch_start \
+                    and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
+                logger.info('End the lunch timer')
+                lunch_end = datetime.now()
+                print 'lunch start: %s' % lunch_start
+                print 'lunch end  : %s' % lunch_end
+                print lunch_end - lunch_start
+                time.sleep(2)
+                # Pop up window, then set lunch break.
+            elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
+                    and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
+                logger.info('Gone too long.  Clocking out...')
+                lunch_end = datetime.now()
+                clock_out = tl_time.clock_out_time_sheet()
+                last_timesheet = tl_time.get_last_timesheet(user=user)
+            set_timer = None
+            lunch_start = None
+            lunch_end = None
+            print 'TIMER RESET'
+
+
+# Setup Threading
+logger.debug('Starting the chronograph thread...')
+time_loop = threading.Thread(target=chronograph, name='Chronograph')
+time_loop.setDaemon(True)
+time_loop.start()
+print 'Queue Threading initialized...'
 
 
 class SysTrayIcon(object):

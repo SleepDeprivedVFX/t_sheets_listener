@@ -29,6 +29,7 @@ def get_configuration():
     config['sg_url'] = configuration.get('Shotgun', 'sg_url')
     config['sg_key'] = configuration.get('Shotgun', 'sg_key')
     config['sg_name'] = configuration.get('Shotgun', 'sg_name')
+    config['admin_proj_id'] = configuration.get('Shotgun', 'admin_proj_id')
 
     # Time Lord
     config['regular_days'] = configuration.get('Time Lord', 'regular_days').split(',')
@@ -40,6 +41,10 @@ def get_configuration():
     config['ot_type'] = configuration.get('Time Lord', 'ot_type')
     config['ot_hours'] = configuration.get('Time Lord', 'ot_hours')
     config['dt_hours'] = configuration.get('Time Lord', 'dt_hours')
+    config['timer'] = configuration.get('Time Lord', 'timer')
+    config['lunch_minutes'] = configuration.get('Time Lord', 'lunch_minutes')
+    config['lunch'] = configuration.get('Time Lord', 'lunch')
+    config['break'] = configuration.get('Time Lord', 'Break')
 
     # Logging
     config['debug_logging'] = configuration.get('Logging', 'debugging')
