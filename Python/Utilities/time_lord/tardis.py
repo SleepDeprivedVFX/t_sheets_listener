@@ -28,7 +28,8 @@ config = configuration.get_configuration()
 # Create logging system
 # ------------------------------------------------------------------------------------------------------
 log_file = 'tardis_report.log'
-log_path = os.path.join(config['log_path'], log_file)
+log_root = os.path.join(sys.path[0], 'logs')
+log_path = os.path.join(log_root, log_file)
 if config['debug_logging'] == 'True' or 'true' or True:
     level = logging.DEBUG
 else:

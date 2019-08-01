@@ -43,7 +43,6 @@ def get_configuration():
 
     # Logging
     config['debug_logging'] = configuration.get('Logging', 'debugging')
-    config['log_path'] = configuration.get('Logging', 'log_path')
 
     return config
 

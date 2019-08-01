@@ -70,7 +70,8 @@ config = configuration.get_configuration()
 # Create logging system
 # ------------------------------------------------------------------------------------------------------
 log_file = 'psychic_paper.log'
-log_path = os.path.join(config['log_path'], log_file)
+log_root = os.path.join(sys.path[0], 'logs')
+log_path = os.path.join(log_root, log_file)
 if config['debug_logging'] == 'True' or 'true' or True:
     level = logging.DEBUG
 else:
@@ -453,6 +454,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # --------------------------------------------------------------------------------------------------------
         # Get the last timesheet
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        print 'last_timesheet: %s' % self.last_timesheet
         self.time_lord.last_timesheet = self.last_timesheet
         logger.debug('LAST TIMESHEET: %s' % self.last_timesheet)
 
@@ -483,11 +485,17 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.clocked_in = False
             self.last_project_name = self.last_project.split(' - ')[-1]
             self.last_project_code = self.last_project.split(' - ')[0]
-            self.last_project_id = sg_data.get_project_details_by_name(self.last_project_name)['id']
-            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
-                                                           self.last_timesheet['entity']['name'],
-                                                           self.last_timesheet['entity']['id'],
-                                                           self.last_project_id)
+            find_last_proj_id = sg_data.get_project_details_by_name(self.last_project_name)
+            if find_last_proj_id and 'id' in find_last_proj_id.keys():
+                self.last_project_id = find_last_proj_id['id']
+                last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
+                                                               self.last_timesheet['entity']['name'],
+                                                               self.last_timesheet['entity']['id'],
+                                                               self.last_project_id)
+            else:
+                self.last_project_id = None
+                last_entity_details = None
+
             if last_entity_details:
                 self.last_entity_type = last_entity_details['entity']['type']
                 self.last_entity_id = last_entity_details['entity']['id']

@@ -23,6 +23,10 @@ class companions(object):
 
     def get_user_from_computer(self):
         user = os.environ[env_user]
+        # FIXME: This is a temp workaround for my laptop.
+        if user == 'sleep':
+            user = 'adamb'
+        print user
         if user:
             filters = [
                 ['login', 'is', user]
