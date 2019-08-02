@@ -349,3 +349,8 @@ class continuum(object):
             else:
                 print 'No lunch for you!'
                 return False
+
+    def create_lunch_break(self, user=None, lunch_id=None, task_id=None):
+        if user:
+            print 'hello'
+

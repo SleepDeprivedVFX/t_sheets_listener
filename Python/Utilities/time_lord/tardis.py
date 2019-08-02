@@ -16,7 +16,7 @@ import time
 from datetime import datetime, timedelta
 from dateutil import parser, relativedelta
 
-from bin import companions, configuration, time_continuum, shotgun_collect
+from bin import companions, configuration, time_continuum, shotgun_collect, lunch, overtime, after_hours
 
 try:
     import winxpgui as win32gui
@@ -100,7 +100,6 @@ def chronograph():
     if lunch_task_id:
         lunch_task_id = lunch_task_id['id']
 
-    print timedelta(seconds=lunch_break)
     while True:
         pos = query_mouse_position()
         # print pos
@@ -126,7 +125,9 @@ def chronograph():
                 lunch_end = datetime.now()
                 print 'lunch start: %s' % lunch_start
                 print 'lunch end  : %s' % lunch_end
-                print lunch_end - lunch_start
+                total_time = lunch_end - lunch_start
+                print total_time
+                print total_time.seconds
                 time.sleep(2)
                 # Pop up window, then set lunch break.
             elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
@@ -147,10 +148,9 @@ logger.debug('Starting the chronograph thread...')
 time_loop = threading.Thread(target=chronograph, name='Chronograph')
 time_loop.setDaemon(True)
 time_loop.start()
-print 'Queue Threading initialized...'
 
 
-class SysTrayIcon(object):
+class tardis(object):
     QUIT = 'QUIT'
     SPECIAL_ACTIONS = [QUIT]
 
@@ -391,4 +391,4 @@ if __name__ == '__main__':
         print 'Why you quiting bro?'
 
 
-    SysTrayIcon(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0)
+    tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0)
