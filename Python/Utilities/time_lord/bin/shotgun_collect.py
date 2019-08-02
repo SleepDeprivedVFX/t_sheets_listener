@@ -196,3 +196,18 @@ class sg_data(object):
                         task_id = task['id']
                         break
         return task_id
+
+    def get_lunch_task(self, lunch_proj_id=None, task_name=None):
+        if lunch_proj_id and task_name:
+            filters = [
+                ['project', 'is', {'type': 'Project', 'id': lunch_proj_id}],
+                ['content', 'is', task_name]
+            ]
+            fields = [
+                'id'
+            ]
+            find_task = self.sg.find_one('Task', filters, fields)
+            if find_task:
+                return find_task
+        return False
+

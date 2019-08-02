@@ -58,11 +58,11 @@ logger.debug('Shotgun is connected.')
 # --------------------------------------------------------------------------------------------------
 # setup continuum
 logger.info('Opening a portal to the time continuum...')
-tl_time = time_continuum(sg)
+tl_time = time_continuum.continuum(sg)
 logger.info('time_continuum is opened...')
 
 # Setup and get users
-users = companions(sg)
+users = companions.companions(sg)
 user = users.get_user_from_computer()
 logger.info('User information collected...')
 
@@ -95,11 +95,16 @@ def chronograph():
     lunch_end = None
     lunch_timer = int(config['lunch_minutes'])
     lunch_break = lunch_timer * 60
+    lunch_timesheet = None
+    lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']), task_name=config['lunch'])
+    if lunch_task_id:
+        lunch_task_id = lunch_task_id['id']
+
     print timedelta(seconds=lunch_break)
     while True:
         pos = query_mouse_position()
-        print pos
-        print datetime.now().time()
+        # print pos
+        # print datetime.now().time()
         time.sleep(sleep)
         if pos == query_mouse_position():
             if not set_timer:
@@ -107,6 +112,9 @@ def chronograph():
             else:
                 if set_timer > trigger and start_time < datetime.now().time() < end_time and not lunch_start:
                     logger.info('Start the Lunch Timer')
+                    logger.info('Getting the most recent timesheet...')
+                    if not lunch_timesheet:
+                        lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=int(config['admin_proj_id']))
                     lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
                     print 'LUNCH HAS STARTED: %s' % lunch_start
                     time.sleep(1.0)
@@ -126,11 +134,12 @@ def chronograph():
                 logger.info('Gone too long.  Clocking out...')
                 lunch_end = datetime.now()
                 clock_out = tl_time.clock_out_time_sheet()
-                last_timesheet = tl_time.get_last_timesheet(user=user)
+                lunch_timesheet = tl_time.get_last_timesheet(user=user)
             set_timer = None
             lunch_start = None
             lunch_end = None
-            print 'TIMER RESET'
+            lunch_timesheet = None
+            # print 'TIMER RESET'
 
 
 # Setup Threading

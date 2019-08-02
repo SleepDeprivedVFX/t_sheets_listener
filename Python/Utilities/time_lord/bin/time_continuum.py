@@ -326,3 +326,26 @@ class continuum(object):
                         diff = end - start
                         total_duration += ((diff.total_seconds() / 60.0) / 60)
         return total_duration
+
+    def get_todays_lunch(self, user=None, lunch_id=None):
+        if user and lunch_id:
+            user_id = user['id']
+            filters = [
+                ['project', 'is', {'type': 'Project', 'id': lunch_id}],
+                ['user', 'is', {'type': 'HumanUser', 'id': user_id}]
+            ]
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity'
+            ]
+            get_lunch = self.sg.find('TimeLog', filters, fields)
+            if get_lunch:
+                print get_lunch
+                return True
+            else:
+                print 'No lunch for you!'
+                return False
