@@ -5,15 +5,15 @@ import pprint
 import time
 import threading
 
-def shitTheBed(message=None):
-    print message
-    test = QtGui.QMessageBox()
-    if message:
-        test.setText(message)
-    test.addButton('Fart', QtGui.QMessageBox.YesRole)
-    test.addButton('Dookie', QtGui.QMessageBox.NoRole)
-    shit = test.exec_()
-    return shit
+# def shitTheBed(message=None):
+#     print message
+#     test = QtGui.QMessageBox()
+#     if message:
+#         test.setText(message)
+#     test.addButton('Fart', QtGui.QMessageBox.YesRole)
+#     test.addButton('Dookie', QtGui.QMessageBox.NoRole)
+#     shit = test.exec_()
+#     return shit
 
 class bullshit_signals(QtCore.QObject):
     yes = QtCore.Signal(str)

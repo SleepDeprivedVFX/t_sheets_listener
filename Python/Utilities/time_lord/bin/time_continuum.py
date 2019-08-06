@@ -223,10 +223,24 @@ class continuum(object):
                     current_date = datetime.datetime.now()
                     date_diff = current_date - start
                     split_time = str(date_diff).split(':')
-                    h = '%02d' % int(split_time[0])
-                    m = '%02d' % int(split_time[1])
-                    s = float(split_time[2])
-                    s = '%02d' % int(s)
+                    try:
+                        h = '%02d' % int(split_time[0])
+                        m = '%02d' % int(split_time[1])
+                        s = float(split_time[2])
+                        s = '%02d' % int(s)
+                    except ValueError:
+                        if 'days,' in split_time[0]:
+                            split_hours = split_time[0].split('days,')
+                            d = int(split_hours[0])
+                            d_to_h = d * 24
+                            h = int(split_hours[1])
+                            h = '%02d' % int(d_to_h + h)
+                        else:
+                            self.logger.error('Can\'t parse the hours!')
+                            raise ValueError
+                        m = '%02d' % int(split_time[1])
+                        s = float(split_time[2])
+                        s = '%02d' % int(s)
                     rt = h + m + s
                     running_time = {
                         'rt': rt,
@@ -244,6 +258,8 @@ class continuum(object):
         :param user: (dict) The main user data
         :return: A total daily hours number
         '''
+        # TODO: Add a lunch subtraction feature, so that it doesn't get added to the total
+        #       Really just needs the lunch task ID and add it as an 'is_not' to the query.
         total_duration = 0.0
         if user:
             filters = [
@@ -306,7 +322,7 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            timesheets = self.sg.find('TimeLog', filters, fields)
+            timesheets = self.sg.find_one('TimeLog', filters, fields)
             if timesheets:
                 for timesheet in timesheets:
                     this_date = timesheet['sg_task_start'].date()
@@ -327,12 +343,20 @@ class continuum(object):
                         total_duration += ((diff.total_seconds() / 60.0) / 60)
         return total_duration
 
-    def get_todays_lunch(self, user=None, lunch_id=None):
+    def get_todays_lunch(self, user=None, lunch_id=None, lunch_proj_id=None):
         if user and lunch_id:
             user_id = user['id']
             filters = [
-                ['project', 'is', {'type': 'Project', 'id': lunch_id}],
-                ['user', 'is', {'type': 'HumanUser', 'id': user_id}]
+                ['project', 'is', {'type': 'Project', 'id': lunch_proj_id}],
+                ['user', 'is', {'type': 'HumanUser', 'id': user_id}],
+                ['entity', 'is', {'type': 'Task', 'id': lunch_id}],
+                {
+                    "filter_operator": "any",
+                    "filters": [
+                        ['sg_task_start', 'in_calendar_day', 0],
+                        ['sg_task_start', 'in_calendar_day', -1]
+                    ]
+                }
             ]
             fields = [
                 'user',
@@ -344,7 +368,7 @@ class continuum(object):
             ]
             get_lunch = self.sg.find('TimeLog', filters, fields)
             if get_lunch:
-                print get_lunch
+                print 'lunch_returns: %s' % get_lunch
                 return True
             else:
                 print 'No lunch for you!'

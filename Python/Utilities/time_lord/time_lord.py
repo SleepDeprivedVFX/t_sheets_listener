@@ -165,6 +165,7 @@ class time_engine(QtCore.QThread):
                 self.time_signal.out_clock.emit(time)
 
                 if datetime.now().minute != minute:
+                    # TODO: Add lunch subtractors from the daily total
                     daily_total = tl_time.get_daily_total(user=user)
                     weekly_total = tl_time.get_weekly_total(user=user)
                     minute = datetime.now().minute

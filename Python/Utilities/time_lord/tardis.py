@@ -16,6 +16,8 @@ import time
 from datetime import datetime, timedelta
 from dateutil import parser, relativedelta
 
+from ui import time_lord_lunch as tll
+
 from bin import companions, configuration, time_continuum, shotgun_collect, lunch, overtime, after_hours
 
 try:
@@ -75,6 +77,38 @@ class POINT(Structure):
     _fields_ = [("x", c_long), ("y", c_long)]
 
 
+class tardis_signals(QtCore.QObject):
+    yes = QtCore.Signal(str)
+    no = QtCore.Signal(str)
+    timer = QtCore.Signal(str)
+    start_time = QtCore.Signal(str)
+    end_time = QtCore.Signal(str)
+
+
+class lunch_break(QtGui.QWidget):
+    def __init__(self):
+        super(lunch_break, self).__init__(parent=None)
+
+        self.signals = tardis_signals()
+
+        self.ui = tll.Ui_lunch_form()
+        self.ui.setupUi(self)
+        self.ui.ok_btn.clicked.connect(self.take_lunch)
+        self.ui.skip_btn.clicked.connect(self.skip_lunch)
+
+    def take_lunch(self, message=None):
+        self.signals.yes.emit(message)
+        logger.info('Lunch taken... Recording...')
+
+    def skip_lunch(self, message=None):
+        self.signals.no.emit(message)
+        logger.info('Skipping Lunch...')
+
+    def closeEvent(self, event, *args, **kwargs):
+        event.ignore()
+        logger.warning('You can\'t close the window this way!')
+
+
 def query_mouse_position():
     pt = POINT()
     windll.user32.GetCursorPos(byref(pt))
@@ -95,7 +129,7 @@ def chronograph():
     lunch_end = None
     lunch_timer = int(config['lunch_minutes'])
     lunch_break = lunch_timer * 60
-    lunch_timesheet = None
+    lunch_timesheet = False
     lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']), task_name=config['lunch'])
     if lunch_task_id:
         lunch_task_id = lunch_task_id['id']
@@ -112,8 +146,13 @@ def chronograph():
                 if set_timer > trigger and start_time < datetime.now().time() < end_time and not lunch_start:
                     logger.info('Start the Lunch Timer')
                     logger.info('Getting the most recent timesheet...')
-                    if not lunch_timesheet:
-                        lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=int(config['admin_proj_id']))
+                    lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
+                                                               lunch_proj_id=int(config['admin_proj_id']))
+                    if lunch_timesheet:
+                        logger.info('Lunch has already been achieved.  Moving on...')
+                        print 'Lunch has been eaten.  As has my chowder.'
+                        continue
+
                     lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
                     print 'LUNCH HAS STARTED: %s' % lunch_start
                     time.sleep(1.0)
@@ -128,8 +167,8 @@ def chronograph():
                 total_time = lunch_end - lunch_start
                 print total_time
                 print total_time.seconds
-                time.sleep(2)
                 # Pop up window, then set lunch break.
+                time.sleep(2)
             elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
                     and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
                 logger.info('Gone too long.  Clocking out...')
