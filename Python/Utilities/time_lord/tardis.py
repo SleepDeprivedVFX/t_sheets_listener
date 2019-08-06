@@ -115,77 +115,84 @@ def query_mouse_position():
     return {"x": pt.x, "y": pt.y}
 
 
-def chronograph():
-    '''
-    This thread will process the timer events throughout the day.
-    :return:
-    '''
-    set_timer = None
-    sleep = 0.1
-    trigger = (int(config['timer']) * 60) / sleep
-    start_time = parser.parse(config['approx_lunch_start']).time()
-    end_time = parser.parse(config['approx_lunch_end']).time()
-    lunch_start = None
-    lunch_end = None
-    lunch_timer = int(config['lunch_minutes'])
-    lunch_break = lunch_timer * 60
-    lunch_timesheet = False
-    lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']), task_name=config['lunch'])
-    if lunch_task_id:
-        lunch_task_id = lunch_task_id['id']
+class chronograph(QtCore.QThread):
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+        self.signals = tardis_signals()
+        self.kill_it = False
+        self.chronograph()
 
-    while True:
-        pos = query_mouse_position()
-        # print pos
-        # print datetime.now().time()
-        time.sleep(sleep)
-        if pos == query_mouse_position():
-            if not set_timer:
-                set_timer = 1
+    def chronograph(self):
+        '''
+        This thread will process the timer events throughout the day.
+        :return:
+        '''
+        set_timer = None
+        sleep = 0.1
+        trigger = (int(config['timer']) * 60) / sleep
+        start_time = parser.parse(config['approx_lunch_start']).time()
+        end_time = parser.parse(config['approx_lunch_end']).time()
+        lunch_start = None
+        lunch_end = None
+        lunch_timer = int(config['lunch_minutes'])
+        lunch_break = lunch_timer * 60
+        lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']), task_name=config['lunch'])
+        if lunch_task_id:
+            lunch_task_id = lunch_task_id['id']
+        lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
+                                                   lunch_proj_id=int(config['admin_proj_id']))
+
+        while True:
+            pos = query_mouse_position()
+            # print pos
+            # print datetime.now().time()
+            time.sleep(sleep)
+            if pos == query_mouse_position():
+                if not set_timer:
+                    set_timer = 1
+                else:
+                    if set_timer > trigger and start_time < datetime.now().time() < end_time and not lunch_start:
+                        logger.info('Start the Lunch Timer')
+                        logger.info('Getting the most recent timesheet...')
+                        if lunch_timesheet:
+                            logger.info('Lunch has already been achieved.  Moving on...')
+                            print 'Lunch has been eaten.  As has my chowder.'
+                            continue
+
+                        lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
+                        print 'LUNCH HAS STARTED: %s' % lunch_start
+                        time.sleep(1.0)
+                    set_timer += 1
             else:
-                if set_timer > trigger and start_time < datetime.now().time() < end_time and not lunch_start:
-                    logger.info('Start the Lunch Timer')
-                    logger.info('Getting the most recent timesheet...')
-                    lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
-                                                               lunch_proj_id=int(config['admin_proj_id']))
-                    if lunch_timesheet:
-                        logger.info('Lunch has already been achieved.  Moving on...')
-                        print 'Lunch has been eaten.  As has my chowder.'
-                        continue
-
-                    lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
-                    print 'LUNCH HAS STARTED: %s' % lunch_start
-                    time.sleep(1.0)
-                set_timer += 1
-        else:
-            if set_timer > trigger and start_time < datetime.now().time() < end_time and lunch_start \
-                    and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
-                logger.info('End the lunch timer')
-                lunch_end = datetime.now()
-                print 'lunch start: %s' % lunch_start
-                print 'lunch end  : %s' % lunch_end
-                total_time = lunch_end - lunch_start
-                print total_time
-                print total_time.seconds
-                # Pop up window, then set lunch break.
-                time.sleep(2)
-            elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
-                    and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
-                logger.info('Gone too long.  Clocking out...')
-                lunch_end = datetime.now()
-                clock_out = tl_time.clock_out_time_sheet()
-                lunch_timesheet = tl_time.get_last_timesheet(user=user)
-            set_timer = None
-            lunch_start = None
-            lunch_end = None
-            lunch_timesheet = None
-            # print 'TIMER RESET'
+                if set_timer > trigger and start_time < datetime.now().time() < end_time and lunch_start \
+                        and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
+                    logger.info('End the lunch timer')
+                    lunch_end = datetime.now()
+                    print 'lunch start: %s' % lunch_start
+                    print 'lunch end  : %s' % lunch_end
+                    total_time = lunch_end - lunch_start
+                    print total_time
+                    print total_time.seconds
+                    # Pop up window, then set lunch break.
+                    time.sleep(2)
+                elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
+                        and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
+                    logger.info('Gone too long.  Clocking out...')
+                    lunch_end = datetime.now()
+                    clock_out = tl_time.clock_out_time_sheet()
+                    lunch_timesheet = tl_time.get_last_timesheet(user=user)
+                set_timer = None
+                lunch_start = None
+                lunch_end = None
+                lunch_timesheet = None
+                # print 'TIMER RESET'
 
 
 # Setup Threading
-logger.debug('Starting the chronograph thread...')
-time_loop = threading.Thread(target=chronograph, name='Chronograph')
-time_loop.setDaemon(True)
+# logger.debug('Starting the chronograph thread...')
+# # time_loop = threading.Thread(target=chronograph, name='Chronograph')
+# # time_loop.setDaemon(True)
+time_loop = chronograph()
 time_loop.start()
 
 
@@ -248,9 +255,6 @@ class tardis(object):
         self.refresh_icon()
 
         win32gui.PumpMessages()
-
-        # TODO: Here I may be able to have the tardis launch certain processes in a thread, simultaneously
-        #       with the System Tray
 
     def _add_ids_to_menu_options(self, menu_options):
         result = []
