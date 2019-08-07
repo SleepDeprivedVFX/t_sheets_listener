@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>The Lunch Line</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(238, 29, 35);</string>
+   <string notr="true">background-color: rgb(100, 100, 100);
+color: rgb(230, 230, 230);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -24,7 +24,7 @@ color: rgb(238, 29, 35);</string>
       <widget class="QLabel" name="lunch_title">
        <property name="styleSheet">
         <string notr="true">font: 24pt &quot;Algerian&quot;;
-color: rgb(239, 30, 36);
+color: rgb(250, 175, 24);
 border-color: rgb(24, 84, 148);
 border-width: 4px;</string>
        </property>
@@ -40,7 +40,7 @@ border-width: 4px;</string>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(250, 175, 24);
 font: 12pt &quot;Arial Rounded MT Bold&quot;;
-color: rgb(255, 255, 255);</string>
+color:rgb(239, 30, 36);</string>
      </property>
      <property name="text">
       <string>Hey %s, were you at lunch at the following times?</string>
@@ -71,7 +71,7 @@ color: rgb(255, 255, 255);</string>
      <item>
       <widget class="QLabel" name="from_label">
        <property name="styleSheet">
-        <string notr="true">color: rgb(24, 84, 148);</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>From</string>
@@ -81,14 +81,14 @@ color: rgb(255, 255, 255);</string>
      <item>
       <widget class="QTimeEdit" name="start_time">
        <property name="styleSheet">
-        <string notr="true">color: rgb(24, 84, 148);</string>
+        <string notr="true"/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="to_label">
        <property name="styleSheet">
-        <string notr="true">color: rgb(24, 84, 148);</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>To</string>
@@ -98,7 +98,7 @@ color: rgb(255, 255, 255);</string>
      <item>
       <widget class="QTimeEdit" name="end_time">
        <property name="styleSheet">
-        <string notr="true">color: rgb(24, 84, 148);</string>
+        <string notr="true"/>
        </property>
       </widget>
      </item>

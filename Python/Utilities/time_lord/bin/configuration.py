@@ -30,6 +30,9 @@ def get_configuration():
     config['sg_key'] = configuration.get('Shotgun', 'sg_key')
     config['sg_name'] = configuration.get('Shotgun', 'sg_name')
     config['admin_proj_id'] = configuration.get('Shotgun', 'admin_proj_id')
+    config['overhead_tasks'] = configuration.get('Shotgun', 'overhead_tasks')
+    config['paid_time_off'] = configuration.get('Shotgun', 'paid_time_off')
+    config['unpaid_time_off'] = configuration.get('Shotgun', 'unpaid_time_off')
 
     # Time Lord
     config['regular_days'] = configuration.get('Time Lord', 'regular_days').split(',')

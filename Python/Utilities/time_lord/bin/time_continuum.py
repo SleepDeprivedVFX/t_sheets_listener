@@ -228,16 +228,22 @@ class continuum(object):
                         m = '%02d' % int(split_time[1])
                         s = float(split_time[2])
                         s = '%02d' % int(s)
-                    except ValueError:
+                    except ValueError, e:
                         if 'days,' in split_time[0]:
                             split_hours = split_time[0].split('days,')
                             d = int(split_hours[0])
                             d_to_h = d * 24
                             h = int(split_hours[1])
                             h = '%02d' % int(d_to_h + h)
+                        elif 'day,' in split_time[0]:
+                            split_hours = split_time[0].split('day,')
+                            d = int(split_hours[0])
+                            d_to_h = d * 24
+                            h = int(split_hours[1])
+                            h = '%02d' % int(d_to_h + h)
                         else:
                             self.logger.error('Can\'t parse the hours!')
-                            raise ValueError
+                            raise e
                         m = '%02d' % int(split_time[1])
                         s = float(split_time[2])
                         s = '%02d' % int(s)
@@ -322,7 +328,7 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            timesheets = self.sg.find_one('TimeLog', filters, fields)
+            timesheets = self.sg.find('TimeLog', filters, fields)
             if timesheets:
                 for timesheet in timesheets:
                     this_date = timesheet['sg_task_start'].date()
