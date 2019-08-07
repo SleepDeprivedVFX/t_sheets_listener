@@ -122,30 +122,39 @@ def chronograph():
                 # --------------------------------------------------------------------------------------
                 # Lunch Timer
                 # --------------------------------------------------------------------------------------
+                if start_time > datetime.now().time():
+                    # Reset the lunch_timesheet
+                    lunch_timesheet = False
                 if set_timer > trigger and start_time < datetime.now().time() < end_time and not lunch_start:
                     # The user has not moved their mouse in long enough to trigger a lunch break event.
                     logger.info('Start the Lunch Timer')
                     logger.info('Getting the most recent timesheet...')
                     if not lunch_timesheet:
+                        # If lunch_timesheet is false, check it again to make sure that it hasn't since been added.
                         lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
                                                                    lunch_proj_id=int(config['admin_proj_id']))
-                    if lunch_timesheet:
-                        logger.info('Lunch has already been achieved.  Moving on...')
-                        print 'Lunch has been eaten.  As has my chowder.'
-                        continue
-
-                    lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
-                    print 'LUNCH HAS STARTED: %s' % lunch_start
-                    time.sleep(1.0)
+                    if not lunch_timesheet:
+                        # If the lunch_timesheet is STILL false, THEN set the lunch start time
+                        lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
+                        print 'LUNCH HAS STARTED: %s' % lunch_start
+                    else:
+                        print 'Already has lunch!'
+                        lunch_start = None
 
                 # --------------------------------------------------------------------------------------
-                #
+                # End of Day
                 # --------------------------------------------------------------------------------------
+                if set_timer > trigger and datetime.now().time() > parser.parse(config['regular_end']).time():
+                    print 'IT IS AFTER HOURS!!!'
                 set_timer += 1
                 print set_timer
         else:
+            # -------------------------------------------------------------------------------------
+            # Lunch Timer
+            # -------------------------------------------------------------------------------------
             if set_timer > trigger and start_time < datetime.now().time() < end_time and lunch_start \
-                    and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
+                    and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break) and not lunch_timesheet:
+                # If the timer has gone on long enough and been triggered...
                 logger.info('End the lunch timer')
                 lunch_end = datetime.now()
                 print 'lunch start: %s' % lunch_start
@@ -163,9 +172,14 @@ def chronograph():
                 time.sleep(2)
             elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
                     and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
+                # If the user has been gone too long beyond lunch....
                 logger.info('Gone too long.  Clocking out...')
                 lunch_timesheet = tl_time.get_last_timesheet(user=user)
-                clock_out = tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out= lunch_start)
+                clock_out = tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=lunch_start)
+
+            # -----------------------------------------------------------------------------------------
+            # End of Day
+            # -----------------------------------------------------------------------------------------
 
             set_timer = None
             lunch_start = None

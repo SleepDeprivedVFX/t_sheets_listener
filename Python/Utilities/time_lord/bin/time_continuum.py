@@ -359,8 +359,7 @@ class continuum(object):
                 {
                     "filter_operator": "any",
                     "filters": [
-                        ['sg_task_start', 'in_calendar_day', 0],
-                        ['sg_task_start', 'in_calendar_day', -1]
+                        ['sg_task_start', 'in_calendar_day', 0]
                     ]
                 }
             ]
