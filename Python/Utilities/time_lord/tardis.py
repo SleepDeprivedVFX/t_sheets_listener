@@ -95,7 +95,10 @@ def chronograph():
     '''
     set_timer = None
     sleep = 0.1
-    trigger = (int(config['timer']) * 60) / sleep
+    timer_trigger = int(config['timer'])
+    trigger = (timer_trigger * 60) / sleep
+
+    # Set lunch timers
     start_time = parser.parse(config['approx_lunch_start']).time()
     end_time = parser.parse(config['approx_lunch_end']).time()
     lunch_start = None
@@ -107,13 +110,20 @@ def chronograph():
         lunch_task_id = lunch_task_id['id']
     lunch_timesheet = False
 
+    # Set start and end of day
+    sod = parser.parse(config['regular_start']).time()
+    eod = parser.parse(config['regular_end']).time()
+    eod_countdown = eod - timedelta(minutes=timer_trigger)
+
     while True:
         pos = query_mouse_position()
         # print pos
         # print datetime.now().time()
         time.sleep(sleep)
         if pos == query_mouse_position():
+            # -------------------------------------------------------------------------------------------------------
             # The mouse has stopped moving.
+            # -------------------------------------------------------------------------------------------------------
             if not set_timer:
                 # If there is no timer, create a timer
                 set_timer = 1
@@ -122,7 +132,7 @@ def chronograph():
                 # --------------------------------------------------------------------------------------
                 # Lunch Timer
                 # --------------------------------------------------------------------------------------
-                if start_time > datetime.now().time():
+                if sod > datetime.now().time():
                     # Reset the lunch_timesheet
                     lunch_timesheet = False
                 if set_timer > trigger and start_time < datetime.now().time() < end_time and not lunch_start:
@@ -136,19 +146,23 @@ def chronograph():
                     if not lunch_timesheet:
                         # If the lunch_timesheet is STILL false, THEN set the lunch start time
                         lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
-                        print 'LUNCH HAS STARTED: %s' % lunch_start
+                        logger.debug('LUNCH HAS STARTED: %s' % lunch_start)
                     else:
-                        print 'Already has lunch!'
+                        logger.debug('Already has lunch!')
                         lunch_start = None
 
                 # --------------------------------------------------------------------------------------
                 # End of Day
                 # --------------------------------------------------------------------------------------
-                if set_timer > trigger and datetime.now().time() > parser.parse(config['regular_end']).time():
+                if set_timer > trigger and eod_countdown < datetime.now().time() < eod:
                     print 'IT IS AFTER HOURS!!!'
                 set_timer += 1
                 print set_timer
         else:
+            # -------------------------------------------------------------------------------------------------------
+            # The mouse IS moving
+            # -------------------------------------------------------------------------------------------------------
+
             # -------------------------------------------------------------------------------------
             # Lunch Timer
             # -------------------------------------------------------------------------------------

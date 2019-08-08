@@ -113,6 +113,7 @@ class lunch_break(QtGui.QWidget):
         self.ui = tll.Ui_lunch_form()
         self.ui.setupUi(self)
         self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
+        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
 
         self.ui.lunch_message.setText('Hey %s! Were you at lunch at the following times?' % user['name'].split(' ')[0])
 
