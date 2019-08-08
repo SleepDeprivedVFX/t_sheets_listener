@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_eod.ui'
 #
-# Created: Wed Aug 07 17:49:42 2019
+# Created: Thu Aug 08 10:42:19 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_endofday(object):
     def setupUi(self, endofday):
         endofday.setObjectName("endofday")
-        endofday.resize(344, 143)
+        endofday.resize(344, 187)
         endofday.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout = QtGui.QVBoxLayout(endofday)
@@ -27,16 +27,27 @@ class Ui_endofday(object):
         self.question.setWordWrap(True)
         self.question.setObjectName("question")
         self.verticalLayout.addWidget(self.question)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.last_time_label = QtGui.QLabel(endofday)
+        self.last_time_label.setObjectName("last_time_label")
+        self.horizontalLayout_2.addWidget(self.last_time_label)
+        self.last_time = QtGui.QDateTimeEdit(endofday)
+        self.last_time.setObjectName("last_time")
+        self.horizontalLayout_2.addWidget(self.last_time)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton_2 = QtGui.QPushButton(endofday)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout.addWidget(self.pushButton_2)
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.pushButton = QtGui.QPushButton(endofday)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.yes_btn = QtGui.QPushButton(endofday)
+        self.yes_btn.setObjectName("yes_btn")
+        self.horizontalLayout.addWidget(self.yes_btn)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.no_btn = QtGui.QPushButton(endofday)
+        self.no_btn.setObjectName("no_btn")
+        self.horizontalLayout.addWidget(self.no_btn)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(endofday)
@@ -46,6 +57,7 @@ class Ui_endofday(object):
         endofday.setWindowTitle(QtGui.QApplication.translate("endofday", "End of Day", None, QtGui.QApplication.UnicodeUTF8))
         self.title.setText(QtGui.QApplication.translate("endofday", "It\'s Over!", None, QtGui.QApplication.UnicodeUTF8))
         self.question.setText(QtGui.QApplication.translate("endofday", "The day is done, and it looks like you haven\'t touched the computer in a while.  Are you still working?", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_2.setText(QtGui.QApplication.translate("endofday", "No!  I\'m done.", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton.setText(QtGui.QApplication.translate("endofday", "Yes I am!", None, QtGui.QApplication.UnicodeUTF8))
+        self.last_time_label.setText(QtGui.QApplication.translate("endofday", "Last Detected Time:", None, QtGui.QApplication.UnicodeUTF8))
+        self.yes_btn.setText(QtGui.QApplication.translate("endofday", "Yes I am!", None, QtGui.QApplication.UnicodeUTF8))
+        self.no_btn.setText(QtGui.QApplication.translate("endofday", "No!  I\'m done.", None, QtGui.QApplication.UnicodeUTF8))
 

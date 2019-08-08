@@ -112,8 +112,9 @@ def chronograph():
 
     # Set start and end of day
     sod = parser.parse(config['regular_start']).time()
-    eod = parser.parse(config['regular_end']).time()
-    eod_countdown = eod - timedelta(minutes=timer_trigger)
+    eod = parser.parse(config['regular_end'])
+    eod_countdown = (eod - timedelta(minutes=timer_trigger)).time()
+    eod = eod.time()
 
     while True:
         pos = query_mouse_position()
