@@ -115,6 +115,13 @@ def chronograph():
     eod = parser.parse(config['regular_end'])
     eod_countdown = (eod - timedelta(minutes=timer_trigger)).time()
     eod = eod.time()
+    user_clocked_in = tl_time.is_user_clocked_in(user=user)
+
+    path = sys.path[0]
+    minute = int(datetime.now().minute)
+
+    # Part of temp count system
+    temp_count = 0
 
     while True:
         pos = query_mouse_position()
@@ -130,6 +137,10 @@ def chronograph():
                 set_timer = 1
             else:
                 # Run the existing timer until the following conditions are met.
+                if minute != int(datetime.now().minute):
+                    minute = int(datetime.now().minute)
+                    if not user_clocked_in:
+                        user_clocked_in = tl_time.is_user_clocked_in(user=user)
                 # --------------------------------------------------------------------------------------
                 # Lunch Timer
                 # --------------------------------------------------------------------------------------
@@ -153,12 +164,32 @@ def chronograph():
                         lunch_start = None
 
                 # --------------------------------------------------------------------------------------
+                # Start of Day
+                # --------------------------------------------------------------------------------------
+
+                # if not user_clocked_in and datetime.now().time() > sod:
+                #     print 'Time to clock in!'
+                #     while not tl_time.is_user_clocked_in(user=user):
+                #         sod_launch_path = os.path.join(path, 'time_lord.py')
+                #         sod_launch = subprocess.call('python.exe %s' % sod_launch_path)
+                #         # sod_launch.wait()
+
+                # --------------------------------------------------------------------------------------
                 # End of Day
                 # --------------------------------------------------------------------------------------
-                if set_timer > trigger and eod_countdown < datetime.now().time() < eod:
-                    print 'IT IS AFTER HOURS!!!'
+                if set_timer > trigger and datetime.now().time() > eod:
+                    if tl_time.is_user_clocked_in(user=user):
+                        print 'IT IS AFTER HOURS!!!'
+                        eod_launch_path = os.path.join(path, 'eod.py')
+                        get_lunch = subprocess.Popen('python.exe %s' % eod_launch_path)
+                        get_lunch.wait()
+                        user_clocked_in = False
                 set_timer += 1
-                print set_timer
+
+                # Temp counter - Delete me
+                if set_timer / 10 != temp_count:
+                    temp_count = set_timer / 10
+                    print temp_count
         else:
             # -------------------------------------------------------------------------------------------------------
             # The mouse IS moving
@@ -179,18 +210,20 @@ def chronograph():
                 print total_time.seconds
 
                 # Pop up window, then set lunch break.
-                path = sys.path[0]
-                lunch_launch_path = os.path.join(path, 'lunch.py')
-                get_lunch = subprocess.Popen('python.exe %s -s "%s" -e "%s"' % (lunch_launch_path, lunch_start.time(),
-                                                                                lunch_end.time()))
-                get_lunch.wait()
-                time.sleep(2)
+                if user_clocked_in:
+                    lunch_launch_path = os.path.join(path, 'lunch.py')
+                    get_lunch = subprocess.Popen('python.exe %s -s "%s" -e "%s"' % (lunch_launch_path,
+                                                                                    lunch_start.time(),
+                                                                                    lunch_end.time()))
+                    get_lunch.wait()
+                    time.sleep(2)
             elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
                     and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
                 # If the user has been gone too long beyond lunch....
-                logger.info('Gone too long.  Clocking out...')
-                lunch_timesheet = tl_time.get_last_timesheet(user=user)
-                clock_out = tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=lunch_start)
+                if user_clocked_in:
+                    logger.info('Gone too long.  Clocking out...')
+                    lunch_timesheet = tl_time.get_last_timesheet(user=user)
+                    clock_out = tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=lunch_start)
 
             # -----------------------------------------------------------------------------------------
             # End of Day
@@ -433,7 +466,10 @@ if __name__ == '__main__':
 
 
     def lunch(tardis):
-        print 'lunch'
+        # This will launch the Lunch Menu in a completely separate process
+        path = sys.path[0]
+        lunch_path = os.path.join(path, 'lunch.py')
+        subprocess.Popen('python.exe %s' % lunch_path)
 
 
     menu_options = (('Launch Time Lord', icons.next(), run_time_lord),

@@ -383,3 +383,23 @@ class continuum(object):
         if user:
             print 'hello'
 
+    def is_user_clocked_in(self, user=None):
+        if user:
+            self.logger.info('Looking to see if %s is clocked in....' % user['name'])
+            user_id = user['id']
+
+            # List all the timesheets for the user
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user_id}]
+            ]
+            fields = [
+                'user',
+                'sg_task_start',
+                'sg_task_end'
+            ]
+            clocked_in = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+            if clocked_in and clocked_in['sg_task_end']:
+                return False
+            return True
+
+
