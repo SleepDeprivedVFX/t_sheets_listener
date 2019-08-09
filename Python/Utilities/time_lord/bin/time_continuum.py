@@ -284,7 +284,11 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            timesheets = self.sg.find('TimeLog', filters, fields)
+            try:
+                timesheets = self.sg.find('TimeLog', filters, fields)
+            except AttributeError, e:
+                self.logger.error('Time sheet failed to acquire: %s' % e)
+                timesheets = None
             if timesheets:
                 for timesheet in timesheets:
                     if not self.aint_today(timesheet['sg_task_start']):
@@ -328,7 +332,11 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            timesheets = self.sg.find('TimeLog', filters, fields)
+            try:
+                timesheets = self.sg.find('TimeLog', filters, fields)
+            except AttributeError, e:
+                self.logger.error('Failed to get the timesheet! %s' % e)
+                timesheets = None
             if timesheets:
                 for timesheet in timesheets:
                     this_date = timesheet['sg_task_start'].date()
@@ -397,7 +405,13 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            clocked_in = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+            try:
+                clocked_in = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
+                                                                                  'direction': 'desc'}])
+            except AttributeError, e:
+                self.logger.error('Could not check clocked in: %s' % e)
+                clocked_in = None
+
             if clocked_in and clocked_in['sg_task_end']:
                 return False
             return True

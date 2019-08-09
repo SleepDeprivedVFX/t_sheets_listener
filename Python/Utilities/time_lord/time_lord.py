@@ -197,10 +197,15 @@ class time_lord(QtCore.QThread):
 
     def run_the_clock(self):
         second = int(datetime.now().second)
+        minute = int(datetime.now().minute)
         while self.clocked_in and not self.kill_it:
             # Make sure the loop only functions on a whole second
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
+                if int(datetime.now().minute) != minute:
+                    minute = int(datetime.now().minute)
+                    if not tl_time.is_user_clocked_in(user=user):
+                        self.clocked_in = False
                 if self.clocked_in:
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
                     running_time = rt['rt']
@@ -219,16 +224,6 @@ class time_lord(QtCore.QThread):
                     self.time_signal.in_date.emit(start_date)
                 else:
                     self.set_trt_output(trt='00:00:00')
-                    # Set the start time date rollers:
-                    # ts_start = datetime.now()
-                    # start_date = ts_start.strftime('%m-%d-%y')
-                    # self.time_signal.in_date.emit(start_date)
-                    # start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
-                    #                    self.last_timesheet['sg_task_start'].time())
-                    # end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
-                    #                  self.last_timesheet['sg_task_end'].time())
-                    # self.set_upper_output(trt='00:00:00', start=start, end=end, user=user, total_hours=daily_total,
-                    #                       week_total=weekly_total)
                     break
 
     def set_trt_output(self, trt=None):
@@ -257,6 +252,7 @@ class time_lord(QtCore.QThread):
 
 
 class time_lord_ui(QtGui.QMainWindow):
+    # TODO: I need a way to test for externally clocked in and out processes. A way to update the UI indirectly.
 
     def __init__(self):
         super(time_lord_ui, self).__init__(parent=None)
