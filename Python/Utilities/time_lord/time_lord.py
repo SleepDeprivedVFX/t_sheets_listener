@@ -995,6 +995,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :return:
         '''
         if not self.time_lord.clocked_in:
+            self.last_timesheet = tl_time.get_last_timesheet(user=user)
             end_time = self.last_timesheet['sg_task_end']
             hour = end_time.time().hour
             minute = end_time.time().minute
