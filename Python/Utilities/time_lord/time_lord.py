@@ -451,7 +451,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # --------------------------------------------------------------------------------------------------------
         # Get the last timesheet
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
-        print 'last_timesheet: %s' % self.last_timesheet
+        # print 'last_timesheet: %s' % self.last_timesheet
         self.time_lord.last_timesheet = self.last_timesheet
         logger.debug('LAST TIMESHEET: %s' % self.last_timesheet)
 
@@ -574,7 +574,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.start()
 
     def clock_out(self, message=None):
-        print 'Clocking out...'
+        # print 'Clocking out...'
         # if not self.selection_check():
         #     return False
         try:
@@ -607,7 +607,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.set_weekly_output(weekly=weekly_total)
 
     def clock_in(self, message=None):
-        print 'Clocking in...'
+        # print 'Clocking in...'
         self.time_lord.clocked_in = True
         if not self.selection_check():
             return False
@@ -689,6 +689,7 @@ class time_lord_ui(QtGui.QMainWindow):
         project = sg_data.get_project_details_by_name(proj_name=selected_proj)
 
         if project:
+            self.last_project_id = project['id']
             self.time_lord.time_signal.error_state.emit(False)
             self.time_lord.time_signal.steady_state.emit(True)
             # Collect assets and shots.

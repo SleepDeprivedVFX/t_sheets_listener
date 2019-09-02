@@ -181,7 +181,7 @@ def chronograph():
                     if tl_time.is_user_clocked_in(user=user):
                         print 'IT IS AFTER HOURS!!!'
                         eod_launch_path = os.path.join(path, 'eod.py')
-                        get_lunch = subprocess.Popen('python.exe %s' % eod_launch_path)
+                        get_lunch = subprocess.Popen('pythonw.exe %s' % eod_launch_path)
                         get_lunch.wait()
                         user_clocked_in = False
                 set_timer += 1
@@ -212,7 +212,7 @@ def chronograph():
                 # Pop up window, then set lunch break.
                 if user_clocked_in:
                     lunch_launch_path = os.path.join(path, 'lunch.py')
-                    get_lunch = subprocess.Popen('python.exe %s -s "%s" -e "%s"' % (lunch_launch_path,
+                    get_lunch = subprocess.Popen('pythonw.exe %s -s "%s" -e "%s"' % (lunch_launch_path,
                                                                                     lunch_start.time(),
                                                                                     lunch_end.time()))
                     get_lunch.wait()
@@ -458,7 +458,7 @@ if __name__ == '__main__':
         # This will launch the Time Lord in a completely separate process
         path = sys.path[0]
         time_lord_path = os.path.join(path, 'time_lord.py')
-        subprocess.Popen('python.exe %s' % time_lord_path)
+        subprocess.Popen('pythonw.exe %s' % time_lord_path)
 
 
     def overtime(tardis):
@@ -469,7 +469,7 @@ if __name__ == '__main__':
         # This will launch the Lunch Menu in a completely separate process
         path = sys.path[0]
         lunch_path = os.path.join(path, 'lunch.py')
-        subprocess.Popen('python.exe %s' % lunch_path)
+        subprocess.Popen('pythonw.exe %s' % lunch_path)
 
 
     menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
