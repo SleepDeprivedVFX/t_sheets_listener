@@ -408,7 +408,7 @@ class continuum(object):
             try:
                 clocked_in = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
                                                                                   'direction': 'desc'}])
-            except AttributeError, e:
+            except Exception, e:
                 self.logger.error('Could not check clocked in: %s' % e)
                 clocked_in = None
 
