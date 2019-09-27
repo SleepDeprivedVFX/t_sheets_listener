@@ -1,0 +1,94 @@
+Exception in thread Chronograph:
+Traceback (most recent call last):
+  File "C:\Python27_32\lib\threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "C:\Python27_32\lib\threading.py", line 754, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "C:/Users/adamb/OneDrive/Documents/Scripts/Python/Utilities/time_lord/tardis.py", line 196, in chronograph
+    if tl_time.is_user_clocked_in(user=user):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 410, in is_user_clocked_in
+    'direction': 'desc'}])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
+    additional_filter_presets=additional_filter_presets)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
+    records = self._call_rpc("read", params).get("entities", [])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
+    self.config.api_path, encoded_payload, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3158, in _make_call
+    return self._http_request(verb, path, body, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3209, in _http_request
+    headers=headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1608, in request
+    (response, content) = self._request(conn, authority, uri, request_uri, method, body, headers, redirections, cachekey)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1350, in _request
+    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1278, in _conn_request
+    raise ServerNotFoundError("Unable to find the server at %s" % conn.host)
+ServerNotFoundError: Unable to find the server at radiowaves.shotgunstudio.com
+
+
+2 __________________________________________________________________________________________________
+
+Exception in thread Chronograph:
+Traceback (most recent call last):
+  File "C:\Python27_32\lib\threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "C:\Python27_32\lib\threading.py", line 754, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "C:/Users/adamb/OneDrive/Documents/Scripts/Python/Utilities/time_lord/tardis.py", line 145, in chronograph
+    user_clocked_in = tl_time.is_user_clocked_in(user=user)
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 410, in is_user_clocked_in
+    'direction': 'desc'}])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
+    additional_filter_presets=additional_filter_presets)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
+    records = self._call_rpc("read", params).get("entities", [])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
+    self.config.api_path, encoded_payload, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3158, in _make_call
+    return self._http_request(verb, path, body, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3209, in _http_request
+    headers=headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1608, in request
+    (response, content) = self._request(conn, authority, uri, request_uri, method, body, headers, redirections, cachekey)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1350, in _request
+    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1306, in _conn_request
+    response = conn.getresponse()
+  File "C:\Python27_32\lib\httplib.py", line 1108, in getresponse
+    raise ResponseNotReady()
+ResponseNotReady
+
+3_______________________________________________________________________________________________________________________
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 582, in switch_time
+    self.clock_out()
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 602, in clock_out
+    tl_time.clock_out_time_sheet(timesheet=self.last_timesheet, clock_out=datetime.now())
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 169, in clock_out_time_sheet
+    self.sg.update('TimeLog', timesheet['id'], data)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 1243, in update
+    record = self._call_rpc("update", params)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
+    self.config.api_path, encoded_payload, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3193, in _make_call
+    self._close_connection()
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
+    self._connection.connections.clear()
+AttributeError: 'NoneType' object has no attribute 'connections'
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 1009, in set_out_clock
+    self.last_timesheet = tl_time.get_last_timesheet(user=user)
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 139, in get_last_timesheet
+    last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
+    additional_filter_presets=additional_filter_presets)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
+    records = self._call_rpc("read", params).get("entities", [])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
+    self.config.api_path, encoded_payload, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3193, in _make_call
+    self._close_connection()
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
+    self._connection.connections.clear()
+AttributeError: 'NoneType' object has no attribute 'connections'

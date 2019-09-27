@@ -128,6 +128,7 @@ def chronograph():
         # print pos
         # print datetime.now().time()
         time.sleep(sleep)
+        sod_launch = None
         if pos == query_mouse_position():
             # -------------------------------------------------------------------------------------------------------
             # The mouse has stopped moving.
@@ -140,7 +141,21 @@ def chronograph():
                 if minute != int(datetime.now().minute):
                     minute = int(datetime.now().minute)
                     if not user_clocked_in:
+                        print 'user_clocked_in BEFORE: %s' % user_clocked_in
                         user_clocked_in = tl_time.is_user_clocked_in(user=user)
+                        # FIXME: For some reason, the user clocked in is not updating.s
+                        # print 'user_clocked_in  AFTER: %s' % user_clocked_in
+                        # if start_time > datetime.now().time() > sod:
+                        #     if not sod_launch:
+                        #         print 'Time to clock in...'
+                        #         sod_launch_path = os.path.join(path, 'time_lord.py')
+                        #
+                        #         sod_launch = subprocess.Popen('pythonw.exe %s' % sod_launch_path)
+                        #         print sod_launch
+                        # user_clocked_in = tl_time.is_user_clocked_in(user=user)
+                        # if user_clocked_in and sod_launch:
+                        #     sod_launch = None
+
                 # --------------------------------------------------------------------------------------
                 # Lunch Timer
                 # --------------------------------------------------------------------------------------
@@ -167,12 +182,13 @@ def chronograph():
                 # Start of Day
                 # --------------------------------------------------------------------------------------
 
-                # if not user_clocked_in and datetime.now().time() > sod:
-                #     print 'Time to clock in!'
-                #     while not tl_time.is_user_clocked_in(user=user):
-                #         sod_launch_path = os.path.join(path, 'time_lord.py')
-                #         sod_launch = subprocess.call('python.exe %s' % sod_launch_path)
-                #         # sod_launch.wait()
+                now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
+                                          datetime.now().time().second)
+                if not user_clocked_in and str(now) == str(sod):
+                    time.sleep(2)
+                    print 'Time to clock in!'
+                    sod_launch_path = os.path.join(path, 'time_lord.py')
+                    subprocess.call('python.exe %s' % sod_launch_path)
 
                 # --------------------------------------------------------------------------------------
                 # End of Day
@@ -224,6 +240,18 @@ def chronograph():
                     logger.info('Gone too long.  Clocking out...')
                     lunch_timesheet = tl_time.get_last_timesheet(user=user)
                     clock_out = tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=lunch_start)
+
+            # --------------------------------------------------------------------------------------
+            # Start of Day
+            # --------------------------------------------------------------------------------------
+
+            now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
+                                      datetime.now().time().second)
+            if not user_clocked_in and str(now) == str(sod):
+                time.sleep(2)
+                print 'Time to clock in!'
+                sod_launch_path = os.path.join(path, 'time_lord.py')
+                subprocess.call('python.exe %s' % sod_launch_path)
 
             # -----------------------------------------------------------------------------------------
             # End of Day

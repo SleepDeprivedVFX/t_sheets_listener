@@ -130,11 +130,15 @@ class time_signals(QtCore.QObject):
     clock_state = QtCore.Signal(int)
     daily_total = QtCore.Signal(float)
     weekly_total = QtCore.Signal(float)
+    update_clock = QtCore.Signal(str)
 
 
 class time_engine(QtCore.QThread):
     # This bit is trial and error.  It may have to go into the main UI, but my fear is that
     # the process will hang up the UI.
+    '''
+    This engine runs the clock faces
+    '''
     def __init__(self, parent=None):
         super(time_engine, self).__init__(parent)
 
@@ -179,6 +183,9 @@ class time_engine(QtCore.QThread):
 # Primary Engine
 # ------------------------------------------------------------------------------------------------------
 class time_lord(QtCore.QThread):
+    '''
+    This engine runs most of the UI minus the clocks
+    '''
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
         self.time_signal = time_signals()
@@ -203,6 +210,7 @@ class time_lord(QtCore.QThread):
             if int(datetime.now().second) != second:
                 second = int(datetime.now().second)
                 if int(datetime.now().minute) != minute:
+                    self.time_signal.update_clock.emit('Update')
                     minute = int(datetime.now().minute)
                     if not tl_time.is_user_clocked_in(user=user):
                         self.clocked_in = False
@@ -311,6 +319,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.time_signal.main_clock.connect(self.main_clock)
         self.time_engine.time_signal.in_clock.connect(self.set_in_clock)
         self.time_engine.time_signal.out_clock.connect(self.set_out_clock)
+        self.time_engine.time_signal.daily_total.connect(self.set_daily_total)
+        self.time_engine.time_signal.weekly_total.connect(self.set_weekly_total)
         self.time_lord.time_signal.trt_output.connect(self.trt_output)
         self.time_lord.time_signal.start_end_output.connect(self.start_end_output)
         self.time_lord.time_signal.user_output.connect(self.user_output)
@@ -322,8 +332,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.clock_state.connect(self.clock_in_button_state)
         self.time_lord.time_signal.running_clock.connect(self.set_runtime_clock)
         self.time_lord.time_signal.in_date.connect(self.set_start_date_rollers)
-        self.time_engine.time_signal.daily_total.connect(self.set_daily_total)
-        self.time_engine.time_signal.weekly_total.connect(self.set_weekly_total)
+        # self.time_lord.time_signal.update_clock.connect(self.set_last_timesheet)
+        # self.time_lord.time_signal.update_clock.connect(self.update_ui)
 
         # Start the output window
         daily_total = tl_time.get_daily_total(user=user)
@@ -1027,6 +1037,11 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.kill_it = True
         geometry = self.saveGeometry()
         self.settings.setValue('geometry', geometry)
+
+    def update_ui(self, message=None):
+        print 'before update: %s' % self.last_timesheet
+        self.set_last_timesheet()
+        print 'after update %s' % self.last_timesheet
 
 
 if __name__ == '__main__':
