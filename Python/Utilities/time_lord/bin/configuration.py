@@ -33,6 +33,8 @@ def get_configuration():
     config['overhead_tasks'] = configuration.get('Shotgun', 'overhead_tasks')
     config['paid_time_off'] = configuration.get('Shotgun', 'paid_time_off')
     config['unpaid_time_off'] = configuration.get('Shotgun', 'unpaid_time_off')
+    config['lunch'] = configuration.get('Shotgun', 'lunch')
+    config['break'] = configuration.get('Shotgun', 'Break')
 
     # Time Lord
     config['regular_days'] = configuration.get('Time Lord', 'regular_days').split(',')
@@ -46,8 +48,6 @@ def get_configuration():
     config['dt_hours'] = configuration.get('Time Lord', 'dt_hours')
     config['timer'] = configuration.get('Time Lord', 'timer')
     config['lunch_minutes'] = configuration.get('Time Lord', 'lunch_minutes')
-    config['lunch'] = configuration.get('Time Lord', 'lunch')
-    config['break'] = configuration.get('Time Lord', 'Break')
 
     # Logging
     config['debug_logging'] = configuration.get('Logging', 'debugging')
