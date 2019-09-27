@@ -92,3 +92,22 @@ Traceback (most recent call last):
   File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
     self._connection.connections.clear()
 AttributeError: 'NoneType' object has no attribute 'connections'
+
+4____________________________________________________________________________________________________________________
+
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 1009, in set_out_clock
+    self.last_timesheet = tl_time.get_last_timesheet(user=user)
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 139, in get_last_timesheet
+    last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
+    additional_filter_presets=additional_filter_presets)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
+    records = self._call_rpc("read", params).get("entities", [])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
+    self.config.api_path, encoded_payload, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3193, in _make_call
+    self._close_connection()
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
+    self._connection.connections.clear()
+AttributeError: 'NoneType' object has no attribute 'connections'
