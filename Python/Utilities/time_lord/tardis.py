@@ -205,7 +205,7 @@ def chronograph():
                 # Temp counter - Delete me
                 if set_timer / 10 != temp_count:
                     temp_count = set_timer / 10
-                    print temp_count
+                    print temp_count, datetime.now().time()
         else:
             # -------------------------------------------------------------------------------------------------------
             # The mouse IS moving

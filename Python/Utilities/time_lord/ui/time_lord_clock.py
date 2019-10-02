@@ -74,6 +74,15 @@ class Ui_TimeLord(object):
         self.start_ones_month.setFrameShape(QtGui.QFrame.NoFrame)
         self.start_ones_month.setFrameShadow(QtGui.QFrame.Plain)
         self.start_ones_month.setObjectName("start_ones_month")
+
+        # Timesheet ID
+        self.timesheet_id = QtGui.QLabel(self.bg)
+        self.timesheet_id.setGeometry(QtCore.QRect(819, 730, 97, 20))
+        self.timesheet_id.setTextFormat(QtCore.Qt.AutoText)
+        self.timesheet_id.setObjectName('timesheet_id')
+        self.timesheet_id.setText('12345')
+        self.timesheet_id.hide()
+
         self.artist_label = QtGui.QLabel(self.bg)
         self.artist_label.setGeometry(QtCore.QRect(161, 440, 231, 40))
         font = QtGui.QFont()

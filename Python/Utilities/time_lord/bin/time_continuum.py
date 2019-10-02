@@ -136,7 +136,12 @@ class continuum(object):
                 'project',
                 'entity'
             ]
-            last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+            try:
+                last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
+                                                                                      'direction': 'desc'}])
+            except (AttributeError, Exception), e:
+                self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
+                last_timesheet = None
             if last_timesheet:
                 return last_timesheet
             return None
@@ -286,7 +291,7 @@ class continuum(object):
             ]
             try:
                 timesheets = self.sg.find('TimeLog', filters, fields)
-            except AttributeError, e:
+            except (AttributeError, Exception), e:
                 self.logger.error('Time sheet failed to acquire: %s' % e)
                 timesheets = None
             if timesheets:
@@ -334,7 +339,7 @@ class continuum(object):
             ]
             try:
                 timesheets = self.sg.find('TimeLog', filters, fields)
-            except AttributeError, e:
+            except (AttributeError, Exception), e:
                 self.logger.error('Failed to get the timesheet! %s' % e)
                 timesheets = None
             if timesheets:

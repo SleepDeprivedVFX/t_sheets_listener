@@ -109,7 +109,7 @@ class sg_data(object):
                         self.logger.debug('Project Details Found: %s' % project)
                         return project
                     self.logger.debug('Still couldn\'t find shit! %s' % tryagain)
-                except (AttributeError, TypeError), e:
+                except (AttributeError, TypeError, KeyError, Exception), e:
                     self.logger.error('Well, Fuck.  %s' % e)
         self.logger.debug('No Project found!')
         return None
@@ -123,7 +123,12 @@ class sg_data(object):
             fields = [
                 'entity'
             ]
-            link = self.sg.find_one(ent_type, filters, fields)
+            try:
+                link = self.sg.find_one(ent_type, filters, fields)
+            except AttributeError, e:
+                self.logger.error('Bad connection... Try again... %s' % e)
+                print 'Lame ass connection.  Trying again...'
+                link = self.get_entity_links(ent_type=ent_type, name=name, ent_id=ent_id, proj_id=proj_id)
             return link
         return None
 

@@ -111,3 +111,92 @@ Traceback (most recent call last):
   File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
     self._connection.connections.clear()
 AttributeError: 'NoneType' object has no attribute 'connections'
+
+
+5__________________________________________________________________________________________________
+
+2
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 481, in set_last_timesheet
+    last_project_details = sg_data.get_project_details_by_name(self.last_project_name)
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\shotgun_collect.py", line 105, in get_project_details_by_name
+    tryagain = self.sg.find('Project', filters, fields)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 852, in find
+    if len(records) == result["paging_info"]["entity_count"]:
+KeyError: 'paging_info'
+before update: {'sg_task_end': N
+
+
+6 _________________________________________________________________________________________________
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 464, in set_last_timesheet
+    self.last_timesheet = tl_time.get_last_timesheet(user=user)
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 139, in get_last_timesheet
+    last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
+    additional_filter_presets=additional_filter_presets)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
+    records = self._call_rpc("read", params).get("entities", [])
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
+    self.config.api_path, encoded_payload, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3193, in _make_call
+    self._close_connection()
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
+    self._connection.connections.clear()
+AttributeError: 'NoneType' object has no attribute 'connections'
+
+7________________________________________________________________________________________________
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 473, in set_last_timesheet
+    self.last_out_time = self.last_timesheet['sg_task_end']
+TypeError: 'NoneType' object has no attribute '__getitem__'
+before update: None
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 204, in run
+    self.run_the_clock()
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 225, in run_the_clock
+    start_time = self.last_timesheet['sg_task_start']
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+8_________________________________________________________________________________________________
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 155, in run
+    self.chronograph()
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 175, in chronograph
+    weekly_total = tl_time.get_weekly_total(user=user)
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 341, in get_weekly_total
+    timesheets = self.sg.find('TimeLog', filters, fields)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 845, in find
+    result = self._call_rpc("read", params)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
+    self.config.api_path, encoded_payload, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3158, in _make_call
+170
+    return self._http_request(verb, path, body, req_headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3209, in _http_request
+    headers=headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1608, in request
+    (response, content) = self._request(conn, authority, uri, request_uri, method, body, headers, redirections, cachekey)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1350, in _request
+    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
+  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1306, in _conn_request
+    response = conn.getresponse()
+  File "C:\Python27_32\lib\httplib.py", line 1121, in getresponse
+    response.begin()
+  File "C:\Python27_32\lib\httplib.py", line 438, in begin
+    version, status, reason = self._read_status()
+  File "C:\Python27_32\lib\httplib.py", line 394, in _read_status
+    line = self.fp.readline(_MAXLINE + 1)
+  File "C:\Python27_32\lib\socket.py", line 480, in readline
+    data = self._sock.recv(self._rbufsize)
+  File "C:\Python27_32\lib\ssl.py", line 766, in recv
+    return self.read(buflen)
+  File "C:\Python27_32\lib\ssl.py", line 653, in read
+    v = self._sslobj.read(len)
+ssl.SSLError: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+
+9________________________________________________________________________________________________
+Traceback (most recent call last):
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 487, in set_last_timesheet
+    self.last_project_code = last_project_details['code']
+KeyError: 'code'
