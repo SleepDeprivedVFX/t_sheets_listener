@@ -1118,6 +1118,11 @@ class time_lord_ui(QtGui.QMainWindow):
         self.settings.setValue('geometry', geometry)
 
     def update_ui(self, message=None):
+        # FIXME: I think this may need to be handled in another thread.  It's causing the UI to lock up.
+        #       Also, I think I need to remove the 'Code' from the UI and project names.  Over-complicates it.
+        #       Furthermore, this method should only be updating the UI, not processing anything.
+        #       That being said... the other threads can't read from the UI, so... I'd need to have something that
+        #       shoots info from the UI
         '''
         This method may/should detect chenages outside of the UI. i.e. Drag-n-drop publisher, or a manual change in
         Shotgun.  Within 1 minute, this should change the UI to match the actual recorded time sheet.  Otherwise, shit
@@ -1125,27 +1130,29 @@ class time_lord_ui(QtGui.QMainWindow):
         :param message: SIGNAL message.
         :return:
         '''
-        # FIXME: Ok.  So, I need to park the Timesheet ID somewhere in the UI.  Hidden field.
         # NOTE: I think, part of the problem is that I'm comparing the saved timesheet to a new timesheet record instead
         #       of comparing the UI values to the latest record.  THAT is what actually needs to happen. This can be
         #       based on the Timesheet ID#
         #       So, Do I even NEED to check the last_timesheet saved in memory?  I don't think so.
-        print 'before update: %s' % self.last_timesheet
+        # Get the values from the UI
         id = self.ui.timesheet_id.text()
+        project = self.ui.project_dropdown.currentText()
+        entity = self.ui.entity_dropdown.currentText()
+        task = self.ui.task_dropdown.currentText()
         print 'timesheet_id from UI: %s' % id
-        last_out = self.last_timesheet['sg_task_end']
-        last_start = self.last_timesheet['sg_task_start']
+        print 'project from UI: %s' % project
+        print 'entity from UI: %s' % entity
+        print 'task from UI: %s' % task
+
         self.set_last_timesheet()
-        print 'after update %s' % self.last_timesheet
         id_now = self.last_timesheet['id']
-        # NOTE: The last_out and next_out ain't going to work.  They're both None, before and after.
-        next_out = self.last_timesheet['sg_task_end']
-        next_start = self.last_timesheet['sg_task_start']
+        project_now = self.last_timesheet['project']
+        print 'id_now: %s' % id_now
+        print 'project now: %s' % project_now
+        print self.last_timesheet
         if int(id) != int(id_now):
             print 'IDs do not match!!!'
             print 'id: %s - id_now: %s' % (id, id_now)
-            print 'last_out: %s' % last_out
-            print 'next_out: %s' % next_out
             # Trying out some updating things.
             self.set_project_list()
             self.update_entities()
@@ -1160,13 +1167,6 @@ class time_lord_ui(QtGui.QMainWindow):
             if task_index >= 0:
                 logger.debug('Setting the task to the last clocked into...')
                 self.ui.task_dropdown.setCurrentIndex(task_index)
-            if last_out != next_out:
-                print 'The last time sheet was clocked out.'
-                if next_start and next_start != last_start:
-                    print 'A new time sheet has been created!'
-        elif last_out and tl_time.is_user_clocked_in():
-            # NOTE: This may not work, because I need to check the state of affairs for the UI, yes?
-            print 'Looks like the user is both clocked in and clocked out at the same time.'
 
 
 if __name__ == '__main__':
