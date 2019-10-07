@@ -137,6 +137,7 @@ class time_signals(QtCore.QObject):
     ui_update = QtCore.Signal(dict)
     ui_return = QtCore.Signal(dict)
     update_timesheet = QtCore.Signal(str)
+    send_timesheet = QtCore.Signal(dict)
 
 
 class time_engine(QtCore.QThread):
@@ -341,6 +342,26 @@ class time_lord(QtCore.QThread):
             #       ambiguous and will require too much BS to match to.  Need to make sure they're unique.
 
 
+# ------------------------------------------------------------------------------------------------------
+# Last Timesheet Update Thread
+# ------------------------------------------------------------------------------------------------------
+class timesheet_update(QtCore.QThread):
+    '''
+    This thread is intended to take the workload off of the UI while updating the self.last_timesheet.
+    It uses signals to update the timesheet on the UI while leaving the work here in the thread.
+    '''
+    def __init__(self, parent=None):
+        super(timesheet_update, self).__init__(parent)
+
+        self.time_signal = time_signals()
+        self.time_signal.update_timesheet.connect(self.get_set_latest_timesheet)
+
+    def get_set_latest_timesheet(self):
+        new_timesheet = tl_time.get_last_timesheet(user=user)
+        if new_timesheet:
+            self.time_signal.send_timesheet.emit(new_timesheet)
+
+
 class time_lord_ui(QtGui.QMainWindow):
     # TODO: I need a way to test for externally clocked in and out processes. A way to update the UI indirectly.
 
@@ -366,6 +387,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # This connects to the two main threads plus the signals
         self.time_lord = time_lord()
         self.time_engine = time_engine()
+        self.timesheet_update = timesheet_update()
 
         # Setup and connect the last timesheet.
         # Declare Class Variables
@@ -409,17 +431,29 @@ class time_lord_ui(QtGui.QMainWindow):
         # self.time_lord.time_signal.update_clock.connect(self.set_last_timesheet)
         self.time_lord.time_signal.update_clock.connect(self.update_from_ui)
         self.time_lord.time_signal.ui_return.connect(self.update_from_timesheet)
+        self.timesheet_update.time_signal.send_timesheet.connect(self.upate_last_timesheet)
 
         # Start the output window by getting the initial values.
         daily_total = tl_time.get_daily_total(user=user)
         weekly_total = tl_time.get_weekly_total(user=user)
-        start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
-                           self.last_timesheet['sg_task_start'].time())
-        if self.last_timesheet['sg_task_end']:
-            end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
-                             self.last_timesheet['sg_task_end'].time())
-        else:
-            end = '%s %s' % (datetime.now().date(), datetime.now().time())
+        try:
+            start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+                               self.last_timesheet['sg_task_start'].time())
+            if self.last_timesheet['sg_task_end']:
+                end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+                                 self.last_timesheet['sg_task_end'].time())
+            else:
+                end = '%s %s' % (datetime.now().date(), datetime.now().time())
+        except TypeError, e:
+            logger.error('Failed to update the timesheet: %s' % e)
+            self.last_timesheet = tl_time.get_last_timesheet(user=user)
+            start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+                               self.last_timesheet['sg_task_start'].time())
+            if self.last_timesheet['sg_task_end']:
+                end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+                                 self.last_timesheet['sg_task_end'].time())
+            else:
+                end = '%s %s' % (datetime.now().date(), datetime.now().time())
 
         # Take the initial values and set their outputs.
         # NOTE: This may be a good reference for the updater!
@@ -543,6 +577,12 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.start()
         self.time_engine.start()
 
+    def upate_last_timesheet(self, update={}):
+        if update:
+            self.last_timesheet = update
+        else:
+            self.last_timesheet = tl_time.get_last_timesheet(user=user)
+
     def set_project_list(self):
         # Clear out the projects so that we are not double adding entries.
         self.ui.project_dropdown.clear()
@@ -565,12 +605,14 @@ class time_lord_ui(QtGui.QMainWindow):
         # Find a current time-sheet and use it for defaults or, use the last saved information
         # --------------------------------------------------------------------------------------------------------
         # Get the last timesheet
-        temp_last_timesheet = tl_time.get_last_timesheet(user=user)
-        if not temp_last_timesheet:
-            temp_last_timesheet = tl_time.get_last_timesheet(user=user)
-        else:
-            self.last_timesheet = temp_last_timesheet
-        print 'last_timesheet: %s' % self.last_timesheet
+        # FIXME: Replacing the following with a signal updater
+        # temp_last_timesheet = tl_time.get_last_timesheet(user=user)
+        # if not temp_last_timesheet:
+        #     temp_last_timesheet = tl_time.get_last_timesheet(user=user)
+        # else:
+        #     self.last_timesheet = temp_last_timesheet
+        # print 'last_timesheet: %s' % self.last_timesheet
+        self.timesheet_update.time_signal.update_timesheet.emit('Update')
 
         if self.last_timesheet:
             # FIXME: is the following line redundant?  It looks like this is also set internally
@@ -1252,7 +1294,8 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.timesheet_id.setText(str(timesheet_id))
 
             # Send a signal to update the local timesheet.
-            self.last_timesheet = tl_time.get_last_timesheet(user=user)
+            self.timesheet_update.time_signal.update_timesheet.emit('Update')
+            # self.last_timesheet = tl_time.get_last_timesheet(user=user)
             print '~' * 60
             print 'IS CLOCKED IN: %s' % self.time_lord.clocked_in
             print 'Testing last timesheet: %s' % self.last_timesheet
