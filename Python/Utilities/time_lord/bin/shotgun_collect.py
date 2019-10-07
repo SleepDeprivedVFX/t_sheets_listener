@@ -216,3 +216,20 @@ class sg_data(object):
                 return find_task
         return False
 
+    def get_entity_from_task(self, task_id=None):
+        if task_id:
+            filters = [
+                ['id', 'is', task_id]
+            ]
+            fields = [
+                'entity'
+            ]
+            try:
+                task = self.sg.find_one('Task', filters, fields)
+            except AttributeError, e:
+                self.logger.error('Get Entity from Tasks failed: %s' % e)
+                task = self.get_entity_from_task(task_id=task_id)
+            print task
+            return task
+        return None
+

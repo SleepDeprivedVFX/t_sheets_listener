@@ -134,6 +134,9 @@ class time_signals(QtCore.QObject):
     weekly_total = QtCore.Signal(float)
     update_clock = QtCore.Signal(str)
     timesheet_id = QtCore.Signal(str)
+    ui_update = QtCore.Signal(dict)
+    ui_return = QtCore.Signal(dict)
+    update_timesheet = QtCore.Signal(str)
 
 
 class time_engine(QtCore.QThread):
@@ -198,7 +201,9 @@ class time_lord(QtCore.QThread):
         self.error_state = False
         self.steady_state = True
         self.kill_signal = self.time_signal.kill_signal.connect(self.kill)
+        self.time_signal.ui_update.connect(self.update_ui)
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        # self.time_signal.update_timesheet.connect()
 
     def kill(self):
         self.kill_it = True
@@ -236,8 +241,8 @@ class time_lord(QtCore.QThread):
                     # Set the running time in the UI
                     self.set_trt_output(trt=trt)
                     start_time = self.last_timesheet['sg_task_start']
-                    start = '%s %s' % (start_time.date(), start_time.time())
-                    end = '%s %s' % (datetime.now().date(), datetime.now().time())
+                    start = '%s' % (start_time.strftime('%Y-%m-%d %H:%M:%S'))
+                    end = '%s' % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
                     self.set_start_end_output(start=start, end=end)
 
                     # Set the start time date rollers:
@@ -278,6 +283,63 @@ class time_lord(QtCore.QThread):
         set_message = 'Weekly Total: %0.2f Hours' % weekly
         self.time_signal.weekly_output.emit(set_message)
 
+    def update_ui(self, update=None):
+        if update:
+            ui_id = update['id']
+            ui_proj = update['project']
+            ui_proj_id = update['project_id']
+            ui_entity = update['entity']
+            ui_entity_id = update['entity_id']
+            ui_task = update['task']
+            ui_task_id = update['task_id']
+
+            try:
+                latest_timesheet = tl_time.get_last_timesheet(user=user)
+            except TypeError, e:
+                logger.error('Timesheet failed to update: %s' % e)
+                latest_timesheet = None
+                return False
+            if latest_timesheet:
+                try:
+                    ts_id = latest_timesheet['id']
+                    project = latest_timesheet['project']['name']
+                    project_id = latest_timesheet['project']['id']
+                    task = latest_timesheet['entity']['name']
+                    task_id = latest_timesheet['entity']['id']
+                except KeyError, e:
+                    logger.error('Failed to get latest timesheet! %s' % e)
+                    return None
+                print 'ts_id: %s' % ts_id
+                print 'ui_id: %s' % ui_id
+                if int(ts_id) != int(ui_id):
+                    print 'Wrong time sheet!!!'
+                    # TODO: Send signals that update the UI bits.
+                    new_timesheet = {
+                        'project': project,
+                        'project_id': project_id,
+                        'task_id': task_id,
+                        'task': task,
+                        'timesheet_id': ts_id
+                    }
+                    # Get the entity from the task and append it to the new_timesheet
+                    try:
+                        get_entity = sg_data.get_entity_from_task(task_id)
+                        if get_entity:
+                            entity = get_entity['entity']['name']
+                            entity_id = get_entity['entity']['id']
+                            new_timesheet['entity'] = entity
+                            new_timesheet['entity_id'] = entity_id
+                            # Send the new_timesheet to the updater.
+                            self.time_signal.ui_return.emit(new_timesheet)
+                    except KeyError, e:
+                        logger.error('Bad entity: %s' % e)
+
+                else:
+                    print 'Timesheet is copacetic'
+
+            # NOTE: I think I need to store the Task ID in a hidden field in the UI as well.  The task name is too
+            #       ambiguous and will require too much BS to match to.  Need to make sure they're unique.
+
 
 class time_lord_ui(QtGui.QMainWindow):
     # TODO: I need a way to test for externally clocked in and out processes. A way to update the UI indirectly.
@@ -301,7 +363,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # --------------------------------------------------------------------------------------------------------
         # Setup Time Engine
         # --------------------------------------------------------------------------------------------------------
-        # This connects to the two main threads
+        # This connects to the two main threads plus the signals
         self.time_lord = time_lord()
         self.time_engine = time_engine()
 
@@ -312,7 +374,6 @@ class time_lord_ui(QtGui.QMainWindow):
         self.last_in_time = None
         self.last_task_id = None
         self.last_project_name = None
-        self.last_project_code = None
         self.last_project_id = None
         self.last_entity_type = None
         self.last_entity_id = None
@@ -346,7 +407,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.running_clock.connect(self.set_runtime_clock)
         self.time_lord.time_signal.in_date.connect(self.set_start_date_rollers)
         # self.time_lord.time_signal.update_clock.connect(self.set_last_timesheet)
-        self.time_lord.time_signal.update_clock.connect(self.update_ui)
+        self.time_lord.time_signal.update_clock.connect(self.update_from_ui)
+        self.time_lord.time_signal.ui_return.connect(self.update_from_timesheet)
 
         # Start the output window by getting the initial values.
         daily_total = tl_time.get_daily_total(user=user)
@@ -417,11 +479,16 @@ class time_lord_ui(QtGui.QMainWindow):
         # Then connect the Entity drop-down to an on-change event
         self.ui.entity_dropdown.currentIndexChanged.connect(self.update_tasks)
         self.ui.entity_dropdown.currentIndexChanged.connect(self.switch_state)
+
+
         # Now check that the last task is selected
         task_index = self.ui.task_dropdown.findText(self.last_task)
         if task_index >= 0:
             logger.debug('Setting the task to the last clocked into...')
             self.ui.task_dropdown.setCurrentIndex(task_index)
+            # FIXME: I was going to use the below line, but then I found out you can add data
+            #       to the dropdowns, so I'm saving the data in there. instead.
+            # self.ui.task_id.setText(str(self.last_timesheet['entity']['id']))
 
         # Lastly, connect the Task to an on-change event
         self.ui.task_dropdown.currentIndexChanged.connect(self.switch_state)
@@ -441,7 +508,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # ------------------------------------------------------------------------------------------------------------
         logger.debug('Getting entities for project %s' % self.last_project)
         if not self.ui.project_dropdown.currentText() == 'Select Project':
-            proj_name = str(self.last_project).split(' - ')[-1]
+            proj_name = str(self.last_project)
             logger.debug('proj_name = %s' % proj_name)
             logger.debug('last_timesheet project = %s' % self.last_timesheet['project']['name'])
             if proj_name != self.last_timesheet['project']['name']:
@@ -453,7 +520,7 @@ class time_lord_ui(QtGui.QMainWindow):
             state = 0
             self.ui.clock_button.clicked.connect(self.start_time)
         elif not self.last_out_time:
-            if self.ui.project_dropdown.currentText().split(' - ')[-1] == self.last_project_name\
+            if self.ui.project_dropdown.currentText() == self.last_project_name\
                     and self.ui.entity_dropdown.currentText() == self.last_entity\
                     and self.ui.task_dropdown.currentText() == self.last_task:
                 state = 1
@@ -484,7 +551,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # Iterate through the list and add all the active projects to the dropdown
         if active_projects:
             for project in active_projects:
-                self.ui.project_dropdown.addItem('%s - %s' % (project['code'], project['name']))
+                self.ui.project_dropdown.addItem('%s' % project['name'], project['id'])
         logger.debug('Getting default selection from settings.')
         # Get the index of the last project as listed in the UI
         proj_index = self.ui.project_dropdown.findText(self.last_project)
@@ -530,9 +597,8 @@ class time_lord_ui(QtGui.QMainWindow):
                     time.sleep(5)
                     tries += 1
                 print 'last_project_details: %s' % last_project_details
-                self.last_project_code = last_project_details['code']
                 self.last_project_id = last_project_details['id']
-                self.last_project = '%s - %s' % (self.last_project_code, self.last_project_name)
+                self.last_project = '%s' % self.last_project_name
                 self.last_task = self.last_timesheet['entity']['name']
                 self.last_task_id = self.last_timesheet['entity']['id']
                 self.last_timesheet_id = self.last_timesheet['id']
@@ -544,11 +610,10 @@ class time_lord_ui(QtGui.QMainWindow):
                     self.last_entity_type = last_entity_details['entity']['type']
                     self.last_entity_id = last_entity_details['entity']['id']
                     self.last_entity = last_entity_details['entity']['name']
-                    self.last_project = '%s - %s' % (self.last_project_code, self.last_project_name)
+                    self.last_project = '%s' % self.last_project_name
             else:
                 self.time_lord.clocked_in = False
-                self.last_project_name = self.last_project.split(' - ')[-1]
-                self.last_project_code = self.last_project.split(' - ')[0]
+                self.last_project_name = self.last_project
                 self.last_timesheet_id = self.last_timesheet['id']
                 find_last_proj_id = sg_data.get_project_details_by_name(self.last_project_name)
                 if find_last_proj_id and 'id' in find_last_proj_id.keys():
@@ -698,7 +763,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.lower_output.emit('New Timesheet created!')
 
         # Create context
-        project_selection = self.ui.project_dropdown.currentText().split(' - ')[-1]
+        project_selection = self.ui.project_dropdown.currentText()
         project_details = sg_data.get_project_details_by_name(proj_name=project_selection)
         project_id = project_details['id']
         project_name = project_selection
@@ -757,7 +822,7 @@ class time_lord_ui(QtGui.QMainWindow):
         return True
 
     def update_entities(self, message=None):
-        selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
+        selected_proj = self.ui.project_dropdown.currentText()
         logger.debug('selected project is %s' % selected_proj)
         project = sg_data.get_project_details_by_name(proj_name=selected_proj)
 
@@ -773,11 +838,11 @@ class time_lord_ui(QtGui.QMainWindow):
 
             # Put in the Assets first... Oh!  Use the categories and Sequences?
             self.ui.entity_dropdown.clear()
-            self.ui.entity_dropdown.addItem('Select Asset/Shot')
+            self.ui.entity_dropdown.addItem('Select Asset/Shot', 0)
             for asset in asset_entities:
-                self.ui.entity_dropdown.addItem(asset['code'])
+                self.ui.entity_dropdown.addItem(asset['code'], asset['id'])
             for shot in shot_entities:
-                self.ui.entity_dropdown.addItem(shot['code'])
+                self.ui.entity_dropdown.addItem(shot['code'], shot['id'])
             self.ui.entity_dropdown.update()
         else:
             self.time_lord.time_signal.lower_output.emit('Project Dump: %s' % project)
@@ -796,12 +861,12 @@ class time_lord_ui(QtGui.QMainWindow):
                                          proj_id=self.last_project_id)
         if tasks:
             self.ui.task_dropdown.clear()
-            self.ui.task_dropdown.addItem('Select Task')
+            self.ui.task_dropdown.addItem('Select Task', 0)
             for task in tasks:
-                self.ui.task_dropdown.addItem(task['content'])
+                self.ui.task_dropdown.addItem(task['content'], task['id'])
         else:
             self.ui.task_dropdown.clear()
-            self.ui.task_dropdown.addItem('Select Task')
+            self.ui.task_dropdown.addItem('Select Task', 0)
 
     def switch_tasks(self):
         logger.debug('Switching tasks...')
@@ -816,7 +881,7 @@ class time_lord_ui(QtGui.QMainWindow):
     def switch_state(self):
         match = True
 
-        selected_proj = self.ui.project_dropdown.currentText().split(' - ')[-1]
+        selected_proj = self.ui.project_dropdown.currentText()
         project = sg_data.get_project_details_by_name(proj_name=selected_proj)
 
         # Check that the project matches
@@ -1117,12 +1182,7 @@ class time_lord_ui(QtGui.QMainWindow):
         geometry = self.saveGeometry()
         self.settings.setValue('geometry', geometry)
 
-    def update_ui(self, message=None):
-        # FIXME: I think this may need to be handled in another thread.  It's causing the UI to lock up.
-        #       Also, I think I need to remove the 'Code' from the UI and project names.  Over-complicates it.
-        #       Furthermore, this method should only be updating the UI, not processing anything.
-        #       That being said... the other threads can't read from the UI, so... I'd need to have something that
-        #       shoots info from the UI
+    def update_from_ui(self, message=None):
         '''
         This method may/should detect chenages outside of the UI. i.e. Drag-n-drop publisher, or a manual change in
         Shotgun.  Within 1 minute, this should change the UI to match the actual recorded time sheet.  Otherwise, shit
@@ -1137,36 +1197,65 @@ class time_lord_ui(QtGui.QMainWindow):
         # Get the values from the UI
         id = self.ui.timesheet_id.text()
         project = self.ui.project_dropdown.currentText()
+        project_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
+        print project_id
         entity = self.ui.entity_dropdown.currentText()
+        entity_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
+        print entity_id
         task = self.ui.task_dropdown.currentText()
+        task_id = self.ui.task_dropdown.itemData(self.ui.task_dropdown.currentIndex())
+        print task_id
         print 'timesheet_id from UI: %s' % id
         print 'project from UI: %s' % project
         print 'entity from UI: %s' % entity
         print 'task from UI: %s' % task
+        update = {
+            'id': id,
+            'project': project,
+            'project_id': project_id,
+            'entity': entity,
+            'entity_id': entity_id,
+            'task': task,
+            'task_id': task_id
+        }
+        self.time_lord.time_signal.ui_update.emit(update)
+        print 'Emitted: %s' % update
 
-        self.set_last_timesheet()
-        id_now = self.last_timesheet['id']
-        project_now = self.last_timesheet['project']
-        print 'id_now: %s' % id_now
-        print 'project now: %s' % project_now
-        print self.last_timesheet
-        if int(id) != int(id_now):
-            print 'IDs do not match!!!'
-            print 'id: %s - id_now: %s' % (id, id_now)
-            # Trying out some updating things.
-            self.set_project_list()
+    def update_from_timesheet(self, message=None):
+        print 'Updating the UI with... %s' % message
+        if message:
+            task = message['task']
+            tast_id = message['task_id']
+            proj = message['project']
+            proj_id = message['project_id']
+            entity = message['entity']
+            entity_id = message['entity_id']
+            timesheet_id = message['timesheet_id']
+
+            proj_index = self.ui.project_dropdown.findText(proj)
+
+            if proj_index >= 0:
+                logger.debug('Updating project')
+                self.ui.project_dropdown.setCurrentIndex(proj_index)
             self.update_entities()
-            # Now check that the last or currently clocked-in entity is selected
-            entity_index = self.ui.entity_dropdown.findText(self.last_entity)
-            if entity_index >= 0:
-                logger.debug('Setting Entity to the last project clocked into...')
-                self.ui.entity_dropdown.setCurrentIndex(entity_index)
-            self.update_tasks()
-            # Now check that the last task is selected
-            task_index = self.ui.task_dropdown.findText(self.last_task)
+
+            ent_index = self.ui.entity_dropdown.findText(entity)
+            if ent_index >= 0:
+                logger.debug('Updating entity...')
+                self.ui.entity_dropdown.setCurrentIndex(ent_index)
+
+            task_index = self.ui.task_dropdown.findText(task)
             if task_index >= 0:
-                logger.debug('Setting the task to the last clocked into...')
+                logger.debug('Updating Tasks...')
                 self.ui.task_dropdown.setCurrentIndex(task_index)
+
+            self.ui.timesheet_id.setText(str(timesheet_id))
+
+            # Send a signal to update the local timesheet.
+            self.last_timesheet = tl_time.get_last_timesheet(user=user)
+            print '~' * 60
+            print 'IS CLOCKED IN: %s' % self.time_lord.clocked_in
+            print 'Testing last timesheet: %s' % self.last_timesheet
 
 
 if __name__ == '__main__':

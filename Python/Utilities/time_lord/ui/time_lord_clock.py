@@ -83,6 +83,14 @@ class Ui_TimeLord(object):
         self.timesheet_id.setText('12345')
         self.timesheet_id.hide()
 
+        # Task ID
+        self.task_id = QtGui.QLabel(self.bg)
+        self.task_id.setGeometry(QtCore.QRect(819, 700, 97, 20))
+        self.task_id.setTextFormat(QtCore.Qt.AutoText)
+        self.task_id.setObjectName('task_id')
+        self.task_id.setText('1')
+        self.task_id.hide()
+
         self.artist_label = QtGui.QLabel(self.bg)
         self.artist_label.setGeometry(QtCore.QRect(161, 440, 231, 40))
         font = QtGui.QFont()
@@ -122,7 +130,7 @@ class Ui_TimeLord(object):
         self.output_monitor.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 7pt \"MS UI Gothic\";\n"
+"font: 75 10pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_monitor.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_monitor.setFrameShadow(QtGui.QFrame.Plain)
@@ -231,8 +239,24 @@ class Ui_TimeLord(object):
         brush.setStyle(QtCore.Qt.NoBrush)
         self.green_light.setBackgroundBrush(brush)
         self.green_light.setObjectName("green_light")
+        self.lower_output_sep = QtGui.QPlainTextEdit(self.bg)
+        self.lower_output_sep.setGeometry(QtCore.QRect(694, 210, 206, 30))
+        self.lower_output_sep.setStyleSheet("QPlainTextEdit{\n"
+"border-color: rgba(0, 0, 0, 0);\n"
+"background-color: rgba(0, 0, 0, 0);\n"
+"font: 75 8pt \"MS UI Gothic\";\n"
+"color: rgb(130, 231, 130);\n"
+"}\n"
+"")
+        self.lower_output_sep.setFrameShape(QtGui.QFrame.NoFrame)
+        self.lower_output_sep.setFrameShadow(QtGui.QFrame.Plain)
+        self.lower_output_sep.setLineWidth(0)
+        self.lower_output_sep.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.lower_output_sep.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.lower_output_sep.setDocumentTitle("")
+        self.lower_output_sep.setObjectName("lower_output_sep")
         self.lower_output = QtGui.QPlainTextEdit(self.bg)
-        self.lower_output.setGeometry(QtCore.QRect(694, 187, 206, 152))
+        self.lower_output.setGeometry(QtCore.QRect(694, 218, 206, 152))
         self.lower_output.setStyleSheet("QPlainTextEdit{\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
@@ -386,11 +410,11 @@ class Ui_TimeLord(object):
         self.end_clock_minute.setAlignment(QtCore.Qt.AlignCenter)
         self.end_clock_minute.setObjectName("end_clock_minute")
         self.output_trt = QtGui.QPlainTextEdit(self.bg)
-        self.output_trt.setGeometry(QtCore.QRect(695, 111, 205, 17))
+        self.output_trt.setGeometry(QtCore.QRect(695, 114, 205, 17))
         self.output_trt.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 7pt \"MS UI Gothic\";\n"
+"font: 75 10pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_trt.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_trt.setFrameShadow(QtGui.QFrame.Plain)
@@ -401,11 +425,11 @@ class Ui_TimeLord(object):
         self.output_trt.setBackgroundVisible(False)
         self.output_trt.setObjectName("output_trt")
         self.output_start_end = QtGui.QPlainTextEdit(self.bg)
-        self.output_start_end.setGeometry(QtCore.QRect(695, 122, 204, 28))
+        self.output_start_end.setGeometry(QtCore.QRect(695, 130, 204, 30))
         self.output_start_end.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 7pt \"MS UI Gothic\";\n"
+"font: 75 10pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_start_end.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_start_end.setFrameShadow(QtGui.QFrame.Plain)
@@ -417,11 +441,11 @@ class Ui_TimeLord(object):
         self.output_start_end.setBackgroundVisible(False)
         self.output_start_end.setObjectName("output_start_end")
         self.output_user = QtGui.QPlainTextEdit(self.bg)
-        self.output_user.setGeometry(QtCore.QRect(695, 145, 204, 20))
+        self.output_user.setGeometry(QtCore.QRect(695, 160, 204, 17))
         self.output_user.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 7pt \"MS UI Gothic\";\n"
+"font: 75 10pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_user.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_user.setFrameShadow(QtGui.QFrame.Plain)
@@ -432,11 +456,11 @@ class Ui_TimeLord(object):
         self.output_user.setBackgroundVisible(False)
         self.output_user.setObjectName("output_user")
         self.output_daily = QtGui.QPlainTextEdit(self.bg)
-        self.output_daily.setGeometry(QtCore.QRect(695, 157, 204, 17))
+        self.output_daily.setGeometry(QtCore.QRect(695, 176, 204, 17))
         self.output_daily.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 7pt \"MS UI Gothic\";\n"
+"font: 75 10pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_daily.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_daily.setFrameShadow(QtGui.QFrame.Plain)
@@ -447,11 +471,11 @@ class Ui_TimeLord(object):
         self.output_daily.setBackgroundVisible(False)
         self.output_daily.setObjectName("output_daily")
         self.output_weekly = QtGui.QPlainTextEdit(self.bg)
-        self.output_weekly.setGeometry(QtCore.QRect(695, 168, 204, 17))
+        self.output_weekly.setGeometry(QtCore.QRect(695, 192, 204, 17))
         self.output_weekly.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 7pt \"MS UI Gothic\";\n"
+"font: 75 10pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_weekly.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_weekly.setFrameShadow(QtGui.QFrame.Plain)
@@ -500,6 +524,7 @@ class Ui_TimeLord(object):
         self.artist_label.setText(QtGui.QApplication.translate("TimeLord", "Artist", None, QtGui.QApplication.UnicodeUTF8))
         self.output_monitor.setPlainText(QtGui.QApplication.translate("TimeLord", "OUTPUT MONITOR\n"
 "------------------------------------", None, QtGui.QApplication.UnicodeUTF8))
+        self.lower_output_sep.setPlainText(QtGui.QApplication.translate("TimeLord", "-------------------------------", None, QtGui.QApplication.UnicodeUTF8))
         self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "Raw Data Ouput", None, QtGui.QApplication.UnicodeUTF8))
         self.entity_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
         self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))
