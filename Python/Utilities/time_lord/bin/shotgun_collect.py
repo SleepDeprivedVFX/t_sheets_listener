@@ -211,7 +211,11 @@ class sg_data(object):
             fields = [
                 'id'
             ]
-            find_task = self.sg.find_one('Task', filters, fields)
+            try:
+                find_task = self.sg.find_one('Task', filters, fields)
+            except AttributeError, e:
+                print 'get_lunch_task failed!  %s' % e
+                find_task = self.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=task_name)
             if find_task:
                 return find_task
         return False

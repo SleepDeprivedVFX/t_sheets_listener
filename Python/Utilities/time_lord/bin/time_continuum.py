@@ -383,12 +383,17 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end',
                 'project',
-                'entity'
+                'entity',
+                'duration'
             ]
-            get_lunch = self.sg.find('TimeLog', filters, fields)
+            try:
+                get_lunch = self.sg.find('TimeLog', filters, fields)
+            except AttributeError, e:
+                print 'Get Lunch failed.  Trying again.'
+                get_lunch = self.get_todays_lunch(user=user, lunch_id=lunch_id, lunch_proj_id=lunch_proj_id)
             if get_lunch:
                 print 'lunch_returns: %s' % get_lunch
-                return True
+                return get_lunch
             else:
                 print 'No lunch for you!'
                 return False
