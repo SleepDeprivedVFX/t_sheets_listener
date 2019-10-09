@@ -30,7 +30,6 @@ REQUIREMENTS:
 TODO:
     1. Have the thing auto-clock out if it detects a timesheet from the day before. aint_today()
         a. Get the latest time from the previous timesheet and add maybe 10 minutes?  (if the start time is before 7)
-    2. Get the main clock to work
     3. Create a date-picker to set the start and end time clocks.
         a. If the thing is not clocked in
         b. If the user sets start and end times
@@ -39,7 +38,6 @@ TODO:
     4. Setup a live stream feed for limited data to the lower output.  Like Bullgozer and Rollout Machine
     5. Fix drop down appearance.
     6. Figure out how to make this into an exe file, or some kind of other "run" function that hides the python
-    7. Automatically check for lunch breaks - Maybe have the button turn yellow again...
     8. Build in a rolling log file
     9. Have the start and end clocks do the following:
         a. If not clocked in...  hmmm. wait... I was going to say, if not clocked in, have it mirror the main time,
@@ -48,6 +46,7 @@ TODO:
             pre-sets the time using the "set date-time" button, then that start time would hold (unless it conflicted
             with a previous entry.  Which brings about item...
     10. Have the clock in process ensure that the recorded in time is not prior to a previous out time.
+    11. Setup A window hint for un-clocked in users.  Force on time while not clocked in.
 """
 
 import shotgun_api3 as sgapi
