@@ -445,7 +445,12 @@ class time_lord_ui(QtGui.QMainWindow):
                 end = '%s %s' % (datetime.now().date(), datetime.now().time())
         except TypeError, e:
             logger.error('Failed to update the timesheet: %s' % e)
-            self.last_timesheet = tl_time.get_last_timesheet(user=user)
+            self.last_timesheet = None
+            while not self.last_timesheet:
+                self.timesheet_update.time_signal.ui_update.emit('Get Timesheet')
+                time.sleep(1)
+            # self.last_timesheet = tl_time.get_last_timesheet(user=user)
+            print 'while not finally shows...', self.last_timesheet
             start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
                                self.last_timesheet['sg_task_start'].time())
             if self.last_timesheet['sg_task_end']:
@@ -513,7 +518,6 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.entity_dropdown.currentIndexChanged.connect(self.update_tasks)
         self.ui.entity_dropdown.currentIndexChanged.connect(self.switch_state)
 
-
         # Now check that the last task is selected
         task_index = self.ui.task_dropdown.findText(self.last_task)
         if task_index >= 0:
@@ -579,8 +583,8 @@ class time_lord_ui(QtGui.QMainWindow):
     def upate_last_timesheet(self, update={}):
         if update:
             self.last_timesheet = update
-        else:
-            self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        # else:
+        #     self.last_timesheet = tl_time.get_last_timesheet(user=user)
 
     def set_project_list(self):
         # Clear out the projects so that we are not double adding entries.
@@ -1239,17 +1243,10 @@ class time_lord_ui(QtGui.QMainWindow):
         id = self.ui.timesheet_id.text()
         project = self.ui.project_dropdown.currentText()
         project_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
-        print project_id
         entity = self.ui.entity_dropdown.currentText()
         entity_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
-        print entity_id
         task = self.ui.task_dropdown.currentText()
         task_id = self.ui.task_dropdown.itemData(self.ui.task_dropdown.currentIndex())
-        print task_id
-        print 'timesheet_id from UI: %s' % id
-        print 'project from UI: %s' % project
-        print 'entity from UI: %s' % entity
-        print 'task from UI: %s' % task
         update = {
             'id': id,
             'project': project,
