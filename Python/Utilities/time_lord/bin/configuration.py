@@ -39,6 +39,7 @@ def get_configuration():
     # Time Lord
     config['regular_days'] = configuration.get('Time Lord', 'regular_days').split(',')
     config['weekend_days'] = configuration.get('Time Lord', 'weekend_days').split(',')
+    config['early_start'] = configuration.get('Time Lord', 'early_start')
     config['regular_start'] = configuration.get('Time Lord', 'regular_start')
     config['regular_end'] = configuration.get('Time Lord', 'regular_end')
     config['approx_lunch_start'] = configuration.get('Time Lord', 'approx_lunch_start')
