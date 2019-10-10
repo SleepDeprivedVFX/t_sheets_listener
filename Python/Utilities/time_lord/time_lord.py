@@ -221,7 +221,7 @@ class time_lord(QtCore.QThread):
         self.kill_signal = self.time_signal.kill_signal.connect(self.kill)
         self.time_signal.ui_update.connect(self.update_ui)
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
-        # self.time_signal.update_timesheet.connect()
+        self.time_signal.update_timesheet.connect(self.quick_update)
 
     def kill(self):
         self.kill_it = True
@@ -365,11 +365,10 @@ class time_lord(QtCore.QThread):
         new_timesheet = tl_time.get_last_timesheet(user=user)
         if new_timesheet:
             self.time_signal.send_timesheet.emit(new_timesheet)
+            self.last_timesheet = new_timesheet
 
 
 class time_lord_ui(QtGui.QMainWindow):
-    # TODO: I need a way to test for externally clocked in and out processes. A way to update the UI indirectly.
-
     def __init__(self):
         super(time_lord_ui, self).__init__(parent=None)
 
@@ -380,9 +379,6 @@ class time_lord_ui(QtGui.QMainWindow):
         self.last_project = self.settings.value('last_project', '.')
         self.last_entity = self.settings.value('last_entity', '.')
         self.last_task = self.settings.value('last_task', '.')
-        # NOTE: The last_timesheet_id maybe should not be saved.  Perhaps that should always be set by what's actually
-        #       clocked in, and never by what was clocked in last.
-        self.last_timesheet_id = self.settings.value('last_timesheet_id', '.')
         self.window_position = self.settings.value('geometry', '')
         self.restoreGeometry(self.window_position)
 
@@ -441,12 +437,17 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Start the output window by getting the initial values.
         daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
+        # TODO: Probably add lunch and break ids to the weekly total to remove those as well.
         weekly_total = tl_time.get_weekly_total(user=user)
 
         # Get the initial timesheet
+        # This is needed because the threaded portion hasn't had a chance to update itself by this time.
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        # Setting the last_in_time and last_out_time because the values are not getting properly set in the
+        # set_last_timesheet()
+        self.last_in_time = self.last_timesheet['sg_task_start']
+        self.last_out_time = self.last_timesheet['sg_task_end']
 
-        # try:
         start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
                            self.last_timesheet['sg_task_start'].time())
         if self.last_timesheet['sg_task_end']:
@@ -454,18 +455,10 @@ class time_lord_ui(QtGui.QMainWindow):
                              self.last_timesheet['sg_task_end'].time())
         else:
             end = '%s %s' % (datetime.now().date(), datetime.now().time())
-        # except TypeError, e:
-        #     logger.error('Failed to update the timesheet: %s' % e)
-        #     start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
-        #                        self.last_timesheet['sg_task_start'].time())
-        #     if self.last_timesheet['sg_task_end']:
-        #         end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
-        #                          self.last_timesheet['sg_task_end'].time())
-        #     else:
-        #         end = '%s %s' % (datetime.now().date(), datetime.now().time())
 
         # Take the initial values and set their outputs.
         # NOTE: This may be a good reference for the updater!
+        # QUERY: Does this do anything?  It's not being emitted, just "set". Does that work?
         self.time_lord.set_trt_output(trt='00:00:00')
         self.time_lord.set_start_end_output(start=start, end=end)
         self.time_lord.set_user_output(user=user)
@@ -491,9 +484,6 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])
-        # Add the current Timesheet ID to the UI.
-        ts_id = str(self.last_timesheet['id'])
-        self.ui.timesheet_id.setText(ts_id)
 
         # ------------------------------------------------------------------------------------------------------------
         # Set the project list.
@@ -532,21 +522,10 @@ class time_lord_ui(QtGui.QMainWindow):
         # Lastly, connect the Task to an on-change event
         self.ui.task_dropdown.currentIndexChanged.connect(self.switch_state)
 
-        # NOTE: So, as I'm going through this, I'm realizing that my updater will need to be able to take info from the
-        #       last timesheet and inject it into the following routines:
-        #       set_project_list()
-        #       update_entities()
-        #       update_tasks()
-        #       Really, I think these are already kind of able to do this on their own, but it may need some fanegaling.
-        #       Once tested, those are the things that will need to run, in sequence, in order to update the UI
-        #       The following may be a part of that process too, and may need to be put into its own routine for that
-        #       very reason.  In fact, maybe this whole bit here needs to be converted to an independent routine.
-
         # ------------------------------------------------------------------------------------------------------------
         # Start making sure the correct thing is the active clock
         # ------------------------------------------------------------------------------------------------------------
         logger.debug('Getting entities for project %s' % self.last_project)
-        print 'line 549: self.last_project: %s' % self.last_project
         if not self.last_project_name:
             self.last_project_name = self.last_timesheet['project']['name']
 
@@ -564,6 +543,8 @@ class time_lord_ui(QtGui.QMainWindow):
             state = 0
             self.ui.clock_button.clicked.connect(self.start_time)
         elif not self.last_out_time:
+            # FIXME: I think the last_entity, last_task and last_project_name are not getting reset by
+            #       the update process, thus, the state button is wrong.
             if self.ui.project_dropdown.currentText() == self.last_project_name\
                     and self.ui.entity_dropdown.currentText() == self.last_entity\
                     and self.ui.task_dropdown.currentText() == self.last_task:
@@ -594,6 +575,17 @@ class time_lord_ui(QtGui.QMainWindow):
         if update:
             self.last_timesheet = update
             print 'UPDATE: %s' % update
+            self.last_project_name = self.last_timesheet['project']['name']
+            self.last_task = self.last_timesheet['entity']['name']
+            self.last_task_id = self.last_timesheet['entity']['id']
+            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
+                                                           self.last_task,
+                                                           self.last_timesheet['entity']['id'],
+                                                           self.last_project_id)
+            if last_entity_details:
+                self.last_entity_type = last_entity_details['entity']['type']
+                self.last_entity_id = last_entity_details['entity']['id']
+                self.last_entity = last_entity_details['entity']['name']
 
     def set_project_list(self):
         # Clear out the projects so that we are not double adding entries.
@@ -620,9 +612,6 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.update_timesheet.emit('Update')
 
         if self.last_timesheet:
-            # FIXME: is the following line redundant?  It looks like this is also set internally
-            #       in the time_lord __init__.  Needs testing.
-            self.time_lord.last_timesheet = self.last_timesheet
             logger.debug('LAST TIMESHEET: %s' % self.last_timesheet)
 
             # Get last start and end times
@@ -632,6 +621,7 @@ class time_lord_ui(QtGui.QMainWindow):
             if not self.last_out_time:
                 # The timesheet is still clocked in.
                 # TODO: Perhaps this is where I check the aint_today() feature to make sure that it's not an old timesheet.
+                # NOTE: isn't there a local self.clocked_in variable?  Need to find that and set it here maybe.
                 self.time_lord.clocked_in = True
                 self.last_project_name = self.last_timesheet['project']['name']
                 last_project_details = None
@@ -648,7 +638,6 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.last_project = '%s' % self.last_project_name
                 self.last_task = self.last_timesheet['entity']['name']
                 self.last_task_id = self.last_timesheet['entity']['id']
-                self.last_timesheet_id = self.last_timesheet['id']
                 last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
                                                                self.last_task,
                                                                self.last_timesheet['entity']['id'],
@@ -657,11 +646,11 @@ class time_lord_ui(QtGui.QMainWindow):
                     self.last_entity_type = last_entity_details['entity']['type']
                     self.last_entity_id = last_entity_details['entity']['id']
                     self.last_entity = last_entity_details['entity']['name']
-                    self.last_project = '%s' % self.last_project_name
+                    # NOTE: Redundant?  Disabling it until I'm sure
+                    # self.last_project = '%s' % self.last_project_name
             else:
                 self.time_lord.clocked_in = False
                 self.last_project_name = self.last_project
-                self.last_timesheet_id = self.last_timesheet['id']
                 find_last_proj_id = sg_data.get_project_details_by_name(self.last_project_name)
                 if find_last_proj_id and 'id' in find_last_proj_id.keys():
                     self.last_project_id = find_last_proj_id['id']
@@ -1253,7 +1242,6 @@ class time_lord_ui(QtGui.QMainWindow):
         #       based on the Timesheet ID#
         #       So, Do I even NEED to check the last_timesheet saved in memory?  I don't think so.
         # Get the values from the UI
-        id = self.ui.timesheet_id.text()
         project = self.ui.project_dropdown.currentText()
         project_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
         entity = self.ui.entity_dropdown.currentText()
