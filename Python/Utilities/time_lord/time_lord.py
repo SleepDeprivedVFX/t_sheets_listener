@@ -105,6 +105,10 @@ user = users.get_user_from_computer()
 # setup shotgun data connection
 sg_data = shotgun_collect.sg_data(sg)
 
+lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
+                                    task_name=config['lunch'])
+print 'lunch_task: %s' % lunch_task
+
 
 # ------------------------------------------------------------------------------------------------------
 # Signal Emitters
@@ -163,9 +167,6 @@ class time_engine(QtCore.QThread):
         second = int(datetime.now().second)
         minute = datetime.now().minute
 
-        lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
-                                            task_name=config['lunch'])
-        print 'lunch_task: %s' % lunch_task
         # get_lunch = tl_time.get_todays_lunch(user=user, lunch_id=int(lunch_task['id']),
         #                                      lunch_proj_id=int(config['admin_proj_id']))
         # print 'get_lunch: %s' % get_lunch
@@ -183,19 +184,19 @@ class time_engine(QtCore.QThread):
 
                 if datetime.now().minute != minute:
                     # TODO: Add lunch subtractors from the daily total
-                    daily_total = tl_time.get_daily_total(user=user)
+                    daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
                     weekly_total = tl_time.get_weekly_total(user=user)
                     minute = datetime.now().minute
-                    get_lunch = tl_time.get_todays_lunch(user=user, lunch_id=int(lunch_task['id']),
-                                                         lunch_proj_id=int(config['admin_proj_id']))
-                    print 'get_lunch: %s' % get_lunch
-                    lunch_duration = 0.0
-                    if get_lunch:
-                        for lunch in get_lunch:
-                            lunch_duration += float(lunch['duration']) / 60
-                        print lunch_duration
-                        if lunch_duration > 0.0:
-                            daily_total -= lunch_duration
+                    # get_lunch = tl_time.get_todays_lunch(user=user, lunch_id=int(lunch_task['id']),
+                    #                                      lunch_proj_id=int(config['admin_proj_id']))
+                    # print 'get_lunch: %s' % get_lunch
+                    # lunch_duration = 0.0
+                    # if get_lunch:
+                    #     for lunch in get_lunch:
+                    #         lunch_duration += float(lunch['duration']) / 60
+                    #     print lunch_duration
+                    #     if lunch_duration > 0.0:
+                    #         daily_total -= lunch_duration
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
                     if weekly_total:
@@ -439,29 +440,29 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.ui_return.connect(self.update_from_timesheet)
 
         # Start the output window by getting the initial values.
-        daily_total = tl_time.get_daily_total(user=user)
+        daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
         weekly_total = tl_time.get_weekly_total(user=user)
 
         # Get the initial timesheet
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
 
-        try:
-            start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
-                               self.last_timesheet['sg_task_start'].time())
-            if self.last_timesheet['sg_task_end']:
-                end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
-                                 self.last_timesheet['sg_task_end'].time())
-            else:
-                end = '%s %s' % (datetime.now().date(), datetime.now().time())
-        except TypeError, e:
-            logger.error('Failed to update the timesheet: %s' % e)
-            start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
-                               self.last_timesheet['sg_task_start'].time())
-            if self.last_timesheet['sg_task_end']:
-                end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
-                                 self.last_timesheet['sg_task_end'].time())
-            else:
-                end = '%s %s' % (datetime.now().date(), datetime.now().time())
+        # try:
+        start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+                           self.last_timesheet['sg_task_start'].time())
+        if self.last_timesheet['sg_task_end']:
+            end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+                             self.last_timesheet['sg_task_end'].time())
+        else:
+            end = '%s %s' % (datetime.now().date(), datetime.now().time())
+        # except TypeError, e:
+        #     logger.error('Failed to update the timesheet: %s' % e)
+        #     start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+        #                        self.last_timesheet['sg_task_start'].time())
+        #     if self.last_timesheet['sg_task_end']:
+        #         end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+        #                          self.last_timesheet['sg_task_end'].time())
+        #     else:
+        #         end = '%s %s' % (datetime.now().date(), datetime.now().time())
 
         # Take the initial values and set their outputs.
         # NOTE: This may be a good reference for the updater!
@@ -545,6 +546,10 @@ class time_lord_ui(QtGui.QMainWindow):
         # Start making sure the correct thing is the active clock
         # ------------------------------------------------------------------------------------------------------------
         logger.debug('Getting entities for project %s' % self.last_project)
+        print 'line 549: self.last_project: %s' % self.last_project
+        if not self.last_project_name:
+            self.last_project_name = self.last_timesheet['project']['name']
+
         if not self.ui.project_dropdown.currentText() == 'Select Project':
             proj_name = str(self.last_project)
             logger.debug('proj_name = %s' % proj_name)
@@ -555,14 +560,20 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # set button state
         if self.last_out_time:
+            print 'self.last_out_time: %s' % self.last_out_time
             state = 0
             self.ui.clock_button.clicked.connect(self.start_time)
         elif not self.last_out_time:
             if self.ui.project_dropdown.currentText() == self.last_project_name\
                     and self.ui.entity_dropdown.currentText() == self.last_entity\
                     and self.ui.task_dropdown.currentText() == self.last_task:
+                print 'self.last_project_name: %s | self.last_entity: %s | self.last_task: %s' % \
+                      (self.last_project_name, self.last_entity, self.last_task)
                 state = 1
             else:
+                print 'The state thinks it is changed.'
+                print 'self.last_project_name: %s | self.last_entity: %s | self.last_task: %s' % \
+                      (self.last_project_name, self.last_entity, self.last_task)
                 state = 2
             self.ui.clock_button.clicked.connect(self.stop_time)
         self.clock_in_button_state(state)
@@ -761,23 +772,27 @@ class time_lord_ui(QtGui.QMainWindow):
             pass
         self.ui.clock_button.clicked.connect(self.start_time)
         self.time_lord.time_signal.clock_state.emit(0)
-        daily_total = tl_time.get_daily_total(user=user)
+        daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
         weekly_total = tl_time.get_weekly_total(user=user)
         tl_time.clock_out_time_sheet(timesheet=self.last_timesheet, clock_out=datetime.now())
         self.time_lord.time_signal.lower_output.emit('You have clocked out!')
         # self.last_timesheet = tl_time.get_last_timesheet(user=user)
         # self.timesheet_update.time_signal.ui_update.emit('Update!')
-        self.time_lord.time_signal.ui_update.emit()
+        # self.time_lord.time_signal.ui_update.emit()
 
         ts_start = self.last_timesheet['sg_task_start']
         start_date = ts_start.strftime('%m-%d-%y')
         self.time_lord.time_signal.in_date.emit(start_date)
-        start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
-                           self.last_timesheet['sg_task_start'].time())
-        end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
-                         self.last_timesheet['sg_task_end'].time())
+        try:
+            start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
+                               self.last_timesheet['sg_task_start'].time())
+            end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
+                             self.last_timesheet['sg_task_end'].time())
+            self.time_lord.set_start_end_output(start=start, end=end)
+        except AttributeError, e:
+            logger.error('Couldn\'t update the start and end times! %s' % e)
+            print 'Couldn\'t update the start and end times! %s' % e
         self.time_lord.set_trt_output(trt='00:00:00')
-        self.time_lord.set_start_end_output(start=start, end=end)
         self.time_lord.set_user_output(user=user)
         self.time_lord.set_daily_output(daily=daily_total)
         self.time_lord.set_weekly_output(weekly=weekly_total)
@@ -825,11 +840,13 @@ class time_lord_ui(QtGui.QMainWindow):
         start_time = self.get_user_start_time()
         if not start_time:
             start_time = datetime.now()
+
         tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
         self.set_last_timesheet()
         self.time_lord.set_user_output(user=user)
 
     def selection_check(self):
+        # Sets the Status Lights and adds Error Messages to the output monitor
         if self.ui.project_dropdown.currentText() == 'Select Project' or self.ui.project_dropdown.currentIndex() == 0:
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
@@ -991,6 +1008,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :param message: (int) 0 = clocked out, 1 = clocked in, 2 = clock switch
         :return:
         '''
+        print 'clock_in_button_state message: %s' % message
         # A value of None for message means that there is not clock-out time and the sheet is still active.
         self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
                                            'clock_button_%i.png);'
@@ -1174,7 +1192,7 @@ class time_lord_ui(QtGui.QMainWindow):
         if not self.time_lord.clocked_in:
             # self.last_timesheet = tl_time.get_last_timesheet(user=user)
             # self.timesheet_update.time_signal.ui_update.emit('Update!')
-            self.time_lord.time_signal.ui_update.emit()
+            # self.time_lord.time_signal.ui_update.emit()
             try:
                 end_time = self.last_timesheet['sg_task_end']
                 # NOTE: This is currently partially detecting that the thing is clocked out outside of the UI
@@ -1263,7 +1281,6 @@ class time_lord_ui(QtGui.QMainWindow):
             proj_id = message['project_id']
             entity = message['entity']
             entity_id = message['entity_id']
-            timesheet_id = message['timesheet_id']
 
             proj_index = self.ui.project_dropdown.findText(proj)
 
@@ -1281,8 +1298,6 @@ class time_lord_ui(QtGui.QMainWindow):
             if task_index >= 0:
                 logger.debug('Updating Tasks...')
                 self.ui.task_dropdown.setCurrentIndex(task_index)
-
-            self.ui.timesheet_id.setText(str(timesheet_id))
 
             # Send a signal to update the local timesheet.
             # self.timesheet_update.time_signal.update_timesheet.emit('Update')

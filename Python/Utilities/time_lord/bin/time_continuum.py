@@ -264,7 +264,7 @@ class continuum(object):
                 self.logger.error('Yeah, the shit hit the fan: %s' % e)
         return running_time
 
-    def get_daily_total(self, user=None):
+    def get_daily_total(self, user=None, lunch_id=None, break_id=None):
         '''
         This method will search all of the timesheets for a given user, for a given day, and total up the hours.
         :param user: (dict) The main user data
@@ -284,6 +284,14 @@ class continuum(object):
                     ]
                 }
             ]
+            if lunch_id:
+                filters.append(
+                    ['entity', 'is_not', {'type': 'Task', 'id': lunch_id}]
+                )
+            if break_id:
+                filters.append(
+                    ['entity', 'is_not', {'type': 'Task', 'id': break_id}]
+                )
             fields = [
                 'user',
                 'duration',
