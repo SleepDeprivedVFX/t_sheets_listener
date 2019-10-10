@@ -8,6 +8,11 @@ import os
 
 
 def get_configuration():
+    '''
+    TODO: Eventually set this up to allow a shotgun page override of CFG file values.
+            i.e. Variables on Shotgun that override the settings below if they exist.
+    :return:
+    '''
     sys_path = sys.path
     config_file = 'tardis_config.cfg'
     try:

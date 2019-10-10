@@ -370,6 +370,15 @@ class time_lord(QtCore.QThread):
 
 class time_lord_ui(QtGui.QMainWindow):
     def __init__(self):
+        '''
+        NOTE:
+            I think I need to remove all of the internal calls to databases, and force everything
+            to happen through signals and slots.  No processing should be done in the UI, only
+            updates.  I also need to make sure that each part of the UI is only driven by one
+            main process.  I think I have a few redundant processes running within the system,
+            or rather, doubled up, but slightly different processes.  This may take a bit of a re-write.
+            Too bad it's so confusing to go through this mess.
+        '''
         super(time_lord_ui, self).__init__(parent=None)
 
         # --------------------------------------------------------------------------------------------------------
@@ -435,7 +444,10 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.update_clock.connect(self.update_from_ui)
         self.time_lord.time_signal.ui_return.connect(self.update_from_timesheet)
 
+        # FIXME: Almost everything below this line probably needs to be set outside of the __init__ by
+        #       proper functions that always do the following tasks.
         # Start the output window by getting the initial values.
+        # FIXME: THIS IS MAKING A DIRECT CALL!  Convert to Signals!
         daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
         # TODO: Probably add lunch and break ids to the weekly total to remove those as well.
         weekly_total = tl_time.get_weekly_total(user=user)
