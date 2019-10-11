@@ -14,18 +14,22 @@ class sg_data(object):
 
     def get_active_projects(self):
         self.logger.info('Getting active projects')
-        filters = [
-            ['sg_status', 'is', 'Active']
-        ]
-        fields = [
-            'name',
-            'tank_name',
-            'code'
-        ]
-        active_projects = self.sg.find('Project', filters, fields, order=[{'field_name': 'name',
-                                                                           'direction': 'asc'}])
-        self.logger.info('Projects collected!')
-        self.logger.debug('Project List: %s' % active_projects)
+        try:
+            filters = [
+                ['sg_status', 'is', 'Active']
+            ]
+            fields = [
+                'name',
+                'tank_name',
+                'code'
+            ]
+            active_projects = self.sg.find('Project', filters, fields, order=[{'field_name': 'name',
+                                                                               'direction': 'asc'}])
+            self.logger.info('Projects collected!')
+            self.logger.debug('Project List: %s' % active_projects)
+        except AttributeError, e:
+            self.logger.error('Failed to get projects.  Trying again...')
+            active_projects = self.get_active_projects()
         return active_projects
 
     def get_project_assets(self, proj_id=None):

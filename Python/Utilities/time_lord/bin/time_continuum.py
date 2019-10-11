@@ -270,8 +270,6 @@ class continuum(object):
         :param user: (dict) The main user data
         :return: A total daily hours number
         '''
-        # TODO: Add a lunch subtraction feature, so that it doesn't get added to the total
-        #       Really just needs the lunch task ID and add it as an 'is_not' to the query.
         total_duration = 0.0
         if user:
             filters = [

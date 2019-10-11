@@ -122,7 +122,7 @@ class time_signals(QtCore.QObject):
     # End Thread Signals
     kill_signal = QtCore.Signal(bool)
 
-    # Time Signals
+    # Time Signals / Clock Faces
     main_clock = QtCore.Signal(tuple)
     in_clock = QtCore.Signal(tuple)
     out_clock = QtCore.Signal(tuple)
@@ -156,11 +156,17 @@ class time_signals(QtCore.QObject):
 
     # Timesheet Action Signals
     clock_out_user = QtCore.Signal(dict)
-    clock_in_user = QtCore.Signal(str)
+    clock_in_user = QtCore.Signal(tuple)
+    user_has_clocked_in = QtCore.Signal(dict)
+    set_last_timesheet = QtCore.Signal(dict)
 
     # UI Setting Signals
     req_project_list = QtCore.Signal(str)
     set_project_list = QtCore.Signal(dict)
+    req_entity_list = QtCore.Signal(int)
+    set_entity_list = QtCore.Signal(tuple)
+    req_task_list = QtCore.Signal(dict)
+    set_task_list = QtCore.Signal(dict)
     req_daily_total = QtCore.Signal(str)
     set_daily_total = QtCore.Signal(float)
     req_weekly_total = QtCore.Signal(str)
@@ -207,20 +213,9 @@ class time_engine(QtCore.QThread):
                 self.time_signal.out_clock.emit(time)
 
                 if datetime.now().minute != minute:
-                    # TODO: Add lunch subtractors from the daily total
                     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
                     weekly_total = tl_time.get_weekly_total(user=user)
                     minute = datetime.now().minute
-                    # get_lunch = tl_time.get_todays_lunch(user=user, lunch_id=int(lunch_task['id']),
-                    #                                      lunch_proj_id=int(config['admin_proj_id']))
-                    # print 'get_lunch: %s' % get_lunch
-                    # lunch_duration = 0.0
-                    # if get_lunch:
-                    #     for lunch in get_lunch:
-                    #         lunch_duration += float(lunch['duration']) / 60
-                    #     print lunch_duration
-                    #     if lunch_duration > 0.0:
-                    #         daily_total -= lunch_duration
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
                     if weekly_total:
@@ -251,10 +246,13 @@ class time_lord(QtCore.QThread):
         self.time_signal.req_project_list.connect(self.get_active_projects)
         self.time_signal.req_daily_total.connect(self.set_daily_total)
         self.time_signal.req_weekly_total.connect(self.set_weekly_total)
+        self.time_signal.req_entity_list.connect(self.get_entities)
+        self.time_signal.req_task_list.connect(self.get_tasks)
 
         # Action Signals
         self.time_signal.clock_out_user.connect(self.clock_out_user)
         self.time_signal.clock_in_user.connect(self.clock_in_user)
+        self.time_signal.set_last_timesheet.connect(self.set_last_timesheet)
 
     def kill(self):
         self.kill_it = True
@@ -294,6 +292,7 @@ class time_lord(QtCore.QThread):
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
                     running_time = rt['rt']
                     # Here we take the running time and emit it to the display.
+                    # QUERY: Should this move to the time_engine?
                     self.time_signal.running_clock.emit(running_time)
                     trt = '%s:%s:%s' % (rt['h'], rt['m'], rt['s'])
                     # Set the running time in the UI
@@ -448,12 +447,48 @@ class time_lord(QtCore.QThread):
             self.time_lord.set_daily_output(daily=daily_total)
             self.time_lord.set_weekly_output(weekly=weekly_total)
 
-    def clock_in_user(self):
+    def clock_in_user(self, data=None):
         '''
         This may need some addition inputs, but for now... nothing.
         :return:
         '''
-        pass
+        if data:
+            self.clocked_in = True
+            context = data[0]
+            start_time = data[1]
+            timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
+            self.set_user_output(user=user)
+            self.time_signal.user_has_clocked_in.emit(timesheet)
+
+    def get_entities(self, entity_id=None):
+        print 'get_entities activated: entity id: %s' % entity_id
+        if entity_id:
+            asset_entities = sg_data.get_project_assets(proj_id=entity_id)
+            logger.debug('Assets collected: %s' % asset_entities)
+            shot_entities = sg_data.get_project_shots(proj_id=entity_id)
+            logger.debug('Shots Collected: %s' % shot_entities)
+            entities = asset_entities + shot_entities
+            last_timesheet = tl_time.get_last_timesheet(user=user)
+            self.time_signal.set_entity_list.emit((last_timesheet, entities))
+            print 'get_entities: %s' % entities
+
+    def get_tasks(self, context=None):
+        print 'get_tasks activated: %s' % context
+        if context:
+            entity_id = context['entity_id']
+            entity_name = context['entity_name']
+            proj_id = context['proj_id']
+            tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
+            if tasks:
+                self.time_signal.set_task_list.emit(tasks)
+                print 'Tasks emitted: %s' % tasks
+
+    def set_last_timesheet(self, message=None):
+        if message:
+            timesheet = tl_time.get_last_timesheet(user=user)
+            self.time_signal.send_timesheet.emit(timesheet)
+            time.sleep(0.1)
+            self.time_signal.user_has_clocked_in.emit(timesheet)
 
 
 class time_lord_ui(QtGui.QMainWindow):
@@ -501,7 +536,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.start()
 
         # Run the set_last_timesheet to populate the variables with the last timesheet for a given user.
-        self.set_last_timesheet()
+        # self.set_last_timesheet()
+        self.time_lord.time_signal.update_timesheet.emit('Update')
 
         # --------------------------------------------------------------------------------------------------------
         # Setup UI
@@ -531,12 +567,38 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.update_clock.connect(self.update_from_ui)
         self.time_lord.time_signal.ui_return.connect(self.update_from_timesheet)
         self.time_lord.time_signal.set_project_list.connect(self.set_project_list)
+        self.time_lord.time_signal.set_entity_list.connect(self.update_entities)
+        self.time_lord.time_signal.set_task_list.connect(self.update_tasks)
+        self.time_lord.time_signal.user_has_clocked_in.connect(self.set_last_timesheet)
 
         # Start up UI
         self.time_lord.time_signal.req_project_list.emit('Update Projects!')
-        # self.start_up_ui()
+        # First update the Entities: Assets and Shots
+        self.ui.project_dropdown.currentIndexChanged.connect(self.update_entities)
+        # Then change the button color to Yellow, Red or Green
+        self.ui.project_dropdown.currentIndexChanged.connect(self.switch_state)
+        # Change the selection highlight to none
+        self.ui.project_dropdown.setFocus()
 
-    # def start_up_ui(self):
+        proj_index = self.ui.project_dropdown.currentIndex()
+        self.time_lord.time_signal.req_entity_list.emit(self.ui.project_dropdown.itemData(proj_index))
+        # Then connect the Entity drop-down to an on-change event
+        self.ui.entity_dropdown.currentIndexChanged.connect(self.update_tasks)
+        self.ui.entity_dropdown.currentIndexChanged.connect(self.switch_state)
+
+        entity_index = self.ui.entity_dropdown.currentIndex()
+        entity_id = self.ui.entity_dropdown.itemData(entity_index)
+        entity_name = self.ui.entity_dropdown.currentText()
+
+        self.last_saved_task = self.last_timesheet['entity']['name']
+        context = {
+            'entity_id': entity_id,
+            'entity_name': entity_name,
+            'proj_id': self.ui.project_dropdown.itemData(proj_index)
+        }
+        self.time_lord.time_signal.req_task_list.emit(context)
+
+
     #     # FIXME: Almost everything below this line probably needs to be set outside of the __init__ by
     #     #       proper functions that always do the following tasks.
     #     # Start the output window by getting the initial values.
@@ -548,9 +610,9 @@ class time_lord_ui(QtGui.QMainWindow):
     #     # Get the initial timesheet
     #     # This is needed because the threaded portion hasn't had a chance to update itself by this time.
     #     # FIXME: DIRECT CALL!!
-    #     self.last_timesheet = tl_time.get_last_timesheet(user=user)
     #     # Setting the last_in_time and last_out_time because the values are not getting properly set in the
     #     # set_last_timesheet() call.
+        # FIXME: This should all be done in the engine and then emitted to the setter as a string.
     #     self.last_in_time = self.last_timesheet['sg_task_start']
     #     self.last_out_time = self.last_timesheet['sg_task_end']
     #
@@ -563,70 +625,72 @@ class time_lord_ui(QtGui.QMainWindow):
     #         end = '%s %s' % (datetime.now().date(), datetime.now().time())
     #
     #     # Take the initial values and set their outputs.
-    #     # NOTE: This may be a good reference for the updater!
-    #     # QUERY: Does this do anything?  It's not being emitted, just "set". Does that work?
-    #     self.time_lord.set_trt_output(trt='00:00:00')
+    # #     # NOTE: This may be a good reference for the updater!
+    # #     # QUERY: Does this do anything?  It's not being emitted, just "set". Does that work?
     #     self.time_lord.set_start_end_output(start=start, end=end)
-    #     self.time_lord.set_user_output(user=user)
-    #     self.time_lord.set_daily_output(daily=daily_total)
-    #     self.time_lord.set_weekly_output(weekly=weekly_total)
+
+        self.time_lord.set_trt_output(trt='00:00:00')
+        self.time_lord.set_user_output(user=user)
+
+        # self.time_lord.set_daily_output(daily=daily_total)
+        # self.time_lord.set_weekly_output(weekly=weekly_total)
     #
-    #     # Set state buttons (The error and steady red and green lights.)
-    #     if self.time_lord.error_state:
-    #         self.error_state(True)
-    #     else:
-    #         self.error_state(False)
+        # Set state buttons (The error and steady red and green lights.)
+        if self.time_lord.error_state:
+            self.error_state(True)
+        else:
+            self.error_state(False)
+
+        if self.time_lord.steady_state:
+            self.steady_state(True)
+        else:
+            self.steady_state(False)
     #
-    #     if self.time_lord.steady_state:
-    #         self.steady_state(True)
-    #     else:
-    #         self.steady_state(False)
-    #
-    #     # Set the rollers
-    #     now = datetime.now()
-    #     d = now.strftime('%m-%d-%y')
-    #     self.set_start_date_rollers(d=d)
-    #     self.set_end_date_rollers(d=d)
-    #
-    #     # Set main user info
-    #     self.ui.artist_label.setText(user['name'])
+        # Set the rollers
+        now = datetime.now()
+        d = now.strftime('%m-%d-%y')
+        self.set_start_date_rollers(d=d)
+        self.set_end_date_rollers(d=d)
+
+        # Set main user info
+        self.ui.artist_label.setText(user['name'])
     #
     #     # ------------------------------------------------------------------------------------------------------------
     #     # Set the project list.
     #     # ------------------------------------------------------------------------------------------------------------
     #     self.set_project_list()
     #
-    #     # Connect the project drop-down to an on-change event.
-    #     # First update the Entities: Assets and Shots
-    #     self.ui.project_dropdown.currentIndexChanged.connect(self.update_entities)
-    #     # Then change the button color to Yellow, Red or Green
-    #     self.ui.project_dropdown.currentIndexChanged.connect(self.switch_state)
+        # # Connect the project drop-down to an on-change event.
+        # # First update the Entities: Assets and Shots
+        # self.ui.project_dropdown.currentIndexChanged.connect(self.update_entities)
+        # # Then change the button color to Yellow, Red or Green
+        # self.ui.project_dropdown.currentIndexChanged.connect(self.switch_state)
     #
-    #     # Change the selection highlight to none
-    #     self.ui.project_dropdown.setFocus()
+        # # Change the selection highlight to none
+        # self.ui.project_dropdown.setFocus()
+        #
+        # # Then run it for the first time.
+        # self.update_entities()
+        # # Now check that the last or currently clocked-in entity is selected
+        # entity_index = self.ui.entity_dropdown.findText(self.last_entity)
+        # if entity_index >= 0:
+        #     logger.debug('Setting Entity to the last project clocked into...')
+        #     self.ui.entity_dropdown.setCurrentIndex(entity_index)
     #
-    #     # Then run it for the first time.
-    #     self.update_entities()
-    #     # Now check that the last or currently clocked-in entity is selected
-    #     entity_index = self.ui.entity_dropdown.findText(self.last_entity)
-    #     if entity_index >= 0:
-    #         logger.debug('Setting Entity to the last project clocked into...')
-    #         self.ui.entity_dropdown.setCurrentIndex(entity_index)
+        # # Run the task check for the first time
+        # self.update_tasks()
+        # # Then connect the Entity drop-down to an on-change event
+        # self.ui.entity_dropdown.currentIndexChanged.connect(self.update_tasks)
+        # self.ui.entity_dropdown.currentIndexChanged.connect(self.switch_state)
     #
-    #     # Run the task check for the first time
-    #     self.update_tasks()
-    #     # Then connect the Entity drop-down to an on-change event
-    #     self.ui.entity_dropdown.currentIndexChanged.connect(self.update_tasks)
-    #     self.ui.entity_dropdown.currentIndexChanged.connect(self.switch_state)
-    #
-    #     # Now check that the last task is selected
-    #     task_index = self.ui.task_dropdown.findText(self.last_task)
-    #     if task_index >= 0:
-    #         logger.debug('Setting the task to the last clocked into...')
-    #         self.ui.task_dropdown.setCurrentIndex(task_index)
-    #
-    #     # Lastly, connect the Task to an on-change event
-    #     self.ui.task_dropdown.currentIndexChanged.connect(self.switch_state)
+        # # Now check that the last task is selected
+        # task_index = self.ui.task_dropdown.findText(self.last_task)
+        # if task_index >= 0:
+        #     logger.debug('Setting the task to the last clocked into...')
+        #     self.ui.task_dropdown.setCurrentIndex(task_index)
+        #
+        # # Lastly, connect the Task to an on-change event
+        # self.ui.task_dropdown.currentIndexChanged.connect(self.switch_state)
     #
     #     # ------------------------------------------------------------------------------------------------------------
     #     # Start making sure the correct thing is the active clock
@@ -685,6 +749,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.last_project_name = self.last_timesheet['project']['name']
             self.last_saved_task = self.last_timesheet['entity']['name']
             self.last_task_id = self.last_timesheet['entity']['id']
+            # NOTE: DIRECT CALL but I might leave it.
             last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
                                                            self.last_saved_task,
                                                            self.last_timesheet['entity']['id'],
@@ -711,12 +776,15 @@ class time_lord_ui(QtGui.QMainWindow):
             logger.debug('Setting project to last project listed.')
             self.ui.project_dropdown.setCurrentIndex(proj_index)
 
-    def set_last_timesheet(self):
+        # Connect the project drop-down to an on-change event.
+
+    def set_last_timesheet(self, timesheet=None):
         # --------------------------------------------------------------------------------------------------------
         # Find a current time-sheet and use it for defaults or, use the last saved information
         # --------------------------------------------------------------------------------------------------------
         # Get the last timesheet
-        self.time_lord.time_signal.update_timesheet.emit('Update')
+        if timesheet:
+            self.last_timesheet = timesheet
 
         if self.last_timesheet:
             logger.debug('LAST TIMESHEET: %s' % self.last_timesheet)
@@ -854,10 +922,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.clock_in()
             self.time_lord.start()
 
-    def clock_out(self, message=None):
-        # print 'Clocking out...'
-        # if not self.selection_check():
-        #     return False
+    def clock_out(self):
         try:
             self.ui.clock_button.clicked.disconnect(self.stop_time)
         except:
@@ -870,60 +935,37 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.clock_state.emit(0)
         self.time_lord.time_signal.req_daily_total.emit('Update!')
         self.time_lord.time_signal.req_weekly_total.emit('Update!')
-        # daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
-        # weekly_total = tl_time.get_weekly_total(user=user)
         self.time_lord.time_signal.clock_out_user.emit(self.last_timesheet)
-        # tl_time.clock_out_time_sheet(timesheet=self.last_timesheet, clock_out=datetime.now())
-        # self.time_lord.time_signal.lower_output.emit('You have clocked out!')
-        # self.last_timesheet = tl_time.get_last_timesheet(user=user)
-        # self.timesheet_update.time_signal.ui_update.emit('Update!')
-        # self.time_lord.time_signal.ui_update.emit()
-
-        # QUERY: The next few lines seem a bit like a process.  Perhaps it should be run from the time_lord
-        # ts_start = self.last_timesheet['sg_task_start']
-        # start_date = ts_start.strftime('%m-%d-%y')
-        # self.time_lord.time_signal.in_date.emit(start_date)
-        # try:
-        #     start = '%s %s' % (self.last_timesheet['sg_task_start'].date(),
-        #                        self.last_timesheet['sg_task_start'].time())
-        #     end = '%s %s' % (self.last_timesheet['sg_task_end'].date(),
-        #                      self.last_timesheet['sg_task_end'].time())
-        #     self.time_lord.set_start_end_output(start=start, end=end)
-        # except AttributeError, e:
-        #     logger.error('Couldn\'t update the start and end times! %s' % e)
-        #     print 'Couldn\'t update the start and end times! %s' % e
-        # # FIXME: The following should be set using the above (currently non-existent) emitter.
-        # self.time_lord.set_trt_output(trt='00:00:00')
-        # self.time_lord.set_user_output(user=user)
-        # self.time_lord.set_daily_output(daily=daily_total)
-        # self.time_lord.set_weekly_output(weekly=weekly_total)
 
     def clock_in(self, message=None):
-        # print 'Clocking in...'
-        self.time_lord.clocked_in = True
+        # Check to see if the UI settings are valid for a new timesheet.
         if not self.selection_check():
+            # The settings are invalid.  Kick it back.
             return False
         try:
+            # Disconnect the start time action
             self.ui.clock_button.clicked.disconnect(self.start_time)
         except:
             pass
         try:
+            # Disconnect the switch time action
             self.ui.clock_button.clicked.disconnect(self.switch_time)
         except:
             pass
+
+        # Connect the Stop Time action.
         self.ui.clock_button.clicked.connect(self.stop_time)
-        # self.time_lord.last_timesheet = tl_time.get_last_timesheet(user=user)
+        # Emit the Steady State green light signal, and update the output monitor.
         self.time_lord.time_signal.clock_state.emit(1)
+        # TODO: Turn the lower_output into a stream handler.
         self.time_lord.time_signal.lower_output.emit('New Timesheet created!')
 
         # Create context
         project_selection = self.ui.project_dropdown.currentText()
-        project_details = sg_data.get_project_details_by_name(proj_name=project_selection)
-        project_id = project_details['id']
+        project_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
         project_name = project_selection
-        entity_id = sg_data.get_entity_id(proj_id=project_id, entity_name=self.ui.entity_dropdown.currentText())
-        task_id = sg_data.get_task_id(entity_id=entity_id, task_name=self.ui.task_dropdown.currentText(),
-                                      entity_name=self.ui.entity_dropdown.currentText(), proj_id=project_id)
+        entity_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
+        task_id = self.ui.task_dropdown.itemData(self.ui.task_dropdown.currentIndex())
         context = {
             'Project': {
                 'id': project_id,
@@ -938,13 +980,15 @@ class time_lord_ui(QtGui.QMainWindow):
                 'code': self.ui.entity_dropdown.currentText()
             }
         }
+
+        # NOTE: This is a future feature that currently does nothing
         start_time = self.get_user_start_time()
+        # Set the start time
         if not start_time:
             start_time = datetime.now()
 
-        tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
-        self.set_last_timesheet()
-        self.time_lord.set_user_output(user=user)
+        data = (context, start_time)
+        self.time_lord.time_signal.clock_in_user.emit(data)
 
     def selection_check(self):
         # Sets the Status Lights and adds Error Messages to the output monitor
@@ -977,44 +1021,46 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.steady_state.emit(True)
         return True
 
-    def update_entities(self, message=None):
+    def request_entities(self, message=None):
         selected_proj = self.ui.project_dropdown.currentText()
         logger.debug('selected project is %s' % selected_proj)
-        project = sg_data.get_project_details_by_name(proj_name=selected_proj)
+        project_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
 
-        if project:
-            self.last_project_id = project['id']
+        if project_id:
+            self.last_project_id = project_id
             self.time_lord.time_signal.error_state.emit(False)
             self.time_lord.time_signal.steady_state.emit(True)
             # Collect assets and shots.
-            asset_entities = sg_data.get_project_assets(proj_id=project['id'])
-            logger.debug('Assets collected: %s' % asset_entities)
-            shot_entities = sg_data.get_project_shots(proj_id=project['id'])
-            logger.debug('Shots Collected: %s' % shot_entities)
+            # FIXME: DIRECT CONNECTION!
+            self.time_lord.time_signal.req_entity_list.emit(project_id)
+            # asset_entities = sg_data.get_project_assets(proj_id=project['id'])
+            # logger.debug('Assets collected: %s' % asset_entities)
+            # shot_entities = sg_data.get_project_shots(proj_id=project['id'])
+            # logger.debug('Shots Collected: %s' % shot_entities)
 
+    def update_entities(self, data=None):
+        print 'Entities received!  %s' % data[1]
+        if data:
+            last_timesheet = data[0]
+            self.last_timesheet = last_timesheet
+            entities = data[1]
             # Put in the Assets first... Oh!  Use the categories and Sequences?
             self.ui.entity_dropdown.clear()
             self.ui.entity_dropdown.addItem('Select Asset/Shot', 0)
-            for asset in asset_entities:
-                self.ui.entity_dropdown.addItem(asset['code'], asset['id'])
-            for shot in shot_entities:
-                self.ui.entity_dropdown.addItem(shot['code'], shot['id'])
+            for entity in entities:
+                self.ui.entity_dropdown.addItem(entity['code'], entity['id'])
             self.ui.entity_dropdown.update()
         else:
-            self.time_lord.time_signal.lower_output.emit('Project Dump: %s' % project)
+            self.time_lord.time_signal.lower_output.emit('Project Dump: %s' % data)
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
+        entity_index = self.ui.entity_dropdown.findText(self.last_saved_entity)
+        if entity_index >= 0:
+            logger.debug('Setting entity to last saved entity')
+            self.ui.entity_dropdown.setCurrentIndex(entity_index)
 
-    def update_tasks(self):
-        logger.debug('Getting tasks...')
-        # if not self.last_entity_id:
-        # Here is where I will ensure the selection from the UI and retry to get
-        # the entity_id:
-        current_entity = self.ui.entity_dropdown.currentText()
-        self.last_entity_id = sg_data.get_entity_id(proj_id=self.last_project_id,
-                                                    entity_name=current_entity)
-        tasks = sg_data.get_entity_tasks(entity_id=self.last_entity_id, entity_name=current_entity,
-                                         proj_id=self.last_project_id)
+    def update_tasks(self, tasks=None):
+        logger.debug('Setting tasks...')
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task', 0)
@@ -1023,6 +1069,13 @@ class time_lord_ui(QtGui.QMainWindow):
         else:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task', 0)
+        if self.last_saved_task != self.last_timesheet['entity']['name']:
+            self.last_saved_task = self.last_timesheet['entity']['name']
+        task_index = self.ui.task_dropdown.findText(self.last_saved_task)
+        if task_index >= 0:
+            self.ui.task_dropdown.setCurrentIndex(task_index)
+        # Lastly, connect the Task to an on-change event
+        self.ui.task_dropdown.currentIndexChanged.connect(self.switch_state)
 
     def switch_tasks(self):
         logger.debug('Switching tasks...')
@@ -1387,7 +1440,7 @@ class time_lord_ui(QtGui.QMainWindow):
             if proj_index >= 0:
                 logger.debug('Updating project')
                 self.ui.project_dropdown.setCurrentIndex(proj_index)
-            self.update_entities()
+            self.request_entities()
 
             ent_index = self.ui.entity_dropdown.findText(entity)
             if ent_index >= 0:
