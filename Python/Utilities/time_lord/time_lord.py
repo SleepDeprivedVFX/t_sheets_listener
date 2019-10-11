@@ -427,11 +427,8 @@ class time_lord(QtCore.QThread):
             daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
             if daily_total or daily_total >= 0.0:
                 print 'Daily total!: %s' % daily_total
-                self.time_signal.set_daily_total.emit(daily_total)
-                logger.debug('Daily total emited to ')
-            else:
-                print 'No daily total!  %s' % daily_total
-                print 'testing task: %s' % int(lunch_task['id'])
+                self.time_signal.daily_total.emit(daily_total)
+                logger.debug('Daily total emitted')
         return daily_total
 
     def set_weekly_total(self, message=None):
@@ -439,8 +436,9 @@ class time_lord(QtCore.QThread):
         weekly_total = None
         if message:
             weekly_total = tl_time.get_weekly_total(user=user)
-            if weekly_total:
-                self.time_signal.set_weekly_total.emit(weekly_total)
+            if weekly_total or weekly_total >= 0.0:
+                self.time_signal.weekly_total.emit(weekly_total)
+                logger.debug('Weekly total emitted')
         return weekly_total
 
     def clock_out_user(self, last_timesheet=None):
@@ -572,11 +570,13 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.send_timesheet.connect(self.update_last_timesheet)
         self.time_lord.time_signal.user_has_clocked_in.connect(self.set_last_timesheet)
         self.time_lord.time_signal.ui_return.connect(self.update_from_timesheet)
+
         # Clock function signals
         self.time_engine.time_signal.main_clock.connect(self.main_clock)
         self.time_engine.time_signal.in_clock.connect(self.set_in_clock)
         self.time_engine.time_signal.out_clock.connect(self.set_out_clock)
         self.time_lord.time_signal.update_clock.connect(self.update_from_ui)
+
         # Cumulative totals signals
         self.time_engine.time_signal.daily_total.connect(self.set_daily_total_needle)
         self.time_engine.time_signal.weekly_total.connect(self.set_weekly_total_needle)
@@ -584,16 +584,20 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.weekly_output.connect(self.weekly_output)
         self.time_lord.time_signal.trt_output.connect(self.trt_output)
         self.time_lord.time_signal.running_clock.connect(self.set_runtime_clock)
-        self.time_lord.time_signal.set_daily_total.connect(self.set_daily_total_needle)
+        # This set daily total is on demand
+        # self.time_lord.time_signal.set_daily_total.connect(self.set_daily_total_needle)
+
         # In and Out signals
         self.time_lord.time_signal.start_end_output.connect(self.start_end_output)
         self.time_lord.time_signal.in_date.connect(self.set_start_date_rollers)
+
         # Output Monitor Signals & State Buttons
         self.time_lord.time_signal.user_output.connect(self.user_output)
         self.time_lord.time_signal.lower_output.connect(self.lower_output)
         self.time_lord.time_signal.error_state.connect(self.error_state)
         self.time_lord.time_signal.steady_state.connect(self.steady_state)
         self.time_lord.time_signal.clock_state.connect(self.clock_in_button_state)
+
         # Drop Down Signals
         self.time_lord.time_signal.set_project_list.connect(self.set_project_list)
         self.time_lord.time_signal.set_entity_list.connect(self.update_entities)
@@ -673,6 +677,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # self.time_lord.set_daily_output(daily=daily_total)
         # self.time_lord.set_weekly_output(weekly=weekly_total)
         self.time_lord.time_signal.req_daily_total.emit('Update')
+        self.time_lord.time_signal.req_weekly_total.emit('Update')
     #
         # Set state buttons (The error and steady red and green lights.)
         if self.time_lord.error_state:
