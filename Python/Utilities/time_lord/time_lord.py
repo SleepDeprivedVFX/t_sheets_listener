@@ -134,7 +134,6 @@ class time_signals(QtCore.QObject):
     trt_output = QtCore.Signal(str)
     start_end_output = QtCore.Signal(str)
     user_output = QtCore.Signal(str)
-    # QUERY: Redundant? Can all be set with req_daily_total and set_daily_total?
     daily_output = QtCore.Signal(str)
     weekly_output = QtCore.Signal(str)
     lower_output = QtCore.Signal(str)
@@ -145,11 +144,9 @@ class time_signals(QtCore.QObject):
     clock_state = QtCore.Signal(int)
 
     # Calculation Signals
-    # QUERY: Redundant? Can all be set with req_daily_total and set_daily_total?
     daily_total = QtCore.Signal(float)
     weekly_total = QtCore.Signal(float)
     update_clock = QtCore.Signal(str)
-    # QUERY: Can all be set with req_daily_total and set_daily_total?
     req_daily_total = QtCore.Signal(str)
     set_daily_total = QtCore.Signal(float)
     req_weekly_total = QtCore.Signal(str)
@@ -265,6 +262,7 @@ class time_lord(QtCore.QThread):
 
     def run_the_clock(self):
         # Start with getting the current minute and second.
+        self.clocked_in = tl_time.is_user_clocked_in(user=user)
         second = int(datetime.now().second)
         minute = int(datetime.now().minute)
         while self.clocked_in and not self.kill_it:
@@ -290,6 +288,7 @@ class time_lord(QtCore.QThread):
                     minute = int(datetime.now().minute)
 
                 # If the User is listed as "Clocked IN" by the latest timesheet...
+                print 'LORD self.clocked_in: %s' % self.clocked_in
                 if self.clocked_in:
                     # Collect the current running time
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
@@ -317,6 +316,20 @@ class time_lord(QtCore.QThread):
     def set_trt_output(self, trt=None):
         set_message = 'TRT: %s' % trt
         self.time_signal.trt_output.emit(set_message)
+
+    def req_start_end_output(self):
+        last_timesheet = tl_time.get_last_timesheet(user=user)
+        last_in_time = last_timesheet['sg_task_start']
+        last_out_time = last_timesheet['sg_task_end']
+
+        start = '%s %s' % (last_in_time.date(), last_in_time.time())
+        if last_out_time:
+            end = '%s %s' % (last_out_time.date(), last_out_time.time())
+        else:
+            end = '%s %s' % (datetime.now().date(), datetime.now().time())
+
+        # Take the initial values and set their outputs.
+        self.set_start_end_output(start=start, end=end)
 
     def set_start_end_output(self, start=None, end=None):
         set_message = 'Start: %s\nEnd: %s' % (start, end)
@@ -549,8 +562,6 @@ class time_lord_ui(QtGui.QMainWindow):
         # This connects to the two main threads plus the signals
         self.time_lord = time_lord()
         self.time_engine = time_engine()
-        self.time_lord.start()
-        self.time_engine.start()
 
         # Run the set_last_timesheet to populate the variables with the last timesheet for a given user.
         # self.set_last_timesheet()
@@ -632,15 +643,6 @@ class time_lord_ui(QtGui.QMainWindow):
         }
         self.time_lord.time_signal.req_task_list.emit(context)
 
-    #     # FIXME: Almost everything below this line probably needs to be set outside of the __init__ by
-    #     #       proper functions that always do the following tasks.
-    #     # Start the output window by getting the initial values.
-    #
-    #     # Get the initial timesheet
-    #     # This is needed because the threaded portion hasn't had a chance to update itself by this time.
-    #     # FIXME: DIRECT CALL!!
-    #     # Setting the last_in_time and last_out_time because the values are not getting properly set in the
-    #     # set_last_timesheet() call.
         # FIXME: This should all be done in the engine and then emitted to the setter as a string.
     #     self.last_in_time = self.last_timesheet['sg_task_start']
     #     self.last_out_time = self.last_timesheet['sg_task_end']
@@ -662,20 +664,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.set_trt_output(trt='00:00:00')
         self.time_lord.set_user_output(user=user)
 
-    #     # FIXME: THIS IS MAKING A DIRECT CALL!  Convert to Signals!
-    #     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
-    #     # TODO: Probably add lunch and break ids to the weekly total to remove those as well.
-        # NOTE: So, this is all bass-ackwards.  Originally, a call to data was made from the UI (above)
-        #       Then, a signal was emitted (set_daily_output) from the UI below, which in turn emitted a signal back
-        #       to the UI, but only to daily output monitor, not to the needle.
-        #       Here's what this needs to do:
-        #       1. Emit the first signal from here.  This signal will ask for the daily total calculation.
-        #       2. time_lord will process the daily total calculations and emit 1 or 2 signals to the output monitor
-        #          and to the needle.
-        #       3. The ui will then update, and be updated whenever that same signal is emitted.
-    #     weekly_total = tl_time.get_weekly_total(user=user)
-        # self.time_lord.set_daily_output(daily=daily_total)
-        # self.time_lord.set_weekly_output(weekly=weekly_total)
+        # # Set initial daily and weekly totals.
         self.time_lord.time_signal.req_daily_total.emit('Update')
         self.time_lord.time_signal.req_weekly_total.emit('Update')
     #
@@ -781,8 +770,8 @@ class time_lord_ui(QtGui.QMainWindow):
     #     self.time_engine.time_signal.weekly_total.emit(weekly_total)
     #
     #     # if self.time_lord.clocked_in:
-    #     self.time_lord.start()
-    #     self.time_engine.start()
+        self.time_lord.start()
+        self.time_engine.start()
 
     def update_last_timesheet(self, update=None):
         # Receives update commands from the time_lord class and sets the last_ details
