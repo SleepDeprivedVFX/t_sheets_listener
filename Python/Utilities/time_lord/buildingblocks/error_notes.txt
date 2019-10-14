@@ -1,202 +1,74 @@
-Exception in thread Chronograph:
+357: update_ui receives: {'entity_id': 0, 'task': u'Select Task', 'task_id': None, 'entity': u'Select Asset/Shot', 'project': u'Admin', 'project_id': 547, 'id': <built-in function id>}
+288: LORD self.clocked_in: True
+0 18:29:00.627000
+379: Wrong time sheet!!!
+{'type': 'Task', 'id': 21357, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}
+1351: Updating the UI with... {'entity_id': 2780, 'task': 'design.adamb', 'task_id': 21357, 'entity': 'roboLeg', 'project': 'StressTest', 'project_id': 362}
+26
 Traceback (most recent call last):
-  File "C:\Python27_32\lib\threading.py", line 801, in __bootstrap_inner
-    self.run()
-  File "C:\Python27_32\lib\threading.py", line 754, in run
-    self.__target(*self.__args, **self.__kwargs)
-  File "C:/Users/adamb/OneDrive/Documents/Scripts/Python/Utilities/time_lord/tardis.py", line 196, in chronograph
-    if tl_time.is_user_clocked_in(user=user):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 410, in is_user_clocked_in
-    'direction': 'desc'}])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
-    additional_filter_presets=additional_filter_presets)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
-    records = self._call_rpc("read", params).get("entities", [])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
-    self.config.api_path, encoded_payload, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3158, in _make_call
-    return self._http_request(verb, path, body, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3209, in _http_request
-    headers=headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1608, in request
-    (response, content) = self._request(conn, authority, uri, request_uri, method, body, headers, redirections, cachekey)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1350, in _request
-    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1278, in _conn_request
-    raise ServerNotFoundError("Unable to find the server at %s" % conn.host)
-ServerNotFoundError: Unable to find the server at radiowaves.shotgunstudio.com
-
-
-2 __________________________________________________________________________________________________
-
-Exception in thread Chronograph:
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 964, in update_entities
+    last_timesheet = data[0]
+TypeError: 'int' object has no attribute '__getitem__'
+288: LORD self.clocked_in: True
+1087: clock_in_button_state message: 2
+481: get_entities activated: entity id: 362
+({'sg_task_end': None, 'entity': {'type': 'Task', 'id': 21357, 'name': 'design.adamb'}, 'project': {'type': 'Project', 'id': 362, 'name': 'StressTest'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-12', 'type': 'TimeLog', 'id': 681, 'sg_task_start': datetime.datetime(2019, 10, 11, 17, 7, 18, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003DC1128>)}, [{'code': 'Spider', 'type': 'Asset', 'id': 2471}, {'code': 'roboLeg', 'type': 'Asset', 'id': 2780}, {'code': 'Demagorgon', 'type': 'Asset', 'id': 2854}, {'code': 'reference', 'type': 'Asset', 'id': 2879}, {'code': 'Hallway', 'type': 'Asset', 'id': 2923}, {'code': 'eyeBall', 'type': 'Asset', 'id': 2931}, {'code': 'CowMagnet', 'type': 'Asset', 'id': 3196}, {'code': 'HamburgerTrain', 'type': 'Asset', 'id': 3199}, {'code': 'eyeBall_2', 'type': 'Asset', 'id': 5852}, {'code': 'Dog', 'type': 'Asset', 'id': 6187}, {'code': 'STRS101_000_0010', 'type': 'Shot', 'id': 3580}, {'code': 'STRS101_000_0020', 'type': 'Shot', 'id': 3730}, {'code': 'STRS101_000_0030', 'type': 'Shot', 'id': 3731}])
+983: update_tasks(): tasks: -1
 Traceback (most recent call last):
-  File "C:\Python27_32\lib\threading.py", line 801, in __bootstrap_inner
-    self.run()
-  File "C:\Python27_32\lib\threading.py", line 754, in run
-    self.__target(*self.__args, **self.__kwargs)
-  File "C:/Users/adamb/OneDrive/Documents/Scripts/Python/Utilities/time_lord/tardis.py", line 145, in chronograph
-    user_clocked_in = tl_time.is_user_clocked_in(user=user)
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 410, in is_user_clocked_in
-    'direction': 'desc'}])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
-    additional_filter_presets=additional_filter_presets)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
-    records = self._call_rpc("read", params).get("entities", [])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
-    self.config.api_path, encoded_payload, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3158, in _make_call
-    return self._http_request(verb, path, body, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3209, in _http_request
-    headers=headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1608, in request
-    (response, content) = self._request(conn, authority, uri, request_uri, method, body, headers, redirections, cachekey)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1350, in _request
-    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1306, in _conn_request
-    response = conn.getresponse()
-  File "C:\Python27_32\lib\httplib.py", line 1108, in getresponse
-    raise ResponseNotReady()
-ResponseNotReady
-
-3_______________________________________________________________________________________________________________________
+  File "C:\Python27_32\lib\logging\__init__.py", line 861, in emit
+    msg = self.format(record)
+  File "C:\Python27_32\lib\logging\__init__.py", line 734, in format
+    return fmt.format(record)
+  File "C:\Python27_32\lib\logging\__init__.py", line 465, in format
+    record.message = record.getMessage()
+  File "C:\Python27_32\lib\logging\__init__.py", line 329, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Logged from file time_lord.py, line 984
 Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 582, in switch_time
-    self.clock_out()
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 602, in clock_out
-    tl_time.clock_out_time_sheet(timesheet=self.last_timesheet, clock_out=datetime.now())
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 169, in clock_out_time_sheet
-    self.sg.update('TimeLog', timesheet['id'], data)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 1243, in update
-    record = self._call_rpc("update", params)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
-    self.config.api_path, encoded_payload, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3193, in _make_call
-    self._close_connection()
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
-    self._connection.connections.clear()
-AttributeError: 'NoneType' object has no attribute 'connections'
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 988, in update_tasks
+    for task in tasks:
+TypeError: 'int' object is not iterable
+1 18:29:01.435000
+1087: clock_in_button_state message: 2
 Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 1009, in set_out_clock
-    self.last_timesheet = tl_time.get_last_timesheet(user=user)
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 139, in get_last_timesheet
-    last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
-    additional_filter_presets=additional_filter_presets)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
-    records = self._call_rpc("read", params).get("entities", [])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
-    self.config.api_path, encoded_payload, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3193, in _make_call
-    self._close_connection()
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
-    self._connection.connections.clear()
-AttributeError: 'NoneType' object has no attribute 'connections'
-
-4____________________________________________________________________________________________________________________
-
+983: update_tasks(): tasks: 0
+  File "C:\Python27_32\lib\logging\__init__.py", line 861, in emit
+1087: clock_in_button_state message: 2
+    msg = self.format(record)
+  File "C:\Python27_32\lib\logging\__init__.py", line 734, in format
+    return fmt.format(record)
+  File "C:\Python27_32\lib\logging\__init__.py", line 465, in format
+    record.message = record.getMessage()
+  File "C:\Python27_32\lib\logging\__init__.py", line 329, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Logged from file time_lord.py, line 984
+1087: clock_in_button_state message: 2
 Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 1009, in set_out_clock
-    self.last_timesheet = tl_time.get_last_timesheet(user=user)
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 139, in get_last_timesheet
-    last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
-    additional_filter_presets=additional_filter_presets)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
-    records = self._call_rpc("read", params).get("entities", [])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
-    self.config.api_path, encoded_payload, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3193, in _make_call
-    self._close_connection()
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
-    self._connection.connections.clear()
-AttributeError: 'NoneType' object has no attribute 'connections'
-
-
-5__________________________________________________________________________________________________
-
-2
+  File "C:\Python27_32\lib\logging\__init__.py", line 861, in emit
+    msg = self.format(record)
+  File "C:\Python27_32\lib\logging\__init__.py", line 734, in format
+    return fmt.format(record)
+  File "C:\Python27_32\lib\logging\__init__.py", line 465, in format
+    record.message = record.getMessage()
+  File "C:\Python27_32\lib\logging\__init__.py", line 329, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Logged from file time_lord.py, line 984
+983: update_tasks(): tasks: 2
+288: LORD self.clocked_in: True
+1087: clock_in_button_state message: 2
+1087: clock_in_button_state message: 2
 Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 481, in set_last_timesheet
-    last_project_details = sg_data.get_project_details_by_name(self.last_project_name)
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\shotgun_collect.py", line 105, in get_project_details_by_name
-    tryagain = self.sg.find('Project', filters, fields)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 852, in find
-    if len(records) == result["paging_info"]["entity_count"]:
-KeyError: 'paging_info'
-before update: {'sg_task_end': N
-
-
-6 _________________________________________________________________________________________________
-Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 464, in set_last_timesheet
-    self.last_timesheet = tl_time.get_last_timesheet(user=user)
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 139, in get_last_timesheet
-    last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 702, in find_one
-    additional_filter_presets=additional_filter_presets)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 841, in find
-    records = self._call_rpc("read", params).get("entities", [])
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
-    self.config.api_path, encoded_payload, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3193, in _make_call
-    self._close_connection()
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3451, in _close_connection
-    self._connection.connections.clear()
-AttributeError: 'NoneType' object has no attribute 'connections'
-
-7________________________________________________________________________________________________
-Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 473, in set_last_timesheet
-    self.last_out_time = self.last_timesheet['sg_task_end']
-TypeError: 'NoneType' object has no attribute '__getitem__'
-before update: None
-Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 204, in run
-    self.run_the_clock()
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 225, in run_the_clock
-    start_time = self.last_timesheet['sg_task_start']
-TypeError: 'NoneType' object has no attribute '__getitem__'
-
-8_________________________________________________________________________________________________
-Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 155, in run
-    self.chronograph()
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 175, in chronograph
-    weekly_total = tl_time.get_weekly_total(user=user)
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin\time_continuum.py", line 341, in get_weekly_total
-    timesheets = self.sg.find('TimeLog', filters, fields)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 845, in find
-    result = self._call_rpc("read", params)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3017, in _call_rpc
-    self.config.api_path, encoded_payload, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3158, in _make_call
-170
-    return self._http_request(verb, path, body, req_headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\shotgun.py", line 3209, in _http_request
-    headers=headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1608, in request
-    (response, content) = self._request(conn, authority, uri, request_uri, method, body, headers, redirections, cachekey)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1350, in _request
-    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
-  File "C:\Python27_32\lib\site-packages\shotgun_api3\lib\httplib2\__init__.py", line 1306, in _conn_request
-    response = conn.getresponse()
-  File "C:\Python27_32\lib\httplib.py", line 1121, in getresponse
-    response.begin()
-  File "C:\Python27_32\lib\httplib.py", line 438, in begin
-    version, status, reason = self._read_status()
-  File "C:\Python27_32\lib\httplib.py", line 394, in _read_status
-    line = self.fp.readline(_MAXLINE + 1)
-  File "C:\Python27_32\lib\socket.py", line 480, in readline
-    data = self._sock.recv(self._rbufsize)
-  File "C:\Python27_32\lib\ssl.py", line 766, in recv
-    return self.read(buflen)
-  File "C:\Python27_32\lib\ssl.py", line 653, in read
-    v = self._sslobj.read(len)
-ssl.SSLError: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
-
-9________________________________________________________________________________________________
-Traceback (most recent call last):
-  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 487, in set_last_timesheet
-    self.last_project_code = last_project_details['code']
-KeyError: 'code'
+  File "C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\time_lord.py", line 988, in update_tasks
+    for task in tasks:
+TypeError: 'int' object is not iterable
+2 18:29:02.445000
+1087: clock_in_button_state message: 2
+490: get_entities: [{'code': 'Spider', 'type': 'Asset', 'id': 2471}, {'code': 'roboLeg', 'type': 'Asset', 'id': 2780}, {'code': 'Demagorgon', 'type': 'Asset', 'id': 2854}, {'code': 'reference', 'type': 'Asset', 'id': 2879}, {'code': 'Hallway', 'type': 'Asset', 'id': 2923}, {'code': 'eyeBall', 'type': 'Asset', 'id': 2931}, {'code': 'CowMagnet', 'type': 'Asset', 'id': 3196}, {'code': 'HamburgerTrain', 'type': 'Asset', 'id': 3199}, {'code': 'eyeBall_2', 'type': 'Asset', 'id': 5852}, {'code': 'Dog', 'type': 'Asset', 'id': 6187}, {'code': 'STRS101_000_0010', 'type': 'Shot', 'id': 3580}, {'code': 'STRS101_000_0020', 'type': 'Shot', 'id': 3730}, {'code': 'STRS101_000_0030', 'type': 'Shot', 'id': 3731}]
+1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~1378: ~
+1379: IS CLOCKED IN: True
+1380: Testing last timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 21357, 'name': 'design.adamb'}, 'project': {'type': 'Project', 'id': 362, 'name': 'StressTest'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-12', 'type': 'TimeLog', 'id': 681, 'sg_task_start': datetime.datetime(2019, 10, 11, 17, 7, 18, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003DC1128>)}
+1348: Emitted: {'entity_id': 0, 'task': u'Select Task', 'task_id': None, 'entity': u'Select Asset/Shot', 'project': u'Admin', 'project_id': 547, 'id': <built-in function id>}
+288: LORD self.clocked_in: True
