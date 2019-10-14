@@ -107,7 +107,12 @@ sg_data = shotgun_collect.sg_data(sg)
 
 lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])
-print '110: lunch_task: %s' % lunch_task
+
+# -----------------------------------------------------------------------------------------------------
+# Setup WaitConditions and Mutex
+# -----------------------------------------------------------------------------------------------------
+wait_cond = QtCore.QWaitCondition()
+mutex = QtCore.QMutex()
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -142,6 +147,7 @@ class time_signals(QtCore.QObject):
     error_state = QtCore.Signal(bool)
     steady_state = QtCore.Signal(bool)
     clock_state = QtCore.Signal(int)
+    button_state = QtCore.Signal(str)
 
     # Calculation Signals
     daily_total = QtCore.Signal(float)
@@ -261,6 +267,7 @@ class time_lord(QtCore.QThread):
     def run_the_clock(self):
         # Start with getting the current minute and second.
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
+        print '270: self.clocked_in: %s' % self.clocked_in
         second = int(datetime.now().second)
         minute = int(datetime.now().minute)
         while self.clocked_in and not self.kill_it:
@@ -413,6 +420,7 @@ class time_lord(QtCore.QThread):
             print '412: Project List Requested!'
             active_projects = sg_data.get_active_projects()
             if active_projects:
+                wait_cond.wakeAll()
                 self.time_signal.set_project_list.emit(active_projects)
                 self.quick_update()
 
@@ -544,6 +552,8 @@ class time_lord_ui(QtGui.QMainWindow):
         # This connects to the two main threads plus the signals
         self.time_lord = time_lord()
         self.time_engine = time_engine()
+        self.time_lord.start()
+        self.time_engine.start()
 
         # Run the set_last_timesheet to populate the variables with the last timesheet for a given user.
         self.time_lord.time_signal.update_timesheet.emit('Update')
@@ -554,7 +564,6 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
-
         # --------------------------------------------------------------------------------------------------------
         # Signal Connections
         # --------------------------------------------------------------------------------------------------------
@@ -595,10 +604,16 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.set_entity_list.connect(self.update_entities)
         self.time_lord.time_signal.set_task_list.connect(self.update_tasks)
 
+        # Button Signals
+        self.time_lord.time_signal.button_state.connect(self.switch_state)
+
         # ------------------------------------------------------------------------------------------------------
         # Start up UI
         # ------------------------------------------------------------------------------------------------------
         self.time_lord.time_signal.req_project_list.emit('Update Projects!')
+        # mutex.lock()
+        # wait_cond.wait(mutex)
+        # mutex.unlock()
         # First update the Entities: Assets and Shots
         # FIXME: The follwoing line needs to send the timesheet and list of entities as a tuple.  Needs to do something
         #       else with this.
@@ -651,11 +666,11 @@ class time_lord_ui(QtGui.QMainWindow):
         self.set_start_date_rollers(d=d)
         self.set_end_date_rollers(d=d)
 
+        # emit initial button
+        self.time_lord.time_signal.button_state.emit('Update buttons')
+
         # Set main user info
         self.ui.artist_label.setText(user['name'])
-
-        self.time_lord.start()
-        self.time_engine.start()
 
     def update_last_timesheet(self, update=None):
         # Receives update commands from the time_lord class and sets the last_ details
@@ -860,6 +875,7 @@ class time_lord_ui(QtGui.QMainWindow):
         except:
             pass
         self.ui.clock_button.clicked.connect(self.start_time)
+        self.time_lord.clocked_in = False
         self.time_lord.time_signal.clock_state.emit(0)
         self.time_lord.time_signal.req_daily_total.emit('Update!')
         self.time_lord.time_signal.req_weekly_total.emit('Update!')
@@ -995,8 +1011,10 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.entity_dropdown.setCurrentIndex(entity_index)
 
     def update_tasks(self, tasks=None):
-        print '983: update_tasks(): tasks: %s' % tasks
-        logger.debug('Setting tasks...', tasks)
+        # print tasks
+        # print '983: update_tasks(): tasks: ', tasks
+        logger.debug('Setting tasks...')
+        logger.debug(tasks)
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task', 0)
@@ -1015,6 +1033,9 @@ class time_lord_ui(QtGui.QMainWindow):
         self.switch_tasks()
 
     def switch_tasks(self):
+        # QUERY: DO I need have the __init__ call the switch tasks? Or do I use a different method up there?
+        #       The fear is that the last_saved_task might not accurately reflect what's going on, due to signal and
+        #       slot delays.
         logger.debug('Switching tasks...')
         if self.last_saved_task != self.ui.task_dropdown.currentText() and self.time_lord.clocked_in:
             self.time_lord.time_signal.clock_state.emit(2)
@@ -1025,32 +1046,42 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.time_lord.time_signal.clock_state.emit(0)
 
     def switch_state(self):
+        print '1049: Switch state triggered'
         match = True
 
         selected_proj = self.ui.project_dropdown.currentText()
-        project = sg_data.get_project_details_by_name(proj_name=selected_proj)
 
         # Check that the project matches
         if selected_proj != self.last_project_name:
+            print '1056: Last project name does not match.'
             match = False
 
         # I get the entity, because it does not come with last_timesheet data
-        entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.last_saved_task, self.last_task_id,
-                                          self.last_project_id)
+        # FIXME: Direct call.  This might be a good place for a signal wait_cond.
+        entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.last_saved_task,
+                                          self.last_task_id, self.last_project_id)
+        print '1063: entity returns: %s' % entity
         if entity:
             if entity['entity']['name'] != self.ui.entity_dropdown.currentText():
+                print '1066: Battle of Hastings: Entity does not match the current text.'
                 match = False
         elif self.last_saved_entity != self.ui.entity_dropdown.currentText():
+            print '1069: The entity still does not match the dropdown.'
             match = False
 
         if self.last_saved_task != self.ui.task_dropdown.currentText():
+            print '1074: Tasks aren\'t cool.'
             match = False
+        print '1076: Everything\'s cool now.'
 
         if match and self.time_lord.clocked_in:
+            print 'match and timelord clocked in.  Emit 1'
             self.time_lord.time_signal.clock_state.emit(1)
         elif not match and self.time_lord.clocked_in:
+            print 'Not matched and timelord clocked in.  Emit 2'
             self.time_lord.time_signal.clock_state.emit(2)
         elif not self.time_lord.clocked_in:
+            print 'Timelord not clocked in.  Doesn\'t matter if it\'s matched.  Emit 0'
             self.time_lord.time_signal.clock_state.emit(0)
 
     def set_start_datetime_clock(self, start_time=None):
@@ -1100,7 +1131,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :param message: (int) 0 = clocked out, 1 = clocked in, 2 = clock switch
         :return:
         '''
-        print '1087: clock_in_button_state message: %s' % message
+        print '1129: clock_in_button_state message: %s' % message
         # A value of None for message means that there is not clock-out time and the sheet is still active.
         self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
                                            'clock_button_%i.png);'
