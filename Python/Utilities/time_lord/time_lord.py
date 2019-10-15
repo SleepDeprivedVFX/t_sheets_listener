@@ -727,7 +727,8 @@ class time_lord_ui(QtGui.QMainWindow):
 
             if not self.last_out_time:
                 # The timesheet is still clocked in.
-                # TODO: Perhaps this is where I check the aint_today() feature to make sure that it's not an old timesheet.
+                # TODO: Perhaps this is where I check the aint_today() feature to make sure that it's not an old
+                #  timesheet.
                 # NOTE: isn't there a local self.clocked_in variable?  Need to find that and set it here maybe.
                 self.time_lord.clocked_in = True
                 self.last_project_name = self.last_timesheet['project']['name']
@@ -803,7 +804,6 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.day_meter.update()
 
     # def set_daily_total_output(self, total):
-
 
     def set_weekly_total_needle(self, total):
         self.time_lord.set_weekly_output(total)
@@ -1011,6 +1011,8 @@ class time_lord_ui(QtGui.QMainWindow):
     def update_tasks(self, tasks=None):
         logger.debug('Setting tasks...')
         logger.debug(tasks)
+        print '1015: Tasks (next line)'
+        print tasks
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task', 0)
@@ -1073,12 +1075,40 @@ class time_lord_ui(QtGui.QMainWindow):
         if match and self.time_lord.clocked_in:
             logger.debug('match and timelord clocked in.  Emit 1')
             self.time_lord.time_signal.clock_state.emit(1)
+            try:
+                self.ui.clock_button.clicked.disconnect(self.start_time)
+            except:
+                pass
+            try:
+                self.ui.clock_button.clicked.disconnect(self.switch_time)
+            except:
+                pass
+            self.ui.clock_button.clicked.connect(self.stop_time)
         elif not match and self.time_lord.clocked_in:
             logger.debug('Not matched and timelord clocked in.  Emit 2')
             self.time_lord.time_signal.clock_state.emit(2)
+            try:
+                self.ui.clock_button.clicked.disconnect(self.start_time)
+            except:
+                pass
+            try:
+                self.ui.clock_button.clicked.disconnect(self.stop_time)
+            except:
+                pass
+            self.ui.clock_button.clicked.connect(self.switch_time)
         elif not self.time_lord.clocked_in:
             logger.debug('Timelord not clocked in.  Doesn\'t matter if it\'s matched.  Emit 0')
             self.time_lord.time_signal.clock_state.emit(0)
+            try:
+                self.ui.clock_button.clicked.disconnect(self.stop_time)
+            except:
+                pass
+            try:
+                self.ui.clock_button.clicked.disconnect(self.switch_time)
+            except:
+                pass
+            self.ui.clock_button.clicked.connect(self.start_time)
+        self.time_lord.time_signal.set_last_timesheet.emit('Update')
 
     def set_start_datetime_clock(self, start_time=None):
         '''
