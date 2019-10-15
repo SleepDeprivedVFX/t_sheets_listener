@@ -476,7 +476,7 @@ class time_lord(QtCore.QThread):
                 end = '%s %s' % (last_timesheet['sg_task_end'].date(),
                                  last_timesheet['sg_task_end'].time())
                 self.set_start_end_output(start=start, end=end)
-            except AttributeError, e:
+            except (AttributeError, KeyError), e:
                 logger.error('Couldn\'t update the start and end times! %s' % e)
             daily_total = self.set_daily_total('Get')
             weekly_total = self.set_weekly_total('Get')
@@ -484,6 +484,7 @@ class time_lord(QtCore.QThread):
             self.set_user_output(user=user)
             self.set_daily_output(daily=daily_total)
             self.set_weekly_output(weekly=weekly_total)
+            self.time_signal.update_timesheet.emit('Update')
 
     def clock_in_user(self, data=None):
         '''
@@ -724,7 +725,13 @@ class time_lord_ui(QtGui.QMainWindow):
                   'LAST TIMESHEET: %s' % self.last_timesheet)
 
             # Get last start and end times
-            self.last_out_time = self.last_timesheet['sg_task_end']
+            try:
+                self.last_out_time = self.last_timesheet['sg_task_end']
+            except KeyError, e:
+                print(inspect.stack()[0][2]), inspect.stack()[1][2], inspect.stack()[1][3], 'No sg_task_end set. ' \
+                                                                                            'Returned null. Setting ' \
+                                                                                            'to None...'
+                self.last_out_time = None
             self.last_in_time = self.last_timesheet['sg_task_start']
 
             if not self.last_out_time:
@@ -1063,8 +1070,6 @@ class time_lord_ui(QtGui.QMainWindow):
     def update_tasks(self, tasks=None):
         print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Setting tasks...')
         print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  tasks)
-        print '1015: Tasks (next line)'
-        print tasks
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task', 0)
