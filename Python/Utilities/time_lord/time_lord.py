@@ -268,6 +268,7 @@ class time_lord(QtCore.QThread):
         self.run_the_clock()
 
     def run_the_clock(self):
+        # QUERY: Can I move all of this to the time engine, leaving only the functions below?
         # Start with getting the current minute and second.
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
 
