@@ -284,9 +284,10 @@ class time_lord(QtCore.QThread):
                     # Send update to the last_timesheet in the UI
                     new_timesheet = tl_time.get_last_timesheet(user=user)
                     if new_timesheet:
-                        logger.debug('Emitting new timesheet: %s' % new_timesheet)
+                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                              'Emitting new timesheet: %s' % new_timesheet)
                         self.time_signal.send_timesheet.emit(new_timesheet)
-                        logger.debug('Sent...')
+                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], 'Sent...')
 
                     # Send a signal to the Updater which will check that the UI currently matches the database
                     self.time_signal.update_clock.emit('Update')
@@ -298,7 +299,8 @@ class time_lord(QtCore.QThread):
                     minute = int(datetime.now().minute)
 
                 # If the User is listed as "Clocked IN" by the latest timesheet...
-                logger.debug('LORD self.clocked_in: %s' % self.clocked_in)
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                      'LORD self.clocked_in: %s' % self.clocked_in)
                 if self.clocked_in:
                     # Collect the current running time
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
@@ -411,7 +413,7 @@ class time_lord(QtCore.QThread):
                         logger.error('Bad entity: %s' % e)
 
                 else:
-                    logger.debug('Timesheet is copacetic')
+                    print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], 'Timesheet is copacetic')
 
     def quick_update(self):
         '''
@@ -750,7 +752,8 @@ class time_lord_ui(QtGui.QMainWindow):
                         logger.error('Failure!  Passing.  %s' % e)
                     time.sleep(5)
                     tries += 1
-                logger.debug('last_project_details: %s' % last_project_details)
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                      'last_project_details: %s' % last_project_details)
                 self.last_project_id = last_project_details['id']
                 self.last_saved_project = '%s' % self.last_project_name
                 self.last_saved_task = self.last_timesheet['entity']['name']
@@ -994,12 +997,14 @@ class time_lord_ui(QtGui.QMainWindow):
         if active_projects:
             for project in active_projects:
                 self.ui.project_dropdown.addItem('%s' % project['name'], project['id'])
-        logger.debug('Getting default selection from settings.')
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+              'Getting default selection from settings.')
         # Get the index of the last project as listed in the UI
         proj_index = self.ui.project_dropdown.findText(self.last_saved_project)
         # Select the current project.
         if proj_index >= 0:
-            logger.debug('Setting project to last project listed.')
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                  'Setting project to last project listed.')
             self.ui.project_dropdown.setCurrentIndex(proj_index)
 
         # Connect the project drop-down to an on-change event.
@@ -1341,7 +1346,8 @@ class time_lord_ui(QtGui.QMainWindow):
         :return: Running time.
         '''
         if len(t) == 6:
-            logger.debug('Setting the runtime clock to %s' % t)
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                  'Setting the runtime clock to %s' % t)
             self.ui.run_hour_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
                                                'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[0])
             self.ui.run_hour_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'

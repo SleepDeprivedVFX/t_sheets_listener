@@ -14,6 +14,7 @@ import datetime
 import logging
 from dateutil import parser
 from dateutil import relativedelta
+import inspect
 
 
 class continuum(object):
@@ -69,9 +70,10 @@ class continuum(object):
         :param date: a date value
         :return: True or False
         '''
-        self.logger.debug('Date type: %s' % type(date))
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], 'Date type: %s' % type(date))
         if type(date) == datetime or datetime.datetime:
-            self.logger.debug('datetime detected.  Converting date to string...')
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                  'datetime detected.  Converting date to string...')
             date = str(date)
             self.logger.info('Date converted: %s' % date)
         in_date = parser.parse(date).date()
@@ -91,7 +93,8 @@ class continuum(object):
         self.logger.info('Getting the previous work day...')
         if date:
             if type(date) == str:
-                self.logger.debug('String type date detected.  Converting...')
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                      'String type date detected.  Converting...')
                 date = parser.parse(date)
 
             # subtract a day
@@ -151,11 +154,13 @@ class continuum(object):
         self.logger.info('Assuming an end time from the date and configuration...')
         if start_time:
             if type(eod) == str:
-                self.logger.debug('Converting time to datetime type...')
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                      'Converting time to datetime type...')
                 eod = parser.parse(eod).time()
             raw_date = datetime.datetime.date(start_time)
             new_datetime = datetime.datetime.combine(raw_date, eod)
-            self.logger.debug('End date assumed: %s' % new_datetime)
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                  'End date assumed: %s' % new_datetime)
             return new_datetime
 
     def clock_out_time_sheet(self, timesheet=None, clock_out=None):
@@ -167,7 +172,7 @@ class continuum(object):
 
         total = (diff.total_seconds() / 60)
         if timesheet:
-            self.logger.debug('Timesheet: %s' % timesheet)
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], 'Timesheet: %s' % timesheet)
             data = {
                 'sg_task_end': clock_out,
                 'duration': total
@@ -191,7 +196,7 @@ class continuum(object):
             project_id = context['Project']['id']
             task_id = context['Task']['id']
             user_id = user['id']
-            self.logger.debug(context)
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], context)
 
             if start_time and type(start_time) == datetime or datetime.datetime:
                 task_start = start_time
