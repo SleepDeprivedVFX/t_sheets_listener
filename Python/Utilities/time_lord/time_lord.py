@@ -218,6 +218,8 @@ class time_engine(QtCore.QThread):
                 self.time_signal.main_clock.emit(time)
                 self.time_signal.in_clock.emit(time)
                 self.time_signal.out_clock.emit(time)
+                # NOTE: I really probably should put the TRT clock in this mix too. I just don't want it to burden the
+                #       normal flow of clock time with a heavy sg_query.
 
                 if datetime.now().minute != minute:
                     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
@@ -292,6 +294,8 @@ class time_lord(QtCore.QThread):
                         print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                               'Emitting new timesheet: %s' % new_timesheet)
                         self.time_signal.send_timesheet.emit(new_timesheet)
+                        # TEST: Holding for 3 seconds
+                        time.sleep(3)
                         print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                               'Sent...')
 
@@ -305,8 +309,6 @@ class time_lord(QtCore.QThread):
                     minute = int(datetime.now().minute)
 
                 # If the User is listed as "Clocked IN" by the latest timesheet...
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                      'LORD self.clocked_in: %s' % self.clocked_in)
                 if self.clocked_in:
                     # Collect the current running time
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
@@ -1556,4 +1558,3 @@ if __name__ == '__main__':
     splash.finish(window)
     # sys.excepthook()  # TODO: Get this to work.
     sys.exit(app.exec_())
-
