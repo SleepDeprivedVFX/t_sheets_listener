@@ -183,6 +183,35 @@ class time_signals(QtCore.QObject):
     set_task_list = QtCore.Signal(dict)
 
 
+# -------------------------------------------------------------------------------------------------------------------
+# Stream Handler
+# -------------------------------------------------------------------------------------------------------------------
+class time_stream(logging.StreamHandler):
+    """
+    Stream handler for the output window
+    """
+    def emit(self, record):
+        level = record.levelname
+        message = record.message
+        info = QtGui.QColor(130, 231, 130)
+        error = QtGui.QColor(255, 0, 0)
+        debug = QtGui.QColor(10, 10, 10)
+        warning = QtGui.QColor(120, 120, 0)
+        formatter = QtGui.QTextCharFormat()
+        if level == 'ERROR':
+            formatter.setForeground(error)
+        elif level == 'DEBUG':
+            formatter.setForeground(debug)
+        elif level == 'WARNING':
+            formatter.setForeground(warning)
+        else:
+            formatter.setForeground(info)
+        self.edit.setCurrentCharFormat(formatter)
+        self.edit.appendPlainText(message)
+
+# -------------------------------------------------------------------------------------------------------------------
+# Clocks Engine
+# -------------------------------------------------------------------------------------------------------------------
 class time_engine(QtCore.QThread):
     # This bit is trial and error.  It may have to go into the main UI, but my fear is that
     # the process will hang up the UI.
@@ -603,6 +632,14 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+
+        # --------------------------------------------------------------------------------------------------------
+        # Setup Stream Handler
+        # --------------------------------------------------------------------------------------------------------
+        self.time_stream = time_stream()
+        self.time_stream.edit = self.ui.lower_output
+        logger.addHandler(self.time_stream)
+
         # --------------------------------------------------------------------------------------------------------
         # Signal Connections
         # --------------------------------------------------------------------------------------------------------
@@ -715,9 +752,12 @@ class time_lord_ui(QtGui.QMainWindow):
     # Timesheet Data
     # -----------------------------------------------------------------------------------------------------------------
     def update_last_timesheet(self, update=None):
-        # Receives update commands from the time_lord class and sets the last_ details
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-              'Update Received! %s' % update)
+        """
+        This function updates all of the last_* variables that hold the most recent data.  These variables can then be
+        used elsewhere to make sure their own data is up-to-date.
+        :param update: (dict) A timesheet object.
+        :return: None - Saves global variables with new data.
+        """
         if update:
             self.last_timesheet = update
             print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
@@ -726,7 +766,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.last_saved_task = self.last_timesheet['entity']['name']
             self.last_task_id = self.last_timesheet['entity']['id']
             self.last_project_id = self.last_timesheet['project']['id']
-            # NOTE: DIRECT CALL but I might leave it.
+            # NOTE: DIRECT CALL but takes less than a second, so I'm leaving it.
             last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
                                                            self.last_saved_task,
                                                            self.last_timesheet['entity']['id'],
@@ -1373,8 +1413,6 @@ class time_lord_ui(QtGui.QMainWindow):
         :return: Running time.
         '''
         if len(t) == 6:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                  'Setting the runtime clock to %s' % t)
             self.ui.run_hour_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
                                                'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[0])
             self.ui.run_hour_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'

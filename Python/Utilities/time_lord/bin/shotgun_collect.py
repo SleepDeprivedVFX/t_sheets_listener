@@ -29,8 +29,7 @@ class sg_data(object):
             active_projects = self.sg.find('Project', filters, fields, order=[{'field_name': 'name',
                                                                                'direction': 'asc'}])
             self.logger.info('Projects collected!')
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                  'Project List: %s' % active_projects)
+            self.logger.debug('Project List: %s' % active_projects)
         except AttributeError, e:
             self.logger.error('Failed to get projects.  Trying again...')
             active_projects = self.get_active_projects()

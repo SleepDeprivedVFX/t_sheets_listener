@@ -70,13 +70,9 @@ class continuum(object):
         :param date: a date value
         :return: True or False
         '''
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.datetime.now().time().second,
-              'Date type: %s' % type(date))
         if type(date) == datetime or datetime.datetime:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.datetime.now().time().second,
-                  'datetime detected.  Converting date to string...')
             date = str(date)
-            self.logger.info('Date converted: %s' % date)
+            self.logger.debug('Date converted: %s' % date)
         in_date = parser.parse(date).date()
         now_date = datetime.datetime.now().date()
         if in_date != now_date:
@@ -304,6 +300,9 @@ class continuum(object):
                 'sg_task_end'
             ]
             try:
+                # This will get time sheets from "today" and "yesterday" because Shotgun considers anything after 6PM to
+                # be "yesterday".  Thus, the in_calendar_day query has to test for both, or not all records will be
+                # acquired.  Then I can iterate through them to get dates from "today"
                 timesheets = self.sg.find('TimeLog', filters, fields)
             except (AttributeError, Exception), e:
                 self.logger.error('Time sheet failed to acquire: %s' % e)
