@@ -75,7 +75,8 @@ config = configuration.get_configuration()
 log_file = 'psychic_paper.log'
 log_root = os.path.join(sys.path[0], 'logs')
 log_path = os.path.join(log_root, log_file)
-if config['debug_logging'] == 'True' or 'true' or True:
+debug = config['debug_logging']
+if debug == 'True' or debug == 'true' or debug == True:
     level = logging.DEBUG
 else:
     level = logging.INFO
@@ -194,10 +195,13 @@ class time_stream(logging.StreamHandler):
         level = record.levelname
         message = record.message
         info = QtGui.QColor(130, 231, 130)
-        error = QtGui.QColor(255, 0, 0)
-        debug = QtGui.QColor(10, 10, 10)
-        warning = QtGui.QColor(120, 120, 0)
+        error = QtGui.QColor(200, 0, 0)
+        debug = QtGui.QColor(113, 113, 0)
+        warning = QtGui.QColor(218, 145, 0)
         formatter = QtGui.QTextCharFormat()
+        cursor = QtGui.QTextCursor(self.edit.document())
+        cursor.setPosition(0)
+        self.edit.setTextCursor(cursor)
         if level == 'ERROR':
             formatter.setForeground(error)
         elif level == 'DEBUG':
@@ -207,7 +211,7 @@ class time_stream(logging.StreamHandler):
         else:
             formatter.setForeground(info)
         self.edit.setCurrentCharFormat(formatter)
-        self.edit.appendPlainText(message)
+        self.edit.insertPlainText('%s\n' % message)
 
 # -------------------------------------------------------------------------------------------------------------------
 # Clocks Engine
@@ -415,7 +419,7 @@ class time_lord(QtCore.QThread):
                 latest_timesheet = tl_time.get_last_timesheet(user=user)
             except TypeError, e:
                 latest_timesheet = None
-                logger.error('Timesheet failed to update: %s' % e)
+                logger.warning('Timesheet failed to update: %s' % e)
                 return False
             if latest_timesheet:
                 try:
@@ -425,7 +429,7 @@ class time_lord(QtCore.QThread):
                     task = latest_timesheet['entity']['name']
                     task_id = latest_timesheet['entity']['id']
                 except KeyError, e:
-                    logger.error('Failed to get latest timesheet! %s' % e)
+                    logger.warning('Failed to get latest timesheet! %s' % e)
                     return None
                 # FIXME: I need to remove all of these time sheet ID bits and replace them with task ID
                 if task_id != ui_task_id:
@@ -449,7 +453,7 @@ class time_lord(QtCore.QThread):
                             # Send the new_timesheet to the updater.
                             self.time_signal.ui_return.emit(new_timesheet)
                     except KeyError, e:
-                        logger.error('Bad entity: %s' % e)
+                        logger.warning('Bad entity: %s' % e)
 
                 else:
                     print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
@@ -525,7 +529,7 @@ class time_lord(QtCore.QThread):
                                  last_timesheet['sg_task_end'].time())
                 self.set_start_end_output(start=start, end=end)
             except (AttributeError, KeyError), e:
-                logger.error('Couldn\'t update the start and end times! %s' % e)
+                logger.warning('Couldn\'t update the start and end times! %s' % e)
             daily_total = self.set_daily_total('Get')
             weekly_total = self.set_weekly_total('Get')
             self.set_trt_output(trt='00:00:00')

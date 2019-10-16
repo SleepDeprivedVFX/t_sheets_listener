@@ -256,7 +256,7 @@ class Ui_TimeLord(object):
         self.lower_output_sep.setDocumentTitle("")
         self.lower_output_sep.setObjectName("lower_output_sep")
         self.lower_output = QtGui.QPlainTextEdit(self.bg)
-        self.lower_output.setGeometry(QtCore.QRect(694, 222, 206, 115))
+        self.lower_output.setGeometry(QtCore.QRect(694, 222, 206, 112))
         self.lower_output.setStyleSheet("QPlainTextEdit{\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
