@@ -272,10 +272,12 @@ class time_lord(QtCore.QThread):
         # Start with getting the current minute and second.
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
 
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
               'self.clocked_in: %s' % self.clocked_in)
         second = int(datetime.now().second)
         minute = int(datetime.now().minute)
+        # NOTE: The following 'while self.clocked_in' may be causing the issue where it doesn't update while not clocked
+        #       in.  Do I need it?
         while self.clocked_in and not self.kill_it:
             # Make sure the loop only functions on a whole second
             if int(datetime.now().second) != second:
@@ -283,12 +285,15 @@ class time_lord(QtCore.QThread):
                 # Features that function on whole minute intervals
                 if int(datetime.now().minute) != minute:
                     # Send update to the last_timesheet in the UI
+                    # NOTE: This new_timesheet system could probably be moved to the time_engine.
+                    #       Unless the tl_time.get_last_timesheet() takes a long time to respond.
                     new_timesheet = tl_time.get_last_timesheet(user=user)
                     if new_timesheet:
-                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                               'Emitting new timesheet: %s' % new_timesheet)
                         self.time_signal.send_timesheet.emit(new_timesheet)
-                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], 'Sent...')
+                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                              'Sent...')
 
                     # Send a signal to the Updater which will check that the UI currently matches the database
                     self.time_signal.update_clock.emit('Update')
@@ -300,7 +305,7 @@ class time_lord(QtCore.QThread):
                     minute = int(datetime.now().minute)
 
                 # If the User is listed as "Clocked IN" by the latest timesheet...
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                       'LORD self.clocked_in: %s' % self.clocked_in)
                 if self.clocked_in:
                     # Collect the current running time
@@ -370,7 +375,8 @@ class time_lord(QtCore.QThread):
         self.time_signal.weekly_output.emit(set_message)
 
     def update_ui(self, update=None):
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'update_ui receives: %s' % update)
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'update_ui receives: %s' % update)
         if update:
             ui_task_id = update['task_id']
 
@@ -392,7 +398,8 @@ class time_lord(QtCore.QThread):
                     return None
                 # FIXME: I need to remove all of these time sheet ID bits and replace them with task ID
                 if task_id != ui_task_id:
-                    print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Wrong time sheet!!!')
+                    print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                          'Wrong time sheet!!!')
                     # TODO: Send signals that update the UI bits.
                     new_timesheet = {
                         'project': project,
@@ -414,7 +421,8 @@ class time_lord(QtCore.QThread):
                         logger.error('Bad entity: %s' % e)
 
                 else:
-                    print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], 'Timesheet is copacetic')
+                    print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                          'Timesheet is copacetic')
 
     def quick_update(self):
         '''
@@ -422,17 +430,19 @@ class time_lord(QtCore.QThread):
         Updates the current timesheet and emits it back to the UI
         :return: self.time_signal.send_timesheet.emit(new_timesheet)
         '''
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
               'Communication received.  Updating....')
         new_timesheet = tl_time.get_last_timesheet(user=user)
         if new_timesheet:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], 'Timesheet collected!')
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                  'Timesheet collected!')
             self.time_signal.send_timesheet.emit(new_timesheet)
             self.last_timesheet = new_timesheet
 
     def get_active_projects(self, message=None):
         if message:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Project List Requested!')
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                  'Project List Requested!')
             active_projects = sg_data.get_active_projects()
             if active_projects:
                 wait_cond.wakeAll()
@@ -445,15 +455,18 @@ class time_lord(QtCore.QThread):
         :param message: A string of any kind to kick start the process and trigger a log
         :return:
         '''
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'set daily total: %s' % message)
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'set daily total: %s' % message)
         daily_total = None
         if message:
+            # QUERY: Does this belong here?  Is this what's hanging up the program?
             daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
             if daily_total or daily_total >= 0.0:
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                       'Daily total!: %s' % daily_total)
                 self.time_signal.daily_total.emit(daily_total)
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Daily total emitted')
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                      'Daily total emitted')
         return daily_total
 
     def set_weekly_total(self, message=None):
@@ -463,7 +476,8 @@ class time_lord(QtCore.QThread):
             weekly_total = tl_time.get_weekly_total(user=user)
             if weekly_total or weekly_total >= 0.0:
                 self.time_signal.weekly_total.emit(weekly_total)
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Weekly total emitted')
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                      'Weekly total emitted')
         return weekly_total
 
     def clock_out_user(self, last_timesheet=None):
@@ -503,22 +517,24 @@ class time_lord(QtCore.QThread):
             self.time_signal.user_has_clocked_in.emit(timesheet)
 
     def get_entities(self, entity_id=None):
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
               'get_entities activated: entity id: %s' % entity_id)
         if entity_id:
             asset_entities = sg_data.get_project_assets(proj_id=entity_id)
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Assets collected: %s' % asset_entities)
             shot_entities = sg_data.get_project_shots(proj_id=entity_id)
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Shots Collected: %s' % shot_entities)
             entities = asset_entities + shot_entities
             last_timesheet = tl_time.get_last_timesheet(user=user)
             self.time_signal.set_entity_list.emit((last_timesheet, entities))
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'get_entities: %s' % entities)
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                  'get_entities: %s' % entities)
 
     def get_tasks(self, context=None):
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'get_tasks activated: %s' % context)
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'get_tasks activated: %s' % context)
         if context:
             entity_id = context['entity_id']
             entity_name = context['entity_name']
@@ -526,7 +542,8 @@ class time_lord(QtCore.QThread):
             tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
             if tasks:
                 self.time_signal.set_task_list.emit(tasks)
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Tasks emitted: %s' % tasks)
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                      'Tasks emitted: %s' % tasks)
 
     def set_last_timesheet(self, message=None):
         if message:
@@ -697,10 +714,12 @@ class time_lord_ui(QtGui.QMainWindow):
     # -----------------------------------------------------------------------------------------------------------------
     def update_last_timesheet(self, update=None):
         # Receives update commands from the time_lord class and sets the last_ details
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Update Received! %s' % update)
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'Update Received! %s' % update)
         if update:
             self.last_timesheet = update
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'UPDATE: %s' % update)
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                  'UPDATE: %s' % update)
             self.last_project_name = self.last_timesheet['project']['name']
             self.last_saved_task = self.last_timesheet['entity']['name']
             self.last_task_id = self.last_timesheet['entity']['id']
@@ -724,16 +743,15 @@ class time_lord_ui(QtGui.QMainWindow):
             self.last_timesheet = timesheet
 
         if self.last_timesheet:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'LAST TIMESHEET: %s' % self.last_timesheet)
 
             # Get last start and end times
             try:
                 self.last_out_time = self.last_timesheet['sg_task_end']
             except KeyError, e:
-                print(inspect.stack()[0][2]), inspect.stack()[1][2], inspect.stack()[1][3], 'No sg_task_end set. ' \
-                                                                                            'Returned null. Setting ' \
-                                                                                            'to None...'
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                      'No sg_task_end set. Returned null. Setting to None...')
                 self.last_out_time = None
             self.last_in_time = self.last_timesheet['sg_task_start']
 
@@ -753,7 +771,7 @@ class time_lord_ui(QtGui.QMainWindow):
                         logger.error('Failure!  Passing.  %s' % e)
                     time.sleep(5)
                     tries += 1
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                       'last_project_details: %s' % last_project_details)
                 self.last_project_id = last_project_details['id']
                 self.last_saved_project = '%s' % self.last_project_name
@@ -998,13 +1016,13 @@ class time_lord_ui(QtGui.QMainWindow):
         if active_projects:
             for project in active_projects:
                 self.ui.project_dropdown.addItem('%s' % project['name'], project['id'])
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
               'Getting default selection from settings.')
         # Get the index of the last project as listed in the UI
         proj_index = self.ui.project_dropdown.findText(self.last_saved_project)
         # Select the current project.
         if proj_index >= 0:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Setting project to last project listed.')
             self.ui.project_dropdown.setCurrentIndex(proj_index)
 
@@ -1012,7 +1030,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def request_entities(self, message=None):
         selected_proj = self.ui.project_dropdown.currentText()
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
               'selected project is %s' % selected_proj)
         project_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
 
@@ -1035,7 +1053,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.req_entity_list.emit(proj_id)
 
     def update_entities(self, data=None):
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  data)
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,  data)
         if data:
             last_timesheet = data[0]
             self.last_timesheet = last_timesheet
@@ -1052,7 +1070,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.steady_state.emit(False)
         entity_index = self.ui.entity_dropdown.findText(self.last_saved_entity)
         if entity_index >= 0:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Setting entity to last saved entity')
             self.ui.entity_dropdown.setCurrentIndex(entity_index)
 
@@ -1074,8 +1092,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.req_task_list.emit(context)
 
     def update_tasks(self, tasks=None):
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Setting tasks...')
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  tasks)
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,  'Setting tasks...')
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,  tasks)
         if tasks:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task', 0)
@@ -1097,7 +1115,8 @@ class time_lord_ui(QtGui.QMainWindow):
         # QUERY: DO I need have the __init__ call the switch tasks? Or do I use a different method up there?
         #       The fear is that the last_saved_task might not accurately reflect what's going on, due to signal and
         #       slot delays.
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Switching tasks...')
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'Switching tasks...')
         if self.last_saved_task != self.ui.task_dropdown.currentText() and self.time_lord.clocked_in:
             self.time_lord.time_signal.clock_state.emit(2)
         else:
@@ -1107,14 +1126,15 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.time_lord.time_signal.clock_state.emit(0)
 
     def switch_state(self):
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Switch state triggered')
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'Switch state triggered')
         match = True
 
         selected_proj = self.ui.project_dropdown.currentText()
 
         # Check that the project matches
         if selected_proj != self.last_project_name:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Last project name does not match.')
             match = False
 
@@ -1122,24 +1142,27 @@ class time_lord_ui(QtGui.QMainWindow):
         # FIXME: Direct call.  This might be a good place for a signal wait_cond.
         entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.last_saved_task,
                                           self.last_task_id, self.last_project_id)
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'entity returns: %s' % entity)
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'entity returns: %s' % entity)
         if entity:
             if entity['entity']['name'] != self.ui.entity_dropdown.currentText():
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                       'Battle of Hastings: Entity does not match the current text.')
                 match = False
         elif self.last_saved_entity != self.ui.entity_dropdown.currentText():
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Battle of Hastings: The entity still does not match the dropdown.')
             match = False
 
         if self.last_saved_task != self.ui.task_dropdown.currentText():
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Tasks aren\'t cool.')
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                  'Tasks aren\'t cool.')
             match = False
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Everything\'s cool now.')
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'Everything\'s cool now.')
 
         if match and self.time_lord.clocked_in:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'match and timelord clocked in.  Emit 1')
             self.time_lord.time_signal.clock_state.emit(1)
             try:
@@ -1152,7 +1175,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 pass
             self.ui.clock_button.clicked.connect(self.stop_time)
         elif not match and self.time_lord.clocked_in:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Not matched and timelord clocked in.  Emit 2')
             self.time_lord.time_signal.clock_state.emit(2)
             try:
@@ -1165,7 +1188,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 pass
             self.ui.clock_button.clicked.connect(self.switch_time)
         elif not self.time_lord.clocked_in:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Timelord not clocked in.  Doesn\'t matter if it\'s matched.  Emit 0')
             self.time_lord.time_signal.clock_state.emit(0)
             try:
@@ -1211,7 +1234,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :param message: (int) 0 = clocked out, 1 = clocked in, 2 = clock switch
         :return:
         '''
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
               'clock_in_button_state message: %s' % message)
         # A value of None for message means that there is not clock-out time and the sheet is still active.
         self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
@@ -1311,7 +1334,8 @@ class time_lord_ui(QtGui.QMainWindow):
             try:
                 end_time = self.last_timesheet['sg_task_end']
                 # NOTE: This is currently partially detecting that the thing is clocked out outside of the UI
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'end_time: %s' % end_time)
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+                      'end_time: %s' % end_time)
                 hour = end_time.time().hour
                 minute = end_time.time().minute
                 second = end_time.time().second
@@ -1347,7 +1371,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :return: Running time.
         '''
         if len(t) == 6:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                   'Setting the runtime clock to %s' % t)
             self.ui.run_hour_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
                                                'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[0])
@@ -1480,10 +1504,11 @@ class time_lord_ui(QtGui.QMainWindow):
             'task_id': task_id
         }
         self.time_lord.time_signal.ui_update.emit(update)
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Emitted: %s' % update)
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
+              'Emitted: %s' % update)
 
     def update_from_timesheet(self, message=None):
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],
+        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
               'Updating the UI with... %s' % message)
         if message:
             task = message['task']
@@ -1496,18 +1521,18 @@ class time_lord_ui(QtGui.QMainWindow):
             proj_index = self.ui.project_dropdown.findText(proj)
 
             if proj_index >= 0:
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Updating project')
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,  'Updating project')
                 self.ui.project_dropdown.setCurrentIndex(proj_index)
             self.request_entities()
 
             ent_index = self.ui.entity_dropdown.findText(entity)
             if ent_index >= 0:
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Updating entity...')
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,  'Updating entity...')
                 self.ui.entity_dropdown.setCurrentIndex(ent_index)
 
             task_index = self.ui.task_dropdown.findText(task)
             if task_index >= 0:
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  'Updating Tasks...')
+                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,  'Updating Tasks...')
                 self.ui.task_dropdown.setCurrentIndex(task_index)
 
             # Send a signal to update the local timesheet.
