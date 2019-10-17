@@ -12,16 +12,38 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 
 import datetime
 import logging
+from logging.handlers import TimedRotatingFileHandler
+import os
+import sys
 from dateutil import parser
 from dateutil import relativedelta
 import inspect
 
 
 class continuum(object):
-    def __init__(self, sg=None):
-        self.logger = logging.getLogger('psychic_paper.continuum')
-        self.logger.info('Continuum Activated!')
+    def __init__(self, sg=None, config=None):
+        # self.logger = logging.getLogger('time continuum')
         self.sg = sg
+
+        # ------------------------------------------------------------------------------------------------------
+        # Create logging system
+        # ------------------------------------------------------------------------------------------------------
+        log_file = 'continuum_report.log'
+        log_root = os.path.join(sys.path[0], 'logs')
+        if not os.path.exists(log_root):
+            os.makedirs(log_root)
+        log_path = os.path.join(log_root, log_file)
+        if config['debug_logging'] == 'True' or 'true' or True:
+            level = logging.DEBUG
+        else:
+            level = logging.INFO
+        self.logger = logging.getLogger('continuum')
+        self.logger.setLevel(level=level)
+        fh = TimedRotatingFileHandler(log_path, when='d', interval=1, backupCount=int(config['log_days']))
+        fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
+        fh.setFormatter(fm)
+        self.logger.addHandler(fh)
+        self.logger.info('Continuum Activated!')
 
         # Days of the week in an iteratable list
         self.weekdays = [

@@ -54,6 +54,7 @@ import os
 import sys
 from PySide import QtGui, QtCore
 import logging
+from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime
 
 # Time Lord Libraries
@@ -86,6 +87,8 @@ fh = logging.FileHandler(filename=log_path)
 fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
 fh.setFormatter(fm)
 logger.addHandler(fh)
+# timed_log = TimedRotatingFileHandler(log_path, when='m', interval=1, backupCount=10)
+# logger.addHandler(timed_log)
 
 logger.info('The Time Lord has started!')
 
@@ -330,9 +333,9 @@ class time_lord(QtCore.QThread):
         # QUERY: Can I move all of this to the time engine, leaving only the functions below?
         # Start with getting the current minute and second.
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
+        logger.debug('self.clocked_in: %s' % self.clocked_in)
 
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-              'self.clocked_in: %s' % self.clocked_in)
+        # Set the initial minute and second.  These will be tested incrementally once the cycle is started.
         second = int(datetime.now().second)
         minute = int(datetime.now().minute)
         # NOTE: The following 'while self.clocked_in' may be causing the issue where it doesn't update while not clocked
@@ -346,17 +349,11 @@ class time_lord(QtCore.QThread):
                     # Send update to the last_timesheet in the UI
                     # NOTE: This new_timesheet system could probably be moved to the time_engine.
                     #       Unless the tl_time.get_last_timesheet() takes a long time to respond.
-                    logger.info(datetime.now())
                     self.time_signal.lower_output.emit('Checking status...')
                     new_timesheet = tl_time.get_last_timesheet(user=user)
                     if new_timesheet:
-                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                              'Emitting new timesheet: %s' % new_timesheet)
+                        logger.debug('Emitting new timesheet: %s' % new_timesheet)
                         self.time_signal.send_timesheet.emit(new_timesheet)
-                        # TEST: Holding for 3 seconds
-                        time.sleep(3)
-                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                              'Sent...')
 
                     # Send a signal to the Updater which will check that the UI currently matches the database
                     self.time_signal.update_clock.emit('Update')

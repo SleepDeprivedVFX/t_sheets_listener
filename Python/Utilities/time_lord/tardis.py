@@ -7,6 +7,7 @@ import itertools
 import glob
 import subprocess
 import logging
+from logging.handlers import TimedRotatingFileHandler
 import threading
 import shotgun_api3 as sgapi
 from PySide import QtCore, QtGui
@@ -41,7 +42,7 @@ else:
     level = logging.INFO
 logger = logging.getLogger('tardis_report')
 logger.setLevel(level=level)
-fh = logging.FileHandler(filename=log_path)
+fh = TimedRotatingFileHandler(log_path, when='d', interval=1, backupCount=int(config['log_days']))
 fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
 fh.setFormatter(fm)
 logger.addHandler(fh)
@@ -59,16 +60,16 @@ logger.debug('Shotgun is connected.')
 # --------------------------------------------------------------------------------------------------
 # setup continuum
 logger.info('Opening a portal to the time continuum...')
-tl_time = time_continuum.continuum(sg)
+tl_time = time_continuum.continuum(sg, config=config)
 logger.info('time_continuum is opened...')
 
 # Setup and get users
-users = companions.companions(sg)
+users = companions.companions(sg, config=config)
 user = users.get_user_from_computer()
 logger.info('User information collected...')
 
 # setup shotgun data connection
-sg_data = shotgun_collect.sg_data(sg)
+sg_data = shotgun_collect.sg_data(sg, config=config)
 logger.info('Shotgun commands brought in.')
 
 
@@ -136,12 +137,13 @@ def chronograph():
             if not set_timer:
                 # If there is no timer, create a timer
                 set_timer = 1
+                logger.debug('Timer Reset to 1')
             else:
                 # Run the existing timer until the following conditions are met.
                 if minute != int(datetime.now().minute):
                     minute = int(datetime.now().minute)
                     if not user_clocked_in:
-                        print('user_clocked_in BEFORE: %s' % user_clocked_in)
+                        logger.debug('user_clocked_in BEFORE: %s' % user_clocked_in)
                         user_clocked_in = tl_time.is_user_clocked_in(user=user)
                         # FIXME: For some reason, the user clocked in is not updating.s
                         # print('user_clocked_in  AFTER: %s' % user_clocked_in)

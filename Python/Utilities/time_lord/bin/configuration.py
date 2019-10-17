@@ -57,6 +57,7 @@ def get_configuration():
 
     # Logging
     config['debug_logging'] = configuration.get('Logging', 'debugging')
+    config['log_days'] = configuration.get('Logging', 'log_days')
 
     return config
 

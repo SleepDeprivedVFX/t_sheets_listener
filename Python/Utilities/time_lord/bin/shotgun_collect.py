@@ -3,17 +3,37 @@ The Shotgun Collect will grab data about projects, assets, shots and tasks.
 """
 
 import logging
+from logging.handlers import TimedRotatingFileHandler
+import os
+import sys
 import inspect
 from datetime import datetime
 
 
 class sg_data(object):
-    def __init__(self, sg=None):
-        self.logger = logging.getLogger('psychic_paper.sg_data')
+    def __init__(self, sg=None, config=None):
+
+        # ------------------------------------------------------------------------------------------------------
+        # Create logging system
+        # ------------------------------------------------------------------------------------------------------
+        log_file = 'shotgun_report.log'
+        log_root = os.path.join(sys.path[0], 'logs')
+        if not os.path.exists(log_root):
+            os.makedirs(log_root)
+        log_path = os.path.join(log_root, log_file)
+        if config['debug_logging'] == 'True' or 'true' or True:
+            level = logging.DEBUG
+        else:
+            level = logging.INFO
+        self.logger = logging.getLogger('sg_collection')
+        self.logger.setLevel(level=level)
+        fh = TimedRotatingFileHandler(log_path, when='d', interval=1, backupCount=int(config['log_days']))
+        fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
+        fh.setFormatter(fm)
+        self.logger.addHandler(fh)
+        self.logger.info('Shotgun Collection Activated!')
         self.sg = sg
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-              'Shotgun sub-loaded.')
-        self.logger.info('Shotgun Data Collection Activated!')
+        self.logger.debug('Shotgun sg sub-loaded.')
 
     def get_active_projects(self):
         self.logger.info('Getting active projects')
