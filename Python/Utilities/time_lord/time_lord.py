@@ -194,14 +194,16 @@ class time_stream(logging.StreamHandler):
     def emit(self, record):
         level = record.levelname
         message = record.message
+
+        # FIXME: The following block colorizes the output. It totally works, and then suddenly it
+        #       locks up the memory and kills the machine.  I'm leaving the code here for the future.
+        #       Error: Process finished with exit code -1073741819 (0xC0000005)
+        # Colorize the Monitor Log Output. (Error messages, Debug logging, and Warnings)
         info = QtGui.QColor(130, 231, 130)
-        error = QtGui.QColor(200, 0, 0)
+        error = QtGui.QColor(255, 0, 0)
         debug = QtGui.QColor(113, 113, 0)
         warning = QtGui.QColor(218, 145, 0)
         formatter = QtGui.QTextCharFormat()
-        cursor = QtGui.QTextCursor(self.edit.document())
-        cursor.setPosition(0)
-        self.edit.setTextCursor(cursor)
         if level == 'ERROR':
             formatter.setForeground(error)
         elif level == 'DEBUG':
@@ -211,7 +213,21 @@ class time_stream(logging.StreamHandler):
         else:
             formatter.setForeground(info)
         self.edit.setCurrentCharFormat(formatter)
-        self.edit.insertPlainText('%s\n' % message)
+
+        # FIXME: Ok, the thing that sets up the stream handler to keep the latest entry first, either
+        #       or also crashes the memory.
+        #       Error: Process finished with exit code -1073741819 (0xC0000005)
+        # Set the cursor to the top
+        # cursor = QtGui.QTextCursor(self.edit.document())
+        # cursor.setPosition(0)
+        # self.edit.setTextCursor(cursor)
+        # #
+        # # # Insert Log
+        # self.edit.insertPlainText('%s\n' % message)
+        self.edit.appendPlainText('%s\n' % message)
+        del formatter
+        # del cursor
+
 
 # -------------------------------------------------------------------------------------------------------------------
 # Clocks Engine
@@ -322,6 +338,8 @@ class time_lord(QtCore.QThread):
                     # Send update to the last_timesheet in the UI
                     # NOTE: This new_timesheet system could probably be moved to the time_engine.
                     #       Unless the tl_time.get_last_timesheet() takes a long time to respond.
+                    logger.info(datetime.now())
+                    self.time_signal.lower_output.emit('Checking status...')
                     new_timesheet = tl_time.get_last_timesheet(user=user)
                     if new_timesheet:
                         print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
@@ -598,6 +616,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # --------------------------------------------------------------------------------------------------------
         # Set the saved settings
         # --------------------------------------------------------------------------------------------------------
+        # This saves all the last settings so that they return to their previous state when the program is run again.
         self.settings = QtCore.QSettings('AdamBenson', 'TimeLord')
         self.last_saved_project = self.settings.value('last_project', '.')
         self.last_saved_entity = self.settings.value('last_entity', '.')
@@ -618,7 +637,6 @@ class time_lord_ui(QtGui.QMainWindow):
         self.last_project_id = None
         self.last_entity_type = None
         self.last_entity_id = None
-        self.last_timesheet_id = None
 
         # This connects to the two main threads plus the signals
         self.time_lord = time_lord()
@@ -636,6 +654,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.window_on_top_tested = False
+        self.set_window_on_top()
 
         # --------------------------------------------------------------------------------------------------------
         # Setup Stream Handler
@@ -751,6 +771,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])
+        self.time_lord.time_signal.lower_output.emit('Startup complete!')
 
     # -----------------------------------------------------------------------------------------------------------------
     # Timesheet Data
@@ -1018,6 +1039,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
         data = (context, start_time)
         self.time_lord.time_signal.clock_in_user.emit(data)
+        self.set_window_on_top()
 
     def selection_check(self):
         # Sets the Status Lights and adds Error Messages to the output monitor
@@ -1305,6 +1327,15 @@ class time_lord_ui(QtGui.QMainWindow):
         else:
             # Let the engine know that it is clocked out.
             self.time_lord.clocked_in = False
+
+    def set_window_on_top(self):
+        if not self.window_on_top_tested:
+            if tl_time.is_user_clocked_in(user=user):
+                self.setWindowFlags(self.windowFlags() & ~QtCore.Qt.WindowStaysOnTopHint)
+                self.window_on_top_tested = True
+                self.show()
+            else:
+                self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
 
     # ----------------------------------------------------------------------------------------------------------------
     # Runtime Clocks - Main, TRT, Start Datetime, End Datetime
