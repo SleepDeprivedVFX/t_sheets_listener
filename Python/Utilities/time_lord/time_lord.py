@@ -190,6 +190,10 @@ class time_signals(QtCore.QObject):
 class time_stream(logging.StreamHandler):
     """
     Stream handler for the output window
+    NOTE: Currently the stream handler crashes the system, so I'm leaving the architecture here for when I can get it
+          to work properly.
+          Might be due to the fact that the logger is being called from multiple places, but the stream handler is only
+          processing from the main UI. Just a thought.
     """
     def emit(self, record):
         level = record.levelname
@@ -665,9 +669,11 @@ class time_lord_ui(QtGui.QMainWindow):
         # --------------------------------------------------------------------------------------------------------
         # Setup Stream Handler
         # --------------------------------------------------------------------------------------------------------
-        self.time_stream = time_stream()
-        self.time_stream.edit = self.ui.lower_output
-        logger.addHandler(self.time_stream)
+        # NOTE: For whatever reason, the UI crashes when the stream handler is enabled.  Thus, for now, I'm going to
+        #       switch the system to simple message updates until I figure out why that's tanking the memory.
+        # self.time_stream = time_stream()
+        # self.time_stream.edit = self.ui.lower_output
+        # logger.addHandler(self.time_stream)
 
         # --------------------------------------------------------------------------------------------------------
         # Signal Connections

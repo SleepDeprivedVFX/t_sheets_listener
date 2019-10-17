@@ -497,18 +497,14 @@ if __name__ == '__main__':
         lunch_path = os.path.join(path, 'lunch.py')
         subprocess.Popen('pythonw.exe %s' % lunch_path)
 
-
-    menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
-                    ('Tools', icons.next(), (('Overtime Tool', icons.next(), overtime),
-                                             ('Lunch Break', icons.next(), lunch),
-                                             ))
-                    )
-
-
     def bye(tardis):
         # Tardis killer.  May need to eventually kill all other processes as well.
         print('Why you quiting bro?')
 
+    menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
+                    ('Tools', icons.next(), (('Overtime Tool', icons.next(), overtime),
+                                             ('Lunch Break', icons.next(), lunch),
+                                             )))
 
     tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0)
 
