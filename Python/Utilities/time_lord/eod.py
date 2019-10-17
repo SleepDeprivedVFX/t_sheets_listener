@@ -91,7 +91,7 @@ class eod_timer(QtCore.QThread):
         self.timer = int(config['timer'])
 
     def out_time(self, message=None):
-        print 'out_time message: %s' % message
+        print('out_time message: %s' % message)
         # if message:
         self.set_time = message
         # else:
@@ -112,13 +112,13 @@ class eod_timer(QtCore.QThread):
         while not self.kill_it:
             if int(datetime.now().second) != second:
                 # Make sure the chronograph has the set time from the ui
-                print 'right before not self.set_time: %s' % self.set_time
+                print('right before not self.set_time: %s' % self.set_time)
                 if not self.set_time:
                     self.eod_signals.get_time.emit(True)
 
                 # Set the auto-clock-out time
                 if self.set_time:
-                    print 'if self.set_time: %s' % self.set_time
+                    print('if self.set_time: %s' % self.set_time)
                     set_time = parser.parse(self.set_time)
                     auto_clock_out = set_time + timedelta(minutes=(self.timer * 2))
                 else:
@@ -132,8 +132,8 @@ class eod_timer(QtCore.QThread):
                         user_clocked_in = tl_time.is_user_clocked_in(user=user)
                 # Set the clocks
                 second = int(datetime.now().second)
-                print 'auto_clock_out', auto_clock_out
-                print datetime.now()
+                print('auto_clock_out', auto_clock_out)
+                print(datetime.now())
                 if auto_clock_out and datetime.now() > auto_clock_out and user_clocked_in:
                     self.eod_signals.last_time.emit('Clock out')
                     self.kill_it = True
@@ -155,7 +155,7 @@ class end_of_day(QtGui.QWidget):
             for opt, arg in split_options:
                 if opt in ('-o', '--out'):
                     time_out = parser.parse(arg)
-                    print 'out time: %s' % time_out
+                    print('out time: %s' % time_out)
 
         if not time_out:
             time_out = datetime.now()

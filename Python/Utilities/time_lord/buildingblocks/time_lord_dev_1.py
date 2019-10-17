@@ -10,15 +10,15 @@ from bin.time_continuum import continuum
 sys_path = sys.path
 config_file = 'tardis_config.cfg'
 try:
-    print 'Finding configuration file...'
+    print('Finding configuration file...')
     config_path = [f for f in sys_path if os.path.isfile(f + '/' + config_file)][0] + '/' + config_file
     config_path = config_path.replace('\\', '/')
-    print 'Configuration found!'
+    print('Configuration found!')
 except IndexError, e:
     raise e
 
 configuration = ConfigParser.ConfigParser()
-print 'Reading the configuration file...'
+print('Reading the configuration file...')
 configuration.read(config_path)
 
 cfg_sg_url = configuration.get('Shotgun', 'sg_url')
@@ -49,7 +49,7 @@ fields = [
     'sg_task_end'
 ]
 no_out_time = sg.find('TimeLog', filters, fields)
-print no_out_time
+print(no_out_time)
 
 filters = [
     ['user', 'is', {'type': 'HumanUser', 'id': 41}],
@@ -57,7 +57,7 @@ filters = [
     ['sg_task_start', 'greater_than', week_start]
 ]
 all_recent_time = sg.find('TimeLog', filters, fields)
-print all_recent_time
+print(all_recent_time)
 i = 1
 
 # sort them so that they are in order of start time (manual entries can be anything!)
@@ -67,7 +67,7 @@ sorted_all_recent_time = sorted(all_recent_time, key=lambda i: i['sg_task_start'
 if len(sorted_no_out_time) > 1:
     # Check for too many active time cards
     flag = 'A red flag!  Too many empty times!'
-    print flag
+    print(flag)
 
     # save the latest time sheet into it's own variable.  This will be our "master" time sheet.
     # Compare the latest empty to the latest all records

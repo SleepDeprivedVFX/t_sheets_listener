@@ -107,7 +107,7 @@ sg_data = shotgun_collect.sg_data(sg)
 
 lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])
-print 'lunch_task: %s' % lunch_task
+print('lunch_task: %s' % lunch_task)
 
 
 # ------------------------------------------------------------------------------------------------------

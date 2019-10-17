@@ -16,16 +16,16 @@ def get_configuration():
     sys_path = sys.path
     config_file = 'tardis_config.cfg'
     try:
-        print 'Finding configuration file...'
+        print('Finding configuration file...')
         config_path = [f for f in sys_path if os.path.isfile(f + '/' + config_file)][0] + '/' + config_file
         config_path = config_path.replace('\\', '/')
-        print 'Configuration found!'
+        print('Configuration found!')
     except IndexError, e:
         raise e
 
     # Create the configuration connection
     configuration = ConfigParser.ConfigParser()
-    print 'Reading the configuration file...'
+    print('Reading the configuration file...')
     configuration.read(config_path)
 
     config = {}

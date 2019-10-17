@@ -125,8 +125,8 @@ def chronograph():
 
     while True:
         pos = query_mouse_position()
-        # print pos
-        # print datetime.now().time()
+        # print(pos)
+        # print(datetime.now().time())
         time.sleep(sleep)
         sod_launch = None
         if pos == query_mouse_position():
@@ -141,17 +141,17 @@ def chronograph():
                 if minute != int(datetime.now().minute):
                     minute = int(datetime.now().minute)
                     if not user_clocked_in:
-                        print 'user_clocked_in BEFORE: %s' % user_clocked_in
+                        print('user_clocked_in BEFORE: %s' % user_clocked_in)
                         user_clocked_in = tl_time.is_user_clocked_in(user=user)
                         # FIXME: For some reason, the user clocked in is not updating.s
-                        # print 'user_clocked_in  AFTER: %s' % user_clocked_in
+                        # print('user_clocked_in  AFTER: %s' % user_clocked_in)
                         # if start_time > datetime.now().time() > sod:
                         #     if not sod_launch:
-                        #         print 'Time to clock in...'
+                        #         print('Time to clock in...')
                         #         sod_launch_path = os.path.join(path, 'time_lord.py')
                         #
                         #         sod_launch = subprocess.Popen('pythonw.exe %s' % sod_launch_path)
-                        #         print sod_launch
+                        #         print(sod_launch)
                         # user_clocked_in = tl_time.is_user_clocked_in(user=user)
                         # if user_clocked_in and sod_launch:
                         #     sod_launch = None
@@ -186,7 +186,7 @@ def chronograph():
                                           datetime.now().time().second)
                 if not user_clocked_in and str(now) == str(sod):
                     time.sleep(2)
-                    print 'Time to clock in!'
+                    print('Time to clock in!')
                     sod_launch_path = os.path.join(path, 'time_lord.py')
                     subprocess.call('python.exe %s' % sod_launch_path)
 
@@ -195,7 +195,7 @@ def chronograph():
                 # --------------------------------------------------------------------------------------
                 if set_timer > trigger and datetime.now().time() > eod:
                     if tl_time.is_user_clocked_in(user=user):
-                        print 'IT IS AFTER HOURS!!!'
+                        print('IT IS AFTER HOURS!!!')
                         eod_launch_path = os.path.join(path, 'eod.py')
                         get_lunch = subprocess.Popen('pythonw.exe %s' % eod_launch_path)
                         get_lunch.wait()
@@ -205,7 +205,7 @@ def chronograph():
                 # Temp counter - Delete me
                 if set_timer / 10 != temp_count:
                     temp_count = set_timer / 10
-                    print temp_count, datetime.now().time()
+                    print(temp_count, datetime.now().time())
         else:
             # -------------------------------------------------------------------------------------------------------
             # The mouse IS moving
@@ -219,11 +219,11 @@ def chronograph():
                 # If the timer has gone on long enough and been triggered...
                 logger.info('End the lunch timer')
                 lunch_end = datetime.now()
-                print 'lunch start: %s' % lunch_start
-                print 'lunch end  : %s' % lunch_end
+                print('lunch start: %s' % lunch_start)
+                print('lunch end  : %s' % lunch_end)
                 total_time = lunch_end - lunch_start
-                print total_time
-                print total_time.seconds
+                print(total_time)
+                print(total_time.seconds)
 
                 # Pop up window, then set lunch break.
                 if user_clocked_in:
@@ -249,7 +249,7 @@ def chronograph():
                                       datetime.now().time().second)
             if not user_clocked_in and str(now) == str(sod):
                 time.sleep(2)
-                print 'Time to clock in!'
+                print('Time to clock in!')
                 sod_launch_path = os.path.join(path, 'time_lord.py')
                 subprocess.call('python.exe %s' % sod_launch_path)
 
@@ -261,7 +261,7 @@ def chronograph():
             lunch_start = None
             lunch_end = None
             lunch_timesheet = False
-            # print 'TIMER RESET'
+            # print('TIMER RESET')
 
 
 # Setup Threading
@@ -344,7 +344,7 @@ class tardis(object):
                                self._add_ids_to_menu_options(option_action),
                                self._next_action_id))
             else:
-                print 'Unknown item', option_text, option_icon, option_action
+                print('Unknown item', option_text, option_icon, option_action)
             self._next_action_id += 1
         return result
 
@@ -360,7 +360,7 @@ class tardis(object):
                                        0,
                                        icon_flags)
         else:
-            print "Can't find icon file - using default."
+            print("Can't find icon file - using default.")
             hicon = win32gui.LoadIcon(0, win32con.IDI_APPLICATION)
 
         if self.notify_id:
@@ -477,8 +477,6 @@ def non_string_iterable(obj):
 if __name__ == '__main__':
 
     icons = itertools.cycle(glob.glob('icons/*.ico'))
-    # for i in icons:
-    #     print i
     hover_text = "Time Lord TARDIS"
 
 
@@ -490,7 +488,7 @@ if __name__ == '__main__':
 
 
     def overtime(tardis):
-        print "overtime."
+        print("overtime.")
 
 
     def lunch(tardis):
@@ -509,7 +507,7 @@ if __name__ == '__main__':
 
     def bye(tardis):
         # Tardis killer.  May need to eventually kill all other processes as well.
-        print 'Why you quiting bro?'
+        print('Why you quiting bro?')
 
 
     tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0)

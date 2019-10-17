@@ -26,7 +26,7 @@ class companions(object):
         # FIXME: This is a temp workaround for my laptop.
         if user == 'sleep':
             user = 'adamb'
-        print user
+        print(user)
         if user:
             filters = [
                 ['login', 'is', user]

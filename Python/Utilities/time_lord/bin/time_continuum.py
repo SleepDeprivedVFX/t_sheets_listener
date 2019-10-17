@@ -123,6 +123,7 @@ class continuum(object):
         if user:
             self.logger.info('Finding the last timesheet for %s' % user['name'])
             user_id = user['id']
+            self.logger.debug('USER ID: %s' % user_id)
 
             # List all the timesheets for the user
             filters = [
@@ -140,6 +141,7 @@ class continuum(object):
             try:
                 last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
                                                                                       'direction': 'desc'}])
+                self.logger.debug('Timesheet found: %s' % last_timesheet)
             except (AttributeError, Exception), e:
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
                 last_timesheet = None
@@ -401,18 +403,18 @@ class continuum(object):
             try:
                 get_lunch = self.sg.find('TimeLog', filters, fields)
             except AttributeError, e:
-                print 'Get Lunch failed.  Trying again.'
+                print('Get Lunch failed.  Trying again.')
                 get_lunch = self.get_todays_lunch(user=user, lunch_id=lunch_id, lunch_proj_id=lunch_proj_id)
             if get_lunch:
-                print 'lunch_returns: %s' % get_lunch
+                print('lunch_returns: %s' % get_lunch)
                 return get_lunch
             else:
-                print 'No lunch for you!'
+                print('No lunch for you!')
                 return False
 
     def create_lunch_break(self, user=None, lunch_id=None, task_id=None):
         if user:
-            print 'hello'
+            print('hello')
 
     def is_user_clocked_in(self, user=None):
         if user:

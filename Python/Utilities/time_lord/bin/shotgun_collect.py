@@ -117,7 +117,7 @@ class sg_data(object):
                     print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
                           'Trying again...')
                     tryagain = self.sg.find('Project', filters, fields)
-                    print 'secondary: %s' % tryagain
+                    print('secondary: %s' % tryagain)
                     if tryagain:
                         project = tryagain[0]
                         print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
@@ -143,7 +143,7 @@ class sg_data(object):
                 link = self.sg.find_one(ent_type, filters, fields)
             except AttributeError, e:
                 self.logger.error('Bad connection... Try again... %s' % e)
-                print 'Lame ass connection.  Trying again...'
+                print('Lame ass connection.  Trying again...')
                 link = self.get_entity_links(ent_type=ent_type, name=name, ent_id=ent_id, proj_id=proj_id)
             return link
         return None
@@ -233,7 +233,7 @@ class sg_data(object):
             try:
                 find_task = self.sg.find_one('Task', filters, fields)
             except AttributeError, e:
-                print 'get_lunch_task failed!  %s' % e
+                print('get_lunch_task failed!  %s' % e)
                 find_task = self.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=task_name)
             if find_task:
                 return find_task
@@ -252,7 +252,7 @@ class sg_data(object):
             except AttributeError, e:
                 self.logger.error('Get Entity from Tasks failed: %s' % e)
                 task = self.get_entity_from_task(task_id=task_id)
-            print task
+            print(task)
             return task
         return None
 

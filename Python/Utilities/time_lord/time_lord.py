@@ -199,20 +199,20 @@ class time_stream(logging.StreamHandler):
         #       locks up the memory and kills the machine.  I'm leaving the code here for the future.
         #       Error: Process finished with exit code -1073741819 (0xC0000005)
         # Colorize the Monitor Log Output. (Error messages, Debug logging, and Warnings)
-        info = QtGui.QColor(130, 231, 130)
-        error = QtGui.QColor(255, 0, 0)
-        debug = QtGui.QColor(113, 113, 0)
-        warning = QtGui.QColor(218, 145, 0)
-        formatter = QtGui.QTextCharFormat()
-        if level == 'ERROR':
-            formatter.setForeground(error)
-        elif level == 'DEBUG':
-            formatter.setForeground(debug)
-        elif level == 'WARNING':
-            formatter.setForeground(warning)
-        else:
-            formatter.setForeground(info)
-        self.edit.setCurrentCharFormat(formatter)
+        # info = QtGui.QColor(130, 231, 130)
+        # error = QtGui.QColor(255, 0, 0)
+        # debug = QtGui.QColor(113, 113, 0)
+        # warning = QtGui.QColor(218, 145, 0)
+        # formatter = QtGui.QTextCharFormat()
+        # if level == 'ERROR':
+        #     formatter.setForeground(error)
+        # elif level == 'DEBUG':
+        #     formatter.setForeground(debug)
+        # elif level == 'WARNING':
+        #     formatter.setForeground(warning)
+        # else:
+        #     formatter.setForeground(info)
+        # self.edit.setCurrentCharFormat(formatter)
 
         # FIXME: Ok, the thing that sets up the stream handler to keep the latest entry first, either
         #       or also crashes the memory.
@@ -225,7 +225,11 @@ class time_stream(logging.StreamHandler):
         # # # Insert Log
         # self.edit.insertPlainText('%s\n' % message)
         self.edit.appendPlainText('%s\n' % message)
-        del formatter
+        # del info
+        # del error
+        # del debug
+        # del warning
+        # del formatter
         # del cursor
 
 
@@ -385,6 +389,7 @@ class time_lord(QtCore.QThread):
                     break
 
     def set_trt_output(self, trt=None):
+        # logger.debug('Set TRT: %s' % trt)
         set_message = 'TRT: %s' % trt
         self.time_signal.trt_output.emit(set_message)
 
@@ -1040,6 +1045,8 @@ class time_lord_ui(QtGui.QMainWindow):
         data = (context, start_time)
         self.time_lord.time_signal.clock_in_user.emit(data)
         self.set_window_on_top()
+        if not self.time_lord.isRunning():
+            self.time_lord.start()
 
     def selection_check(self):
         # Sets the Status Lights and adds Error Messages to the output monitor
@@ -1611,9 +1618,9 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.ui.task_dropdown.setCurrentIndex(task_index)
 
             # Send a signal to update the local timesheet.
-            print '~' * 60
-            print 'IS CLOCKED IN: %s' % self.time_lord.clocked_in
-            print 'Testing last timesheet: %s' % self.last_timesheet
+            print('~' * 60)
+            print('IS CLOCKED IN: %s' % self.time_lord.clocked_in)
+            print('Testing last timesheet: %s' % self.last_timesheet)
 
 
 if __name__ == '__main__':
