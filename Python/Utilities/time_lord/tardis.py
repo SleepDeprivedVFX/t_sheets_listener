@@ -42,7 +42,8 @@ else:
     level = logging.INFO
 logger = logging.getLogger('tardis_report')
 logger.setLevel(level=level)
-fh = TimedRotatingFileHandler(log_path, when='d', interval=1, backupCount=int(config['log_days']))
+fh = TimedRotatingFileHandler(log_path, when='%s' % config['log_interval'], interval=1,
+                              backupCount=int(config['log_days']))
 fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
 fh.setFormatter(fm)
 logger.addHandler(fh)
@@ -137,7 +138,11 @@ def chronograph():
             if not set_timer:
                 # If there is no timer, create a timer
                 set_timer = 1
-                logger.debug('Timer Reset to 1')
+                try:
+                    logger.debug('Timer Reset to 1')
+                except Exception, e:
+                    print e
+                    pass
             else:
                 # Run the existing timer until the following conditions are met.
                 if minute != int(datetime.now().minute):

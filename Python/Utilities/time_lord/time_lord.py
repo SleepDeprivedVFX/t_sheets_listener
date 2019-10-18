@@ -69,6 +69,7 @@ import inspect
 
 config = configuration.get_configuration()
 
+print 'SYS ARGS: %s' % sys.argv
 # ------------------------------------------------------------------------------------------------------
 # Create logging system
 # ------------------------------------------------------------------------------------------------------
@@ -83,12 +84,11 @@ else:
     level = logging.INFO
 logger = logging.getLogger('psychic_paper')
 logger.setLevel(level=level)
-fh = logging.FileHandler(filename=log_path)
+fh = TimedRotatingFileHandler(log_path, when='%s' % config['log_interval'], interval=1,
+                              backupCount=int(config['log_days']))
 fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
 fh.setFormatter(fm)
 logger.addHandler(fh)
-# timed_log = TimedRotatingFileHandler(log_path, when='m', interval=1, backupCount=10)
-# logger.addHandler(timed_log)
 
 logger.info('The Time Lord has started!')
 
@@ -102,14 +102,14 @@ logger.debug('Shotgun is connected.')
 # Connect Time Lord Components
 # --------------------------------------------------------------------------------------------------
 # setup continuum
-tl_time = continuum(sg)
+tl_time = continuum(sg, config=config, sub='time_lord')
 
 # Setup and get users
-users = companions(sg)
+users = companions(sg, config=config, sub='time_lord')
 user = users.get_user_from_computer()
 
 # setup shotgun data connection
-sg_data = shotgun_collect.sg_data(sg)
+sg_data = shotgun_collect.sg_data(sg, config=config, sub='time_lord')
 
 lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])

@@ -21,14 +21,18 @@ import inspect
 
 
 class continuum(object):
-    def __init__(self, sg=None, config=None):
+    def __init__(self, sg=None, config=None, sub=None):
         # self.logger = logging.getLogger('time continuum')
         self.sg = sg
 
         # ------------------------------------------------------------------------------------------------------
         # Create logging system
         # ------------------------------------------------------------------------------------------------------
+        # Find out if the logger already exists.  If not, open a file.
         log_file = 'continuum_report.log'
+        if sub:
+            new_name = '%s_%s' % (sub, log_file)
+            log_file = new_name
         log_root = os.path.join(sys.path[0], 'logs')
         if not os.path.exists(log_root):
             os.makedirs(log_root)
@@ -37,9 +41,13 @@ class continuum(object):
             level = logging.DEBUG
         else:
             level = logging.INFO
-        self.logger = logging.getLogger('continuum')
+        log_name = 'continuum'
+        if sub:
+            log_name = '%s_%s' % (sub, log_name)
+        self.logger = logging.getLogger(log_name)
         self.logger.setLevel(level=level)
-        fh = TimedRotatingFileHandler(log_path, when='d', interval=1, backupCount=int(config['log_days']))
+        fh = TimedRotatingFileHandler(log_path, when='%s' % config['log_interval'], interval=1,
+                                      backupCount=int(config['log_days']))
         fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
         fh.setFormatter(fm)
         self.logger.addHandler(fh)
