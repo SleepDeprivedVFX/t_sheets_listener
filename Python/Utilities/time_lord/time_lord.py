@@ -283,7 +283,7 @@ class time_engine(QtCore.QThread):
 
                 if datetime.now().minute != minute:
                     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
-                    weekly_total = tl_time.get_weekly_total(user=user)
+                    weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
                     minute = datetime.now().minute
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
@@ -532,7 +532,7 @@ class time_lord(QtCore.QThread):
         # Sets and emiits the Weekly Total function back to the UI
         weekly_total = None
         if message:
-            weekly_total = tl_time.get_weekly_total(user=user)
+            weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
             if weekly_total or weekly_total >= 0.0:
                 self.time_signal.weekly_total.emit(weekly_total)
                 print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
@@ -841,6 +841,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 tries = 0
                 while not last_project_details and tries < 10:
                     try:
+                        # FIXME: DIRECT CALL
                         last_project_details = sg_data.get_project_details_by_name(self.last_project_name)
                     except Exception, e:
                         logger.error('Failure!  Passing.  %s' % e)

@@ -8,6 +8,7 @@ import sys
 import getopt
 from PySide import QtGui, QtCore
 import logging
+from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime, timedelta
 from dateutil import parser
 
@@ -29,17 +30,18 @@ log_root = os.path.join(sys.path[0], 'logs')
 if not os.path.exists(log_root):
     os.makedirs(log_root)
 log_path = os.path.join(log_root, log_file)
-if config['debug_logging'] == 'True' or 'true' or True:
+debug = config['debug_logging']
+if debug == 'True' or debug == 'true' or debug == True:
     level = logging.DEBUG
 else:
     level = logging.INFO
 logger = logging.getLogger('lunch_menu')
 logger.setLevel(level=level)
-fh = logging.FileHandler(filename=log_path)
+fh = TimedRotatingFileHandler(log_path, when='%s' % config['log_interval'], interval=1,
+                              backupCount=int(config['log_days']))
 fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d - %(message)s')
 fh.setFormatter(fm)
 logger.addHandler(fh)
-
 
 logger.info('Lunch Utility has started.')
 
@@ -53,14 +55,14 @@ logger.debug('Shotgun is connected.')
 # Connect Time Lord Components
 # --------------------------------------------------------------------------------------------------
 # setup continuum
-tl_time = continuum(sg)
+tl_time = continuum(sg, config=config, sub='lunch')
 
 # Setup and get users
-users = companions(sg)
+users = companions(sg, config=config, sub='lunch')
 user = users.get_user_from_computer()
 
 # setup shotgun data connection
-sg_data = bin.shotgun_collect.sg_data(sg)
+sg_data = bin.shotgun_collect.sg_data(sg, config=config, sub='lunch')
 
 
 # --------------------------------------------------------------------------------------------------

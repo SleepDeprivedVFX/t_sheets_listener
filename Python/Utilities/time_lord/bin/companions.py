@@ -31,7 +31,8 @@ class companions(object):
         if not os.path.exists(log_root):
             os.makedirs(log_root)
         log_path = os.path.join(log_root, log_file)
-        if config['debug_logging'] == 'True' or 'true' or True:
+        debugger = config['debug_logging']
+        if debugger == 'True' or debugger == 'true' or debugger == True:
             level = logging.DEBUG
         else:
             level = logging.INFO

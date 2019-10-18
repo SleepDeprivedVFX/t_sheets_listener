@@ -36,7 +36,8 @@ log_root = os.path.join(sys.path[0], 'logs')
 if not os.path.exists(log_root):
     os.makedirs(log_root)
 log_path = os.path.join(log_root, log_file)
-if config['debug_logging'] == 'True' or 'true' or True:
+debug = config['debug_logging']
+if debug == 'True' or debug == 'true' or debug == True:
     level = logging.DEBUG
 else:
     level = logging.INFO
@@ -117,6 +118,7 @@ def chronograph():
     eod = parser.parse(config['regular_end'])
     eod_countdown = (eod - timedelta(minutes=timer_trigger)).time()
     eod = eod.time()
+    user_ignored = False
     user_clocked_in = tl_time.is_user_clocked_in(user=user)
 
     path = sys.path[0]
@@ -138,11 +140,11 @@ def chronograph():
             if not set_timer:
                 # If there is no timer, create a timer
                 set_timer = 1
-                try:
-                    logger.debug('Timer Reset to 1')
-                except Exception, e:
-                    print e
-                    pass
+                # try:
+                #     logger.debug('Timer Reset to 1')
+                # except Exception, e:
+                #     print e
+                #     pass
             else:
                 # Run the existing timer until the following conditions are met.
                 if minute != int(datetime.now().minute):
@@ -193,26 +195,43 @@ def chronograph():
                                           datetime.now().time().second)
                 if not user_clocked_in and str(now) == str(sod):
                     time.sleep(2)
-                    print('Time to clock in!')
+                    logger.info('Time to clock in!')
                     sod_launch_path = os.path.join(path, 'time_lord.py')
-                    subprocess.call('python.exe %s' % sod_launch_path)
+                    if debug == 'True' or debug == 'true' or debug == True:
+                        process = 'python.exe'
+                    else:
+                        process = 'pythonw.exe'
+                    subprocess.call('%s %s' % (process, sod_launch_path))
 
                 # --------------------------------------------------------------------------------------
                 # End of Day
                 # --------------------------------------------------------------------------------------
-                if set_timer > trigger and datetime.now().time() > eod:
+                if set_timer > trigger and datetime.now().time() > eod and not user_ignored:
                     if tl_time.is_user_clocked_in(user=user):
-                        print('IT IS AFTER HOURS!!!')
+                        logger.info('IT IS AFTER HOURS!!!')
                         eod_launch_path = os.path.join(path, 'eod.py')
-                        get_lunch = subprocess.Popen('pythonw.exe %s' % eod_launch_path)
-                        get_lunch.wait()
+                        logger.debug('eod_launch_path: %s' % eod_launch_path)
+                        if debug == 'True' or debug == 'true' or debug == True:
+                            process = 'python.exe'
+                        else:
+                            process = 'pythonw.exe'
+                        eod_launch = subprocess.Popen('%s %s' % (process, eod_launch_path))
+                        logger.debug('eod_launch command: %s' % eod_launch)
+                        eod_launch.wait()
                         user_clocked_in = False
+                        time.sleep(3)
+                        if tl_time.is_user_clocked_in(user=user):
+                            user_ignored = True
+                elif user_ignored and datetime.now().time() < eod and set_timer < trigger:
+                    user_ignored = False
+                elif user_ignored and datetime.now().time() > eod and set_timer > trigger:
+                    user_ignored = False
                 set_timer += 1
 
                 # Temp counter - Delete me
-                if set_timer / 10 != temp_count:
-                    temp_count = set_timer / 10
-                    print(temp_count, datetime.now().time())
+                # if set_timer / 10 != temp_count:
+                #     temp_count = set_timer / 10
+                #     print(temp_count, datetime.now().time())
         else:
             # -------------------------------------------------------------------------------------------------------
             # The mouse IS moving
@@ -226,18 +245,22 @@ def chronograph():
                 # If the timer has gone on long enough and been triggered...
                 logger.info('End the lunch timer')
                 lunch_end = datetime.now()
-                print('lunch start: %s' % lunch_start)
-                print('lunch end  : %s' % lunch_end)
+                logger.debug('lunch start: %s' % lunch_start)
+                logger.debug('lunch end  : %s' % lunch_end)
                 total_time = lunch_end - lunch_start
-                print(total_time)
-                print(total_time.seconds)
+                logger.debug(total_time)
+                logger.debug(total_time.seconds)
 
                 # Pop up window, then set lunch break.
                 if user_clocked_in:
                     lunch_launch_path = os.path.join(path, 'lunch.py')
-                    get_lunch = subprocess.Popen('pythonw.exe %s -s "%s" -e "%s"' % (lunch_launch_path,
-                                                                                    lunch_start.time(),
-                                                                                    lunch_end.time()))
+
+                    if debug == 'True' or debug == 'true' or debug == True:
+                        process = 'python.exe'
+                    else:
+                        process = 'pythonw.exe'
+                    get_lunch = subprocess.Popen('%s %s -s "%s" -e "%s"' % (process, lunch_launch_path,
+                                                                            lunch_start.time(), lunch_end.time()))
                     get_lunch.wait()
                     time.sleep(2)
             elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
@@ -258,7 +281,11 @@ def chronograph():
                 time.sleep(2)
                 print('Time to clock in!')
                 sod_launch_path = os.path.join(path, 'time_lord.py')
-                subprocess.call('python.exe %s' % sod_launch_path)
+                if debug == 'True' or debug == 'true' or debug == True:
+                    process = 'python.exe'
+                else:
+                    process = 'pythonw.exe'
+                subprocess.call('%s %s' % (process, sod_launch_path))
 
             # -----------------------------------------------------------------------------------------
             # End of Day

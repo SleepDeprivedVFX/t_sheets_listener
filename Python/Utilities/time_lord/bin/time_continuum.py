@@ -37,7 +37,8 @@ class continuum(object):
         if not os.path.exists(log_root):
             os.makedirs(log_root)
         log_path = os.path.join(log_root, log_file)
-        if config['debug_logging'] == 'True' or 'true' or True:
+        debugger = config['debug_logging']
+        if debugger == 'True' or debugger == 'true' or debugger == True:
             level = logging.DEBUG
         else:
             level = logging.INFO
@@ -358,7 +359,7 @@ class continuum(object):
                         total_duration += ((diff.total_seconds() / 60.0) / 60)
         return total_duration
 
-    def get_weekly_total(self, user=None):
+    def get_weekly_total(self, user=None, lunch_id=None, break_id=None):
         '''
         This method will find all the time sheets for a given user for the week and total them all up.
         :param user:
@@ -376,6 +377,14 @@ class continuum(object):
                     ]
                 }
             ]
+            if lunch_id:
+                filters.append(
+                    ['entity', 'is_not', {'type': 'Task', 'id': lunch_id}]
+                )
+            if break_id:
+                filters.append(
+                    ['entity', 'is_not', {'type': 'Task', 'id': break_id}]
+                )
             fields = [
                 'user',
                 'duration',
