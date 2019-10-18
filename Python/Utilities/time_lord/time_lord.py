@@ -25,11 +25,9 @@ NOTES:
         b. The IAP account will get it's user data from the server upon drag-n-drop
 
 REQUIREMENTS:
-    1. This tool will most likely require ActiveState python to be installed on everyone's systems.
+    1. This tool will require ActiveState python to be installed on everyone's systems.
 
 TODO:
-    1. Have the thing auto-clock out if it detects a timesheet from the day before. aint_today()
-        a. Get the latest time from the previous timesheet and add maybe 10 minutes?  (if the start time is before 7)
     3. Create a date-picker to set the start and end time clocks.
         a. If the thing is not clocked in
         b. If the user sets start and end times
@@ -38,16 +36,10 @@ TODO:
     4. Setup a live stream feed for limited data to the lower output.  Like Bullgozer and Rollout Machine
     5. Fix drop down appearance.
     6. Figure out how to make this into an exe file, or some kind of other "run" function that hides the python
-    8. Build in a rolling log file
-    9. Have the start and end clocks do the following:
-        a. If not clocked in...  hmmm. wait... I was going to say, if not clocked in, have it mirror the main time,
-            but, perhaps it should only reflect the last in and out times?  Thus, those clocks don't usually move.
-            However... if we want a user to clock in "now" then it should run the current time.  But, if the user
-            pre-sets the time using the "set date-time" button, then that start time would hold (unless it conflicted
-            with a previous entry.  Which brings about item...
-    10. Have the clock in process ensure that the recorded in time is not prior to a previous out time.
-    11. Setup A window hint for un-clocked in users.  Force on time while not clocked in.
 """
+
+__author__ = 'Adam Benson'
+__version__ = '0.1.0'
 
 import shotgun_api3 as sgapi
 import os
@@ -73,7 +65,6 @@ config = configuration.get_configuration()
 # ------------------------------------------------------------------------------------------------------
 # Create logging system
 # ------------------------------------------------------------------------------------------------------
-# TODO: Replace the following with a rolling timelog system.
 log_file = 'psychic_paper.log'
 log_root = os.path.join(sys.path[0], 'logs')
 log_path = os.path.join(log_root, log_file)
@@ -221,9 +212,6 @@ class time_stream(logging.StreamHandler):
         #     formatter.setForeground(info)
         # self.edit.setCurrentCharFormat(formatter)
 
-        # FIXME: Ok, the thing that sets up the stream handler to keep the latest entry first, either
-        #       or also crashes the memory.
-        #       Error: Process finished with exit code -1073741819 (0xC0000005)
         # Set the cursor to the top
         # cursor = QtGui.QTextCursor(self.edit.document())
         # cursor.setPosition(0)
@@ -454,7 +442,6 @@ class time_lord(QtCore.QThread):
                 except KeyError, e:
                     logger.warning('Failed to get latest timesheet! %s' % e)
                     return None
-                # FIXME: I need to remove all of these time sheet ID bits and replace them with task ID
                 if task_id != ui_task_id:
                     logger.debug('Wrong time sheet!!!')
                     # TODO: Send signals that update the UI bits.

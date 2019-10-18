@@ -1,3 +1,16 @@
+"""
+TARDIS : Time Lord Event Listener
+The TARDIS is the engine that drives the Time Lord.  The TARDIS is the event listener that listens for times of day
+and mouse movements to determine what the Time Lord should do.
+Mouse movements are only listening for whether or not the mouse is moving, and then only between certain times of day
+for events like Auto Start of Day, Lunch Breaks and End of Day / Overtime events.  Nothing is being recorded or tracked
+from the mouse.
+The TARDIS launches different applications based on conditions set in the configuration file.
+"""
+
+__author__ = 'Adam Benson'
+__version__ = '0.1.0'
+
 import os
 import sys
 import win32api

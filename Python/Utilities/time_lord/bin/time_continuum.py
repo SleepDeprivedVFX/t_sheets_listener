@@ -10,6 +10,9 @@ or that appropriate pop ups can be issued reminding the user to update their tim
 This engine is going to handle the logic only.  Calls to users will be handled by other engines.
 """
 
+__author__ = 'Adam Benson'
+__version__ = '0.1.0'
+
 import datetime
 import logging
 from logging.handlers import TimedRotatingFileHandler
