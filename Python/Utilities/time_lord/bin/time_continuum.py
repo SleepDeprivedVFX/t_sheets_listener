@@ -121,8 +121,7 @@ class continuum(object):
         self.logger.info('Getting the previous work day...')
         if date:
             if type(date) == str:
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.datetime.now().time().second,
-                      'String type date detected.  Converting...')
+                self.logger.debug('String type date detected.  Converting...')
                 date = parser.parse(date)
 
             # subtract a day
@@ -184,13 +183,11 @@ class continuum(object):
         self.logger.info('Assuming an end time from the date and configuration...')
         if start_time:
             if type(eod) == str:
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.datetime.now(),
-                      'Converting time to datetime type...')
+                self.logger.debug('Converting time to datetime type...')
                 eod = parser.parse(eod).time()
             raw_date = datetime.datetime.date(start_time)
             new_datetime = datetime.datetime.combine(raw_date, eod)
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.datetime.now(),
-                  'End date assumed: %s' % new_datetime)
+            self.logger.debug('End date assumed: %s' % new_datetime)
             return new_datetime
 
     def clock_out_time_sheet(self, timesheet=None, clock_out=None):
@@ -202,8 +199,7 @@ class continuum(object):
 
         total = (diff.total_seconds() / 60)
         if timesheet:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.datetime.now(),
-                  'Timesheet: %s' % timesheet)
+            self.logger.debug('Timesheet: %s' % timesheet)
             data = {
                 'sg_task_end': clock_out,
                 'duration': total
@@ -227,7 +223,7 @@ class continuum(object):
             project_id = context['Project']['id']
             task_id = context['Task']['id']
             user_id = user['id']
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.datetime.now(), context)
+            self.logger.debug(context)
 
             if start_time and type(start_time) == datetime or datetime.datetime:
                 task_start = start_time

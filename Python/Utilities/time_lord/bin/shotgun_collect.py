@@ -74,8 +74,7 @@ class sg_data(object):
             ]
             assets = self.sg.find('Asset', filters, fields)
             self.logger.info('Assets collected.')
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                  'Assets List: %s' % assets)
+            self.logger.debug('Assets List: %s' % assets)
             return assets
 
     def get_project_shots(self, proj_id=None):
@@ -89,8 +88,7 @@ class sg_data(object):
             ]
             shots = self.sg.find('Shot', filters, fields)
             self.logger.info('Shots collected')
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                  'Shots List: %s' % shots)
+            self.logger.debug('Shots List: %s' % shots)
             return shots
 
     def get_entity_tasks(self, entity_id=None, entity_name=None, proj_id=None):
@@ -109,8 +107,7 @@ class sg_data(object):
             tasks = self.sg.find('Task', filters, fields)
 
             self.logger.info('Tasks collected')
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                  'Tasks List: %s' % tasks)
+            self.logger.debug('Tasks List: %s' % tasks)
             return tasks
         return None
 
@@ -121,8 +118,7 @@ class sg_data(object):
         :return: (dict) a dictionary of values pertinent to the project
         '''
         if proj_name:
-            print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                  'Checking for project name %s' % proj_name)
+            self.logger.debug('Checking for project name %s' % proj_name)
             filters = [
                 ['name', 'is', proj_name]
             ]
@@ -133,29 +129,24 @@ class sg_data(object):
                 'code'
             ]
             try:
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                      'Searching...')
+                self.logger.debug('Searching...')
                 project = self.sg.find_one('Project', filters, fields)
-                print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                      'Project Details found: %s' % project)
+                self.logger.debug('Project Details found: %s' % project)
                 return project
             except (AttributeError, TypeError), e:
                 self.logger.error('Could not get the project: %s' % e)
                 try:
-                    print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                          'Trying again...')
+                    self.logger.debug('Trying again...')
                     tryagain = self.sg.find('Project', filters, fields)
                     print('secondary: %s' % tryagain)
                     if tryagain:
                         project = tryagain[0]
-                        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                              'Project Details Found: %s' % project)
+                        self.logger.debug('Project Details Found: %s' % project)
                         return project
-                    print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                          'Still couldn\'t find shit! %s' % tryagain)
+                    self.logger.debug('Still couldn\'t find shit! %s' % tryagain)
                 except (AttributeError, TypeError, KeyError, Exception), e:
                     self.logger.error('Well, Fuck.  %s' % e)
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second, 'No Project found!')
+        self.logger.debug('No Project found!')
         return None
 
     def get_entity_links(self, ent_type=None, name=None, ent_id=None, proj_id=None):
@@ -190,8 +181,7 @@ class sg_data(object):
         :param proj_id:
         :return: config_path
         """
-        print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second, ('%' * 35) +
-              'get_configuration' + ('%' * 35))
+        self.logger.debug(('%' * 35) + 'get_configuration' + ('%' * 35))
         try:
             if proj_id:
                 filters = [
@@ -206,8 +196,7 @@ class sg_data(object):
                     config_path = get_config['windows_path']
                     config_path = config_path.replace('\\', '/')
 
-                    print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3], datetime.now().time().second,
-                          ('.' * 35) + 'END get_configuration' + ('.' * 35))
+                    self.logger.debug(('.' * 35) + 'END get_configuration' + ('.' * 35))
                     return config_path
             return
         except Exception, e:
@@ -261,7 +250,7 @@ class sg_data(object):
             try:
                 find_task = self.sg.find_one('Task', filters, fields)
             except AttributeError, e:
-                print('get_lunch_task failed!  %s' % e)
+                self.logger.debug('get_lunch_task failed!  %s' % e)
                 find_task = self.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=task_name)
             if find_task:
                 return find_task
