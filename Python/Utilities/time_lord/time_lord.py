@@ -712,7 +712,10 @@ class time_lord_ui(QtGui.QMainWindow):
         entity_id = self.ui.entity_dropdown.itemData(entity_index)
         entity_name = self.ui.entity_dropdown.currentText()
 
-        self.last_saved_task = self.last_timesheet['entity']['name']
+        try:
+            self.last_saved_task = self.last_timesheet['entity']['name']
+        except Exception:
+            pass
         context = {
             'entity_id': entity_id,
             'entity_name': entity_name,

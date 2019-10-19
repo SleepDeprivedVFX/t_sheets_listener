@@ -180,7 +180,7 @@ class continuum(object):
                 last_timesheet = None
             if last_timesheet:
                 return last_timesheet
-            return None
+            return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
 
     def assume_end_time(self, start_time=None, eod=None):
         self.logger.info('Assuming an end time from the date and configuration...')
