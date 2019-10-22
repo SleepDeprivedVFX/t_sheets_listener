@@ -295,7 +295,7 @@ class continuum(object):
                         'm': m,
                         's': s
                     }
-            except TypeError, e:
+            except (AttributeError, TypeError) as e:
                 self.logger.error('Yeah, the shit hit the fan: %s' % e)
         return running_time
 

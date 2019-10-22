@@ -98,12 +98,6 @@ def query_mouse_position():
     return {"x": pt.x, "y": pt.y}
 
 
-# class chronograph(QtGui.QMainWindow):
-#     def __init__(self):
-#         super(chronograph, self).__init__(parent=None)
-#         # Run the chronograph
-#         self.chronograph()
-
 def chronograph():
     '''
     This thread will process the timer events throughout the day.
@@ -127,6 +121,7 @@ def chronograph():
     lunch_timesheet = False
 
     # Set start and end of day
+    early_sod = parser.parse(config['early_start']).time()
     sod = parser.parse(config['regular_start']).time()
     eod = parser.parse(config['regular_end'])
     eod_countdown = (eod - timedelta(minutes=timer_trigger)).time()
@@ -137,13 +132,8 @@ def chronograph():
     path = sys.path[0]
     minute = int(datetime.now().minute)
 
-    # Part of temp count system
-    temp_count = 0
-
     while True:
         pos = query_mouse_position()
-        # print(pos)
-        # print(datetime.now().time())
         time.sleep(sleep)
         sod_launch = None
         if pos == query_mouse_position():
@@ -153,11 +143,6 @@ def chronograph():
             if not set_timer:
                 # If there is no timer, create a timer
                 set_timer = 1
-                # try:
-                #     logger.debug('Timer Reset to 1')
-                # except Exception, e:
-                #     print e
-                #     pass
             else:
                 # Run the existing timer until the following conditions are met.
                 if minute != int(datetime.now().minute):
@@ -181,8 +166,9 @@ def chronograph():
                 # --------------------------------------------------------------------------------------
                 # Lunch Timer
                 # --------------------------------------------------------------------------------------
-                if sod > datetime.now().time():
-                    # Reset the lunch_timesheet
+                if sod > datetime.now().time() > early_sod:
+                    # Reset the lunch_timesheet between the early and regular start of day.
+                    # Gets set at every cycle, though once is enough.
                     lunch_timesheet = False
                 if set_timer > trigger and start_time < datetime.now().time() < end_time and not lunch_start:
                     # The user has not moved their mouse in long enough to trigger a lunch break event.
@@ -206,7 +192,8 @@ def chronograph():
 
                 now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
                                           datetime.now().time().second)
-                if not user_clocked_in and str(now) == str(sod):
+                # Opens at the Early start of day trigger instead of the regular start of day.
+                if not user_clocked_in and str(now) == str(early_sod):
                     time.sleep(2)
                     logger.info('Time to clock in!')
                     sod_launch_path = os.path.join(path, 'time_lord.py')
@@ -214,7 +201,11 @@ def chronograph():
                         process = 'python.exe'
                     else:
                         process = 'pythonw.exe'
-                    subprocess.call('%s %s' % (process, sod_launch_path))
+                    start_of_day = subprocess.Popen('%s %s' % (process, sod_launch_path))
+                    # NOTE: I kinda want to leave this .wait() in here, but my fear is, someone won't close it for days
+                    #       on end, and it will halt all the other processes, like the lunch check and the clock out.
+                    #       thus, pausing it for now...
+                    # start_of_day.wait()
 
                 # --------------------------------------------------------------------------------------
                 # End of Day
@@ -281,8 +272,11 @@ def chronograph():
                 # If the user has been gone too long beyond lunch....
                 if user_clocked_in:
                     logger.info('Gone too long.  Clocking out...')
+                    # TODO: Eventually add in a pop up that stays opened until EOD, that displays the message "You have
+                    #       been clocked out for being gone too long! <Button to re-open Time Lord>"
                     lunch_timesheet = tl_time.get_last_timesheet(user=user)
                     clock_out = tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=lunch_start)
+                    logger.debug('Auto Clocked Out: %s' % clock_out)
 
             # --------------------------------------------------------------------------------------
             # Start of Day
@@ -319,6 +313,11 @@ time_loop.start()
 
 
 class tardis(object):
+    """
+    The TARDIS is the main windows listening environment for the Time Lord.  It is a Windows ONLY listening cycle,
+    there is currently no support for Linux or crApple, though the loops may be built in the future.  This class creates
+    the Icon down in the Task Bar, creates a right-click menu for additional features, and allows the
+    """
     QUIT = 'QUIT'
     SPECIAL_ACTIONS = [QUIT]
 

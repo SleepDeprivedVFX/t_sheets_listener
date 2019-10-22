@@ -355,6 +355,10 @@ class time_lord(QtCore.QThread):
                 # If the User is listed as "Clocked IN" by the latest timesheet...
                 if self.clocked_in:
                     # Collect the current running time
+                    print('358: %s' % self.last_timesheet)
+                    if not self.last_timesheet['project'] or not self.last_timesheet['sg_task_start'] or \
+                            not self.last_timesheet['entity']:
+                        self.last_timesheet = tl_time.get_last_timesheet(user=user)
                     rt = tl_time.get_running_time(timesheet=self.last_timesheet)
                     running_time = rt['rt']
                     # Here we take the running time and emit it to the display.
@@ -485,9 +489,12 @@ class time_lord(QtCore.QThread):
             logger.debug('Project List Requested!')
             active_projects = sg_data.get_active_projects()
             if active_projects:
-                wait_cond.wakeAll()
-                self.time_signal.set_project_list.emit(active_projects)
-                self.quick_update()
+                # wait_cond.wakeAll()
+                if message == 'initialize':
+                    return active_projects
+                else:
+                    self.time_signal.set_project_list.emit(active_projects)
+                    self.quick_update()
 
     def set_daily_total(self, message=None):
         '''
@@ -552,7 +559,7 @@ class time_lord(QtCore.QThread):
             self.set_user_output(user=user)
             self.time_signal.user_has_clocked_in.emit(timesheet)
 
-    def get_entities(self, entity_id=None):
+    def get_entities(self, entity_id=None, r=False):
         logger.debug('get_entities activated: entity id: %s' % entity_id)
         if entity_id:
             asset_entities = sg_data.get_project_assets(proj_id=entity_id)
@@ -561,10 +568,13 @@ class time_lord(QtCore.QThread):
             logger.debug('Shots Collected: %s' % shot_entities)
             entities = asset_entities + shot_entities
             last_timesheet = tl_time.get_last_timesheet(user=user)
-            self.time_signal.set_entity_list.emit((last_timesheet, entities))
+            if r:
+                return last_timesheet, entities
+            else:
+                self.time_signal.set_entity_list.emit((last_timesheet, entities))
             logger.debug('get_entities: %s' % entities)
 
-    def get_tasks(self, context=None):
+    def get_tasks(self, context=None, r=False):
         logger.debug('get_tasks activated: %s' % context)
         if context:
             entity_id = context['entity_id']
@@ -572,7 +582,10 @@ class time_lord(QtCore.QThread):
             proj_id = context['proj_id']
             tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
             if tasks:
-                self.time_signal.set_task_list.emit(tasks)
+                if r:
+                    return tasks
+                else:
+                    self.time_signal.set_task_list.emit(tasks)
                 logger.debug('Tasks emitted: %s' % tasks)
 
     def set_last_timesheet(self, message=None):
@@ -689,10 +702,12 @@ class time_lord_ui(QtGui.QMainWindow):
         # ------------------------------------------------------------------------------------------------------
         # Start up UI
         # ------------------------------------------------------------------------------------------------------
-        self.time_lord.time_signal.req_project_list.emit('Update Projects!')
-        # mutex.lock()
-        # wait_cond.wait(mutex)
-        # mutex.unlock()
+        projects = self.time_lord.get_active_projects('initialize')
+        if projects:
+            self.set_project_list(projects=projects)
+        else:
+            self.time_lord.time_signal.req_project_list.emit('Update Projects!')
+
         # First update the Entities: Assets and Shots
         # FIXME: The follwoing line needs to send the timesheet and list of entities as a tuple.  Needs to do something
         #       else with this.
@@ -703,7 +718,12 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.project_dropdown.setFocus()
 
         proj_index = self.ui.project_dropdown.currentIndex()
-        self.time_lord.time_signal.req_entity_list.emit(self.ui.project_dropdown.itemData(proj_index))
+
+        entities = self.time_lord.get_entities(self.ui.project_dropdown.itemData(proj_index), r=True)
+        if entities:
+            self.update_entities(data=entities)
+        else:
+            self.time_lord.time_signal.req_entity_list.emit(self.ui.project_dropdown.itemData(proj_index))
         # Then connect the Entity drop-down to an on-change event
         self.ui.entity_dropdown.currentIndexChanged.connect(self.req_update_tasks)
         self.ui.entity_dropdown.currentIndexChanged.connect(self.switch_state)
@@ -721,7 +741,11 @@ class time_lord_ui(QtGui.QMainWindow):
             'entity_name': entity_name,
             'proj_id': self.ui.project_dropdown.itemData(proj_index)
         }
-        self.time_lord.time_signal.req_task_list.emit(context)
+        tasks = self.time_lord.get_tasks(context=context)
+        if tasks:
+            self.update_tasks(tasks=tasks)
+        else:
+            self.time_lord.time_signal.req_task_list.emit(context)
 
         # QUERY: Why am I setting time_lord variables in the UI?
         self.time_lord.set_trt_output(trt='00:00:00')
@@ -768,15 +792,18 @@ class time_lord_ui(QtGui.QMainWindow):
         if update:
             self.last_timesheet = update
             logger.debug('UPDATE: %s' % update)
-            self.last_project_name = self.last_timesheet['project']['name']
-            self.last_saved_task = self.last_timesheet['entity']['name']
-            self.last_task_id = self.last_timesheet['entity']['id']
-            self.last_project_id = self.last_timesheet['project']['id']
-            # NOTE: DIRECT CALL but takes less than a second, so I'm leaving it.
-            last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
-                                                           self.last_saved_task,
-                                                           self.last_timesheet['entity']['id'],
-                                                           self.last_project_id)
+            try:
+                self.last_project_name = self.last_timesheet['project']['name']
+                self.last_saved_task = self.last_timesheet['entity']['name']
+                self.last_task_id = self.last_timesheet['entity']['id']
+                self.last_project_id = self.last_timesheet['project']['id']
+                # NOTE: DIRECT CALL but takes less than a second, so I'm leaving it.
+                last_entity_details = sg_data.get_entity_links(self.last_timesheet['entity']['type'],
+                                                               self.last_saved_task,
+                                                               self.last_timesheet['entity']['id'],
+                                                               self.last_project_id)
+            except (TypeError, KeyError) as e:
+                logger.error('Could not update last timesheet!')
             if last_entity_details:
                 self.last_entity_type = last_entity_details['entity']['type']
                 self.last_entity_id = last_entity_details['entity']['id']
@@ -1335,6 +1362,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :param in_time: (tuple) (hour, minute)
         :return:
         '''
+        print '1365: %s' % self.last_timesheet
         if self.time_lord.clocked_in:
             start_time = self.last_timesheet['sg_task_start']
             hour = start_time.time().hour
