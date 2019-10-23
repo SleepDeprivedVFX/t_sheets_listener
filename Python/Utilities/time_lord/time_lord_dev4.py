@@ -43,6 +43,7 @@ from bin import configuration
 from bin import shotgun_collect
 from ui import time_lord_clock as tlu
 import time
+import socket
 
 config = configuration.get_configuration()
 
@@ -88,6 +89,157 @@ sg_data = shotgun_collect.sg_data(sg, config=config, sub='time_lord')
 
 lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])
+
+
+class time_event_listener(QtCore.QThread):
+    """
+    This system is meant to replace the current time-based system by utilizing Shotguns Event Logs to trigger updates
+    instead.
+    """
+
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+
+        # Get the TLD Time Capsule File
+        self.db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')
+        if not os.path.exists(self.db_path):
+            os.makedirs(self.db_path)
+
+        # Setup The main variables
+        self.kill_it = False
+
+    def run(self, *args, **kwargs):
+        self.listener()
+
+    def kill(self):
+        self.kill_it = True
+
+    def get_time_capsule(self):
+        '''
+        This will open and collect the current time capsule file.
+        :return:
+        '''
+        if os.path.exists(self.db_path):
+            fh = open(self.db_path, 'rb')
+            db_file = pickle.load(fh)
+            fh.close()
+            return db_file
+
+    def save_time_capsule(self, data={}):
+        '''
+        Do I return a packaged data dictionary, or do I build it here, passing the Event and TimeLog IDs into the
+        system?  Or do I collect those values in here, passing nothing?
+        :param data: (dict): A collection of 2 values:
+                   data =   {
+                                'EventLogID': 123,
+                                'TimeLogID': 456
+                            }
+        :return:
+        '''
+        if data:
+            if os.path.exists(self.db_path):
+                fh = open(self.db_path, 'wb')
+                pickle.dump(data, fh)
+                fh.close()
+
+    def get_new_events(self):
+        '''
+        This method will collect the latest events from the Shotgun database
+        :return: A list of new events
+        '''
+        # print 'Getting new events'
+        next_event_id = None
+        time_capsule = self.get_time_capsule()
+        new_event_id = time_capsule['EventLogID']
+        if new_event_id and (next_event_id is None or new_event_id < next_event_id):
+            # print 'Setting next_event_id to %s' % new_event_id
+            next_event_id = new_event_id
+
+        if next_event_id:
+            # print 'next_event_id: %s' % next_event_id
+            filters = [
+                ['id', 'greater_than', next_event_id - 1],
+                {
+                    'filter_operator': 'any',
+                    'filters': [
+                        ['event_type', 'is', 'Shotgun_TimeLog_New'],
+                        ['event_type', 'is', 'Shotgun_TimeLog_Change']
+                    ]
+                }
+            ]
+            fields = [
+                'id',
+                'event_type',
+                'attribute_name',
+                'meta',
+                'entity',
+                'user',
+                'project',
+                'session_uuid',
+                'created_at'
+            ]
+            order = [
+                {
+                    'column': 'id',
+                    'direction': 'asc'
+                }
+            ]
+
+            conn_attempts = 0
+            while True:
+                # print 'conn_attempts: %s' % conn_attempts
+                try:
+                    events = sg.find('EventLogEntry', filters, fields, order=order, limit=200)
+                    # print 'found events: %s' % events
+                    if events:
+                        logger.debug('Events collected! %s' % events)
+                        # print 'New Events Collected!', events
+                    return events
+                except (sgapi.ProtocolError, sgapi.ResponseError, socket.error) as err:
+                    conn_attempts += 1
+                    time.sleep(1)
+                    if conn_attempts > 10:
+                        print 'can\'t connect to shotgun! %s' % err
+                        logger.error('Can\'t connect to shotgun!', err)
+                        break
+                except Exception as err:
+                    conn_attempts += 1
+                    time.sleep(1)
+                    if conn_attempts > 10:
+                        logger.error('Something went wrong! %s' % err)
+        return []
+
+    def listener(self):
+        '''
+        The main loop listener.
+        :return:
+        '''
+        logger.debug('Starting the main event listener loop...')
+        print 'Loop Started'
+        while not self.kill_it:
+            events = self.get_new_events()
+            time_capsule = self.get_time_capsule()
+            # print 'returned events: %s' % events
+            if events:
+                for event in events:
+                    if event['entity']['id'] >= time_capsule['TimeLogID'] and event['id'] > time_capsule['EventLogID']:
+                        print 'NEW RECORD!'
+                        print event['entity']['id']
+                        print event
+
+                        data = {
+                            'EventLogID': event['id'],
+                            'TimeLogID': event['entity']['id']
+                        }
+                        self.save_time_capsule(data)
+
+
+if __name__ == '__main__':
+    app = QtGui.QApplication(sys.argv)
+    test = time_event_listener()
+    test.start()
+    sys.exit(app.exec_())
+
 
 '''
 The Following is pulled from the Event Listener system.  There's some good simple nuggets in there.  Parsing more...
@@ -236,25 +388,27 @@ ________________________________________________________________________________
             self._saveEventIdData()
 '''
 
-db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')  # .tld for time lord data
-if not os.path.exists(db_path):
-    os.makedirs(db_path)
-if os.path.exists(db_path):
-    data = {}
-    db_file = open(db_path, 'rb')
-    print 'open file: %s' % db_file
-    # try:
-    test_db = pickle.load(db_file)
-    db_file.close()
-    print 'test_db returns: %s' % test_db
-    for k, v in test_db.items():
-        data[k] = v
-    # except Exception as e:
-    #     print e
-    db_file = open(db_path, 'wb')
-    data['fart'] = 'hammer'
-    pickle.dump(data, db_file)
-    db_file.close()
+# db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')  # .tld for time lord data
+# if not os.path.exists(db_path):
+#     os.makedirs(db_path)
+# if os.path.exists(db_path):
+#     data = {}
+#     # Print out what's in the pickled file
+#     db_file = open(db_path, 'rb')
+#     print 'open file: %s' % db_file
+#     # try:
+#     test_db = pickle.load(db_file)
+#     db_file.close()
+#     print 'test_db returns: %s' % test_db
+#
+#     # The following takes existing data and adds it back into the pickled file.
+#     # for k, v in test_db.items():
+#     #     data[k] = v
+#     db_file = open(db_path, 'wb')
+#     data['EventLogID'] = 8184655
+#     data['TimeLogID'] = 1149
+#     pickle.dump(data, db_file)
+#     db_file.close()
 
 
 
