@@ -39,7 +39,7 @@ TODO:
 """
 
 __author__ = 'Adam Benson'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 import shotgun_api3 as sgapi
 import os
@@ -56,8 +56,6 @@ from bin import configuration
 from bin import shotgun_collect
 from ui import time_lord_clock as tlu
 import time
-
-import inspect
 
 config = configuration.get_configuration()
 
@@ -355,7 +353,6 @@ class time_lord(QtCore.QThread):
                 # If the User is listed as "Clocked IN" by the latest timesheet...
                 if self.clocked_in:
                     # Collect the current running time
-                    print('358: %s' % self.last_timesheet)
                     if not self.last_timesheet['project'] or not self.last_timesheet['sg_task_start'] or \
                             not self.last_timesheet['entity']:
                         self.last_timesheet = tl_time.get_last_timesheet(user=user)
@@ -443,7 +440,7 @@ class time_lord(QtCore.QThread):
                     project_id = latest_timesheet['project']['id']
                     task = latest_timesheet['entity']['name']
                     task_id = latest_timesheet['entity']['id']
-                except KeyError, e:
+                except Exception, e:
                     logger.warning('Failed to get latest timesheet! %s' % e)
                     return None
                 if task_id != ui_task_id:
@@ -1363,7 +1360,6 @@ class time_lord_ui(QtGui.QMainWindow):
         :param in_time: (tuple) (hour, minute)
         :return:
         '''
-        print '1365: %s' % self.last_timesheet
         # NOTE: Occasionally, I'm getting a blank timesheet (randomly).  This is checking for that, but ultimately is
         #       a bandaid for some other issue, and it slows down the system.
         if not self.last_timesheet['project'] or not self.last_timesheet['entity'] or \
@@ -1371,11 +1367,16 @@ class time_lord_ui(QtGui.QMainWindow):
             self.last_timesheet = tl_time.get_last_timesheet(user=user)
         if self.time_lord.clocked_in:
             start_time = self.last_timesheet['sg_task_start']
-            hour = start_time.time().hour
-            minute = start_time.time().minute
-            second = start_time.time().second
-            hours = (30 * (hour + (minute / 60.0)))
-            minutes = (6 * (minute + (second / 60.0)))
+            if start_time:
+                hour = start_time.time().hour
+                minute = start_time.time().minute
+                second = start_time.time().second
+                hours = (30 * (hour + (minute / 60.0)))
+                minutes = (6 * (minute + (second / 60.0)))
+            else:
+                print 'Bad Start Time!  Returning False', datetime.now()
+                logger.warning('Bad Start Time. Data lost somewhere.  Returning False.')
+                return False
         else:
             hours = in_time[0]
             minutes = in_time[1]

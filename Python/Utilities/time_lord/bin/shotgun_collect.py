@@ -163,7 +163,7 @@ class sg_data(object):
             ]
             try:
                 link = self.sg.find_one(ent_type, filters, fields)
-            except AttributeError, e:
+            except (AttributeError, Exception), e:
                 self.logger.error('Bad connection... Try again... %s' % e)
                 print('Lame ass connection.  Trying again...')
                 link = self.get_entity_links(ent_type=ent_type, name=name, ent_id=ent_id, proj_id=proj_id)
