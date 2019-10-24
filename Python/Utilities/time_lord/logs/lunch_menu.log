@@ -1,25 +1,3 @@
-2019-10-21 12:04:27,282 - lunch_menu | INFO : 49 - Lunch Utility has started.
-2019-10-21 12:04:28,331 - lunch_menu | DEBUG : 55 - Shotgun is connected.
-2019-10-21 12:11:17,818 - lunch_menu | INFO : 178 - Skipping Lunch...
-2019-10-21 12:42:53,753 - lunch_menu | INFO : 49 - Lunch Utility has started.
-2019-10-21 12:42:54,740 - lunch_menu | DEBUG : 55 - Shotgun is connected.
-2019-10-21 12:42:58,085 - lunch_menu | INFO : 178 - Skipping Lunch...
-2019-10-21 12:46:06,665 - lunch_menu | INFO : 49 - Lunch Utility has started.
-2019-10-21 12:46:07,621 - lunch_menu | DEBUG : 55 - Shotgun is connected.
-2019-10-21 12:46:27,831 - lunch_menu | INFO : 178 - Skipping Lunch...
-2019-10-21 12:57:56,244 - lunch_menu | INFO : 49 - Lunch Utility has started.
-2019-10-21 12:57:57,206 - lunch_menu | DEBUG : 55 - Shotgun is connected.
-2019-10-21 12:57:59,750 - lunch_menu | INFO : 178 - Skipping Lunch...
-2019-10-21 13:35:53,559 - lunch_menu | INFO : 49 - Lunch Utility has started.
-2019-10-21 13:35:54,494 - lunch_menu | DEBUG : 55 - Shotgun is connected.
-2019-10-21 14:33:44,961 - lunch_menu | INFO : 134 - Lunch taken... Recording...
-2019-10-22 14:02:19,563 - lunch_menu | INFO : 49 - Lunch Utility has started.
-2019-10-22 14:02:20,506 - lunch_menu | DEBUG : 55 - Shotgun is connected.
-2019-10-22 14:02:27,546 - lunch_menu | INFO : 134 - Lunch taken... Recording...
-2019-10-22 19:24:57,244 - lunch_menu | INFO : 49 - Lunch Utility has started.
-2019-10-22 19:24:58,115 - lunch_menu | DEBUG : 55 - Shotgun is connected.
-2019-10-22 19:25:07,007 - lunch_menu | WARNING : 185 - You can't close the window this way!
-2019-10-22 19:25:07,782 - lunch_menu | WARNING : 185 - You can't close the window this way!
-2019-10-22 19:25:08,562 - lunch_menu | WARNING : 185 - You can't close the window this way!
-2019-10-22 19:25:34,921 - lunch_menu | WARNING : 185 - You can't close the window this way!
-2019-10-22 19:25:36,977 - lunch_menu | INFO : 178 - Skipping Lunch...
+2019-10-24 13:30:35,368 - lunch_menu | INFO : 49 - Lunch Utility has started.
+2019-10-24 13:30:36,427 - lunch_menu | DEBUG : 55 - Shotgun is connected.
+2019-10-24 13:30:47,993 - lunch_menu | INFO : 134 - Lunch taken... Recording...

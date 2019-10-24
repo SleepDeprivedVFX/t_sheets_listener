@@ -1,16 +1,8 @@
-2019-10-22 14:02:20,621 - lunch_sg_collection | INFO : 45 - Shotgun Collection Activated!
-2019-10-22 14:02:20,624 - lunch_sg_collection | DEBUG : 47 - Shotgun sg sub-loaded.
-2019-10-22 14:02:20,709 - lunch_sg_collection | INFO : 71 - Getting project assets...
-2019-10-22 14:02:20,805 - lunch_sg_collection | INFO : 79 - Assets collected.
-2019-10-22 14:02:20,805 - lunch_sg_collection | DEBUG : 80 - Assets List: [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
-2019-10-22 14:02:20,805 - lunch_sg_collection | INFO : 85 - Getting project shots...
-2019-10-22 14:02:20,895 - lunch_sg_collection | INFO : 93 - Shots collected
-2019-10-22 14:02:20,895 - lunch_sg_collection | DEBUG : 94 - Shots List: []
-2019-10-22 19:24:58,226 - lunch_sg_collection | INFO : 45 - Shotgun Collection Activated!
-2019-10-22 19:24:58,226 - lunch_sg_collection | DEBUG : 47 - Shotgun sg sub-loaded.
-2019-10-22 19:24:58,338 - lunch_sg_collection | INFO : 71 - Getting project assets...
-2019-10-22 19:24:58,444 - lunch_sg_collection | INFO : 79 - Assets collected.
-2019-10-22 19:24:58,444 - lunch_sg_collection | DEBUG : 80 - Assets List: [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
-2019-10-22 19:24:58,444 - lunch_sg_collection | INFO : 85 - Getting project shots...
-2019-10-22 19:24:58,536 - lunch_sg_collection | INFO : 93 - Shots collected
-2019-10-22 19:24:58,536 - lunch_sg_collection | DEBUG : 94 - Shots List: []
+2019-10-24 13:30:36,532 - lunch_sg_collection | INFO : 45 - Shotgun Collection Activated!
+2019-10-24 13:30:36,536 - lunch_sg_collection | DEBUG : 47 - Shotgun sg sub-loaded.
+2019-10-24 13:30:36,684 - lunch_sg_collection | INFO : 71 - Getting project assets...
+2019-10-24 13:30:36,769 - lunch_sg_collection | INFO : 79 - Assets collected.
+2019-10-24 13:30:36,769 - lunch_sg_collection | DEBUG : 80 - Assets List: [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-24 13:30:36,769 - lunch_sg_collection | INFO : 85 - Getting project shots...
+2019-10-24 13:30:36,867 - lunch_sg_collection | INFO : 93 - Shots collected
+2019-10-24 13:30:36,867 - lunch_sg_collection | DEBUG : 94 - Shots List: []
