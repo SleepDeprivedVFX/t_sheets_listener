@@ -223,19 +223,22 @@ class time_event_listener(QtCore.QThread):
             if events:
                 for event in events:
                     if event['entity']['id'] >= time_capsule['TimeLogID'] and event['id'] > time_capsule['EventLogID']:
-                        if type(event['meta']) == dict and 'new_value' in event['meta'].keys():
-                            event_value = event['meta']['new_value']
-                            if type(event_value) == dict and event_value['type'] == 'HumanUser':
-                                if event_value['id'] == user['id']:
-                                    print 'NEW RECORD!'
-                                    print event['entity']['id']
-                                    print event
+                        entity = event['entity']
+                        entity_id = entity['id']
+                        timesheet_info = tl_time.get_timesheet_by_id(tid=entity_id)
+                        if timesheet_info:
+                            user_info = timesheet_info['user']
+                            user_id = user_info['id']
+                            if user_id == user['id']:
+                                print 'NEW RECORD!'
+                                print event['entity']['id']
+                                print event
 
-                                    data = {
-                                        'EventLogID': event['id'],
-                                        'TimeLogID': event['entity']['id']
-                                    }
-                                    self.save_time_capsule(data)
+                                data = {
+                                    'EventLogID': event['id'],
+                                    'TimeLogID': event['entity']['id']
+                                }
+                                self.save_time_capsule(data)
 
 
 if __name__ == '__main__':

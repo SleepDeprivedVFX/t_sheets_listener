@@ -479,4 +479,22 @@ class continuum(object):
                 return False
             return True
 
+    def get_timesheet_by_id(self, tid=None):
+        if tid:
+            filters = [
+                ['id', 'is', tid]
+            ]
+            fields = [
+                'user',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'duration'
+            ]
+            timesheet = self.sg.find_one('TimeLog', filters, fields)
+            if timesheet:
+                return timesheet
+        return None
+
 
