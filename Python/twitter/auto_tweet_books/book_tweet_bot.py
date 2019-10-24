@@ -34,6 +34,23 @@ def save_tweet(text=None, *args, **kwargs):
     print(text)
     print(args)
     print(kwargs)
+    data = {
+        'Tweet': 'Hello There Barney',
+        'details': {
+            'image': 'image_name',
+            'link': 'link_location'
+        }
+    }
+    tweet_file = open('tweets.json', 'w')
+    save_this_data = json.dump(data, tweet_file, indent=4)
+    tweet_file.close()
+    print(save_this_data)
+
+
+def get_saved_tweets():
+    fh = open('tweets.json', 'r')
+    listed_tweets = json.load(fh)
+    print(listed_tweets)
 
 
 def get_tweets(api=None, screen_name=None):
@@ -68,6 +85,9 @@ if __name__ == "__main__":
         print(parse_search['text'])
 
     screen_name = config['user']
+
+    # save_tweet(text='Hello There')
+    get_saved_tweets()
 
 
 

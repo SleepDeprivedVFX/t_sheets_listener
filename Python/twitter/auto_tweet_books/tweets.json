@@ -1,0 +1,18 @@
+{
+    "Tweets": [
+        {
+            "text": "Hello THere Barney!",
+            "id": 1,
+            "image": "",
+            "link": "no link",
+            "last_posted": "Today"
+        },
+        {
+            "text": "How are you doing?",
+            "id": 2,
+            "image": "Big Photo Finish",
+            "link": "long_link",
+            "last_posted": "Yesterday"
+        }
+    ]
+}
