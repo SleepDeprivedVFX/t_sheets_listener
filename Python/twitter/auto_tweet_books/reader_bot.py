@@ -8,6 +8,9 @@ import json
 import sys
 import os
 from datetime import datetime, timedelta
+import time
+import random
+import math
 
 
 def get_configuration():
@@ -37,6 +40,8 @@ def get_configuration():
     config['api_token'] = configuration.get('Access Tokens', 'api_token')
     config['api_secret'] = configuration.get('Access Tokens', 'api_secret')
     config['user'] = configuration.get('User', 'screen_name')
+    config['record_count'] = configuration.get('params', 'record_count')
+    config['read_length'] = configuration.get('params', 'read_length')
     return config
 
 
@@ -44,8 +49,10 @@ class readerBotTools(object):
     '''
     Tools for manipulating the readerBot
     '''
-    def __init__(self, parent=None):
-        super(readerBotTools).__init__(self, parent)
+    def __init__(self, api=None):
+        self.config = get_configuration()
+        # search = api.GetSearch(term='#scifi #novel', result_type='recent', count=int(self.config['record_count']))
+        # print(search)
 
     def save_tweet(self, text=None, image=None, link=None, last_posted=None):
         previous_tweets = self.get_saved_tweets()
@@ -105,9 +112,72 @@ class readerBotTools(object):
 
         return timeline
 
+    def collect_random_seed(self):
+        text_seed = self.get_tweets(api=api, screen_name=self.config['user'])
+        collection = ''
+        for s in text_seed:
+            data = s.AsDict()
+            text = data['text']
+            for x in text:
+                collection += x
+        return collection
+
+    def truly_random(self, collection=None):
+        rando = 0.0
+        if collection:
+            final = collection
+            a = 0
+            b = 0
+            c = 0
+            d = 0
+
+            random.seed = int(time.time() * math.sin(time.time()))
+            A = random.randrange(a, len(final) + 1)
+            B = random.randrange(b, len(final) + 1)
+            C = random.randrange(c, len(final) + 1)
+            D = random.randrange(d, len(final) + 1)
+            a = ord(final[A])
+            b = ord(final[B])
+            c = ord(final[C])
+            d = ord(final[D])
+            rando = ((a * b) / c) * ((d / 2) * math.sin(4 * time.time()))
+        return rando
+
+    def rando_range(self, min=None, max=None, integer=False):
+        collection = self.collect_random_seed()
+        if not min and not max:
+            min = 0.0
+            max = 100.0
+        elif min and not max:
+            max = float(min)
+            min = 0.0
+        elif max and not min:
+            max = float(max)
+            min = 0.0
+        else:
+            max = float(max)
+            min = float(min)
+        A = self.truly_random(collection)
+        B = self.truly_random(collection)
+        C = self.truly_random(collection)
+        num_list = sorted([A, B, C])
+        low = num_list[0]
+        hi = num_list[2]
+        mid = num_list[1]
+        diff = hi - low
+        m_diff = mid - low
+
+        range_diff = max - min
+        rando = (min + (range_diff * (m_diff / diff)))
+        if integer:
+            rando = int(rando)
+        return rando
+
 
 if __name__ == "__main__":
     config = get_configuration()
     api = twitter.Api(config['consumer_api_key'], config['consumer_secret_key'], config['api_token'],
                       config['api_secret'])
+    test = readerBotTools(api=api)
+    print(test.rando_range(0, 100, integer=True))
 
