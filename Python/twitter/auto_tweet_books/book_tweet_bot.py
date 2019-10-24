@@ -3,8 +3,8 @@ import twitter
 import json
 import sys
 import os
-import requests
 from datetime import datetime, timedelta
+import requests
 
 
 def get_configuration():
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     config = get_configuration()
     api = twitter.Api(config['consumer_api_key'], config['consumer_secret_key'], config['api_token'],
                           config['api_secret'])
-    search = api.GetSearch(term='science fiction novels', result_type='recent')
+    search = api.GetSearch(term='#scifi #books', result_type='mixed', count=25)
     for s in search:
         test = str(s)
         parse_search = json.loads(test)
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
     screen_name = config['user']
 
-    save_tweet(text='Jerry Rig', image='Tard', link='Digger')
+    # save_tweet(text='Jerry Rig', image='Tard', link='Digger')
     tweets = get_saved_tweets()
     print(tweets)
 
