@@ -596,6 +596,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # Setup and connect the last timesheet.
         # Declare Class Variables
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        self.clocked_in = True
 
         # Connect to the threads
         self.time_lord = time_lord()
@@ -684,10 +685,14 @@ class time_lord_ui(QtGui.QMainWindow):
         '''
         # NOTE: Occasionally, I'm getting a blank timesheet (randomly).  This is checking for that, but ultimately is
         #       a bandaid for some other issue, and it slows down the system.
-        if not self.last_timesheet['project'] or not self.last_timesheet['entity'] or \
-                self.last_timesheet['sg_task_start']:
-            self.last_timesheet = tl_time.get_last_timesheet(user=user)
-        if self.time_lord.clocked_in:
+        # if not self.last_timesheet['project'] or not self.last_timesheet['entity'] or \
+        #         self.last_timesheet['sg_task_start']:
+        #     self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        # if self.time_lord.clocked_in:
+        # FIXME: The following if is a patch for the above shit.
+        #       This seems to be what was causing one of the hang ups. Need a signal pass between here and there
+        #       to set the self.clocked_in across both systems.
+        if self.clocked_in:
             start_time = self.last_timesheet['sg_task_start']
             if start_time:
                 hour = start_time.time().hour
@@ -727,7 +732,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :param in_time: (tuple) (hour, minute)
         :return:
         '''
-        if not self.time_lord.clocked_in:
+        if not self.clocked_in:
             # self.last_timesheet = tl_time.get_last_timesheet(user=user)
             # self.timesheet_update.time_signal.ui_update.emit('Update!')
             # self.time_lord.time_signal.ui_update.emit()
