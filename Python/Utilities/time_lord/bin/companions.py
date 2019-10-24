@@ -67,7 +67,8 @@ class companions(object):
                 'permission_rule_set',
                 'sg_computer',
                 'projects',
-                'groups'
+                'groups',
+                'id'
             ]
             find_user = self.sg.find_one('HumanUser', filters, fields)
             return find_user
