@@ -20,7 +20,7 @@ import os
 import sys
 from dateutil import parser
 from dateutil import relativedelta
-import inspect
+import time
 
 
 class continuum(object):
@@ -492,9 +492,21 @@ class continuum(object):
                 'entity',
                 'duration'
             ]
-            timesheet = self.sg.find_one('TimeLog', filters, fields)
-            if timesheet:
-                return timesheet
+            conn_attempts = 0
+            timesheet = None
+            while True:
+                try:
+                    timesheet = self.sg.find_one('TimeLog', filters, fields)
+                except Exception as e:
+                    if conn_attempts > 5:
+                        self.logger.error('Failed to connect!')
+                        return False
+                    else:
+                        self.logger.error('Bad connection.  Trying again...')
+                        conn_attempts += 1
+                        time.sleep(2)
+                if timesheet:
+                    return timesheet
         return None
 
 

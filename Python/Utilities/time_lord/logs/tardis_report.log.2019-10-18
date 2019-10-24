@@ -1,0 +1,1990 @@
+2019-10-17 19:21:32,384 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-17 19:21:33,607 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-17 19:21:33,607 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-17 19:21:33,609 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-17 19:21:33,749 - tardis_report | INFO : 70 - User information collected...
+2019-10-17 19:21:33,752 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-17 19:21:33,752 - tardis_report | DEBUG : 275 - Starting the chronograph thread...
+2019-10-17 19:21:34,029 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:21:38,976 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:21:46,448 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:21:46,852 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:21:49,680 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:21:51,395 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:21:51,901 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:21:57,655 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:21:58,463 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:22:12,801 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:22:13,003 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:33:22,206 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-17 19:33:23,246 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-17 19:33:23,246 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-17 19:33:23,247 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-17 19:33:23,355 - tardis_report | INFO : 70 - User information collected...
+2019-10-17 19:33:23,357 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-17 19:33:23,358 - tardis_report | DEBUG : 275 - Starting the chronograph thread...
+2019-10-17 19:33:25,867 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:33:28,391 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:33:29,098 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:33:31,420 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:33:31,823 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:01,812 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:02,013 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:02,921 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:03,224 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:06,456 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:07,062 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:09,891 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:11,062 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:12,029 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:12,549 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:13,165 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:14,378 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:14,884 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:31,341 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:32,148 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:32,855 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:33,158 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:34,572 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:34,875 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:35,279 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:35,884 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:36,187 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:37,095 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:38,611 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:39,418 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:39,721 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:42,246 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:42,750 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:43,861 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:46,687 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:47,496 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:48,000 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:48,910 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:49,313 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:49,615 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:50,933 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:53,052 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:34:53,558 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:06,854 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:07,561 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:08,973 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:13,013 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:13,417 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:15,436 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:15,739 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:16,345 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:17,153 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:18,263 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:20,282 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:21,595 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:22,806 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:23,009 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:23,312 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:23,716 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:24,724 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:26,138 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:27,450 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:27,653 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:30,075 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:31,288 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:32,601 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:32,802 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:33,206 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:33,710 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:34,519 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:36,941 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:37,244 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:37,750 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:38,154 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:38,658 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:39,365 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:40,476 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:41,082 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:44,211 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:45,826 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:48,150 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:50,269 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:52,187 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:52,490 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:52,693 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:54,410 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:55,519 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:56,428 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:35:56,732 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:00,266 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:00,569 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:03,395 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:03,799 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:04,102 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:05,617 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:05,920 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:06,526 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:08,242 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:09,655 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:09,858 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:10,059 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:11,674 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:11,877 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:13,190 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:13,795 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:16,118 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:17,127 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:17,328 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:17,530 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:19,450 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:19,753 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:20,459 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:20,661 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:20,862 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:22,579 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:22,782 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:23,184 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:24,801 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:25,104 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:25,608 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:26,315 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:28,032 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:28,640 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:29,043 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:30,861 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:31,265 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:31,668 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:32,072 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:32,375 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:33,789 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:34,193 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:35,000 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:36,717 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:37,424 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:37,828 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:38,937 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-17 19:36:39,644 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:23,278 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 10:47:24,323 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 10:47:24,325 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 10:47:24,326 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 10:47:24,463 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 10:47:24,466 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 10:47:24,466 - tardis_report | DEBUG : 275 - Starting the chronograph thread...
+2019-10-18 10:47:24,773 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:27,811 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:28,335 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:28,638 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:29,966 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:30,470 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:32,994 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:33,601 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:37,033 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:37,539 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:38,667 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:39,173 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:39,482 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:41,500 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:48,180 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:48,686 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:49,296 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:47:50,003 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:48:00,038 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 10:49:00,038 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 10:55:43,427 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 10:55:44,378 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 10:55:44,380 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 10:55:44,381 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 10:55:44,509 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 10:55:44,512 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 10:55:44,512 - tardis_report | DEBUG : 275 - Starting the chronograph thread...
+2019-10-18 10:55:44,825 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:55:52,730 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:55:53,234 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:55:53,436 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:55:54,042 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:55:55,253 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:55:55,960 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:55:56,163 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:00,046 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 10:56:00,338 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:06,398 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:08,315 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:08,934 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:09,743 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:10,247 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:10,878 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:13,717 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:15,635 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:16,444 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:18,566 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:18,869 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:19,496 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:22,752 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:22,953 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:26,487 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:27,698 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:31,469 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:33,619 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:34,326 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:34,529 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:34,832 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:36,346 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:37,355 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:37,861 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:38,062 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:38,674 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:39,111 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:41,081 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:41,990 - tardis_report | DEBUG : 142 - Timer Reset to 1
+2019-10-18 10:56:47,082 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 10:56:48,157 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 10:56:48,158 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 10:56:48,158 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 10:56:48,276 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 10:56:48,276 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 10:56:48,276 - tardis_report | DEBUG : 275 - Starting the chronograph thread...
+2019-10-18 10:57:00,164 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 10:58:03,084 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 10:59:00,275 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:00:00,025 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:02:30,773 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:33,174 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:34,971 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:37,048 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:39,311 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:41,857 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:43,789 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:45,533 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:47,911 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:50,201 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:52,717 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:54,494 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:56,305 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:02:58,828 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:01,198 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:03:01,375 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:03,404 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:05,160 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:07,188 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:09,450 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:12,003 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:13,855 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:15,592 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:17,983 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:20,188 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:22,802 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:24,546 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:26,302 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:28,618 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:30,927 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:33,196 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:34,980 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:36,986 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:39,348 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:41,734 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:43,601 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:45,368 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:47,661 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:49,835 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:52,285 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:54,055 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:55,782 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:03:58,315 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:00,486 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:04:00,698 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:03,184 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:04,898 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:07,069 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:09,394 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:11,769 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:13,779 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:15,611 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:18,599 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:20,869 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:23,316 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:25,111 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:27,227 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:29,484 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:31,963 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:33,809 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:35,513 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:37,943 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:40,177 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:42,594 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:44,342 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:46,105 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:48,543 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:50,861 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:53,239 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:55,019 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:57,059 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:04:59,272 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:01,651 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:05:01,819 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:03,742 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:05,499 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:07,878 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:10,203 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:12,743 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:14,490 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:16,220 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:18,651 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:20,948 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:23,234 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:25,000 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:27,061 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:29,433 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:31,865 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:33,816 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:35,674 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:38,061 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:40,388 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:42,857 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:44,640 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:46,430 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:48,769 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:50,996 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:53,308 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:55,065 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:57,226 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:05:59,500 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:01,753 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:06:01,943 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:03,795 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:05,484 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:07,848 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:10,125 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:12,707 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:14,392 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:16,137 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:18,621 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:20,948 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:23,278 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:24,993 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:27,049 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:29,329 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:31,763 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:33,779 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:35,549 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:37,888 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:40,118 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:42,723 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:44,503 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:46,230 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:48,698 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:51,102 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:53,417 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:55,155 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:57,298 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:06:59,443 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:01,822 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:07:01,993 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:03,969 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:05,733 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:08,246 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:10,631 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:13,253 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:14,969 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:16,938 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:19,253 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:21,665 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:23,680 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:25,444 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:27,686 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:29,905 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:32,335 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:34,096 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:35,801 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:38,290 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:40,538 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:43,161 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:44,960 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:46,948 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:49,207 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:51,398 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:53,720 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:55,433 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:07:57,809 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:00,016 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:08:00,217 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:02,753 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:04,463 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:06,256 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:08,627 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:10,948 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:13,407 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:15,194 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:17,401 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:19,756 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:22,191 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:24,042 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:25,815 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:28,299 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:30,549 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:33,335 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:35,118 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:37,286 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:39,503 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:41,963 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:43,970 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:45,691 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:48,079 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:50,369 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:52,865 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:54,579 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:56,382 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:08:58,855 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:01,013 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:09:01,213 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:03,489 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:05,181 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:08,384 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:10,594 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:13,117 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:14,890 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:16,742 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:19,059 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:21,467 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:23,628 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:25,374 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:28,049 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:30,375 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:33,036 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:34,884 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:37,250 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:39,711 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:42,167 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:44,240 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:45,999 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:48,487 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:09:50,959 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:10:00,098 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:20:25,025 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 11:20:26,236 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 11:20:26,236 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 11:20:26,237 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 11:20:26,351 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 11:20:26,351 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 11:20:26,351 - tardis_report | DEBUG : 275 - Starting the chronograph thread...
+2019-10-18 11:26:28,631 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:26:31,098 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:26:33,766 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:27:00,115 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:34:58,499 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:00,726 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:35:00,924 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:04,279 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:05,982 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:07,993 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:10,469 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:12,572 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:14,914 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:16,697 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:18,888 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:21,260 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:23,644 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:25,431 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:27,418 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:29,734 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:32,010 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:34,490 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:36,270 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:38,203 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:40,500 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:42,947 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:44,977 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:46,770 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:48,901 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:51,230 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:53,552 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:55,483 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:57,450 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:35:59,964 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:02,188 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:36:02,388 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:04,819 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:06,599 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:08,744 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:11,095 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:13,414 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:15,388 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:17,400 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:19,687 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:21,971 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:24,572 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:26,275 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:28,302 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:30,549 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:32,726 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:34,927 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:36,828 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:39,045 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:41,502 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:44,003 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:45,789 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:47,756 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:50,161 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:52,345 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:54,716 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:56,855 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:36:59,086 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:01,322 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:37:01,515 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:04,039 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:05,783 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:07,779 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:10,131 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:12,211 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:14,721 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:16,529 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:18,647 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:20,905 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:23,289 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:25,226 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:27,101 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:29,387 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:31,737 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:34,298 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:36,032 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:38,161 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:40,482 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:37:42,654 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:38:00,039 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:41:41,128 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 11:41:42,415 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 11:41:42,415 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 11:41:42,417 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 11:41:42,529 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 11:41:42,529 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 11:41:42,529 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 11:45:31,559 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:31,559 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:31,562 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFEB8>
+2019-10-18 11:45:34,082 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:34,082 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:34,088 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBF8D0>
+2019-10-18 11:45:36,773 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:36,773 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:36,778 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFEB8>
+2019-10-18 11:45:39,153 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:39,154 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:39,157 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBF8D0>
+2019-10-18 11:45:41,505 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:41,505 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:41,507 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFEB8>
+2019-10-18 11:45:43,940 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:43,940 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:43,944 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBF8D0>
+2019-10-18 11:45:46,486 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:46,486 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:46,490 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFEB8>
+2019-10-18 11:45:48,687 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:48,687 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:48,690 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBF8D0>
+2019-10-18 11:45:50,967 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:50,969 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:50,974 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFEB8>
+2019-10-18 11:45:53,405 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:53,407 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:53,411 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBF8D0>
+2019-10-18 11:45:55,865 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:55,865 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:55,871 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFEB8>
+2019-10-18 11:45:58,071 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:45:58,072 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:45:58,078 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82F28>
+2019-10-18 11:46:00,296 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:46:00,473 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:00,474 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:00,479 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:02,888 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:02,888 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:02,892 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:05,290 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:05,290 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:05,295 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:07,638 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:07,638 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:07,642 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:10,042 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:10,042 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:10,046 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:12,546 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:12,546 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:12,552 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:14,940 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:14,940 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:14,946 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:17,338 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:17,338 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:17,342 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:19,776 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:19,778 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:19,782 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:22,203 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:22,203 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:22,207 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:24,720 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:24,720 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:24,724 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:27,124 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:27,124 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:27,128 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:29,496 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:29,496 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:29,499 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:31,769 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:31,769 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:31,775 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:34,239 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:34,239 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:34,242 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:36,799 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:36,799 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:36,802 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:39,216 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:39,216 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:39,219 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:41,540 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:41,540 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:41,545 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:43,927 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:43,927 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:43,930 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:46,431 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:46,431 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:46,436 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:48,635 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:48,637 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:48,641 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:50,963 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:50,963 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:50,967 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:53,463 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:53,463 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:53,467 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:46:55,930 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:55,930 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:55,934 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFA20>
+2019-10-18 11:46:58,240 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:46:58,240 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:46:58,243 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82DD8>
+2019-10-18 11:47:00,440 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:47:00,611 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:47:00,611 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:47:00,615 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82E10>
+2019-10-18 11:47:03,119 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:47:03,119 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:47:03,124 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFAC8>
+2019-10-18 11:47:05,621 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:47:05,622 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:47:05,627 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82E10>
+2019-10-18 11:47:07,996 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:47:07,996 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:47:08,006 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFAC8>
+2019-10-18 11:47:10,450 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:47:10,450 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:47:10,454 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82E10>
+2019-10-18 11:47:12,864 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:47:12,864 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:47:12,868 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFAC8>
+2019-10-18 11:47:15,351 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:47:15,351 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:47:15,355 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004E82E10>
+2019-10-18 11:47:17,650 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:47:17,650 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:47:17,654 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CBFAC8>
+2019-10-18 11:48:00,081 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:49:45,976 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 11:49:47,269 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 11:49:47,269 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 11:49:47,270 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 11:49:47,367 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 11:49:47,368 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 11:49:47,368 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 11:51:51,084 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:51:51,084 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:51:51,088 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C59668>
+2019-10-18 11:51:53,256 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:51:53,256 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:51:53,259 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C59E80>
+2019-10-18 11:51:55,588 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:51:55,588 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:51:55,592 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C59588>
+2019-10-18 11:51:57,845 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:51:57,845 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:51:57,848 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C59780>
+2019-10-18 11:52:00,007 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 11:52:00,184 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:00,184 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:00,187 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C59F28>
+2019-10-18 11:52:02,581 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:02,581 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:02,584 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C595C0>
+2019-10-18 11:52:04,842 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:04,842 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:04,848 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43FD0>
+2019-10-18 11:52:07,263 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:07,263 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:07,267 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43B38>
+2019-10-18 11:52:09,542 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:09,542 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:09,545 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43FD0>
+2019-10-18 11:52:11,826 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:11,826 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:11,831 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43B38>
+2019-10-18 11:52:14,239 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:14,239 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:14,242 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43FD0>
+2019-10-18 11:52:16,591 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:16,591 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:16,594 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43B38>
+2019-10-18 11:52:18,628 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:18,628 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:18,632 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43FD0>
+2019-10-18 11:52:20,905 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:20,905 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:20,908 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43B38>
+2019-10-18 11:52:23,082 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:23,082 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:23,089 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43FD0>
+2019-10-18 11:52:25,286 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:25,286 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:25,289 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43B38>
+2019-10-18 11:52:27,489 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 11:52:27,489 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 11:52:27,492 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004C43FD0>
+2019-10-18 11:57:56,686 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 11:57:57,930 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 11:57:57,930 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 11:57:57,931 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 11:57:58,046 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 11:57:58,048 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 11:57:58,048 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 12:00:19,397 - tardis_report | INFO : 174 - Start the Lunch Timer
+2019-10-18 12:00:19,397 - tardis_report | INFO : 175 - Getting the most recent timesheet...
+2019-10-18 12:00:19,650 - tardis_report | DEBUG : 183 - LUNCH HAS STARTED: 2019-10-18 11:58:19.650000
+2019-10-18 12:00:19,737 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:19,737 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:19,744 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D695C0>
+2019-10-18 12:00:21,970 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:21,970 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:21,973 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D69E48>
+2019-10-18 12:00:23,805 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:23,805 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:23,811 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D69FD0>
+2019-10-18 12:00:25,532 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:25,533 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:25,538 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D69EF0>
+2019-10-18 12:00:27,763 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:27,763 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:27,766 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D69748>
+2019-10-18 12:00:29,640 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:29,641 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:29,647 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D69630>
+2019-10-18 12:00:31,927 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:31,928 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:31,931 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D694A8>
+2019-10-18 12:00:33,727 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:33,727 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:33,730 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D539B0>
+2019-10-18 12:00:35,394 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:35,394 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:35,398 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D53FD0>
+2019-10-18 12:00:37,516 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:37,516 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:37,522 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D539B0>
+2019-10-18 12:00:39,365 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:39,365 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:39,368 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D53FD0>
+2019-10-18 12:00:41,592 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:41,594 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:41,595 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D539B0>
+2019-10-18 12:00:43,427 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:00:43,427 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:00:43,431 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D53FD0>
+2019-10-18 12:05:48,815 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 12:05:50,025 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 12:05:50,026 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 12:05:50,026 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 12:05:50,122 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 12:05:50,124 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 12:05:50,124 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 12:06:52,460 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 12:06:53,556 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 12:06:53,556 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 12:06:53,558 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 12:06:53,664 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 12:06:53,664 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 12:06:53,664 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 12:08:00,555 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:08:00,555 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:08:00,558 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000005149E48>
+2019-10-18 12:08:02,776 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:08:02,776 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:08:02,779 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000005149550>
+2019-10-18 12:08:04,615 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:08:04,615 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:08:04,619 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000005149EF0>
+2019-10-18 12:08:06,404 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:08:06,404 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:08:06,407 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000005149FD0>
+2019-10-18 12:08:08,637 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:08:08,637 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:08:08,640 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000005149588>
+2019-10-18 12:08:10,690 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:08:10,690 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:08:10,696 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000005149748>
+2019-10-18 12:08:12,796 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:08:12,796 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:08:12,799 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000005149630>
+2019-10-18 12:08:14,650 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:08:14,650 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:08:14,653 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000005149E48>
+2019-10-18 12:13:58,130 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 12:13:59,388 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 12:13:59,388 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 12:13:59,390 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 12:13:59,500 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 12:13:59,502 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 12:13:59,502 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 12:15:00,785 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:15:00,785 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:15:00,789 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004CDD8D0>
+2019-10-18 12:16:00,089 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:17:26,102 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 12:17:27,349 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 12:17:27,351 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 12:17:27,351 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 12:17:27,466 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 12:17:27,467 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 12:17:27,467 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 12:18:28,792 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:18:28,793 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:18:28,799 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D388D0>
+2019-10-18 12:27:06,509 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:27:06,846 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:27:06,846 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:27:06,851 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004D38AC8>
+2019-10-18 12:30:01,109 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 12:30:02,375 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 12:30:02,375 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 12:30:02,378 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 12:30:02,493 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 12:30:02,494 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 12:30:02,494 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 12:31:04,091 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:31:04,091 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:31:04,095 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x0000000004EABE48>
+2019-10-18 12:32:06,697 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:33:00,096 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:34:00,233 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:35:00,055 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:36:00,105 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:37:00,148 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:38:00,153 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:39:00,025 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:40:00,006 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:40:44,427 - tardis_report | INFO : 51 - The TARDIS has started!
+2019-10-18 12:40:45,466 - tardis_report | DEBUG : 57 - Shotgun is connected.
+2019-10-18 12:40:45,466 - tardis_report | INFO : 63 - Opening a portal to the time continuum...
+2019-10-18 12:40:45,467 - tardis_report | INFO : 65 - time_continuum is opened...
+2019-10-18 12:40:45,576 - tardis_report | INFO : 70 - User information collected...
+2019-10-18 12:40:45,578 - tardis_report | INFO : 74 - Shotgun commands brought in.
+2019-10-18 12:40:45,578 - tardis_report | DEBUG : 277 - Starting the chronograph thread...
+2019-10-18 12:41:47,198 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:41:47,198 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:41:47,203 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x000000000547D8D0>
+2019-10-18 12:44:24,403 - tardis_report | DEBUG : 151 - user_clocked_in BEFORE: False
+2019-10-18 12:44:24,721 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:44:24,721 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:44:24,726 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x000000000547DAC8>
+2019-10-18 12:44:28,693 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:44:28,693 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:44:28,697 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x000000000547DEB8>
+2019-10-18 12:44:32,746 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:44:32,746 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:44:32,750 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x000000000547DA20>
+2019-10-18 12:44:36,996 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:44:36,996 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:44:37,000 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x000000000547D8D0>
+2019-10-18 12:44:41,930 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:44:41,930 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:44:41,936 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x000000000547DAC8>
+2019-10-18 12:44:49,851 - tardis_report | INFO : 205 - IT IS AFTER HOURS!!!
+2019-10-18 12:44:49,852 - tardis_report | DEBUG : 207 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:44:49,857 - tardis_report | DEBUG : 209 - eod_launch command: <subprocess.Popen object at 0x000000000547DEB8>
+2019-10-18 12:50:20,417 - tardis_report | INFO : 52 - The TARDIS has started!
+2019-10-18 12:50:21,723 - tardis_report | DEBUG : 58 - Shotgun is connected.
+2019-10-18 12:50:21,723 - tardis_report | INFO : 64 - Opening a portal to the time continuum...
+2019-10-18 12:50:21,723 - tardis_report | INFO : 66 - time_continuum is opened...
+2019-10-18 12:50:21,825 - tardis_report | INFO : 71 - User information collected...
+2019-10-18 12:50:21,826 - tardis_report | INFO : 75 - Shotgun commands brought in.
+2019-10-18 12:50:21,826 - tardis_report | DEBUG : 294 - Starting the chronograph thread...
+2019-10-18 12:51:27,855 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 12:51:27,855 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:51:27,858 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000004EE7908>
+2019-10-18 12:52:29,519 - tardis_report | DEBUG : 152 - user_clocked_in BEFORE: False
+2019-10-18 12:53:00,671 - tardis_report | DEBUG : 152 - user_clocked_in BEFORE: False
+2019-10-18 12:54:07,088 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 12:54:07,089 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:54:07,092 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000004EE7F98>
+2019-10-18 12:55:00,128 - tardis_report | DEBUG : 152 - user_clocked_in BEFORE: False
+2019-10-18 12:55:22,966 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 12:55:22,966 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:55:22,969 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000004EE7908>
+2019-10-18 12:55:30,095 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 12:55:30,095 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:55:30,099 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000004EFADA0>
+2019-10-18 12:55:36,118 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 12:55:36,125 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:55:36,130 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000004EFA588>
+2019-10-18 12:55:42,480 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 12:55:42,480 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:55:42,484 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000004EE7B00>
+2019-10-18 12:55:48,727 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 12:55:48,727 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 12:55:48,730 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000004EE7908>
+2019-10-18 12:56:00,513 - tardis_report | DEBUG : 152 - user_clocked_in BEFORE: False
+2019-10-18 12:57:00,059 - tardis_report | DEBUG : 152 - user_clocked_in BEFORE: False
+2019-10-18 12:58:58,313 - tardis_report | INFO : 52 - The TARDIS has started!
+2019-10-18 12:58:59,467 - tardis_report | DEBUG : 58 - Shotgun is connected.
+2019-10-18 12:58:59,469 - tardis_report | INFO : 64 - Opening a portal to the time continuum...
+2019-10-18 12:58:59,470 - tardis_report | INFO : 66 - time_continuum is opened...
+2019-10-18 12:58:59,563 - tardis_report | INFO : 71 - User information collected...
+2019-10-18 12:58:59,563 - tardis_report | INFO : 75 - Shotgun commands brought in.
+2019-10-18 12:58:59,565 - tardis_report | DEBUG : 294 - Starting the chronograph thread...
+2019-10-18 13:00:00,737 - tardis_report | INFO : 175 - Start the Lunch Timer
+2019-10-18 13:00:00,737 - tardis_report | INFO : 176 - Getting the most recent timesheet...
+2019-10-18 13:00:00,941 - tardis_report | DEBUG : 184 - LUNCH HAS STARTED: 2019-10-18 12:59:00.942000
+2019-10-18 13:00:01,017 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:00:01,017 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:00:01,020 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005120A58>
+2019-10-18 13:00:10,677 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:00:10,677 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:00:10,680 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005120908>
+2019-10-18 13:00:19,420 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:00:19,420 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:00:19,423 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005120F98>
+2019-10-18 13:00:27,019 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:00:27,019 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:00:27,022 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005120EF0>
+2019-10-18 13:00:54,043 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:00:54,045 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:00:54,048 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005120A58>
+2019-10-18 13:01:00,668 - tardis_report | DEBUG : 152 - user_clocked_in BEFORE: False
+2019-10-18 13:09:48,076 - tardis_report | INFO : 175 - Start the Lunch Timer
+2019-10-18 13:09:48,076 - tardis_report | INFO : 176 - Getting the most recent timesheet...
+2019-10-18 13:09:48,275 - tardis_report | DEBUG : 184 - LUNCH HAS STARTED: 2019-10-18 13:08:48.275000
+2019-10-18 13:09:48,358 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:09:48,358 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:09:48,364 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005133F60>
+2019-10-18 13:09:52,101 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:09:52,101 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:09:52,107 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005133DA0>
+2019-10-18 13:09:53,855 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:09:53,855 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:09:53,858 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005133E48>
+2019-10-18 13:09:55,589 - tardis_report | INFO : 210 - IT IS AFTER HOURS!!!
+2019-10-18 13:09:55,591 - tardis_report | DEBUG : 212 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:09:55,594 - tardis_report | DEBUG : 218 - eod_launch command: <subprocess.Popen object at 0x0000000005133F98>
+2019-10-18 13:19:36,267 - tardis_report | INFO : 52 - The TARDIS has started!
+2019-10-18 13:19:37,542 - tardis_report | DEBUG : 58 - Shotgun is connected.
+2019-10-18 13:19:37,543 - tardis_report | INFO : 64 - Opening a portal to the time continuum...
+2019-10-18 13:19:37,545 - tardis_report | INFO : 66 - time_continuum is opened...
+2019-10-18 13:19:37,657 - tardis_report | INFO : 71 - User information collected...
+2019-10-18 13:19:37,657 - tardis_report | INFO : 75 - Shotgun commands brought in.
+2019-10-18 13:19:37,657 - tardis_report | DEBUG : 302 - Starting the chronograph thread...
+2019-10-18 13:20:40,486 - tardis_report | INFO : 176 - Start the Lunch Timer
+2019-10-18 13:20:40,486 - tardis_report | INFO : 177 - Getting the most recent timesheet...
+2019-10-18 13:20:40,714 - tardis_report | DEBUG : 185 - LUNCH HAS STARTED: 2019-10-18 13:19:40.715000
+2019-10-18 13:20:40,819 - tardis_report | INFO : 211 - IT IS AFTER HOURS!!!
+2019-10-18 13:20:40,821 - tardis_report | DEBUG : 213 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:20:40,862 - tardis_report | DEBUG : 219 - eod_launch command: <subprocess.Popen object at 0x0000000004FECA58>
+2019-10-18 13:20:49,165 - tardis_report | INFO : 211 - IT IS AFTER HOURS!!!
+2019-10-18 13:20:49,165 - tardis_report | DEBUG : 213 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:20:49,171 - tardis_report | DEBUG : 219 - eod_launch command: <subprocess.Popen object at 0x0000000004FECF98>
+2019-10-18 13:21:00,628 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:22:01,374 - tardis_report | INFO : 176 - Start the Lunch Timer
+2019-10-18 13:22:01,374 - tardis_report | INFO : 177 - Getting the most recent timesheet...
+2019-10-18 13:22:01,596 - tardis_report | DEBUG : 185 - LUNCH HAS STARTED: 2019-10-18 13:21:01.597000
+2019-10-18 13:22:01,776 - tardis_report | INFO : 211 - IT IS AFTER HOURS!!!
+2019-10-18 13:22:01,778 - tardis_report | DEBUG : 213 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:22:01,783 - tardis_report | DEBUG : 219 - eod_launch command: <subprocess.Popen object at 0x00000000050004A8>
+2019-10-18 13:22:12,645 - tardis_report | INFO : 211 - IT IS AFTER HOURS!!!
+2019-10-18 13:22:12,645 - tardis_report | DEBUG : 213 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:22:12,651 - tardis_report | DEBUG : 219 - eod_launch command: <subprocess.Popen object at 0x0000000005000588>
+2019-10-18 13:22:20,023 - tardis_report | INFO : 211 - IT IS AFTER HOURS!!!
+2019-10-18 13:22:20,025 - tardis_report | DEBUG : 213 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:22:20,029 - tardis_report | DEBUG : 219 - eod_launch command: <subprocess.Popen object at 0x00000000050004A8>
+2019-10-18 13:23:00,098 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:23:29,917 - tardis_report | INFO : 176 - Start the Lunch Timer
+2019-10-18 13:23:29,917 - tardis_report | INFO : 177 - Getting the most recent timesheet...
+2019-10-18 13:23:30,012 - tardis_report | DEBUG : 185 - LUNCH HAS STARTED: 2019-10-18 13:22:30.012000
+2019-10-18 13:23:30,198 - tardis_report | INFO : 211 - IT IS AFTER HOURS!!!
+2019-10-18 13:23:30,200 - tardis_report | DEBUG : 213 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:23:30,203 - tardis_report | DEBUG : 219 - eod_launch command: <subprocess.Popen object at 0x0000000004FECA58>
+2019-10-18 13:23:43,232 - tardis_report | INFO : 211 - IT IS AFTER HOURS!!!
+2019-10-18 13:23:43,232 - tardis_report | DEBUG : 213 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 13:23:43,234 - tardis_report | DEBUG : 219 - eod_launch command: <subprocess.Popen object at 0x0000000004FEC908>
+2019-10-18 13:24:48,888 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:25:30,375 - tardis_report | INFO : 52 - The TARDIS has started!
+2019-10-18 13:25:31,380 - tardis_report | DEBUG : 58 - Shotgun is connected.
+2019-10-18 13:25:31,381 - tardis_report | INFO : 64 - Opening a portal to the time continuum...
+2019-10-18 13:25:31,382 - tardis_report | INFO : 66 - time_continuum is opened...
+2019-10-18 13:25:31,503 - tardis_report | INFO : 71 - User information collected...
+2019-10-18 13:25:31,506 - tardis_report | INFO : 75 - Shotgun commands brought in.
+2019-10-18 13:25:31,506 - tardis_report | DEBUG : 302 - Starting the chronograph thread...
+2019-10-18 13:26:00,048 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:26:32,713 - tardis_report | INFO : 176 - Start the Lunch Timer
+2019-10-18 13:26:32,713 - tardis_report | INFO : 177 - Getting the most recent timesheet...
+2019-10-18 13:26:32,796 - tardis_report | DEBUG : 185 - LUNCH HAS STARTED: 2019-10-18 13:25:32.796000
+2019-10-18 13:27:00,069 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:28:00,098 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:29:00,055 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:30:00,072 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:30:11,964 - tardis_report | INFO : 246 - End the lunch timer
+2019-10-18 13:30:11,964 - tardis_report | DEBUG : 248 - lunch start: 2019-10-18 13:25:32.796000
+2019-10-18 13:30:11,964 - tardis_report | DEBUG : 249 - lunch end  : 2019-10-18 13:30:11.965000
+2019-10-18 13:30:11,964 - tardis_report | DEBUG : 251 - 0:04:39.169000
+2019-10-18 13:30:11,964 - tardis_report | DEBUG : 252 - 279
+2019-10-18 13:31:00,022 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:31:11,023 - tardis_report | INFO : 52 - The TARDIS has started!
+2019-10-18 13:31:12,263 - tardis_report | DEBUG : 58 - Shotgun is connected.
+2019-10-18 13:31:12,263 - tardis_report | INFO : 64 - Opening a portal to the time continuum...
+2019-10-18 13:31:12,263 - tardis_report | INFO : 66 - time_continuum is opened...
+2019-10-18 13:31:12,362 - tardis_report | INFO : 71 - User information collected...
+2019-10-18 13:31:12,364 - tardis_report | INFO : 75 - Shotgun commands brought in.
+2019-10-18 13:31:12,364 - tardis_report | DEBUG : 302 - Starting the chronograph thread...
+2019-10-18 13:32:00,046 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:32:13,460 - tardis_report | INFO : 176 - Start the Lunch Timer
+2019-10-18 13:32:13,460 - tardis_report | INFO : 177 - Getting the most recent timesheet...
+2019-10-18 13:32:13,551 - tardis_report | DEBUG : 185 - LUNCH HAS STARTED: 2019-10-18 13:31:13.551000
+2019-10-18 13:33:00,049 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:34:00,069 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:35:00,081 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:35:08,552 - tardis_report | INFO : 246 - End the lunch timer
+2019-10-18 13:35:08,552 - tardis_report | DEBUG : 248 - lunch start: 2019-10-18 13:31:13.551000
+2019-10-18 13:35:08,552 - tardis_report | DEBUG : 249 - lunch end  : 2019-10-18 13:35:08.552000
+2019-10-18 13:35:08,552 - tardis_report | DEBUG : 251 - 0:03:55.001000
+2019-10-18 13:35:08,552 - tardis_report | DEBUG : 252 - 235
+2019-10-18 13:36:00,438 - tardis_report | DEBUG : 153 - user_clocked_in BEFORE: False
+2019-10-18 13:37:01,486 - tardis_report | INFO : 176 - Start the Lunch Timer
+2019-10-18 13:37:01,486 - tardis_report | INFO : 177 - Getting the most recent timesheet...
+2019-10-18 13:37:01,710 - tardis_report | DEBUG : 185 - LUNCH HAS STARTED: 2019-10-18 13:36:01.710000
+2019-10-18 13:39:30,628 - tardis_report | INFO : 246 - End the lunch timer
+2019-10-18 13:39:30,628 - tardis_report | DEBUG : 248 - lunch start: 2019-10-18 13:36:01.710000
+2019-10-18 13:39:30,630 - tardis_report | DEBUG : 249 - lunch end  : 2019-10-18 13:39:30.629000
+2019-10-18 13:39:30,630 - tardis_report | DEBUG : 251 - 0:03:28.919000
+2019-10-18 13:39:30,630 - tardis_report | DEBUG : 252 - 208
+2019-10-18 13:40:40,493 - tardis_report | INFO : 176 - Start the Lunch Timer
+2019-10-18 13:40:40,493 - tardis_report | INFO : 177 - Getting the most recent timesheet...
+2019-10-18 13:40:40,700 - tardis_report | DEBUG : 185 - LUNCH HAS STARTED: 2019-10-18 13:39:40.701000
+2019-10-18 13:44:38,674 - tardis_report | INFO : 246 - End the lunch timer
+2019-10-18 13:44:38,674 - tardis_report | DEBUG : 248 - lunch start: 2019-10-18 13:39:40.701000
+2019-10-18 13:44:38,674 - tardis_report | DEBUG : 249 - lunch end  : 2019-10-18 13:44:38.675000
+2019-10-18 13:44:38,674 - tardis_report | DEBUG : 251 - 0:04:57.974000
+2019-10-18 13:44:38,674 - tardis_report | DEBUG : 252 - 297
+2019-10-18 16:21:32,944 - tardis_report | INFO : 52 - The TARDIS has started!
+2019-10-18 16:21:34,207 - tardis_report | DEBUG : 58 - Shotgun is connected.
+2019-10-18 16:21:34,209 - tardis_report | INFO : 64 - Opening a portal to the time continuum...
+2019-10-18 16:21:34,210 - tardis_report | INFO : 66 - time_continuum is opened...
+2019-10-18 16:21:34,319 - tardis_report | INFO : 71 - User information collected...
+2019-10-18 16:21:34,319 - tardis_report | INFO : 75 - Shotgun commands brought in.
+2019-10-18 16:21:34,319 - tardis_report | DEBUG : 302 - Starting the chronograph thread...
+2019-10-18 19:11:25,615 - tardis_report | INFO : 65 - The TARDIS has started!
+2019-10-18 19:11:26,749 - tardis_report | DEBUG : 71 - Shotgun is connected.
+2019-10-18 19:11:26,750 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
+2019-10-18 19:11:26,750 - tardis_report | INFO : 79 - time_continuum is opened...
+2019-10-18 19:11:26,841 - tardis_report | INFO : 84 - User information collected...
+2019-10-18 19:11:26,842 - tardis_report | INFO : 88 - Shotgun commands brought in.
+2019-10-18 19:11:26,842 - tardis_report | DEBUG : 315 - Starting the chronograph thread...
+2019-10-18 19:12:35,108 - tardis_report | INFO : 224 - IT IS AFTER HOURS!!!
+2019-10-18 19:12:35,108 - tardis_report | DEBUG : 226 - eod_launch_path: C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\eod.py
+2019-10-18 19:12:35,115 - tardis_report | DEBUG : 232 - eod_launch command: <subprocess.Popen object at 0x00000000056C3908>
+2019-10-18 19:13:40,881 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:14:00,066 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:15:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:16:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:17:00,118 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:18:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:19:00,165 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:20:00,058 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:21:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:22:00,122 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:23:00,107 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:24:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:25:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:26:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:27:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:28:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:29:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:30:00,148 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:31:00,150 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:32:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:33:00,043 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:34:00,114 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:35:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:36:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:37:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:38:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:39:00,003 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:40:00,048 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:41:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:42:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:43:00,161 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:44:00,148 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:45:00,040 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:46:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:47:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:48:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:49:00,058 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:50:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:51:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:52:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:53:00,140 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:54:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:55:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:56:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:57:00,124 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:58:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 19:59:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:00:00,118 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:01:00,147 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:02:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:03:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:04:00,157 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:05:00,119 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:06:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:07:00,099 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:08:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:09:00,084 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:10:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:11:00,141 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:12:00,114 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:13:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:14:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:15:00,147 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:16:00,108 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:17:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:18:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:19:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:20:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:21:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:22:00,161 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:23:00,003 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:24:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:25:00,053 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:26:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:27:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:28:00,138 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:29:00,020 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:30:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:31:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:32:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:33:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:34:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:35:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:36:00,003 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:37:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:38:00,141 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:39:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:40:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:41:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:42:00,051 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:43:00,141 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:44:00,137 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:45:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:46:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:47:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:48:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:49:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:50:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:51:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:52:00,117 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:53:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:54:00,056 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:55:00,138 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:56:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:57:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:58:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 20:59:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:00:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:01:00,127 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:02:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:03:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:04:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:05:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:06:00,144 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:07:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:08:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:09:00,066 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:10:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:11:00,148 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:12:00,105 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:13:00,128 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:14:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:15:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:16:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:17:00,184 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:18:00,154 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:19:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:20:00,171 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:21:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:22:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:23:00,104 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:24:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:25:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:26:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:27:00,243 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:28:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:29:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:30:00,168 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:31:00,109 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:32:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:33:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:34:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:35:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:36:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:37:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:38:00,147 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:39:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:40:00,003 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:41:00,038 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:42:00,010 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:43:00,104 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:44:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:45:00,160 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:46:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:47:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:48:00,071 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:49:00,114 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:50:00,167 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:51:00,151 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:52:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:53:00,154 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:54:00,158 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:55:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:56:00,164 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:57:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:58:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 21:59:00,111 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:00:00,154 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:01:00,145 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:02:00,155 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:03:00,167 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:04:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:05:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:06:00,112 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:07:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:08:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:09:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:10:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:11:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:12:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:13:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:14:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:15:00,171 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:16:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:17:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:18:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:19:00,121 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:20:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:21:00,144 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:22:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:23:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:24:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:25:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:26:00,158 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:27:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:28:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:29:00,101 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:30:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:31:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:32:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:33:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:34:00,186 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:35:00,174 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:36:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:37:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:38:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:39:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:40:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:41:00,171 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:42:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:43:00,115 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:44:00,010 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:45:00,124 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:46:00,022 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:47:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:48:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:49:00,164 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:50:00,109 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:51:00,109 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:52:00,076 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:53:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:54:00,161 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:55:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:56:00,163 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:57:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:58:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 22:59:00,164 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:00:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:01:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:02:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:03:00,105 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:04:00,017 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:05:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:06:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:07:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:08:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:09:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:10:00,127 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:11:00,068 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:12:00,171 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:13:00,135 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:14:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:15:00,176 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:16:00,040 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:17:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:18:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:19:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:20:00,132 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:21:00,158 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:22:00,134 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:23:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:24:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:25:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:26:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:27:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:28:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:29:00,170 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:30:00,127 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:31:00,038 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:32:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:33:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:34:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:35:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:36:00,121 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:37:00,170 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:38:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:39:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:40:00,132 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:41:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:42:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:43:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:44:00,121 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:45:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:46:00,145 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:47:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:48:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:49:00,134 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:50:00,134 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:51:00,148 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:52:00,138 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:53:00,138 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:54:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:55:00,012 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:56:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:57:00,128 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:58:00,140 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-18 23:59:00,138 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:00:00,135 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:01:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:02:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:03:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:04:00,073 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:05:00,003 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:06:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:07:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:08:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:09:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:10:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:11:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:12:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:13:00,053 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:14:00,043 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:15:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:16:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:17:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:18:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:19:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:20:00,058 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:21:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:22:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:23:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:24:00,012 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:25:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:26:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:27:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:28:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:29:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:30:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:31:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:32:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:33:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:34:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:35:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:36:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:37:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:38:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:39:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:40:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:41:00,022 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:42:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:43:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:44:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:45:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:46:00,056 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:47:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:48:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:49:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:50:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:51:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:52:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:53:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:54:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:55:00,071 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:56:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:57:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:58:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 00:59:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:00:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:01:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:02:00,043 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:03:00,099 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:04:00,038 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:05:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:06:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:07:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:08:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:09:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:10:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:11:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:12:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:13:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:14:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:15:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:16:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:17:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:18:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:19:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:20:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:21:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:22:00,076 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:23:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:24:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:25:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:26:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:27:00,048 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:28:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:29:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:30:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:31:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:32:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:33:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:34:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:35:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:36:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:37:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:38:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:39:00,084 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:40:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:41:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:42:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:43:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:44:00,051 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:45:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:46:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:47:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:48:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:49:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:50:00,071 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:51:00,002 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:52:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:53:00,022 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:54:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:55:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:56:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:57:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:58:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 01:59:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:00:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:01:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:02:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:03:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:04:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:05:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:06:00,068 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:07:00,020 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:08:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:09:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:10:00,038 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:11:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:12:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:13:00,043 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:14:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:15:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:16:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:17:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:18:00,056 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:19:00,094 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:20:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:21:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:22:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:23:00,051 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:24:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:25:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:26:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:27:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:28:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:29:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:30:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:31:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:32:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:33:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:34:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:35:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:36:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:37:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:38:00,038 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:39:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:40:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:41:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:42:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:43:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:44:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:45:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:46:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:47:00,040 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:48:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:49:00,012 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:50:00,048 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:51:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:52:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:53:00,048 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:54:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:55:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:56:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:57:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:58:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 02:59:00,073 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:00:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:01:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:02:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:03:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:04:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:05:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:06:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:07:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:08:00,051 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:09:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:10:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:11:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:12:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:13:00,020 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:14:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:15:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:16:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:17:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:18:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:19:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:20:00,066 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:21:00,068 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:22:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:23:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:24:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:25:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:26:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:27:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:28:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:29:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:30:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:31:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:32:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:33:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:34:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:35:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:36:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:37:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:38:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:39:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:40:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:41:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:42:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:43:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:44:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:45:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:46:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:47:00,010 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:48:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:49:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:50:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:51:00,040 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:52:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:53:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:54:00,048 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:55:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:56:00,012 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:57:00,051 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:58:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 03:59:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:00:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:01:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:02:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:03:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:04:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:05:00,003 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:06:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:07:00,076 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:08:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:09:00,043 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:10:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:11:00,076 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:12:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:13:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:14:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:15:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:16:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:17:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:18:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:19:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:20:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:21:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:22:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:23:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:24:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:25:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:26:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:27:00,071 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:28:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:29:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:30:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:31:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:32:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:33:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:34:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:35:00,051 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:36:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:37:00,017 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:38:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:39:00,012 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:40:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:41:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:42:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:43:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:44:00,099 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:45:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:46:00,073 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:47:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:48:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:49:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:50:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:51:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:52:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:53:00,022 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:54:00,058 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:55:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:56:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:57:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:58:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 04:59:00,020 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:00:00,053 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:01:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:02:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:03:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:04:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:05:00,084 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:06:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:07:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:08:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:09:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:10:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:11:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:12:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:13:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:14:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:15:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:16:00,007 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:17:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:18:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:19:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:20:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:21:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:22:00,020 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:23:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:24:00,094 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:25:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:26:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:27:00,010 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:28:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:29:00,076 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:30:00,010 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:31:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:32:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:33:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:34:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:35:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:36:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:37:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:38:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:39:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:40:00,068 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:41:00,099 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:42:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:43:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:44:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:45:00,040 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:46:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:47:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:48:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:49:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:50:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:51:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:52:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:53:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:54:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:55:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:56:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:57:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:58:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 05:59:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:00:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:01:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:02:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:03:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:04:00,002 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:05:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:06:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:07:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:08:00,056 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:09:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:10:00,020 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:11:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:12:00,051 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:13:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:14:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:15:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:16:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:17:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:18:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:19:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:20:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:21:00,084 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:22:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:23:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:24:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:25:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:26:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:27:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:28:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:29:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:30:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:31:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:32:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:33:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:34:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:35:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:36:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:37:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:38:00,076 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:39:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:40:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:41:00,068 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:42:00,002 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:43:00,053 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:44:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:45:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:46:00,094 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:47:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:48:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:49:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:50:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:51:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:52:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:53:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:54:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:55:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:56:00,003 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:57:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:58:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 06:59:00,010 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:00:00,046 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:01:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:02:00,028 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:03:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:04:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:05:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:06:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:07:00,022 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:08:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:09:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:10:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:11:00,066 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:12:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:13:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:14:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:15:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:16:00,058 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:17:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:18:00,022 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:19:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:20:00,094 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:21:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:22:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:23:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:24:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:25:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:26:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:27:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:28:00,006 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:29:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:30:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:31:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:32:00,078 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:33:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:34:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:35:00,022 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:36:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:37:00,066 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:38:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:39:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:40:00,066 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:41:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:42:00,051 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:43:00,025 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:44:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:45:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:46:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:47:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:48:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:49:00,009 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:50:00,056 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:51:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:52:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:53:00,096 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:54:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:55:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:56:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:57:00,043 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:58:00,081 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 07:59:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:00:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:01:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:02:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:03:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:04:00,002 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:05:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:06:00,076 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:07:00,015 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:08:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:09:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:10:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:11:00,066 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:12:00,010 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:13:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:14:00,071 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:15:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:16:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:17:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:18:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:19:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:20:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:21:00,058 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:22:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:23:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:24:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:25:00,003 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:26:00,039 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:27:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:28:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:29:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:30:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:31:00,020 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:32:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:33:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:34:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:35:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:36:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:37:00,048 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:38:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:39:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:40:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:41:00,084 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:42:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:43:00,068 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:44:00,005 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:45:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:46:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:47:00,020 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:48:00,058 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:49:00,094 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:50:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:51:00,061 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:52:00,099 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:53:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:54:00,082 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:55:00,013 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:56:00,048 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:57:00,084 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:58:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 08:59:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:00:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:01:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:02:00,056 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:03:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:04:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:05:00,056 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:06:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:07:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:08:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:09:00,079 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:10:00,007 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:11:00,038 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:12:00,086 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:13:00,016 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:14:00,049 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:15:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:16:00,012 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:17:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:18:00,029 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:19:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:20:00,089 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:21:00,033 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:22:00,071 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:23:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:24:00,042 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:25:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:26:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:27:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:28:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:29:00,058 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:30:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:31:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:32:00,062 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:33:00,094 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:34:00,023 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:35:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:36:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:37:00,045 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:38:00,019 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:39:00,052 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:40:00,085 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:41:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:42:00,055 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:43:00,088 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:44:00,026 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:45:00,059 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:46:00,091 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:47:00,065 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:48:00,000 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:49:00,030 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:50:00,066 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:51:00,075 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:52:00,036 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:53:00,072 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:54:00,069 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:55:00,098 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:56:00,032 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:57:00,095 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:58:00,092 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 09:59:00,035 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 10:00:00,063 - tardis_report | DEBUG : 166 - user_clocked_in BEFORE: False
+2019-10-19 10:00:02,141 - tardis_report | INFO : 211 - Time to clock in!

@@ -1,0 +1,11 @@
+2019-10-18 13:39:32,960 - lunch_continuum | INFO : 55 - Continuum Activated!
+2019-10-18 13:44:40,789 - lunch_continuum | INFO : 55 - Continuum Activated!
+2019-10-18 14:19:51,861 - lunch_continuum | INFO : 155 - Finding the last timesheet for Adam Benson
+2019-10-18 14:19:51,861 - lunch_continuum | DEBUG : 157 - USER ID: 41
+2019-10-18 14:19:52,092 - lunch_continuum | DEBUG : 175 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-18', 'type': 'TimeLog', 'id': 961, 'sg_task_start': datetime.datetime(2019, 10, 18, 11, 28, 24, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000384C2E8>)}
+2019-10-18 14:19:52,463 - lunch_continuum | INFO : 212 - Timesheet updated.
+2019-10-18 14:19:52,641 - lunch_continuum | INFO : 155 - Finding the last timesheet for Adam Benson
+2019-10-18 14:19:52,641 - lunch_continuum | DEBUG : 157 - USER ID: 41
+2019-10-18 14:19:52,726 - lunch_continuum | DEBUG : 175 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22837, 'name': 'Lunch'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-18', 'type': 'TimeLog', 'id': 979, 'sg_task_start': datetime.datetime(2019, 10, 18, 13, 39, 40, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000384C2E8>)}
+2019-10-18 14:19:52,913 - lunch_continuum | INFO : 212 - Timesheet updated.
+2019-10-18 16:22:58,374 - lunch_continuum | INFO : 55 - Continuum Activated!
