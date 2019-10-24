@@ -4,6 +4,7 @@ import json
 import sys
 import os
 import requests
+from datetime import datetime, timedelta
 
 
 def get_configuration():
@@ -30,17 +31,33 @@ def get_configuration():
     return config
 
 
-def save_tweet(text=None, *args, **kwargs):
-    print(text)
-    print(args)
-    print(kwargs)
-    data = {
-        'Tweet': 'Hello There Barney',
-        'details': {
-            'image': 'image_name',
-            'link': 'link_location'
-        }
+def save_tweet(text=None, image=None, link=None, last_posted=None):
+    previous_tweets = get_saved_tweets()
+    print(previous_tweets)
+
+    if not last_posted:
+        last_posted = '%s %s' % (datetime.now().date(), datetime.now().time())
+
+    all_tweets = previous_tweets['Tweets']
+
+    sorted_tweets = sorted(all_tweets, key=lambda x: x['id'], reverse=True)
+    last_id = sorted_tweets[0]['id']
+    next_id = last_id + 1
+
+    new_data = {
+        'text': text,
+        'id': next_id,
+        'image': image,
+        'link': link,
+        'last_posted': last_posted
     }
+
+    all_tweets.append(new_data)
+    print(all_tweets)
+    data = {
+        "Tweets": all_tweets
+    }
+    print(data)
     tweet_file = open('tweets.json', 'w')
     save_this_data = json.dump(data, tweet_file, indent=4)
     tweet_file.close()
@@ -51,6 +68,7 @@ def get_saved_tweets():
     fh = open('tweets.json', 'r')
     listed_tweets = json.load(fh)
     print(listed_tweets)
+    return listed_tweets
 
 
 def get_tweets(api=None, screen_name=None):
@@ -86,10 +104,9 @@ if __name__ == "__main__":
 
     screen_name = config['user']
 
-    # save_tweet(text='Hello There')
-    get_saved_tweets()
-
-
+    save_tweet(text='Jerry Rig', image='Tard', link='Digger')
+    tweets = get_saved_tweets()
+    print(tweets)
 
     # timeline = get_tweets(api=api, screen_name=screen_name)
     # for t in timeline:
