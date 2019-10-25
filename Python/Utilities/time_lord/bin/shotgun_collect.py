@@ -67,6 +67,7 @@ class sg_data(object):
         return active_projects
 
     def get_project_assets(self, proj_id=None):
+        print 'proj_id received: %s' % proj_id
         if proj_id:
             self.logger.info('Getting project assets...')
             filters = [
@@ -75,6 +76,7 @@ class sg_data(object):
             fields = [
                 'code'
             ]
+            # TODO: Needs a connection check system
             assets = self.sg.find('Asset', filters, fields)
             self.logger.info('Assets collected.')
             self.logger.debug('Assets List: %s' % assets)
@@ -89,6 +91,7 @@ class sg_data(object):
             fields = [
                 'code'
             ]
+            # TODO: Needs a connection check system
             shots = self.sg.find('Shot', filters, fields)
             self.logger.info('Shots collected')
             self.logger.debug('Shots List: %s' % shots)

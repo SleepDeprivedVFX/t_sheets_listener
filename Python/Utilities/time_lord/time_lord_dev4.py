@@ -141,6 +141,7 @@ class time_signals(QtCore.QObject):
     # Data Signals
     last_timesheet = QtCore.Signal(dict)
     user_clocked_in = QtCore.Signal(bool)
+    send_timesheet = QtCore.Signal(dict)
 
     # Timesheet Action Signals
     clock_out_user = QtCore.Signal(dict)
@@ -441,52 +442,6 @@ class time_lord(QtCore.QObject):
         set_message = 'Weekly Total: %0.2f Hours' % weekly
         self.time_signal.weekly_output.emit(set_message)
 
-    def update_ui_OLD(self, update=None):
-        logger.debug('update_ui receives: %s' % update)
-        if update:
-            ui_task_id = update['task_id']
-
-            try:
-                latest_timesheet = tl_time.get_last_timesheet(user=user)
-            except TypeError, e:
-                latest_timesheet = None
-                logger.warning('Timesheet failed to update: %s' % e)
-                return False
-            if latest_timesheet:
-                try:
-                    # ts_id = latest_timesheet['id']
-                    project = latest_timesheet['project']['name']
-                    project_id = latest_timesheet['project']['id']
-                    task = latest_timesheet['entity']['name']
-                    task_id = latest_timesheet['entity']['id']
-                except Exception, e:
-                    logger.warning('Failed to get latest timesheet! %s' % e)
-                    return None
-                if task_id != ui_task_id:
-                    logger.debug('Wrong time sheet!!!')
-                    # TODO: Send signals that update the UI bits.
-                    new_timesheet = {
-                        'project': project,
-                        'project_id': project_id,
-                        'task_id': task_id,
-                        'task': task
-                    }
-                    # Get the entity from the task and append it to the new_timesheet
-                    try:
-                        get_entity = sg_data.get_entity_from_task(task_id)
-                        if get_entity:
-                            entity = get_entity['entity']['name']
-                            entity_id = get_entity['entity']['id']
-                            new_timesheet['entity'] = entity
-                            new_timesheet['entity_id'] = entity_id
-                            # Send the new_timesheet to the updater.
-                            self.time_signal.ui_return.emit(new_timesheet)
-                    except KeyError, e:
-                        logger.warning('Bad entity: %s' % e)
-
-                else:
-                    logger.debug('Timesheet is copacetic')
-
     def update_ui(self, message=None):
         # FIXME: The Update UI requires data FROM the UI.  No way to compare current values if I don't have them
         logger.debug('Signal Received: %s' % message)
@@ -501,9 +456,6 @@ class time_lord(QtCore.QObject):
         task_id = self.last_timesheet['entity']['id']
 
         # Get Entity from task and project IDs
-
-
-
 
     def quick_update(self):
         '''
@@ -1399,7 +1351,6 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.clock_button.clicked.connect(self.start_time)
 
 
-
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     app.setOrganizationName('AdamBenson')
@@ -1415,177 +1366,5 @@ if __name__ == '__main__':
     splash.finish(window)
     # sys.excepthook()  # TODO: Get this to work.
     sys.exit(app.exec_())
-
-
-
-'''
-The Following is pulled from the Event Listener system.  There's some good simple nuggets in there.  Parsing more...
-_______________________________________________________________________________________________________________________
-# This loop will trigger calls to new events and save heard calls to a database of some sort. More research needed...
-        self.log.debug('Starting the event processing loop.')
-        while self._continue:  # self._continue = True from the __init__()
-            # Process events
-            events = self._getNewEvents()  # This is the money maker.  This self._getNewEvents() gets the info I need
-            for event in events:
-                for collection in self._pluginCollections:  # This part doesn't apply to me.  Not processing events.
-                    collection.process(event)
-                self._saveEventIdData()  # This one is interesting.
-
-            # if we're lagging behind Shotgun, we received a full batch of events
-            # skip the sleep() call in this case
-            if len(events) < self.config.getMaxEventBatchSize():
-                try:
-                    time.sleep(self._fetch_interval)
-                except IOError:
-                    time.sleep(5)
-
-            # Reload plugins
-            for collection in self._pluginCollections:
-                collection.load()
-                
-            # Make sure that newly loaded events have proper state.
-            self._loadEventIdData()
-
-        self.log.debug('Shuting down event processing loop.')
------------------------------------------------------------------------------------------------------------------------
-
-# The Save Data routine from the loop above:
-______________________________________________________________________________________________________________________
-
-    def _saveEventIdData(self):
-        """
-        Save an event Id to persistant storage.
-
-        Next time the engine is started it will try to read the event id from
-        this location to know at which event it should start processing.
-        """
-        eventIdFile = self.config.getEventIdFile()  # This is the data file that is being saved to.
-            # In the eventListener it's the: eventIdFile: C:/shotgun/shotgunEvents/shotgunEventDaemon.id from config
-            # They're pickling the data somehow
-
-        if eventIdFile is not None:
-            for collection in self._pluginCollections:
-                self._eventIdData[collection.path] = collection.getState()
-
-            for colPath, state in self._eventIdData.items():
-                if state:
-                    try:
-                        fh = open(eventIdFile, 'w')
-                        pickle.dump(self._eventIdData, fh)
-                        fh.close()
-                    except OSError, err:
-                        self.log.error('Can not write event id data to %s.\n\n%s', eventIdFile, traceback.format_exc(err))
-                    break
-            else:
-                self.log.warning('No state was found. Not saving to disk.')
-----------------------------------------------------------------------------------------------------------------------
-
-# This opens and loads the afore mentioned file
-______________________________________________________________________________________________________________________
-
-    def _loadEventIdData(self):
-        """
-        Load the last processed event id from the disk
-
-        If no event has ever been processed or if the eventIdFile has been
-        deleted from disk, no id will be recoverable. In this case, we will try
-        contacting Shotgun to get the latest event's id and we'll start
-        processing from there.
-        """
-        eventIdFile = self.config.getEventIdFile()
-
-        if eventIdFile and os.path.exists(eventIdFile):
-            try:
-                fh = open(eventIdFile)
-                try:
-                    self._eventIdData = pickle.load(fh)
-
-                    # Provide event id info to the plugin collections. Once
-                    # they've figured out what to do with it, ask them for their
-                    # last processed id.
-                    noStateCollections = []
-                    for collection in self._pluginCollections:
-                        state = self._eventIdData.get(collection.path)
-                        if state:
-                            collection.setState(state)
-                        else:
-                            noStateCollections.append(collection)
-
-                    # If we don't have a state it means there's no match
-                    # in the id file. First we'll search to see the latest id a
-                    # matching plugin name has elsewhere in the id file. We do
-                    # this as a fallback in case the plugins directory has been
-                    # moved. If there's no match, use the latest event id 
-                    # in Shotgun.
-                    if noStateCollections:
-                        maxPluginStates = {}
-                        for collection in self._eventIdData.values():
-                            for pluginName, pluginState in collection.items():
-                                if pluginName in maxPluginStates.keys():
-                                    if pluginState[0] > maxPluginStates[pluginName][0]:
-                                        maxPluginStates[pluginName] = pluginState
-                                else:
-                                    maxPluginStates[pluginName] = pluginState
-
-                        lastEventId = self._getLastEventIdFromDatabase()
-                        for collection in noStateCollections:
-                            state = collection.getState()
-                            for pluginName in state.keys():
-                                if pluginName in maxPluginStates.keys():
-                                    state[pluginName] = maxPluginStates[pluginName]
-                                else:
-                                    state[pluginName] = lastEventId
-                            collection.setState(state)
-
-                except pickle.UnpicklingError:
-                    fh.close()
-
-                    # Backwards compatibility:
-                    # Reopen the file to try to read an old-style int
-                    fh = open(eventIdFile)
-                    line = fh.readline().strip()
-                    if line.isdigit():
-                        # The _loadEventIdData got an old-style id file containing a single
-                        # int which is the last id properly processed.
-                        lastEventId = int(line)
-                        self.log.debug('Read last event id (%d) from file.', lastEventId)
-                        for collection in self._pluginCollections:
-                            collection.setState(lastEventId)
-                fh.close()
-            except OSError, err:
-                raise EventDaemonError('Could not load event id from file.\n\n%s' % traceback.format_exc(err))
-        else:
-            # No id file?
-            # Get the event data from the database.
-            lastEventId = self._getLastEventIdFromDatabase()
-            if lastEventId:
-                for collection in self._pluginCollections:
-                    collection.setState(lastEventId)
-
-            self._saveEventIdData()
-'''
-
-# db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')  # .tld for time lord data
-# if not os.path.exists(db_path):
-#     os.makedirs(db_path)
-# if os.path.exists(db_path):
-#     data = {}
-#     # Print out what's in the pickled file
-#     db_file = open(db_path, 'rb')
-#     print 'open file: %s' % db_file
-#     # try:
-#     test_db = pickle.load(db_file)
-#     db_file.close()
-#     print 'test_db returns: %s' % test_db
-#
-#     # The following takes existing data and adds it back into the pickled file.
-#     # for k, v in test_db.items():
-#     #     data[k] = v
-#     db_file = open(db_path, 'wb')
-#     data['EventLogID'] = 8184655
-#     data['TimeLogID'] = 1149
-#     pickle.dump(data, db_file)
-#     db_file.close()
-
 
 
