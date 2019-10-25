@@ -132,7 +132,7 @@ class time_signals(QtCore.QObject):
     # Update Signals
     update = QtCore.Signal(str)
     req_project_update = QtCore.Signal(str)
-    req_entity_update = QtCore.Signal(str)
+    req_entity_update = QtCore.Signal(int)
     req_task_update = QtCore.Signal(str)
     send_project_update = QtCore.Signal(dict)
     send_entity_update = QtCore.Signal(dict)
@@ -141,6 +141,12 @@ class time_signals(QtCore.QObject):
     # Data Signals
     last_timesheet = QtCore.Signal(dict)
     user_clocked_in = QtCore.Signal(bool)
+
+    # Timesheet Action Signals
+    clock_out_user = QtCore.Signal(dict)
+    clock_in_user = QtCore.Signal(tuple)
+    user_has_clocked_in = QtCore.Signal(dict)
+    set_last_timesheet = QtCore.Signal(dict)
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -385,6 +391,7 @@ class time_lord(QtCore.QObject):
         self.time_signal.send_project_update.emit(projects)
 
     def send_entity_update(self, proj_id=None):
+        print 'send_entity_update: %s' % proj_id
         if proj_id:
             logger.debug('Project ID received by Entity Update Request: %s' % proj_id)
 
@@ -696,6 +703,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.project_dropdown.currentIndexChanged.connect(lambda: self.switch_state(self.last_timesheet))
         self.ui.entity_dropdown.currentIndexChanged.connect(self.req_update_tasks)
         self.ui.entity_dropdown.currentIndexChanged.connect(lambda: self.switch_state(self.last_timesheet))
+        self.switch_state(self.last_timesheet)
 
         # Do First Update
         self.time_lord.time_signal.update.emit('First Update')
@@ -730,7 +738,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
             # Collect Tasks
             tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity, proj_id=proj_id)
-            self.update_task_dropdown(data=tasks)
+            self.update_task_dropdown(tasks=tasks)
 
     # ----------------------------------------------------------------------------------------------------------------
     # Status lights and button states.
@@ -750,7 +758,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.green_light.setVisible(False)
 
     def switch_state(self, data=None):
-
+        print 'Switch States: %s' % data
         logger.debug('Switch state triggered')
         match = True
 
@@ -779,7 +787,7 @@ class time_lord_ui(QtGui.QMainWindow):
             match = False
         logger.debug('Everything\'s cool now.')
 
-        if match and self.time_lord.clocked_in:
+        if match and self.clocked_in:
             logger.debug('match and timelord clocked in.  Emit 1')
             self.time_lord.time_signal.clock_state.emit(1)
             try:
@@ -791,7 +799,7 @@ class time_lord_ui(QtGui.QMainWindow):
             except:
                 pass
             self.ui.clock_button.clicked.connect(self.stop_time)
-        elif not match and self.time_lord.clocked_in:
+        elif not match and self.clocked_in:
             logger.debug('Not matched and timelord clocked in.  Emit 2')
             self.time_lord.time_signal.clock_state.emit(2)
             try:
@@ -803,7 +811,7 @@ class time_lord_ui(QtGui.QMainWindow):
             except:
                 pass
             self.ui.clock_button.clicked.connect(self.switch_time)
-        elif not self.time_lord.clocked_in:
+        elif not self.clocked_in:
             logger.debug('Timelord not clocked in.  Doesn\'t matter if it\'s matched.  Emit 0')
             self.time_lord.time_signal.clock_state.emit(0)
             try:
@@ -872,8 +880,8 @@ class time_lord_ui(QtGui.QMainWindow):
             self.update_saved_settings()
             self.clock_out()
             self.clock_in()
-            if not self.time_lord.isRunning():
-                self.time_lord.start()
+            if not self.time_machine.isRunning():
+                self.time_machine.start()
 
     def clock_out(self):
         self.time_lord.time_signal.clock_state.emit(0)
@@ -922,8 +930,8 @@ class time_lord_ui(QtGui.QMainWindow):
         data = (context, start_time)
         self.time_lord.time_signal.clock_in_user.emit(data)
         self.set_window_on_top()
-        if not self.time_lord.isRunning():
-            self.time_lord.start()
+        if not self.time_machine.isRunning():
+            self.time_machine.start()
 
     def set_in_clock(self, in_time):
         '''
@@ -1075,39 +1083,39 @@ class time_lord_ui(QtGui.QMainWindow):
                                                   'start_y_ones_%s.png);' % y_ones)
 
     def set_end_date_rollers(self, d='00-00-00'):
-            '''
-            Sets the date rollers.
-            :param d: (str) A MM-DD-YY date format string.
-            :param which: (str) One of two acceptable values: 'start', 'end'
-            :return:
-            '''
-            # set the end date roller
-            if d and d != '00-00-00':
+        '''
+        Sets the date rollers.
+        :param d: (str) A MM-DD-YY date format string.
+        :param which: (str) One of two acceptable values: 'start', 'end'
+        :return:
+        '''
+        # set the end date roller
+        if d and d != '00-00-00':
 
-                split_date = d.split('-')
-                m = split_date[0]
-                d = split_date[1]
-                y = split_date[2]
+            split_date = d.split('-')
+            m = split_date[0]
+            d = split_date[1]
+            y = split_date[2]
 
-                m_tens = int(m[0])
-                m_ones = int(m[1])
-                d_tens = int(d[0])
-                d_ones = int(d[1])
-                y_tens = int(y[0])
-                y_ones = int(y[1])
+            m_tens = int(m[0])
+            m_ones = int(m[1])
+            d_tens = int(d[0])
+            d_ones = int(d[1])
+            y_tens = int(y[0])
+            y_ones = int(y[1])
 
-                self.ui.end_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                                                     'end_m_tens_%s.png);' % m_tens)
-                self.ui.end_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                                                     'end_m_ones_%s.png);' % m_ones)
-                self.ui.end_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                                                   'end_d_tens_%s.png);' % d_tens)
-                self.ui.end_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                                                   'end_d_ones_%s.png);' % d_ones)
-                self.ui.end_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                                                    'end_y_tens_%s.png);' % y_tens)
-                self.ui.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-                                                    'end_y_ones_%s.png);' % y_ones)
+            self.ui.end_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                 'end_m_tens_%s.png);' % m_tens)
+            self.ui.end_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                 'end_m_ones_%s.png);' % m_ones)
+            self.ui.end_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                               'end_d_tens_%s.png);' % d_tens)
+            self.ui.end_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                               'end_d_ones_%s.png);' % d_ones)
+            self.ui.end_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                'end_y_tens_%s.png);' % y_tens)
+            self.ui.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                'end_y_ones_%s.png);' % y_ones)
 
     # ----------------------------------------------------------------------------------------------------------------
     # UI Events - Close, Update Saved Settings, Update UI Data
@@ -1194,7 +1202,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
             # Send a signal to update the local timesheet.
             print('~' * 60)
-            print('IS CLOCKED IN: %s' % self.time_lord.clocked_in)
+            print('IS CLOCKED IN: %s' % self.clocked_in)
             print('Testing last timesheet: %s' % self.last_timesheet)
 
     # ----------------------------------------------------------------------------------------------------------------
@@ -1223,10 +1231,12 @@ class time_lord_ui(QtGui.QMainWindow):
         :param message: String trigger.  Does nothing.
         :return:
         '''
+        print 'req_update_entities: %s' % message
         proj_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
         self.time_lord.time_signal.req_entity_update.emit(proj_id)
 
     def update_entity_dropdown(self, data=None):
+        print 'update entity dropdown signal %s' % data
         logger.debug(data)
         if data:
             entities = data
@@ -1262,8 +1272,132 @@ class time_lord_ui(QtGui.QMainWindow):
         }
         self.time_lord.time_signal.req_task_update.emit(context)
 
-    def update_task_dropdown(self, data=None):
-        pass
+    def update_task_dropdown(self, tasks=None):
+        logger.debug('Setting tasks...')
+        logger.debug(tasks)
+        if tasks:
+            self.ui.task_dropdown.clear()
+            self.ui.task_dropdown.addItem('Select Task', 0)
+            for task in tasks:
+                self.ui.task_dropdown.addItem(task['content'], task['id'])
+        else:
+            self.ui.task_dropdown.clear()
+            self.ui.task_dropdown.addItem('Select Task', 0)
+        if self.saved_task != self.last_timesheet['entity']['name']:
+            self.saved_task = self.last_timesheet['entity']['name']
+        task_index = self.ui.task_dropdown.findText(self.saved_task)
+        if task_index >= 0:
+            self.ui.task_dropdown.setCurrentIndex(task_index)
+        # Lastly, connect the Task to an on-change event
+        self.ui.task_dropdown.currentIndexChanged.connect(self.switch_state)
+        self.switch_tasks()
+
+    def switch_tasks(self):
+        # QUERY: DO I need have the __init__ call the switch tasks? Or do I use a different method up there?
+        #       The fear is that the saved_task might not accurately reflect what's going on, due to signal and
+        #       slot delays.
+        logger.debug('Switching tasks...')
+        if self.saved_task != self.ui.task_dropdown.currentText() and self.clocked_in:
+            self.time_lord.time_signal.clock_state.emit(2)
+        else:
+            if self.clocked_in:
+                self.time_lord.time_signal.clock_state.emit(1)
+            else:
+                self.time_lord.time_signal.clock_state.emit(0)
+
+    def selection_check(self):
+        # Sets the Status Lights and adds Error Messages to the output monitor
+        if self.ui.project_dropdown.currentText() == 'Select Project' or self.ui.project_dropdown.currentIndex() == 0:
+            self.time_lord.time_signal.error_state.emit(True)
+            self.time_lord.time_signal.steady_state.emit(False)
+            self.time_lord.time_signal.lower_output.emit('You must select a Project!')
+            # self.clocked_in = False
+            return False
+        else:
+            self.time_lord.time_signal.error_state.emit(False)
+            self.time_lord.time_signal.steady_state.emit(True)
+        if self.ui.entity_dropdown.currentText() == 'Select Asset/Shot' or self.ui.entity_dropdown.currentIndex() == 0:
+            self.time_lord.time_signal.error_state.emit(True)
+            self.time_lord.time_signal.steady_state.emit(False)
+            self.time_lord.time_signal.lower_output.emit('You must select an entity!')
+            # self.clocked_in = False
+            return False
+        else:
+            self.time_lord.time_signal.error_state.emit(False)
+            self.time_lord.time_signal.steady_state.emit(True)
+        if self.ui.task_dropdown.currentText() == 'Select Task' or self.ui.task_dropdown.currentIndex() == 0:
+            self.time_lord.time_signal.error_state.emit(True)
+            self.time_lord.time_signal.steady_state.emit(False)
+            self.time_lord.time_signal.lower_output.emit('You must select a Task!')
+            # self.clocked_in = False
+            return False
+        else:
+            self.time_lord.time_signal.error_state.emit(False)
+            self.time_lord.time_signal.steady_state.emit(True)
+        return True
+
+    def get_user_start_time(self):
+        '''
+        Eventually, this should return a user set start time from the UI.  Not sure right off hand yet how to do that.
+        :return:
+        '''
+        return None
+
+    def clock_in_button_state(self, message=None):
+        # FIXME: This is getting called twice, one right after another.
+        '''
+        Takes an integer value between 0 and 2
+        :param message: (int) 0 = clocked out, 1 = clocked in, 2 = clock switch
+        :return:
+        '''
+        logger.debug('clock_in_button_state message: %s' % message)
+        # A value of None for message means that there is not clock-out time and the sheet is still active.
+        self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
+                                           'clock_button_%i.png);'
+                                           'background-repeat: none;'
+                                           'background-color: rgba(0, 0, 0, 0);'
+                                           'border-color: rgba(0, 0, 0, 0);' % message)
+        if message >= 1:
+            # Let the engine know that it is clocked in.
+            # FIXME: Add an emit here as well, to let the engine know it's clocked in.
+            self.clocked_in = True
+            if message == 2:
+                try:
+                    self.ui.clock_button.clicked.disconnect(self.start_time)
+                except Exception:
+                    pass
+                try:
+                    self.ui.clock_button.clicked.disconnect(self.stop_time)
+                except Exception:
+                    pass
+                self.ui.clock_button.clicked.connect(self.switch_time)
+            else:
+                try:
+                    # Disconnect the start time action
+                    self.ui.clock_button.clicked.disconnect(self.start_time)
+                except Exception:
+                    pass
+                try:
+                    # Disconnect the switch time action
+                    self.ui.clock_button.clicked.disconnect(self.switch_time)
+                except Exception:
+                    pass
+                # Connect the Stop Time action.
+                self.ui.clock_button.clicked.connect(self.stop_time)
+
+        else:
+            # Let the engine know that it is clocked out.
+            self.time_lord.clocked_in = False
+            try:
+                self.ui.clock_button.clicked.disconnect(self.stop_time)
+            except Exception:
+                pass
+            try:
+                self.ui.clock_button.clicked.disconnect(self.switch_time)
+            except Exception:
+                pass
+            self.ui.clock_button.clicked.connect(self.start_time)
+
 
 
 if __name__ == '__main__':
