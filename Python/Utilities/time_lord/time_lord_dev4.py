@@ -223,6 +223,7 @@ class time_machine(QtCore.QThread):
 
         # Setup the streams
         self.time_signal = time_signals()
+        self.time_lord = time_lord()
 
     def run(self, *args, **kwargs):
         self.listener()
@@ -352,6 +353,7 @@ class time_machine(QtCore.QThread):
                                 print 'NEW RECORD!'
                                 print event['entity']['id']
                                 print event
+                                self.time_lord.time_signal.update.emit('Update Detected!')
 
                                 data = {
                                     'EventLogID': event['id'],
@@ -467,6 +469,7 @@ class time_lord(QtCore.QObject):
 
     def update_ui(self, message=None):
         # FIXME: The Update UI requires data FROM the UI.  No way to compare current values if I don't have them
+        print 'Update Detected: %s' % message
         logger.debug('Signal Received: %s' % message)
         # Get the last timesheet for local use and emit it for use elsewhere.
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
@@ -671,6 +674,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.send_project_update.connect(self.update_projects_dropdown)
         self.time_lord.time_signal.send_entity_update.connect(self.update_entity_dropdown)
         self.time_lord.time_signal.send_task_update.connect(self.update_task_dropdown)
+        self.time_lord.time_signal.last_timesheet.connect(self.update_last_timesheet)
 
         # Dropdown Change Index Connections
         self.ui.project_dropdown.currentIndexChanged.connect(self.req_update_entities)
@@ -1380,6 +1384,11 @@ class time_lord_ui(QtGui.QMainWindow):
             except Exception:
                 pass
             self.ui.clock_button.clicked.connect(self.start_time)
+
+    def update_last_timesheet(self, timesheet=None):
+        print 'updating last timesheet... %s' % timesheet
+        if timesheet:
+            self.last_timesheet = timesheet
 
 
 if __name__ == '__main__':

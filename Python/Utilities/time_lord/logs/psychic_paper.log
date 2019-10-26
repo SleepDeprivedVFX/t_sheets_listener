@@ -982,3 +982,332 @@
 2019-10-25 18:47:40,900 - psychic_paper | DEBUG : 760 - Tasks aren't cool.
 2019-10-25 18:47:40,900 - psychic_paper | DEBUG : 762 - Finished with match check: False
 2019-10-25 18:47:40,901 - psychic_paper | DEBUG : 777 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:52:59,270 - psychic_paper | INFO : 69 - The Time Lord has started!
+2019-10-25 18:53:00,198 - psychic_paper | DEBUG : 75 - Shotgun is connected.
+2019-10-25 18:53:01,380 - psychic_paper | DEBUG : 1195 - Getting default selection from settings.
+2019-10-25 18:53:01,380 - psychic_paper | DEBUG : 1200 - Setting project to last project listed.
+2019-10-25 18:53:01,381 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:53:01,381 - psychic_paper | DEBUG : 1262 - None
+2019-10-25 18:53:01,381 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:53:01,542 - psychic_paper | DEBUG : 1220 - [{'code': 'Spider', 'type': 'Asset', 'id': 2471}, {'code': 'roboLeg', 'type': 'Asset', 'id': 2780}, {'code': 'Demagorgon', 'type': 'Asset', 'id': 2854}, {'code': 'reference', 'type': 'Asset', 'id': 2879}, {'code': 'Hallway', 'type': 'Asset', 'id': 2923}, {'code': 'eyeBall', 'type': 'Asset', 'id': 2931}, {'code': 'CowMagnet', 'type': 'Asset', 'id': 3196}, {'code': 'HamburgerTrain', 'type': 'Asset', 'id': 3199}, {'code': 'eyeBall_2', 'type': 'Asset', 'id': 5852}, {'code': 'Dog', 'type': 'Asset', 'id': 6187}, {'code': 'STRS101_000_0010', 'type': 'Shot', 'id': 3580}, {'code': 'STRS101_000_0020', 'type': 'Shot', 'id': 3730}, {'code': 'STRS101_000_0030', 'type': 'Shot', 'id': 3731}]
+2019-10-25 18:53:01,542 - psychic_paper | DEBUG : 1235 - Setting entity to last saved entity
+2019-10-25 18:53:01,790 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:53:01,792 - psychic_paper | DEBUG : 1262 - [{'content': 'rig.main', 'step': {'type': 'Step', 'id': 11, 'name': 'rig'}, 'type': 'Task', 'id': 19359, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'design.main', 'step': {'type': 'Step', 'id': 23, 'name': 'design'}, 'type': 'Task', 'id': 19360, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'model.main', 'step': {'type': 'Step', 'id': 10, 'name': 'model'}, 'type': 'Task', 'id': 19361, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'lookdev.main', 'step': {'type': 'Step', 'id': 12, 'name': 'lookdev'}, 'type': 'Task', 'id': 19362, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'uv.main', 'step': {'type': 'Step', 'id': 64, 'name': 'uv'}, 'type': 'Task', 'id': 19363, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'turntable.main', 'step': {'type': 'Step', 'id': 92, 'name': 'turntable'}, 'type': 'Task', 'id': 19364, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'model.test', 'step': {'type': 'Step', 'id': 10, 'name': 'model'}, 'type': 'Task', 'id': 20300, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'model.test2', 'step': {'type': 'Step', 'id': 10, 'name': 'model'}, 'type': 'Task', 'id': 20301, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'design.remote', 'step': {'type': 'Step', 'id': 23, 'name': 'design'}, 'type': 'Task', 'id': 20915, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'design.adamb', 'step': {'type': 'Step', 'id': 23, 'name': 'design'}, 'type': 'Task', 'id': 21357, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}]
+2019-10-25 18:53:01,792 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:53:01,792 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:53:01,792 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:53:01,793 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:53:01,795 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:53:01,795 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:53:01,795 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:53:01,795 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:53:01,796 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:53:01,796 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:53:01,796 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:53:01,796 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:53:01,796 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:53:01,796 - psychic_paper | DEBUG : 472 - Signal Received: First Update
+2019-10-25 18:53:01,878 - psychic_paper | DEBUG : 335 - Starting the main event listener loop...
+2019-10-25 18:53:07,709 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:53:07,709 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:53:07,709 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:53:07,709 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:53:07,710 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:53:07,710 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:53:07,710 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:53:07,710 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:53:12,124 - psychic_paper | DEBUG : 402 - Project ID received by Entity Update Request: 547
+2019-10-25 18:54:12,397 - psychic_paper | DEBUG : 405 - Assets collected: [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-25 18:54:12,719 - psychic_paper | DEBUG : 408 - Shots Collected: []
+2019-10-25 18:54:12,720 - psychic_paper | DEBUG : 1220 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-25 18:54:12,720 - psychic_paper | DEBUG : 416 - Task update requests. Context: {'entity_id': None, 'proj_id': 547, 'entity_name': u''}
+2019-10-25 18:54:12,721 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:54:12,721 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:54:12,721 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:54:12,721 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:54:12,723 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:54:12,723 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:54:12,723 - psychic_paper | DEBUG : 416 - Task update requests. Context: {'entity_id': 0, 'proj_id': 547, 'entity_name': u'Select Asset/Shot'}
+2019-10-25 18:54:12,724 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:54:12,724 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:54:12,724 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:54:12,726 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:54:12,726 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:54:12,726 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:54:12,726 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:54:12,727 - psychic_paper | DEBUG : 1262 - None
+2019-10-25 18:54:12,727 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:54:12,727 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:54:12,729 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:54:12,729 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:54:12,729 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:54:12,729 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:54:12,730 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:54:12,730 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:54:12,730 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:54:12,730 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:54:12,730 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:54:12,730 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:54:12,732 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:54:12,733 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:54:12,733 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:54:12,733 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:54:12,733 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:54:12,733 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:54:12,734 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:54:12,734 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:54:12,734 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:54:12,734 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:54:12,736 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:54:12,736 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:54:12,736 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:54:12,736 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:54:12,736 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:54:12,736 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:54:12,737 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:54:12,737 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:54:12,737 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:54:18,052 - psychic_paper | DEBUG : 416 - Task update requests. Context: {'entity_id': 6244, 'proj_id': 547, 'entity_name': u'Overhead'}
+2019-10-25 18:57:20,042 - psychic_paper | INFO : 69 - The Time Lord has started!
+2019-10-25 18:57:21,003 - psychic_paper | DEBUG : 75 - Shotgun is connected.
+2019-10-25 18:57:22,427 - psychic_paper | DEBUG : 1195 - Getting default selection from settings.
+2019-10-25 18:57:22,427 - psychic_paper | DEBUG : 1200 - Setting project to last project listed.
+2019-10-25 18:57:22,427 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:57:22,427 - psychic_paper | DEBUG : 1262 - None
+2019-10-25 18:57:22,427 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:57:22,607 - psychic_paper | DEBUG : 1220 - [{'code': 'Spider', 'type': 'Asset', 'id': 2471}, {'code': 'roboLeg', 'type': 'Asset', 'id': 2780}, {'code': 'Demagorgon', 'type': 'Asset', 'id': 2854}, {'code': 'reference', 'type': 'Asset', 'id': 2879}, {'code': 'Hallway', 'type': 'Asset', 'id': 2923}, {'code': 'eyeBall', 'type': 'Asset', 'id': 2931}, {'code': 'CowMagnet', 'type': 'Asset', 'id': 3196}, {'code': 'HamburgerTrain', 'type': 'Asset', 'id': 3199}, {'code': 'eyeBall_2', 'type': 'Asset', 'id': 5852}, {'code': 'Dog', 'type': 'Asset', 'id': 6187}, {'code': 'STRS101_000_0010', 'type': 'Shot', 'id': 3580}, {'code': 'STRS101_000_0020', 'type': 'Shot', 'id': 3730}, {'code': 'STRS101_000_0030', 'type': 'Shot', 'id': 3731}]
+2019-10-25 18:57:22,608 - psychic_paper | DEBUG : 1235 - Setting entity to last saved entity
+2019-10-25 18:57:22,855 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:57:22,855 - psychic_paper | DEBUG : 1262 - [{'content': 'rig.main', 'step': {'type': 'Step', 'id': 11, 'name': 'rig'}, 'type': 'Task', 'id': 19359, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'design.main', 'step': {'type': 'Step', 'id': 23, 'name': 'design'}, 'type': 'Task', 'id': 19360, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'model.main', 'step': {'type': 'Step', 'id': 10, 'name': 'model'}, 'type': 'Task', 'id': 19361, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'lookdev.main', 'step': {'type': 'Step', 'id': 12, 'name': 'lookdev'}, 'type': 'Task', 'id': 19362, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'uv.main', 'step': {'type': 'Step', 'id': 64, 'name': 'uv'}, 'type': 'Task', 'id': 19363, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'turntable.main', 'step': {'type': 'Step', 'id': 92, 'name': 'turntable'}, 'type': 'Task', 'id': 19364, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'model.test', 'step': {'type': 'Step', 'id': 10, 'name': 'model'}, 'type': 'Task', 'id': 20300, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'model.test2', 'step': {'type': 'Step', 'id': 10, 'name': 'model'}, 'type': 'Task', 'id': 20301, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'design.remote', 'step': {'type': 'Step', 'id': 23, 'name': 'design'}, 'type': 'Task', 'id': 20915, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}, {'content': 'design.adamb', 'step': {'type': 'Step', 'id': 23, 'name': 'design'}, 'type': 'Task', 'id': 21357, 'entity': {'type': 'Asset', 'id': 2780, 'name': 'roboLeg'}}]
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:22,857 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:57:22,858 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:22,858 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:22,858 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:22,858 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:22,858 - psychic_paper | DEBUG : 472 - Signal Received: First Update
+2019-10-25 18:57:22,943 - psychic_paper | DEBUG : 335 - Starting the main event listener loop...
+2019-10-25 18:57:28,842 - psychic_paper | DEBUG : 402 - Project ID received by Entity Update Request: 547
+2019-10-25 18:57:29,427 - psychic_paper | DEBUG : 405 - Assets collected: [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-25 18:57:29,736 - psychic_paper | DEBUG : 408 - Shots Collected: []
+2019-10-25 18:57:29,737 - psychic_paper | DEBUG : 1220 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-25 18:57:29,739 - psychic_paper | DEBUG : 416 - Task update requests. Context: {'entity_id': None, 'proj_id': 547, 'entity_name': u''}
+2019-10-25 18:57:29,739 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:29,739 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:29,739 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:29,740 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:29,740 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:29,740 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:29,740 - psychic_paper | DEBUG : 416 - Task update requests. Context: {'entity_id': 0, 'proj_id': 547, 'entity_name': u'Select Asset/Shot'}
+2019-10-25 18:57:29,742 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:29,742 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:29,742 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:29,742 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:29,743 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:29,743 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:29,743 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:57:29,743 - psychic_paper | DEBUG : 1262 - None
+2019-10-25 18:57:29,743 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:29,744 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:29,744 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:29,744 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:29,744 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:29,744 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:29,746 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:29,746 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:29,746 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:29,746 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:29,746 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:29,746 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:29,747 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:29,747 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:29,747 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:29,747 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:29,749 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:29,749 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:29,749 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:29,750 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:29,750 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:29,750 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:29,750 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:29,750 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:29,750 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:57:29,750 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:29,752 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:29,752 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:29,752 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:29,752 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:29,753 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:32,980 - psychic_paper | DEBUG : 416 - Task update requests. Context: {'entity_id': 6244, 'proj_id': 547, 'entity_name': u'Overhead'}
+2019-10-25 18:57:33,434 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:57:33,434 - psychic_paper | DEBUG : 1262 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-25 18:57:33,436 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,436 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,436 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,437 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:33,437 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,437 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,437 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,437 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,438 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,438 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:33,438 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,440 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,440 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,440 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,440 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,440 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:33,440 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,441 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,443 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,443 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,443 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,444 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:33,444 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,444 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,444 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,444 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,444 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,446 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:33,446 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,446 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,447 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,447 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,447 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,447 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:33,447 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,448 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,450 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,450 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,450 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,450 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,450 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,451 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,451 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,453 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,453 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,453 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,453 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,453 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,454 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,454 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,454 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:33,456 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:57:33,456 - psychic_paper | DEBUG : 428 - Tasks emitted: [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-25 18:57:33,457 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:33,457 - psychic_paper | DEBUG : 753 - Last project name does not match.
+2019-10-25 18:57:33,457 - psychic_paper | DEBUG : 758 - The entity does not match the dropdown.
+2019-10-25 18:57:33,457 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:33,457 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:41,868 - psychic_paper | INFO : 69 - The Time Lord has started!
+2019-10-25 18:57:42,914 - psychic_paper | DEBUG : 75 - Shotgun is connected.
+2019-10-25 18:57:43,931 - psychic_paper | DEBUG : 1195 - Getting default selection from settings.
+2019-10-25 18:57:43,931 - psychic_paper | DEBUG : 1200 - Setting project to last project listed.
+2019-10-25 18:57:43,933 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:57:43,933 - psychic_paper | DEBUG : 1262 - None
+2019-10-25 18:57:43,933 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:57:44,122 - psychic_paper | DEBUG : 1220 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-25 18:57:44,124 - psychic_paper | DEBUG : 1235 - Setting entity to last saved entity
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 1261 - Setting tasks...
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 1262 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 762 - Tasks aren't cool.
+2019-10-25 18:57:44,394 - psychic_paper | DEBUG : 764 - Finished with match check: False
+2019-10-25 18:57:44,395 - psychic_paper | DEBUG : 779 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 18:57:44,395 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:44,395 - psychic_paper | DEBUG : 764 - Finished with match check: True
+2019-10-25 18:57:44,395 - psychic_paper | DEBUG : 767 - match and timelord clocked in.  Emit 1
+2019-10-25 18:57:44,395 - psychic_paper | DEBUG : 1284 - Switching tasks...
+2019-10-25 18:57:44,397 - psychic_paper | DEBUG : 745 - Switch state triggered
+2019-10-25 18:57:44,397 - psychic_paper | DEBUG : 764 - Finished with match check: True
+2019-10-25 18:57:44,397 - psychic_paper | DEBUG : 767 - match and timelord clocked in.  Emit 1
+2019-10-25 18:57:44,398 - psychic_paper | DEBUG : 472 - Signal Received: First Update
+2019-10-25 18:57:44,476 - psychic_paper | DEBUG : 335 - Starting the main event listener loop...
+2019-10-25 19:04:50,075 - psychic_paper | INFO : 69 - The Time Lord has started!
+2019-10-25 19:04:51,000 - psychic_paper | DEBUG : 75 - Shotgun is connected.
+2019-10-25 19:05:37,644 - psychic_paper | INFO : 69 - The Time Lord has started!
+2019-10-25 19:05:38,571 - psychic_paper | DEBUG : 75 - Shotgun is connected.
+2019-10-25 19:05:39,653 - psychic_paper | DEBUG : 1196 - Getting default selection from settings.
+2019-10-25 19:05:39,653 - psychic_paper | DEBUG : 1201 - Setting project to last project listed.
+2019-10-25 19:05:39,653 - psychic_paper | DEBUG : 1262 - Setting tasks...
+2019-10-25 19:05:39,654 - psychic_paper | DEBUG : 1263 - None
+2019-10-25 19:05:39,654 - psychic_paper | DEBUG : 1285 - Switching tasks...
+2019-10-25 19:05:39,822 - psychic_paper | DEBUG : 1221 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-25 19:05:39,822 - psychic_paper | DEBUG : 1236 - Setting entity to last saved entity
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 1262 - Setting tasks...
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 1263 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 746 - Switch state triggered
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 763 - Tasks aren't cool.
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 765 - Finished with match check: False
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 780 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 746 - Switch state triggered
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 763 - Tasks aren't cool.
+2019-10-25 19:05:40,082 - psychic_paper | DEBUG : 765 - Finished with match check: False
+2019-10-25 19:05:40,084 - psychic_paper | DEBUG : 780 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 19:05:40,084 - psychic_paper | DEBUG : 746 - Switch state triggered
+2019-10-25 19:05:40,084 - psychic_paper | DEBUG : 765 - Finished with match check: True
+2019-10-25 19:05:40,084 - psychic_paper | DEBUG : 768 - match and timelord clocked in.  Emit 1
+2019-10-25 19:05:40,085 - psychic_paper | DEBUG : 1285 - Switching tasks...
+2019-10-25 19:05:40,085 - psychic_paper | DEBUG : 746 - Switch state triggered
+2019-10-25 19:05:40,085 - psychic_paper | DEBUG : 765 - Finished with match check: True
+2019-10-25 19:05:40,085 - psychic_paper | DEBUG : 768 - match and timelord clocked in.  Emit 1
+2019-10-25 19:05:40,085 - psychic_paper | DEBUG : 473 - Signal Received: First Update
+2019-10-25 19:05:40,168 - psychic_paper | DEBUG : 336 - Starting the main event listener loop...
+2019-10-25 19:05:56,877 - psychic_paper | DEBUG : 473 - Signal Received: Timesheet detected!
+2019-10-25 19:05:56,953 - psychic_paper | WARNING : 324 - Unknown exception!  Trying again. 'NoneType' object has no attribute 'connections'
+2019-10-25 19:06:00,076 - psychic_paper | WARNING : 324 - Unknown exception!  Trying again. 'NoneType' object has no attribute 'connections'
+2019-10-25 19:06:01,377 - psychic_paper | DEBUG : 473 - Signal Received: Timesheet detected!
+2019-10-25 19:06:25,124 - psychic_paper | DEBUG : 473 - Signal Received: Timesheet detected!
+2019-10-25 19:06:25,457 - psychic_paper | DEBUG : 473 - Signal Received: Timesheet detected!
+2019-10-25 19:06:25,710 - psychic_paper | DEBUG : 473 - Signal Received: Timesheet detected!
+2019-10-25 19:06:26,013 - psychic_paper | DEBUG : 473 - Signal Received: Timesheet detected!
+2019-10-25 19:06:26,302 - psychic_paper | DEBUG : 473 - Signal Received: Timesheet detected!
+2019-10-25 19:06:26,548 - psychic_paper | DEBUG : 473 - Signal Received: Timesheet detected!
+2019-10-25 19:11:00,006 - psychic_paper | WARNING : 324 - Unknown exception!  Trying again. 'NoneType' object has no attribute 'connections'
+2019-10-25 19:12:19,154 - psychic_paper | INFO : 69 - The Time Lord has started!
+2019-10-25 19:12:20,184 - psychic_paper | DEBUG : 75 - Shotgun is connected.
+2019-10-25 19:12:21,285 - psychic_paper | DEBUG : 1197 - Getting default selection from settings.
+2019-10-25 19:12:21,285 - psychic_paper | DEBUG : 1202 - Setting project to last project listed.
+2019-10-25 19:12:21,285 - psychic_paper | DEBUG : 1263 - Setting tasks...
+2019-10-25 19:12:21,285 - psychic_paper | DEBUG : 1264 - None
+2019-10-25 19:12:21,285 - psychic_paper | DEBUG : 1286 - Switching tasks...
+2019-10-25 19:12:21,440 - psychic_paper | DEBUG : 1222 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-25 19:12:21,441 - psychic_paper | DEBUG : 1237 - Setting entity to last saved entity
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 1263 - Setting tasks...
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 1264 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 747 - Switch state triggered
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 764 - Tasks aren't cool.
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 766 - Finished with match check: False
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 781 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 747 - Switch state triggered
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 764 - Tasks aren't cool.
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 766 - Finished with match check: False
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 781 - Not matched and timelord clocked in.  Emit 2
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 747 - Switch state triggered
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 766 - Finished with match check: True
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 769 - match and timelord clocked in.  Emit 1
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 1286 - Switching tasks...
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 747 - Switch state triggered
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 766 - Finished with match check: True
+2019-10-25 19:12:21,690 - psychic_paper | DEBUG : 769 - match and timelord clocked in.  Emit 1
+2019-10-25 19:12:21,691 - psychic_paper | DEBUG : 473 - Signal Received: First Update
+2019-10-25 19:12:21,773 - psychic_paper | DEBUG : 336 - Starting the main event listener loop...
+2019-10-25 19:13:03,651 - psychic_paper | DEBUG : 473 - Signal Received: Update Detected!
+2019-10-25 19:14:04,500 - psychic_paper | DEBUG : 473 - Signal Received: Update Detected!
+2019-10-25 19:15:04,825 - psychic_paper | DEBUG : 473 - Signal Received: Update Detected!
+2019-10-25 19:15:05,233 - psychic_paper | DEBUG : 473 - Signal Received: Update Detected!
+2019-10-25 19:15:05,546 - psychic_paper | DEBUG : 473 - Signal Received: Update Detected!
+2019-10-25 19:15:06,138 - psychic_paper | DEBUG : 473 - Signal Received: Update Detected!
+2019-10-25 19:15:06,428 - psychic_paper | DEBUG : 473 - Signal Received: Update Detected!
+2019-10-25 19:15:06,513 - psychic_paper | DEBUG : 473 - Signal Received: Update Detected!
