@@ -1,50 +1,239 @@
-2019-10-25 10:56:48,776 - time_lord_continuum | INFO : 58 - Continuum Activated!
-2019-10-25 10:56:49,529 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
-2019-10-25 10:56:49,529 - time_lord_continuum | DEBUG : 159 - USER ID: 41
-2019-10-25 10:56:49,631 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 10, 24, 19, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C783C8>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-24', 'type': 'TimeLog', 'id': 1191, 'sg_task_start': datetime.datetime(2019, 10, 24, 13, 30, 36, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C783C8>)}
-2019-10-25 10:56:49,631 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
-2019-10-25 10:56:49,631 - time_lord_continuum | DEBUG : 159 - USER ID: 41
-2019-10-25 10:56:49,753 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 10, 24, 19, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C783C8>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-24', 'type': 'TimeLog', 'id': 1191, 'sg_task_start': datetime.datetime(2019, 10, 24, 13, 30, 36, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C783C8>)}
-2019-10-25 10:56:49,819 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
-2019-10-25 10:56:50,611 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
-2019-10-25 10:56:50,611 - time_lord_continuum | DEBUG : 159 - USER ID: 41
-2019-10-25 10:56:50,709 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 10, 24, 19, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C783C8>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-24', 'type': 'TimeLog', 'id': 1191, 'sg_task_start': datetime.datetime(2019, 10, 24, 13, 30, 36, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C783C8>)}
-2019-10-25 10:57:00,270 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:18:00-07:00
-2019-10-25 10:57:00,270 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:32:00-07:00
-2019-10-25 10:57:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:32:01-07:00
-2019-10-25 10:57:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:38:44-07:00
-2019-10-25 10:57:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:38:45-07:00
-2019-10-25 10:57:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:48:22-07:00
-2019-10-25 10:57:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 18:22:00-07:00
-2019-10-25 10:57:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-24 10:13:00-07:00
-2019-10-25 10:57:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-24 13:30:36-07:00
-2019-10-25 10:58:59,996 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
-2019-10-25 10:59:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:18:00-07:00
-2019-10-25 10:59:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:32:00-07:00
-2019-10-25 10:59:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:32:01-07:00
-2019-10-25 10:59:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:38:44-07:00
-2019-10-25 10:59:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:38:45-07:00
-2019-10-25 10:59:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:48:22-07:00
-2019-10-25 10:59:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 18:22:00-07:00
-2019-10-25 10:59:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-24 10:13:00-07:00
-2019-10-25 10:59:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-24 13:30:36-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:18:00-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:32:00-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:32:01-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:38:44-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:38:45-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 17:48:22-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-23 18:22:00-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-24 10:13:00-07:00
-2019-10-25 11:00:00,322 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-24 13:30:36-07:00
-2019-10-25 11:00:59,395 - time_lord_continuum | INFO : 58 - Continuum Activated!
-2019-10-25 11:00:59,987 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
-2019-10-25 11:00:59,987 - time_lord_continuum | DEBUG : 159 - USER ID: 41
-2019-10-25 11:01:00,092 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003FB83C8>)}
-2019-10-25 11:01:00,094 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
-2019-10-25 11:01:00,094 - time_lord_continuum | DEBUG : 159 - USER ID: 41
-2019-10-25 11:01:00,206 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003FB83C8>)}
-2019-10-25 11:01:00,256 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
-2019-10-25 11:01:01,105 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
-2019-10-25 11:01:01,107 - time_lord_continuum | DEBUG : 159 - USER ID: 41
-2019-10-25 11:01:01,204 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003FB83C8>)}
+2019-10-25 17:39:57,736 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 17:39:58,664 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:39:58,665 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:39:58,763 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003A47390>)}
+2019-10-25 17:39:58,763 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:39:58,763 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:39:58,842 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003A47390>)}
+2019-10-25 17:39:58,911 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 17:39:59,766 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:39:59,766 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:39:59,848 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003A47390>)}
+2019-10-25 17:40:00,086 - time_lord_continuum | ERROR : 340 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-10-25 17:40:00,365 - time_lord_continuum | ERROR : 396 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-10-25 17:42:47,828 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 17:42:48,526 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:42:48,526 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:42:48,618 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039273C8>)}
+2019-10-25 17:42:48,618 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:42:48,618 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:42:48,698 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039273C8>)}
+2019-10-25 17:42:48,749 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 17:42:49,492 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:42:49,492 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:42:49,586 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039273C8>)}
+2019-10-25 17:47:21,086 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 17:47:21,562 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:47:21,562 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:47:21,644 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003F732E8>)}
+2019-10-25 17:47:21,644 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:47:21,644 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:47:21,723 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003F732E8>)}
+2019-10-25 17:47:21,767 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 17:47:22,651 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:47:22,651 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:47:22,743 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003F732E8>)}
+2019-10-25 17:48:00,006 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 17:48:00,227 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 17:49:00,059 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 17:49:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 17:54:44,427 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 17:54:45,042 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:54:45,042 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:54:45,138 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039532E8>)}
+2019-10-25 17:54:45,138 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:54:45,138 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:54:45,230 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039532E8>)}
+2019-10-25 17:54:45,296 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 17:54:46,029 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 17:54:46,029 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 17:54:46,109 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039532E8>)}
+2019-10-25 17:54:53,710 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 17:55:00,075 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 17:55:00,289 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 17:56:00,203 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 17:57:00,345 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 17:58:00,000 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 17:58:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 17:59:00,243 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 17:59:00,463 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:00:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:00:00,355 - time_lord_continuum | ERROR : 396 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-10-25 18:01:00,276 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:01:00,480 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:02:00,285 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:04:00,042 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:04:00,257 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:05:00,012 - time_lord_continuum | ERROR : 340 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-10-25 18:05:00,329 - time_lord_continuum | ERROR : 396 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-10-25 18:06:52,203 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:06:52,772 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:06:52,772 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:06:52,890 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000033C8358>)}
+2019-10-25 18:06:52,891 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:06:52,891 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:06:52,980 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000033C8358>)}
+2019-10-25 18:06:53,023 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:06:53,753 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:06:53,753 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:06:53,835 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000033C8358>)}
+2019-10-25 18:06:58,773 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:07:00,096 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:07:45,240 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:07:45,795 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:07:45,795 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:07:45,887 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034F4358>)}
+2019-10-25 18:07:45,887 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:07:45,888 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:07:45,980 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034F4358>)}
+2019-10-25 18:07:46,023 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:07:46,821 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:07:46,821 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:07:46,898 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034F4358>)}
+2019-10-25 18:07:54,066 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:08:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:12:51,809 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:12:52,546 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:12:52,546 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:12:52,628 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000033CF400>)}
+2019-10-25 18:12:52,628 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:12:52,628 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:12:52,710 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000033CF400>)}
+2019-10-25 18:12:52,757 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:12:53,490 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:12:53,490 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:12:53,578 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000033CF400>)}
+2019-10-25 18:13:00,005 - time_lord_continuum | ERROR : 340 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-10-25 18:14:00,016 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:14:00,232 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:15:00,062 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:15:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:16:00,036 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:16:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:16:20,746 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:16:21,295 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:16:21,295 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:16:21,401 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003AC53C8>)}
+2019-10-25 18:16:21,401 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:16:21,401 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:16:21,490 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003AC53C8>)}
+2019-10-25 18:16:21,535 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:16:22,278 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:16:22,278 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:16:22,371 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003AC53C8>)}
+2019-10-25 18:16:29,664 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:17:00,088 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:17:00,397 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:17:56,595 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:17:57,082 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:17:57,082 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:17:57,171 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035853C8>)}
+2019-10-25 18:17:57,171 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:17:57,171 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:17:57,249 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035853C8>)}
+2019-10-25 18:17:57,301 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:17:58,032 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:17:58,032 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:17:58,121 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035853C8>)}
+2019-10-25 18:19:00,522 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:19:00,848 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:19:44,292 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:19:44,786 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:19:44,786 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:19:44,869 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000398F3C8>)}
+2019-10-25 18:19:44,869 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:19:44,869 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:19:44,948 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000398F3C8>)}
+2019-10-25 18:19:45,009 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:19:45,756 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:19:45,756 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:19:45,838 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000398F3C8>)}
+2019-10-25 18:20:00,030 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:20:00,260 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:20:57,391 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:20:58,049 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:20:58,049 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:20:58,134 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000373F3C8>)}
+2019-10-25 18:20:58,134 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:20:58,134 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:20:58,211 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000373F3C8>)}
+2019-10-25 18:20:58,256 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:20:58,950 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:20:58,950 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:20:59,032 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000373F3C8>)}
+2019-10-25 18:21:00,290 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:21:00,516 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:21:03,806 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:22:00,036 - time_lord_continuum | ERROR : 340 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-10-25 18:24:24,151 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:24:24,654 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:24:24,655 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:24:24,749 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037F0390>)}
+2019-10-25 18:24:24,749 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:24:24,750 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:24:24,832 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037F0390>)}
+2019-10-25 18:24:24,877 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:24:25,638 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:24:25,638 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:24:25,736 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037F0390>)}
+2019-10-25 18:24:29,428 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:25:00,760 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:25:01,391 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:25:01,392 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:25:01,516 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000057B0BA8>)}
+2019-10-25 18:25:01,516 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:25:01,516 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:25:01,619 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000057B0BA8>)}
+2019-10-25 18:25:01,670 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:25:18,700 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:25:18,700 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:25:18,789 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000057B0BA8>)}
+2019-10-25 18:26:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:26:38,868 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:27:00,227 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:27:55,594 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:28:00,292 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:28:17,581 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:35:27,937 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:35:28,680 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:35:28,680 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:35:28,779 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000032A0358>)}
+2019-10-25 18:35:28,779 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:35:28,780 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:35:28,875 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000032A0358>)}
+2019-10-25 18:35:28,923 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:35:29,792 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:35:29,793 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:35:29,884 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000032A0358>)}
+2019-10-25 18:36:00,201 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:37:00,082 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:37:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:38:00,312 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:39:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:39:00,776 - time_lord_continuum | ERROR : 396 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+2019-10-25 18:40:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:40:00,346 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:41:00,051 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:41:00,265 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:42:00,289 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:42:00,371 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:43:00,250 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:43:00,325 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:44:00,252 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:46:00,743 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-25 18:46:01,316 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:46:01,316 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:46:01,398 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003850358>)}
+2019-10-25 18:46:01,398 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:46:01,398 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:46:01,489 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003850358>)}
+2019-10-25 18:46:01,551 - time_lord_continuum | INFO : 459 - Looking to see if Adam Benson is clocked in....
+2019-10-25 18:46:02,285 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-25 18:46:02,285 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-25 18:46:02,369 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-25', 'type': 'TimeLog', 'id': 1219, 'sg_task_start': datetime.datetime(2019, 10, 25, 10, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003850358>)}
+2019-10-25 18:46:06,164 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:47:00,200 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00
+2019-10-25 18:47:29,183 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:47:32,417 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:48:00,046 - time_lord_continuum | ERROR : 505 - Bad connection.  Trying again...
+2019-10-25 18:48:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-25 10:20:00-07:00

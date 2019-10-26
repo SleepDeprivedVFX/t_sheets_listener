@@ -133,7 +133,7 @@ class time_signals(QtCore.QObject):
     update = QtCore.Signal(str)
     req_project_update = QtCore.Signal(str)
     req_entity_update = QtCore.Signal(int)
-    req_task_update = QtCore.Signal(str)
+    req_task_update = QtCore.Signal(dict)
     send_project_update = QtCore.Signal(dict)
     send_entity_update = QtCore.Signal(dict)
     send_task_update = QtCore.Signal(dict)
@@ -308,10 +308,11 @@ class time_machine(QtCore.QThread):
                     events = sg.find('EventLogEntry', filters, fields, order=order, limit=200)
                     # print 'found events: %s' % events
                     if events:
-                        logger.debug('Events collected! %s' % events)
+                        # logger.debug('Events collected! %s' % events)
                         # print 'New Events Collected!', events
-                    return events
+                        return events
                 except (sgapi.ProtocolError, sgapi.ResponseError, socket.error) as err:
+                    logger.warning('Shotgun API Failure.  Trying again... %s' % err)
                     conn_attempts += 1
                     time.sleep(1)
                     if conn_attempts > 10:
@@ -319,6 +320,7 @@ class time_machine(QtCore.QThread):
                         logger.error('Can\'t connect to shotgun!', err)
                         break
                 except Exception as err:
+                    logger.warning('Unknown exception!  Trying again. %s' % err)
                     conn_attempts += 1
                     time.sleep(1)
                     if conn_attempts > 10:
@@ -379,7 +381,9 @@ class time_lord(QtCore.QObject):
 
         # Signal Connections
         self.time_signal.update.connect(self.update_ui)
+        self.time_signal.req_project_update.connect(self.send_project_update)
         self.time_signal.req_entity_update.connect(self.send_entity_update)
+        self.time_signal.req_task_update.connect(self.send_task_update)
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -398,10 +402,29 @@ class time_lord(QtCore.QObject):
 
             asset_entities = sg_data.get_project_assets(proj_id=proj_id)
             logger.debug('Assets collected: %s' % asset_entities)
+            # QUERY: I've noticed that it hung up here, between the two. Is this a consistent hangup?
             shot_entities = sg_data.get_project_shots(proj_id=proj_id)
             logger.debug('Shots Collected: %s' % shot_entities)
             entities = asset_entities + shot_entities
             self.time_signal.send_entity_update.emit(entities)
+
+    def send_task_update(self, context=None):
+        print 'Send tasks activated! %s' % context
+        if context:
+            print 'send_task_update context: %s' % context
+            logger.debug('Task update requests. Context: %s' % context)
+
+            entity_id = context['entity_id']
+            entity_name = context['entity_name']
+            proj_id = context['proj_id']
+            print 'requesting tasks....'
+            tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
+            print 'tasks received: %s' % tasks
+            if tasks:
+                print 'Sending a signal...'
+                self.time_signal.send_task_update.emit(tasks)
+                print 'Task signal sent.'
+                logger.debug('Tasks emitted: %s' % tasks)
 
     def req_start_end_output(self):
         last_timesheet = tl_time.get_last_timesheet(user=user)
@@ -710,6 +733,12 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.green_light.setVisible(False)
 
     def switch_state(self, data=None):
+        '''
+        First checks to see if the dropdowns match the current timesheet. Set match = False if not.
+
+        :param data: (dict) A timesheet log item
+        :return: None
+        '''
         print 'Switch States: %s' % data
         logger.debug('Switch state triggered')
         match = True
@@ -717,27 +746,20 @@ class time_lord_ui(QtGui.QMainWindow):
         selected_proj = self.ui.project_dropdown.currentText()
 
         # Check that the project matches
+        # NOTE: I need a way to make sure the current timesheet and the saved data are always the same
         if selected_proj != self.saved_project:
             logger.debug('Last project name does not match.')
             match = False
 
         # I get the entity, because it does not come with last_timesheet data
-        # FIXME: Direct call.  This might be a good place for a signal wait_cond.
-        entity = sg_data.get_entity_links(self.last_timesheet['entity']['type'], self.saved_task,
-                                          self.saved_task_id, self.saved_project_id)
-        logger.debug('entity returns: %s' % entity)
-        if entity:
-            if entity['entity']['name'] != self.ui.entity_dropdown.currentText():
-                logger.debug('Battle of Hastings: Entity does not match the current text.')
-                match = False
-        elif self.saved_entity != self.ui.entity_dropdown.currentText():
-            logger.debug('Battle of Hastings: The entity still does not match the dropdown.')
+        if self.saved_entity != self.ui.entity_dropdown.currentText():
+            logger.debug('The entity does not match the dropdown.')
             match = False
 
         if self.saved_task != self.ui.task_dropdown.currentText():
             logger.debug('Tasks aren\'t cool.')
             match = False
-        logger.debug('Everything\'s cool now.')
+        logger.debug('Finished with match check: %s' % match)
 
         if match and self.clocked_in:
             logger.debug('match and timelord clocked in.  Emit 1')
@@ -1162,6 +1184,7 @@ class time_lord_ui(QtGui.QMainWindow):
     # ----------------------------------------------------------------------------------------------------------------
     def update_projects_dropdown(self, projects=None):
         # Clear out the projects so that we are not double adding entries.
+        print 'Update projects dropdown...'
         self.ui.project_dropdown.clear()
         # Iterate through the list and add all the active projects to the dropdown
         if projects:
@@ -1174,6 +1197,8 @@ class time_lord_ui(QtGui.QMainWindow):
         if proj_index >= 0:
             logger.debug('Setting project to last project listed.')
             self.ui.project_dropdown.setCurrentIndex(proj_index)
+        print 'triggering tasks dropdown reset...'
+        self.update_task_dropdown()
 
     def req_update_entities(self, message=None):
         '''
@@ -1186,6 +1211,7 @@ class time_lord_ui(QtGui.QMainWindow):
         print 'req_update_entities: %s' % message
         proj_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
         self.time_lord.time_signal.req_entity_update.emit(proj_id)
+        self.update_task_dropdown()
 
     def update_entity_dropdown(self, data=None):
         print 'update entity dropdown signal %s' % data
@@ -1206,6 +1232,7 @@ class time_lord_ui(QtGui.QMainWindow):
         if entity_index >= 0:
             logger.debug('Setting entity to last saved entity')
             self.ui.entity_dropdown.setCurrentIndex(entity_index)
+        # TODO: Trigger a tasks update
 
     def req_update_tasks(self, message=None):
         '''
@@ -1213,6 +1240,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :param message:
         :return:
         '''
+        print 'Request Update Tasks activated.'
         ent_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
         ent_name = self.ui.entity_dropdown.currentText()
         proj_index = self.ui.project_dropdown.currentIndex()
@@ -1222,9 +1250,12 @@ class time_lord_ui(QtGui.QMainWindow):
             'entity_name': ent_name,
             'proj_id': self.ui.project_dropdown.itemData(proj_index)
         }
+        print 'sending the req_task_update: %s' % context
         self.time_lord.time_signal.req_task_update.emit(context)
+        print 'Done sending task context.'
 
     def update_task_dropdown(self, tasks=None):
+        print 'update_task_dropdown message received: %s' % tasks
         logger.debug('Setting tasks...')
         logger.debug(tasks)
         if tasks:

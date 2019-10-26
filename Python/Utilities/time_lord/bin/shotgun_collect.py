@@ -76,8 +76,13 @@ class sg_data(object):
             fields = [
                 'code'
             ]
-            # TODO: Needs a connection check system
-            assets = self.sg.find('Asset', filters, fields)
+            print 'Collecting assets... %s' % datetime.now()
+            try:
+                assets = self.sg.find('Asset', filters, fields)
+            except Exception as e:
+                self.logger.warning('The Asset collection failed. Trying again...')
+                assets = self.get_project_assets(proj_id=proj_id)
+            print 'assets collected %s' % datetime.now()
             self.logger.info('Assets collected.')
             self.logger.debug('Assets List: %s' % assets)
             return assets
@@ -91,8 +96,13 @@ class sg_data(object):
             fields = [
                 'code'
             ]
-            # TODO: Needs a connection check system
-            shots = self.sg.find('Shot', filters, fields)
+            print 'Collecting Shots... %s' % datetime.now()
+            try:
+                shots = self.sg.find('Shot', filters, fields)
+            except Exception as e:
+                self.logger.warning('The Shot Collectoin has failed.  Trying again. %s' % e)
+                shots = self.get_project_shots(proj_id=proj_id)
+            print 'Shots collected. %s' % datetime.now()
             self.logger.info('Shots collected')
             self.logger.debug('Shots List: %s' % shots)
             return shots
@@ -110,7 +120,12 @@ class sg_data(object):
                 'step',
                 'entity'
             ]
-            tasks = self.sg.find('Task', filters, fields)
+            try:
+                tasks = self.sg.find('Task', filters, fields)
+            except Exception as e:
+                self.logger.debug('Shotgun failure of some sort: %s' % e)
+                self.logger.debug('Trying again...')
+                tasks = self.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
 
             self.logger.info('Tasks collected')
             self.logger.debug('Tasks List: %s' % tasks)
