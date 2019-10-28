@@ -130,13 +130,16 @@ class time_signals(QtCore.QObject):
     set_weekly_total = QtCore.Signal(float)
 
     # Update Signals
-    update = QtCore.Signal(str)
+    update = QtCore.Signal(dict)
     req_project_update = QtCore.Signal(str)
     req_entity_update = QtCore.Signal(int)
     req_task_update = QtCore.Signal(dict)
     send_project_update = QtCore.Signal(dict)
     send_entity_update = QtCore.Signal(dict)
     send_task_update = QtCore.Signal(dict)
+    # set_project_dropdown = QtCore.Signal(str)  # Obsolete
+    # set_entity_dropdown = QtCore.Signal(str)  # Obsolete
+    set_dropdown = QtCore.Signal(tuple)
 
     # Data Signals
     last_timesheet = QtCore.Signal(dict)
@@ -349,11 +352,48 @@ class time_machine(QtCore.QThread):
                             user_info = timesheet_info['user']
                             user_id = user_info['id']
                             if user_id == user['id']:
+                                logger.debug('NEW RECORD! %s' % event)
                                 # TODO: Add UI updater here.
                                 print 'NEW RECORD!'
                                 print event['entity']['id']
                                 print event
-                                self.time_lord.time_signal.update.emit('Update Detected!')
+                                # FIXME: UPDATE_DATA: Apparently, I need data to input here.
+                                #       This data would be the timesheet record just created.
+                                #       The only thing I'm getting from the event is the following:
+                                #       'entity':
+                                # 		{
+                                # 			'type': 'TimeLog',
+                                # 			'id': 1265,
+                                # 			'name': 'New Time Log'
+                                # 		},
+                            #         'project':
+                            #             {
+                            #                 'type': 'Project',
+                            #                 'id': 547,
+                            #                 'name': 'Admin'
+                            #             },
+                            #         'user':
+                            #             {
+                            #                 'type': 'HumanUser',
+                            #                 'id': 41,
+                            #                 'name': 'Adam Benson'
+                            #             },
+                                #       So, really I only get the project and the timesheet with the data I need.
+                                #       Thus, I must have a routine that can collect that in formation for me from
+                                #       the data provided.
+                                timesheet = tl_time.get_timesheet_by_id(tid=event['entity']['id'])
+                                ts_entity = sg_data.get_entity_from_task(task_id=timesheet['entity']['id'])
+
+                                ts_data = {
+                                    'project': timesheet['project']['name'],
+                                    'project_id': timesheet['project']['id'],
+                                    'entity': ts_entity['entity']['name'],
+                                    'entity_id': ts_entity['entity']['id'],
+                                    'task': timesheet['entity']['name'],
+                                    'task_id': timesheet['entity']['id']
+                                }
+                                self.time_lord.time_signal.update.emit(ts_data)
+                                self.time_lord.time_signal.last_timesheet.emit(timesheet)
 
                                 data = {
                                     'EventLogID': event['id'],
@@ -467,10 +507,16 @@ class time_lord(QtCore.QObject):
         set_message = 'Weekly Total: %0.2f Hours' % weekly
         self.time_signal.weekly_output.emit(set_message)
 
-    def update_ui(self, message=None):
+    def update_ui(self, data=None):
+        '''
+        This is the place where heavier processes will be put together and then emitted to the appropriate
+        UI slot.
+        :param data: (dict) A collection of data from the UI or from the saved data.
+        :return:
+        '''
         # FIXME: The Update UI requires data FROM the UI.  No way to compare current values if I don't have them
-        print 'Update Detected: %s' % message
-        logger.debug('Signal Received: %s' % message)
+        print 'Update Detected: %s' % data
+        logger.debug('Signal Received: %s' % data)
         # Get the last timesheet for local use and emit it for use elsewhere.
         self.last_timesheet = tl_time.get_last_timesheet(user=user)
         self.time_signal.last_timesheet.emit(self.last_timesheet)
@@ -482,6 +528,17 @@ class time_lord(QtCore.QObject):
         task_id = self.last_timesheet['entity']['id']
 
         # Get Entity from task and project IDs
+        entity_info = sg_data.get_entity_from_task(task_id=task_id)
+        entity = entity_info['entity']['name']
+        entity_id = entity_info['entity']['id']
+
+        # Emit update signals.
+        send_proj = ('project_dropdown', project)
+        send_ent = ('entity_dropdown', entity)
+        send_task = ('task_dropdown', task)
+        self.time_signal.set_dropdown.emit(send_proj)
+        self.time_signal.set_dropdown.emit(send_ent)
+        self.time_signal.set_dropdown.emit(send_task)
 
     def quick_update(self):
         '''
@@ -612,8 +669,9 @@ class time_lord(QtCore.QObject):
 # User Interface
 # ------------------------------------------------------------------------------------------------------
 class time_lord_ui(QtGui.QMainWindow):
-    def __init__(self):
-        super(time_lord_ui, self).__init__(parent=None)
+    def __init__(self, parent=None):
+        # super(time_lord_ui, self).__init__(parent=None)
+        QtGui.QMainWindow.__init__(self, parent)
 
         # --------------------------------------------------------------------------------------------------------
         # Set the saved settings
@@ -675,6 +733,9 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.send_entity_update.connect(self.update_entity_dropdown)
         self.time_lord.time_signal.send_task_update.connect(self.update_task_dropdown)
         self.time_lord.time_signal.last_timesheet.connect(self.update_last_timesheet)
+        # self.time_lord.time_signal.set_project_dropdown.connect(self.set_project_dropdown)  # Obsolete
+        # self.time_lord.time_signal.set_entity_dropdown.connect(self.set_entity_dropdown)  #Obsolete
+        self.time_lord.time_signal.set_dropdown.connect(self.set_dropdown)
 
         # Dropdown Change Index Connections
         self.ui.project_dropdown.currentIndexChanged.connect(self.req_update_entities)
@@ -685,7 +746,18 @@ class time_lord_ui(QtGui.QMainWindow):
         self.switch_state(self.last_timesheet)
 
         # Do First Update
-        self.time_lord.time_signal.update.emit('First Update')
+        # FIXME: (Side-note.  I need to start creating issue codes and tagging them here, for example:)
+        # FIXME: UPDATE_DATA: Apparently I need to add data here from the UI.
+        #       This data would be from the UI.... or from the Saved Data!?
+        data = {
+            'project': self.saved_project,
+            'project_id': self.saved_project_id,
+            'entity': self.saved_entity,
+            'entity_id': self.saved_entity_id,
+            'task': self.saved_task,
+            'task_id': self.saved_task_id
+        }
+        self.time_lord.time_signal.update.emit(data)
 
         # Start the engines
         self.time_engine.start()
@@ -711,7 +783,7 @@ class time_lord_ui(QtGui.QMainWindow):
             entities = assets + shots
 
             # Update the Entities dropdown
-            self.update_entity_dropdown(data=entities)
+            self.update_entity_dropdown(entities=entities)
             entity = self.ui.entity_dropdown.currentText()
             entity_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
 
@@ -1095,6 +1167,44 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
                                                 'end_y_ones_%s.png);' % y_ones)
 
+    # def set_project_dropdown(self, proj=None):
+    #     '''
+    #     Sets the current index of the project dropdown
+    #     :param proj:
+    #     :return:
+    #     '''
+    #     if proj:
+    #         current = self.ui.project_dropdown.currentText()
+    #         if proj != current:
+    #             self.ui.project_dropdown.setCurrentIndex(
+    #                 self.ui.project_dropdown.findText(proj)
+    #             )
+    #
+    # def set_entity_dropdown(self, entity=None):
+    #     if entity:
+    #         current = self.ui.entity_dropdown.currentText()
+    #         if entity:
+    #             pass
+
+    def set_dropdown(self, data=None):
+        if data:
+            dd_type = data[0]
+            dd_value = data[1]
+        else:
+            dd_value = None
+            dd_type = None
+        if dd_type and dd_value:
+            widge = self.findChild(QtGui.QComboBox, dd_type)
+            print('widge found: %s' % widge)
+            if widge:
+                new_index = widge.findText(dd_value)
+                print('widge index: %s' % new_index)
+                if new_index:
+                    widge.setCurrentIndex(new_index)
+                    print('widge set')
+            # if widget:
+            #     widget.setCurrentText(dd_value)
+
     # ----------------------------------------------------------------------------------------------------------------
     # UI Events - Close, Update Saved Settings, Update UI Data
     # ----------------------------------------------------------------------------------------------------------------
@@ -1217,11 +1327,15 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.req_entity_update.emit(proj_id)
         self.update_task_dropdown()
 
-    def update_entity_dropdown(self, data=None):
-        print 'update entity dropdown signal %s' % data
-        logger.debug(data)
-        if data:
-            entities = data
+    def update_entity_dropdown(self, entities=None):
+        '''
+        Processes data from a Shotgun Assets and Shots entity collection.
+        :param entities: (dict) A combined dictionary from 2 queries
+        :return: None
+        '''
+        print 'update entity dropdown signal %s' % entities
+        logger.debug(entities)
+        if entities:
             # Put in the Assets first... Oh!  Use the categories and Sequences?
             self.ui.entity_dropdown.clear()
             self.ui.entity_dropdown.addItem('Select Asset/Shot', 0)
@@ -1229,7 +1343,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.ui.entity_dropdown.addItem(entity['code'], entity['id'])
             self.ui.entity_dropdown.update()
         else:
-            self.time_lord.time_signal.lower_output.emit('Project Dump: %s' % data)
+            self.time_lord.time_signal.lower_output.emit('Project Dump: %s' % entities)
             self.time_lord.time_signal.error_state.emit(True)
             self.time_lord.time_signal.steady_state.emit(False)
         entity_index = self.ui.entity_dropdown.findData(self.saved_entity_id)
