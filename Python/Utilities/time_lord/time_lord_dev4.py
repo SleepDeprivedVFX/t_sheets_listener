@@ -381,6 +381,7 @@ class time_machine(QtCore.QThread):
                                 #       So, really I only get the project and the timesheet with the data I need.
                                 #       Thus, I must have a routine that can collect that in formation for me from
                                 #       the data provided.
+
                                 timesheet = tl_time.get_timesheet_by_id(tid=event['entity']['id'])
                                 ts_entity = sg_data.get_entity_from_task(task_id=timesheet['entity']['id'])
 

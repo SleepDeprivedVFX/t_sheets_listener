@@ -67,7 +67,6 @@ class sg_data(object):
         return active_projects
 
     def get_project_assets(self, proj_id=None):
-        print 'proj_id received: %s' % proj_id
         if proj_id:
             self.logger.info('Getting project assets...')
             filters = [
@@ -76,13 +75,11 @@ class sg_data(object):
             fields = [
                 'code'
             ]
-            print 'Collecting assets... %s' % datetime.now()
             try:
                 assets = self.sg.find('Asset', filters, fields)
             except Exception as e:
                 self.logger.warning('The Asset collection failed. Trying again...')
                 assets = self.get_project_assets(proj_id=proj_id)
-            print 'assets collected %s' % datetime.now()
             self.logger.info('Assets collected.')
             self.logger.debug('Assets List: %s' % assets)
             return assets
@@ -96,13 +93,11 @@ class sg_data(object):
             fields = [
                 'code'
             ]
-            print 'Collecting Shots... %s' % datetime.now()
             try:
                 shots = self.sg.find('Shot', filters, fields)
             except Exception as e:
                 self.logger.warning('The Shot Collectoin has failed.  Trying again. %s' % e)
                 shots = self.get_project_shots(proj_id=proj_id)
-            print 'Shots collected. %s' % datetime.now()
             self.logger.info('Shots collected')
             self.logger.debug('Shots List: %s' % shots)
             return shots
@@ -290,7 +285,6 @@ class sg_data(object):
             except AttributeError, e:
                 self.logger.error('Get Entity from Tasks failed: %s' % e)
                 task = self.get_entity_from_task(task_id=task_id)
-            print('get_entity_from_task: %s' % task)
             return task
         return None
 
