@@ -290,7 +290,7 @@ class sg_data(object):
             except AttributeError, e:
                 self.logger.error('Get Entity from Tasks failed: %s' % e)
                 task = self.get_entity_from_task(task_id=task_id)
-            print(task)
+            print('get_entity_from_task: %s' % task)
             return task
         return None
 

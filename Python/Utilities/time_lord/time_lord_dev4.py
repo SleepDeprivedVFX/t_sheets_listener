@@ -355,8 +355,8 @@ class time_machine(QtCore.QThread):
                                 logger.debug('NEW RECORD! %s' % event)
                                 # TODO: Add UI updater here.
                                 print 'NEW RECORD!'
-                                print event['entity']['id']
-                                print event
+                                print 'event id: %s' % event['entity']['id']
+                                print 'event: %s' % event
                                 # FIXME: UPDATE_DATA: Apparently, I need data to input here.
                                 #       This data would be the timesheet record just created.
                                 #       The only thing I'm getting from the event is the following:
@@ -518,7 +518,10 @@ class time_lord(QtCore.QObject):
         print 'Update Detected: %s' % data
         logger.debug('Signal Received: %s' % data)
         # Get the last timesheet for local use and emit it for use elsewhere.
-        self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        while not self.last_timesheet['project'] and not self.last_timesheet['entity']:
+            print 'Timesheet was blank.  Getting it again...'
+            self.last_timesheet = tl_time.get_last_timesheet(user=user)
+        print 'update ui last_timesheet: %s' % self.last_timesheet
         self.time_signal.last_timesheet.emit(self.last_timesheet)
 
         # Collect Project/Entity/Task Data from Timesheet
