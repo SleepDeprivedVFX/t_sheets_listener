@@ -795,6 +795,11 @@ class time_lord_ui(QtGui.QMainWindow):
             tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity, proj_id=proj_id)
             self.update_task_dropdown(tasks=tasks)
 
+            if tl_time.is_user_clocked_in(user=user):
+                self.clock_in_button_state(1)
+            else:
+                self.clock_in_button_state(0)
+
     # ----------------------------------------------------------------------------------------------------------------
     # Status lights and button states.
     # ----------------------------------------------------------------------------------------------------------------
@@ -1467,6 +1472,7 @@ class time_lord_ui(QtGui.QMainWindow):
             # FIXME: Add an emit here as well, to let the engine know it's clocked in.
             self.clocked_in = True
             if message == 2:
+                # message == 2, UI does not match timesheet
                 try:
                     self.ui.clock_button.clicked.disconnect(self.start_time)
                 except Exception:
@@ -1477,6 +1483,7 @@ class time_lord_ui(QtGui.QMainWindow):
                     pass
                 self.ui.clock_button.clicked.connect(self.switch_time)
             else:
+                # User is clocked in and the UI matches the Timesheet
                 try:
                     # Disconnect the start time action
                     self.ui.clock_button.clicked.disconnect(self.start_time)
