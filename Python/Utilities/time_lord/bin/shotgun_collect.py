@@ -282,7 +282,7 @@ class sg_data(object):
             ]
             try:
                 task = self.sg.find_one('Task', filters, fields)
-            except AttributeError, e:
+            except Exception as e:
                 self.logger.error('Get Entity from Tasks failed: %s' % e)
                 task = self.get_entity_from_task(task_id=task_id)
             return task

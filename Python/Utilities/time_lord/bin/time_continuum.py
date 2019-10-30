@@ -207,11 +207,15 @@ class continuum(object):
                 'sg_task_end': clock_out,
                 'duration': total
             }
-            self.sg.update('TimeLog', timesheet['id'], data)
+            try:
+                self.sg.update('TimeLog', timesheet['id'], data)
+            except Exception as e:
+                print('Failed to connect.  Trying again...')
+                self.clock_out_time_sheet(timesheet=timesheet, clock_out=clock_out)
             self.logger.info('Timesheet updated.')
 
     def create_new_timesheet(self, user=None, context=None, start_time=None, entry='User'):
-        '''
+        """
         Creates a new timesheet.  Works with Stand alone, DCC and drag-n-drop publisher
         :param user: (dict) Contains the Shotgun User ID number
         :param context: (dict) A Shotgun Context Object. Can be built manually.
@@ -221,7 +225,7 @@ class continuum(object):
                                 DCC  = SG Integrated Software
                                 Auto = Drag-n-Drop Publisher
         :return: New timesheet.
-        '''
+        """
         if user and context:
             project_id = context['Project']['id']
             task_id = context['Task']['id']
@@ -239,7 +243,11 @@ class continuum(object):
                 'project': {'type': 'Project', 'id': project_id},
                 'description': 'Time Lord %s Entry' % entry
             }
-            timesheet = self.sg.create('TimeLog', data)
+            try:
+                timesheet = self.sg.create('TimeLog', data)
+            except Exception as e:
+                print('Connection failed.  Trying again...')
+                timesheet = self.create_new_timesheet(user=user, context=context, start_time=start_time, entry=entry)
             return timesheet
 
     def get_running_time(self, timesheet=None):

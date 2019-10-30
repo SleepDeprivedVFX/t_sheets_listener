@@ -1,8 +1,11 @@
 (dp1
-S'TimeLogID'
+S'current'
 p2
-I1289
-sS'EventLogID'
+I01
+sS'TimeLogID'
 p3
-I8197465
+I1340
+sS'EventLogID'
+p4
+I8202922
 s.
