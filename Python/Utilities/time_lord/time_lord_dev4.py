@@ -107,6 +107,7 @@ class time_signals(QtCore.QObject):
     in_date = QtCore.Signal(str)
     out_date = QtCore.Signal(str)
     running_clock = QtCore.Signal(str)
+    get_running_clock = QtCore.Signal(dict)
 
     # Monitor Output Signals
     trt_output = QtCore.Signal(str)
@@ -138,8 +139,6 @@ class time_signals(QtCore.QObject):
     send_project_update = QtCore.Signal(dict)
     send_entity_update = QtCore.Signal(dict)
     send_task_update = QtCore.Signal(dict)
-    # set_project_dropdown = QtCore.Signal(str)  # Obsolete
-    # set_entity_dropdown = QtCore.Signal(str)  # Obsolete
     set_dropdown = QtCore.Signal(tuple)
 
     # Data Signals
@@ -171,15 +170,28 @@ class time_engine(QtCore.QThread):
         super(time_engine, self).__init__(parent)
 
         self.time_signal = time_signals()
+        self.time_machine = time_machine()
+        self.last_timesheet = tl_time.get_last_timesheet(user=user)
         self.kill_it = False
         self.kill_signal = self.time_signal.kill_signal.connect(self.kill)
         self.tick = QtCore.QTime.currentTime()
 
+        self.time_machine.time_signal.get_running_clock.connect(self.set_last_timesheet)
+
     def kill(self):
         self.kill_it = True
 
+    def set_last_timesheet(self, ts=None):
+        if ts:
+            self.last_timesheet = ts
+
     def run(self, *args, **kwargs):
         self.chronograph()
+
+    def set_trt_output(self, trt=None):
+        # logger.debug('Set TRT: %s' % trt)
+        set_message = 'TRT: %s' % trt
+        self.time_signal.trt_output.emit(set_message)
 
     def chronograph(self):
         second = int(datetime.now().second)
@@ -196,10 +208,18 @@ class time_engine(QtCore.QThread):
                 self.time_signal.main_clock.emit(time)
                 self.time_signal.in_clock.emit(time)
                 self.time_signal.out_clock.emit(time)
-                # NOTE: I really probably should put the TRT clock in this mix too. I just don't want it to burden the
-                #       normal flow of clock time with a heavy sg_query.
+
+                # Setting the TRT
+                rt = tl_time.get_running_time(timesheet=self.last_timesheet)
+                running_time = rt['rt']
+                # Here we take the running time and emit it to the display.
+                self.time_signal.running_clock.emit(running_time)
+                trt = '%s:%s:%s' % (rt['h'], rt['m'], rt['s'])
+                # Set the running time in the UI
+                self.set_trt_output(trt=trt)
 
                 if datetime.now().minute != minute:
+                    # QUERY: MUTEX: Wait condition here?  Mutex?  Something to stop everything while processing totals
                     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
                     weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
                     minute = datetime.now().minute
@@ -361,12 +381,25 @@ class time_machine(QtCore.QThread):
                         if timesheet_info:
                             user_info = timesheet_info['user']
                             user_id = user_info['id']
-                            # TODO: Right here I'm going to add a call to check for the out time, and anything that
-                            #       might be relavent.  For instance:
                             if user_id == user['id']:
                                 timesheet = tl_time.get_timesheet_by_id(tid=event['entity']['id'])
                                 ts_entity = sg_data.get_entity_from_task(task_id=timesheet['entity']['id'])
                                 mutex = QtCore.QMutexLocker(self.time_signal.mutex)
+
+                                # NOTE: I need a way to keep a running tally on the current timesheet.  It needs to
+                                #       emit (or receive) a signal/ or some way to make sure that the raw running time
+                                #       is added to this math (a variable gets set) for which the running time will
+                                #       emit its current value.
+                                #       Since this is a listener/trigger, perhaps here I could emit that value back to
+                                #       the Time Engine, which would continue to promote that out to the UI.
+                                #       For instance, I already got the timesheet from above. Perhaps here I simply
+                                #       emit the start and end times of the current timesheet.
+                                #       That, in turn would get heard by the time_engine, do the quick calculation, and
+                                #       emit the result to the UI.
+                                #       ACTUALLY: I think I just need to emit the timesheet so that the engine has a
+                                #       fresh copy of it.
+                                self.time_signal.get_running_clock.emit(timesheet)
+
                                 if timesheet_info['sg_task_end'] and time_capsule['current'] and \
                                         event['entity']['id'] == time_capsule['TimeLogID']:
                                     # This is the first time the timesheet has been clocked out.
@@ -395,7 +428,6 @@ class time_machine(QtCore.QThread):
                                         event['entity']['id'] > time_capsule['TimeLogID']:
 
                                     logger.debug('NEW RECORD! %s' % event)
-                                    # TODO: Add UI updater here.
                                     print 'NEW RECORD!'
                                     ts_data = {
                                         'project': timesheet['project']['name'],
@@ -408,7 +440,6 @@ class time_machine(QtCore.QThread):
                                     self.time_lord.time_signal.update.emit(ts_data)
                                     self.time_lord.time_signal.last_timesheet.emit(timesheet)
 
-                                    # TODO: The following 'current' variable needs to be set from above.
                                     data = {
                                         'EventLogID': event['id'],
                                         'TimeLogID': event['entity']['id'],
@@ -750,17 +781,17 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.time_signal.main_clock.connect(self.main_clock)
         self.time_engine.time_signal.in_clock.connect(self.set_in_clock)
         self.time_engine.time_signal.out_clock.connect(self.set_out_clock)
+        self.time_engine.time_signal.running_clock.connect(self.set_runtime_clock)
 
         # Update Connections
         self.time_lord.time_signal.send_project_update.connect(self.update_projects_dropdown)
         self.time_lord.time_signal.send_entity_update.connect(self.update_entity_dropdown)
         self.time_lord.time_signal.send_task_update.connect(self.update_task_dropdown)
         self.time_lord.time_signal.last_timesheet.connect(self.update_last_timesheet)
-        # self.time_lord.time_signal.set_project_dropdown.connect(self.set_project_dropdown)  # Obsolete
-        # self.time_lord.time_signal.set_entity_dropdown.connect(self.set_entity_dropdown)  #Obsolete
-        self.time_lord.time_signal.set_dropdown.connect(self.set_dropdown)
+        self.time_engine.time_signal.trt_output.connect(self.trt_output)
 
         # Dropdown Change Index Connections
+        self.time_lord.time_signal.set_dropdown.connect(self.set_dropdown)
         self.ui.project_dropdown.currentIndexChanged.connect(self.req_update_entities)
         # Then change the button color to Yellow, Red or Green
         self.ui.project_dropdown.currentIndexChanged.connect(lambda: self.switch_state(self.last_timesheet))
@@ -1204,25 +1235,6 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
                                                 'end_y_ones_%s.png);' % y_ones)
 
-    # def set_project_dropdown(self, proj=None):
-    #     '''
-    #     Sets the current index of the project dropdown
-    #     :param proj:
-    #     :return:
-    #     '''
-    #     if proj:
-    #         current = self.ui.project_dropdown.currentText()
-    #         if proj != current:
-    #             self.ui.project_dropdown.setCurrentIndex(
-    #                 self.ui.project_dropdown.findText(proj)
-    #             )
-    #
-    # def set_entity_dropdown(self, entity=None):
-    #     if entity:
-    #         current = self.ui.entity_dropdown.currentText()
-    #         if entity:
-    #             pass
-
     def set_dropdown(self, data=None):
         print('Update Signal received: %s | %s' % (data[0], data[1]))
         if data:
@@ -1240,6 +1252,28 @@ class time_lord_ui(QtGui.QMainWindow):
                 if new_index:
                     widge.setCurrentIndex(new_index)
                     print('widge set')
+
+    # ----------------------------------------------------------------------------------------------------------------
+    # OUTPUT MONITORS
+    # ----------------------------------------------------------------------------------------------------------------
+    def trt_output(self, message=None):
+        self.ui.output_trt.setPlainText(message)
+
+    def start_end_output(self, message=None):
+        self.ui.output_start_end.setPlainText(message)
+
+    def user_output(self, message=None):
+        self.ui.output_user.setPlainText(message)
+
+    def daily_output(self, message=None):
+        self.ui.output_daily.setPlainText(message)
+
+    def weekly_output(self, message=None):
+        self.ui.output_weekly.setPlainText(message)
+
+    def lower_output(self, message=None):
+        self.ui.lower_output.setPlainText(message)
+
 
     # ----------------------------------------------------------------------------------------------------------------
     # UI Events - Close, Update Saved Settings, Update UI Data
