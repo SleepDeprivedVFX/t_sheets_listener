@@ -379,32 +379,21 @@ class time_machine(QtCore.QThread):
                         else:
                             continue
                         if timesheet_info:
+                            print('EL: %s' % datetime.now().time())
                             user_info = timesheet_info['user']
                             user_id = user_info['id']
                             if user_id == user['id']:
                                 timesheet = tl_time.get_timesheet_by_id(tid=event['entity']['id'])
                                 ts_entity = sg_data.get_entity_from_task(task_id=timesheet['entity']['id'])
-                                mutex = QtCore.QMutexLocker(self.time_signal.mutex)
+                                # mutex = QtCore.QMutexLocker(self.time_signal.mutex)
 
-                                # NOTE: I need a way to keep a running tally on the current timesheet.  It needs to
-                                #       emit (or receive) a signal/ or some way to make sure that the raw running time
-                                #       is added to this math (a variable gets set) for which the running time will
-                                #       emit its current value.
-                                #       Since this is a listener/trigger, perhaps here I could emit that value back to
-                                #       the Time Engine, which would continue to promote that out to the UI.
-                                #       For instance, I already got the timesheet from above. Perhaps here I simply
-                                #       emit the start and end times of the current timesheet.
-                                #       That, in turn would get heard by the time_engine, do the quick calculation, and
-                                #       emit the result to the UI.
-                                #       ACTUALLY: I think I just need to emit the timesheet so that the engine has a
-                                #       fresh copy of it.
                                 self.time_signal.get_running_clock.emit(timesheet)
 
                                 if timesheet_info['sg_task_end'] and time_capsule['current'] and \
                                         event['entity']['id'] == time_capsule['TimeLogID']:
                                     # This is the first time the timesheet has been clocked out.
 
-                                    logger.debug('NEW RECORD! %s' % event)
+                                    logger.debug('CLOCK OUT RECORD! %s' % event)
                                     print 'CLOCK OUT RECORD!'
 
                                     ts_data = {
@@ -416,6 +405,9 @@ class time_machine(QtCore.QThread):
                                         'task_id': timesheet['entity']['id']
                                     }
                                     self.time_lord.time_signal.update.emit(ts_data)
+                                    # QUERY: Perhaps here is where I set a Wait Condition.
+                                    #       Then, the connecting signal would spawn a wake all.
+                                    self.time_lord.time_signal.wait_cond.wait(self.time_lord.time_signal.mutex)
                                     self.time_lord.time_signal.last_timesheet.emit(timesheet)
 
                                     data = {
@@ -438,6 +430,7 @@ class time_machine(QtCore.QThread):
                                         'task_id': timesheet['entity']['id']
                                     }
                                     self.time_lord.time_signal.update.emit(ts_data)
+                                    self.time_lord.time_signal.wait_cond.wait(self.time_lord.time_signal.mutex)
                                     self.time_lord.time_signal.last_timesheet.emit(timesheet)
 
                                     data = {
@@ -562,6 +555,8 @@ class time_lord(QtCore.QObject):
         :param data: (dict) A collection of data from the UI or from the saved data.
         :return:
         """
+        # TODO: This needs a MutEx Lock
+        mutex = QtCore.QMutexLocker(self.time_signal.mutex)
         # FIXME: The Update UI requires data FROM the UI.  No way to compare current values if I don't have them
         print 'Update Detected: %s' % data
         logger.debug('Signal Received: %s' % data)
@@ -593,6 +588,7 @@ class time_lord(QtCore.QObject):
         self.time_signal.set_dropdown.emit(send_ent)
         self.time_signal.set_dropdown.emit(send_task)
         print('Three signals sent.')
+        self.time_signal.wait_cond.wakeAll()
 
     def quick_update(self):
         """
@@ -649,6 +645,7 @@ class time_lord(QtCore.QObject):
     def clock_out_user(self, last_timesheet=None):
         if last_timesheet:
             tl_time.clock_out_time_sheet(timesheet=last_timesheet, clock_out=datetime.now())
+            last_timesheet = tl_time.get_timesheet_by_id(tid=last_timesheet['id'])
             self.time_signal.lower_output.emit('You have clocked out!')
             ts_start = last_timesheet['sg_task_start']
             start_date = ts_start.strftime('%m-%d-%y')
@@ -1115,13 +1112,21 @@ class time_lord_ui(QtGui.QMainWindow):
             # self.time_lord.time_signal.ui_update.emit()
             try:
                 end_time = self.last_timesheet['sg_task_end']
-                # NOTE: This is currently partially detecting that the thing is clocked out outside of the UI
-                logger.debug('end_time: %s' % end_time)
-                hour = end_time.time().hour
-                minute = end_time.time().minute
-                second = end_time.time().second
-                hours = (30 * (hour + (minute / 60.0)))
-                minutes = (6 * (minute + (second / 60.0)))
+                if end_time:
+                    logger.debug('end_time: %s' % end_time)
+                    hour = end_time.time().hour
+                    minute = end_time.time().minute
+                    second = end_time.time().second
+                    hours = (30 * (hour + (minute / 60.0)))
+                    minutes = (6 * (minute + (second / 60.0)))
+                else:
+                    end_time = datetime.now().time()
+                    logger.warning('The Proper end time was not sent. Using current time.')
+                    hour = end_time.hour
+                    minute = end_time.minute
+                    second = end_time.second
+                    hours = (30 * (hour + (minute / 60.0)))
+                    minutes = (6 * (minute + (second / 60.0)))
             except Exception, e:
                 logger.error('The fit hit the shan: %s' % e)
                 return False
