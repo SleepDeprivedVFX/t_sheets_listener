@@ -387,6 +387,7 @@ class time_machine(QtCore.QThread):
                             continue
                         if timesheet_info:
                             print('EL: %s' % datetime.now().time())
+                            print('EL_ID: %s' % event['id'])
                             user_info = timesheet_info['user']
                             user_id = user_info['id']
                             if user_id == user['id']:
@@ -412,9 +413,10 @@ class time_machine(QtCore.QThread):
                                         'task_id': timesheet['entity']['id']
                                     }
                                     self.time_lord.time_signal.update.emit(ts_data)
-                                    # self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
-                                    self.time_signal.last_timesheet.emit(timesheet)
-                                    self.time_signal.get_running_clock.emit(timesheet)
+                                    # QUERY: Perhaps here is where I set a Wait Condition.
+                                    #       Then, the connecting signal would spawn a wake all.
+                                    self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                    self.time_lord.time_signal.last_timesheet.emit(timesheet)
 
                                     data = {
                                         'EventLogID': event['id'],
@@ -436,14 +438,9 @@ class time_machine(QtCore.QThread):
                                         'task_id': timesheet['entity']['id']
                                     }
                                     self.time_lord.time_signal.update.emit(ts_data)
-                                    # self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
-                                    new_timesheet = {'project': None}
-                                    while not new_timesheet['project']:
-                                        new_timesheet = tl_time.get_last_timesheet(user=user)
-                                    print('new timesheet id: %s' % new_timesheet['id'])
-                                    self.time_signal.last_timesheet.emit(new_timesheet)
-                                    print('NOW emitting running clock timesheet: %s' % new_timesheet['id'])
-                                    # self.time_signal.get_running_clock.emit(new_timesheet)
+                                    self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                    new_timesheet = tl_time.get_last_timesheet(user=user)
+                                    self.time_lord.time_signal.last_timesheet.emit(new_timesheet)
 
                                     data = {
                                         'EventLogID': event['id'],
@@ -1262,12 +1259,6 @@ class time_lord_ui(QtGui.QMainWindow):
                                                 'end_y_ones_%s.png);' % y_ones)
 
     def set_dropdown(self, data=None):
-        """
-        Globally sets any of the drop downs.
-        :param data:
-        :return:
-        """
-        mutex = QtCore.QMutexLocker(self.time_lord.time_signal.mutex_2)
         print('Update Signal received: %s | %s' % (data[0], data[1]))
         if data:
             dd_type = data[0]
@@ -1284,7 +1275,6 @@ class time_lord_ui(QtGui.QMainWindow):
                 if new_index:
                     widge.setCurrentIndex(new_index)
                     print('widge set')
-        # self.time_lord.time_signal.wait_cond_2.wakeAll()
 
     # ----------------------------------------------------------------------------------------------------------------
     # OUTPUT MONITORS

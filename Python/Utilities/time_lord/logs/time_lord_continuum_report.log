@@ -5605,3 +5605,1083 @@
 2019-10-30 18:36:00,078 - time_lord_continuum | ERROR : 348 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
 2019-10-30 18:37:00,085 - time_lord_continuum | ERROR : 348 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
 2019-10-30 18:37:00,368 - time_lord_continuum | ERROR : 513 - Bad connection.  Trying again...
+2019-10-30 18:47:45,134 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-30 18:47:45,894 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:47:45,894 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:47:45,990 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037C4B38>)}
+2019-10-30 18:47:45,990 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:47:46,068 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:47:46,171 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:47:46,171 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:47:46,265 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037C4B38>)}
+2019-10-30 18:47:46,266 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:47:46,342 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:47:46,342 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:47:46,431 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037C4B38>)}
+2019-10-30 18:47:46,431 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:47:46,431 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:47:46,513 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037C4B38>)}
+2019-10-30 18:47:46,513 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:47:46,591 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:47:46,591 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:47:46,670 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037C4B38>)}
+2019-10-30 18:47:46,714 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:47:47,898 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:47:47,973 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:47:47,973 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:47:48,049 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037C4B38>)}
+2019-10-30 18:47:48,546 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:47:48,546 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:47:48,644 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037C4B38>)}
+2019-10-30 18:48:46,446 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-30 18:48:47,265 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:48:47,265 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:48:47,358 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000036B4B38>)}
+2019-10-30 18:48:47,358 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:48:47,440 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:48:47,523 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:48:47,525 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:48:47,602 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000036B4B38>)}
+2019-10-30 18:48:47,604 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:48:47,677 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:48:47,677 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:48:47,756 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000036B4B38>)}
+2019-10-30 18:48:47,756 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:48:47,756 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:48:48,246 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000036B4B38>)}
+2019-10-30 18:48:48,246 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:48:48,338 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:48:48,338 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:48:48,430 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000036B4B38>)}
+2019-10-30 18:48:48,496 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:48:49,226 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:48:49,319 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:48:49,319 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:48:49,404 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000036B4B38>)}
+2019-10-30 18:48:49,933 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:48:49,933 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:48:50,046 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000036B4B38>)}
+2019-10-30 18:49:00,094 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:49:00,094 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:49:00,094 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:49:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:49:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:49:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:49:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:49:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:49:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:49:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:49:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:49:00,096 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:49:00,096 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:49:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:49:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:49:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:49:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:49:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:49:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:49:00,099 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:49:00,099 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:49:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:49:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:49:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:49:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:49:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:49:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:49:00,102 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:49:00,102 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:49:00,104 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:49:00,104 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:49:00,104 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:49:34,362 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-30 18:49:35,303 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:35,303 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:35,388 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:35,390 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:49:35,467 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:49:35,546 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:35,548 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:35,628 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:35,628 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:49:35,704 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:35,704 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:35,785 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:35,786 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:35,786 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:35,861 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:35,861 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:49:35,937 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:35,937 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:36,015 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:36,063 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:49:36,756 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:49:36,834 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:36,834 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:36,910 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:37,378 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:37,378 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:37,469 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:37,835 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:37,835 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:37,928 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:38,285 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:38,285 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:38,388 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:38,474 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:38,474 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:38,562 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:38,819 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:38,819 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:38,911 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:38,996 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:38,996 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:39,084 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:39,358 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:39,358 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:39,446 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:39,548 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:39,548 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:39,642 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:39,917 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:39,917 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:40,003 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:40,089 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:40,089 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:40,187 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:40,446 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:40,446 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:40,536 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:40,621 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:40,621 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:40,710 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:40,980 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:40,980 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:41,072 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:49:41,168 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:49:41,168 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:49:41,265 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:00,003 - time_lord_continuum | ERROR : 348 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-10-30 18:50:00,296 - time_lord_continuum | ERROR : 404 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-10-30 18:50:31,464 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:32,148 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:50:32,351 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:50:32,351 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:50:32,351 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:50:32,352 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:50:32,354 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:50:32,355 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:50:32,355 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:50:32,355 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:50:32,358 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:50:32,358 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:50:32,361 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:50:32,362 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:50:32,364 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:50:32,365 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:50:32,368 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:50:32,368 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:50:32,371 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:50:32,372 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:50:32,374 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:50:32,375 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:50:32,377 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:50:32,378 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:50:32,381 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:50:32,382 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:50:32,384 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:50:32,388 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:50:32,390 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:50:32,392 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:50:32,395 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:50:32,398 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:50:32,398 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:50:32,401 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:50:33,634 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:33,634 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:33,724 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 10, 30, 18, 50, 31, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>), 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:34,076 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:34,076 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:34,167 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 10, 30, 18, 50, 31, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>), 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:52,581 - time_lord_continuum | DEBUG : 233 - {'Project': {'id': 547, 'name': u'Admin'}, 'Task': {'content': u'Pipeline', 'id': 22843}, 'Entity': {'code': u'Overhead', 'id': 6244}}
+2019-10-30 18:50:52,901 - time_lord_continuum | DEBUG : 233 - {'Project': {'id': 547, 'name': u'Admin'}, 'Task': {'content': u'Pipeline', 'id': 22843}, 'Entity': {'code': u'Overhead', 'id': 6244}}
+2019-10-30 18:50:53,042 - time_lord_continuum | DEBUG : 233 - {'Project': {'id': 547, 'name': u'Admin'}, 'Task': {'content': u'Pipeline', 'id': 22843}, 'Entity': {'code': u'Overhead', 'id': 6244}}
+2019-10-30 18:50:53,979 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:53,979 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:54,069 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:54,158 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:54,160 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:54,250 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:54,535 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:54,535 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:54,634 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:54,730 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:54,730 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:54,825 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:55,124 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:55,125 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:55,226 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:55,319 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:55,319 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:55,407 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:55,676 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:55,676 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:55,778 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:55,867 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:55,867 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:55,969 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:56,253 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:56,253 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:56,344 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:56,427 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:56,427 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:56,519 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:56,812 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:56,812 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:56,911 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:57,006 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:57,006 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:57,104 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:57,385 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:57,387 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:57,476 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:57,565 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:57,565 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:57,901 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:58,164 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:58,164 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:58,500 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:58,585 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:58,585 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:58,680 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:58,954 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:58,956 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:59,042 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:59,130 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:59,130 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:59,220 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:59,506 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:59,506 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:59,595 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:50:59,683 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:50:59,684 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:50:59,778 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:51:00,269 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:00,270 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:00,270 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:51:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:51:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:51:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:51:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:51:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:51:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:51:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:51:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:51:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:51:00,275 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:51:00,275 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:51:00,275 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:51:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:51:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:51:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:51:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:51:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:51:00,278 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:51:00,278 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:51:00,278 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:51:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:51:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:51:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:51:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:51:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:51:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:51:00,280 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:51:00,280 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:51:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:51:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:51:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:52-07:00
+2019-10-30 18:51:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:52-07:00
+2019-10-30 18:51:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:51:00,572 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:00,660 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:00,660 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:00,746 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:01,059 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:01,059 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:01,150 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:01,236 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:01,236 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:01,325 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:01,602 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:01,602 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:01,707 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:01,823 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:01,823 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:01,924 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:02,223 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:02,223 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:02,325 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:02,417 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:02,417 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:02,503 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:02,779 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:02,779 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:02,869 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:02,973 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:02,973 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:03,068 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:03,357 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:03,358 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:03,460 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:51:03,565 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:51:03,566 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:51:03,671 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:52:00,092 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:52:00,092 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:52:00,092 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:52:00,092 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:52:00,094 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:52:00,094 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:52:00,094 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:52:00,094 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:52:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:52:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:52:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:52:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:52:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:52:00,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:52:00,096 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:52:00,096 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:52:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:52:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:52:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:52:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:52:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:52:00,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:52:00,099 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:52:00,099 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:52:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:52:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:52:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:52:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:52:00,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:52:00,102 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:52:00,102 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:52:00,102 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:52:00,104 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:52:09,194 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:52:09,362 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:52:09,572 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:52:09,572 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:52:09,573 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:52:09,573 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:52:09,575 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:52:09,575 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:52:09,576 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:52:09,576 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:52:09,578 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:52:09,581 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:52:09,582 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:52:09,584 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:52:09,585 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:52:09,586 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:52:09,588 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:52:09,589 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:52:09,592 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:52:09,594 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:52:09,595 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:52:09,598 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:52:09,598 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:52:09,601 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:52:09,602 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:52:09,604 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:52:09,605 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:52:09,608 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:52:09,609 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:52:09,611 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:52:09,612 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:52:09,615 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:52:09,615 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:52:09,618 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:52:09,619 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:52:09,818 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:52:09,914 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:52:10,160 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:52:10,161 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:52:10,161 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:52:10,164 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:52:10,164 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:52:10,165 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:52:10,167 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:52:10,167 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:52:10,170 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:52:10,171 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:52:10,174 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:52:10,176 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:52:10,178 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:52:10,180 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:52:10,183 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:52:10,184 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:52:10,187 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:52:10,190 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:52:10,191 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:52:10,194 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:52:10,197 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:52:10,198 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:52:10,200 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:52:10,203 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:52:10,206 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:52:10,207 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:52:10,210 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:52:10,211 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:52:10,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:52:10,214 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:52:10,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:52:10,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:52:10,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:52:10,413 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1384, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 33, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003914B38>)}
+2019-10-30 18:52:10,529 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:52:10,736 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:52:10,737 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:52:10,739 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:52:10,740 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:52:10,740 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:52:10,740 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:52:10,742 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:52:10,743 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:52:10,743 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:52:10,746 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:52:10,747 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:52:10,749 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:52:10,750 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:52:10,753 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:52:10,753 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:52:10,756 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:52:10,757 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:52:10,759 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:52:10,760 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:52:10,763 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:52:10,763 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:52:10,766 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:52:10,766 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:52:10,769 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:52:10,770 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:52:10,772 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:52:10,773 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:52:10,776 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:52:10,776 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:52:10,779 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:52:10,779 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:52:10,782 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:52:10,783 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:52:26,688 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-30 18:52:27,789 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:52:27,789 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:52:27,877 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035E4B38>)}
+2019-10-30 18:52:27,877 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:52:27,957 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:52:28,032 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:52:28,032 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:52:28,108 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035E4B38>)}
+2019-10-30 18:52:28,108 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:52:28,187 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:52:28,187 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:52:28,267 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035E4B38>)}
+2019-10-30 18:52:28,267 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:52:28,267 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:52:28,355 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035E4B38>)}
+2019-10-30 18:52:28,355 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:52:28,450 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:52:28,451 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:52:28,549 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035E4B38>)}
+2019-10-30 18:52:28,604 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:52:29,630 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:52:29,713 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:52:29,713 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:52:29,796 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000035E4B38>)}
+2019-10-30 18:53:00,085 - time_lord_continuum | ERROR : 513 - Bad connection.  Trying again...
+2019-10-30 18:53:00,298 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:53:00,298 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:53:00,298 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:53:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:53:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:53:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:53:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:53:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:53:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:53:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:53:00,301 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:53:00,301 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:53:00,301 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:53:00,302 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:53:00,302 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:53:00,302 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:53:00,302 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:53:00,302 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:53:00,303 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:53:00,303 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:53:00,303 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:53:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:53:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:53:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:53:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:53:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:53:00,306 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:53:00,306 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:53:00,308 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:53:00,308 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:53:00,308 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:53:00,309 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:53:00,309 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:54:03,780 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-30 18:54:04,457 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:04,457 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:04,551 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000386EB38>)}
+2019-10-30 18:54:04,551 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:04,630 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:04,720 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:04,720 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:04,799 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000386EB38>)}
+2019-10-30 18:54:04,799 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:04,887 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:04,887 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:04,967 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000386EB38>)}
+2019-10-30 18:54:04,967 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:04,967 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:05,045 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000386EB38>)}
+2019-10-30 18:54:05,046 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:05,144 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:05,144 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:05,223 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000386EB38>)}
+2019-10-30 18:54:05,292 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:06,075 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:06,157 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:06,157 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:06,252 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000386EB38>)}
+2019-10-30 18:54:53,461 - time_lord_continuum | INFO : 58 - Continuum Activated!
+2019-10-30 18:54:54,532 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:54,532 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:54,612 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:54:54,612 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:54,688 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:54,765 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:54,765 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:54,845 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:54:54,845 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:54,927 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:54,927 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:55,007 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:54:55,009 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:55,009 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:55,092 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:54:55,092 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:55,178 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:55,178 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:55,269 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:54:55,319 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:56,065 - time_lord_continuum | INFO : 467 - Looking to see if Adam Benson is clocked in....
+2019-10-30 18:54:56,144 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:54:56,144 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:54:56,230 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:55:00,266 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:55:00,266 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:55:00,266 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:55:00,266 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:55:00,267 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:55:00,267 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:55:00,267 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:55:00,267 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:55:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:55:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:55:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:55:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:55:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:55:00,269 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:55:00,270 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:55:00,270 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:55:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:55:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:55:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:55:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:55:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:55:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:55:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:55:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:55:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:55:00,275 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:55:00,275 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:55:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:55:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:55:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:55:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:55:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:55:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:55:13,581 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:55:13,714 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:55:14,224 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:55:14,224 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:56:00,211 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:56:00,211 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:56:00,211 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:56:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:56:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:56:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:56:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:56:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:56:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:56:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:56:00,214 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:56:00,214 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:56:00,216 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:56:00,216 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:56:00,216 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:56:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:56:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:56:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:56:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:56:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:56:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:56:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:56:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:56:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:56:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:56:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:56:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:56:00,221 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:56:00,221 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:56:00,221 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:56:00,223 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:56:00,223 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:56:00,223 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:56:14,542 - time_lord_continuum | ERROR : 513 - Bad connection.  Trying again...
+2019-10-30 18:56:14,816 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:56:14,818 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:56:14,819 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:56:14,821 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:56:14,822 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:56:14,822 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:56:14,823 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:56:14,825 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:56:14,828 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:56:14,832 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:56:14,835 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:56:14,836 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:56:14,838 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:56:14,841 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:56:14,842 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:56:14,844 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:56:14,845 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:56:14,848 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:56:14,849 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:56:14,851 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:56:14,854 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:56:14,857 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:56:14,858 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:56:14,861 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:56:14,864 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:56:14,867 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:56:14,868 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:56:14,871 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:56:14,872 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:56:14,874 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:56:14,875 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:56:14,878 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:56:14,878 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:56:16,992 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:56:16,992 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:56:17,078 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 10, 30, 18, 55, 13, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:00,247 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:57:00,249 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:57:00,249 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:57:00,249 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:57:00,249 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:57:00,250 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:57:00,250 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:57:00,250 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:57:00,250 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:57:00,250 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:57:00,250 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:57:00,252 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:57:00,252 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:57:00,252 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:57:00,253 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:57:00,253 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:57:00,253 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:57:00,253 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:57:00,253 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:57:00,255 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:57:00,255 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:57:00,255 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:57:00,256 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:57:00,256 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:57:00,256 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:57:00,256 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:57:00,256 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:57:00,256 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:57:00,257 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:57:00,257 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:57:00,259 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:57:00,259 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:57:00,259 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:57:00,749 - time_lord_continuum | ERROR : 404 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+2019-10-30 18:57:03,869 - time_lord_continuum | DEBUG : 233 - {'Project': {'id': 547, 'name': u'Admin'}, 'Task': {'content': u'Admin', 'id': 22841}, 'Entity': {'code': u'Overhead', 'id': 6244}}
+2019-10-30 18:57:04,168 - time_lord_continuum | DEBUG : 233 - {'Project': {'id': 547, 'name': u'Admin'}, 'Task': {'content': u'Admin', 'id': 22841}, 'Entity': {'code': u'Overhead', 'id': 6244}}
+2019-10-30 18:57:04,193 - time_lord_continuum | ERROR : 513 - Bad connection.  Trying again...
+2019-10-30 18:57:04,477 - time_lord_continuum | DEBUG : 233 - {'Project': {'id': 547, 'name': u'Admin'}, 'Task': {'content': u'Admin', 'id': 22841}, 'Entity': {'code': u'Overhead', 'id': 6244}}
+2019-10-30 18:57:07,440 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:07,440 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:07,546 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:07,647 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:07,647 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:07,743 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:08,063 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:08,063 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:08,153 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:08,243 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:08,244 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:08,332 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:08,611 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:08,611 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:08,707 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:08,796 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:08,796 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:08,888 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:09,177 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:09,177 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:09,273 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:09,362 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:09,362 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:09,450 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:09,726 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:09,726 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:09,822 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:09,911 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:09,911 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:10,003 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:10,272 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:10,273 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:10,361 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:10,447 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:10,447 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:10,546 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:10,815 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:10,815 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:10,917 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:11,003 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:11,003 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:11,104 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:11,388 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:11,388 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:11,476 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:11,569 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:11,569 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:11,664 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:11,948 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:11,948 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:12,048 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:12,144 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:12,145 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:12,246 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:12,532 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:12,532 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:12,637 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:12,736 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:12,736 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:12,844 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:13,176 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:13,176 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:13,266 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:13,369 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:13,369 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:13,457 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:13,733 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:13,733 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:13,834 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:13,930 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:13,930 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:14,039 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:14,332 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:14,332 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:14,436 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:14,528 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:14,528 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:14,625 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:14,914 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:14,914 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:15,009 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:15,121 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:15,121 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:15,214 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:15,480 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:15,480 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:15,572 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:15,779 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:15,779 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:15,871 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:16,157 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:16,157 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:16,253 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:16,357 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:16,357 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:16,450 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:16,723 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:16,723 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:16,809 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:16,895 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:16,895 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:16,982 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:17,256 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:17,256 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:17,345 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:57:17,440 - time_lord_continuum | INFO : 157 - Finding the last timesheet for Adam Benson
+2019-10-30 18:57:17,440 - time_lord_continuum | DEBUG : 159 - USER ID: 41
+2019-10-30 18:57:17,532 - time_lord_continuum | DEBUG : 177 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1390, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 57, 4, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:58:00,263 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:58:00,263 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:58:00,266 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:58:00,266 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:58:00,270 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:58:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:58:00,272 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:58:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:58:00,273 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:58:00,275 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:58:00,275 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:58:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:58:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:58:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:58:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:58:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:58:00,276 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:58:00,278 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:58:00,278 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:58:00,278 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:58:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:58:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:58:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:58:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:58:00,279 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:58:00,280 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:58:00,280 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:58:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:58:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:58:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:58:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:58:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:58:00,282 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:58:00,283 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:03-07:00
+2019-10-30 18:58:00,283 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:04-07:00
+2019-10-30 18:58:00,283 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:04-07:00
+2019-10-30 18:58:15,990 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:58:16,460 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:58:16,654 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:58:16,655 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:58:16,655 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:58:16,657 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:58:16,657 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:58:16,658 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:58:16,658 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:58:16,660 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:58:16,661 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:58:16,663 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:58:16,664 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:58:16,667 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:58:16,667 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:58:16,670 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:58:16,671 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:58:16,673 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:58:16,674 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:58:16,677 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:58:16,677 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:58:16,680 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:58:16,680 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:58:16,683 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:58:16,684 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:58:16,686 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:58:16,687 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:58:16,690 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:58:16,690 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:58:16,693 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:58:16,694 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:58:16,696 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:58:16,697 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:58:16,698 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:58:16,700 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:58:16,703 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:04-07:00
+2019-10-30 18:58:16,878 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:58:16,984 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:58:17,190 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:58:17,190 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:58:17,190 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:58:17,191 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:58:17,193 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:58:17,194 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:58:17,194 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:58:17,194 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:58:17,197 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:58:17,198 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:58:17,200 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:58:17,203 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:58:17,203 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:58:17,206 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:58:17,207 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:58:17,209 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:58:17,210 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:58:17,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:58:17,214 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:58:17,216 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:58:17,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:58:17,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:58:17,223 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:58:17,224 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:58:17,226 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:58:17,229 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:58:17,230 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:58:17,233 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:58:17,234 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:58:17,236 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:58:17,239 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:58:17,240 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:58:17,243 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:58:17,244 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:04-07:00
+2019-10-30 18:58:17,301 - time_lord_continuum | ERROR : 404 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-10-30 18:58:17,315 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:58:17,618 - time_lord_continuum | DEBUG : 205 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-10-31', 'type': 'TimeLog', 'id': 1387, 'sg_task_start': datetime.datetime(2019, 10, 30, 18, 50, 53, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000040E6B38>)}
+2019-10-30 18:59:00,207 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:59:00,207 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:59:00,207 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:59:00,207 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:59:00,209 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:59:00,209 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:59:00,209 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:59:00,209 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:59:00,210 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:59:00,210 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:59:00,210 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:59:00,211 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:59:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:59:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:59:00,213 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:59:00,214 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:59:00,214 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:59:00,216 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:59:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:59:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:59:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:59:00,217 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:59:00,219 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:59:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:59:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:59:00,220 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:59:00,221 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:59:00,221 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:59:00,223 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:59:00,223 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:59:00,223 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:59:00,224 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:59:00,226 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:59:00,226 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:04-07:00
+2019-10-30 18:59:18,377 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:59:18,378 - time_lord_continuum | INFO : 215 - Timesheet updated.
+2019-10-30 18:59:19,072 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 18:59:19,072 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 18:59:19,073 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 18:59:19,073 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 18:59:19,075 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 18:59:19,075 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 18:59:19,076 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 18:59:19,078 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 18:59:19,078 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 18:59:19,081 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 18:59:19,082 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 18:59:19,084 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 18:59:19,085 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 18:59:19,088 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 18:59:19,089 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 18:59:19,091 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 18:59:19,092 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 18:59:19,095 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 18:59:19,096 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 18:59:19,098 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 18:59:19,099 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 18:59:19,101 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 18:59:19,102 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 18:59:19,105 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 18:59:19,107 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 18:59:19,108 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 18:59:19,109 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 18:59:19,111 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 18:59:19,114 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 18:59:19,115 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 18:59:19,117 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 18:59:19,118 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 18:59:19,119 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 18:59:19,121 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:04-07:00
+2019-10-30 19:00:00,530 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 19:00:00,532 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 19:00:00,536 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 19:00:00,536 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 19:00:00,536 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 19:00:00,538 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 19:00:00,539 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 19:00:00,539 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 19:00:00,539 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 19:00:00,542 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 19:00:00,542 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 19:00:00,542 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 19:00:00,542 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 19:00:00,543 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 19:00:00,543 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 19:00:00,543 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 19:00:00,545 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 19:00:00,545 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 19:00:00,546 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 19:00:00,546 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 19:00:00,546 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 19:00:00,546 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 19:00:00,546 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 19:00:00,546 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 19:00:00,548 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 19:00:00,548 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 19:00:00,549 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 19:00:00,549 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 19:00:00,549 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 19:00:00,549 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 19:00:00,549 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 19:00:00,549 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 19:00:00,551 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 19:00:00,551 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:04-07:00
+2019-10-30 19:01:00,286 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:17:49-07:00
+2019-10-30 19:01:00,286 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:19:45-07:00
+2019-10-30 19:01:00,288 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:20:33-07:00
+2019-10-30 19:01:00,289 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:30:51-07:00
+2019-10-30 19:01:00,289 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 17:42:46-07:00
+2019-10-30 19:01:00,289 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:29:00-07:00
+2019-10-30 19:01:00,290 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-29 18:56:44-07:00
+2019-10-30 19:01:00,292 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 10:25:26-07:00
+2019-10-30 19:01:00,293 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:24:21-07:00
+2019-10-30 19:01:00,296 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 14:28:37-07:00
+2019-10-30 19:01:00,298 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:09:09-07:00
+2019-10-30 19:01:00,299 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:17:00-07:00
+2019-10-30 19:01:00,301 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:21:50-07:00
+2019-10-30 19:01:00,302 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:40:49-07:00
+2019-10-30 19:01:00,302 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 15:52:06-07:00
+2019-10-30 19:01:00,303 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:05:56-07:00
+2019-10-30 19:01:00,303 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:08:00-07:00
+2019-10-30 19:01:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:41:47-07:00
+2019-10-30 19:01:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:54:00-07:00
+2019-10-30 19:01:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 16:57:49-07:00
+2019-10-30 19:01:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:04:43-07:00
+2019-10-30 19:01:00,305 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:09:02-07:00
+2019-10-30 19:01:00,306 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:15:28-07:00
+2019-10-30 19:01:00,306 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:23:47-07:00
+2019-10-30 19:01:00,306 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:31:15-07:00
+2019-10-30 19:01:00,308 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:43:55-07:00
+2019-10-30 19:01:00,308 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 17:52:17-07:00
+2019-10-30 19:01:00,309 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:00:20-07:00
+2019-10-30 19:01:00,309 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:10:53-07:00
+2019-10-30 19:01:00,309 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:22:35-07:00
+2019-10-30 19:01:00,309 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:30:06-07:00
+2019-10-30 19:01:00,309 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:33:49-07:00
+2019-10-30 19:01:00,311 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:50:53-07:00
+2019-10-30 19:01:00,311 - time_lord_continuum | DEBUG : 109 - Date converted: 2019-10-30 18:57:04-07:00

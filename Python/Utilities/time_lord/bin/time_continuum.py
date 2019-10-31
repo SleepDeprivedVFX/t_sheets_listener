@@ -212,6 +212,7 @@ class continuum(object):
             except Exception as e:
                 print('Failed to connect.  Trying again...')
                 self.clock_out_time_sheet(timesheet=timesheet, clock_out=clock_out)
+            print('Successfully clocked out.')
             self.logger.info('Timesheet updated.')
 
     def create_new_timesheet(self, user=None, context=None, start_time=None, entry='User'):
