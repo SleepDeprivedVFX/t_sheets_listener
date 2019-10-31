@@ -69,14 +69,15 @@ class readerBotTools(object):
     '''
     Tools for manipulating the readerBot
     '''
-    def __init__(self, api=None):
+    def __init__(self):
+        super(readerBotTools, self).__init__()
         self.config = get_configuration()
-        # search = api.GetSearch(term='#scifi #novel', result_type='recent', count=int(self.config['record_count']))
-        # print(search)
+        self.api = twitter.Api(self.config['consumer_api_key'], self.config['consumer_secret_key'],
+                               self.config['api_token'], self.config['api_secret'])
 
     def save_tweet(self, text=None, image=None, link=None, last_posted=None):
         previous_tweets = self.get_saved_tweets()
-        print(previous_tweets)
+        # print(previous_tweets)
 
         if not last_posted:
             last_posted = '%s %s' % (datetime.now().date(), datetime.now().time())
@@ -96,28 +97,28 @@ class readerBotTools(object):
         }
 
         all_tweets.append(new_data)
-        print(all_tweets)
+        # print(all_tweets)
         data = {
             "Tweets": all_tweets
         }
-        print(data)
+        # print(data)
         tweet_file = open('tweets.json', 'w')
         save_this_data = json.dump(data, tweet_file, indent=4)
         tweet_file.close()
-        print(save_this_data)
+        # print(save_this_data)
 
     def get_saved_tweets(self):
         fh = open('data/tweets.json', 'r')
         listed_tweets = json.load(fh)
-        print(listed_tweets)
+        # print(listed_tweets)
         return listed_tweets
 
-    def get_tweets(self, api=None, screen_name=None):
-        timeline = api.GetUserTimeline(screen_name=screen_name, count=10)
+    def get_tweets(self, screen_name=None):
+        timeline = self.api.GetUserTimeline(screen_name=screen_name, count=10)
         earliest_tweet = min(timeline, key=lambda x: x.id).id
 
         while True:
-            tweets = api.GetUserTimeline(
+            tweets = self.api.GetUserTimeline(
                 screen_name=screen_name, max_id=earliest_tweet, count=10
             )
             new_earliest = min(tweets, key=lambda x: x.id).id
@@ -133,7 +134,7 @@ class readerBotTools(object):
         return timeline
 
     def collect_random_seed(self):
-        text_seed = self.get_tweets(api=api, screen_name=self.config['user'])
+        text_seed = self.get_tweets(screen_name=self.config['user'])
         collection = ''
         for s in text_seed:
             data = s.AsDict()
@@ -196,13 +197,16 @@ class readerBotTools(object):
     def pick_random_tweet(self):
         tweet_list = self.get_saved_tweets()
         tweets_collection = []
+        new_tweet = None
         for tweet in tweet_list['Tweets']:
             date_obj = parser.parse(tweet['last_posted'])
             if date_obj > (datetime.now() - timedelta(days=4)):
-                print('hello %s' % tweet)
                 tweets_collection.append(tweet)
         if tweets_collection:
-            pass
+            count = len(tweets_collection)
+            rnd = self.rando_range(count, integer=True)
+            new_tweet = tweets_collection[rnd]
+        return new_tweet
 
     def twit_search(self, terms=None, result_type='recent', count=20):
         search = self.api.GetSearch(term=terms, result_type=result_type, count=count)
@@ -218,9 +222,7 @@ class readerBotTools(object):
 
 
 if __name__ == "__main__":
-    config = get_configuration()
-    api = twitter.Api(config['consumer_api_key'], config['consumer_secret_key'], config['api_token'],
-                      config['api_secret'])
-    test = readerBotTools(api=api)
-    print(test.rando_range(0, 500, integer=False))
+    test = readerBotTools()
+    # print(test.rando_range(0, 500, integer=False))
+    print(test.pick_random_tweet())
 
