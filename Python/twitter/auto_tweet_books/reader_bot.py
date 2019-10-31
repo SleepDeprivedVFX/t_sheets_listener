@@ -179,5 +179,5 @@ if __name__ == "__main__":
     api = twitter.Api(config['consumer_api_key'], config['consumer_secret_key'], config['api_token'],
                       config['api_secret'])
     test = readerBotTools(api=api)
-    print(test.rando_range(0, 100, integer=True))
+    print(test.rando_range(0, 500, integer=False))
 
