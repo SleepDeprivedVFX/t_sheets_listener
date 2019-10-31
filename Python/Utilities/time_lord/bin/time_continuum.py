@@ -249,7 +249,7 @@ class continuum(object):
             try:
                 timesheet = self.sg.create('TimeLog', data)
             except Exception as e:
-                print('Connection failed.  Trying again...')
+                print('Something failed.  Trying again... %s' % e)
                 timesheet = self.create_new_timesheet(user=user, context=context, start_time=start_time, entry=entry)
             return timesheet
 

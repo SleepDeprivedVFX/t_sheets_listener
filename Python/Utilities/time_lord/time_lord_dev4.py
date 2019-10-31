@@ -417,7 +417,13 @@ class time_machine(QtCore.QThread):
                                             'TimeLogID': event['entity']['id'],
                                             'current': False
                                         }
-                                        self.save_time_capsule(data)
+                                        try:
+                                            self.save_time_capsule(data)
+                                        except IOError as e:
+                                            logger.warning('Failed to save the file.  Trying again in a few '
+                                                           'seconds... %s' % e)
+                                            time.sleep(2)
+                                            self.save_time_capsule(data)
                                     elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
                                             event['entity']['id'] > time_capsule['TimeLogID']:
 
@@ -441,7 +447,13 @@ class time_machine(QtCore.QThread):
                                             'TimeLogID': event['entity']['id'],
                                             'current': True
                                         }
-                                        self.save_time_capsule(data)
+                                        try:
+                                            self.save_time_capsule(data)
+                                        except IOError as e:
+                                            logger.warning('Failed to save the file.  Trying again in a few '
+                                                           'seconds... %s' % e)
+                                            time.sleep(2)
+                                            self.save_time_capsule(data)
 
 
 # ------------------------------------------------------------------------------------------------------
