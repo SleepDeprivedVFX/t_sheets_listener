@@ -153,8 +153,10 @@ class time_signals(QtCore.QObject):
     set_last_timesheet = QtCore.Signal(dict)
 
     # MUTEX & WAIT CONDITIONS
-    mutex = QtCore.QMutex()
-    wait_cond = QtCore.QWaitCondition()
+    mutex_1 = QtCore.QMutex()
+    mutex_2 = QtCore.QMutex()
+    wait_cond_1 = QtCore.QWaitCondition()
+    wait_cond_2 = QtCore.QWaitCondition()
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -176,12 +178,13 @@ class time_engine(QtCore.QThread):
         self.kill_signal = self.time_signal.kill_signal.connect(self.kill)
         self.tick = QtCore.QTime.currentTime()
 
-        self.time_machine.time_signal.get_running_clock.connect(self.set_last_timesheet)
+        self.time_signal.get_running_clock.connect(self.set_last_timesheet)
 
     def kill(self):
         self.kill_it = True
 
     def set_last_timesheet(self, ts=None):
+        print('time_engine: Last Timesheet Updated: %s' % ts)
         if ts:
             self.last_timesheet = ts
 
@@ -210,8 +213,12 @@ class time_engine(QtCore.QThread):
                 self.time_signal.out_clock.emit(time)
 
                 # Setting the TRT
+                # QUERY: Is the following self.last_timesheet to blame for no TRT update?
+                #       YES.  Yes it is.
+                # print('rt last_timesheet: %s' % self.last_timesheet['id'])
                 rt = tl_time.get_running_time(timesheet=self.last_timesheet)
                 running_time = rt['rt']
+                # print('running time in loop: %s' % running_time)
                 # Here we take the running time and emit it to the display.
                 self.time_signal.running_clock.emit(running_time)
                 trt = '%s:%s:%s' % (rt['h'], rt['m'], rt['s'])
@@ -386,8 +393,8 @@ class time_machine(QtCore.QThread):
                                 timesheet = tl_time.get_timesheet_by_id(tid=event['entity']['id'])
                                 ts_entity = sg_data.get_entity_from_task(task_id=timesheet['entity']['id'])
                                 # mutex = QtCore.QMutexLocker(self.time_signal.mutex)
-
-                                self.time_signal.get_running_clock.emit(timesheet)
+                                #
+                                # self.time_signal.get_running_clock.emit(timesheet)
 
                                 if timesheet_info['sg_task_end'] and time_capsule['current'] and \
                                         event['entity']['id'] == time_capsule['TimeLogID']:
@@ -405,10 +412,9 @@ class time_machine(QtCore.QThread):
                                         'task_id': timesheet['entity']['id']
                                     }
                                     self.time_lord.time_signal.update.emit(ts_data)
-                                    # QUERY: Perhaps here is where I set a Wait Condition.
-                                    #       Then, the connecting signal would spawn a wake all.
-                                    self.time_lord.time_signal.wait_cond.wait(self.time_lord.time_signal.mutex)
-                                    self.time_lord.time_signal.last_timesheet.emit(timesheet)
+                                    # self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                    self.time_signal.last_timesheet.emit(timesheet)
+                                    self.time_signal.get_running_clock.emit(timesheet)
 
                                     data = {
                                         'EventLogID': event['id'],
@@ -430,8 +436,14 @@ class time_machine(QtCore.QThread):
                                         'task_id': timesheet['entity']['id']
                                     }
                                     self.time_lord.time_signal.update.emit(ts_data)
-                                    self.time_lord.time_signal.wait_cond.wait(self.time_lord.time_signal.mutex)
-                                    self.time_lord.time_signal.last_timesheet.emit(timesheet)
+                                    # self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                    new_timesheet = {'project': None}
+                                    while not new_timesheet['project']:
+                                        new_timesheet = tl_time.get_last_timesheet(user=user)
+                                    print('new timesheet id: %s' % new_timesheet['id'])
+                                    self.time_signal.last_timesheet.emit(new_timesheet)
+                                    print('NOW emitting running clock timesheet: %s' % new_timesheet['id'])
+                                    # self.time_signal.get_running_clock.emit(new_timesheet)
 
                                     data = {
                                         'EventLogID': event['id'],
@@ -467,6 +479,7 @@ class time_lord(QtCore.QObject):
         self.time_signal.req_task_update.connect(self.send_task_update)
         self.time_signal.clock_in_user.connect(self.clock_in_user)
         self.time_signal.clock_out_user.connect(self.clock_out_user)
+        self.time_signal.user_clocked_in.connect(self.set_user_status)
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -535,6 +548,10 @@ class time_lord(QtCore.QObject):
         set_message = '%s CLOCKED %s' % (user['name'], in_out)
         self.time_signal.user_output.emit(set_message)
 
+    def set_user_status(self, clocked_in=True):
+        print('User Status: User Clocked In: %s' % clocked_in)
+        self.clocked_in = clocked_in
+
     def set_daily_output(self, daily=None):
         """
         Creates a message for the output monitor and emits a signal.
@@ -556,7 +573,7 @@ class time_lord(QtCore.QObject):
         :return:
         """
         # TODO: This needs a MutEx Lock
-        mutex = QtCore.QMutexLocker(self.time_signal.mutex)
+        mutex = QtCore.QMutexLocker(self.time_signal.mutex_1)
         # FIXME: The Update UI requires data FROM the UI.  No way to compare current values if I don't have them
         print 'Update Detected: %s' % data
         logger.debug('Signal Received: %s' % data)
@@ -584,11 +601,14 @@ class time_lord(QtCore.QObject):
         send_ent = ('entity_dropdown', entity)
         send_task = ('task_dropdown', task)
         print('About to send signals for update...')
+        print('==> SEND PROJ: %s' % send_proj[1])
+        print('==> SEND ENT: %s' % send_ent[1])
+        print('==> SEND TASK: %s' % send_task[1])
         self.time_signal.set_dropdown.emit(send_proj)
         self.time_signal.set_dropdown.emit(send_ent)
         self.time_signal.set_dropdown.emit(send_task)
         print('Three signals sent.')
-        self.time_signal.wait_cond.wakeAll()
+        self.time_signal.wait_cond_1.wakeAll()
 
     def quick_update(self):
         """
@@ -784,7 +804,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.send_project_update.connect(self.update_projects_dropdown)
         self.time_lord.time_signal.send_entity_update.connect(self.update_entity_dropdown)
         self.time_lord.time_signal.send_task_update.connect(self.update_task_dropdown)
-        self.time_lord.time_signal.last_timesheet.connect(self.update_last_timesheet)
+        self.time_machine.time_signal.last_timesheet.connect(self.update_last_timesheet)
         self.time_engine.time_signal.trt_output.connect(self.trt_output)
 
         # Dropdown Change Index Connections
@@ -877,6 +897,7 @@ class time_lord_ui(QtGui.QMainWindow):
         selected_proj = self.ui.project_dropdown.currentText()
         print('selected_proj: %s' % selected_proj)
         print('selected_entity: %s' % self.ui.entity_dropdown.currentText())
+        print('selected_task: %s' % self.ui.task_dropdown.currentText())
 
         # Check that the project matches
         # NOTE: I need a way to make sure the current timesheet and the saved data are always the same
@@ -1241,6 +1262,12 @@ class time_lord_ui(QtGui.QMainWindow):
                                                 'end_y_ones_%s.png);' % y_ones)
 
     def set_dropdown(self, data=None):
+        """
+        Globally sets any of the drop downs.
+        :param data:
+        :return:
+        """
+        mutex = QtCore.QMutexLocker(self.time_lord.time_signal.mutex_2)
         print('Update Signal received: %s | %s' % (data[0], data[1]))
         if data:
             dd_type = data[0]
@@ -1257,6 +1284,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 if new_index:
                     widge.setCurrentIndex(new_index)
                     print('widge set')
+        # self.time_lord.time_signal.wait_cond_2.wakeAll()
 
     # ----------------------------------------------------------------------------------------------------------------
     # OUTPUT MONITORS
@@ -1538,6 +1566,7 @@ class time_lord_ui(QtGui.QMainWindow):
             # Let the engine know that it is clocked in.
             # FIXME: Add an emit here as well, to let the engine know it's clocked in.
             self.clocked_in = True
+            self.time_lord.time_signal.user_clocked_in.emit(True)
             if message == 2:
                 # message == 2, UI does not match timesheet
                 try:
@@ -1567,6 +1596,7 @@ class time_lord_ui(QtGui.QMainWindow):
         else:
             # Let the engine know that it is clocked out.
             self.clocked_in = False
+            self.time_lord.time_signal.user_clocked_in.emit(False)
             try:
                 self.ui.clock_button.clicked.disconnect(self.stop_time)
             except Exception:
@@ -1582,6 +1612,7 @@ class time_lord_ui(QtGui.QMainWindow):
         print 'updating last timesheet... %s' % timesheet
         if timesheet:
             self.last_timesheet = timesheet
+            self.time_engine.time_signal.get_running_clock.emit(timesheet)
 
 
 if __name__ == '__main__':
