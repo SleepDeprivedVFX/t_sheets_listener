@@ -21,6 +21,7 @@ import sys
 from dateutil import parser
 from dateutil import relativedelta
 import time
+import inspect
 
 
 class continuum(object):
@@ -227,6 +228,7 @@ class continuum(object):
                                 Auto = Drag-n-Drop Publisher
         :return: New timesheet.
         """
+        print('create_new:', inspect.stack()[0][3], inspect.stack()[1][3])
         if user and context:
             project_id = context['Project']['id']
             task_id = context['Task']['id']

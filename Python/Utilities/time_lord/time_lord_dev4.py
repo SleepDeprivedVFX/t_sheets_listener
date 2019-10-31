@@ -386,68 +386,62 @@ class time_machine(QtCore.QThread):
                         else:
                             continue
                         if timesheet_info:
-                            print('EL: %s' % datetime.now().time())
-                            print('EL_ID: %s' % event['id'])
                             user_info = timesheet_info['user']
                             user_id = user_info['id']
                             if user_id == user['id']:
-                                timesheet = tl_time.get_timesheet_by_id(tid=event['entity']['id'])
-                                ts_entity = sg_data.get_entity_from_task(task_id=timesheet['entity']['id'])
-                                # mutex = QtCore.QMutexLocker(self.time_signal.mutex)
-                                #
-                                # self.time_signal.get_running_clock.emit(timesheet)
+                                ts_entity = sg_data.get_entity_from_task(task_id=timesheet_info['entity']['id'])
+                                if ts_entity:
+                                    if timesheet_info['sg_task_end'] and time_capsule['current'] and \
+                                            event['entity']['id'] == time_capsule['TimeLogID']:
+                                        # This is the first time the timesheet has been clocked out.
 
-                                if timesheet_info['sg_task_end'] and time_capsule['current'] and \
-                                        event['entity']['id'] == time_capsule['TimeLogID']:
-                                    # This is the first time the timesheet has been clocked out.
+                                        logger.debug('CLOCK OUT RECORD! %s' % event)
+                                        print 'CLOCK OUT RECORD!'
 
-                                    logger.debug('CLOCK OUT RECORD! %s' % event)
-                                    print 'CLOCK OUT RECORD!'
+                                        ts_data = {
+                                            'project': timesheet_info['project']['name'],
+                                            'project_id': timesheet_info['project']['id'],
+                                            'entity': ts_entity['entity']['name'],
+                                            'entity_id': ts_entity['entity']['id'],
+                                            'task': timesheet_info['entity']['name'],
+                                            'task_id': timesheet_info['entity']['id']
+                                        }
+                                        self.time_lord.time_signal.update.emit(ts_data)
+                                        # QUERY: Perhaps here is where I set a Wait Condition.
+                                        #       Then, the connecting signal would spawn a wake all.
+                                        self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                        self.time_lord.time_signal.last_timesheet.emit(timesheet_info)
 
-                                    ts_data = {
-                                        'project': timesheet['project']['name'],
-                                        'project_id': timesheet['project']['id'],
-                                        'entity': ts_entity['entity']['name'],
-                                        'entity_id': ts_entity['entity']['id'],
-                                        'task': timesheet['entity']['name'],
-                                        'task_id': timesheet['entity']['id']
-                                    }
-                                    self.time_lord.time_signal.update.emit(ts_data)
-                                    # QUERY: Perhaps here is where I set a Wait Condition.
-                                    #       Then, the connecting signal would spawn a wake all.
-                                    self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
-                                    self.time_lord.time_signal.last_timesheet.emit(timesheet)
+                                        data = {
+                                            'EventLogID': event['id'],
+                                            'TimeLogID': event['entity']['id'],
+                                            'current': False
+                                        }
+                                        self.save_time_capsule(data)
+                                    elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
+                                            event['entity']['id'] > time_capsule['TimeLogID']:
 
-                                    data = {
-                                        'EventLogID': event['id'],
-                                        'TimeLogID': event['entity']['id'],
-                                        'current': False
-                                    }
-                                    self.save_time_capsule(data)
-                                elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
-                                        event['entity']['id'] > time_capsule['TimeLogID']:
+                                        logger.debug('NEW RECORD! %s' % event)
+                                        print 'NEW RECORD!'
+                                        ts_data = {
+                                            'project': timesheet_info['project']['name'],
+                                            'project_id': timesheet_info['project']['id'],
+                                            'entity': ts_entity['entity']['name'],
+                                            'entity_id': ts_entity['entity']['id'],
+                                            'task': timesheet_info['entity']['name'],
+                                            'task_id': timesheet_info['entity']['id']
+                                        }
+                                        self.time_lord.time_signal.update.emit(ts_data)
+                                        self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                        new_timesheet = tl_time.get_last_timesheet(user=user)
+                                        self.time_lord.time_signal.last_timesheet.emit(new_timesheet)
 
-                                    logger.debug('NEW RECORD! %s' % event)
-                                    print 'NEW RECORD!'
-                                    ts_data = {
-                                        'project': timesheet['project']['name'],
-                                        'project_id': timesheet['project']['id'],
-                                        'entity': ts_entity['entity']['name'],
-                                        'entity_id': ts_entity['entity']['id'],
-                                        'task': timesheet['entity']['name'],
-                                        'task_id': timesheet['entity']['id']
-                                    }
-                                    self.time_lord.time_signal.update.emit(ts_data)
-                                    self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
-                                    new_timesheet = tl_time.get_last_timesheet(user=user)
-                                    self.time_lord.time_signal.last_timesheet.emit(new_timesheet)
-
-                                    data = {
-                                        'EventLogID': event['id'],
-                                        'TimeLogID': event['entity']['id'],
-                                        'current': True
-                                    }
-                                    self.save_time_capsule(data)
+                                        data = {
+                                            'EventLogID': event['id'],
+                                            'TimeLogID': event['entity']['id'],
+                                            'current': True
+                                        }
+                                        self.save_time_capsule(data)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -571,8 +565,9 @@ class time_lord(QtCore.QObject):
         """
         # TODO: This needs a MutEx Lock
         mutex = QtCore.QMutexLocker(self.time_signal.mutex_1)
-        # FIXME: The Update UI requires data FROM the UI.  No way to compare current values if I don't have them
         print 'Update Detected: %s' % data
+        print('update_ui:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
+              inspect.stack()[1][3])
         logger.debug('Signal Received: %s' % data)
         # Get the last timesheet for local use and emit it for use elsewhere.
         self.last_timesheet = {'project': None, 'entity': None}
@@ -688,6 +683,8 @@ class time_lord(QtCore.QObject):
         This may need some addition inputs, but for now... nothing.
         :return:
         """
+        print('clock_in_user:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
+              inspect.stack()[1][3])
         if data:
             self.clocked_in = True
             context = data[0]
@@ -822,7 +819,7 @@ class time_lord_ui(QtGui.QMainWindow):
             'task': self.saved_task,
             'task_id': self.saved_task_id
         }
-        self.time_lord.time_signal.update.emit(data)
+        # self.time_lord.time_signal.update.emit(data)
 
         # Start the engines
         self.time_engine.start()
@@ -886,7 +883,8 @@ class time_lord_ui(QtGui.QMainWindow):
         :return: None
         """
         print 'Switch States: %s' % data
-        print(inspect.stack()[0], inspect.stack()[1])
+        print('switch_state:', inspect.stack()[0][2], inspect.stack()[0][3],
+              inspect.stack()[1][2], inspect.stack()[1][3])
         print('Checking state shit:')
         logger.debug('Switch state triggered')
         match = True
@@ -1456,14 +1454,15 @@ class time_lord_ui(QtGui.QMainWindow):
         ent_name = self.ui.entity_dropdown.currentText()
         proj_index = self.ui.project_dropdown.currentIndex()
 
-        context = {
-            'entity_id': ent_id,
-            'entity_name': ent_name,
-            'proj_id': self.ui.project_dropdown.itemData(proj_index)
-        }
-        print 'sending the req_task_update: %s' % context
-        self.time_lord.time_signal.req_task_update.emit(context)
-        print 'Done sending task context.'
+        if ent_id:
+            context = {
+                'entity_id': ent_id,
+                'entity_name': ent_name,
+                'proj_id': self.ui.project_dropdown.itemData(proj_index)
+            }
+            print 'sending the req_task_update: %s' % context
+            self.time_lord.time_signal.req_task_update.emit(context)
+            print 'Done sending task context.'
 
     def update_task_dropdown(self, tasks=None):
         print 'update_task_dropdown message received: %s' % tasks
@@ -1474,20 +1473,21 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.task_dropdown.addItem('Select Task', 0)
             for task in tasks:
                 self.ui.task_dropdown.addItem(task['content'], task['id'])
+            if self.saved_task != self.last_timesheet['entity']['name']:
+                self.saved_task = self.last_timesheet['entity']['name']
+            task_index = self.ui.task_dropdown.findText(self.saved_task)
+            if task_index >= 0:
+                self.ui.task_dropdown.setCurrentIndex(task_index)
+            # Lastly, connect the Task to an on-change event
+            self.ui.task_dropdown.currentIndexChanged.connect(lambda: self.switch_state(self.last_timesheet))
+            self.switch_tasks()
         else:
             self.ui.task_dropdown.clear()
             self.ui.task_dropdown.addItem('Select Task', 0)
-        if self.saved_task != self.last_timesheet['entity']['name']:
-            self.saved_task = self.last_timesheet['entity']['name']
-        task_index = self.ui.task_dropdown.findText(self.saved_task)
-        if task_index >= 0:
-            self.ui.task_dropdown.setCurrentIndex(task_index)
-        # Lastly, connect the Task to an on-change event
-        self.ui.task_dropdown.currentIndexChanged.connect(lambda: self.switch_state(self.last_timesheet))
-        self.switch_tasks()
 
     def switch_tasks(self):
-        print(inspect.stack()[0], inspect.stack()[1])
+        print('switch_tasks:', inspect.stack()[0][2], inspect.stack()[0][3],
+              inspect.stack()[1][2], inspect.stack()[1][3])
         # QUERY: DO I need have the __init__ call the switch tasks? Or do I use a different method up there?
         #       The fear is that the saved_task might not accurately reflect what's going on, due to signal and
         #       slot delays.
