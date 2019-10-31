@@ -927,41 +927,44 @@ class time_lord_ui(QtGui.QMainWindow):
         logger.debug('Finished with match check: %s' % match)
 
         if match and self.clocked_in:
+            print('Matched and Clocked In.  Emit 1')
             logger.debug('match and timelord clocked in.  Emit 1')
-            self.time_lord.time_signal.clock_state.emit(1)
-            try:
-                self.ui.clock_button.clicked.disconnect(self.start_time)
-            except:
-                pass
-            try:
-                self.ui.clock_button.clicked.disconnect(self.switch_time)
-            except:
-                pass
-            self.ui.clock_button.clicked.connect(self.stop_time)
+            self.clock_in_button_state(1)
+            # try:
+            #     self.ui.clock_button.clicked.disconnect(self.start_time)
+            # except:
+            #     pass
+            # try:
+            #     self.ui.clock_button.clicked.disconnect(self.switch_time)
+            # except:
+            #     pass
+            # self.ui.clock_button.clicked.connect(self.stop_time)
         elif not match and self.clocked_in:
+            print('NOT Matched! And Clocked In.  Emit 2')
             logger.debug('Not matched and timelord clocked in.  Emit 2')
-            self.time_lord.time_signal.clock_state.emit(2)
-            try:
-                self.ui.clock_button.clicked.disconnect(self.start_time)
-            except:
-                pass
-            try:
-                self.ui.clock_button.clicked.disconnect(self.stop_time)
-            except:
-                pass
-            self.ui.clock_button.clicked.connect(self.switch_time)
+            self.clock_in_button_state(2)
+            # try:
+            #     self.ui.clock_button.clicked.disconnect(self.start_time)
+            # except:
+            #     pass
+            # try:
+            #     self.ui.clock_button.clicked.disconnect(self.stop_time)
+            # except:
+            #     pass
+            # self.ui.clock_button.clicked.connect(self.switch_time)
         elif not self.clocked_in:
+            print('NOT CLOCKED IN!!!  Emit 0')
             logger.debug('Timelord not clocked in.  Doesn\'t matter if it\'s matched.  Emit 0')
-            self.time_lord.time_signal.clock_state.emit(0)
-            try:
-                self.ui.clock_button.clicked.disconnect(self.stop_time)
-            except:
-                pass
-            try:
-                self.ui.clock_button.clicked.disconnect(self.switch_time)
-            except:
-                pass
-            self.ui.clock_button.clicked.connect(self.start_time)
+            self.clock_in_button_state(0)
+            # try:
+            #     self.ui.clock_button.clicked.disconnect(self.stop_time)
+            # except:
+            #     pass
+            # try:
+            #     self.ui.clock_button.clicked.disconnect(self.switch_time)
+            # except:
+            #     pass
+            # self.ui.clock_button.clicked.connect(self.start_time)
         # self.time_lord.time_signal.set_last_timesheet.emit('Update')
 
     def set_window_on_top(self):
@@ -1001,13 +1004,13 @@ class time_lord_ui(QtGui.QMainWindow):
         # TODO: Add features that start other processes as well.  Change the button connections, et cetera
         self.time_lord.clocked_in = True
         self.time_lord.kill_it = False
-        self.update_saved_settings()
         print('update_saved_settings sent!')
         # TODO: Add check to see if the service is already running first
         # if not self.time_lord.clocked_in:
         #     self.clock_in()
         print('Sending to clock_in()')
         self.clock_in()
+        self.update_saved_settings()
         print('clock_in() completed.')
         # self.time_lord.start()
         # print('time_lord started!')
@@ -1015,15 +1018,15 @@ class time_lord_ui(QtGui.QMainWindow):
     def stop_time(self):
         self.time_lord.clocked_in = False
         self.time_lord.kill_it = True
-        self.update_saved_settings()
         self.clock_out()
+        self.update_saved_settings()
 
     def switch_time(self):
         if self.selection_check():
             self.time_lord.clocked_in = False
-            self.update_saved_settings()
             self.clock_out()
             self.clock_in()
+            self.update_saved_settings()
             if not self.time_machine.isRunning():
                 self.time_machine.start()
 
@@ -1335,6 +1338,12 @@ class time_lord_ui(QtGui.QMainWindow):
         self.settings.setValue('task', self.ui.task_dropdown.currentText())
         self.settings.setValue('task_id', self.ui.task_dropdown.itemData(self.ui.task_dropdown.currentIndex()))
         self.settings.setValue('geometry', self.saveGeometry())
+        self.saved_project = self.ui.project_dropdown.currentText()
+        self.saved_project_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
+        self.saved_entity = self.ui.entity_dropdown.currentText()
+        self.saved_entity_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
+        self.saved_task = self.ui.task_dropdown.currentText()
+        self.saved_task_id = self.ui.task_dropdown.itemData(self.ui.task_dropdown.currentIndex())
 
     def update_from_ui(self, message=None):
         """
