@@ -8,9 +8,29 @@ import json
 import sys
 import os
 from datetime import datetime, timedelta
+from dateutil import parser
 import time
 import random
 import math
+
+twitter_keys = [
+    "coordinates",
+    "geo",
+    "favorited",
+    "hashtags",
+    "id",
+    "lang",
+    "place",
+    "source",
+    "text",
+    "truncated",
+    "urls",
+    "user",
+    "user_mentions",
+    "retweet_count",
+    "retweeted_status",
+    "retweeted"
+]
 
 
 def get_configuration():
@@ -87,7 +107,7 @@ class readerBotTools(object):
         print(save_this_data)
 
     def get_saved_tweets(self):
-        fh = open('tweets.json', 'r')
+        fh = open('data/tweets.json', 'r')
         listed_tweets = json.load(fh)
         print(listed_tweets)
         return listed_tweets
@@ -172,6 +192,29 @@ class readerBotTools(object):
         if integer:
             rando = int(rando)
         return rando
+
+    def pick_random_tweet(self):
+        tweet_list = self.get_saved_tweets()
+        tweets_collection = []
+        for tweet in tweet_list['Tweets']:
+            date_obj = parser.parse(tweet['last_posted'])
+            if date_obj > (datetime.now() - timedelta(days=4)):
+                print('hello %s' % tweet)
+                tweets_collection.append(tweet)
+        if tweets_collection:
+            pass
+
+    def twit_search(self, terms=None, result_type='recent', count=20):
+        search = self.api.GetSearch(term=terms, result_type=result_type, count=count)
+        found = {}
+        for txt in search:
+            text = str(txt)
+            parse_search = json.loads(text)
+            for k in twitter_keys:
+                if k in parse_search.keys():
+                    tweet = parse_search[k]
+                    found[k] = tweet
+        return found
 
 
 if __name__ == "__main__":

@@ -146,7 +146,7 @@ class twitter_bot_1(object):
                 print('hello %s' % tweet)
                 tweets_collection.append(tweet)
         if tweets_collection:
-
+            pass
 
 
 if __name__ == '__main__':
