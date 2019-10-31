@@ -165,3 +165,208 @@
 2019-10-31 15:39:43,184 - psychic_paper | DEBUG : 923 - Finished with match check: True
 2019-10-31 15:39:43,184 - psychic_paper | DEBUG : 926 - match and timelord clocked in.  Emit 1
 2019-10-31 15:40:00,404 - psychic_paper | WARNING : 359 - Unknown exception!  Trying again. 'NoneType' object has no attribute 'connections'
+2019-10-31 15:49:38,115 - psychic_paper | INFO : 70 - The Time Lord has started!
+2019-10-31 15:49:39,378 - psychic_paper | DEBUG : 76 - Shotgun is connected.
+2019-10-31 15:49:41,588 - psychic_paper | DEBUG : 1415 - Getting default selection from settings.
+2019-10-31 15:49:41,588 - psychic_paper | DEBUG : 1420 - Setting project to last project listed.
+2019-10-31 15:49:41,588 - psychic_paper | DEBUG : 1486 - Setting tasks...
+2019-10-31 15:49:41,588 - psychic_paper | DEBUG : 1487 - None
+2019-10-31 15:49:41,776 - psychic_paper | DEBUG : 1445 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-31 15:49:41,776 - psychic_paper | DEBUG : 1459 - Setting entity to last saved entity
+2019-10-31 15:49:42,065 - psychic_paper | DEBUG : 1486 - Setting tasks...
+2019-10-31 15:49:42,065 - psychic_paper | DEBUG : 1487 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-31 15:49:42,082 - psychic_paper | DEBUG : 1511 - Switching tasks...
+2019-10-31 15:49:42,170 - psychic_paper | DEBUG : 1565 - clock_in_button_state message: 1
+2019-10-31 15:49:42,174 - psychic_paper | DEBUG : 905 - Switch state triggered
+2019-10-31 15:49:42,174 - psychic_paper | DEBUG : 927 - Finished with match check: True
+2019-10-31 15:49:42,176 - psychic_paper | DEBUG : 930 - match and timelord clocked in.  Emit 1
+2019-10-31 15:49:42,177 - psychic_paper | DEBUG : 371 - Starting the main event listener loop...
+2019-10-31 15:50:56,490 - psychic_paper | INFO : 70 - The Time Lord has started!
+2019-10-31 15:50:57,729 - psychic_paper | DEBUG : 76 - Shotgun is connected.
+2019-10-31 15:51:00,191 - psychic_paper | DEBUG : 1416 - Getting default selection from settings.
+2019-10-31 15:51:00,191 - psychic_paper | DEBUG : 1421 - Setting project to last project listed.
+2019-10-31 15:51:00,191 - psychic_paper | DEBUG : 1487 - Setting tasks...
+2019-10-31 15:51:00,191 - psychic_paper | DEBUG : 1488 - None
+2019-10-31 15:51:00,391 - psychic_paper | DEBUG : 1446 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-31 15:51:00,392 - psychic_paper | DEBUG : 1460 - Setting entity to last saved entity
+2019-10-31 15:51:00,684 - psychic_paper | DEBUG : 1487 - Setting tasks...
+2019-10-31 15:51:00,684 - psychic_paper | DEBUG : 1488 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-31 15:51:00,696 - psychic_paper | DEBUG : 1512 - Switching tasks...
+2019-10-31 15:51:00,798 - psychic_paper | DEBUG : 1566 - clock_in_button_state message: 1
+2019-10-31 15:51:00,799 - psychic_paper | DEBUG : 906 - Switch state triggered
+2019-10-31 15:51:00,799 - psychic_paper | DEBUG : 928 - Finished with match check: True
+2019-10-31 15:51:00,799 - psychic_paper | DEBUG : 931 - match and timelord clocked in.  Emit 1
+2019-10-31 15:51:00,801 - psychic_paper | DEBUG : 371 - Starting the main event listener loop...
+2019-10-31 15:51:31,792 - psychic_paper | INFO : 70 - The Time Lord has started!
+2019-10-31 15:51:32,905 - psychic_paper | DEBUG : 76 - Shotgun is connected.
+2019-10-31 15:51:35,092 - psychic_paper | DEBUG : 1416 - Getting default selection from settings.
+2019-10-31 15:51:35,092 - psychic_paper | DEBUG : 1421 - Setting project to last project listed.
+2019-10-31 15:51:35,092 - psychic_paper | DEBUG : 1487 - Setting tasks...
+2019-10-31 15:51:35,092 - psychic_paper | DEBUG : 1488 - None
+2019-10-31 15:51:35,267 - psychic_paper | DEBUG : 1446 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-31 15:51:35,267 - psychic_paper | DEBUG : 1460 - Setting entity to last saved entity
+2019-10-31 15:51:35,552 - psychic_paper | DEBUG : 1487 - Setting tasks...
+2019-10-31 15:51:35,552 - psychic_paper | DEBUG : 1488 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-31 15:51:35,572 - psychic_paper | DEBUG : 1512 - Switching tasks...
+2019-10-31 15:51:35,663 - psychic_paper | DEBUG : 1566 - clock_in_button_state message: 1
+2019-10-31 15:51:35,667 - psychic_paper | DEBUG : 906 - Switch state triggered
+2019-10-31 15:51:35,668 - psychic_paper | DEBUG : 928 - Finished with match check: True
+2019-10-31 15:51:35,668 - psychic_paper | DEBUG : 931 - match and timelord clocked in.  Emit 1
+2019-10-31 15:51:35,670 - psychic_paper | DEBUG : 371 - Starting the main event listener loop...
+2019-10-31 15:52:33,019 - psychic_paper | INFO : 70 - The Time Lord has started!
+2019-10-31 15:52:34,338 - psychic_paper | DEBUG : 76 - Shotgun is connected.
+2019-10-31 15:52:36,319 - psychic_paper | DEBUG : 1413 - Getting default selection from settings.
+2019-10-31 15:52:36,319 - psychic_paper | DEBUG : 1418 - Setting project to last project listed.
+2019-10-31 15:52:36,321 - psychic_paper | DEBUG : 1484 - Setting tasks...
+2019-10-31 15:52:36,321 - psychic_paper | DEBUG : 1485 - None
+2019-10-31 15:52:36,484 - psychic_paper | DEBUG : 1443 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-31 15:52:36,484 - psychic_paper | DEBUG : 1457 - Setting entity to last saved entity
+2019-10-31 15:52:36,740 - psychic_paper | DEBUG : 1484 - Setting tasks...
+2019-10-31 15:52:36,740 - psychic_paper | DEBUG : 1485 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-31 15:52:36,759 - psychic_paper | DEBUG : 1509 - Switching tasks...
+2019-10-31 15:52:36,832 - psychic_paper | DEBUG : 1563 - clock_in_button_state message: 1
+2019-10-31 15:52:36,838 - psychic_paper | DEBUG : 905 - Switch state triggered
+2019-10-31 15:52:36,838 - psychic_paper | DEBUG : 927 - Finished with match check: True
+2019-10-31 15:52:36,838 - psychic_paper | DEBUG : 930 - match and timelord clocked in.  Emit 1
+2019-10-31 15:52:36,838 - psychic_paper | DEBUG : 371 - Starting the main event listener loop...
+2019-10-31 15:52:50,229 - psychic_paper | INFO : 70 - The Time Lord has started!
+2019-10-31 15:52:51,538 - psychic_paper | DEBUG : 76 - Shotgun is connected.
+2019-10-31 15:52:53,503 - psychic_paper | DEBUG : 1413 - Getting default selection from settings.
+2019-10-31 15:52:53,503 - psychic_paper | DEBUG : 1418 - Setting project to last project listed.
+2019-10-31 15:52:53,503 - psychic_paper | DEBUG : 1484 - Setting tasks...
+2019-10-31 15:52:53,503 - psychic_paper | DEBUG : 1485 - None
+2019-10-31 15:52:53,694 - psychic_paper | DEBUG : 1443 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-10-31 15:52:53,694 - psychic_paper | DEBUG : 1457 - Setting entity to last saved entity
+2019-10-31 15:52:53,964 - psychic_paper | DEBUG : 1484 - Setting tasks...
+2019-10-31 15:52:53,966 - psychic_paper | DEBUG : 1485 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-10-31 15:52:53,977 - psychic_paper | DEBUG : 1509 - Switching tasks...
+2019-10-31 15:52:54,078 - psychic_paper | DEBUG : 1563 - clock_in_button_state message: 1
+2019-10-31 15:52:54,079 - psychic_paper | DEBUG : 905 - Switch state triggered
+2019-10-31 15:52:54,079 - psychic_paper | DEBUG : 927 - Finished with match check: True
+2019-10-31 15:52:54,079 - psychic_paper | DEBUG : 930 - match and timelord clocked in.  Emit 1
+2019-10-31 15:52:54,081 - psychic_paper | DEBUG : 371 - Starting the main event listener loop...
+2019-10-31 15:53:00,036 - psychic_paper | WARNING : 359 - Unknown exception!  Trying again. 'NoneType' object has no attribute 'connections'
+2019-10-31 15:53:03,332 - psychic_paper | DEBUG : 1563 - clock_in_button_state message: 0
+2019-10-31 15:54:04,346 - psychic_paper | DEBUG : 648 - set daily total: Get
+2019-10-31 15:54:04,671 - psychic_paper | DEBUG : 398 - CLOCK OUT RECORD! {'attribute_name': 'duration', 'event_type': 'Shotgun_TimeLog_Change', 'created_at': datetime.datetime(2019, 10, 31, 15, 54, 3, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C43B00>), 'entity': {'type': 'TimeLog', 'id': 1437, 'name': 'Time Lord User Entry'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'meta': {'entity_id': 1437, 'attribute_name': 'duration', 'entity_type': 'TimeLog', 'old_value': 0, 'field_data_type': 'duration', 'new_value': 13, 'type': 'attribute_change'}, 'user': {'type': 'ApiUser', 'id': 159, 'name': 'time_lord 1.0.0'}, 'session_uuid': None, 'type': 'EventLogEntry', 'id': 8209018}
+2019-10-31 15:54:04,775 - psychic_paper | DEBUG : 654 - Daily total!: 4.74638888889
+2019-10-31 15:54:04,775 - psychic_paper | DEBUG : 656 - Daily total emitted
+2019-10-31 15:54:04,983 - psychic_paper | DEBUG : 666 - Weekly total emitted
+2019-10-31 15:54:04,986 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,015 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,042 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,072 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,101 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,128 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,157 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,186 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,214 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,243 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,272 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,301 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,328 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,358 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,385 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,414 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,443 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,471 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,500 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,530 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,559 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,588 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,618 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,645 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,674 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,703 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,732 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,759 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,788 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,816 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,845 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,875 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,903 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,931 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,960 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:05,990 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,019 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,048 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,075 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,105 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,134 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,163 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,191 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,220 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,249 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,278 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,306 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,335 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,364 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,391 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,421 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,448 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,477 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,506 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,535 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,562 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,592 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,621 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,651 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,680 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,709 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,740 - psychic_paper | DEBUG : 583 - Signal Received: {'entity_id': 6244, 'task': 'Pipeline', 'task_id': 22843, 'entity': 'Overhead', 'project': 'Admin', 'project_id': 547}
+2019-10-31 15:54:06,970 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:06,999 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:07,029 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:07,153 - psychic_paper | DEBUG : 398 - CLOCK OUT RECORD! {'attribute_name': 'sg_task_end', 'event_type': 'Shotgun_TimeLog_Change', 'created_at': datetime.datetime(2019, 10, 31, 15, 54, 3, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C43B00>), 'entity': {'type': 'TimeLog', 'id': 1437, 'name': 'Time Lord User Entry'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'meta': {'entity_id': 1437, 'attribute_name': 'sg_task_end', 'entity_type': 'TimeLog', 'old_value': None, 'field_data_type': 'date_time', 'new_value': '2019-10-31 22:53:03 UTC', 'type': 'attribute_change'}, 'user': {'type': 'ApiUser', 'id': 159, 'name': 'time_lord 1.0.0'}, 'session_uuid': None, 'type': 'EventLogEntry', 'id': 8209021}
+2019-10-31 15:54:07,157 - psychic_paper | DEBUG : 583 - Signal Received: {'entity_id': 6244, 'task': 'Pipeline', 'task_id': 22843, 'entity': 'Overhead', 'project': 'Admin', 'project_id': 547}
+2019-10-31 15:54:08,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:09,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:10,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:11,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:12,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:13,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:14,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:15,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:16,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:17,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:18,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:19,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:20,003 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:21,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:22,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:23,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:24,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:25,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:26,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:27,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:28,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:29,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:30,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:31,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:32,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:33,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:34,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:35,002 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:36,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:37,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:38,013 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:39,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:39,447 - psychic_paper | DEBUG : 905 - Switch state triggered
+2019-10-31 15:54:39,447 - psychic_paper | DEBUG : 925 - Tasks aren't cool.
+2019-10-31 15:54:39,448 - psychic_paper | DEBUG : 927 - Finished with match check: False
+2019-10-31 15:54:39,448 - psychic_paper | DEBUG : 954 - Timelord not clocked in.  Doesn't matter if it's matched.  Emit 0
+2019-10-31 15:54:40,000 - psychic_paper | WARNING : 1156 - The Proper end time was not sent. Using current time.
+2019-10-31 15:54:40,977 - psychic_paper | DEBUG : 1563 - clock_in_button_state message: 1
+2019-10-31 15:54:41,631 - psychic_paper | DEBUG : 430 - NEW RECORD! {'attribute_name': None, 'event_type': 'Shotgun_TimeLog_New', 'created_at': datetime.datetime(2019, 10, 31, 15, 54, 41, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C43B00>), 'entity': {'type': 'TimeLog', 'id': 1438, 'name': 'Time Lord User Entry'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'meta': {'entity_id': 1438, 'type': 'new_entity', 'entity_type': 'TimeLog'}, 'user': {'type': 'ApiUser', 'id': 159, 'name': 'time_lord 1.0.0'}, 'session_uuid': None, 'type': 'EventLogEntry', 'id': 8209022}
+2019-10-31 15:54:41,635 - psychic_paper | DEBUG : 583 - Signal Received: {'entity_id': 6244, 'task': 'Admin', 'task_id': 22841, 'entity': 'Overhead', 'project': 'Admin', 'project_id': 547}
+2019-10-31 15:54:42,154 - psychic_paper | DEBUG : 430 - NEW RECORD! {'attribute_name': 'date', 'event_type': 'Shotgun_TimeLog_Change', 'created_at': datetime.datetime(2019, 10, 31, 15, 54, 41, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C43B00>), 'entity': {'type': 'TimeLog', 'id': 1438, 'name': 'Time Lord User Entry'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'meta': {'entity_id': 1438, 'attribute_name': 'date', 'in_create': True, 'entity_type': 'TimeLog', 'old_value': None, 'new_value': '2019-10-31', 'field_data_type': 'date', 'type': 'attribute_change'}, 'user': {'type': 'ApiUser', 'id': 159, 'name': 'time_lord 1.0.0'}, 'session_uuid': None, 'type': 'EventLogEntry', 'id': 8209023}
+2019-10-31 15:54:42,157 - psychic_paper | DEBUG : 583 - Signal Received: {'entity_id': 6244, 'task': 'Admin', 'task_id': 22841, 'entity': 'Overhead', 'project': 'Admin', 'project_id': 547}
+2019-10-31 15:54:42,647 - psychic_paper | DEBUG : 430 - NEW RECORD! {'attribute_name': 'description', 'event_type': 'Shotgun_TimeLog_Change', 'created_at': datetime.datetime(2019, 10, 31, 15, 54, 41, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C43B00>), 'entity': {'type': 'TimeLog', 'id': 1438, 'name': 'Time Lord User Entry'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'meta': {'entity_id': 1438, 'attribute_name': 'description', 'in_create': True, 'entity_type': 'TimeLog', 'old_value': None, 'new_value': 'Time Lord User Entry', 'field_data_type': 'text', 'type': 'attribute_change'}, 'user': {'type': 'ApiUser', 'id': 159, 'name': 'time_lord 1.0.0'}, 'session_uuid': None, 'type': 'EventLogEntry', 'id': 8209024}
+2019-10-31 15:54:42,653 - psychic_paper | DEBUG : 583 - Signal Received: {'entity_id': 6244, 'task': 'Admin', 'task_id': 22841, 'entity': 'Overhead', 'project': 'Admin', 'project_id': 547}
+2019-10-31 15:54:43,165 - psychic_paper | DEBUG : 430 - NEW RECORD! {'attribute_name': 'entity', 'event_type': 'Shotgun_TimeLog_Change', 'created_at': datetime.datetime(2019, 10, 31, 15, 54, 41, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C43B00>), 'entity': {'type': 'TimeLog', 'id': 1438, 'name': 'Time Lord User Entry'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'meta': {'entity_id': 1438, 'attribute_name': 'entity', 'in_create': True, 'entity_type': 'TimeLog', 'old_value': None, 'new_value': {'status': 'wtg', 'uuid': 'a6690ee2-b54a-11e9-ba66-0242ac110004', 'valid': 'valid', 'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'field_data_type': 'entity', 'type': 'attribute_change'}, 'user': {'type': 'ApiUser', 'id': 159, 'name': 'time_lord 1.0.0'}, 'session_uuid': None, 'type': 'EventLogEntry', 'id': 8209025}
+2019-10-31 15:54:43,168 - psychic_paper | DEBUG : 583 - Signal Received: {'entity_id': 6244, 'task': 'Admin', 'task_id': 22841, 'entity': 'Overhead', 'project': 'Admin', 'project_id': 547}
+2019-10-31 15:54:43,657 - psychic_paper | DEBUG : 430 - NEW RECORD! {'attribute_name': 'sg_task_start', 'event_type': 'Shotgun_TimeLog_Change', 'created_at': datetime.datetime(2019, 10, 31, 15, 54, 41, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C43B00>), 'entity': {'type': 'TimeLog', 'id': 1438, 'name': 'Time Lord User Entry'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'meta': {'entity_id': 1438, 'attribute_name': 'sg_task_start', 'in_create': True, 'entity_type': 'TimeLog', 'old_value': None, 'new_value': '2019-10-31 22:54:40 UTC', 'field_data_type': 'date_time', 'type': 'attribute_change'}, 'user': {'type': 'ApiUser', 'id': 159, 'name': 'time_lord 1.0.0'}, 'session_uuid': None, 'type': 'EventLogEntry', 'id': 8209026}
+2019-10-31 15:54:43,661 - psychic_paper | DEBUG : 583 - Signal Received: {'entity_id': 6244, 'task': 'Admin', 'task_id': 22841, 'entity': 'Overhead', 'project': 'Admin', 'project_id': 547}
+2019-10-31 15:54:44,414 - psychic_paper | DEBUG : 430 - NEW RECORD! {'attribute_name': 'user', 'event_type': 'Shotgun_TimeLog_Change', 'created_at': datetime.datetime(2019, 10, 31, 15, 54, 41, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003C43B00>), 'entity': {'type': 'TimeLog', 'id': 1438, 'name': 'Time Lord User Entry'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'meta': {'entity_id': 1438, 'attribute_name': 'user', 'in_create': True, 'entity_type': 'TimeLog', 'old_value': None, 'new_value': {'status': 'act', 'uuid': '89ed49d6-a21f-11e6-bde8-0242ac110005', 'valid': 'valid', 'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'field_data_type': 'entity', 'type': 'attribute_change'}, 'user': {'type': 'ApiUser', 'id': 159, 'name': 'time_lord 1.0.0'}, 'session_uuid': None, 'type': 'EventLogEntry', 'id': 8209027}
+2019-10-31 15:54:44,417 - psychic_paper | DEBUG : 583 - Signal Received: {'entity_id': 6244, 'task': 'Admin', 'task_id': 22841, 'entity': 'Overhead', 'project': 'Admin', 'project_id': 547}
+2019-10-31 15:55:00,039 - psychic_paper | WARNING : 359 - Unknown exception!  Trying again. 'NoneType' object has no attribute 'connections'

@@ -668,8 +668,10 @@ class time_lord(QtCore.QObject):
 
     def clock_out_user(self, last_timesheet=None):
         if last_timesheet:
+            self.time_signal.mutex_1.lock()
             tl_time.clock_out_time_sheet(timesheet=last_timesheet, clock_out=datetime.now())
             last_timesheet = tl_time.get_timesheet_by_id(tid=last_timesheet['id'])
+            self.time_signal.mutex_1.unlock()
             self.time_signal.lower_output.emit('You have clocked out!')
             ts_start = last_timesheet['sg_task_start']
             start_date = ts_start.strftime('%m-%d-%y')
@@ -701,7 +703,9 @@ class time_lord(QtCore.QObject):
             self.clocked_in = True
             context = data[0]
             start_time = data[1]
+            self.time_signal.mutex_1.lock()
             timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
+            self.time_signal.mutex_1.unlock()
             self.set_user_output(user=user)
             self.time_signal.user_has_clocked_in.emit(timesheet)
 
@@ -1307,18 +1311,17 @@ class time_lord_ui(QtGui.QMainWindow):
     def lower_output(self, message=None):
         self.ui.lower_output.setPlainText(message)
 
-
     # ----------------------------------------------------------------------------------------------------------------
     # UI Events - Close, Update Saved Settings, Update UI Data
     # ----------------------------------------------------------------------------------------------------------------
     def closeEvent(self, *args, **kwargs):
         self.update_saved_settings()
-        self.time_machine.kill_it = True
-        self.time_engine.kill_it = True
-        if self.time_machine.isRunning():
-            self.time_machine.kill()
         if self.time_engine.isRunning():
             self.time_engine.kill()
+        if self.time_machine.isRunning():
+            self.time_machine.kill()
+        self.time_engine.kill_it = True
+        self.time_machine.kill_it = True
 
     def update_saved_settings(self):
         """
