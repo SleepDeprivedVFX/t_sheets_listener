@@ -157,8 +157,12 @@ class time_signals(QtCore.QObject):
     # MUTEX & WAIT CONDITIONS
     mutex_1 = QtCore.QMutex()
     mutex_2 = QtCore.QMutex()
+    mutex_3 = QtCore.QMutex()
+    mutex_4 = QtCore.QMutex()
     wait_cond_1 = QtCore.QWaitCondition()
     wait_cond_2 = QtCore.QWaitCondition()
+    wait_cond_3 = QtCore.QWaitCondition()
+    wait_cond_4 = QtCore.QWaitCondition()
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -590,9 +594,14 @@ class time_lord(QtCore.QObject):
         logger.debug('Signal Received: %s' % data)
         # Get the last timesheet for local use and emit it for use elsewhere.
         self.last_timesheet = {'project': None, 'entity': None}
-        while not self.last_timesheet['project'] and not self.last_timesheet['entity']:
+        tries = 0
+        while not self.last_timesheet['project'] and not self.last_timesheet['entity'] and tries <= 10:
             print 'Timesheet was blank.  Getting it again...'
             self.last_timesheet = tl_time.get_last_timesheet(user=user)
+            time.sleep(2)
+            tries += 1
+        if not self.last_timesheet['project']:
+            return False
         print 'update ui last_timesheet: %s' % self.last_timesheet
         # self.time_signal.last_timesheet.emit(self.last_timesheet)
 
@@ -1302,6 +1311,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def set_dropdown(self, data=None):
         print('Update Signal received: %s | %s' % (data[0], data[1]))
+        self.time_lord.time_signal.mutex_2.lock()
         if data:
             dd_type = data[0]
             dd_value = data[1]
@@ -1317,6 +1327,8 @@ class time_lord_ui(QtGui.QMainWindow):
                 if new_index:
                     widge.setCurrentIndex(new_index)
                     print('widge set')
+        self.time_lord.time_signal.mutex_2.unlock()
+        self.time_lord.time_signal.wait_cond_2.wakeAll()
 
     # ----------------------------------------------------------------------------------------------------------------
     # OUTPUT MONITORS
