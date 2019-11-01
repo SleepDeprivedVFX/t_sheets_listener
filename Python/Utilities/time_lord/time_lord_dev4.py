@@ -140,6 +140,7 @@ class time_signals(QtCore.QObject):
     send_entity_update = QtCore.Signal(dict)
     send_task_update = QtCore.Signal(dict)
     set_dropdown = QtCore.Signal(tuple)
+    do_cleanup = QtCore.Signal(str)
 
     # Data Signals
     last_timesheet = QtCore.Signal(dict)
@@ -483,6 +484,7 @@ class time_lord(QtCore.QObject):
         self.time_signal.clock_in_user.connect(self.clock_in_user)
         self.time_signal.clock_out_user.connect(self.clock_out_user)
         self.time_signal.user_clocked_in.connect(self.set_user_status)
+        self.time_signal.do_cleanup.connect(self.do_cleanup)
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -613,6 +615,7 @@ class time_lord(QtCore.QObject):
         self.time_signal.set_dropdown.emit(send_task)
         print('Three signals sent.')
         self.time_signal.wait_cond_1.wakeAll()
+        self.time_signal.do_cleanup.emit('Cleanup')
 
     def quick_update(self):
         """
@@ -691,6 +694,7 @@ class time_lord(QtCore.QObject):
             self.set_daily_output(daily=daily_total)
             self.set_weekly_output(weekly=weekly_total)
             # self.time_signal.update_timesheet.emit('Update')
+            self.time_signal.do_cleanup.emit('Cleanup')
 
     def clock_in_user(self, data=None):
         """
@@ -744,6 +748,15 @@ class time_lord(QtCore.QObject):
             self.time_signal.send_timesheet.emit(timesheet)
             time.sleep(0.1)
             self.time_signal.user_has_clocked_in.emit(timesheet)
+
+    def do_cleanup(self):
+        """
+        This method checks older timesheets and makes sure they are all properly clocked in and out.
+        :return: True or False
+        """
+        cleanup = tl_time.timesheet_cleanup(user=user)
+        if cleanup:
+            print('CLEANUP: %s' % cleanup)
 
 
 # ------------------------------------------------------------------------------------------------------

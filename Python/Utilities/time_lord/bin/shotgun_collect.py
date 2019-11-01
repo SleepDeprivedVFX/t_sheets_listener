@@ -11,6 +11,7 @@ import os
 import sys
 import inspect
 from datetime import datetime
+import time
 
 
 class sg_data(object):
@@ -63,6 +64,7 @@ class sg_data(object):
             self.logger.debug('Project List: %s' % active_projects)
         except AttributeError, e:
             self.logger.error('Failed to get projects.  Trying again...')
+            time.sleep(2)
             active_projects = self.get_active_projects()
         return active_projects
 
@@ -79,6 +81,7 @@ class sg_data(object):
                 assets = self.sg.find('Asset', filters, fields)
             except Exception as e:
                 self.logger.warning('The Asset collection failed. Trying again...')
+                time.sleep(2)
                 assets = self.get_project_assets(proj_id=proj_id)
             self.logger.info('Assets collected.')
             self.logger.debug('Assets List: %s' % assets)
@@ -97,6 +100,7 @@ class sg_data(object):
                 shots = self.sg.find('Shot', filters, fields)
             except Exception as e:
                 self.logger.warning('The Shot Collectoin has failed.  Trying again. %s' % e)
+                time.sleep(2)
                 shots = self.get_project_shots(proj_id=proj_id)
             self.logger.info('Shots collected')
             self.logger.debug('Shots List: %s' % shots)
@@ -120,6 +124,7 @@ class sg_data(object):
             except Exception as e:
                 self.logger.debug('Shotgun failure of some sort: %s' % e)
                 self.logger.debug('Trying again...')
+                time.sleep(2)
                 tasks = self.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
 
             self.logger.info('Tasks collected')
@@ -152,6 +157,7 @@ class sg_data(object):
             except (AttributeError, TypeError), e:
                 self.logger.error('Could not get the project: %s' % e)
                 try:
+                    time.sleep(1)
                     self.logger.debug('Trying again...')
                     tryagain = self.sg.find('Project', filters, fields)
                     print('secondary: %s' % tryagain)
@@ -178,6 +184,7 @@ class sg_data(object):
                 link = self.sg.find_one(ent_type, filters, fields)
             except (AttributeError, Exception), e:
                 self.logger.error('Bad connection... Try again... %s' % e)
+                time.sleep(2)
                 print('Lame ass connection.  Trying again...')
                 link = self.get_entity_links(ent_type=ent_type, name=name, ent_id=ent_id, proj_id=proj_id)
             return link
@@ -267,6 +274,7 @@ class sg_data(object):
                 find_task = self.sg.find_one('Task', filters, fields)
             except AttributeError, e:
                 self.logger.debug('get_lunch_task failed!  %s' % e)
+                time.sleep(2)
                 find_task = self.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=task_name)
             if find_task:
                 return find_task
@@ -284,6 +292,7 @@ class sg_data(object):
                 task = self.sg.find_one('Task', filters, fields)
             except Exception as e:
                 self.logger.error('Get Entity from Tasks failed: %s' % e)
+                time.sleep(2)
                 task = self.get_entity_from_task(task_id=task_id)
             return task
         return None

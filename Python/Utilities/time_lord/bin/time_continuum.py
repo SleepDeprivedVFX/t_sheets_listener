@@ -209,12 +209,14 @@ class continuum(object):
                 'duration': total
             }
             try:
-                self.sg.update('TimeLog', timesheet['id'], data)
+                update = self.sg.update('TimeLog', timesheet['id'], data)
+                print('Successfully clocked out. %s' % update)
+                self.logger.info('Timesheet updated.')
             except Exception as e:
-                print('Failed to connect.  Trying again...')
-                self.clock_out_time_sheet(timesheet=timesheet, clock_out=clock_out)
-            print('Successfully clocked out.')
-            self.logger.info('Timesheet updated.')
+                print('Failed to connect.  Trying again... %s' % e)
+                update = self.clock_out_time_sheet(timesheet=timesheet, clock_out=clock_out)
+            return update
+        return None
 
     def create_new_timesheet(self, user=None, context=None, start_time=None, entry='User'):
         """
@@ -235,7 +237,7 @@ class continuum(object):
             user_id = user['id']
             self.logger.debug(context)
 
-            if start_time and type(start_time) == datetime or datetime.datetime:
+            if start_time and type(start_time) == datetime or type(start_time) == datetime.datetime:
                 task_start = start_time
             else:
                 task_start = datetime.datetime.now()
@@ -520,4 +522,77 @@ class continuum(object):
                     return timesheet
         return None
 
+    def timesheet_cleanup(self, user=None):
+        """
+        This method is designed to check for dead or accidental timesheets.  Time sheets that are not current, and
+        which still have open ended records. i.e. More than one timesheet that hasn't been clocked out.
+        It gets a collection of open ended timesheets for a user.
+        If there is more than one record, then it double checks that the opened one is the most recent (might need to
+        do that anyways)
+        If there is more than one record, then a new collection gets all the timesheets surrounding the empty timesheet.
+        It will check the next record's start time. If the start time is the same, either delete the duplicate record,
+        or set its out time to the in time.
+        If it aint_today, then it will check for EOD status, and clock it out at the EOD, or thereafter.
+        :return: 'Cleaned' or 'Clean'
+        """
+        if user:
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user['id']}],
+                {
+                    "filter_operator": "any",
+                    "filters": [
+                        ['sg_task_start', 'is', None],
+                        ['sg_task_end', 'is', None]
+                    ]
+                }
+            ]
+            fields = [
+                'sg_task_start',
+                'sg_task_end',
+                'id',
+                'user',
+                'date'
+            ]
+            try:
+                empties = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+            except Exception as e:
+                self.logger.error('Couldn\'t get emtpies. Connection failure: %s' % e)
+                empties = None
+            if empties:
+                latest_id = self.get_last_timesheet(user=user)['id']
+                for empty in empties:
+                    if empty['id'] != latest_id:
+                        date = empty['date']
+                        if type(date) != datetime or type(date) != datetime.datetime:
+                            date = parser.parse(date).date()
+                        sell_by_date = datetime.datetime.date(datetime.datetime.now()) - datetime.timedelta(days=30)
+                        if date > sell_by_date:
+                            if not empty['sg_task_start'] and not empty['sg_task_end']:
+                                print('Total shitshow.  Ignore or delete.')
+                            elif empty['sg_task_start'] and not empty['sg_task_end']:
+                                next_ts = None
+                                get_next_id = empty['id'] + 1
+                                while not next_ts:
+                                    try_next = self.get_timesheet_by_id(tid=get_next_id)
+                                    if try_next and try_next['user']['id'] == user['id']:
+                                        print('Found Next!')
+                                        next_ts = try_next
+                                        break
+                                    get_next_id += 1
+                                next_start = next_ts['sg_task_start']
+                                print(type(next_start))
+                                if type(next_start) != datetime.datetime:
+                                    next_start = parser.parse(next_start)
+                                if self.aint_today(next_start):
+                                    print('Current timesheet is from previous day!')
+                                    # Compare start time to EOD, if before: set EOD, else: set start time + 5 minutes.
+                                else:
+                                    data = {
+                                        'sg_task_end': next_ts['sg_task_start'],
+                                        'description': 'Time Lord Cleanup'
+                                    }
+                                    update = self.sg.update('TimeLog', empty['id'], data)
+                                    print('Updated: %s' % update)
+                return empties
 
+        return False
