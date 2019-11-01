@@ -559,7 +559,15 @@ class continuum(object):
                 self.logger.error('Couldn\'t get emtpies. Connection failure: %s' % e)
                 empties = None
             if empties:
-                latest_id = self.get_last_timesheet(user=user)['id']
+                last_timesheet = {'project': None}
+                tries = 0
+                while not last_timesheet['project'] and tries < 10:
+                    last_timesheet = self.get_last_timesheet(user=user)
+                    tries += 1
+                    time.sleep(5)
+                if not last_timesheet['project']:
+                    return False
+                latest_id = last_timesheet['id']
                 for empty in empties:
                     if empty['id'] != latest_id:
                         date = empty['date']
@@ -589,9 +597,21 @@ class continuum(object):
                                 else:
                                     data = {
                                         'sg_task_end': next_ts['sg_task_start'],
-                                        'description': 'Time Lord Cleanup'
+                                        'description': 'Time Lord Cleanup Processed'
                                     }
-                                    update = self.sg.update('TimeLog', empty['id'], data)
+                                    tries = 0
+                                    try:
+                                        update = self.sg.update('TimeLog', empty['id'], data)
+                                    except Exception as e:
+                                        tries += 1
+                                        self.logger.error('Cleanup process failed while updating... '
+                                                          'Making another atempt: #%i' % tries)
+                                        self.logger.error('Issue: %s' % e)
+                                        if tries > 10:
+                                            self.logger.error('Total Failure! %s' % e)
+                                            return False
+                                        update = None
+
                                     print('Updated: %s' % update)
                 return empties
 

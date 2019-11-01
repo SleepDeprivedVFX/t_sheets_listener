@@ -26,6 +26,8 @@ WISH LIST:
                 Because some of the routines create multiple entries in quick succession, and I wouldn't want to process
                 multiple hits within a few microseconds.
 """
+__author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
+__version__ = '0.2.0'
 
 import shotgun_api3 as sgapi
 import os
@@ -140,7 +142,6 @@ class time_signals(QtCore.QObject):
     send_entity_update = QtCore.Signal(dict)
     send_task_update = QtCore.Signal(dict)
     set_dropdown = QtCore.Signal(tuple)
-    do_cleanup = QtCore.Signal(str)
 
     # Data Signals
     last_timesheet = QtCore.Signal(dict)
@@ -231,6 +232,7 @@ class time_engine(QtCore.QThread):
                     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
                     weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
                     minute = datetime.now().minute
+                    self.last_timesheet = tl_time.get_last_timesheet(user=user)
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
                     if weekly_total:
@@ -351,7 +353,7 @@ class time_machine(QtCore.QThread):
                 except (sgapi.ProtocolError, sgapi.ResponseError, socket.error) as err:
                     logger.warning('Shotgun API Failure.  Trying again... %s' % err)
                     conn_attempts += 1
-                    time.sleep(1)
+                    time.sleep(5)
                     if conn_attempts > 10:
                         print 'can\'t connect to shotgun! %s' % err
                         logger.error('Can\'t connect to shotgun!', err)
@@ -359,9 +361,10 @@ class time_machine(QtCore.QThread):
                 except Exception as err:
                     logger.warning('Unknown exception!  Trying again. %s' % err)
                     conn_attempts += 1
-                    time.sleep(1)
+                    time.sleep(5)
                     if conn_attempts > 10:
                         logger.error('Something went wrong! %s' % err)
+                        break
         return []
 
     def listener(self):
@@ -411,7 +414,9 @@ class time_machine(QtCore.QThread):
                                         # QUERY: Perhaps here is where I set a Wait Condition.
                                         #       Then, the connecting signal would spawn a wake all.
                                         self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                        print('The Wait is OVER!')
                                         self.time_lord.time_signal.last_timesheet.emit(timesheet_info)
+                                        print('Timesheet update emitted.')
 
                                         data = {
                                             'EventLogID': event['id'],
@@ -420,6 +425,7 @@ class time_machine(QtCore.QThread):
                                         }
                                         try:
                                             self.save_time_capsule(data)
+                                            print('Time Capsule saved!')
                                         except IOError as e:
                                             logger.warning('Failed to save the file.  Trying again in a few '
                                                            'seconds... %s' % e)
@@ -484,7 +490,6 @@ class time_lord(QtCore.QObject):
         self.time_signal.clock_in_user.connect(self.clock_in_user)
         self.time_signal.clock_out_user.connect(self.clock_out_user)
         self.time_signal.user_clocked_in.connect(self.set_user_status)
-        self.time_signal.do_cleanup.connect(self.do_cleanup)
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -615,7 +620,6 @@ class time_lord(QtCore.QObject):
         self.time_signal.set_dropdown.emit(send_task)
         print('Three signals sent.')
         self.time_signal.wait_cond_1.wakeAll()
-        self.time_signal.do_cleanup.emit('Cleanup')
 
     def quick_update(self):
         """
@@ -671,10 +675,15 @@ class time_lord(QtCore.QObject):
 
     def clock_out_user(self, last_timesheet=None):
         if last_timesheet:
+            print('Start cleanup.')
+            self.do_cleanup()
+            print('Cleanup done.')
             self.time_signal.mutex_1.lock()
+            print('Locked...')
             tl_time.clock_out_time_sheet(timesheet=last_timesheet, clock_out=datetime.now())
             last_timesheet = tl_time.get_timesheet_by_id(tid=last_timesheet['id'])
             self.time_signal.mutex_1.unlock()
+            print('Unlocked.')
             self.time_signal.lower_output.emit('You have clocked out!')
             ts_start = last_timesheet['sg_task_start']
             start_date = ts_start.strftime('%m-%d-%y')
@@ -694,7 +703,6 @@ class time_lord(QtCore.QObject):
             self.set_daily_output(daily=daily_total)
             self.set_weekly_output(weekly=weekly_total)
             # self.time_signal.update_timesheet.emit('Update')
-            self.time_signal.do_cleanup.emit('Cleanup')
 
     def clock_in_user(self, data=None):
         """
@@ -757,6 +765,7 @@ class time_lord(QtCore.QObject):
         cleanup = tl_time.timesheet_cleanup(user=user)
         if cleanup:
             print('CLEANUP: %s' % cleanup)
+            logger.debug('Cleanup processing... %s' % cleanup)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -771,7 +780,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # Set the saved settings
         # --------------------------------------------------------------------------------------------------------
         # This saves all the last settings so that they return to their previous state when the program is run again.
-        self.settings = QtCore.QSettings('AdamBenson', 'TimeLord')
+        self.settings = QtCore.QSettings(__author__, 'TimeLord')
         self.saved_project = self.settings.value('project', '.')
         self.saved_project_id = self.settings.value('project_id', '.')
         self.saved_entity = self.settings.value('entity', '.')
@@ -1032,7 +1041,9 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.clocked_in = False
         self.time_lord.kill_it = True
         self.clock_out()
+        print('stop_time: clock_out() routing run')
         self.update_saved_settings()
+        print('saved settings updated.')
 
     def switch_time(self):
         if self.selection_check():
@@ -1048,6 +1059,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.req_daily_total.emit('Update!')
         self.time_lord.time_signal.req_weekly_total.emit('Update!')
         self.time_lord.time_signal.clock_out_user.emit(self.last_timesheet)
+        print('clock_out has set state and emitted update requests')
 
     def clock_in(self, message=None):
         # Check to see if the UI settings are valid for a new timesheet.
@@ -1634,6 +1646,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 pass
             print('Start Time being connected to the button...')
             self.ui.clock_button.clicked.connect(self.start_time)
+            print('Button connected.')
 
     def update_last_timesheet(self, timesheet=None):
         print 'updating last timesheet... %s' % timesheet

@@ -226,6 +226,9 @@ def chronograph():
                         time.sleep(3)
                         if tl_time.is_user_clocked_in(user=user):
                             user_ignored = True
+                        do_cleanup = tl_time.timesheet_cleanup(user=user)
+                        logger.debug('Cleanup results: %s' % do_cleanup)
+                        logger.info('Timesheet Cleanup run.')
                 elif user_ignored and datetime.now().time() < eod and set_timer < trigger:
                     user_ignored = False
                 elif user_ignored and datetime.now().time() > eod and set_timer > trigger:
