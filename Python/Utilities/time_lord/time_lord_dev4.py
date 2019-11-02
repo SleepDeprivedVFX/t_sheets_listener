@@ -203,6 +203,36 @@ class time_engine(QtCore.QThread):
         set_message = 'TRT: %s' % trt
         self.time_signal.trt_output.emit(set_message)
 
+    def set_start_end_output(self):
+        last_timesheet = self.last_timesheet
+        last_in_time = last_timesheet['sg_task_start']
+        last_out_time = last_timesheet['sg_task_end']
+
+        try:
+            start = '%s %02d:%02d:%02d' % (last_in_time.date(), last_in_time.time().hour, last_in_time.time().minute,
+                                          last_in_time.time().second)
+            if last_out_time:
+                end = '%s %02d:%02d:%02d' % (last_out_time.date(), last_in_time.time().hour, last_in_time.time().minute,
+                                            last_in_time.time().second)
+            else:
+                end = '%s %02d:%02d:%02d' % (datetime.now().date(), datetime.now().time().hour,
+                                            datetime.now().time().minute, datetime.now().time().second)
+
+            # Take the initial values and set their outputs.
+            set_message = 'Start: %s\nEnd: %s' % (start, end)
+            self.time_signal.start_end_output.emit(set_message)
+        except Exception as e:
+            logger.error('Failed to update: %s' % e)
+            print('Failed to update output: %s' % e)
+
+    def set_user_output(self, user=None):
+        if self.last_timesheet['sg_task_end']:
+            in_out = 'OUT'
+        else:
+            in_out = 'IN'
+        set_message = '%s CLOCKED %s' % (user['name'], in_out)
+        self.time_signal.user_output.emit(set_message)
+
     def chronograph(self):
         second = int(datetime.now().second)
         minute = datetime.now().minute
@@ -231,9 +261,8 @@ class time_engine(QtCore.QThread):
                 trt = '%s:%s:%s' % (rt['h'], rt['m'], rt['s'])
                 # Set the running time in the UI
                 self.set_trt_output(trt=trt)
-
-                # Set the start_end_output
-                self.time_signal.req_start_end_output.emit('Update')
+                self.set_start_end_output()
+                self.set_user_output(user=user)
 
                 if datetime.now().minute != minute:
                     # QUERY: MUTEX: Wait condition here?  Mutex?  Something to stop everything while processing totals
@@ -498,7 +527,6 @@ class time_lord(QtCore.QObject):
         self.time_signal.clock_in_user.connect(self.clock_in_user)
         self.time_signal.clock_out_user.connect(self.clock_out_user)
         self.time_signal.user_clocked_in.connect(self.set_user_status)
-        self.time_signal.req_start_end_output.connect(self.req_start_end_output)
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -561,14 +589,6 @@ class time_lord(QtCore.QObject):
     def set_start_end_output(self, start=None, end=None):
         set_message = 'Start: %s\nEnd: %s' % (start, end)
         self.time_signal.start_end_output.emit(set_message)
-
-    def set_user_output(self, user=None):
-        if self.clocked_in:
-            in_out = 'IN'
-        else:
-            in_out = 'OUT'
-        set_message = '%s CLOCKED %s' % (user['name'], in_out)
-        self.time_signal.user_output.emit(set_message)
 
     def set_user_status(self, clocked_in=True):
         print('User Status: User Clocked In: %s' % clocked_in)
@@ -860,8 +880,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.send_task_update.connect(self.update_task_dropdown)
         self.time_machine.time_signal.last_timesheet.connect(self.update_last_timesheet)
         self.time_engine.time_signal.trt_output.connect(self.trt_output)
-        self.time_lord.time_signal.start_end_output.connect(self.start_end_output)
-        self.time_engine.time_signal.req_start_end_output.connect(self.req_start_end_output)
+        self.time_engine.time_signal.start_end_output.connect(self.start_end_output)
+        self.time_engine.time_signal.user_output.connect(self.user_output)
 
         # Dropdown Change Index Connections
         self.time_lord.time_signal.set_dropdown.connect(self.set_dropdown)
@@ -1333,7 +1353,6 @@ class time_lord_ui(QtGui.QMainWindow):
         else:
             dd_value = None
             dd_type = None
-        print('dd_value: s' % dd_value)
         if dd_type and dd_value:
             widge = self.findChild(QtGui.QComboBox, dd_type)
             print('widge found: %s' % widge)
@@ -1481,9 +1500,6 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.project_dropdown.setCurrentIndex(proj_index)
         print 'triggering tasks dropdown reset...'
         self.update_task_dropdown()
-
-    def req_start_end_output(self, message=None):
-        self.time_lord.time_signal.req_start_end_output.emit(message)
 
     def req_update_entities(self, message=None):
         """

@@ -144,10 +144,12 @@ class continuum(object):
                     self.logger.info('Regular day %s' % weekday)
             else:
                 self.logger.info('NOT a weekday! %s' % weekday)
-                while weekday not in regular_days:
+                tries = 0
+                while weekday not in regular_days and tries < 5:
                     prev_day = prev_day - relativedelta.relativedelta(days=1)
                     is_weekday = self.date_is_weekday(date=prev_day)
                     weekday = is_weekday[1]
+                    tries += 1
                 self.logger.info('Now the weekday is: %s' % weekday)
                 self.logger.info('And the new date is: %s' % prev_day)
 
@@ -513,7 +515,7 @@ class continuum(object):
                 except Exception as e:
                     if conn_attempts > 5:
                         self.logger.error('Failed to connect!')
-                        return False
+                        break
                     else:
                         self.logger.error('Bad connection.  Trying again...')
                         conn_attempts += 1
