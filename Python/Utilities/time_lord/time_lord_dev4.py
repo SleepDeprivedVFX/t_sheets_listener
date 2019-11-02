@@ -113,6 +113,7 @@ class time_signals(QtCore.QObject):
 
     # Monitor Output Signals
     trt_output = QtCore.Signal(str)
+    req_start_end_output = QtCore.Signal(str)
     start_end_output = QtCore.Signal(str)
     user_output = QtCore.Signal(str)
     daily_output = QtCore.Signal(str)
@@ -141,7 +142,7 @@ class time_signals(QtCore.QObject):
     send_project_update = QtCore.Signal(dict)
     send_entity_update = QtCore.Signal(dict)
     send_task_update = QtCore.Signal(dict)
-    set_dropdown = QtCore.Signal(tuple)
+    set_dropdown = QtCore.Signal(dict)
 
     # Data Signals
     last_timesheet = QtCore.Signal(dict)
@@ -230,6 +231,9 @@ class time_engine(QtCore.QThread):
                 trt = '%s:%s:%s' % (rt['h'], rt['m'], rt['s'])
                 # Set the running time in the UI
                 self.set_trt_output(trt=trt)
+
+                # Set the start_end_output
+                self.time_signal.req_start_end_output.emit('Update')
 
                 if datetime.now().minute != minute:
                     # QUERY: MUTEX: Wait condition here?  Mutex?  Something to stop everything while processing totals
@@ -494,6 +498,7 @@ class time_lord(QtCore.QObject):
         self.time_signal.clock_in_user.connect(self.clock_in_user)
         self.time_signal.clock_out_user.connect(self.clock_out_user)
         self.time_signal.user_clocked_in.connect(self.set_user_status)
+        self.time_signal.req_start_end_output.connect(self.req_start_end_output)
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -541,14 +546,17 @@ class time_lord(QtCore.QObject):
         last_in_time = last_timesheet['sg_task_start']
         last_out_time = last_timesheet['sg_task_end']
 
-        start = '%s %s' % (last_in_time.date(), last_in_time.time())
-        if last_out_time:
-            end = '%s %s' % (last_out_time.date(), last_out_time.time())
-        else:
-            end = '%s %s' % (datetime.now().date(), datetime.now().time())
+        try:
+            start = '%s %s' % (last_in_time.date(), last_in_time.time())
+            if last_out_time:
+                end = '%s %s' % (last_out_time.date(), last_out_time.time())
+            else:
+                end = '%s %s' % (datetime.now().date(), datetime.now().time())
 
-        # Take the initial values and set their outputs.
-        self.set_start_end_output(start=start, end=end)
+            # Take the initial values and set their outputs.
+            self.set_start_end_output(start=start, end=end)
+        except Exception as e:
+            logger.error('Failed to update: %s' % e)
 
     def set_start_end_output(self, start=None, end=None):
         set_message = 'Start: %s\nEnd: %s' % (start, end)
@@ -601,6 +609,7 @@ class time_lord(QtCore.QObject):
             time.sleep(2)
             tries += 1
         if not self.last_timesheet['project']:
+            self.time_signal.wait_cond_1.wakeAll()
             return False
         print 'update ui last_timesheet: %s' % self.last_timesheet
         # self.time_signal.last_timesheet.emit(self.last_timesheet)
@@ -617,18 +626,22 @@ class time_lord(QtCore.QObject):
         entity_id = entity_info['entity']['id']
 
         # Emit update signals.
-        send_proj = ('project_dropdown', project)
-        send_ent = ('entity_dropdown', entity)
-        send_task = ('task_dropdown', task)
+        send_proj = {'type': 'project_dropdown',
+                     'name': project}
+        send_ent = {'type': 'entity_dropdown',
+                    'name': entity}
+        send_task = {'type': 'task_dropdown',
+                     'name': task}
         print('About to send signals for update...')
-        print('==> SEND PROJ: %s' % send_proj[1])
-        print('==> SEND ENT: %s' % send_ent[1])
-        print('==> SEND TASK: %s' % send_task[1])
+        print('==> SEND PROJ: %s' % send_proj['name'])
+        print('==> SEND ENT: %s' % send_ent['name'])
+        print('==> SEND TASK: %s' % send_task['name'])
+        self.time_signal.wait_cond_1.wakeAll()
+        self.send_project_update()
         self.time_signal.set_dropdown.emit(send_proj)
         self.time_signal.set_dropdown.emit(send_ent)
         self.time_signal.set_dropdown.emit(send_task)
         print('Three signals sent.')
-        self.time_signal.wait_cond_1.wakeAll()
 
     def quick_update(self):
         """
@@ -847,6 +860,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.send_task_update.connect(self.update_task_dropdown)
         self.time_machine.time_signal.last_timesheet.connect(self.update_last_timesheet)
         self.time_engine.time_signal.trt_output.connect(self.trt_output)
+        self.time_lord.time_signal.start_end_output.connect(self.start_end_output)
+        self.time_engine.time_signal.req_start_end_output.connect(self.req_start_end_output)
 
         # Dropdown Change Index Connections
         self.time_lord.time_signal.set_dropdown.connect(self.set_dropdown)
@@ -1309,15 +1324,16 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
                                                 'end_y_ones_%s.png);' % y_ones)
 
-    def set_dropdown(self, data=None):
-        print('Update Signal received: %s | %s' % (data[0], data[1]))
+    def set_dropdown(self, data={}):
+        print('Update Signal received: %s | %s' % (data['type'], data['name']))
         self.time_lord.time_signal.mutex_2.lock()
         if data:
-            dd_type = data[0]
-            dd_value = data[1]
+            dd_type = data['type']
+            dd_value = data['name']
         else:
             dd_value = None
             dd_type = None
+        print('dd_value: s' % dd_value)
         if dd_type and dd_value:
             widge = self.findChild(QtGui.QComboBox, dd_type)
             print('widge found: %s' % widge)
@@ -1465,6 +1481,9 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.project_dropdown.setCurrentIndex(proj_index)
         print 'triggering tasks dropdown reset...'
         self.update_task_dropdown()
+
+    def req_start_end_output(self, message=None):
+        self.time_lord.time_signal.req_start_end_output.emit(message)
 
     def req_update_entities(self, message=None):
         """
