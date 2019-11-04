@@ -1,4 +1,31 @@
-2019-11-01 13:44:48,546 - continuum | INFO : 59 - Continuum Activated!
-2019-11-01 13:44:48,742 - continuum | INFO : 472 - Looking to see if Adam Benson is clocked in....
-2019-11-01 14:24:35,401 - continuum | INFO : 59 - Continuum Activated!
-2019-11-01 14:24:35,641 - continuum | INFO : 472 - Looking to see if Adam Benson is clocked in....
+2019-11-04 12:52:11,720 - continuum | INFO : 59 - Continuum Activated!
+2019-11-04 12:52:12,002 - continuum | INFO : 474 - Looking to see if Adam Benson is clocked in....
+2019-11-04 12:52:12,247 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 12:58:03,454 - continuum | INFO : 59 - Continuum Activated!
+2019-11-04 12:58:03,701 - continuum | INFO : 474 - Looking to see if Adam Benson is clocked in....
+2019-11-04 12:58:03,950 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 12:58:57,956 - continuum | INFO : 59 - Continuum Activated!
+2019-11-04 12:58:58,214 - continuum | INFO : 474 - Looking to see if Adam Benson is clocked in....
+2019-11-04 12:58:58,453 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 13:00:00,246 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 13:01:05,661 - continuum | INFO : 59 - Continuum Activated!
+2019-11-04 13:01:05,908 - continuum | INFO : 474 - Looking to see if Adam Benson is clocked in....
+2019-11-04 13:01:06,148 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 13:02:00,198 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 13:02:00,201 - continuum | INFO : 160 - Finding the last timesheet for Adam Benson
+2019-11-04 13:02:00,201 - continuum | DEBUG : 162 - USER ID: 41
+2019-11-04 13:02:00,299 - continuum | DEBUG : 180 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-04', 'type': 'TimeLog', 'id': 1612, 'sg_task_start': datetime.datetime(2019, 11, 4, 10, 35, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000006830A90>)}
+2019-11-04 13:03:24,951 - continuum | INFO : 59 - Continuum Activated!
+2019-11-04 13:03:25,217 - continuum | INFO : 474 - Looking to see if Adam Benson is clocked in....
+2019-11-04 13:03:25,459 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 13:04:00,198 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 13:04:00,203 - continuum | INFO : 160 - Finding the last timesheet for Adam Benson
+2019-11-04 13:04:00,203 - continuum | DEBUG : 162 - USER ID: 41
+2019-11-04 13:04:00,313 - continuum | DEBUG : 180 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-04', 'type': 'TimeLog', 'id': 1612, 'sg_task_start': datetime.datetime(2019, 11, 4, 10, 35, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000668BA58>)}
+2019-11-04 13:07:07,092 - continuum | INFO : 59 - Continuum Activated!
+2019-11-04 13:07:07,316 - continuum | INFO : 474 - Looking to see if Adam Benson is clocked in....
+2019-11-04 13:07:07,529 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 13:08:00,131 - continuum | DEBUG : 110 - Date converted: 2019-11-04 10:35:49-08:00
+2019-11-04 13:08:00,134 - continuum | INFO : 160 - Finding the last timesheet for Adam Benson
+2019-11-04 13:08:00,135 - continuum | DEBUG : 162 - USER ID: 41
+2019-11-04 13:08:00,279 - continuum | DEBUG : 180 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-04', 'type': 'TimeLog', 'id': 1612, 'sg_task_start': datetime.datetime(2019, 11, 4, 10, 35, 49, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000005C3FAC8>)}

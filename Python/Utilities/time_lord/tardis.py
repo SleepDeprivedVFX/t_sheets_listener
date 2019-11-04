@@ -129,6 +129,18 @@ def chronograph():
     user_ignored = False
     user_clocked_in = tl_time.is_user_clocked_in(user=user)
 
+    # Set OT and DT systems.
+    # ot_check is a numeric counter for daily events:
+    # -1 = OT is approved.
+    # 0 = New Day
+    # 1 = Pre Over Time
+    # 2 = In OT
+    # 3 = Pre Double Time
+    # 4 = In DT
+    ot_check = 0
+    ot_alert_min = float(config['ot_alert_mins'])
+    time_left = float(config['ot_hours']) - tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
+
     path = sys.path[0]
     minute = int(datetime.now().minute)
 
@@ -306,6 +318,72 @@ def chronograph():
             lunch_end = None
             lunch_timesheet = False
             # print('TIMER RESET')
+
+            # -----------------------------------------------------------------------------------------
+            # Overtime Calcs
+            # -----------------------------------------------------------------------------------------
+            # Run the existing timer until the following conditions are met.
+            if minute != int(datetime.now().minute):
+                minute = int(datetime.now().minute)
+
+                # Get the remaining time
+                daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
+                time_left = float(config['ot_hours']) - daily_total
+
+                # test the remaining time
+                if time_left <= ot_alert_min and ot_check == 0 and daily_total < config['ot_hours']:
+                    # if ot_check == 0 and daily_total < config['ot_hours']:
+                    # It is before EOD, This check has not been preformed yet, and it's less than X minutes to EOD
+                    # NOTE: While typing this, it got a lot more complicated. Shotgun needs OT overrides, and these
+                    #       must be checked.  Which means:
+                    #           The Tardis will need to know which shot or asset and the show is currently clocked in.
+                    #           That should be easily attainable with the TimeLog.
+                    #           I will need to get the Show OT Override, and the Shot/Asset OT override checkboxes.
+
+                    # Check OT Approval statuses
+                    latest_timesheet = tl_time.get_last_timesheet(user=user)
+                    if latest_timesheet:
+                        project_id = latest_timesheet['project']['id']
+                        task_id = latest_timesheet['entity']['id']
+                    else:
+                        project_id = None
+                        task_id = None
+                    if project_id:
+                        filters = [
+                            ['id', 'is', project_id]
+                        ]
+                        fields = [config['ot_approved_proj']]
+                        get_project_ot = sg.find_one('Project', filters, fields)
+                        if get_project_ot:
+                            if get_project_ot[config['ot_approved_proj']]:
+                                ot_check = -1
+                        if task_id:
+                            entity = sg_data.get_entity_from_task(task_id=task_id)
+                            print entity
+                            if entity:
+                                entity_id = entity['entity']['id']
+                                entity_type = entity['entity']['type']
+                            else:
+                                entity_id = None
+                                entity_type = None
+                            if entity_id:
+                                filters = [
+                                    ['id', 'is', entity_id]
+                                ]
+                                fields = [config['ot_approved_entity']]
+                                get_entity_ot = sg.find(entity_type, filters, fields)
+                                if get_entity_ot:
+                                    if get_entity_ot[config['ot_approved_entity']]:
+                                        ot_check = -1
+                    if ot_check == 0:
+                        # Pop Up the OT Clock: It's X number of minutes before OT and the user is working.
+                        print('You are about to go into OT')
+                        ot_launch_path = os.path.join(path, 'overtime.py')
+                        if debug == 'True' or debug == 'true' or debug == True:
+                            process = 'python.exe'
+                        else:
+                            process = 'pythonw.exe'
+                        subprocess.call('%s %s' % (process, ot_launch_path))
 
 
 # Setup Threading

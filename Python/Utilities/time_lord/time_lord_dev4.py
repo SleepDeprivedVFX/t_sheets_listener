@@ -265,11 +265,10 @@ class time_engine(QtCore.QThread):
                 self.set_user_output(user=user)
 
                 if datetime.now().minute != minute:
-                    # QUERY: MUTEX: Wait condition here?  Mutex?  Something to stop everything while processing totals
-                    daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
-                    weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
                     minute = datetime.now().minute
                     self.last_timesheet = tl_time.get_last_timesheet(user=user)
+                    daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
+                    weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
                     if daily_total:
                         self.time_signal.daily_total.emit(daily_total)
                     if weekly_total:
@@ -763,6 +762,14 @@ class time_lord(QtCore.QObject):
             self.set_user_output(user=user)
             self.time_signal.user_has_clocked_in.emit(timesheet)
 
+    def set_user_output(self, user=None):
+        if self.clocked_in:
+            in_out = 'IN'
+        else:
+            in_out = 'OUT'
+        set_message = '%s CLOCKED %s' % (user['name'], in_out)
+        self.time_signal.user_output.emit(set_message)
+
     def get_entities(self, entity_id=None, r=False):
         logger.debug('get_entities activated: entity id: %s' % entity_id)
         if entity_id:
@@ -873,6 +880,10 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.time_signal.in_clock.connect(self.set_in_clock)
         self.time_engine.time_signal.out_clock.connect(self.set_out_clock)
         self.time_engine.time_signal.running_clock.connect(self.set_runtime_clock)
+        self.time_engine.time_signal.daily_total.connect(self.set_daily_total_needle)
+        self.time_lord.time_signal.daily_total.connect(self.set_daily_total_needle)
+        self.time_engine.time_signal.weekly_total.connect(self.set_weekly_total_needle)
+        self.time_lord.time_signal.weekly_total.connect(self.set_weekly_total_needle)
 
         # Update Connections
         self.time_lord.time_signal.send_project_update.connect(self.update_projects_dropdown)
@@ -939,6 +950,13 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.clock_in_button_state(1)
             else:
                 self.clock_in_button_state(0)
+
+            daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
+            weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
+            if daily_total:
+                self.set_daily_total_needle(daily_total)
+            if weekly_total:
+                self.set_weekly_total_needle(weekly_total)
 
     # ----------------------------------------------------------------------------------------------------------------
     # Status lights and button states.
@@ -1374,14 +1392,58 @@ class time_lord_ui(QtGui.QMainWindow):
     def start_end_output(self, message=None):
         self.ui.output_start_end.setPlainText(message)
 
+    def set_daily_total_needle(self, total):
+        '''
+        Set this to adjust the needs and the output monitor values simultaneously.
+        :param total: A total value of the daily total hours minus lunch and breaks
+        :return:
+        '''
+        if total:
+            self.daily_output(total)
+            # Adjust the total down by a value known from the graphics?
+            total -= 4.0
+            angle = ((total / (float(config['ot_hours']) * 2.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
+
+            if angle < -50.0:
+                angle = -50.0
+            elif angle > 50.0:
+                angle = 50.0
+            meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
+            needle_rot = QtGui.QTransform()
+
+            needle_rot.rotate(angle)
+            meter_needle_rot = meter_needle.transformed(needle_rot)
+
+            self.ui.day_meter.setPixmap(meter_needle_rot)
+            self.ui.day_meter.update()
+
+    def set_weekly_total_needle(self, total):
+        if total:
+            self.weekly_output(total)
+            angle = ((100 / (float(config['ot_hours']) * 10.0)) * total) - 50
+            if angle < -50.0:
+                angle = -50.0
+            elif angle > 50.0:
+                angle = 50.0
+            meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
+            needle_rot = QtGui.QTransform()
+
+            needle_rot.rotate(angle)
+            meter_needle_rot = meter_needle.transformed(needle_rot)
+
+            self.ui.week_meter.setPixmap(meter_needle_rot)
+            self.ui.week_meter.update()
+
     def user_output(self, message=None):
         self.ui.output_user.setPlainText(message)
 
     def daily_output(self, message=None):
-        self.ui.output_daily.setPlainText(message)
+        total = 'Daily Total: %0.2f' % message
+        self.ui.output_daily.setPlainText(str(total))
 
     def weekly_output(self, message=None):
-        self.ui.output_weekly.setPlainText(message)
+        total = 'Weekly Total: %0.2f' % message
+        self.ui.output_weekly.setPlainText(str(total))
 
     def lower_output(self, message=None):
         self.ui.lower_output.setPlainText(message)

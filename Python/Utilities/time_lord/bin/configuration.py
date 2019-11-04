@@ -43,6 +43,8 @@ def get_configuration():
     config['unpaid_time_off'] = configuration.get('Shotgun', 'unpaid_time_off')
     config['lunch'] = configuration.get('Shotgun', 'lunch')
     config['break'] = configuration.get('Shotgun', 'Break')
+    config['ot_approved_proj'] = configuration.get('Shotgun', 'ot_approved_proj')
+    config['ot_approved_entity'] = configuration.get('Shotgun', 'ot_approved_entity')
 
     # Time Lord
     config['regular_days'] = configuration.get('Time Lord', 'regular_days').split(',')
@@ -55,6 +57,7 @@ def get_configuration():
     config['ot_type'] = configuration.get('Time Lord', 'ot_type')
     config['ot_hours'] = configuration.get('Time Lord', 'ot_hours')
     config['dt_hours'] = configuration.get('Time Lord', 'dt_hours')
+    config['ot_alert_mins'] = configuration.get('Time Lord', 'ot_alert_mins')
     config['timer'] = configuration.get('Time Lord', 'timer')
     config['lunch_minutes'] = configuration.get('Time Lord', 'lunch_minutes')
 

@@ -534,8 +534,8 @@ class Ui_TimeLord(object):
         self.output_start_end.setPlainText(QtGui.QApplication.translate("TimeLord", "Start: 07/02/19\n"
 "End:", None, QtGui.QApplication.UnicodeUTF8))
         self.output_user.setPlainText(QtGui.QApplication.translate("TimeLord", "USER CLOCKED IN", None, QtGui.QApplication.UnicodeUTF8))
-        self.output_daily.setPlainText(QtGui.QApplication.translate("TimeLord", "Daily Total: 6", None, QtGui.QApplication.UnicodeUTF8))
-        self.output_weekly.setPlainText(QtGui.QApplication.translate("TimeLord", "Weekly Total: 18", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_daily.setPlainText(QtGui.QApplication.translate("TimeLord", "Daily Total: 0", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_weekly.setPlainText(QtGui.QApplication.translate("TimeLord", "Weekly Total: 0  ", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCrash_Computer.setText(QtGui.QApplication.translate("TimeLord", "Crash Computer", None, QtGui.QApplication.UnicodeUTF8))
 
 from resources import time_lord_resources_rc
