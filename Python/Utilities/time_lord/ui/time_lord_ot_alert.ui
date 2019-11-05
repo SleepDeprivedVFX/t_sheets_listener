@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OT</class>
+ <widget class="QWidget" name="OT">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>198</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Overtime Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(100, 100, 100);
+color: rgb(230, 230, 230);</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QLabel" name="title">
+     <property name="styleSheet">
+      <string notr="true">font: 22pt &quot;Chiller&quot;;</string>
+     </property>
+     <property name="text">
+      <string>OVERTIME ALERT!</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="message1">
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>You are about to go into overtime!</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLCDNumber" name="minutes">
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="smallDecimalPoint">
+        <bool>false</bool>
+       </property>
+       <property name="numDigits">
+        <number>3</number>
+       </property>
+       <property name="intValue" stdset="0">
+        <number>55</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="styleSheet">
+          <string notr="true">font: 30pt &quot;MS Shell Dlg 2&quot;;</string>
+         </property>
+         <property name="text">
+          <string>:</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::PlainText</enum>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignHCenter|Qt::AlignTop</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLCDNumber" name="seconds">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="smallDecimalPoint">
+        <bool>false</bool>
+       </property>
+       <property name="numDigits">
+        <number>2</number>
+       </property>
+       <property name="intValue" stdset="0">
+        <number>55</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="message2">
+     <property name="text">
+      <string>If you need to stay longer you can request overtime approval.  This is not a guarantee of overtime approval, just a request.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="variable_btn">
+       <property name="text">
+        <string>Thanks for the Reminder</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="or_sep">
+       <property name="text">
+        <string>OR</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="requestOT_btn">
+       <property name="text">
+        <string>Request OT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+  <zorder>title</zorder>
+  <zorder>message1</zorder>
+  <zorder>minutes</zorder>
+  <zorder>message2</zorder>
+  <zorder>seconds</zorder>
+  <zorder>label_3</zorder>
+  <zorder>horizontalSpacer</zorder>
+  <zorder>horizontalSpacer_2</zorder>
+  <zorder>requestOT_btn</zorder>
+  <zorder>variable_btn</zorder>
+  <zorder>or_sep</zorder>
+  <zorder>verticalSpacer</zorder>
+  <zorder>horizontalSpacer_3</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -359,7 +359,6 @@ def chronograph():
                                 ot_check = -1
                         if task_id:
                             entity = sg_data.get_entity_from_task(task_id=task_id)
-                            print entity
                             if entity:
                                 entity_id = entity['entity']['id']
                                 entity_type = entity['entity']['type']
@@ -371,13 +370,15 @@ def chronograph():
                                     ['id', 'is', entity_id]
                                 ]
                                 fields = [config['ot_approved_entity']]
-                                get_entity_ot = sg.find(entity_type, filters, fields)
+                                get_entity_ot = sg.find_one(entity_type, filters, fields)
                                 if get_entity_ot:
+                                    print get_entity_ot
                                     if get_entity_ot[config['ot_approved_entity']]:
                                         ot_check = -1
                     if ot_check == 0:
                         # Pop Up the OT Clock: It's X number of minutes before OT and the user is working.
                         print('You are about to go into OT')
+                        ot_check == 1
                         ot_launch_path = os.path.join(path, 'overtime.py')
                         if debug == 'True' or debug == 'true' or debug == True:
                             process = 'python.exe'
