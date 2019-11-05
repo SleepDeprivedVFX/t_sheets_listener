@@ -75,16 +75,16 @@ logger.debug('Shotgun is connected.')
 # --------------------------------------------------------------------------------------------------
 # setup continuum
 logger.info('Opening a portal to the time continuum...')
-tl_time = time_continuum.continuum(sg, config=config)
+tl_time = time_continuum.continuum(sg, config=config, sub='tardis')
 logger.info('time_continuum is opened...')
 
 # Setup and get users
-users = companions.companions(sg, config=config)
+users = companions.companions(sg, config=config, sub='tardis')
 user = users.get_user_from_computer()
 logger.info('User information collected...')
 
 # setup shotgun data connection
-sg_data = shotgun_collect.sg_data(sg, config=config)
+sg_data = shotgun_collect.sg_data(sg, config=config, sub='tardis')
 logger.info('Shotgun commands brought in.')
 
 
