@@ -230,12 +230,13 @@ if __name__ == '__main__':
         jerks = [
             '/server:xenomorph adamb',
             '/server:windigo panida',
-            '/server:medusa jesus'
+            '/server:medusa jesus',
+            '/server:kingkong jesus'
         ]
         user = os.environ['username']
         for jerk in jerks:
             if user not in jerk:
-                subprocess.call('msg %s Code Lipstick!' % jerk)
+                subprocess.call('msg /time:60 %s Code Lipstick!' % jerk)
 
     def bye(tardis):
         # Tardis killer.  May need to eventually kill all other processes as well.
