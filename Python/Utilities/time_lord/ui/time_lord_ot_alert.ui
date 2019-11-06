@@ -129,7 +129,7 @@ color: rgb(230, 230, 230);</string>
         <number>2</number>
        </property>
        <property name="intValue" stdset="0">
-        <number>55</number>
+        <number>1</number>
        </property>
       </widget>
      </item>
@@ -213,19 +213,6 @@ color: rgb(230, 230, 230);</string>
     </layout>
    </item>
   </layout>
-  <zorder>title</zorder>
-  <zorder>message1</zorder>
-  <zorder>minutes</zorder>
-  <zorder>message2</zorder>
-  <zorder>seconds</zorder>
-  <zorder>label_3</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>requestOT_btn</zorder>
-  <zorder>variable_btn</zorder>
-  <zorder>or_sep</zorder>
-  <zorder>verticalSpacer</zorder>
-  <zorder>horizontalSpacer_3</zorder>
  </widget>
  <resources/>
  <connections/>

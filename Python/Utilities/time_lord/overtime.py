@@ -16,6 +16,8 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime, timedelta
 from dateutil import parser
+import time
+import math
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
@@ -71,13 +73,72 @@ user = users.get_user_from_computer()
 sg_data = bin.shotgun_collect.sg_data(sg, config=config, sub='overtime')
 
 
+class ot_signals(QtCore.QObject):
+    snd_minutes = QtCore.Signal(str)
+    snd_seconds = QtCore.Signal(str)
+    snd_color = QtCore.Signal(str)
+
+
+class ot_clock(QtCore.QThread):
+    def __init__(self):
+        QtCore.QThread.__init__(self)
+        self.kill_it = False
+        self.signals = ot_signals()
+
+    def run(self, *args, **kwargs):
+        self.chronograph()
+
+    def chronograph(self):
+        while not self.kill_it:
+            minute = datetime.now().time().minute
+            second = int(datetime.now().time().second)
+
+            lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
+                                                   task_name=config['lunch'])
+            if lunch_task_id:
+                lunch_task_id = lunch_task_id['id']
+
+            daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
+            time_left = (float(config['ot_hours']) - daily_total) * 60.0
+            secs, mins = math.modf(time_left)
+            secs = math.fabs(int(secs * 60))
+            mins = int(mins)
+            secs = str('%02d' % secs)
+            mins = str('%02d' % mins)
+            print 'daily_total: %s' % daily_total
+            print 'time_left: %s' % time_left
+            print 'secs: %s' % secs
+            print 'mins: %s' % mins
+            self.signals.snd_minutes.emit(mins)
+            self.signals.snd_seconds.emit(secs)
+
+            # Hold for time loop
+            time.sleep(1)
+
+
 class overtime_popup(QtGui.QWidget):
     def __init__(self):
         QtGui.QWidget.__init__(self)
 
+        self.signals = ot_signals()
+        self.ot_clock = ot_clock()
+        self.ot_clock.start()
+
         self.ui = ot.Ui_OT()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+
+        # CONNECTIONS
+        self.ot_clock.signals.snd_minutes.connect(self.set_minutes)
+        self.ot_clock.signals.snd_seconds.connect(self.set_seconds)
+
+    def set_minutes(self, mins=None):
+        if mins:
+            self.ui.minutes.display(mins)
+
+    def set_seconds(self, secs=None):
+        if secs:
+            self.ui.seconds.display(secs)
 
 
 if __name__ == '__main__':
