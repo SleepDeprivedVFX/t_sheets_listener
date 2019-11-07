@@ -22,6 +22,7 @@ else:
 class companions(object):
     def __init__(self, sg=None, config=None, sub=None):
         self.sg = sg
+        self.config = config
 
         # ------------------------------------------------------------------------------------------------------
         # Create logging system
@@ -73,4 +74,48 @@ class companions(object):
             find_user = self.sg.find_one('HumanUser', filters, fields)
             return find_user
         return False
+
+    def get_user_by_id(self, uid=None):
+        if uid:
+            filters = [
+                ['id', 'is', uid]
+            ]
+            fields = [
+                'name',
+                'email',
+                'permission_rule_set',
+                'sg_computer',
+                'projects',
+                'groups'
+            ]
+            user = self.sg.find_one('HumanUser', filters, fields)
+            if user:
+                return user
+        return False
+
+    def get_admins(self):
+        admin_group = self.config['admins']
+        admins = []
+
+        filters = [
+            ['code', 'is', admin_group]
+        ]
+        fields = [
+            'users',
+            'code'
+        ]
+        group_members = self.sg.find_one('Group', filters, fields)
+        if group_members:
+            users = group_members['users']
+            if users:
+                for user in users:
+                    try:
+                        person_id = user['id']
+                        new_user = self.get_user_by_id(uid=person_id)
+                        if new_user:
+                            admins.append(new_user)
+                    except Exception as e:
+                        self.logger.error('Group Collection failed: %s' % e)
+        return admins
+
 

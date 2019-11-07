@@ -24,6 +24,7 @@ from bin.time_continuum import continuum
 from bin.companions import companions
 import bin.configuration
 import bin.shotgun_collect
+from bin.comm_system import comm_sys
 
 from ui import time_lord_ot_alert as ot
 
@@ -72,6 +73,9 @@ user = users.get_user_from_computer()
 # setup shotgun data connection
 sg_data = bin.shotgun_collect.sg_data(sg, config=config, sub='overtime')
 
+# Setup the communications system
+comm = comm_sys(sg, config=config, sub='overtime')
+
 
 class ot_signals(QtCore.QObject):
     snd_minutes = QtCore.Signal(str)
@@ -88,12 +92,16 @@ class ot_clock(QtCore.QThread):
         self.signals = ot_signals()
         self.timesheet_update = datetime.now()
         self.timesheet = tl_time.get_last_timesheet(user=user)
+        self.clocked_in = tl_time.is_user_clocked_in(user=user)
 
     def run(self, *args, **kwargs):
         self.chronograph()
 
     def chronograph(self):
         while not self.kill_it:
+            if not self.clocked_in:
+                self.kill_it = True
+                continue
             minute = datetime.now().time().minute
             second = int(datetime.now().time().second)
 
@@ -155,6 +163,13 @@ class overtime_popup(QtGui.QWidget):
         self.ui.variable_btn.clicked.connect(self.thanks)
         self.ui.requestOT_btn.clicked.connect(self.request_ot)
 
+        if not tl_time.is_user_clocked_in(user=user):
+            self.set_buttons(state='Not Clocked In')
+            self.ui.minutes.display(0)
+            self.ui.seconds.display(0)
+            self.ui.message1.setText('You are not clocked in. This is pointless.')
+            self.ui.message2.setText('Just close the window.')
+
         self.stay_opened = True
 
         # CONNECTIONS
@@ -166,6 +181,12 @@ class overtime_popup(QtGui.QWidget):
 
     def request_ot(self):
         print('Request OT')
+        admins = users.get_admins()
+        if admins:
+            for admin in admins:
+                comm.send_ot_message(user=admin, proj=self.timesheet['project'], entity=self.timesheet['entity'])
+        self.stay_opened = False
+        self.close()
 
     def set_timesheet(self, timesheet=None):
         if timesheet:
@@ -180,6 +201,18 @@ class overtime_popup(QtGui.QWidget):
                     pass
                 self.ui.variable_btn.clicked.connect(self.clock_out)
                 self.ui.variable_btn.setText('Clock Out')
+            elif state == 'Not Clocked In':
+                print('Disconnecting shit.')
+                try:
+                    self.ui.variable_btn.clicked.disconnect(self.clock_out)
+                    print('disconnected')
+                except Exception:
+                    print('Failed')
+                    pass
+                self.ui.variable_btn.clicked.connect(self.thanks)
+                self.ui.variable_btn.setText('Close')
+                self.ui.requestOT_btn.hide()
+                self.ui.or_sep.hide()
             else:
                 try:
                     self.ui.variable_btn.clicked.disconnect(self.clock_out)

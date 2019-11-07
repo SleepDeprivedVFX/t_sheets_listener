@@ -20,6 +20,17 @@ class comm_sys(object):
         self.sg = sg
         self.config = config
 
+        # Get Slack Authorizations
+        done_auth_id = int(self.config['slack_id'])
+        done_auth_filters = [
+            ['id', 'is', done_auth_id]
+        ]
+        auth_fields = ['code', 'sg_url']
+        # sg = Shotgun(shotgun_conf['url'], shotgun_conf['name'], shotgun_conf['key'])
+        get_done_auth = sg.find_one(self.config['slack_entity'], done_auth_filters, auth_fields)
+        self.auth_code = get_done_auth['code']
+        self.slack_url = get_done_auth['sg_url']
+
         # ------------------------------------------------------------------------------------------------------
         # Create logging system
         # ------------------------------------------------------------------------------------------------------
@@ -50,6 +61,10 @@ class comm_sys(object):
         self.logger.info('Comm System Activated!')
 
     def get_slack_user(self, email=None, auth_code=None, url=None, tries=0):
+        if not auth_code:
+            auth_code = self.auth_code
+        if not url:
+            url = self.slack_url
         self.logger.info('Getting slack user ID...')
         user_id = None
         if email:
@@ -100,7 +115,12 @@ class comm_sys(object):
                     return None
         return user_id
 
-    def sendMessage(self, slack_url=None, user=None, message=None, auth_code=None, color='green'):
+    def send_ot_message(self, slack_url=None, user=None, auth_code=None, color='green', proj=None, entity=None):
+        if not auth_code:
+            auth_code = self.auth_code
+        if not slack_url:
+            slack_url = self.slack_url
+
         if color == 'green':
             color = '#00aa00'
         elif color == 'red':
@@ -112,15 +132,15 @@ class comm_sys(object):
 
         self.logger.info('Robo-Coordinator is on the job...')
         try:
-            get_user = self.get_slack_user(email=user, auth_code=auth_code, url=slack_url)
+            get_user = self.get_slack_user(email=user['email'], auth_code=auth_code, url=slack_url)
         except requests.ConnectionError:
             time.sleep(1000)
-            get_user = self.get_slack_user(email=user, auth_code=auth_code, url=slack_url)
+            get_user = self.get_slack_user(email=user['email'], auth_code=auth_code, url=slack_url)
 
         data = {
             'type': 'message',
             'channel': get_user,
-            'text': '%s has requested *approval for Overtime*!' % user_name,
+            'text': '%s has requested *approval for Overtime*!' % user['name'],
             'attachments': [
                 {
                     'fallback': 'Overtime Request',
@@ -129,66 +149,29 @@ class comm_sys(object):
                     'fields': [
                         {
                             'title': 'Project',
-                            'value': '_%s_' % project_name
+                            'value': '_%s_' % proj['name']
                         },
                         {
-                            'title': '%s' % entity_type,
-                            'value': '*%s*' % entity_name
+                            'title': '%s' % entity['type'],
+                            'value': '*%s*' % entity['name']
                         }
                     ]
                 }
-            ]
+            ],
+            'as_user': True,
+            'username': 'Robo-Coordinator'
         }
 
-
-        # event_type = event['event_type']
-        # who = event['user']['name']
-        # if who not in bad_dates:
-        #     entity_type = event['entity']['type']
-        #     entity_name = event['entity']['name']
-        #     entity_id = event['entity']['id']
-        #     project = event['project']['name']
-        #     project_id = event['project']['id']
-        #     status = message
-        #
-        #     link = '%s/%s/%i' % (message_link, entity_type, entity_id)
-        #
-        #     data = {
-        #         'type': 'message',
-        #         'channel': get_user,
-        #         'text': '*%s* has marked _%s_ as *%s*' % (who, entity_name, status),
-        #         'attachments': [
-        #             {
-        #                 'fallback': 'Status alert',
-        #                 'title': status,
-        #                 'text': '*USER DUDE*',
-        #                 'color': color,
-        #                 'fields': [
-        #                     {
-        #                         'title': 'Project',
-        #                         'value': '_%s_' % project
-        #                     },
-        #                     {
-        #                         'title': 'Quick Link',
-        #                         'value': '%s' % link
-        #                     }
-        #                 ]
-        #             }
-        #         ],
-        #         'as_user': True,
-        #         'username': 'Robo-Coordinator'
-        #     }
-        #
-        #     if data:
-        #         headers = {
-        #             'Authorization': 'Bearer %s' % auth_code,
-        #             'Content-type': 'application/json'
-        #         }
-        #         data = json.dumps(data)
-        #         try:
-        #             person = requests.post('%schat.postMessage' % slack_url, headers=headers, data=data)
-        #             self.logger.debug('Message Sent: %s' % person.json())
-        #             self.logger.info('Message sent to %s' % jerk)
-        #         except Exception, error:
-        #             self.logger.error('Something went wrong sending the message!  %s' % error)
+        if data:
+            headers = {
+                'Authorization': 'Bearer %s' % auth_code,
+                'Content-type': 'application/json'
+            }
+            data = json.dumps(data)
+            try:
+                person = requests.post('%schat.postMessage' % slack_url, headers=headers, data=data)
+                self.logger.debug('Message Sent: %s' % person.json())
+                self.logger.info('Message sent to %s' % user['name'])
+            except Exception as error:
+                self.logger.error('Something went wrong sending the message!  %s' % error)
 

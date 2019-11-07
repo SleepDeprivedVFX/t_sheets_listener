@@ -61,6 +61,11 @@ def get_configuration():
     config['timer'] = configuration.get('Time Lord', 'timer')
     config['lunch_minutes'] = configuration.get('Time Lord', 'lunch_minutes')
 
+    # Slack
+    config['admins'] = configuration.get('Slack', 'admins')
+    config['slack_entity'] = configuration.get('Slack', 'slack_entity')
+    config['slack_id'] = configuration.get('Slack', 'slack_field_id')
+
     # Logging
     config['debug_logging'] = configuration.get('Logging', 'debugging')
     config['log_days'] = configuration.get('Logging', 'log_days')
