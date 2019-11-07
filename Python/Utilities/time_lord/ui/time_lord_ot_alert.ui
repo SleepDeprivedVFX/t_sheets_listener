@@ -61,6 +61,10 @@ color: rgb(230, 230, 230);</string>
      </item>
      <item>
       <widget class="QLCDNumber" name="minutes">
+       <property name="styleSheet">
+        <string notr="true">
+</string>
+       </property>
        <property name="frameShape">
         <enum>QFrame::Panel</enum>
        </property>

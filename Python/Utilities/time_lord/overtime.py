@@ -77,6 +77,8 @@ class ot_signals(QtCore.QObject):
     snd_minutes = QtCore.Signal(str)
     snd_seconds = QtCore.Signal(str)
     snd_color = QtCore.Signal(str)
+    button_state = QtCore.Signal(str)
+    timesheet = QtCore.Signal(dict)
 
 
 class ot_clock(QtCore.QThread):
@@ -84,6 +86,8 @@ class ot_clock(QtCore.QThread):
         QtCore.QThread.__init__(self)
         self.kill_it = False
         self.signals = ot_signals()
+        self.timesheet_update = datetime.now()
+        self.timesheet = tl_time.get_last_timesheet(user=user)
 
     def run(self, *args, **kwargs):
         self.chronograph()
@@ -105,32 +109,89 @@ class ot_clock(QtCore.QThread):
             mins = int(mins)
             secs = str('%02d' % secs)
             mins = str('%02d' % mins)
-            print 'daily_total: %s' % daily_total
-            print 'time_left: %s' % time_left
-            print 'secs: %s' % secs
-            print 'mins: %s' % mins
             self.signals.snd_minutes.emit(mins)
             self.signals.snd_seconds.emit(secs)
+            if float(mins) < 0.0:
+                if self.timesheet_update > (datetime.now() + timedelta(minutes=15)):
+                    self.timesheet_update = datetime.now()
+                    self.timesheet = tl_time.get_last_timesheet(user=user)
+                self.signals.timesheet.emit(self.timesheet)
+                color = 'color: rgb(255, 0, 0);'
+                self.signals.snd_color.emit(color)
+                self.signals.button_state.emit('Clock Out')
+
 
             # Hold for time loop
             time.sleep(1)
 
 
 class overtime_popup(QtGui.QWidget):
+    """
+    NOTE: Conditions I need to set for the various activities:
+        1. Change and listen to button states:
+            a. No btn (not called that) - When it's before time, needs to close the window
+                        When it's after time, it needs to clock out the user.
+            b. Yes btn - Needs to send a slack message, possibly with a lengthy OAuth 2 link embedded in it.
+        2. Check for Timesheet OT Status.  This also needs to happen elsewhere!  Because:
+            a. If a timesheet is approved for OT, and the user switches times, the next time needs to carry over
+                the OT
+        3. Need to connect to the messaging system (Slack)
+            a. Trying to figure out how to build a slack message with an embedded button that has a functional Shotgun
+                REST API link built into it.  May not be possible.  Which means... additional server.
+            b. Have to get a message link to activate the approved_for_OT checkbox AND send user a message back.
+    """
     def __init__(self):
         QtGui.QWidget.__init__(self)
 
         self.signals = ot_signals()
         self.ot_clock = ot_clock()
         self.ot_clock.start()
+        self.timesheet = None
 
         self.ui = ot.Ui_OT()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
+        self.ui.variable_btn.clicked.connect(self.thanks)
+        self.ui.requestOT_btn.clicked.connect(self.request_ot)
+
+        self.stay_opened = True
 
         # CONNECTIONS
         self.ot_clock.signals.snd_minutes.connect(self.set_minutes)
         self.ot_clock.signals.snd_seconds.connect(self.set_seconds)
+        self.ot_clock.signals.snd_color.connect(self.set_color)
+        self.ot_clock.signals.button_state.connect(self.set_buttons)
+        self.ot_clock.signals.timesheet.connect(self.set_timesheet)
+
+    def request_ot(self):
+        print('Request OT')
+
+    def set_timesheet(self, timesheet=None):
+        if timesheet:
+            self.timesheet = timesheet
+
+    def set_buttons(self, state=None):
+        if state:
+            if state == 'Clock Out':
+                try:
+                    self.ui.variable_btn.clicked.disconnect(self.thanks)
+                except Exception:
+                    pass
+                self.ui.variable_btn.clicked.connect(self.clock_out)
+                self.ui.variable_btn.setText('Clock Out')
+            else:
+                try:
+                    self.ui.variable_btn.clicked.disconnect(self.clock_out)
+                except Exception:
+                    pass
+                self.ui.variable_btn.clicked.connect(self.thanks)
+                self.ui.variable_btn.setText('Thanks for the Reminder')
+
+    def set_color(self, color=None):
+        if color:
+            self.ui.minutes.setStyleSheet(color)
+            self.ui.seconds.setStyleSheet(color)
 
     def set_minutes(self, mins=None):
         if mins:
@@ -139,6 +200,20 @@ class overtime_popup(QtGui.QWidget):
     def set_seconds(self, secs=None):
         if secs:
             self.ui.seconds.display(secs)
+
+    def thanks(self):
+        self.stay_opened = False
+        self.close()
+
+    def clock_out(self):
+        self.stay_opened = False
+        tl_time.clock_out_time_sheet(timesheet=self.timesheet, clock_out=datetime.now())
+        self.close()
+
+    def closeEvent(self, event, *args, **kwargs):
+        if self.stay_opened:
+            event.ignore()
+            logger.warning('You can\'t close the window this way!')
 
 
 if __name__ == '__main__':
