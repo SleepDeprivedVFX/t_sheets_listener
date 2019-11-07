@@ -138,22 +138,51 @@ class comm_sys(object):
             get_user = self.get_slack_user(email=user['email'], auth_code=auth_code, url=slack_url)
 
         data = {
-            'type': 'message',
-            'channel': get_user,
-            'text': '%s has requested *approval for Overtime*!' % user['name'],
-            'attachments': [
+            "type": "message",
+            "channel": get_user,
+            "blocks": [
                 {
-                    'fallback': 'Overtime Request',
-                    'title': 'Overtime Request',
-                    'text': 'Approve Overtime?',
-                    'fields': [
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": '%s has requested *approval for Overtime*!' % user['name']
+                    }
+                },
+                {
+                    "type": "section",
+                    "fields": [
                         {
-                            'title': 'Project',
-                            'value': '_%s_' % proj['name']
+                            "type": "mrkdwn",
+                            "text": "*Project:*\n_%s_" % proj['name']
                         },
                         {
-                            'title': '%s' % entity['type'],
-                            'value': '*%s*' % entity['name']
+                            "type": "mrkdwn",
+                            "text": "*%s:*\n%s" % (entity['type'], entity['name'])
+                        }
+                    ]
+                },
+                {
+                    "type": "actions",
+                    "elements": [
+                        {
+                            "type": "button",
+                            "text": {
+                                "type": "plain_text",
+                                "emoji": True,
+                                "text": "Approve"
+                            },
+                            "style": "primary",
+                            "value": "click_me_123"
+                        },
+                        {
+                            "type": "button",
+                            "text": {
+                                "type": "plain_text",
+                                "emoji": True,
+                                "text": "Deny"
+                            },
+                            "style": "danger",
+                            "value": "click_me_123"
                         }
                     ]
                 }
@@ -161,7 +190,7 @@ class comm_sys(object):
             'as_user': True,
             'username': 'Robo-Coordinator'
         }
-
+        print('About to send....')
         if data:
             headers = {
                 'Authorization': 'Bearer %s' % auth_code,
@@ -170,8 +199,11 @@ class comm_sys(object):
             data = json.dumps(data)
             try:
                 person = requests.post('%schat.postMessage' % slack_url, headers=headers, data=data)
+                print('Slack ')
                 self.logger.debug('Message Sent: %s' % person.json())
+                print('Message sent with data: %s' % person.json())
                 self.logger.info('Message sent to %s' % user['name'])
             except Exception as error:
+                print('Message fuckard: %s' % error)
                 self.logger.error('Something went wrong sending the message!  %s' % error)
 

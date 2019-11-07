@@ -184,7 +184,11 @@ class overtime_popup(QtGui.QWidget):
         admins = users.get_admins()
         if admins:
             for admin in admins:
-                comm.send_ot_message(user=admin, proj=self.timesheet['project'], entity=self.timesheet['entity'])
+                try:
+                    comm.send_ot_message(user=admin, proj=self.timesheet['project'], entity=self.timesheet['entity'])
+                    print('Message Sent!')
+                except Exception as e:
+                    print('What the fuck: %s' % e)
         self.stay_opened = False
         self.close()
 
