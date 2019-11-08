@@ -190,10 +190,12 @@ def chronograph():
                         # If lunch_timesheet is false, check it again to make sure that it hasn't since been added.
                         lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
                                                                    lunch_proj_id=int(config['admin_proj_id']))
+                        print('first pass: lunchtime: %s' % lunch_timesheet)
                     if not lunch_timesheet:
                         # If the lunch_timesheet is STILL false, THEN set the lunch start time
                         lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
                         logger.debug('LUNCH HAS STARTED: %s' % lunch_start)
+                        print('Second pass: Lunch has started')
                     else:
                         logger.debug('Already has lunch!')
                         lunch_start = None
@@ -324,10 +326,10 @@ def chronograph():
 
                 # Get the remaining time
                 daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
-                time_left = float(config['ot_hours']) - daily_total
+                time_left = (float(config['ot_hours']) - daily_total) * 60
 
                 # test the remaining time
-                if time_left <= ot_alert_min and ot_check == 0 and daily_total < config['ot_hours'] \
+                if time_left <= ot_alert_min and ot_check == 0 and daily_total < float(config['ot_hours']) \
                         and user['sg_hourly']:
                     # if ot_check == 0 and daily_total < config['ot_hours']:
                     # It is before EOD, This check has not been preformed yet, and it's less than X minutes to EOD
@@ -372,16 +374,65 @@ def chronograph():
                                     print get_entity_ot
                                     if get_entity_ot[config['ot_approved_entity']]:
                                         ot_check = -1
-                    if ot_check == 0:
-                        # Pop Up the OT Clock: It's X number of minutes before OT and the user is working.
-                        print('You are about to go into OT')
-                        ot_check == 1
-                        ot_launch_path = os.path.join(path, 'overtime.py')
-                        if debug == 'True' or debug == 'true' or debug == True:
-                            process = 'python.exe'
-                        else:
-                            process = 'pythonw.exe'
-                        subprocess.call('%s %s' % (process, ot_launch_path))
+
+                    # Pop Up the OT Clock: It's X number of minutes before OT and the user is working.
+                    print('You are about to go into OT')
+                    ot_check = 1
+                    ot_launch_path = os.path.join(path, 'overtime.py')
+                    if debug == 'True' or debug == 'true' or debug == True:
+                        process = 'python.exe'
+                    else:
+                        process = 'pythonw.exe'
+                    subprocess.call('%s %s' % (process, ot_launch_path))
+                elif ot_check == 1 or ot_check == 0 and daily_total > float(config['ot_hours']) and user['sg_hourly']:
+                    # Check OT Approval statuses
+                    latest_timesheet = tl_time.get_last_timesheet(user=user)
+                    if latest_timesheet:
+                        project_id = latest_timesheet['project']['id']
+                        task_id = latest_timesheet['entity']['id']
+                    else:
+                        project_id = None
+                        task_id = None
+                    if project_id:
+                        filters = [
+                            ['id', 'is', project_id]
+                        ]
+                        fields = [config['ot_approved_proj']]
+                        get_project_ot = sg.find_one('Project', filters, fields)
+                        if get_project_ot:
+                            if get_project_ot[config['ot_approved_proj']]:
+                                ot_check = -1
+                        if task_id:
+                            entity = sg_data.get_entity_from_task(task_id=task_id)
+                            if entity:
+                                entity_id = entity['entity']['id']
+                                entity_type = entity['entity']['type']
+                            else:
+                                entity_id = None
+                                entity_type = None
+                            if entity_id:
+                                filters = [
+                                    ['id', 'is', entity_id]
+                                ]
+                                fields = [config['ot_approved_entity']]
+                                get_entity_ot = sg.find_one(entity_type, filters, fields)
+                                if get_entity_ot:
+                                    print get_entity_ot
+                                    if get_entity_ot[config['ot_approved_entity']]:
+                                        ot_check = -1
+                    print('You are in Overtime!')
+                    ot_check = 2
+                    ot_launch_path = os.path.join(path, 'overtime.py')
+                    if debug == 'True' or debug == 'true' or debug == True:
+                        process = 'python.exe'
+                    else:
+                        process = 'pythonw.exe'
+                    subprocess.call('%s %s' % (process, ot_launch_path))
+                elif datetime.now().time() < sod:
+                    ot_check = 0
+                    print('ot_check reset')
+                print('EOD: %s' % eod)
+                print(type(eod))
 
 
 # Setup Threading
