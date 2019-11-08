@@ -1,89 +1,67 @@
-2019-11-07 10:44:27,625 - psychic_paper | INFO : 72 - The Time Lord has started!
-2019-11-07 10:44:28,562 - psychic_paper | DEBUG : 78 - Shotgun is connected.
-2019-11-07 10:44:30,302 - psychic_paper | DEBUG : 1556 - Getting default selection from settings.
-2019-11-07 10:44:30,302 - psychic_paper | DEBUG : 1561 - Setting project to last project listed.
-2019-11-07 10:44:30,302 - psychic_paper | DEBUG : 1627 - Setting tasks...
-2019-11-07 10:44:30,302 - psychic_paper | DEBUG : 1628 - None
-2019-11-07 10:44:30,503 - psychic_paper | DEBUG : 1586 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
-2019-11-07 10:44:30,505 - psychic_paper | DEBUG : 1600 - Setting entity to last saved entity
-2019-11-07 10:44:30,809 - psychic_paper | DEBUG : 1627 - Setting tasks...
-2019-11-07 10:44:30,809 - psychic_paper | DEBUG : 1628 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
-2019-11-07 10:44:30,822 - psychic_paper | DEBUG : 1652 - Switching tasks...
-2019-11-07 10:44:30,915 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 0
-2019-11-07 10:44:31,151 - psychic_paper | DEBUG : 989 - Switch state triggered
-2019-11-07 10:44:31,151 - psychic_paper | DEBUG : 1011 - Finished with match check: True
-2019-11-07 10:44:31,151 - psychic_paper | DEBUG : 1041 - Timelord not clocked in.  Doesn't matter if it's matched.  Emit 0
-2019-11-07 10:44:31,153 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 0
-2019-11-07 10:44:31,153 - psychic_paper | DEBUG : 411 - Starting the main event listener loop...
-2019-11-07 10:44:32,000 - psychic_paper | DEBUG : 1238 - end_time: 2019-11-06 19:00:00-08:00
-2019-11-07 10:44:33,000 - psychic_paper | DEBUG : 1238 - end_time: 2019-11-06 19:00:00-08:00
-2019-11-07 10:44:34,002 - psychic_paper | DEBUG : 1238 - end_time: 2019-11-06 19:00:00-08:00
-2019-11-07 10:44:34,267 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 1
-2019-11-07 10:46:46,339 - psychic_paper | INFO : 72 - The Time Lord has started!
-2019-11-07 10:46:47,151 - psychic_paper | DEBUG : 78 - Shotgun is connected.
-2019-11-07 10:46:48,734 - psychic_paper | DEBUG : 1556 - Getting default selection from settings.
-2019-11-07 10:46:48,734 - psychic_paper | DEBUG : 1561 - Setting project to last project listed.
-2019-11-07 10:46:48,736 - psychic_paper | DEBUG : 1627 - Setting tasks...
-2019-11-07 10:46:48,736 - psychic_paper | DEBUG : 1628 - None
-2019-11-07 10:46:48,959 - psychic_paper | DEBUG : 1586 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
-2019-11-07 10:46:48,959 - psychic_paper | DEBUG : 1600 - Setting entity to last saved entity
-2019-11-07 10:46:49,280 - psychic_paper | DEBUG : 1627 - Setting tasks...
-2019-11-07 10:46:49,280 - psychic_paper | DEBUG : 1628 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
-2019-11-07 10:46:49,312 - psychic_paper | DEBUG : 1652 - Switching tasks...
-2019-11-07 10:46:49,427 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 1
-2019-11-07 10:46:49,701 - psychic_paper | DEBUG : 989 - Switch state triggered
-2019-11-07 10:46:49,703 - psychic_paper | DEBUG : 1011 - Finished with match check: True
-2019-11-07 10:46:49,703 - psychic_paper | DEBUG : 1015 - match and timelord clocked in.  Emit 1
-2019-11-07 10:46:49,703 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 1
-2019-11-07 10:46:49,703 - psychic_paper | DEBUG : 411 - Starting the main event listener loop...
-2019-11-07 10:48:26,937 - psychic_paper | INFO : 72 - The Time Lord has started!
-2019-11-07 10:48:27,782 - psychic_paper | DEBUG : 78 - Shotgun is connected.
-2019-11-07 10:48:29,331 - psychic_paper | DEBUG : 1557 - Getting default selection from settings.
-2019-11-07 10:48:29,332 - psychic_paper | DEBUG : 1562 - Setting project to last project listed.
-2019-11-07 10:48:29,332 - psychic_paper | DEBUG : 1628 - Setting tasks...
-2019-11-07 10:48:29,332 - psychic_paper | DEBUG : 1629 - None
-2019-11-07 10:48:29,533 - psychic_paper | DEBUG : 1587 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
-2019-11-07 10:48:29,533 - psychic_paper | DEBUG : 1601 - Setting entity to last saved entity
-2019-11-07 10:48:29,861 - psychic_paper | DEBUG : 1628 - Setting tasks...
-2019-11-07 10:48:29,861 - psychic_paper | DEBUG : 1629 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
-2019-11-07 10:48:29,872 - psychic_paper | DEBUG : 1653 - Switching tasks...
-2019-11-07 10:48:29,970 - psychic_paper | DEBUG : 1707 - clock_in_button_state message: 1
-2019-11-07 10:48:30,214 - psychic_paper | DEBUG : 989 - Switch state triggered
-2019-11-07 10:48:30,214 - psychic_paper | DEBUG : 1011 - Finished with match check: True
-2019-11-07 10:48:30,214 - psychic_paper | DEBUG : 1015 - match and timelord clocked in.  Emit 1
-2019-11-07 10:48:30,214 - psychic_paper | DEBUG : 1707 - clock_in_button_state message: 1
-2019-11-07 10:48:30,216 - psychic_paper | DEBUG : 411 - Starting the main event listener loop...
-2019-11-07 10:49:23,500 - psychic_paper | INFO : 72 - The Time Lord has started!
-2019-11-07 10:49:24,338 - psychic_paper | DEBUG : 78 - Shotgun is connected.
-2019-11-07 10:49:25,926 - psychic_paper | DEBUG : 1556 - Getting default selection from settings.
-2019-11-07 10:49:25,926 - psychic_paper | DEBUG : 1561 - Setting project to last project listed.
-2019-11-07 10:49:25,927 - psychic_paper | DEBUG : 1627 - Setting tasks...
-2019-11-07 10:49:25,927 - psychic_paper | DEBUG : 1628 - None
-2019-11-07 10:49:26,132 - psychic_paper | DEBUG : 1586 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
-2019-11-07 10:49:26,134 - psychic_paper | DEBUG : 1600 - Setting entity to last saved entity
-2019-11-07 10:49:26,443 - psychic_paper | DEBUG : 1627 - Setting tasks...
-2019-11-07 10:49:26,443 - psychic_paper | DEBUG : 1628 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
-2019-11-07 10:49:26,460 - psychic_paper | DEBUG : 1652 - Switching tasks...
-2019-11-07 10:49:26,540 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 1
-2019-11-07 10:49:26,765 - psychic_paper | DEBUG : 989 - Switch state triggered
-2019-11-07 10:49:26,765 - psychic_paper | DEBUG : 1011 - Finished with match check: True
-2019-11-07 10:49:26,765 - psychic_paper | DEBUG : 1015 - match and timelord clocked in.  Emit 1
-2019-11-07 10:49:26,766 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 1
-2019-11-07 10:49:26,766 - psychic_paper | DEBUG : 411 - Starting the main event listener loop...
-2019-11-07 10:49:55,252 - psychic_paper | INFO : 72 - The Time Lord has started!
-2019-11-07 10:49:56,075 - psychic_paper | DEBUG : 78 - Shotgun is connected.
-2019-11-07 10:49:57,648 - psychic_paper | DEBUG : 1556 - Getting default selection from settings.
-2019-11-07 10:49:57,648 - psychic_paper | DEBUG : 1561 - Setting project to last project listed.
-2019-11-07 10:49:57,648 - psychic_paper | DEBUG : 1627 - Setting tasks...
-2019-11-07 10:49:57,648 - psychic_paper | DEBUG : 1628 - None
-2019-11-07 10:49:57,842 - psychic_paper | DEBUG : 1586 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
-2019-11-07 10:49:57,844 - psychic_paper | DEBUG : 1600 - Setting entity to last saved entity
-2019-11-07 10:49:58,122 - psychic_paper | DEBUG : 1627 - Setting tasks...
-2019-11-07 10:49:58,122 - psychic_paper | DEBUG : 1628 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
-2019-11-07 10:49:58,140 - psychic_paper | DEBUG : 1652 - Switching tasks...
-2019-11-07 10:49:58,226 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 1
-2019-11-07 10:49:58,467 - psychic_paper | DEBUG : 989 - Switch state triggered
-2019-11-07 10:49:58,467 - psychic_paper | DEBUG : 1011 - Finished with match check: True
-2019-11-07 10:49:58,467 - psychic_paper | DEBUG : 1015 - match and timelord clocked in.  Emit 1
-2019-11-07 10:49:58,467 - psychic_paper | DEBUG : 1706 - clock_in_button_state message: 1
-2019-11-07 10:49:58,467 - psychic_paper | DEBUG : 411 - Starting the main event listener loop...
+2019-11-07 17:38:48,848 - psychic_paper | INFO : 82 - The Time Lord has started!
+2019-11-07 17:38:49,911 - psychic_paper | DEBUG : 88 - Shotgun is connected.
+2019-11-07 17:38:50,359 - psychic_paper | DEBUG : 477 - Communication received.  Updating....
+2019-11-07 17:38:50,674 - psychic_paper | DEBUG : 322 - self.clocked_in: False
+2019-11-07 17:38:50,691 - psychic_paper | DEBUG : 480 - Timesheet collected!
+2019-11-07 17:38:51,138 - psychic_paper | DEBUG : 486 - Project List Requested!
+2019-11-07 17:38:51,244 - psychic_paper | DEBUG : 1126 - Getting default selection from settings.
+2019-11-07 17:38:51,244 - psychic_paper | DEBUG : 1131 - Setting project to last project listed.
+2019-11-07 17:38:51,246 - psychic_paper | DEBUG : 560 - get_entities activated: entity id: 547
+2019-11-07 17:38:51,365 - psychic_paper | DEBUG : 563 - Assets collected: [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-07 17:38:51,483 - psychic_paper | DEBUG : 565 - Shots Collected: []
+2019-11-07 17:38:51,596 - psychic_paper | DEBUG : 1160 - ({'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}, [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}])
+2019-11-07 17:38:51,598 - psychic_paper | DEBUG : 1177 - Setting entity to last saved entity
+2019-11-07 17:38:51,599 - psychic_paper | DEBUG : 575 - get_tasks activated: {'entity_id': 6244, 'proj_id': 547, 'entity_name': u'Overhead'}
+2019-11-07 17:38:51,938 - psychic_paper | DEBUG : 1198 - Setting tasks...
+2019-11-07 17:38:51,938 - psychic_paper | DEBUG : 1199 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-07 17:38:51,940 - psychic_paper | DEBUG : 1221 - Switching tasks...
+2019-11-07 17:38:51,941 - psychic_paper | DEBUG : 1036 - clock_in_button_state message: 0
+2019-11-07 17:38:51,947 - psychic_paper | DEBUG : 586 - Tasks emitted: [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-07 17:38:51,947 - psychic_paper | DEBUG : 575 - get_tasks activated: {'entity_id': 6244, 'proj_id': 547, 'entity_name': u'Overhead'}
+2019-11-07 17:38:52,306 - psychic_paper | DEBUG : 1198 - Setting tasks...
+2019-11-07 17:38:52,306 - psychic_paper | DEBUG : 1199 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-07 17:38:52,308 - psychic_paper | DEBUG : 1231 - Switch state triggered
+2019-11-07 17:38:52,308 - psychic_paper | DEBUG : 1238 - Last project name does not match.
+2019-11-07 17:38:52,308 - psychic_paper | DEBUG : 1245 - entity returns: None
+2019-11-07 17:38:52,309 - psychic_paper | DEBUG : 1255 - Tasks aren't cool.
+2019-11-07 17:38:52,309 - psychic_paper | DEBUG : 1257 - Everything's cool now.
+2019-11-07 17:38:52,309 - psychic_paper | DEBUG : 1284 - Timelord not clocked in.  Doesn't matter if it's matched.  Emit 0
+2019-11-07 17:38:52,312 - psychic_paper | DEBUG : 1036 - clock_in_button_state message: 0
+2019-11-07 17:38:52,423 - psychic_paper | DEBUG : 791 - UPDATE: {'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}
+2019-11-07 17:38:52,631 - psychic_paper | DEBUG : 819 - LAST TIMESHEET: {'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}
+2019-11-07 17:38:52,825 - psychic_paper | DEBUG : 1231 - Switch state triggered
+2019-11-07 17:38:52,921 - psychic_paper | DEBUG : 1245 - entity returns: {'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}
+2019-11-07 17:38:52,921 - psychic_paper | DEBUG : 1255 - Tasks aren't cool.
+2019-11-07 17:38:52,921 - psychic_paper | DEBUG : 1257 - Everything's cool now.
+2019-11-07 17:38:52,923 - psychic_paper | DEBUG : 1284 - Timelord not clocked in.  Doesn't matter if it's matched.  Emit 0
+2019-11-07 17:38:52,923 - psychic_paper | DEBUG : 1036 - clock_in_button_state message: 0
+2019-11-07 17:38:53,019 - psychic_paper | DEBUG : 791 - UPDATE: {'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}
+2019-11-07 17:38:53,220 - psychic_paper | DEBUG : 819 - LAST TIMESHEET: {'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}
+2019-11-07 17:38:53,441 - psychic_paper | DEBUG : 1231 - Switch state triggered
+2019-11-07 17:38:53,553 - psychic_paper | DEBUG : 1245 - entity returns: {'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}
+2019-11-07 17:38:53,553 - psychic_paper | DEBUG : 1257 - Everything's cool now.
+2019-11-07 17:38:53,553 - psychic_paper | DEBUG : 1284 - Timelord not clocked in.  Doesn't matter if it's matched.  Emit 0
+2019-11-07 17:38:53,555 - psychic_paper | DEBUG : 1036 - clock_in_button_state message: 0
+2019-11-07 17:38:53,691 - psychic_paper | DEBUG : 791 - UPDATE: {'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}
+2019-11-07 17:38:53,905 - psychic_paper | DEBUG : 819 - LAST TIMESHEET: {'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}
+2019-11-07 17:38:54,101 - psychic_paper | DEBUG : 1221 - Switching tasks...
+2019-11-07 17:38:54,101 - psychic_paper | DEBUG : 1036 - clock_in_button_state message: 0
+2019-11-07 17:38:54,105 - psychic_paper | DEBUG : 586 - Tasks emitted: [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-07 17:38:54,109 - psychic_paper | DEBUG : 502 - set daily total: Update
+2019-11-07 17:38:54,209 - psychic_paper | DEBUG : 508 - Daily total!: 7.28361111111
+2019-11-07 17:38:54,209 - psychic_paper | DEBUG : 510 - Daily total emitted
+2019-11-07 17:38:54,404 - psychic_paper | DEBUG : 520 - Weekly total emitted
+2019-11-07 17:38:54,461 - psychic_paper | DEBUG : 1231 - Switch state triggered
+2019-11-07 17:38:54,565 - psychic_paper | DEBUG : 1245 - entity returns: {'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}
+2019-11-07 17:38:54,565 - psychic_paper | DEBUG : 1257 - Everything's cool now.
+2019-11-07 17:38:54,565 - psychic_paper | DEBUG : 1284 - Timelord not clocked in.  Doesn't matter if it's matched.  Emit 0
+2019-11-07 17:38:54,565 - psychic_paper | DEBUG : 1036 - clock_in_button_state message: 0
+2019-11-07 17:38:54,676 - psychic_paper | DEBUG : 791 - UPDATE: {'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}
+2019-11-07 17:38:54,881 - psychic_paper | DEBUG : 819 - LAST TIMESHEET: {'sg_task_end': datetime.datetime(2019, 11, 7, 17, 38, 1, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-07', 'type': 'TimeLog', 'id': 1743, 'sg_task_start': datetime.datetime(2019, 11, 7, 10, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A0518>)}
+2019-11-07 17:38:55,482 - psychic_paper | DEBUG : 1415 - end_time: 2019-11-07 17:38:01-08:00
+2019-11-07 17:38:55,601 - psychic_paper | DEBUG : 1415 - end_time: 2019-11-07 17:38:01-08:00
+2019-11-07 17:38:55,711 - psychic_paper | DEBUG : 1415 - end_time: 2019-11-07 17:38:01-08:00
+2019-11-07 17:38:55,819 - psychic_paper | DEBUG : 1415 - end_time: 2019-11-07 17:38:01-08:00
+2019-11-07 17:38:56,119 - psychic_paper | DEBUG : 1415 - end_time: 2019-11-07 17:38:01-08:00
+2019-11-07 17:38:57,118 - psychic_paper | DEBUG : 1415 - end_time: 2019-11-07 17:38:01-08:00
+2019-11-07 17:38:58,107 - psychic_paper | DEBUG : 1415 - end_time: 2019-11-07 17:38:01-08:00

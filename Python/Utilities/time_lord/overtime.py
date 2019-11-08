@@ -83,6 +83,7 @@ class ot_signals(QtCore.QObject):
     snd_color = QtCore.Signal(str)
     button_state = QtCore.Signal(str)
     timesheet = QtCore.Signal(dict)
+    message = QtCore.Signal(str)
 
 
 class ot_clock(QtCore.QThread):
@@ -102,8 +103,6 @@ class ot_clock(QtCore.QThread):
             if not self.clocked_in:
                 self.kill_it = True
                 continue
-            minute = datetime.now().time().minute
-            second = int(datetime.now().time().second)
 
             lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                                    task_name=config['lunch'])
@@ -119,15 +118,17 @@ class ot_clock(QtCore.QThread):
             mins = str('%02d' % mins)
             self.signals.snd_minutes.emit(mins)
             self.signals.snd_seconds.emit(secs)
-            if float(mins) < 0.0:
+            if float(time_left) < 0.0:
                 if self.timesheet_update > (datetime.now() + timedelta(minutes=15)):
                     self.timesheet_update = datetime.now()
                     self.timesheet = tl_time.get_last_timesheet(user=user)
                 self.signals.timesheet.emit(self.timesheet)
+                self.signals.message.emit('You are in Overtime!!')
                 color = 'color: rgb(255, 0, 0);'
                 self.signals.snd_color.emit(color)
                 self.signals.button_state.emit('Clock Out')
-
+            else:
+                self.signals.message.emit('You are about to go into Overtime!')
 
             # Hold for time loop
             time.sleep(1)
@@ -151,10 +152,10 @@ class overtime_popup(QtGui.QWidget):
     def __init__(self):
         QtGui.QWidget.__init__(self)
 
+        self.timesheet = None
         self.signals = ot_signals()
         self.ot_clock = ot_clock()
         self.ot_clock.start()
-        self.timesheet = None
 
         self.ui = ot.Ui_OT()
         self.ui.setupUi(self)
@@ -178,10 +179,15 @@ class overtime_popup(QtGui.QWidget):
         self.ot_clock.signals.snd_color.connect(self.set_color)
         self.ot_clock.signals.button_state.connect(self.set_buttons)
         self.ot_clock.signals.timesheet.connect(self.set_timesheet)
+        self.ot_clock.signals.message.connect(self.set_main_message)
 
     def request_ot(self):
         print('Request OT')
         admins = users.get_admins()
+        print('admins: %s' % admins)
+        if not self.timesheet:
+            self.timesheet = tl_time.get_last_timesheet(user=user)
+        print('timesheet: %s' % self.timesheet)
         if admins:
             for admin in admins:
                 try:
@@ -229,6 +235,10 @@ class overtime_popup(QtGui.QWidget):
         if color:
             self.ui.minutes.setStyleSheet(color)
             self.ui.seconds.setStyleSheet(color)
+
+    def set_main_message(self, msg=None):
+        if msg:
+            self.ui.message1.setText(msg)
 
     def set_minutes(self, mins=None):
         if mins:

@@ -247,10 +247,6 @@ def chronograph():
                     user_ignored = False
                 set_timer += 1
 
-                # Temp counter - Delete me
-                # if set_timer / 10 != temp_count:
-                #     temp_count = set_timer / 10
-                #     print(temp_count, datetime.now().time())
         else:
             # -------------------------------------------------------------------------------------------------------
             # The mouse IS moving
@@ -331,7 +327,8 @@ def chronograph():
                 time_left = float(config['ot_hours']) - daily_total
 
                 # test the remaining time
-                if time_left <= ot_alert_min and ot_check == 0 and daily_total < config['ot_hours']:
+                if time_left <= ot_alert_min and ot_check == 0 and daily_total < config['ot_hours'] \
+                        and user['sg_hourly']:
                     # if ot_check == 0 and daily_total < config['ot_hours']:
                     # It is before EOD, This check has not been preformed yet, and it's less than X minutes to EOD
                     # NOTE: While typing this, it got a lot more complicated. Shotgun needs OT overrides, and these

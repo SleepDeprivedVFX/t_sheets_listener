@@ -69,7 +69,8 @@ class companions(object):
                 'sg_computer',
                 'projects',
                 'groups',
-                'id'
+                'id',
+                'sg_hourly'
             ]
             find_user = self.sg.find_one('HumanUser', filters, fields)
             return find_user
@@ -86,7 +87,8 @@ class companions(object):
                 'permission_rule_set',
                 'sg_computer',
                 'projects',
-                'groups'
+                'groups',
+                'sg_hourly'
             ]
             user = self.sg.find_one('HumanUser', filters, fields)
             if user:
