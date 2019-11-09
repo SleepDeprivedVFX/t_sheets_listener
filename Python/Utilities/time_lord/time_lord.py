@@ -210,6 +210,8 @@ class time_engine(QtCore.QThread):
         last_timesheet = self.last_timesheet
         last_in_time = last_timesheet['sg_task_start']
         last_out_time = last_timesheet['sg_task_end']
+        print('last_in_time: %s | type: %s' % (last_in_time, type(last_in_time)))
+        print('last_out_time: %s | type: %s' % (last_out_time, type(last_out_time)))
 
         try:
             start = '%s %02d:%02d:%02d' % (last_in_time.date(), last_in_time.time().hour, last_in_time.time().minute,

@@ -152,3 +152,338 @@
 2019-11-08 15:05:50,914 - psychic_paper | DEBUG : 1036 - clock_in_button_state message: 1
 2019-11-08 15:05:51,118 - psychic_paper | DEBUG : 819 - LAST TIMESHEET: {'description': 'Time Lord User Entry', 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'type': 'TimeLog', 'id': 1792, 'sg_task_start': datetime.datetime(2019, 11, 8, 15, 5, 50, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000368C518>)}
 2019-11-08 15:05:51,118 - psychic_paper | DEBUG : 825 - No sg_task_end set. Returned null. Setting to None...
+2019-11-08 15:30:42,167 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 15:30:43,085 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 15:30:44,578 - psychic_paper | DEBUG : 1559 - Getting default selection from settings.
+2019-11-08 15:30:44,578 - psychic_paper | DEBUG : 1564 - Setting project to last project listed.
+2019-11-08 15:30:44,579 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 15:30:44,581 - psychic_paper | DEBUG : 1631 - None
+2019-11-08 15:30:44,752 - psychic_paper | DEBUG : 1589 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 15:30:44,752 - psychic_paper | DEBUG : 1603 - Setting entity to last saved entity
+2019-11-08 15:30:45,058 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 15:30:45,059 - psychic_paper | DEBUG : 1631 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 15:30:45,085 - psychic_paper | DEBUG : 1655 - Switching tasks...
+2019-11-08 15:30:45,183 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 15:30:45,444 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 15:30:45,444 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 15:30:45,444 - psychic_paper | DEBUG : 1018 - match and timelord clocked in.  Emit 1
+2019-11-08 15:30:45,444 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 15:30:45,446 - psychic_paper | DEBUG : 414 - Starting the main event listener loop...
+2019-11-08 15:44:41,655 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 15:44:42,450 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 15:44:43,845 - psychic_paper | DEBUG : 1559 - Getting default selection from settings.
+2019-11-08 15:44:43,845 - psychic_paper | DEBUG : 1564 - Setting project to last project listed.
+2019-11-08 15:44:43,845 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 15:44:43,845 - psychic_paper | DEBUG : 1631 - None
+2019-11-08 15:44:44,013 - psychic_paper | DEBUG : 1589 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 15:44:44,015 - psychic_paper | DEBUG : 1603 - Setting entity to last saved entity
+2019-11-08 15:44:44,303 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 15:44:44,305 - psychic_paper | DEBUG : 1631 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 15:44:44,326 - psychic_paper | DEBUG : 1655 - Switching tasks...
+2019-11-08 15:44:44,408 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 15:44:44,618 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 15:44:44,618 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 15:44:44,618 - psychic_paper | DEBUG : 1018 - match and timelord clocked in.  Emit 1
+2019-11-08 15:44:44,618 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 15:44:44,618 - psychic_paper | DEBUG : 414 - Starting the main event listener loop...
+2019-11-08 15:46:17,354 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 15:46:18,115 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 15:46:20,065 - psychic_paper | DEBUG : 1559 - Getting default selection from settings.
+2019-11-08 15:46:20,065 - psychic_paper | DEBUG : 1564 - Setting project to last project listed.
+2019-11-08 15:46:20,065 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 15:46:20,065 - psychic_paper | DEBUG : 1631 - None
+2019-11-08 15:46:20,288 - psychic_paper | DEBUG : 1589 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 15:46:20,289 - psychic_paper | DEBUG : 1603 - Setting entity to last saved entity
+2019-11-08 15:46:20,752 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 15:46:20,752 - psychic_paper | DEBUG : 1631 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 15:46:20,782 - psychic_paper | DEBUG : 1655 - Switching tasks...
+2019-11-08 15:46:20,897 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 15:46:21,161 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 15:46:21,161 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 15:46:21,161 - psychic_paper | DEBUG : 1018 - match and timelord clocked in.  Emit 1
+2019-11-08 15:46:21,161 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 15:46:21,163 - psychic_paper | DEBUG : 414 - Starting the main event listener loop...
+2019-11-08 15:55:01,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:02,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:03,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:04,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:05,002 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:06,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:07,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:08,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:09,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:10,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:11,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:12,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:13,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:14,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:15,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:16,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:17,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:18,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:19,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:20,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:21,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:22,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:23,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:24,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:25,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:26,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:27,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:28,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:29,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:30,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:31,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:32,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:33,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:34,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:35,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:36,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:37,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:38,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:39,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:40,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:41,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:42,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:43,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:44,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:45,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:46,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:47,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:48,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:49,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:50,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:51,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:52,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:53,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:54,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:55,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:56,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:57,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:58,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:55:59,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:56:00,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 15:57:34,973 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 15:57:34,973 - psychic_paper | DEBUG : 1012 - Tasks aren't cool.
+2019-11-08 15:57:34,973 - psychic_paper | DEBUG : 1014 - Finished with match check: False
+2019-11-08 15:57:34,973 - psychic_paper | DEBUG : 1031 - Not matched and timelord clocked in.  Emit 2
+2019-11-08 15:57:34,973 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 2
+2019-11-08 15:57:37,641 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 15:57:37,642 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 15:57:37,642 - psychic_paper | DEBUG : 1018 - match and timelord clocked in.  Emit 1
+2019-11-08 15:57:37,642 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 15:57:48,059 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 15:57:48,857 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 15:57:50,144 - psychic_paper | DEBUG : 1559 - Getting default selection from settings.
+2019-11-08 15:57:50,144 - psychic_paper | DEBUG : 1564 - Setting project to last project listed.
+2019-11-08 15:57:50,144 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 15:57:50,144 - psychic_paper | DEBUG : 1631 - None
+2019-11-08 15:57:50,332 - psychic_paper | DEBUG : 1589 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 15:57:50,334 - psychic_paper | DEBUG : 1603 - Setting entity to last saved entity
+2019-11-08 15:57:50,621 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 15:57:50,621 - psychic_paper | DEBUG : 1631 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 15:57:50,642 - psychic_paper | DEBUG : 1655 - Switching tasks...
+2019-11-08 15:57:50,727 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 0
+2019-11-08 15:57:50,940 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 15:57:50,940 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 15:57:50,941 - psychic_paper | DEBUG : 1044 - Timelord not clocked in.  Doesn't matter if it's matched.  Emit 0
+2019-11-08 15:57:50,941 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 0
+2019-11-08 15:57:50,943 - psychic_paper | DEBUG : 414 - Starting the main event listener loop...
+2019-11-08 15:57:51,417 - psychic_paper | DEBUG : 1241 - end_time: 2019-11-08 15:53:38-08:00
+2019-11-08 15:57:52,000 - psychic_paper | DEBUG : 1241 - end_time: 2019-11-08 15:53:38-08:00
+2019-11-08 15:57:53,000 - psychic_paper | DEBUG : 1241 - end_time: 2019-11-08 15:53:38-08:00
+2019-11-08 15:57:54,000 - psychic_paper | DEBUG : 1241 - end_time: 2019-11-08 15:53:38-08:00
+2019-11-08 15:57:55,000 - psychic_paper | DEBUG : 1241 - end_time: 2019-11-08 15:53:38-08:00
+2019-11-08 15:57:56,000 - psychic_paper | DEBUG : 1241 - end_time: 2019-11-08 15:53:38-08:00
+2019-11-08 15:57:57,000 - psychic_paper | DEBUG : 1241 - end_time: 2019-11-08 15:53:38-08:00
+2019-11-08 15:57:57,203 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:08:44,848 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 16:08:45,647 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 16:08:47,115 - psychic_paper | DEBUG : 1559 - Getting default selection from settings.
+2019-11-08 16:08:47,115 - psychic_paper | DEBUG : 1564 - Setting project to last project listed.
+2019-11-08 16:08:47,115 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 16:08:47,115 - psychic_paper | DEBUG : 1631 - None
+2019-11-08 16:08:47,440 - psychic_paper | DEBUG : 1589 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 16:08:47,440 - psychic_paper | DEBUG : 1603 - Setting entity to last saved entity
+2019-11-08 16:08:47,786 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 16:08:47,786 - psychic_paper | DEBUG : 1631 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 16:08:47,798 - psychic_paper | DEBUG : 1655 - Switching tasks...
+2019-11-08 16:08:47,882 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:08:48,062 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 16:08:48,062 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 16:08:48,062 - psychic_paper | DEBUG : 1018 - match and timelord clocked in.  Emit 1
+2019-11-08 16:08:48,062 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:08:48,063 - psychic_paper | DEBUG : 414 - Starting the main event listener loop...
+2019-11-08 16:11:01,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:14:35,221 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 16:14:36,125 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 16:14:37,710 - psychic_paper | DEBUG : 1559 - Getting default selection from settings.
+2019-11-08 16:14:37,710 - psychic_paper | DEBUG : 1564 - Setting project to last project listed.
+2019-11-08 16:14:37,710 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 16:14:37,710 - psychic_paper | DEBUG : 1631 - None
+2019-11-08 16:14:37,921 - psychic_paper | DEBUG : 1589 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 16:14:37,923 - psychic_paper | DEBUG : 1603 - Setting entity to last saved entity
+2019-11-08 16:14:38,213 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 16:14:38,213 - psychic_paper | DEBUG : 1631 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 16:14:38,226 - psychic_paper | DEBUG : 1655 - Switching tasks...
+2019-11-08 16:14:38,311 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:14:38,584 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 16:14:38,584 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 16:14:38,584 - psychic_paper | DEBUG : 1018 - match and timelord clocked in.  Emit 1
+2019-11-08 16:14:38,584 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:14:38,585 - psychic_paper | DEBUG : 414 - Starting the main event listener loop...
+2019-11-08 16:16:00,266 - psychic_paper | WARNING : 401 - Unknown exception!  Trying again. 'NoneType' object has no attribute 'connections'
+2019-11-08 16:18:42,401 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 16:18:43,461 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 16:18:45,082 - psychic_paper | DEBUG : 1559 - Getting default selection from settings.
+2019-11-08 16:18:45,082 - psychic_paper | DEBUG : 1564 - Setting project to last project listed.
+2019-11-08 16:18:45,084 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 16:18:45,084 - psychic_paper | DEBUG : 1631 - None
+2019-11-08 16:18:45,299 - psychic_paper | DEBUG : 1589 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 16:18:45,299 - psychic_paper | DEBUG : 1603 - Setting entity to last saved entity
+2019-11-08 16:18:45,573 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 16:18:45,573 - psychic_paper | DEBUG : 1631 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 16:18:45,592 - psychic_paper | DEBUG : 1655 - Switching tasks...
+2019-11-08 16:18:45,694 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:18:45,884 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 16:18:45,885 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 16:18:45,885 - psychic_paper | DEBUG : 1018 - match and timelord clocked in.  Emit 1
+2019-11-08 16:18:45,887 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:18:45,888 - psychic_paper | DEBUG : 414 - Starting the main event listener loop...
+2019-11-08 16:19:01,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:02,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:03,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:04,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:05,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:06,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:07,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:08,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:09,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:10,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:11,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:12,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:13,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:14,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:15,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:16,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:17,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:18,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:19,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:20,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:21,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:22,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:23,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:24,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:25,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:19:30,930 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 16:19:32,009 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 16:19:33,540 - psychic_paper | DEBUG : 1559 - Getting default selection from settings.
+2019-11-08 16:19:33,542 - psychic_paper | DEBUG : 1564 - Setting project to last project listed.
+2019-11-08 16:19:33,542 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 16:19:33,542 - psychic_paper | DEBUG : 1631 - None
+2019-11-08 16:19:33,726 - psychic_paper | DEBUG : 1589 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 16:19:33,726 - psychic_paper | DEBUG : 1603 - Setting entity to last saved entity
+2019-11-08 16:19:33,960 - psychic_paper | DEBUG : 1630 - Setting tasks...
+2019-11-08 16:19:33,961 - psychic_paper | DEBUG : 1631 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 16:19:33,973 - psychic_paper | DEBUG : 1655 - Switching tasks...
+2019-11-08 16:19:34,065 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:19:34,269 - psychic_paper | DEBUG : 992 - Switch state triggered
+2019-11-08 16:19:34,269 - psychic_paper | DEBUG : 1014 - Finished with match check: True
+2019-11-08 16:19:34,269 - psychic_paper | DEBUG : 1018 - match and timelord clocked in.  Emit 1
+2019-11-08 16:19:34,269 - psychic_paper | DEBUG : 1709 - clock_in_button_state message: 1
+2019-11-08 16:19:34,270 - psychic_paper | DEBUG : 414 - Starting the main event listener loop...
+2019-11-08 16:20:01,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:02,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:03,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:04,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:05,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:06,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:07,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:08,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:09,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:10,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:11,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:12,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:13,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:14,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:15,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:16,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:17,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:18,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:19,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:20,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:21,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:22,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:23,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:24,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:25,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:26,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:27,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:28,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:29,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:30,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:31,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:32,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:33,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:34,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:35,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:36,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:37,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:38,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:39,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:40,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:41,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:42,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:43,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:44,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:45,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:46,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:47,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:48,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:49,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:50,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:51,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:52,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:53,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:54,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:55,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:56,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:57,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:58,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:20:59,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:21:00,000 - psychic_paper | ERROR : 228 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-08 16:29:46,763 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 16:29:47,845 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 16:29:49,319 - psychic_paper | DEBUG : 1561 - Getting default selection from settings.
+2019-11-08 16:29:49,319 - psychic_paper | DEBUG : 1566 - Setting project to last project listed.
+2019-11-08 16:29:49,319 - psychic_paper | DEBUG : 1632 - Setting tasks...
+2019-11-08 16:29:49,319 - psychic_paper | DEBUG : 1633 - None
+2019-11-08 16:29:49,520 - psychic_paper | DEBUG : 1591 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 16:29:49,522 - psychic_paper | DEBUG : 1605 - Setting entity to last saved entity
+2019-11-08 16:29:49,770 - psychic_paper | DEBUG : 1632 - Setting tasks...
+2019-11-08 16:29:49,772 - psychic_paper | DEBUG : 1633 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 16:29:49,789 - psychic_paper | DEBUG : 1657 - Switching tasks...
+2019-11-08 16:29:49,878 - psychic_paper | DEBUG : 1711 - clock_in_button_state message: 1
+2019-11-08 16:29:50,073 - psychic_paper | DEBUG : 994 - Switch state triggered
+2019-11-08 16:29:50,075 - psychic_paper | DEBUG : 1016 - Finished with match check: True
+2019-11-08 16:29:50,075 - psychic_paper | DEBUG : 1020 - match and timelord clocked in.  Emit 1
+2019-11-08 16:29:50,075 - psychic_paper | DEBUG : 1711 - clock_in_button_state message: 1
+2019-11-08 16:29:50,075 - psychic_paper | DEBUG : 416 - Starting the main event listener loop...
+2019-11-08 16:31:59,486 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-08 16:32:00,924 - psychic_paper | DEBUG : 78 - Shotgun is connected.
+2019-11-08 16:32:02,266 - psychic_paper | DEBUG : 1561 - Getting default selection from settings.
+2019-11-08 16:32:02,266 - psychic_paper | DEBUG : 1566 - Setting project to last project listed.
+2019-11-08 16:32:02,266 - psychic_paper | DEBUG : 1632 - Setting tasks...
+2019-11-08 16:32:02,266 - psychic_paper | DEBUG : 1633 - None
+2019-11-08 16:32:02,437 - psychic_paper | DEBUG : 1591 - [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-08 16:32:02,437 - psychic_paper | DEBUG : 1605 - Setting entity to last saved entity
+2019-11-08 16:32:02,733 - psychic_paper | DEBUG : 1632 - Setting tasks...
+2019-11-08 16:32:02,733 - psychic_paper | DEBUG : 1633 - [{'content': 'Meeting', 'step': None, 'type': 'Task', 'id': 22828, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Training', 'step': None, 'type': 'Task', 'id': 22829, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Offsite', 'step': None, 'type': 'Task', 'id': 22830, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Sales', 'step': None, 'type': 'Task', 'id': 22831, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'SkillsDeveleopment', 'step': None, 'type': 'Task', 'id': 22832, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'VFXBreakdowns', 'step': None, 'type': 'Task', 'id': 22833, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Admin', 'step': None, 'type': 'Task', 'id': 22841, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Supervision', 'step': None, 'type': 'Task', 'id': 22842, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}, {'content': 'Pipeline', 'step': None, 'type': 'Task', 'id': 22843, 'entity': {'type': 'Asset', 'id': 6244, 'name': 'Overhead'}}]
+2019-11-08 16:32:02,752 - psychic_paper | DEBUG : 1657 - Switching tasks...
+2019-11-08 16:32:02,826 - psychic_paper | DEBUG : 1711 - clock_in_button_state message: 1
+2019-11-08 16:32:03,013 - psychic_paper | DEBUG : 994 - Switch state triggered
+2019-11-08 16:32:03,013 - psychic_paper | DEBUG : 1016 - Finished with match check: True
+2019-11-08 16:32:03,013 - psychic_paper | DEBUG : 1020 - match and timelord clocked in.  Emit 1
+2019-11-08 16:32:03,013 - psychic_paper | DEBUG : 1711 - clock_in_button_state message: 1
+2019-11-08 16:32:03,015 - psychic_paper | DEBUG : 416 - Starting the main event listener loop...
+2019-11-08 16:36:01,469 - psychic_paper | ERROR : 230 - Failed to update: 'NoneType' object has no attribute 'date'
