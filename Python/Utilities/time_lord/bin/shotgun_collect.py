@@ -106,8 +106,9 @@ class sg_data(object):
             self.logger.debug('Shots List: %s' % shots)
             return shots
 
-    def get_entity_tasks(self, entity_id=None, entity_name=None, proj_id=None):
+    def get_entity_tasks(self, entity_id=None, entity_name=None, proj_id=None, t=0):
         if entity_id:
+            print('Getting entity tasks...f')
             self.logger.info('Getting tasks for entity ID %s...' % entity_id)
             entity_type = self.get_entity_type(proj_id=proj_id, entity_name=entity_name)
             filters = [
@@ -125,7 +126,10 @@ class sg_data(object):
                 self.logger.debug('Shotgun failure of some sort: %s' % e)
                 self.logger.debug('Trying again...')
                 time.sleep(2)
-                tasks = self.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
+                t += 1
+                if t > 10:
+                    return None
+                tasks = self.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id, t=t)
 
             self.logger.info('Tasks collected')
             self.logger.debug('Tasks List: %s' % tasks)
