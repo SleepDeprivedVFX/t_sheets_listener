@@ -510,7 +510,7 @@ class time_machine(QtCore.QThread):
 # ------------------------------------------------------------------------------------------------------
 # Primary Tools
 # ------------------------------------------------------------------------------------------------------
-class time_lord(QtCore.QObject):
+class time_lord(QtCore.QThread):
     """
     The Time Lord method is the main set of tools for updating the UI and processing events.
     It is not threaded or timed, but simply runs commands when called.
@@ -518,7 +518,7 @@ class time_lord(QtCore.QObject):
     """
     # TODO: Check through all of this and make sure all the signals work!
     def __init__(self, parent=None):
-        QtCore.QObject.__init__(self, parent)
+        QtCore.QThread.__init__(self, parent)
         self.time_signal = time_signals()
         self.kill_it = False
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
@@ -923,6 +923,7 @@ class time_lord_ui(QtGui.QMainWindow):
         # self.time_lord.time_signal.update.emit(data)
 
         # Start the engines
+        self.time_lord.start()
         self.time_engine.start()
         self.time_machine.start()
 

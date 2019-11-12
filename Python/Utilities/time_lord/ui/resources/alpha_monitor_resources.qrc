@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="bg">
+    <file>pixel.png</file>
+    <file>Alpha_Monitor_background_drk.png</file>
+    <file>Alpha_Monitor_background.png</file>
+  </qresource>
+</RCC>

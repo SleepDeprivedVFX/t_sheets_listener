@@ -355,6 +355,7 @@ class continuum(object):
                 self.logger.error('Time sheet failed to acquire: %s' % e)
                 timesheets = None
             if timesheets:
+                print('DT TIMESHEETS:%s' % timesheets)
                 for timesheet in timesheets:
                     if not self.aint_today(timesheet['sg_task_start']):
                         if timesheet['sg_task_end']:
