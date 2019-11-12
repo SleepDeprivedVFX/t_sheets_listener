@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_alpha_payroll_collector.ui'
 #
-# Created: Tue Nov 12 10:47:24 2019
+# Created: Tue Nov 12 12:07:37 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -14,8 +14,8 @@ class Ui_QuickPayroll(object):
         QuickPayroll.setObjectName("QuickPayroll")
         QuickPayroll.resize(789, 510)
         QuickPayroll.setMinimumSize(QtCore.QSize(789, 510))
-        QuickPayroll.setStyleSheet("background-color: rgb(64, 72, 53);\n"
-"border-image: url(:/bg/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;\n"
+        QuickPayroll.setStyleSheet("border-image: url(:/bg/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;\n"
+"background-color: rgb(64, 72, 53);\n"
 "color: rgba(133, 208, 120, 200);\n"
 "font: 75 16pt \"System\";")
         self.verticalLayout_3 = QtGui.QVBoxLayout(QuickPayroll)

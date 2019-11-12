@@ -20,8 +20,8 @@
    <string>Time Lord Alpha Payroll Collector</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(64, 72, 53);
-border-image: url(:/bg/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;
+   <string notr="true">border-image: url(:/bg/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;
+background-color: rgb(64, 72, 53);
 color: rgba(133, 208, 120, 200);
 font: 75 16pt &quot;System&quot;;</string>
   </property>
