@@ -206,4 +206,4 @@ class Ui_QuickPayroll(object):
 "Panida Umrapal   | Coord     | Salary ...............................................................................................................80\n"
 "Steve Suh            | Artist       | Hourly ...............................................................................................................74.8", None, QtGui.QApplication.UnicodeUTF8))
 
-from ui.resources import alpha_monitor_resources_rc
+from resources import alpha_monitor_resources_rc

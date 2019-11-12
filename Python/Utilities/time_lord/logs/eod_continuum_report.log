@@ -1,8 +1,0 @@
-2019-11-11 19:50:45,563 - eod_continuum | INFO : 59 - Continuum Activated!
-2019-11-11 19:50:45,951 - eod_continuum | INFO : 475 - Looking to see if Adam Benson is clocked in....
-2019-11-11 20:05:46,000 - eod_continuum | INFO : 475 - Looking to see if Adam Benson is clocked in....
-2019-11-11 20:05:46,201 - eod_continuum | INFO : 160 - Finding the last timesheet for Adam Benson
-2019-11-11 20:05:46,201 - eod_continuum | DEBUG : 162 - USER ID: 41
-2019-11-11 20:05:46,286 - eod_continuum | DEBUG : 180 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 21357, 'name': 'design.adamb'}, 'project': {'type': 'Project', 'id': 362, 'name': 'StressTest'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-11', 'type': 'TimeLog', 'id': 1881, 'sg_task_start': datetime.datetime(2019, 11, 11, 15, 55, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000357B6A0>)}
-2019-11-11 20:05:46,288 - eod_continuum | DEBUG : 208 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 21357, 'name': 'design.adamb'}, 'project': {'type': 'Project', 'id': 362, 'name': 'StressTest'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-11', 'type': 'TimeLog', 'id': 1881, 'sg_task_start': datetime.datetime(2019, 11, 11, 15, 55, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000357B6A0>)}
-2019-11-11 20:05:46,611 - eod_continuum | INFO : 216 - Timesheet updated.

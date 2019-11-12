@@ -18,6 +18,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import os
 import sys
+import shotgun_api3 as sgapi
 
 
 __author__ = 'Adam Benson'
@@ -48,5 +49,52 @@ logger.addHandler(fh)
 
 logger.info('Alpha Payroll Collection Utility has started.')
 
+# --------------------------------------------------------------------------------------------------
+# Setup Shotgun Connection
+# --------------------------------------------------------------------------------------------------
+sg = sgapi.Shotgun(config['sg_url'], config['sg_name'], config['sg_key'])
+logger.debug('Shotgun is connected.')
+
+# --------------------------------------------------------------------------------------------------
+# Connect Time Lord Components
+# --------------------------------------------------------------------------------------------------
+# setup continuum
+tl_time = continuum(sg, config=config)
+
+# Setup and get users
+users = companions(sg, config=config)
+user = users.get_user_from_computer()
+
+# setup shotgun data connection
+sg_data = shotgun_collect.sg_data(sg, config=config)
+
+
+# ------------------------------------------------------------------------------------------------
+# Signal Emitters
+# ------------------------------------------------------------------------------------------------
+class payroll_signals(QtCore.QObject):
+    output_monitor = QtCore.Signal(str)
+
+
+class payroll_engine(QtCore.QThread):
+    # Main Worker thread.
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+
+
+class payroll_ui(QtGui.QWidget):
+    def __init__(self, parent=None):
+        QtGui.QWidget.__init__(self, parent)
+
+        self.ui = apc.Ui_QuickPayroll()
+        self.ui.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+
+
+if __name__ == '__main__':
+    app = QtGui.QApplication(sys.argv)
+    w = payroll_ui()
+    w.show()
+    sys.exit(app.exec_())
 
 
