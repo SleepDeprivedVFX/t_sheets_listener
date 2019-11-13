@@ -619,3 +619,45 @@ class continuum(object):
                 return empties
 
         return False
+
+    def get_user_total_in_range(self, user=None, start=None, end=None, lunch_id=None, break_id=None):
+        total_duration = 0.0
+        if user and start and end:
+            print('User: %s' % user)
+            print('Start: %s' % start)
+            print('End: %s' % end)
+
+            start = parser.parse(start)
+            end = parser.parse(end)
+
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user}],
+                {
+                    "filter_operator": "all",
+                    "filters": [
+                        ['sg_task_start', 'greater_than', start],
+                        ['sg_task_end', 'less_than', end]
+                    ]
+                },
+                ['duration', 'greater_than', 0.0]
+            ]
+            if lunch_id:
+                filters.append(
+                    ['entity', 'is_not', {'type': 'Task', 'id': lunch_id}]
+                )
+            if break_id:
+                filters.append(
+                    ['entity', 'is_not', {'type': 'Task', 'id': break_id}]
+                )
+            fields = [
+                'user',
+                'duration',
+                'sg_task_start',
+                'sg_task_end'
+            ]
+            get_timesheets = self.sg.find('TimeLog', filters, fields)
+            if get_timesheets:
+                for timesheet in get_timesheets:
+                    total_duration += (timesheet['duration'] / 60)
+        return total_duration
+

@@ -180,13 +180,13 @@ class Ui_QuickPayroll(object):
 "border-image: url(:/bg/pixel.png);")
         self.dashed_line_2.setObjectName("dashed_line_2")
         self.verticalLayout_3.addWidget(self.dashed_line_2)
-        self.plainTextEdit = QtGui.QPlainTextEdit(QuickPayroll)
-        self.plainTextEdit.setStyleSheet("background-color: rgba(83, 91, 74, 0);\n"
+        self.screen_output = QtGui.QPlainTextEdit(QuickPayroll)
+        self.screen_output.setStyleSheet("background-color: rgba(83, 91, 74, 0);\n"
 "border-image: url(:/bg/pixel.png);")
-        self.plainTextEdit.setFrameShape(QtGui.QFrame.NoFrame)
-        self.plainTextEdit.setFrameShadow(QtGui.QFrame.Plain)
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.verticalLayout_3.addWidget(self.plainTextEdit)
+        self.screen_output.setFrameShape(QtGui.QFrame.NoFrame)
+        self.screen_output.setFrameShadow(QtGui.QFrame.Plain)
+        self.screen_output.setObjectName("screen_output")
+        self.verticalLayout_3.addWidget(self.screen_output)
 
         self.retranslateUi(QuickPayroll)
         QtCore.QMetaObject.connectSlotsByName(QuickPayroll)
@@ -196,13 +196,13 @@ class Ui_QuickPayroll(object):
         self.main_title.setText(QtGui.QApplication.translate("QuickPayroll", "Time Lord Alpha Payroll Collector", None, QtGui.QApplication.UnicodeUTF8))
         self.dashed_line.setText(QtGui.QApplication.translate("QuickPayroll", "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", None, QtGui.QApplication.UnicodeUTF8))
         self.file_output_label.setText(QtGui.QApplication.translate("QuickPayroll", "File Output (.xls, .xlsx)", None, QtGui.QApplication.UnicodeUTF8))
-        self.file_output_btn.setText(QtGui.QApplication.translate("QuickPayroll", "Browse...", None, QtGui.QApplication.UnicodeUTF8))
+        self.file_output_btn.setText(QtGui.QApplication.translate("QuickPayroll", "Save As...", None, QtGui.QApplication.UnicodeUTF8))
         self.start_date_label.setText(QtGui.QApplication.translate("QuickPayroll", "Start Date", None, QtGui.QApplication.UnicodeUTF8))
         self.end_date_label.setText(QtGui.QApplication.translate("QuickPayroll", "End Date", None, QtGui.QApplication.UnicodeUTF8))
-        self.cancel_btn.setText(QtGui.QApplication.translate("QuickPayroll", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
+        self.cancel_btn.setText(QtGui.QApplication.translate("QuickPayroll", "Close", None, QtGui.QApplication.UnicodeUTF8))
         self.process_btn.setText(QtGui.QApplication.translate("QuickPayroll", "Process and Save", None, QtGui.QApplication.UnicodeUTF8))
         self.dashed_line_2.setText(QtGui.QApplication.translate("QuickPayroll", "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", None, QtGui.QApplication.UnicodeUTF8))
-        self.plainTextEdit.setPlainText(QtGui.QApplication.translate("QuickPayroll", "Adam Benson       | Admin    | Salary ...............................................................................................................80\n"
+        self.screen_output.setPlainText(QtGui.QApplication.translate("QuickPayroll", "Adam Benson       | Admin    | Salary ...............................................................................................................80\n"
 "Panida Umrapal   | Coord     | Salary ...............................................................................................................80\n"
 "Steve Suh            | Artist       | Hourly ...............................................................................................................74.8", None, QtGui.QApplication.UnicodeUTF8))
 

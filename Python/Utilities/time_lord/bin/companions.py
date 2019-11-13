@@ -70,7 +70,7 @@ class companions(object):
                 'projects',
                 'groups',
                 'id',
-                'sg_hourly'
+                'sg_hourly',
             ]
             find_user = self.sg.find_one('HumanUser', filters, fields)
             return find_user
@@ -119,5 +119,29 @@ class companions(object):
                     except Exception as e:
                         self.logger.error('Group Collection failed: %s' % e)
         return admins
+
+    def get_all_users(self):
+        """
+        Collect all the active users in Shotgun
+        :return: (list) or (dict)
+        """
+        get_users = None
+        filters = [
+            ['sg_status_list', 'is', 'act'],
+            ['permission_rule_set', 'is_not', {'type': 'PermissionRuleSet', 'id': 52}]
+        ]
+        fields = [
+            'name',
+            'email',
+            'permission_rule_set',
+            'sg_computer',
+            'projects',
+            'groups',
+            'sg_hourly'
+        ]
+        get_users = self.sg.find('HumanUser', filters, fields)
+
+        return get_users
+
 
 

@@ -68,12 +68,15 @@ user = users.get_user_from_computer()
 # setup shotgun data connection
 sg_data = shotgun_collect.sg_data(sg, config=config)
 
+lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
+                                    task_name=config['lunch'])
 
 # ------------------------------------------------------------------------------------------------
 # Signal Emitters
 # ------------------------------------------------------------------------------------------------
 class payroll_signals(QtCore.QObject):
     output_monitor = QtCore.Signal(str)
+    get_payroll = QtCore.Signal(dict)
 
 
 class payroll_engine(QtCore.QThread):
@@ -81,14 +84,154 @@ class payroll_engine(QtCore.QThread):
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
 
+        self.signals = payroll_signals()
+
+        # Connections
+        self.signals.get_payroll.connect(self.collect_payroll)
+
+    def collect_payroll(self, data={}):
+        if data:
+            print('Data: %s' % data)
+            output = data['output']
+            start = data['start']
+            end = data['end']
+
+            # Start the Excel Sheet
+            payroll_excel = xls.Workbook(output)
+            payroll = payroll_excel.add_worksheet()
+
+            # Formatting
+            bold = payroll_excel.add_format({'bold': True})
+            highlight = payroll_excel.add_format({'bg_color': 'yellow'})
+            heading = payroll_excel.add_format({'bg_color': '#CCFFFF'})
+
+            # First Row
+            payroll.write(0, 0, 'Summary report for %s through %s' % (start, end), bold)
+
+            # Third Row
+            payroll.write('A3', 'payroll_id', heading)
+            payroll.write('B3', 'type', heading)
+            payroll.write('C3', 'hours', heading)
+            payroll.write('D3', 'fname', heading)
+            payroll.write('E3', 'lname', heading)
+            payroll.write('F3', 'group_name', heading)
+            payroll.write('G3', 'start_date', heading)
+            payroll.write('H3', 'end_date', heading)
+
+            # start row for dynamic records
+            row = 4
+
+            all_users = users.get_all_users()
+            if all_users:
+                for u in all_users:
+                    # Get the basic data from Shotgun
+                    name = u['name']
+                    first_name = name.split(' ')[0]
+                    last_name = name.split(' ')[1]
+                    uid = u['id']
+                    get_group = u['permission_rule_set']['name']
+                    if get_group == 'Coordinator':
+                        get_group = 'Coord'
+                    elif get_group == 'Independent Artist':
+                        get_group = 'Artist'
+                    if u['sg_hourly']:
+                        u_type = 'REG'
+                    else:
+                        u_type = 'SAL'
+
+                    # Collect the total hours for the user
+                    user_total = tl_time.get_user_total_in_range(user=uid, start=start, end=end,
+                                                                 lunch_id=int(lunch_task['id']))
+                    payroll.write(row, 1, u_type)
+                    payroll.write(row, 2, user_total, highlight)
+                    payroll.write(row, 3, first_name)
+                    payroll.write(row, 4, last_name, highlight)
+                    payroll.write(row, 5, get_group)
+                    payroll.write(row, 6, start)
+                    payroll.write(row, 7, end)
+
+                    # Setup and send UI update
+                    name_out = (name + (' ' * 20))[:20]
+                    group_out = (get_group + (' ' * 10))[:8]
+                    type_out = (u_type + ' ' + ('.' * 110))[:110]
+                    out_msg = (name_out + '|' + group_out + '|' + type_out + str(user_total) + '\n')
+                    self.signals.output_monitor.emit(out_msg)
+
+                    # Iterate
+                    row += 1
+                row += 2
+                payroll.write(row, 0, 'Salary', bold)
+                row += 1
+                for u in all_users:
+                    if not u['sg_hourly']:
+                        payroll.write(row, 0, u['name'], highlight)
+                        row += 1
+
+            # Finish up the document.
+            payroll_excel.close()
+
 
 class payroll_ui(QtGui.QWidget):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
 
+        self.settings = QtCore.QSettings('Adam Benson', 'alpha_payroll_collector')
+        self.last_output = self.settings.value('last_output', '.')
+
+        self.engine = payroll_engine()
+        self.engine.start()
+
         self.ui = apc.Ui_QuickPayroll()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+
+        # Setup the connections.
+        self.ui.file_output_btn.clicked.connect(self.set_output_file)
+        self.ui.cancel_btn.clicked.connect(self.cancel)
+        self.ui.process_btn.clicked.connect(self.request_payroll)
+
+        # Defaults
+        self.ui.screen_output.clear()
+        self.guess_dates()
+
+        self.engine.signals.output_monitor.connect(self.update_monitor)
+
+    def guess_dates(self):
+        guess_end_date = (datetime.today() - timedelta(days=(datetime.today().isoweekday() % 7) + 1)).date()
+        guess_start_date = (guess_end_date - timedelta(days=13))
+        self.ui.start_date.setDate(guess_start_date)
+        self.ui.end_date.setDate(guess_end_date)
+
+    def cancel(self):
+        self.close()
+
+    def set_output_file(self):
+        output = QtGui.QFileDialog.getSaveFileName(self, 'Save File As', self.settings.value('last_output'),
+                                                   '*.xlsx *.xls')
+        if output[0]:
+            self.settings.setValue('last_output', output[0])
+            self.ui.file_output.setText(output[0])
+
+    def request_payroll(self):
+        output_file = self.ui.file_output.text()
+        if not output_file:
+            logger.warning('No File Output Set!')
+            return False
+        start_date = self.ui.start_date.text()
+        print('Start_date: %s' % start_date)
+        end_date = self.ui.end_date.text()
+        print('End_date: %s' % end_date)
+
+        request = {'output': output_file, 'start': start_date, 'end': end_date}
+        self.engine.signals.get_payroll.emit(request)
+
+    def update_monitor(self, monitor=None):
+        if monitor:
+            self.ui.screen_output.appendPlainText(monitor)
+
+    def closeEvent(self, *args, **kwargs):
+        if self.engine.isRunning():
+            self.engine.exit()
 
 
 if __name__ == '__main__':
