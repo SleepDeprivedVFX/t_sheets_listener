@@ -268,7 +268,6 @@ class payroll_ui(QtGui.QWidget):
             total_label.setText(total)
             self.ui.screen_output.setCellWidget(row, 4, total_label)
 
-
     def closeEvent(self, *args, **kwargs):
         if self.engine.isRunning():
             self.engine.exit()
