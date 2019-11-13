@@ -262,7 +262,7 @@ class payroll_ui(QtGui.QWidget):
             level_label.setText(level)
             self.ui.screen_output.setCellWidget(row, 2, level_label)
             dots = QtGui.QLabel()
-            dots.setText('.' * 120)
+            dots.setText('.' * 200)
             self.ui.screen_output.setCellWidget(row, 3, dots)
             total_label = QtGui.QLabel()
             total_label.setText(total)

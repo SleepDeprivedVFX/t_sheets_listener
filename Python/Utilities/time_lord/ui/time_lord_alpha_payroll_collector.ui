@@ -2,444 +2,487 @@
 <ui version="4.0">
  <class>QuickPayroll</class>
  <widget class="QWidget" name="QuickPayroll">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>789</width>
-    <height>510</height>
-   </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>789</width>
-    <height>510</height>
-   </size>
-  </property>
   <property name="windowTitle">
    <string>Time Lord Alpha Payroll Collector</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <property name="styleSheet">
-   <string notr="true">border-image: url(:/elements/elements/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;
-background-color: rgb(64, 72, 53);
+   <string notr="true">background-color: rgb(64, 72, 53);
 color: rgba(133, 208, 120, 200);
 font: 75 16pt &quot;System&quot;;</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
-   <item>
-    <widget class="QLabel" name="main_title">
-     <property name="styleSheet">
-      <string notr="true">font: 75 18pt &quot;System&quot;;
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1081</width>
+     <height>612</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1081</width>
+     <height>612</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1081</width>
+     <height>612</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame {
+	image: url(:/elements/elements/Alpha_Monitor_background_drk.png);
+	
+	border-color: rgb(0, 0, 0);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="main_title">
+        <property name="styleSheet">
+         <string notr="true">font: 75 18pt &quot;System&quot;;
+image: url(:/elements/elements/pixel.png);
+background-color: rgba(83, 91, 74, 0);</string>
+        </property>
+        <property name="text">
+         <string>Time Lord Alpha Payroll Collector</string>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources/alpha_monitor_resources.qrc">:/elements/elements/pixel.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="dashed_line">
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/elements/elements/pixel.png);</string>
-     </property>
-     <property name="text">
-      <string>Time Lord Alpha Payroll Collector</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="dashed_line">
-     <property name="styleSheet">
-      <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+image: url(:/elements/elements/pixel.png);</string>
+        </property>
+        <property name="text">
+         <string>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <spacer name="horizontalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>10</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="file_output_label">
+          <property name="styleSheet">
+           <string notr="true">
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/elements/elements/pixel.png);</string>
-     </property>
-     <property name="text">
-      <string>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <spacer name="horizontalSpacer_7">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>10</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="file_output_label">
-       <property name="styleSheet">
-        <string notr="true">
-background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
-       </property>
-       <property name="text">
-        <string>File Output (.xls, .xlsx)</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="file_output">
-       <property name="styleSheet">
-        <string notr="true">
+image: url(:/bg/pixel.png);</string>
+          </property>
+          <property name="text">
+           <string>File Output (.xls, .xlsx)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="file_output">
+          <property name="styleSheet">
+           <string notr="true">
 QLineEdit {
     border: 2px dashed rgb(64, 72, 53);
 	border-bottom-color: rgb(104, 208, 120);
     padding: 0 8px;
 	background-color: rgba(64, 72, 53, 0);
-	border-image: url(:/bg/pixel.png);
+	image: url(:/bg/pixel.png);
     selection-background-color: rgb(104, 208, 120);
 }</string>
-       </property>
-       <property name="frame">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="file_output_btn">
-       <property name="font">
-        <font>
-         <family>System</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="file_output_btn">
+          <property name="font">
+           <font>
+            <family>System</family>
+            <pointsize>16</pointsize>
+            <weight>9</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
 	background-color: rgb(83, 91, 74);
 	border-style: solid;
 	border-width: 2px;
 	background-color: rgba(83, 91, 74, 0);
-	border-image: url(:/bg/pixel.png);
+	image: url(:/bg/pixel.png);
 	border-color: rgb(133, 208, 120);
 	border-radius: 7px;
 	padding: 2px;
 }</string>
-       </property>
-       <property name="text">
-        <string>Save As...</string>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>10</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="start_date_label">
-         <property name="styleSheet">
-          <string notr="true">
+          </property>
+          <property name="text">
+           <string>Save As...</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>10</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="start_date_label">
+            <property name="styleSheet">
+             <string notr="true">
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
-         </property>
-         <property name="text">
-          <string>Start Date</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QDateEdit" name="start_date">
-         <property name="styleSheet">
-          <string notr="true">border: 1px solid rgb(104, 208, 120);
+image: url(:/bg/pixel.png);</string>
+            </property>
+            <property name="text">
+             <string>Start Date</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="start_date">
+            <property name="styleSheet">
+             <string notr="true">border: 1px solid rgb(104, 208, 120);
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
-         </property>
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="calendarPopup">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>100</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="end_date_label">
-         <property name="styleSheet">
-          <string notr="true">
+image: url(:/bg/pixel.png);</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>100</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="end_date_label">
+            <property name="styleSheet">
+             <string notr="true">
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
-         </property>
-         <property name="text">
-          <string>End Date</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QDateEdit" name="end_date">
-         <property name="styleSheet">
-          <string notr="true">border: 1px solid rgb(104, 208, 120);
+image: url(:/bg/pixel.png);</string>
+            </property>
+            <property name="text">
+             <string>End Date</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="end_date">
+            <property name="styleSheet">
+             <string notr="true">border: 1px solid rgb(104, 208, 120);
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
-         </property>
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="calendarPopup">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_4">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <spacer name="horizontalSpacer_5">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="cancel_btn">
-       <property name="font">
-        <font>
-         <family>System</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
+image: url(:/bg/pixel.png);</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="cancel_btn">
+          <property name="font">
+           <font>
+            <family>System</family>
+            <pointsize>16</pointsize>
+            <weight>9</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
 	background-color: rgba(83, 91, 74, 0);
-	border-image: url(:/bg/pixel.png);
+	image: url(:/bg/pixel.png);
 	border-style: solid;
 	border-width: 2px;
 	border-color: rgb(133, 208, 120);
 	border-radius: 7px;
 	padding: 2px;
 }</string>
-       </property>
-       <property name="text">
-        <string>Close</string>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_6">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="process_btn">
-       <property name="font">
-        <font>
-         <family>System</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
+          </property>
+          <property name="text">
+           <string>Close</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="process_btn">
+          <property name="font">
+           <font>
+            <family>System</family>
+            <pointsize>16</pointsize>
+            <weight>9</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
 	background-color: rgba(83, 91, 74, 0);
-	border-image: url(:/bg/pixel.png);
+	image: url(:/bg/pixel.png);
 	border-style: solid;
 	border-width: 2px;
 	border-color: rgb(133, 208, 120);
 	border-radius: 7px;
 	padding: 2px;
 }</string>
-       </property>
-       <property name="text">
-        <string>Process and Save</string>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_8">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="dashed_line_2">
-     <property name="styleSheet">
-      <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+          </property>
+          <property name="text">
+           <string>Process and Save</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="dashed_line_2">
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
-     </property>
-     <property name="text">
-      <string>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTableWidget" name="screen_output">
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/elements/elements/pixel.png);
+image: url(:/bg/pixel.png);</string>
+        </property>
+        <property name="text">
+         <string>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="screen_output">
+        <property name="styleSheet">
+         <string notr="true">image: url(:/elements/elements/pixel.png);
 background-color: rgba(0, 0, 0, 0);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="showGrid">
-      <bool>false</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::NoPen</enum>
-     </property>
-     <attribute name="horizontalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>Name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Level</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>New Column</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Sep</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Total</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-  </layout>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <property name="gridStyle">
+         <enum>Qt::NoPen</enum>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Level</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>New Column</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Sep</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Total</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>file_output_btn</zorder>
+  <zorder>file_output</zorder>
+  <zorder>start_date_label</zorder>
+  <zorder>start_date</zorder>
+  <zorder>end_date_label</zorder>
+  <zorder>end_date</zorder>
+  <zorder>process_btn</zorder>
+  <zorder>cancel_btn</zorder>
+  <zorder>file_output_label</zorder>
+  <zorder>horizontalSpacer_2</zorder>
+  <zorder>horizontalSpacer_3</zorder>
+  <zorder>horizontalSpacer_4</zorder>
  </widget>
  <resources>
   <include location="resources/alpha_monitor_resources.qrc"/>
