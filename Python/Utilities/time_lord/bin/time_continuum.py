@@ -623,10 +623,6 @@ class continuum(object):
     def get_user_total_in_range(self, user=None, start=None, end=None, lunch_id=None, break_id=None):
         total_duration = 0.0
         if user and start and end:
-            print('User: %s' % user)
-            print('Start: %s' % start)
-            print('End: %s' % end)
-
             start = parser.parse(start)
             end = parser.parse(end)
 
@@ -658,6 +654,6 @@ class continuum(object):
             get_timesheets = self.sg.find('TimeLog', filters, fields)
             if get_timesheets:
                 for timesheet in get_timesheets:
-                    total_duration += (timesheet['duration'] / 60)
+                    total_duration += (float(timesheet['duration']) / 60.0)
         return total_duration
 

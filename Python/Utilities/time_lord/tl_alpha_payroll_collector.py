@@ -13,12 +13,12 @@ from bin import configuration
 from bin import shotgun_collect
 from bin.time_continuum import continuum
 from datetime import datetime, timedelta
-from dateutil import parser
 import logging
 from logging.handlers import TimedRotatingFileHandler
 import os
 import sys
 import shotgun_api3 as sgapi
+import webbrowser
 
 
 __author__ = 'Adam Benson'
@@ -75,7 +75,7 @@ lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
 # Signal Emitters
 # ------------------------------------------------------------------------------------------------
 class payroll_signals(QtCore.QObject):
-    output_monitor = QtCore.Signal(str)
+    output_monitor = QtCore.Signal(dict)
     get_payroll = QtCore.Signal(dict)
 
 
@@ -101,6 +101,7 @@ class payroll_engine(QtCore.QThread):
             payroll = payroll_excel.add_worksheet()
 
             # Formatting
+            payroll.set_column('A:A', 20)
             bold = payroll_excel.add_format({'bold': True})
             highlight = payroll_excel.add_format({'bg_color': 'yellow'})
             heading = payroll_excel.add_format({'bg_color': '#CCFFFF'})
@@ -143,7 +144,7 @@ class payroll_engine(QtCore.QThread):
                     user_total = tl_time.get_user_total_in_range(user=uid, start=start, end=end,
                                                                  lunch_id=int(lunch_task['id']))
                     payroll.write(row, 1, u_type)
-                    payroll.write(row, 2, user_total, highlight)
+                    payroll.write(row, 2, round(user_total, 2), highlight)
                     payroll.write(row, 3, first_name)
                     payroll.write(row, 4, last_name, highlight)
                     payroll.write(row, 5, get_group)
@@ -151,10 +152,12 @@ class payroll_engine(QtCore.QThread):
                     payroll.write(row, 7, end)
 
                     # Setup and send UI update
-                    name_out = (name + (' ' * 20))[:20]
-                    group_out = (get_group + (' ' * 10))[:8]
-                    type_out = (u_type + ' ' + ('.' * 110))[:110]
-                    out_msg = (name_out + '|' + group_out + '|' + type_out + str(user_total) + '\n')
+                    out_msg = {
+                        'name': name,
+                        'type': u_type,
+                        'level': get_group,
+                        'total': round(user_total, 2)
+                    }
                     self.signals.output_monitor.emit(out_msg)
 
                     # Iterate
@@ -170,6 +173,9 @@ class payroll_engine(QtCore.QThread):
             # Finish up the document.
             payroll_excel.close()
 
+            # Open the Excel sheet
+            webbrowser.open(output)
+
 
 class payroll_ui(QtGui.QWidget):
     def __init__(self, parent=None):
@@ -184,6 +190,14 @@ class payroll_ui(QtGui.QWidget):
         self.ui = apc.Ui_QuickPayroll()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+
+        # Setup column widths
+        header = self.ui.screen_output.horizontalHeader()
+        header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
+        header.setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
+        header.setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
+        header.setResizeMode(3, QtGui.QHeaderView.Stretch)
+        header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
 
         # Setup the connections.
         self.ui.file_output_btn.clicked.connect(self.set_output_file)
@@ -227,7 +241,33 @@ class payroll_ui(QtGui.QWidget):
 
     def update_monitor(self, monitor=None):
         if monitor:
-            self.ui.screen_output.appendPlainText(monitor)
+            name = monitor['name']
+            wage_type = ' %s ' % monitor['type']
+            level = ' %s ' % monitor['level']
+            total = str(monitor['total'])
+
+            row_count = self.ui.screen_output.rowCount()
+            if row_count > 1:
+                row = row_count - 1
+            else:
+                row = 0
+            self.ui.screen_output.insertRow(row)
+            name_label = QtGui.QLabel()
+            name_label.setText(name)
+            self.ui.screen_output.setCellWidget(row, 0, name_label)
+            wage_label = QtGui.QLabel()
+            wage_label.setText(wage_type)
+            self.ui.screen_output.setCellWidget(row, 1, wage_label)
+            level_label = QtGui.QLabel()
+            level_label.setText(level)
+            self.ui.screen_output.setCellWidget(row, 2, level_label)
+            dots = QtGui.QLabel()
+            dots.setText('.' * 120)
+            self.ui.screen_output.setCellWidget(row, 3, dots)
+            total_label = QtGui.QLabel()
+            total_label.setText(total)
+            self.ui.screen_output.setCellWidget(row, 4, total_label)
+
 
     def closeEvent(self, *args, **kwargs):
         if self.engine.isRunning():

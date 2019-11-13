@@ -20,7 +20,7 @@
    <string>Time Lord Alpha Payroll Collector</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">border-image: url(:/bg/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;
+   <string notr="true">border-image: url(:/elements/elements/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;
 background-color: rgb(64, 72, 53);
 color: rgba(133, 208, 120, 200);
 font: 75 16pt &quot;System&quot;;</string>
@@ -31,7 +31,7 @@ font: 75 16pt &quot;System&quot;;</string>
      <property name="styleSheet">
       <string notr="true">font: 75 18pt &quot;System&quot;;
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
+border-image: url(:/elements/elements/pixel.png);</string>
      </property>
      <property name="text">
       <string>Time Lord Alpha Payroll Collector</string>
@@ -43,7 +43,7 @@ border-image: url(:/bg/pixel.png);</string>
      <property name="styleSheet">
       <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
 background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
+border-image: url(:/elements/elements/pixel.png);</string>
      </property>
      <property name="text">
       <string>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </string>
@@ -125,7 +125,7 @@ QLineEdit {
 }</string>
        </property>
        <property name="text">
-        <string>Browse...</string>
+        <string>Save As...</string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -302,7 +302,7 @@ border-image: url(:/bg/pixel.png);</string>
 }</string>
        </property>
        <property name="text">
-        <string>Cancel</string>
+        <string>Close</string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -389,22 +389,54 @@ border-image: url(:/bg/pixel.png);</string>
     </widget>
    </item>
    <item>
-    <widget class="QPlainTextEdit" name="plainTextEdit">
+    <widget class="QTableWidget" name="screen_output">
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(83, 91, 74, 0);
-border-image: url(:/bg/pixel.png);</string>
+      <string notr="true">border-image: url(:/elements/elements/pixel.png);
+background-color: rgba(0, 0, 0, 0);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
+     <property name="showGrid">
+      <bool>false</bool>
      </property>
-     <property name="plainText">
-      <string>Adam Benson       | Admin    | Salary ...............................................................................................................80
-Panida Umrapal   | Coord     | Salary ...............................................................................................................80
-Steve Suh            | Artist       | Hourly ...............................................................................................................74.8</string>
+     <property name="gridStyle">
+      <enum>Qt::NoPen</enum>
      </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Level</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>New Column</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Sep</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Total</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>

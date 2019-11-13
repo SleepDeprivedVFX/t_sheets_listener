@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_alpha_payroll_collector.ui'
 #
-# Created: Tue Nov 12 12:07:37 2019
+# Created: Tue Nov 12 17:55:43 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -14,7 +14,7 @@ class Ui_QuickPayroll(object):
         QuickPayroll.setObjectName("QuickPayroll")
         QuickPayroll.resize(789, 510)
         QuickPayroll.setMinimumSize(QtCore.QSize(789, 510))
-        QuickPayroll.setStyleSheet("border-image: url(:/bg/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;\n"
+        QuickPayroll.setStyleSheet("border-image: url(:/elements/elements/Alpha_Monitor_background_drk.png) 0 0 0 0 stretch stretch;\n"
 "background-color: rgb(64, 72, 53);\n"
 "color: rgba(133, 208, 120, 200);\n"
 "font: 75 16pt \"System\";")
@@ -180,12 +180,28 @@ class Ui_QuickPayroll(object):
 "border-image: url(:/bg/pixel.png);")
         self.dashed_line_2.setObjectName("dashed_line_2")
         self.verticalLayout_3.addWidget(self.dashed_line_2)
-        self.screen_output = QtGui.QPlainTextEdit(QuickPayroll)
-        self.screen_output.setStyleSheet("background-color: rgba(83, 91, 74, 0);\n"
-"border-image: url(:/bg/pixel.png);")
+        self.screen_output = QtGui.QTableWidget(QuickPayroll)
+        self.screen_output.setStyleSheet("border-image: url(:/elements/elements/pixel.png);\n"
+"background-color: rgba(0, 0, 0, 0);")
         self.screen_output.setFrameShape(QtGui.QFrame.NoFrame)
-        self.screen_output.setFrameShadow(QtGui.QFrame.Plain)
+        self.screen_output.setShowGrid(False)
+        self.screen_output.setGridStyle(QtCore.Qt.NoPen)
         self.screen_output.setObjectName("screen_output")
+        self.screen_output.setColumnCount(5)
+        self.screen_output.setRowCount(0)
+        item = QtGui.QTableWidgetItem()
+        self.screen_output.setHorizontalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.screen_output.setHorizontalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.screen_output.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.screen_output.setHorizontalHeaderItem(3, item)
+        item = QtGui.QTableWidgetItem()
+        self.screen_output.setHorizontalHeaderItem(4, item)
+        self.screen_output.horizontalHeader().setVisible(False)
+        self.screen_output.horizontalHeader().setStretchLastSection(False)
+        self.screen_output.verticalHeader().setVisible(False)
         self.verticalLayout_3.addWidget(self.screen_output)
 
         self.retranslateUi(QuickPayroll)
@@ -202,8 +218,10 @@ class Ui_QuickPayroll(object):
         self.cancel_btn.setText(QtGui.QApplication.translate("QuickPayroll", "Close", None, QtGui.QApplication.UnicodeUTF8))
         self.process_btn.setText(QtGui.QApplication.translate("QuickPayroll", "Process and Save", None, QtGui.QApplication.UnicodeUTF8))
         self.dashed_line_2.setText(QtGui.QApplication.translate("QuickPayroll", "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", None, QtGui.QApplication.UnicodeUTF8))
-        self.screen_output.setPlainText(QtGui.QApplication.translate("QuickPayroll", "Adam Benson       | Admin    | Salary ...............................................................................................................80\n"
-"Panida Umrapal   | Coord     | Salary ...............................................................................................................80\n"
-"Steve Suh            | Artist       | Hourly ...............................................................................................................74.8", None, QtGui.QApplication.UnicodeUTF8))
+        self.screen_output.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("QuickPayroll", "Name", None, QtGui.QApplication.UnicodeUTF8))
+        self.screen_output.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("QuickPayroll", "Level", None, QtGui.QApplication.UnicodeUTF8))
+        self.screen_output.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("QuickPayroll", "New Column", None, QtGui.QApplication.UnicodeUTF8))
+        self.screen_output.horizontalHeaderItem(3).setText(QtGui.QApplication.translate("QuickPayroll", "Sep", None, QtGui.QApplication.UnicodeUTF8))
+        self.screen_output.horizontalHeaderItem(4).setText(QtGui.QApplication.translate("QuickPayroll", "Total", None, QtGui.QApplication.UnicodeUTF8))
 
 from resources import alpha_monitor_resources_rc

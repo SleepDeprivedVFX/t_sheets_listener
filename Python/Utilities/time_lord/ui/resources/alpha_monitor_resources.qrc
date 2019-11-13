@@ -4,4 +4,8 @@
     <file>Alpha_Monitor_background_drk.png</file>
     <file>Alpha_Monitor_background.png</file>
   </qresource>
+  <qresource prefix="elements">
+    <file>elements/Alpha_Monitor_background_drk.png</file>
+    <file>elements/pixel.png</file>
+  </qresource>
 </RCC>

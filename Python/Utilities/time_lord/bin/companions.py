@@ -128,7 +128,8 @@ class companions(object):
         get_users = None
         filters = [
             ['sg_status_list', 'is', 'act'],
-            ['permission_rule_set', 'is_not', {'type': 'PermissionRuleSet', 'id': 52}]
+            ['permission_rule_set', 'is_not', {'type': 'PermissionRuleSet', 'id': 52}],
+            ['id', 'is_not', 24]
         ]
         fields = [
             'name',
