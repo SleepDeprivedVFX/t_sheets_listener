@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_alpha_payroll_collector.ui'
 #
-# Created: Wed Nov 13 10:57:01 2019
+# Created: Wed Nov 13 11:37:08 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,6 +12,8 @@ from PySide import QtCore, QtGui
 class Ui_QuickPayroll(object):
     def setupUi(self, QuickPayroll):
         QuickPayroll.setObjectName("QuickPayroll")
+        QuickPayroll.setMinimumSize(QtCore.QSize(1081, 611))
+        QuickPayroll.setMaximumSize(QtCore.QSize(1081, 611))
         QuickPayroll.setAutoFillBackground(False)
         QuickPayroll.setStyleSheet("background-color: rgb(64, 72, 53);\n"
 "color: rgba(133, 208, 120, 200);\n"
@@ -81,8 +83,8 @@ class Ui_QuickPayroll(object):
 "    background-color: rgb(83, 91, 74);\n"
 "    border-style: solid;\n"
 "    border-width: 2px;\n"
-"    background-color: rgba(83, 91, 74, 0);\n"
 "    image: url(:/bg/pixel.png);\n"
+"    background-color: rgba(83, 91, 74, 0);\n"
 "    border-color: rgb(133, 208, 120);\n"
 "    border-radius: 7px;\n"
 "    padding: 2px;\n"
