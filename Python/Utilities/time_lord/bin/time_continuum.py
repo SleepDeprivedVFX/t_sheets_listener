@@ -355,7 +355,6 @@ class continuum(object):
                 self.logger.error('Time sheet failed to acquire: %s' % e)
                 timesheets = None
             if timesheets:
-                print('DT TIMESHEETS:%s' % timesheets)
                 for timesheet in timesheets:
                     if not self.aint_today(timesheet['sg_task_start']):
                         if timesheet['sg_task_end']:
@@ -620,6 +619,41 @@ class continuum(object):
 
         return False
 
+    def timesheet_consistency_cleanup(self, user=None, lunch_id=None, break_id=None):
+        end = datetime.datetime.now()
+        start = (end - datetime.timedelta(days=4))
+        filters = [
+            ['user', 'is', {'type': 'HumanUser', 'id': user['id']}],
+            {
+                "filter_operator": "all",
+                "filters": [
+                    ['sg_task_start', 'greater_than', start],
+                    ['sg_task_end', 'less_than', end]
+                ]
+            }
+        ]
+        if lunch_id:
+            filters.append(
+                ['entity', 'is_not', {'type': 'Task', 'id': lunch_id}]
+            )
+        if break_id:
+            filters.append(
+                ['entity', 'is_not', {'type': 'Task', 'id': break_id}]
+            )
+        fields = [
+            'user',
+            'duration',
+            'sg_task_start',
+            'sg_task_end'
+        ]
+        get_timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+        ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']))
+        print('ordered timesheets: %s' % ordered_timesheets)
+        for ts in ordered_timesheets:
+            print(ts['id'])
+
+        print('get_timesheets: %s' % get_timesheets)
+
     def get_user_total_in_range(self, user=None, start=None, end=None, lunch_id=None, break_id=None):
         total_duration = 0.0
         if user and start and end:
@@ -651,7 +685,7 @@ class continuum(object):
                 'sg_task_start',
                 'sg_task_end'
             ]
-            get_timesheets = self.sg.find('TimeLog', filters, fields)
+            get_timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
             if get_timesheets:
                 for timesheet in get_timesheets:
                     total_duration += (float(timesheet['duration']) / 60.0)

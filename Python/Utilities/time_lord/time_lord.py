@@ -1095,6 +1095,8 @@ class time_lord_ui(QtGui.QMainWindow):
     def start_time(self):
         print('start_time activated!')
         # TODO: Add features that start other processes as well.  Change the button connections, et cetera
+        if not self.time_lord.isRunning():
+            self.time_lord.start()
         self.time_lord.clocked_in = True
         self.time_lord.kill_it = False
         print('update_saved_settings sent!')
@@ -1772,6 +1774,9 @@ class time_lord_ui(QtGui.QMainWindow):
             self.last_timesheet = timesheet
             self.time_engine.time_signal.get_running_clock.emit(timesheet)
 
+
+print('Test' + ('-' * 60))
+tl_time.timesheet_consistency_cleanup(user=user, lunch_id=int(lunch_task['id']))
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
