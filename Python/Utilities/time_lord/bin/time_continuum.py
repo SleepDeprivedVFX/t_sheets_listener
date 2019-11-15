@@ -644,7 +644,11 @@ class continuum(object):
             'sg_task_start',
             'sg_task_end'
         ]
-        get_timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+        try:
+            get_timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
+        except Exception:
+            print(Exception)
+            return False
         ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']), reverse=True)
         ts_count = len(ordered_timesheets)
         updates = []
