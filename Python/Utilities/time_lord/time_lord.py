@@ -1776,7 +1776,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
 
 print('Test ' + ('~' * 60))
-tl_time.timesheet_consistency_cleanup(user=user, lunch_id=int(lunch_task['id']))
+tl_time.timesheet_consistency_cleanup(user=user)
 
 # if __name__ == '__main__':
 #     app = QtGui.QApplication(sys.argv)
