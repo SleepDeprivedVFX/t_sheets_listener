@@ -647,6 +647,7 @@ class continuum(object):
         get_timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
         ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']), reverse=True)
         ts_count = len(ordered_timesheets)
+        updates = []
 
         for ts in range(0, ts_count):
             current_start = ordered_timesheets[ts]['sg_task_start']
@@ -668,9 +669,10 @@ class continuum(object):
                 data = {
                     'sg_task_end': previous_end
                 }
-                test = self.sg.update('TimeLog', previous_id, data)
-                print 'update output: %s' % test
-
+                update = self.sg.update('TimeLog', previous_id, data)
+                print 'update output: %s' % update
+                updates.append(update)
+        return updates
 
     def get_user_total_in_range(self, user=None, start=None, end=None, lunch_id=None, break_id=None):
         total_duration = 0.0

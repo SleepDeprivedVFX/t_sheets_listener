@@ -823,6 +823,10 @@ class time_lord(QtCore.QThread):
         if cleanup:
             print('CLEANUP: %s' % cleanup)
             logger.debug('Cleanup processing... %s' % cleanup)
+        consistency_check = tl_time.timesheet_consistency_cleanup(user=user)
+        if consistency_check:
+            print('Timesheet consistency check finished: %s' % consistency_check)
+            logger.debug('Consistency check: %s' % consistency_check)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -1774,9 +1778,6 @@ class time_lord_ui(QtGui.QMainWindow):
             self.last_timesheet = timesheet
             self.time_engine.time_signal.get_running_clock.emit(timesheet)
 
-
-print('Test ' + ('~' * 60))
-tl_time.timesheet_consistency_cleanup(user=user)
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
