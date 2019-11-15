@@ -621,14 +621,20 @@ class continuum(object):
 
     def timesheet_consistency_cleanup(self, user=None, lunch_id=None, break_id=None):
         end = datetime.datetime.now()
-        start = (end - datetime.timedelta(days=4))
+        start = (end - datetime.timedelta(days=1))
         filters = [
             ['user', 'is', {'type': 'HumanUser', 'id': user['id']}],
             {
                 "filter_operator": "all",
                 "filters": [
                     ['sg_task_start', 'greater_than', start],
-                    ['sg_task_end', 'less_than', end]
+                ]
+            },
+            {
+                "filter_operator": "any",
+                "filters": [
+                    ['sg_task_end', 'less_than', end],
+                    ['sg_task_end', 'is', None]
                 ]
             }
         ]
@@ -647,12 +653,34 @@ class continuum(object):
             'sg_task_end'
         ]
         get_timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
-        ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']))
-        print('ordered timesheets: %s' % ordered_timesheets)
-        for ts in ordered_timesheets:
-            print(ts['id'])
+        ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']), reverse=True)
+        ts_count = len(ordered_timesheets)
+        print 'ordered_timesheet: %s' % ordered_timesheets
+        print 'record count: %s' % ts_count
 
-        print('get_timesheets: %s' % get_timesheets)
+        correction_list = {}
+
+        for ts in range(0, ts_count):
+            print('-' * 120)
+            print 'ordered_timesheets[ts][\'sg_task_start\']: %s' % ordered_timesheets[ts]['sg_task_start']
+            current_start = ordered_timesheets[ts]['sg_task_start']
+            current_end = ordered_timesheets[ts]['sg_task_end']
+            if (ts + 1) >= ts_count:
+                break
+            try:
+                previous_start = ordered_timesheets[ts+1]['sg_task_start']
+                previous_end = ordered_timesheets[ts+1]['sg_task_end']
+                if current_start > previous_end:
+                    correction_list[ordered_timesheets[ts+1]['id']] = ordered_timesheets[ts+1]['sg_task_end']
+                else:
+                    print 'start end: %s %s' % (current_start, previous_end)
+                    print 'ordered_timesheets[ts+1]: %s' % ordered_timesheets[ts+1]
+            except Exception as e:
+                print 'Shit fucked up: %s' % e
+
+        print('correction_list: %s' % correction_list)
+        for d in correction_list:
+            print d
 
     def get_user_total_in_range(self, user=None, start=None, end=None, lunch_id=None, break_id=None):
         total_duration = 0.0
