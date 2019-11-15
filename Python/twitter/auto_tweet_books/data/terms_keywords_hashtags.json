@@ -8,6 +8,15 @@
       },
       {
           "negative_phrase": "comic book"
+      },
+      {
+          "negative_phrase": "Book a"
+      },
+      {
+          "negative_phrase": "Book the"
+      },
+      {
+          "negative_phrase": "Book your next"
       }
     ],
     "Positive Phrases": [

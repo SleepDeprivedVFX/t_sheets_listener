@@ -220,9 +220,55 @@ class readerBotTools(object):
                     found[k] = tweet
         return found
 
+    def check_twitter_temperature(self):
+        """
+        Get the latest tweet.
+        Is it in the database?
+        No:
+            Is it a retweet?:
+                Yes:
+                    With Comment?:
+                        Yes:
+                            Add to list and get the next tweet
+        :return:
+        """
+        latest_tweets = self.get_tweets(screen_name=self.config['user'])
+        tweet_count = 0
+        retweet_count = 0
+        if latest_tweets:
+            for tweet in latest_tweets:
+                # print(tweet)
+                this_tweet = tweet.AsDict()
+                if 'retweeted' in this_tweet.keys() and this_tweet['retweeted']:
+                    # This is a retweet: treat it as such
+                    print('retweet = %s' % this_tweet['retweeted'])
+                    retweet_count += 1
+                    print('retween count: %s' % retweet_count)
+                    # TODO: Cycle through the tweet ids:
+                    #       id[0] = 25
+                    #       id[1] = 29
+                    #       id[2] = 32
+                    #       Other conditions not met, start cycling IDs
+                    #       id[0] = 34
+                    #       id[1] = 37
+                    #       All conditions met, print the results:
+                    #       [34, 37, 32]
+                elif 'retweeted' not in this_tweet.keys() or 'retweeted' in this_tweet.keys() and \
+                        not this_tweet['retweeted']:
+                    print('retweet = False')
+                    tweet_count += 1
+                    print('Tweet Count = %s' % tweet_count)
+
 
 if __name__ == "__main__":
     test = readerBotTools()
     # print(test.rando_range(0, 500, integer=False))
-    print(test.pick_random_tweet())
+    # print(test.pick_random_tweet())
+    # test.check_twitter_temperature()
+    results = test.twit_search(terms='book')
+    print(results)
+    for book in results:
+        print(book, results[book])
 
+# for x in range(0, 98):
+#     print(int(math.fmod(x, 12)))
