@@ -138,7 +138,7 @@ class lunch_break(QtGui.QWidget):
         end_time = parser.parse(get_end_time)
         previous_out_time = start_time
         next_start_time = end_time
-        current_timesheet = tl_time.get_last_timesheet(user=user)
+        current_timesheet = tl_time.get_latest_timesheet(user=user)
 
         # Clock the user out of the current task at the start of lunch time.
         tl_time.clock_out_time_sheet(timesheet=current_timesheet, clock_out=previous_out_time)
@@ -154,7 +154,7 @@ class lunch_break(QtGui.QWidget):
             }
         }
         tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
-        lunch_timesheet = tl_time.get_last_timesheet(user=user)
+        lunch_timesheet = tl_time.get_latest_timesheet(user=user)
         tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=end_time)
 
         # Build new context and clock the user back in to what they were clocked into before lunch

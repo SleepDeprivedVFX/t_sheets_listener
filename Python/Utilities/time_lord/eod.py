@@ -200,7 +200,7 @@ class end_of_day(QtGui.QWidget):
         self.stay_opened = False
         time_out = parser.parse(self.ui.last_time.text())
         if tl_time.is_user_clocked_in(user=user):
-            latest_timesheet = tl_time.get_last_timesheet(user=user)
+            latest_timesheet = tl_time.get_latest_timesheet(user=user)
             tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=time_out)
         self.eod_timer.kill_it = True
         self.close()

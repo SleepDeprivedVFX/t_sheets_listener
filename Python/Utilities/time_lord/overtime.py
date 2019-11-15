@@ -92,7 +92,7 @@ class ot_clock(QtCore.QThread):
         self.kill_it = False
         self.signals = ot_signals()
         self.timesheet_update = datetime.now()
-        self.timesheet = tl_time.get_last_timesheet(user=user)
+        self.timesheet = tl_time.get_latest_timesheet(user=user)
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
 
     def run(self, *args, **kwargs):
@@ -121,7 +121,7 @@ class ot_clock(QtCore.QThread):
             if float(time_left) < 0.0:
                 if self.timesheet_update > (datetime.now() + timedelta(minutes=15)):
                     self.timesheet_update = datetime.now()
-                    self.timesheet = tl_time.get_last_timesheet(user=user)
+                    self.timesheet = tl_time.get_latest_timesheet(user=user)
                 self.signals.timesheet.emit(self.timesheet)
                 self.signals.message.emit('You are in Overtime!!')
                 color = 'color: rgb(255, 0, 0);'
@@ -186,7 +186,7 @@ class overtime_popup(QtGui.QWidget):
         admins = users.get_admins()
         print('admins: %s' % admins)
         if not self.timesheet:
-            self.timesheet = tl_time.get_last_timesheet(user=user)
+            self.timesheet = tl_time.get_latest_timesheet(user=user)
         print('timesheet: %s' % self.timesheet)
         if admins:
             for admin in admins:

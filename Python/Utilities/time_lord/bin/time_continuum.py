@@ -155,7 +155,7 @@ class continuum(object):
 
         return prev_day
 
-    def get_last_timesheet(self, user=None):
+    def get_latest_timesheet(self, user=None):
         if user:
             self.logger.info('Finding the last timesheet for %s' % user['name'])
             user_id = user['id']
@@ -175,14 +175,14 @@ class continuum(object):
                 'code'
             ]
             try:
-                last_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
+                latest_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
                                                                                       'direction': 'desc'}])
-                self.logger.debug('Timesheet found: %s' % last_timesheet)
+                self.logger.debug('Timesheet found: %s' % latest_timesheet)
             except (AttributeError, Exception), e:
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
-                last_timesheet = None
-            if last_timesheet:
-                return last_timesheet
+                latest_timesheet = None
+            if latest_timesheet:
+                return latest_timesheet
             return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
 
     def assume_end_time(self, start_time=None, eod=None):
@@ -561,15 +561,15 @@ class continuum(object):
                 self.logger.error('Couldn\'t get emtpies. Connection failure: %s' % e)
                 empties = None
             if empties:
-                last_timesheet = {'project': None}
+                latest_timesheet = {'project': None}
                 tries = 0
-                while not last_timesheet['project'] and tries < 10:
-                    last_timesheet = self.get_last_timesheet(user=user)
+                while not latest_timesheet['project'] and tries < 10:
+                    latest_timesheet = self.get_latest_timesheet(user=user)
                     tries += 1
                     time.sleep(5)
-                if not last_timesheet['project']:
+                if not latest_timesheet['project']:
                     return False
-                latest_id = last_timesheet['id']
+                latest_id = latest_timesheet['id']
                 for empty in empties:
                     if empty['id'] != latest_id:
                         date = empty['date']

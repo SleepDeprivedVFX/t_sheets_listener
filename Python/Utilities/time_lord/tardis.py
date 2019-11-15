@@ -287,7 +287,7 @@ def chronograph():
                     logger.info('Gone too long.  Clocking out...')
                     # TODO: Eventually add in a pop up that stays opened until EOD, that displays the message "You have
                     #       been clocked out for being gone too long! <Button to re-open Time Lord>"
-                    lunch_timesheet = tl_time.get_last_timesheet(user=user)
+                    lunch_timesheet = tl_time.get_latest_timesheet(user=user)
                     clock_out = tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=lunch_start)
                     logger.debug('Auto Clocked Out: %s' % clock_out)
 
@@ -340,7 +340,7 @@ def chronograph():
                     #           I will need to get the Show OT Override, and the Shot/Asset OT override checkboxes.
 
                     # Check OT Approval statuses
-                    latest_timesheet = tl_time.get_last_timesheet(user=user)
+                    latest_timesheet = tl_time.get_latest_timesheet(user=user)
                     if latest_timesheet:
                         project_id = latest_timesheet['project']['id']
                         task_id = latest_timesheet['entity']['id']
@@ -386,7 +386,7 @@ def chronograph():
                     subprocess.call('%s %s' % (process, ot_launch_path))
                 elif ot_check == 1 or ot_check == 0 and daily_total > float(config['ot_hours']) and user['sg_hourly']:
                     # Check OT Approval statuses
-                    latest_timesheet = tl_time.get_last_timesheet(user=user)
+                    latest_timesheet = tl_time.get_latest_timesheet(user=user)
                     if latest_timesheet:
                         project_id = latest_timesheet['project']['id']
                         task_id = latest_timesheet['entity']['id']
