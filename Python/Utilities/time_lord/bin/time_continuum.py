@@ -647,17 +647,11 @@ class continuum(object):
         get_timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
         ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']), reverse=True)
         ts_count = len(ordered_timesheets)
-        print 'ordered_timesheet: %s' % ordered_timesheets
-        print 'record count: %s' % ts_count
 
         for ts in range(0, ts_count):
-            print ordered_timesheets[ts]
             current_start = ordered_timesheets[ts]['sg_task_start']
             current_end = ordered_timesheets[ts]['sg_task_end']
-            print ts + 1
-            print ts_count
             if (ts + 1) > ts_count:
-                print (ts + 1) > ts_count
                 break
             try:
                 previous_start = ordered_timesheets[ts+1]['sg_task_start']
@@ -667,13 +661,9 @@ class continuum(object):
                 print 'Shit fucked up: %s' % e
             print current_start, previous_end, current_start < previous_end
             if previous_end > current_start:
-                print previous_end > current_start
-                print ts
                 if ts == ts_count - 1:
-                    print 'End'
                     previous_end = ordered_timesheets[ts-1]['sg_task_start']
                 else:
-                    print 'Regular'
                     previous_end = current_start
                 data = {
                     'sg_task_end': previous_end

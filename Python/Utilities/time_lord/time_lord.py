@@ -1778,20 +1778,20 @@ class time_lord_ui(QtGui.QMainWindow):
 print('Test ' + ('~' * 60))
 tl_time.timesheet_consistency_cleanup(user=user)
 
-# if __name__ == '__main__':
-#     app = QtGui.QApplication(sys.argv)
-#     app.setOrganizationName('AdamBenson')
-#     app.setOrganizationDomain('adamdbenson.com')
-#     app.setApplicationName('TimeLord')
-#     splash_pix = QtGui.QPixmap('ui/resources/Time_Lord_Logo.png')
-#     splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
-#     splash.setMask(splash_pix.mask())
-#     splash.show()
-#     app.processEvents()
-#     window = time_lord_ui()
-#     window.show()
-#     splash.finish(window)
-#     # sys.excepthook()  # TODO: Get this to work.
-#     sys.exit(app.exec_())
+if __name__ == '__main__':
+    app = QtGui.QApplication(sys.argv)
+    app.setOrganizationName('AdamBenson')
+    app.setOrganizationDomain('adamdbenson.com')
+    app.setApplicationName('TimeLord')
+    splash_pix = QtGui.QPixmap('ui/resources/Time_Lord_Logo.png')
+    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash.setMask(splash_pix.mask())
+    splash.show()
+    app.processEvents()
+    window = time_lord_ui()
+    window.show()
+    splash.finish(window)
+    # sys.excepthook()  # TODO: Get this to work.
+    sys.exit(app.exec_())
 
 
