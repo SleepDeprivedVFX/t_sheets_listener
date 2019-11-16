@@ -108,7 +108,7 @@ class sg_data(object):
 
     def get_entity_tasks(self, entity_id=None, entity_name=None, proj_id=None, t=0):
         if entity_id:
-            print('Getting entity tasks...f')
+            print('Getting entity tasks...')
             self.logger.info('Getting tasks for entity ID %s...' % entity_id)
             entity_type = self.get_entity_type(proj_id=proj_id, entity_name=entity_name)
             filters = [

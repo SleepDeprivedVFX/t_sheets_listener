@@ -623,7 +623,7 @@ class time_lord(QtCore.QThread):
         # TODO: This needs a MutEx Lock
         mutex = QtCore.QMutexLocker(self.time_signal.mutex_1)
         logger.debug('Update Detected: %s' % data)
-        logger.debug('update_ui:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
+        print('update_ui:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
               inspect.stack()[1][3])
         logger.debug('Signal Received: %s' % data)
         # Get the last timesheet for local use and emit it for use elsewhere.
@@ -752,7 +752,7 @@ class time_lord(QtCore.QThread):
         This may need some addition inputs, but for now... nothing.
         :return:
         """
-        logger.debug('clock_in_user:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
+        print('clock_in_user:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
               inspect.stack()[1][3])
         if data:
             self.clocked_in = True
@@ -921,6 +921,11 @@ class time_lord_ui(QtGui.QMainWindow):
         # NOTE: I may have to remove the __init__ call to self.time_lord.time_signal.update.emit()
         projects = sg_data.get_active_projects()
         if projects:
+            # Check the saved project against the current timesheet
+            if self.saved_project != self.latest_timesheet['project']['name']:
+                self.saved_project = self.latest_timesheet['project']['name']
+                self.saved_project_id = self.latest_timesheet['project']['id']
+
             # Update the dropdown list
             self.update_projects_dropdown(projects)
             proj_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
@@ -929,6 +934,19 @@ class time_lord_ui(QtGui.QMainWindow):
             assets = sg_data.get_project_assets(proj_id=proj_id)
             shots = sg_data.get_project_shots(proj_id=proj_id)
             entities = assets + shots
+
+            # Get the timesheet entity and compare it to the saved entity
+            ts_task_id = self.latest_timesheet['entity']['id']
+            get_current_entity = sg_data.get_entity_from_task(task_id=ts_task_id)
+            current_entity = get_current_entity['entity']['name']
+            current_entity_id = get_current_entity['entity']['id']
+            if self.saved_entity != current_entity:
+                self.saved_entity = current_entity
+                self.saved_entity_id = current_entity_id
+
+            if self.saved_task != self.latest_timesheet['entity']['name']:
+                self.saved_task = self.latest_timesheet['entity']['name']
+                self.saved_task_id = self.latest_timesheet['entity']['id']
 
             # Update the Entities dropdown
             self.update_entity_dropdown(entities=entities)
@@ -976,8 +994,6 @@ class time_lord_ui(QtGui.QMainWindow):
         :return: None
         """
         logger.debug('Switch States: %s' % data)
-        logger.debug('switch_state:', inspect.stack()[0][2], inspect.stack()[0][3],
-              inspect.stack()[1][2], inspect.stack()[1][3])
         logger.debug('Checking state shit:')
         logger.debug('Switch state triggered')
         match = True
@@ -1639,8 +1655,6 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.task_dropdown.addItem('Select Task', 0)
 
     def switch_tasks(self):
-        logger.debug('switch_tasks:', inspect.stack()[0][2], inspect.stack()[0][3],
-              inspect.stack()[1][2], inspect.stack()[1][3])
         # QUERY: DO I need have the __init__ call the switch tasks? Or do I use a different method up there?
         #       The fear is that the saved_task might not accurately reflect what's going on, due to signal and
         #       slot delays.
