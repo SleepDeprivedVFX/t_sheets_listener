@@ -105,11 +105,11 @@ def do_cleanup():
     """
     cleanup = tl_time.timesheet_cleanup(user=user)
     if cleanup:
-        print('CLEANUP: %s' % cleanup)
+        logger.debug('CLEANUP: %s' % cleanup)
         logger.debug('Cleanup processing... %s' % cleanup)
     consistency_check = tl_time.timesheet_consistency_cleanup(user=user)
     if consistency_check:
-        print('Timesheet consistency check finished: %s' % consistency_check)
+        logger.debug('Timesheet consistency check finished: %s' % consistency_check)
         logger.debug('Consistency check: %s' % consistency_check)
 
 
@@ -168,10 +168,10 @@ def chronograph():
 
         # Setup and do an hourly cleanup
         if hour != datetime.now().hour:
-            print('Start cleanup....')
+            logger.debug('Start cleanup....')
             do_cleanup()
             hour = datetime.now().hour
-            print('Cleanup done!')
+            logger.debug('Cleanup done!')
 
         if pos == query_mouse_position():
             # -------------------------------------------------------------------------------------------------------
@@ -215,12 +215,11 @@ def chronograph():
                         # If lunch_timesheet is false, check it again to make sure that it hasn't since been added.
                         lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
                                                                    lunch_proj_id=int(config['admin_proj_id']))
-                        print('first pass: lunchtime: %s' % lunch_timesheet)
+                        logger.debug('first pass: lunchtime: %s' % lunch_timesheet)
                     if not lunch_timesheet:
                         # If the lunch_timesheet is STILL false, THEN set the lunch start time
                         lunch_start = datetime.now() - timedelta(seconds=(trigger * sleep))
                         logger.debug('LUNCH HAS STARTED: %s' % lunch_start)
-                        print('Second pass: Lunch has started')
                     else:
                         logger.debug('Already has lunch!')
                         lunch_start = None
@@ -324,7 +323,6 @@ def chronograph():
                                       datetime.now().time().second)
             if not user_clocked_in and str(now) == str(sod):
                 time.sleep(2)
-                print('Time to clock in!')
                 sod_launch_path = os.path.join(path, 'time_lord.py')
                 if debug == 'True' or debug == 'true' or debug == True:
                     process = 'python.exe'
@@ -396,12 +394,11 @@ def chronograph():
                                 fields = [config['ot_approved_entity']]
                                 get_entity_ot = sg.find_one(entity_type, filters, fields)
                                 if get_entity_ot:
-                                    print get_entity_ot
                                     if get_entity_ot[config['ot_approved_entity']]:
                                         ot_check = -1
 
                     # Pop Up the OT Clock: It's X number of minutes before OT and the user is working.
-                    print('You are about to go into OT')
+                    logger.info('You are about to go into OT')
                     ot_check = 1
                     ot_launch_path = os.path.join(path, 'overtime.py')
                     if debug == 'True' or debug == 'true' or debug == True:
@@ -442,10 +439,10 @@ def chronograph():
                                 fields = [config['ot_approved_entity']]
                                 get_entity_ot = sg.find_one(entity_type, filters, fields)
                                 if get_entity_ot:
-                                    print get_entity_ot
+                                    logger.debug('Checking entity OT: %s' % get_entity_ot)
                                     if get_entity_ot[config['ot_approved_entity']]:
                                         ot_check = -1
-                    print('You are in Overtime!')
+                    logger.info('You are in Overtime!')
                     ot_check = 2
                     ot_launch_path = os.path.join(path, 'overtime.py')
                     if debug == 'True' or debug == 'true' or debug == True:
@@ -455,9 +452,8 @@ def chronograph():
                     subprocess.call('%s %s' % (process, ot_launch_path))
                 elif datetime.now().time() < sod:
                     ot_check = 0
-                    print('ot_check reset')
-                print('EOD: %s' % eod)
-                print(type(eod))
+                    logger.debug('ot_check reset')
+                logger.debug('EOD: %s' % eod)
 
 
 # Setup Threading
@@ -561,7 +557,7 @@ class tardis(object):
                                        0,
                                        icon_flags)
         else:
-            print("Can't find icon file - using default.")
+            logger.warning("Can't find icon file - using default.")
             hicon = win32gui.LoadIcon(0, win32con.IDI_APPLICATION)
 
         if self.notify_id:
