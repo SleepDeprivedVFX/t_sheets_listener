@@ -419,14 +419,9 @@ class time_machine(QtCore.QThread):
         logger.debug('Loop Started')
         i = 0
         while not self.kill_it:
-            # FIXME: This loop seems to take anywhere between 30 seconds and 3 minutes.  This may be part of the reason
-            #       for the freeze ups.  In any case, I think that one issue I'm having is that this is only updating
-            #       the EventLog ID when a new timesheet is listed.  I probably need to have it update the event
-            #       log id every time, so that it is not trying to iterate through hundreds of missed events every time
-            #       A user doesn't open the window for a few days.  That way only recent events will be processed.
-            #       In this test, I have been running the tool on my laptop for several minutes and the time_capsule
-            #       has not yet been updated.  I feel that if I close it now, it still won't be updated, and more
-            #       events will stack up...
+            # TODO: I've discovered that I need to have every time sheet update the time_capsule.
+            #       It doesn't have to update all the information, but at the very least must update the timeLogID
+            #       I'll have to work that into the TARDIS as well.
             events = self.get_new_events()
             i += 1
             print i
