@@ -98,6 +98,21 @@ def query_mouse_position():
     return {"x": pt.x, "y": pt.y}
 
 
+def do_cleanup():
+    """
+    This method checks older timesheets and makes sure they are all properly clocked in and out.
+    :return: True or False
+    """
+    cleanup = tl_time.timesheet_cleanup(user=user)
+    if cleanup:
+        print('CLEANUP: %s' % cleanup)
+        logger.debug('Cleanup processing... %s' % cleanup)
+    consistency_check = tl_time.timesheet_consistency_cleanup(user=user)
+    if consistency_check:
+        print('Timesheet consistency check finished: %s' % consistency_check)
+        logger.debug('Consistency check: %s' % consistency_check)
+
+
 def chronograph():
     '''
     This thread will process the timer events throughout the day.
@@ -143,11 +158,21 @@ def chronograph():
 
     path = sys.path[0]
     minute = int(datetime.now().minute)
+    hour = datetime.now().hour
+    hour = 2
 
     while True:
         pos = query_mouse_position()
         time.sleep(sleep)
         sod_launch = None
+
+        # Setup and do an hourly cleanup
+        if hour != datetime.now().hour:
+            print('Start cleanup....')
+            do_cleanup()
+            hour = datetime.now().hour
+            print('Cleanup done!')
+
         if pos == query_mouse_position():
             # -------------------------------------------------------------------------------------------------------
             # The mouse has stopped moving.
@@ -240,9 +265,9 @@ def chronograph():
                         time.sleep(3)
                         if tl_time.is_user_clocked_in(user=user):
                             user_ignored = True
-                        do_cleanup = tl_time.timesheet_cleanup(user=user)
-                        logger.debug('Cleanup results: %s' % do_cleanup)
-                        logger.info('Timesheet Cleanup run.')
+                        # do_cleanup = tl_time.timesheet_cleanup(user=user)
+                        # logger.debug('Cleanup results: %s' % do_cleanup)
+                        # logger.info('Timesheet Cleanup run.')
                 elif user_ignored and datetime.now().time() < eod and set_timer < trigger:
                     user_ignored = False
                 elif user_ignored and datetime.now().time() > eod and set_timer > trigger:

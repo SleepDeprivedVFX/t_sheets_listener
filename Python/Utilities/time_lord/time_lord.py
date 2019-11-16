@@ -724,9 +724,6 @@ class time_lord(QtCore.QThread):
 
     def clock_out_user(self, latest_timesheet=None):
         if latest_timesheet:
-            print('Start cleanup.')
-            self.do_cleanup()
-            print('Cleanup done.')
             self.time_signal.mutex_1.lock()
             print('Locked...')
             tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=datetime.now())
@@ -813,20 +810,6 @@ class time_lord(QtCore.QThread):
             self.time_signal.send_timesheet.emit(timesheet)
             time.sleep(0.1)
             self.time_signal.user_has_clocked_in.emit(timesheet)
-
-    def do_cleanup(self):
-        """
-        This method checks older timesheets and makes sure they are all properly clocked in and out.
-        :return: True or False
-        """
-        cleanup = tl_time.timesheet_cleanup(user=user)
-        if cleanup:
-            print('CLEANUP: %s' % cleanup)
-            logger.debug('Cleanup processing... %s' % cleanup)
-        consistency_check = tl_time.timesheet_consistency_cleanup(user=user)
-        if consistency_check:
-            print('Timesheet consistency check finished: %s' % consistency_check)
-            logger.debug('Consistency check: %s' % consistency_check)
 
 
 # ------------------------------------------------------------------------------------------------------
