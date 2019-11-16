@@ -417,9 +417,22 @@ class time_machine(QtCore.QThread):
         """
         logger.debug('Starting the main event listener loop...')
         logger.debug('Loop Started')
+        i = 0
         while not self.kill_it:
+            # FIXME: This loop seems to take anywhere between 30 seconds and 3 minutes.  This may be part of the reason
+            #       for the freeze ups.  In any case, I think that one issue I'm having is that this is only updating
+            #       the EventLog ID when a new timesheet is listed.  I probably need to have it update the event
+            #       log id every time, so that it is not trying to iterate through hundreds of missed events every time
+            #       A user doesn't open the window for a few days.  That way only recent events will be processed.
+            #       In this test, I have been running the tool on my laptop for several minutes and the time_capsule
+            #       has not yet been updated.  I feel that if I close it now, it still won't be updated, and more
+            #       events will stack up...
             events = self.get_new_events()
+            i += 1
+            print i
+            print datetime.now().time()
             time_capsule = self.get_time_capsule()
+            print time_capsule
             # print 'returned events: %s' % events
             if events:
                 for event in events:
@@ -436,74 +449,110 @@ class time_machine(QtCore.QThread):
                             user_info = timesheet_info['user']
                             user_id = user_info['id']
                             if user_id == user['id']:
-                                ts_entity = sg_data.get_entity_from_task(task_id=timesheet_info['entity']['id'])
-                                if ts_entity:
-                                    if timesheet_info['sg_task_end'] and time_capsule['current'] and \
-                                            event['entity']['id'] == time_capsule['TimeLogID']:
-                                        # This is the first time the timesheet has been clocked out.
+                                print 'User ID lines up'
+                                # QUERY: Do I actually need to get the entity here?  Is this just slowing it down?
+                                #       Yes.  BUT:  Should I do it only after the following conditions are met? Is this
+                                #       premature?
+                                if timesheet_info['sg_task_end'] and time_capsule['current'] and \
+                                        event['entity']['id'] == time_capsule['TimeLogID']:
+                                    # This is the first time the timesheet has been clocked out.
 
-                                        logger.debug('CLOCK OUT RECORD! %s' % event)
-                                        logger.debug('CLOCK OUT RECORD!')
+                                    # Collect the entity
+                                    ts_entity = sg_data.get_entity_from_task(task_id=timesheet_info['entity']['id'])
 
-                                        ts_data = {
-                                            'project': timesheet_info['project']['name'],
-                                            'project_id': timesheet_info['project']['id'],
-                                            'entity': ts_entity['entity']['name'],
-                                            'entity_id': ts_entity['entity']['id'],
-                                            'task': timesheet_info['entity']['name'],
-                                            'task_id': timesheet_info['entity']['id']
-                                        }
-                                        self.time_lord.time_signal.update.emit(ts_data)
-                                        # QUERY: Perhaps here is where I set a Wait Condition.
-                                        #       Then, the connecting signal would spawn a wake all.
-                                        self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
-                                        logger.debug('The Wait is OVER!')
-                                        self.time_lord.time_signal.latest_timesheet.emit(timesheet_info)
-                                        logger.debug('Timesheet update emitted.')
+                                    print('CLOCK OUT RECORD! %s' % event)
+                                    logger.debug('CLOCK OUT RECORD!')
 
-                                        data = {
-                                            'EventLogID': event['id'],
-                                            'TimeLogID': event['entity']['id'],
-                                            'current': False
-                                        }
-                                        try:
-                                            self.save_time_capsule(data)
-                                            logger.debug('Time Capsule saved!')
-                                        except IOError as e:
-                                            logger.warning('Failed to save the file.  Trying again in a few '
-                                                           'seconds... %s' % e)
-                                            time.sleep(2)
-                                            self.save_time_capsule(data)
-                                    elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
-                                            event['entity']['id'] > time_capsule['TimeLogID']:
+                                    ts_data = {
+                                        'project': timesheet_info['project']['name'],
+                                        'project_id': timesheet_info['project']['id'],
+                                        'entity': ts_entity['entity']['name'],
+                                        'entity_id': ts_entity['entity']['id'],
+                                        'task': timesheet_info['entity']['name'],
+                                        'task_id': timesheet_info['entity']['id']
+                                    }
+                                    self.time_lord.time_signal.update.emit(ts_data)
+                                    # QUERY: Perhaps here is where I set a Wait Condition.
+                                    #       Then, the connecting signal would spawn a wake all.
+                                    self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                    print('The Wait is OVER!')
+                                    self.time_lord.time_signal.latest_timesheet.emit(timesheet_info)
+                                    logger.debug('Timesheet update emitted.')
 
-                                        logger.debug('NEW RECORD! %s' % event)
-                                        logger.debug('NEW RECORD!')
-                                        ts_data = {
-                                            'project': timesheet_info['project']['name'],
-                                            'project_id': timesheet_info['project']['id'],
-                                            'entity': ts_entity['entity']['name'],
-                                            'entity_id': ts_entity['entity']['id'],
-                                            'task': timesheet_info['entity']['name'],
-                                            'task_id': timesheet_info['entity']['id']
-                                        }
-                                        self.time_lord.time_signal.update.emit(ts_data)
-                                        self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
-                                        new_timesheet = tl_time.get_latest_timesheet(user=user)
-                                        self.time_lord.time_signal.latest_timesheet.emit(new_timesheet)
+                                    data = {
+                                        'EventLogID': event['id'],
+                                        'TimeLogID': event['entity']['id'],
+                                        'current': False
+                                    }
+                                    try:
+                                        self.save_time_capsule(data)
+                                        logger.debug('Time Capsule saved!')
+                                    except IOError as e:
+                                        logger.warning('Failed to save the file.  Trying again in a few '
+                                                       'seconds... %s' % e)
+                                        time.sleep(2)
+                                        self.save_time_capsule(data)
+                                elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
+                                        event['entity']['id'] > time_capsule['TimeLogID']:
 
-                                        data = {
-                                            'EventLogID': event['id'],
-                                            'TimeLogID': event['entity']['id'],
-                                            'current': True
-                                        }
-                                        try:
-                                            self.save_time_capsule(data)
-                                        except IOError as e:
-                                            logger.warning('Failed to save the file.  Trying again in a few '
-                                                           'seconds... %s' % e)
-                                            time.sleep(2)
-                                            self.save_time_capsule(data)
+                                    # Collect the entity
+                                    ts_entity = sg_data.get_entity_from_task(task_id=timesheet_info['entity']['id'])
+
+                                    print('NEW RECORD! %s' % event)
+                                    logger.debug('NEW RECORD!')
+                                    ts_data = {
+                                        'project': timesheet_info['project']['name'],
+                                        'project_id': timesheet_info['project']['id'],
+                                        'entity': ts_entity['entity']['name'],
+                                        'entity_id': ts_entity['entity']['id'],
+                                        'task': timesheet_info['entity']['name'],
+                                        'task_id': timesheet_info['entity']['id']
+                                    }
+                                    self.time_lord.time_signal.update.emit(ts_data)
+                                    self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                    new_timesheet = tl_time.get_latest_timesheet(user=user)
+                                    self.time_lord.time_signal.latest_timesheet.emit(new_timesheet)
+
+                                    data = {
+                                        'EventLogID': event['id'],
+                                        'TimeLogID': event['entity']['id'],
+                                        'current': True
+                                    }
+                                    try:
+                                        self.save_time_capsule(data)
+                                    except IOError as e:
+                                        logger.warning('Failed to save the file.  Trying again in a few '
+                                                       'seconds... %s' % e)
+                                        time.sleep(2)
+                                        self.save_time_capsule(data)
+                                else:
+                                    print 'Event skipped.  Updating...'
+                                    data = {
+                                        'EventLogID': event['id'],
+                                        'TimeLogID': timesheet_info['id'],
+                                        'current': time_capsule['current']
+                                    }
+                                    try:
+                                        self.save_time_capsule(data)
+                                    except IOError as e:
+                                        logger.warning('Failed to save the file.  Trying again in a few '
+                                                       'seconds... %s' % e)
+                                        time.sleep(2)
+                                        self.save_time_capsule(data)
+
+                            else:
+                                data = {
+                                    'EventLogID': event['id'],
+                                    'TimeLogID': time_capsule['TimeLogID'],
+                                    'current': time_capsule['current']
+                                }
+                                try:
+                                    self.save_time_capsule(data)
+                                except IOError as e:
+                                    logger.warning('Failed to save the file.  Trying again in a few '
+                                                   'seconds... %s' % e)
+                                    time.sleep(2)
+                                    self.save_time_capsule(data)
 
 
 # ------------------------------------------------------------------------------------------------------
