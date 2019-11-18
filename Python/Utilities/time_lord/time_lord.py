@@ -417,17 +417,12 @@ class time_machine(QtCore.QThread):
         """
         logger.debug('Starting the main event listener loop...')
         logger.debug('Loop Started')
-        i = 0
         while not self.kill_it:
             # TODO: I've discovered that I need to have every time sheet update the time_capsule.
             #       It doesn't have to update all the information, but at the very least must update the timeLogID
             #       I'll have to work that into the TARDIS as well.
             events = self.get_new_events()
-            i += 1
-            print i
-            print datetime.now().time()
             time_capsule = self.get_time_capsule()
-            print time_capsule
             # print 'returned events: %s' % events
             if events:
                 for event in events:
