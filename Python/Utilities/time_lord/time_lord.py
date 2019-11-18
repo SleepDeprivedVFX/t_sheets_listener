@@ -94,6 +94,59 @@ lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])
 
 
+# -------------------------------------------------------------------------------------------------------------------
+# Stream Handler
+# -------------------------------------------------------------------------------------------------------------------
+class time_stream(logging.StreamHandler):
+    """
+    Stream handler for the output window
+    NOTE: Currently the stream handler crashes the system, so I'm leaving the architecture here for when I can get it
+          to work properly.
+          Might be due to the fact that the logger is being called from multiple places, but the stream handler is only
+          processing from the main UI. Just a thought.
+    """
+    def emit(self, record):
+        level = record.levelname
+        message = record.message
+
+        # FIXME: The following block colorizes the output. It totally works, and then suddenly it
+        #       locks up the memory and kills the machine.  I'm leaving the code here for the future.
+        #       Error: Process finished with exit code -1073741819 (0xC0000005)
+        # Colorize the Monitor Log Output. (Error messages, Debug logging, and Warnings)
+        info = QtGui.QColor(130, 231, 130)
+        error = QtGui.QColor(255, 0, 0)
+        debug = QtGui.QColor(113, 113, 0)
+        warning = QtGui.QColor(218, 145, 0)
+        formatter = QtGui.QTextCharFormat()
+        if level == 'ERROR':
+            formatter.setForeground(error)
+        elif level == 'DEBUG':
+            formatter.setForeground(debug)
+        elif level == 'WARNING':
+            formatter.setForeground(warning)
+        else:
+            formatter.setForeground(info)
+        self.edit.setCurrentCharFormat(formatter)
+
+        # Set the cursor to the top
+        # cursor = QtGui.QTextCursor(self.edit.document())
+        # cursor.setPosition(0)
+        # self.edit.setTextCursor(cursor)
+        # #
+        # # # Insert Log
+        self.edit.insertPlainText('%s\n' % message)
+        # current_text = self.edit.toPlainText()
+        # if len(current_text) > 300:
+        #     self.edit.clear()
+        # self.edit.appendPlainText('%s\n' % message)
+        del info
+        del error
+        del debug
+        del warning
+        del formatter
+        # del cursor
+
+
 # ------------------------------------------------------------------------------------------------------
 # Signal Emitters
 # ------------------------------------------------------------------------------------------------------
@@ -899,6 +952,14 @@ class time_lord_ui(QtGui.QMainWindow):
         d = now.strftime('%m-%d-%y')
         self.set_start_date_rollers(d=d)
         self.set_end_date_rollers(d=d)
+
+        # --------------------------------------------------------------------------------------------------------
+        # Setup Stream Handler
+        # --------------------------------------------------------------------------------------------------------
+        self.time_stream = time_stream()
+        self.ui.lower_output.setMaximumBlockCount(5)
+        self.time_stream.edit = self.ui.lower_output
+        logger.addHandler(self.time_stream)
 
         # Initialize the dropdowns
         self.init_ui()

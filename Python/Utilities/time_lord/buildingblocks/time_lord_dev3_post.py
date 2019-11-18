@@ -643,7 +643,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         self.window_on_top_tested = False
         self.set_window_on_top()
-
+        #
         # --------------------------------------------------------------------------------------------------------
         # Setup Stream Handler
         # --------------------------------------------------------------------------------------------------------
