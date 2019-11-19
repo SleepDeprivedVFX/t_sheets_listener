@@ -129,9 +129,9 @@ class time_stream(logging.StreamHandler):
         self.edit.setCurrentCharFormat(formatter)
 
         # Set the cursor to the top
-        # cursor = QtGui.QTextCursor(self.edit.document())
-        # cursor.setPosition(0)
-        # self.edit.setTextCursor(cursor)
+        cursor = QtGui.QTextCursor(self.edit.document())
+        cursor.setPosition(0)
+        self.edit.setTextCursor(cursor)
         # #
         # # # Insert Log
         self.edit.insertPlainText('%s\n' % message)
