@@ -837,6 +837,7 @@ class time_lord(QtCore.QThread):
             self.set_user_output(user=user)
             self.set_daily_output(daily=daily_total)
             self.set_weekly_output(weekly=weekly_total)
+            self.do_cleanup()
             # self.time_signal.update_timesheet.emit('Update')
 
     def clock_in_user(self, data=None):
@@ -899,6 +900,20 @@ class time_lord(QtCore.QThread):
             self.time_signal.send_timesheet.emit(timesheet)
             time.sleep(0.1)
             self.time_signal.user_has_clocked_in.emit(timesheet)
+
+    def do_cleanup(self):
+        """
+        This method checks older timesheets and makes sure they are all properly clocked in and out.
+        :return: True or False
+        """
+        cleanup = tl_time.timesheet_cleanup(user=user)
+        if cleanup:
+            logger.debug('CLEANUP: %s' % cleanup)
+            logger.debug('Cleanup processing... %s' % cleanup)
+        consistency_check = tl_time.timesheet_consistency_cleanup(user=user, clock_out=True)
+        if consistency_check:
+            logger.debug('Timesheet consistency check finished: %s' % consistency_check)
+            logger.debug('Consistency check: %s' % consistency_check)
 
 
 # ------------------------------------------------------------------------------------------------------

@@ -619,7 +619,7 @@ class continuum(object):
 
         return False
 
-    def timesheet_consistency_cleanup(self, user=None):
+    def timesheet_consistency_cleanup(self, user=None, clock_out=False):
         end = datetime.datetime.now()
         start = (end - datetime.timedelta(days=1))
         filters = [
@@ -629,15 +629,22 @@ class continuum(object):
                 "filters": [
                     ['sg_task_start', 'greater_than', start],
                 ]
-            },
-            {
-                "filter_operator": "any",
-                "filters": [
-                    ['sg_task_end', 'less_than', end],
-                    ['sg_task_end', 'is', None]
-                ]
             }
         ]
+        if clock_out:
+            filters.append(
+                {
+                    "filter_operator": "any",
+                    "filters": [
+                        ['sg_task_end', 'less_than', end],
+                        ['sg_task_end', 'is', None]
+                    ]
+                }
+            )
+        else:
+            filters.append(
+                ['sg_task_end', 'less_than', end]
+            )
         fields = [
             'user',
             'duration',
