@@ -525,7 +525,7 @@ class Ui_TimeLord(object):
         self.output_monitor.setPlainText(QtGui.QApplication.translate("TimeLord", "OUTPUT MONITOR\n"
 "------------------------------------", None, QtGui.QApplication.UnicodeUTF8))
         self.lower_output_sep.setPlainText(QtGui.QApplication.translate("TimeLord", "-------------------------------", None, QtGui.QApplication.UnicodeUTF8))
-        self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "Raw Data Ouput", None, QtGui.QApplication.UnicodeUTF8))
+        self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "", None, QtGui.QApplication.UnicodeUTF8))
         self.entity_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
         self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))
         self.project_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Project", None, QtGui.QApplication.UnicodeUTF8))

@@ -62,7 +62,7 @@ class sg_data(object):
                                                                                'direction': 'asc'}])
             self.logger.info('Projects collected!')
             self.logger.debug('Project List: %s' % active_projects)
-        except AttributeError, e:
+        except Exception as e:
             self.logger.error('Failed to get projects.  Trying again...')
             time.sleep(2)
             active_projects = self.get_active_projects()
