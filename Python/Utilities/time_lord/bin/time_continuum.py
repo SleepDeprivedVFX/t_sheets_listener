@@ -69,6 +69,9 @@ class continuum(object):
             'Sunday'
         ]
 
+        # get time configurations
+        self.double_time_mins = int(config['dt_hours']) * 60
+
     def start_of_week(self):
         # Get the first day of the week
         week_start = datetime.datetime.today() - datetime.timedelta(days=datetime.datetime.today().isoweekday() % 7)
@@ -663,6 +666,30 @@ class continuum(object):
         for ts in range(0, ts_count):
             current_start = ordered_timesheets[ts]['sg_task_start']
             current_end = ordered_timesheets[ts]['sg_task_end']
+
+            # Check for timesheets that have excessive hours, or go across days
+            if type(current_start) == datetime.datetime and type(current_end) == datetime.datetime:
+                current_start_date = current_start.date()
+                current_end_date = current_end.date()
+                if current_start_date != current_end_date:
+                    data = {
+                        'sg_needs_approval': True
+                    }
+                    update = self.sg.update('TimeLog', ordered_timesheets[ts]['id'], data)
+                    print 'Update Needs Approval'
+                    updates.append(update)
+
+            # Check Duration
+            duration = ordered_timesheets[ts]['duration']
+            if duration > self.double_time_mins or duration < 0:
+                data = {
+                    'sg_needs_approval': True
+                }
+                update = self.sg.update('TimeLog', ordered_timesheets[ts]['id'], data)
+                print 'Update Needs Approval on Duration'
+                updates.append(update)
+
+            # Check against previous time sheets
             if (ts + 1) > ts_count:
                 break
             try:
