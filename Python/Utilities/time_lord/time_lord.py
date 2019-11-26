@@ -436,18 +436,17 @@ class time_machine(QtCore.QThread):
             order = [
                 {
                     'column': 'id',
-                    'direction': 'asc'
+                    'direction': 'desc'
                 }
             ]
 
             conn_attempts = 0
             while True:
-                # print 'conn_attempts: %s' % conn_attempts
                 try:
-                    events = sg.find('EventLogEntry', filters, fields, order=order, limit=200)
+                    events = sg.find('EventLogEntry', filters, fields, order=order, limit=100)
                     # print 'found events: %s' % events
                     if events:
-                        # logger.debug('Events collected! %s' % events)
+                        logger.debug('Events collected! %s' % events)
                         # print 'New Events Collected!', events
                         return events
                 except (sgapi.ProtocolError, sgapi.ResponseError, socket.error) as err:
@@ -474,14 +473,17 @@ class time_machine(QtCore.QThread):
         self.time_signal.debug.emit('Starting the main event listener loop...')
         self.time_signal.log.emit('Listener Loop Started')
         while not self.kill_it:
+            # Adding a sleep timer to better minimize the data load
+            time.sleep(1)
             # TODO: I've discovered that I need to have every time sheet update the time_capsule.
             #       It doesn't have to update all the information, but at the very least must update the timeLogID
             #       I'll have to work that into the TARDIS as well.
             events = self.get_new_events()
-            time_capsule = self.get_time_capsule()
+            # time_capsule = self.get_time_capsule()
             # print 'returned events: %s' % events
             if events:
                 for event in events:
+                    time_capsule = self.get_time_capsule()
                     if not event['entity']:
                         continue
                     if event['entity']['id'] >= time_capsule['TimeLogID'] and event['id'] > time_capsule['EventLogID']:
@@ -599,6 +601,20 @@ class time_machine(QtCore.QThread):
                                                    'seconds... %s' % e)
                                     time.sleep(2)
                                     self.save_time_capsule(data)
+                    elif event['entity']['id'] != time_capsule['TimeLogID'] \
+                            and event['id'] > time_capsule['EventLogID']:
+                        data = {
+                            'EventLogID': event['id'],
+                            'TimeLogID': time_capsule['TimeLogID'],
+                            'current': time_capsule['current']
+                        }
+                        try:
+                            self.save_time_capsule(data)
+                        except IOError as e:
+                            self.time_signal.warning.emit('Failed to save the file.  Trying again in a few '
+                                                          'seconds... %s' % e)
+                            time.sleep(2)
+                            self.save_time_capsule(data)
 
 
 # ------------------------------------------------------------------------------------------------------

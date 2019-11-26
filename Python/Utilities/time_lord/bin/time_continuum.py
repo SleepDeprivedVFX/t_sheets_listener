@@ -707,9 +707,14 @@ class continuum(object):
                 data = {
                     'sg_task_end': previous_end
                 }
-                update = self.sg.update('TimeLog', previous_id, data)
-                print 'update output: %s' % update
-                updates.append(update)
+                try:
+                    update = self.sg.update('TimeLog', previous_id, data)
+                    print 'update output: %s' % update
+                    updates.append(update)
+                except AttributeError as e:
+                    self.logger.error('Failed to update the TimeLog.')
+                    # NOTE: I could probably add a retry here.
+
         return updates
 
     def get_user_total_in_range(self, user=None, start=None, end=None, lunch_id=None, break_id=None):
