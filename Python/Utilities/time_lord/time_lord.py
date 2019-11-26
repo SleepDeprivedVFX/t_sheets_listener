@@ -100,18 +100,10 @@ lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
 class time_stream(logging.StreamHandler):
     """
     Stream handler for the output window
-    NOTE: Currently the stream handler crashes the system, so I'm leaving the architecture here for when I can get it
-          to work properly.
-          Might be due to the fact that the logger is being called from multiple places, but the stream handler is only
-          processing from the main UI. Just a thought.
     """
     def emit(self, record):
         level = record.levelname
         message = record.message
-
-        # FIXME: The following block colorizes the output. It totally works, and then suddenly it
-        #       locks up the memory and kills the machine.  I'm leaving the code here for the future.
-        #       Error: Process finished with exit code -1073741819 (0xC0000005)
         # Colorize the Monitor Log Output. (Error messages, Debug logging, and Warnings)
         info = QtGui.QColor(130, 231, 130)
         error = QtGui.QColor(255, 0, 0)
@@ -119,12 +111,16 @@ class time_stream(logging.StreamHandler):
         warning = QtGui.QColor(218, 145, 0)
         formatter = QtGui.QTextCharFormat()
         if level == 'ERROR':
+            print('Error Message formatting')
             formatter.setForeground(error)
         elif level == 'DEBUG':
+            print('Debug Message formatting')
             formatter.setForeground(debug)
         elif level == 'WARNING':
+            print('Warning Message formatting')
             formatter.setForeground(warning)
         else:
+            print('Info Message Formatting')
             formatter.setForeground(info)
         self.edit.setCurrentCharFormat(formatter)
 
@@ -134,6 +130,7 @@ class time_stream(logging.StreamHandler):
         self.edit.setTextCursor(cursor)
         # #
         # # # Insert Log
+        print('Log Message: %s' % message)
         self.edit.insertPlainText('%s\n' % message)
         # current_text = self.edit.toPlainText()
         # if len(current_text) > 300:
@@ -999,9 +996,9 @@ class time_lord_ui(QtGui.QMainWindow):
         logger.addHandler(self.time_stream)
 
         # Connect the logging output.
+        self.time_machine.time_signal.log.connect(self.log)
         self.time_engine.time_signal.log.connect(self.log)
         self.time_lord.time_signal.log.connect(self.log)
-        self.time_machine.time_signal.log.connect(self.log)
         self.time_engine.time_signal.debug.connect(self.debug)
         self.time_lord.time_signal.debug.connect(self.debug)
         self.time_machine.time_signal.debug.connect(self.debug)
@@ -1928,18 +1925,22 @@ class time_lord_ui(QtGui.QMainWindow):
     # --------------------------------------------------------------------------------------------------
     def log(self, message=None):
         if message:
+            print('LOG MESSAGE RECEIVED: %s' % message)
             logger.info(message)
 
     def debug(self, message=None):
         if message:
+            print('DEBUG MESSAGE RECEIVED: %s' % message)
             logger.debug(message)
 
     def error(self, message=None):
         if message:
+            print('ERROR MESSAGE RECEIVED: %s' % message)
             logger.error(message)
 
     def warning(self, message=None):
         if message:
+            print('WARNING MESSAGE RECEIVED: %s' % message)
             logger.warning(message)
 
 

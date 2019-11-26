@@ -60,6 +60,73 @@ class comm_sys(object):
         self.logger.addHandler(fh)
         self.logger.info('Comm System Activated!')
 
+    def get_supervisors(self):
+        """
+        This gets the Coordinators and Supervisors with which to send hipchats to.
+        :return: admins (dict) {name: email}
+        """
+        slack_groups = [self.config['admins']]
+        self.logger.info('Collecting Support team members from the groups...')
+        admins = {}
+        groups = []
+        for group in slack_groups:
+            groups.append(['code', 'is', group])
+        filters = [
+            {
+                'filter_operator': 'any',
+                'filters': groups
+            }
+        ]
+        fields = [
+            'users',
+            'code'
+        ]
+        group_members = self.sg.find('Group', filters, fields)
+        self.logger.debug('GROUP %s' % group_members)
+        for group in group_members:
+            users = group['users']
+            if users:
+                for user in users:
+                    person = user['name']
+                    person_id = user['id']
+                    data = self.get_sg_user(userid=person_id)
+                    if data:
+                        email = data[person_id]['email']
+                        admins[person] = email
+                        self.logger.debug('%s\'s email %s added' % (person, email))
+        return admins
+
+    def get_sg_user(self, userid=None):
+        """
+        Get a specific Shotgun User's details from any basic input.
+        Only the first detected value will be searched.  If all 3 values are added, only the ID will be searched.
+        :param userid: (int) Shotgun User ID number
+        :param name:   (str) First and Last Name
+        :param email:  (str) email@asc-vfx.com
+        :return: user: (dict) Basic details
+        """
+        self.logger.info('Collecting user data to find email...')
+        user = {}
+        if userid:
+            filters = [['sg_status_list', 'is', 'act'], ['id', 'is', userid]]
+            fields = [
+                'email',
+                'projects',
+            ]
+            find_user = self.sg.find_one('HumanUser', filters, fields)
+            self.logger.debug('find_user returns: %s' % find_user)
+            if find_user:
+                user_id = find_user['id']
+                sg_email = find_user['email']
+                user[user_id] = {'email': sg_email}
+                self.logger.debug('User email found!  %s' % sg_email)
+            if not user:
+                self.logger.info('This user is not part of the project!')
+                return None
+        else:
+            self.logger.warning('No data passed to get_sg_user()!  Nothing processed!')
+        return user
+
     def get_slack_user(self, email=None, auth_code=None, url=None, tries=0):
         if not auth_code:
             auth_code = self.auth_code
@@ -109,7 +176,7 @@ class comm_sys(object):
                     if t > 10:
                         self.logger.error("Too many tries!  Skipping...")
                     user_id = self.get_slack_user(email=email, auth_code=auth_code, url=url,
-                                             tries=t)
+                                                  tries=t)
                 except Exception, e:
                     self.logger.error('There is no saving this thing!: %s' % e)
                     return None
@@ -207,3 +274,45 @@ class comm_sys(object):
                 print('Message fuckard: %s' % error)
                 self.logger.error('Something went wrong sending the message!  %s' % error)
 
+    def send_on_quit_alert(self, user=None):
+        admins = self.get_supervisors()
+        for admin in admins:
+            email = admins[admin]
+            slack_id = self.get_slack_user(email=email)
+
+            data = {
+                "type": "message",
+                "channel": slack_id,
+                "blocks": [
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": '%s has quit the TARDIS*!' % user['name']
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "fields": [
+                            {
+                                "type": "mrkdwn",
+                                "text": "Maybe find out why they're no longer using the time-sheet system."
+                            }
+                        ]
+                    }
+                ],
+                'as_user': True,
+                'username': 'Robo-Coordinator'
+            }
+
+            if data:
+                headers = {
+                    'Authorization': 'Bearer %s' % self.auth_code,
+                    'Content-type': 'application/json'
+                }
+                data = json.dumps(data)
+                try:
+                    person = requests.post('%schat.postMessage' % self.slack_url, headers=headers, data=data)
+                    self.logger.debug('Message sent: %s' % person.json())
+                except Exception as error:
+                    self.logger.error('Failed to send message: %s' % error)

@@ -29,7 +29,7 @@ import time
 from datetime import datetime, timedelta
 from dateutil import parser
 
-from bin import companions, configuration, time_continuum, shotgun_collect
+from bin import companions, configuration, time_continuum, shotgun_collect, comm_system
 
 try:
     import winxpgui as win32gui
@@ -86,6 +86,10 @@ logger.info('User information collected...')
 # setup shotgun data connection
 sg_data = shotgun_collect.sg_data(sg, config=config, sub='tardis')
 logger.info('Shotgun commands brought in.')
+
+# Setup Comm System
+comm = comm_system.comm_sys(sg, config=config, sub='tardis')
+logger.info('Communication system online.')
 
 
 class POINT(Structure):
@@ -697,6 +701,8 @@ if __name__ == '__main__':
     def bye(tardis):
         # Tardis killer.  May need to eventually kill all other processes as well.
         print('Why you quiting bro?')
+        logger.info('%s has quit their TARDIS!' % user['name'])
+        comm.send_on_quit_alert(user=user)
 
     menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
                     ('Tools', icons.next(), (('Overtime Tool', icons.next(), overtime),
