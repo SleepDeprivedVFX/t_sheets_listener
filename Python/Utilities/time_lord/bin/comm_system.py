@@ -60,12 +60,15 @@ class comm_sys(object):
         self.logger.addHandler(fh)
         self.logger.info('Comm System Activated!')
 
-    def get_supervisors(self):
+    def get_supervisors(self, maintenance=False):
         """
         This gets the Coordinators and Supervisors with which to send hipchats to.
         :return: admins (dict) {name: email}
         """
-        slack_groups = [self.config['admins']]
+        if maintenance:
+            slack_groups = [self.config['maintenance']]
+        else:
+            slack_groups = [self.config['admins']]
         self.logger.info('Collecting Support team members from the groups...')
         admins = {}
         groups = []
@@ -154,9 +157,9 @@ class comm_sys(object):
                                 self.logger.debug('Slack user ID found! %s' % user_id)
                                 break
                 else:
-                    self.logger.info('Waiting 10 seconds to allow for Slack rate limits...')
+                    self.logger.debug('Waiting 10 seconds to allow for Slack rate limits...')
                     time.sleep(10)
-                    self.logger.info('Trying again...')
+                    self.logger.debug('Trying again...')
                     user_id = self.get_slack_user(email=email, auth_code=auth_code, url=url)
 
             except KeyError, e:
@@ -297,6 +300,50 @@ class comm_sys(object):
                             {
                                 "type": "mrkdwn",
                                 "text": "Maybe find out why they're no longer using the time-sheet system."
+                            }
+                        ]
+                    }
+                ],
+                'as_user': True,
+                'username': 'Robo-Coordinator'
+            }
+
+            if data:
+                headers = {
+                    'Authorization': 'Bearer %s' % self.auth_code,
+                    'Content-type': 'application/json'
+                }
+                data = json.dumps(data)
+                try:
+                    person = requests.post('%schat.postMessage' % self.slack_url, headers=headers, data=data)
+                    self.logger.debug('Message sent: %s' % person.json())
+                except Exception as error:
+                    self.logger.error('Failed to send message: %s' % error)
+
+    def send_error_alert(self, user=None, error=None):
+        maintenance = self.get_supervisors(maintenance=True)
+
+        for maint in maintenance:
+            email = maintenance[maint]
+            slack_id = self.get_slack_user(email=email)
+
+            data = {
+                "type": "message",
+                "channel": slack_id,
+                "blocks": [
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": '*%s has an ERROR*!' % user['name']
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "fields": [
+                            {
+                                "type": "mrkdwn",
+                                "text": "%s" % error
                             }
                         ]
                     }

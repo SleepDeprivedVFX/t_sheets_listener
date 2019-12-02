@@ -23,7 +23,6 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import threading
 import shotgun_api3 as sgapi
-from PySide import QtCore, QtGui
 from ctypes import windll, Structure, c_long, byref
 import time
 from datetime import datetime, timedelta
@@ -358,13 +357,6 @@ def chronograph():
                 # test the remaining time
                 if time_left <= ot_alert_min and ot_check == 0 and daily_total < float(config['ot_hours']) \
                         and user['sg_hourly']:
-                    # if ot_check == 0 and daily_total < config['ot_hours']:
-                    # It is before EOD, This check has not been preformed yet, and it's less than X minutes to EOD
-                    # NOTE: While typing this, it got a lot more complicated. Shotgun needs OT overrides, and these
-                    #       must be checked.  Which means:
-                    #           The Tardis will need to know which shot or asset and the show is currently clocked in.
-                    #           That should be easily attainable with the TimeLog.
-                    #           I will need to get the Show OT Override, and the Shot/Asset OT override checkboxes.
 
                     # Check OT Approval statuses
                     latest_timesheet = tl_time.get_latest_timesheet(user=user)

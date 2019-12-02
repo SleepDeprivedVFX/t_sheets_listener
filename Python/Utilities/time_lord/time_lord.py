@@ -43,6 +43,7 @@ from bin.time_continuum import continuum
 from bin.companions import companions
 from bin import configuration
 from bin import shotgun_collect
+from bin import comm_system
 from ui import time_lord_clock as tlu
 import time
 import socket
@@ -92,6 +93,12 @@ sg_data = shotgun_collect.sg_data(sg, config=config, sub='time_lord')
 
 lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])
+
+# --------------------------------------------------------------------------------------------------
+# Setup the comm system
+# --------------------------------------------------------------------------------------------------
+comm = comm_system.comm_sys(sg, config=config, sub='time_lord')
+logger.info('Communication system online.')
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -283,6 +290,7 @@ class time_engine(QtCore.QThread):
             self.time_signal.start_end_output.emit(set_message)
         except Exception as e:
             self.time_signal.error.emit('Failed to update: %s' % e)
+            comm.send_error_alert(user=user, error=e)
 
     def set_user_output(self, user=None):
         if self.latest_timesheet['sg_task_end']:
@@ -459,6 +467,7 @@ class time_machine(QtCore.QThread):
                     time.sleep(5)
                     if conn_attempts > 10:
                         self.time_signal.error.emit('Something went wrong! %s' % err)
+                        comm.send_error_alert(user=user, error=err)
                         break
         return []
 
@@ -700,6 +709,7 @@ class time_lord(QtCore.QThread):
             self.set_start_end_output(start=start, end=end)
         except Exception as e:
             self.time_signal.error.emit('Failed to update: %s' % e)
+            comm.send_error_alert(user=user, error=e)
 
     def set_start_end_output(self, start=None, end=None):
         set_message = 'Start: %s\nEnd: %s' % (start, end)
@@ -1410,6 +1420,7 @@ class time_lord_ui(QtGui.QMainWindow):
                     minutes = (6 * (minute + (second / 60.0)))
             except Exception, e:
                 logger.error('The fit hit the shan: %s' % e)
+                comm.send_error_alert(user=user, error=e)
                 return False
         else:
             hours = in_time[0]

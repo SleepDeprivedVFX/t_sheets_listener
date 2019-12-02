@@ -133,34 +133,34 @@ class continuum(object):
 
             # subtract a day
             prev_day = date - relativedelta.relativedelta(days=1)
-            self.logger.info('prev_day: %s' % prev_day)
+            self.logger.debug('prev_day: %s' % prev_day)
 
             is_last_week = self.time_from_last_week(start_time=prev_day)
-            self.logger.info('is last week? %s' % is_last_week)
+            self.logger.debug('is last week? %s' % is_last_week)
 
             is_weekday = self.date_is_weekday(date=prev_day)
             is_wd = is_weekday[0]
             weekday = is_weekday[1]
             if is_wd:
-                self.logger.info('is_weekday: %s' % weekday)
+                self.logger.debug('is_weekday: %s' % weekday)
                 if weekday in regular_days:
-                    self.logger.info('Regular day %s' % weekday)
+                    self.logger.debug('Regular day %s' % weekday)
             else:
-                self.logger.info('NOT a weekday! %s' % weekday)
+                self.logger.debug('NOT a weekday! %s' % weekday)
                 tries = 0
                 while weekday not in regular_days and tries < 5:
                     prev_day = prev_day - relativedelta.relativedelta(days=1)
                     is_weekday = self.date_is_weekday(date=prev_day)
                     weekday = is_weekday[1]
                     tries += 1
-                self.logger.info('Now the weekday is: %s' % weekday)
-                self.logger.info('And the new date is: %s' % prev_day)
+                self.logger.debug('Now the weekday is: %s' % weekday)
+                self.logger.debug('And the new date is: %s' % prev_day)
 
         return prev_day
 
     def get_latest_timesheet(self, user=None):
         if user:
-            self.logger.info('Finding the last timesheet for %s' % user['name'])
+            self.logger.debug('Finding the last timesheet for %s' % user['name'])
             user_id = user['id']
             self.logger.debug('USER ID: %s' % user_id)
 
@@ -189,7 +189,7 @@ class continuum(object):
             return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
 
     def assume_end_time(self, start_time=None, eod=None):
-        self.logger.info('Assuming an end time from the date and configuration...')
+        self.logger.debug('Assuming an end time from the date and configuration...')
         if start_time:
             if type(eod) == str:
                 self.logger.debug('Converting time to datetime type...')
@@ -474,7 +474,7 @@ class continuum(object):
 
     def is_user_clocked_in(self, user=None):
         if user:
-            self.logger.info('Looking to see if %s is clocked in....' % user['name'])
+            self.logger.debug('Looking to see if %s is clocked in....' % user['name'])
             user_id = user['id']
 
             # List all the timesheets for the user
