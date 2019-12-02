@@ -1,0 +1,1422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10b6742d-d9e9-4b05-b619-72f55193db28" name="Default Changelist" comment="Going to make the first roll out from here.">
+      <change afterPath="$PROJECT_DIR$/../../Shotgun/tk-time_lord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../random45/truly_random.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../random45/twit_config.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../twitter/auto_tweet_books/data/tweet_check.tbot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../twitter/auto_tweet_books/twitter_bot_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/attribute_machine/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/attribute_machine/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/floppy_jet_autorigger_02.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/floppy_jet_autorigger_02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/.idea/paddedCell.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/.idea/paddedCell.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/padded_cell.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/padded_cell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/ui/Ui_padded_cell.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/paddedCell/ui/Ui_padded_cell.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/riggingUtilities" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/riggingUtilities" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/switch_witch/switch_witch.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/switch_witch/switch_witch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/animation/appchooser/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/animation/easing/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/declarative/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/declarative/extending/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/declarative/extending/chapter1-basics/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/declarative/extending/chapter2-methods/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/declarative/extending/chapter3-bindings/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/declarative/extending/chapter4-customPropertyTypes/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/declarative/extending/chapter5-listproperties/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/t_sheets_listener/ui/PySide/examples/declarative/signals/qmltopy1/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/tk-t-sheets/v0.1.0/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shotgun/tk-t-sheets/v0.1.0/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/tk-t-sheets/v0.1.0/python/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shotgun/tk-t-sheets/v0.1.0/python/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/tk-t-sheets/v0.1.0/python/t_sheets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shotgun/tk-t-sheets/v0.1.0/python/t_sheets/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../remote_auto_publish_DEV.py" beforeDir="false" afterPath="$PROJECT_DIR$/../remote_auto_publish_DEV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/../t_sheets_connect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/.idea/t_sheets_listener.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/DESCRIPTION.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/pbr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput-1.3.7.dist-info/zip-safe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/_info.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/_util/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/_util/darwin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/_util/win32.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/_util/win32_vks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/_util/xorg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/_util/xorg_keysyms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/keyboard/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/keyboard/_base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/keyboard/_darwin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/keyboard/_win32.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/keyboard/_xorg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/mouse/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/mouse/_base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/mouse/_darwin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/mouse/_win32.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../t_sheets_listener/libs/pynput/mouse/_xorg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_io/time_capsule.tld" beforeDir="false" afterPath="$PROJECT_DIR$/data_io/time_capsule.tld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/psychic_paper.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/psychic_paper.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_companion_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_companion_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_continuum_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_continuum_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_shotgun_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_shotgun_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_lord_dev4.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_lord_dev4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../twitter/auto_tweet_books/reader_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../twitter/auto_tweet_books/reader_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../twitter/auto_tweet_books/terms_keywords_hashtags.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../twitter/auto_tweet_books/data/terms_keywords_hashtags.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../twitter/auto_tweet_books/tweets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../twitter/auto_tweet_books/data/tweets.json" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.701891">
+      <split-first>
+        <splitter split-orientation="horizontal" split-proportion="0.50198257">
+          <split-first>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/time_lord_dev4.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="303">
+                      <caret line="358" column="52" selection-start-line="358" selection-start-column="52" selection-end-line="358" selection-end-column="52" />
+                      <folding>
+                        <element signature="e#1859#1887#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/data_io/time_capsule.tld">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="119">
+                      <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/lunch.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="826">
+                      <caret line="97" selection-start-line="97" selection-end-line="97" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/tardis_config.cfg">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="646">
+                      <caret line="38" selection-start-line="38" selection-end-line="38" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/tardis.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="697">
+                      <caret line="59" column="65" selection-start-line="59" selection-start-column="65" selection-end-line="59" selection-end-column="65" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/eod.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="102">
+                      <caret line="6" selection-start-line="6" selection-end-line="6" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <splitter split-orientation="vertical" split-proportion="0.9">
+              <split-first>
+                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+                  <file pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/time_lord.py">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="9639">
+                          <caret line="581" column="21" selection-start-line="579" selection-start-column="12" selection-end-line="585" selection-end-column="57" />
+                          <folding>
+                            <element signature="e#2235#2263#0" expanded="true" />
+                            <element signature="e#45545#45802#0" />
+                            <element signature="e#45850#47551#0" />
+                            <element signature="e#47612#49987#0" />
+                            <element signature="e#50028#51742#0" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/time_lord_dev4.py">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="505">
+                          <caret line="394" column="59" selection-start-line="394" selection-start-column="59" selection-end-line="394" selection-end-column="59" />
+                          <folding>
+                            <element signature="e#1859#1887#0" expanded="true" />
+                            <element signature="e#30132#31383#0" />
+                            <element signature="e#31711#31895#0" />
+                            <element signature="e#31947#32140#0" />
+                            <element signature="e#32189#34863#0" />
+                            <element signature="e#34906#35267#0" />
+                            <element signature="e#35613#36378#0" />
+                            <element signature="e#36414#36831#0" />
+                            <element signature="e#36866#36999#0" />
+                            <element signature="e#37036#37298#0" />
+                            <element signature="e#37333#37590#0" />
+                            <element signature="e#37638#39345#0" />
+                            <element signature="e#39392#41791#0" />
+                            <element signature="e#41839#43806#0" />
+                            <element signature="e#43861#45562#0" />
+                            <element signature="e#45624#47312#0" />
+                            <element signature="e#47372#49022#0" />
+                            <element signature="e#49376#49641#0" />
+                            <element signature="e#49688#50437#0" />
+                            <element signature="e#50491#52027#0" />
+                            <element signature="e#52088#53296#0" />
+                            <element signature="e#53676#54549#0" />
+                            <element signature="e#54608#55213#0" />
+                            <element signature="e#55734#56693#0" />
+                            <element signature="e#56299#57029#0" />
+                            <element signature="e#57087#58013#0" />
+                            <element signature="e#58051#58671#0" />
+                            <element signature="e#58712#60396#0" />
+                            <element signature="e#60441#60612#0" />
+                            <element signature="e#60673#63125#0" />
+                            <element signature="e#63188#63303#0" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/ui/time_lord_clock.py">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="4777">
+                          <caret line="281" column="31" selection-start-line="281" selection-start-column="31" selection-end-line="281" selection-end-column="31" />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                </leaf>
+              </split-first>
+              <split-second>
+                <leaf>
+                  <file pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/time_lord_dev4.py">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="-323">
+                          <caret line="139" column="45" lean-forward="true" selection-start-line="139" selection-start-column="45" selection-end-line="140" selection-end-column="45" />
+                          <folding>
+                            <element signature="e#1859#1887#0" expanded="true" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                </leaf>
+              </split-second>
+            </splitter>
+          </split-second>
+        </splitter>
+      </split-first>
+      <split-second>
+        <splitter split-orientation="vertical" split-proportion="0.4497696">
+          <split-first>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/bin/time_continuum.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="329">
+                      <caret line="498" selection-start-line="498" selection-end-line="498" />
+                      <folding>
+                        <element signature="e#0#732#1" />
+                        <element signature="e#784#799#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/launch_tardis.bat">
+                  <provider selected="true" editor-type-id="text-editor" />
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/bin/configuration.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="102">
+                      <caret line="6" selection-start-line="6" selection-end-line="6" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/bin/shotgun_collect.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="240">
+                      <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="279" selection-end-column="8" />
+                      <folding>
+                        <element signature="e#360#1784#0" />
+                        <element signature="e#1829#2600#0" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/bin/companions.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="663">
+                      <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+                      <folding>
+                        <element signature="e#0#76#1" />
+                        <element signature="e#480#1846#0" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-second>
+        </splitter>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>logger</find>
+      <find>sod</find>
+      <find>user_clocked_in</find>
+      <find>self.last_timesheet</find>
+      <find>emit</find>
+      <find>latest_timesheet</find>
+      <find>switch_state</find>
+      <find>update_ui</find>
+      <find>switch_s</find>
+      <find>self.last_saved_entity</find>
+      <find>self.last_saved_task</find>
+      <find>def start_time</find>
+      <find>def clo</find>
+      <find>def update_proj</find>
+      <find>init_ui</find>
+      <find>update_ta</find>
+      <find>def selection_ch</find>
+      <find>def get_u</find>
+      <find>clock_in_user</find>
+      <find>time_lord.clocked_in</find>
+      <find>last_saved_task</find>
+      <find>task_dropdown.currentIndexChanged</find>
+      <find>clock_state</find>
+      <find>def req_upda</find>
+      <find>clock_in_button_state</find>
+      <find>req_update_entities</find>
+      <find>task</find>
+      <find>UPDATE_DATA</find>
+      <find>settings</find>
+      <find>print</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>print '459:</replace>
+      <replace>print '481:</replace>
+      <replace>print '490:</replace>
+      <replace>print '493:</replace>
+      <replace>print '501:</replace>
+      <replace>print '659:</replace>
+      <replace>print '662:</replace>
+      <replace>print '726:</replace>
+      <replace>print</replace>
+      <replace>print(inspect.stack()[1][2],</replace>
+      <replace>print(inspect.stack()[1][2], inspect.stack()[1],</replace>
+      <replace>print(inspect.stack()[0][2], inspect.stack()[1][2],</replace>
+      <replace>print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],</replace>
+      <replace>inspect.stack()[1][3],</replace>
+      <replace>inspect.stack()[1][3], datetime.now(),</replace>
+      <replace>datetime</replace>
+      <replace>inspect.stack()[1][3], datetime.datetime.now().time()</replace>
+      <replace>inspect.stack()[1][3], datetime.now().time(),</replace>
+      <replace>datetime.now().time().second,</replace>
+      <replace>, datetime.datetime.now()</replace>
+      <replace />
+      <replace>when='%s' % config['log_interval'],</replace>
+      <replace>logger.debug(</replace>
+      <replace>self.logger</replace>
+      <replace>saved_entity</replace>
+      <replace>self.saved_entity</replace>
+      <replace>self.saved_task</replace>
+      <replace>saved_task</replace>
+      <replace>clocked_in</replace>
+      <replace>self.last_timesheet</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin</dir>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui</dir>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Adam Benson &lt;adambenson.vfx@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/time_continuum.py" />
+        <option value="$PROJECT_DIR$/tests_1.py" />
+        <option value="$PROJECT_DIR$/time_lord_dev_1.py" />
+        <option value="$PROJECT_DIR$/time_lord_dev_2.py" />
+        <option value="$PROJECT_DIR$/dalek.cfg" />
+        <option value="$PROJECT_DIR$/bin/after_hours.py" />
+        <option value="$PROJECT_DIR$/bin/overtime.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/Pop_up_tests.py" />
+        <option value="$PROJECT_DIR$/bin/lunch.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/error_notes.txt" />
+        <option value="$PROJECT_DIR$/buildingblocks/Test.py" />
+        <option value="$PROJECT_DIR$/ui/time_lord_clock.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/time_lord_dev_1.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/time_lord_dev_3.py" />
+        <option value="$PROJECT_DIR$/eod.py" />
+        <option value="$PROJECT_DIR$/lunch.py" />
+        <option value="$PROJECT_DIR$/bin/configuration.py" />
+        <option value="$PROJECT_DIR$/tardis.py" />
+        <option value="$PROJECT_DIR$/data_io/time_capsule.tld" />
+        <option value="$PROJECT_DIR$/bin/companions.py" />
+        <option value="$PROJECT_DIR$/bin/time_continuum.py" />
+        <option value="$PROJECT_DIR$/time_lord.py" />
+        <option value="$PROJECT_DIR$/tardis_config.cfg" />
+        <option value="$PROJECT_DIR$/bin/shotgun_collect.py" />
+        <option value="$PROJECT_DIR$/time_lord_dev4.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="3263" />
+    <option name="height" value="2136" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="shotgun_collect.py" type="8704e2dd:PyFileNode" />
+            </path>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="time_continuum.py" type="8704e2dd:PyFileNode" />
+            </path>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+              <item name="data_io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+              <item name="time_lord_dev4.py" type="8704e2dd:PyFileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="T:/shotgun/_mastertemplate2" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\buildingblocks" />
+      <recent name="C:\Users\sleep\OneDrive\Documents\Scripts\Python\Utilities\time_lord" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\buildingblocks" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.time_lord_dev4">
+    <configuration name="Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/buildingblocks" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buildingblocks/Test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="eod" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/eod.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="python27" type="PythonConfigurationType" factoryName="Python">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python27\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tardis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tardis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="time_lord" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/time_lord.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="time_lord_dev4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/time_lord_dev4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.python27" />
+      <item itemvalue="Python.eod" />
+      <item itemvalue="Python.tardis" />
+      <item itemvalue="Python.time_lord" />
+      <item itemvalue="Python.Test" />
+      <item itemvalue="Python.time_lord_dev4" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.time_lord_dev4" />
+        <item itemvalue="Python.tardis" />
+        <item itemvalue="Python.time_lord" />
+        <item itemvalue="Python.Test" />
+        <item itemvalue="Python.eod" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10b6742d-d9e9-4b05-b619-72f55193db28" name="Default Changelist" comment="" />
+      <created>1559150061279</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559150061279</updated>
+    </task>
+    <task id="LOCAL-00085" summary="I'm starting to get the clock update system to work.  I'm realizing that my tracking of timeLog IDs is probably killing me a bit for no benefit. Need to simply embed the pertinent data in the dropdowns, and rely solely on comparing that.">
+      <created>1570651437919</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1570651437920</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Added a spash screen.  I keep making minor improvements, with lots of little glitches.  The current glitch is happening while trying to remove the Lunch Breaks">
+      <created>1570663374095</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1570663374095</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Making some weird progress.  I almost need to go through and re-work several of the things I've got working, just to make sure I'm not over-engineering it all">
+      <created>1570672767527</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1570672767527</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Adding the logo psd. I'm making headway on the updater, but the UI freezes up so much I think I may end up having to re-work a lot of it.">
+      <created>1570733362112</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1570733362112</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Mostly comments, but considering a massive overhaul.  Specifically, breaking the __init__ into proper functions, and signal slot calls.">
+      <created>1570733947348</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1570733947348</updated>
+    </task>
+    <task id="LOCAL-00090" summary="By disabling a major portion of the setup I notice 1. Faster open. 2. The clocks and some of the Output Monitor continue to work.  I think I can now piecemeal this thing back together with simpler parts, focusing on what I know works.">
+      <created>1570734692450</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1570734692450</updated>
+    </task>
+    <task id="LOCAL-00091" summary="I have moved the clock out features to the time_lord.  I'm going to remove the debris now.">
+      <created>1570745039958</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1570745039958</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Mid progress of re-working the UI.  I think this will be an improvement, it's just going to be a little messy for a minute.">
+      <created>1570760013254</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1570760013255</updated>
+    </task>
+    <task id="LOCAL-00093" summary="The daily total is working, but the start time clock continues running.">
+      <created>1570832823260</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1570832823260</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Weekly total now working again">
+      <created>1570833703697</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1570833703697</updated>
+    </task>
+    <task id="LOCAL-00095" summary="I have many things working now, but many other things aren't.  I'm considering a deeper cleanup of the code, perhaps saving some of the junk in building blocks, just to try and make this easier to figure out.">
+      <created>1570839402822</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1570839402822</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Stripped out a bunch of dead junk.  I really need for it to work the way it is now, so... ya know.  Won't miss the junk, but it's saved in building blocks if needed.">
+      <created>1570840348643</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1570840348643</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Going to add a waitCondition to the system.  Also, I need to have it check for old entries that the Tardis failed to clock-out from.">
+      <created>1571078223089</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1571078223090</updated>
+    </task>
+    <task id="LOCAL-00098" summary="It's starting to work better.  There is a huge lock-up delay when it's updating the daily totals for the first time (at least). Furthermore, the clock-out, clock-in button does not seem to be working.">
+      <created>1571088070806</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1571088070807</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Replaced most of the prints with debug loggers.">
+      <created>1571089046573</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1571089046573</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Can't win for losing.  Clock in / clock out, mostly works.  Now the drop downs aren't.  Fuck">
+      <created>1571099088208</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1571099088208</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Ok.  It's buggy as all fuck, hangs up a lot and it undoubtedly running all kinds of garbage processes.  BUT, it's working.  It will update most things when changed externally.  It will clock in and out.  Buggy as fuck.">
+      <created>1571105880455</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1571105880455</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Fewer bugs are turning up.  It still locks up a lot when it's updating.  I get the feeling that has something to do with time_lord also trying to run processes which are both trying to update time_lord_ui">
+      <created>1571178093248</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1571178093248</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Ok.  There are a few things left to do. 1. TRT is not updating. 2. There is still a major lock-up. 3. Tasks do not update properly at first, but also don't cause issues.">
+      <created>1571181897650</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1571181897650</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Converted logging.debug( to  print(inspect.stack()[0][2], inspect.stack()[1][2], inspect.stack()[1][3],  for quicker output.">
+      <created>1571182389769</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1571182389769</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Doesn't update from external source when the user is clocked out. Doesn't insert the clocked in values when they are different from what is saved.">
+      <created>1571183236640</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1571183236640</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Added extensive junk output.">
+      <created>1571189853691</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1571189853691</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Not really a starting point for the day, but sort of a starting point for the day. Exploring hang ups and inefficiencies">
+      <created>1571249963706</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1571249963706</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Got the output stream to work with colors!  Need to set GOOD colors now, and have it put the most recent record first.">
+      <created>1571262293693</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1571262293693</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Got the debug logger to work properly, and the output monitor to put out data properly.">
+      <created>1571268110914</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1571268110914</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Reenabled the colors and order on output monitor. Made a change to keep data limited. Also got the windows stay on top hint toggle to work for people who are not clocked in.">
+      <created>1571274870345</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1571274870345</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Made all print commands Python3 compatible">
+      <created>1571338243990</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1571338243990</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Created a startup bat file that currently works.  Trying still to minimize the amount of hang ups and such that are still occurring.">
+      <created>1571348934544</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1571348934544</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Implemented new rolling logs. Temporarily has individual log for each process (continuum, time_lord, tardis, shotgun_collect). Multiprocess logging is possible but would require a rebuild of log system. This was faster for now. Rebuild this in later version.">
+      <created>1571353023156</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1571353023157</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Ok, I have a launcher that will work, and some of the bugs worked out.  I may roll this out tomorrow as is, and update it with fixes asap">
+      <created>1571366044967</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1571366044968</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Added some additional debugging settings, fixed issues for stand alone distribution.  Going to try and fix the timers one last time then build a distribution package.">
+      <created>1571433761183</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1571433761183</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Reorganized a few button commands, and am in the process of minimizing and reorganizing all of the various calls.  Going to prep it for Alpha Testing.">
+      <created>1571441062044</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1571441062044</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Replaced a bunch of print lines with logger.debugs.">
+      <created>1571441908586</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1571441908586</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Going to make the first roll out from here.">
+      <created>1571442709154</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1571442709154</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Initial Launch Notes: Crashes if no previous timesheet. Being installed to %userprofile%/time_lord. Previous Python must be uninstalled.">
+      <created>1571450545979</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1571450545980</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Tried to stream line a few processes yesterday which have inadvertently gummed up the works in places.  I'm going to commit this and then restore parts I think may be causing issues.">
+      <created>1571768347944</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1571768347944</updated>
+    </task>
+    <task id="LOCAL-00121" summary="I'm toying with the possibility of a most-to-partial rewrite. Starting over with a bunch of existing code, and also a clean slate.">
+      <created>1571770124210</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1571770124211</updated>
+    </task>
+    <task id="LOCAL-00122" summary="dev 4 is moving toward a shotgun event driven system instead of a time-related update system.  Should be more efficient, but take a while to rebuild">
+      <created>1571795191310</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1571795191310</updated>
+    </task>
+    <task id="LOCAL-00123" summary="I got the DEV4 event listener to start picking up new timesheet changes!">
+      <created>1571874371585</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1571874371585</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Building out a filtering system.  This iteration only gets the new timesheets because the HumanUser is not returned by most events.  Damn!  This means I'll have to check each timesheet as well.  Can't just get the info from the event.">
+      <created>1571876507287</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1571876507287</updated>
+    </task>
+    <task id="LOCAL-00125" summary="I have the dev 4 filtering out users correctly.">
+      <created>1571877600790</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1571877600791</updated>
+    </task>
+    <task id="LOCAL-00126" summary="EOD building of the UI for the Dev4">
+      <created>1571882733105</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1571882733105</updated>
+    </task>
+    <task id="LOCAL-00127" summary="Found one of the things that was causing a slow down.  Have to continue building out the system now.  EOD">
+      <created>1571883375344</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1571883375344</updated>
+    </task>
+    <task id="LOCAL-00128" summary="The project and asset drop downs are initializing nicely.  Looking into tasks and further events">
+      <created>1571958549385</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1571958549386</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Got the drop downs to partially work, but I'm coming across update hang ups in the updating of dropdowns.  What's going on there?">
+      <created>1571963596150</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1571963596150</updated>
+    </task>
+    <task id="LOCAL-00130" summary="Starting point for the day.  Already had one weird bug with the .tld database. Got a permission error.  I think it was just a fluke, but I should put in an error handler">
+      <created>1572026587857</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1572026587857</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Got the drop downs to work.  Need to see if I can get it to update.">
+      <created>1572054516330</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1572054516331</updated>
+    </task>
+    <task id="LOCAL-00132" summary="Started getting the detected signals to do some stuff.  Still doesn't work right, but it's getting there.">
+      <created>1572056208371</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1572056208371</updated>
+    </task>
+    <task id="LOCAL-00133" summary="Ok, I've got the drop-downs partially updating and providing the correct data on startup. The remote changes are starting to trigger events, but there's errors.  It's still hanging up in places. I'm thinking mutex and waitCond.">
+      <created>1572304750846</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1572304750847</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="2175" height="1415" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49720672" visible="true" weight="0.11880262" />
+      <window_info id="Structure" order="1" sideWeight="0.5027933" side_tool="true" weight="0.095315024" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32838154" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2952381" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3998447" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32996893" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32763976" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32919255" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32919255" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Got the debug logger to work properly, and the output monitor to put out data properly." />
+    <MESSAGE value="Reenabled the colors and order on output monitor. Made a change to keep data limited. Also got the windows stay on top hint toggle to work for people who are not clocked in." />
+    <MESSAGE value="Made all print commands Python3 compatible" />
+    <MESSAGE value="Created a startup bat file that currently works.  Trying still to minimize the amount of hang ups and such that are still occurring." />
+    <MESSAGE value="Implemented new rolling logs. Temporarily has individual log for each process (continuum, time_lord, tardis, shotgun_collect). Multiprocess logging is possible but would require a rebuild of log system. This was faster for now. Rebuild this in later version." />
+    <MESSAGE value="Ok, I have a launcher that will work, and some of the bugs worked out.  I may roll this out tomorrow as is, and update it with fixes asap" />
+    <MESSAGE value="Added some additional debugging settings, fixed issues for stand alone distribution.  Going to try and fix the timers one last time then build a distribution package." />
+    <MESSAGE value="Reorganized a few button commands, and am in the process of minimizing and reorganizing all of the various calls.  Going to prep it for Alpha Testing." />
+    <MESSAGE value="Replaced a bunch of print lines with logger.debugs." />
+    <MESSAGE value="Going to make the first roll out from here." />
+    <MESSAGE value="Initial Launch Notes: Crashes if no previous timesheet. Being installed to %userprofile%/time_lord. Previous Python must be uninstalled." />
+    <MESSAGE value="Tried to stream line a few processes yesterday which have inadvertently gummed up the works in places.  I'm going to commit this and then restore parts I think may be causing issues." />
+    <MESSAGE value="I'm toying with the possibility of a most-to-partial rewrite. Starting over with a bunch of existing code, and also a clean slate." />
+    <MESSAGE value="dev 4 is moving toward a shotgun event driven system instead of a time-related update system.  Should be more efficient, but take a while to rebuild" />
+    <MESSAGE value="I got the DEV4 event listener to start picking up new timesheet changes!" />
+    <MESSAGE value="Building out a filtering system.  This iteration only gets the new timesheets because the HumanUser is not returned by most events.  Damn!  This means I'll have to check each timesheet as well.  Can't just get the info from the event." />
+    <MESSAGE value="I have the dev 4 filtering out users correctly." />
+    <MESSAGE value="EOD building of the UI for the Dev4" />
+    <MESSAGE value="Found one of the things that was causing a slow down.  Have to continue building out the system now.  EOD" />
+    <MESSAGE value="The project and asset drop downs are initializing nicely.  Looking into tasks and further events" />
+    <MESSAGE value="Got the drop downs to partially work, but I'm coming across update hang ups in the updating of dropdowns.  What's going on there?" />
+    <MESSAGE value="Starting point for the day.  Already had one weird bug with the .tld database. Got a permission error.  I think it was just a fluke, but I should put in an error handler" />
+    <MESSAGE value="Got the drop downs to work.  Need to see if I can get it to update." />
+    <MESSAGE value="Started getting the detected signals to do some stuff.  Still doesn't work right, but it's getting there." />
+    <MESSAGE value="Ok, I've got the drop-downs partially updating and providing the correct data on startup. The remote changes are starting to trigger events, but there's errors.  It's still hanging up in places. I'm thinking mutex and waitCond." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ok, I've got the drop-downs partially updating and providing the correct data on startup. The remote changes are starting to trigger events, but there's errors.  It's still hanging up in places. I'm thinking mutex and waitCond." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="python-exception">
+          <properties notifyOnlyOnFirst="true" notifyOnTerminate="true" ignoreLibraries="true" exception="BaseException">
+            <option name="ignoreLibraries" value="true" />
+            <option name="notifyOnTerminate" value="true" />
+            <option name="notifyOnlyOnFirst" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self" />
+        <watch expression="self" />
+        <watch expression="self" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file:////skynet/Tools/scripts/python/nuke/python/versionToLatest.py" />
+    <entry file="file://$PROJECT_DIR$/ui/resources/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/time_lord_resources.qrc" />
+    <entry file="file://$PROJECT_DIR$/resources/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/ui/resources/time_lord_resources.qrc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests_1.py" />
+    <entry file="file://$PROJECT_DIR$/ui/resources/time_lord_resources_rc.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/resources/elements/meter_1_needle.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/after_hours.py" />
+    <entry file="file://$PROJECT_DIR$/overtime.py" />
+    <entry file="file://$PROJECT_DIR$/buildingblocks/time_lord_dev_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="81" column="12" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#2503#2526#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_lunch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_eod.py" />
+    <entry file="file:////skynet/Tools/scripts/python/nuke/python/fix_nuke_file_paths.py" />
+    <entry file="file://$PROJECT_DIR$/tardis.pyw" />
+    <entry file="file://$USER_HOME$/Documents/maya/2018/prefs/shelves/shelf_Deadline.mel" />
+    <entry file="file://$PROJECT_DIR$/ui/resources/Time_Lord_Logo.png" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2058581782/PySide/QtCore/QThread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildingblocks/Pop_up_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildingblocks/time_lord_dev_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildingblocks/Test.py" />
+    <entry file="file://$PROJECT_DIR$/buildingblocks/error_notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/cookielib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/site-packages/shotgun_api3/shotgun.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/site-packages/shotgun_api3/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/site-packages/httplib2/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="215" selection-start-line="215" selection-end-line="215" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/sre_parse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/site-packages/dateutil/tz/tz.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/re.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="236" selection-start-line="236" selection-end-line="236" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/logging/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/tardis_report.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-798805" />
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="1134" selection-start-line="1134" selection-end-line="1134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tardis_config.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tardis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="59" column="65" selection-start-line="59" selection-start-column="65" selection-end-line="59" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_lord.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9639">
+          <caret line="581" column="21" selection-start-line="579" selection-start-column="12" selection-end-line="585" selection-end-column="57" />
+          <folding>
+            <element signature="e#2235#2263#0" expanded="true" />
+            <element signature="e#45545#45802#0" />
+            <element signature="e#45850#47551#0" />
+            <element signature="e#47612#49987#0" />
+            <element signature="e#50028#51742#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_clock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4777">
+          <caret line="281" column="31" selection-start-line="281" selection-start-column="31" selection-end-line="281" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/launch_tardis.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/configuration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/companions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#76#1" />
+            <element signature="e#480#1846#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/time_continuum.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="498" selection-start-line="498" selection-end-line="498" />
+          <folding>
+            <element signature="e#0#732#1" />
+            <element signature="e#784#799#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/shotgun_collect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="279" selection-end-column="8" />
+          <folding>
+            <element signature="e#360#1784#0" />
+            <element signature="e#1829#2600#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lunch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="826">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_io/time_capsule.tld">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_lord_dev4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="358" column="52" selection-start-line="358" selection-start-column="52" selection-end-line="358" selection-end-column="52" />
+          <folding>
+            <element signature="e#1859#1887#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

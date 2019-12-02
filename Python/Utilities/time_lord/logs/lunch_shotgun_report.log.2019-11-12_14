@@ -1,0 +1,8 @@
+2019-11-12 14:51:20,187 - lunch_sg_collection | INFO : 46 - Shotgun Collection Activated!
+2019-11-12 14:51:20,187 - lunch_sg_collection | DEBUG : 48 - Shotgun sg sub-loaded.
+2019-11-12 14:51:20,298 - lunch_sg_collection | INFO : 73 - Getting project assets...
+2019-11-12 14:51:20,390 - lunch_sg_collection | INFO : 86 - Assets collected.
+2019-11-12 14:51:20,390 - lunch_sg_collection | DEBUG : 87 - Assets List: [{'code': 'Overhead', 'type': 'Asset', 'id': 6244}, {'code': 'PTO', 'type': 'Asset', 'id': 6245}, {'code': 'Unpaid', 'type': 'Asset', 'id': 6246}]
+2019-11-12 14:51:20,390 - lunch_sg_collection | INFO : 92 - Getting project shots...
+2019-11-12 14:51:20,493 - lunch_sg_collection | INFO : 105 - Shots collected
+2019-11-12 14:51:20,493 - lunch_sg_collection | DEBUG : 106 - Shots List: []

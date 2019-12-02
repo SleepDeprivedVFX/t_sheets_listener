@@ -1,0 +1,13 @@
+2019-11-12 14:51:20,055 - lunch_continuum | INFO : 59 - Continuum Activated!
+2019-11-12 14:51:28,614 - lunch_continuum | INFO : 160 - Finding the last timesheet for Adam Benson
+2019-11-12 14:51:28,614 - lunch_continuum | DEBUG : 162 - USER ID: 41
+2019-11-12 14:51:28,710 - lunch_continuum | DEBUG : 180 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-12', 'type': 'TimeLog', 'id': 1892, 'sg_task_start': datetime.datetime(2019, 11, 12, 10, 32, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003F3F3C8>)}
+2019-11-12 14:51:28,710 - lunch_continuum | DEBUG : 208 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-12', 'type': 'TimeLog', 'id': 1892, 'sg_task_start': datetime.datetime(2019, 11, 12, 10, 32, 20, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003F3F3C8>)}
+2019-11-12 14:51:28,884 - lunch_continuum | INFO : 216 - Timesheet updated.
+2019-11-12 14:51:28,898 - lunch_continuum | DEBUG : 240 - {'Project': {'id': 547}, 'Task': {'content': 'Lunch', 'id': 22837}}
+2019-11-12 14:51:29,062 - lunch_continuum | INFO : 160 - Finding the last timesheet for Adam Benson
+2019-11-12 14:51:29,062 - lunch_continuum | DEBUG : 162 - USER ID: 41
+2019-11-12 14:51:29,144 - lunch_continuum | DEBUG : 180 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22837, 'name': 'Lunch'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-12', 'type': 'TimeLog', 'id': 1904, 'sg_task_start': datetime.datetime(2019, 11, 12, 14, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003F3F3C8>)}
+2019-11-12 14:51:29,145 - lunch_continuum | DEBUG : 208 - Timesheet: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22837, 'name': 'Lunch'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-12', 'type': 'TimeLog', 'id': 1904, 'sg_task_start': datetime.datetime(2019, 11, 12, 14, 21, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003F3F3C8>)}
+2019-11-12 14:51:29,286 - lunch_continuum | INFO : 216 - Timesheet updated.
+2019-11-12 14:51:29,288 - lunch_continuum | DEBUG : 240 - {'Project': {'id': 547, 'name': 'Admin'}, 'Task': {'content': 'Pipeline', 'id': 22843}}

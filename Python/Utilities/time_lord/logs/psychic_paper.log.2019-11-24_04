@@ -1,0 +1,7 @@
+2019-11-24 04:17:01,174 - psychic_paper | ERROR : 1923 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-24 04:32:01,288 - psychic_paper | WARNING : 1927 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+2019-11-24 05:03:01,092 - psychic_paper | ERROR : 1923 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-24 05:03:02,023 - psychic_paper | ERROR : 1923 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-24 05:11:00,466 - psychic_paper | WARNING : 1927 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+2019-11-24 05:14:01,019 - psychic_paper | ERROR : 1923 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-24 05:16:02,730 - psychic_paper | WARNING : 1927 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)

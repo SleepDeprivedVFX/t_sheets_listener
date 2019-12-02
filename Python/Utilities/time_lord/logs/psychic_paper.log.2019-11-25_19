@@ -1,0 +1,96 @@
+2019-11-25 15:22:03,025 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 15:22:06,542 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 15:22:06,548 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 15:23:39,851 - psychic_paper | INFO : 1915 - Clocking out...
+2019-11-25 15:23:40,290 - psychic_paper | INFO : 1915 - Clocked out at 2019-11-25 23:23:39 UTC
+2019-11-25 15:30:44,681 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 15:30:48,086 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 15:30:48,092 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 16:27:06,181 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 16:27:09,622 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 16:27:09,628 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 16:38:37,043 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 16:38:40,348 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 16:38:40,351 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 16:39:14,566 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 16:39:17,970 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 16:39:17,973 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 16:41:55,111 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 16:41:58,483 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 16:41:58,486 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 16:51:01,265 - psychic_paper | ERROR : 1923 - Failed to update: 'NoneType' object has no attribute 'date'
+2019-11-25 16:52:00,461 - psychic_paper | WARNING : 1927 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+2019-11-25 16:57:06,053 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 16:57:09,263 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 16:57:09,266 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 16:59:52,105 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 16:59:55,612 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 16:59:55,615 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 17:05:07,612 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:05:10,769 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 17:05:10,773 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 17:12:49,891 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:12:53,128 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 17:12:53,131 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 17:13:34,976 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:13:38,171 - psychic_paper | INFO : 1915 - Time Engine Chronograph has started.
+2019-11-25 17:13:38,174 - psychic_paper | INFO : 1915 - Listener Loop Started
+2019-11-25 17:14:53,846 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:14:57,052 - psychic_paper | INFO : 1917 - Time Engine Chronograph has started.
+2019-11-25 17:14:57,055 - psychic_paper | INFO : 1917 - Listener Loop Started
+2019-11-25 17:17:10,730 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:17:13,947 - psychic_paper | INFO : 1918 - Listener Loop Started
+2019-11-25 17:17:13,950 - psychic_paper | INFO : 1918 - Time Engine Chronograph has started.
+2019-11-25 17:18:50,526 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:18:53,668 - psychic_paper | INFO : 1919 - Time Engine Chronograph has started.
+2019-11-25 17:18:53,671 - psychic_paper | INFO : 1919 - Listener Loop Started
+2019-11-25 17:19:25,236 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:19:28,302 - psychic_paper | INFO : 1918 - Time Engine Chronograph has started.
+2019-11-25 17:19:28,306 - psychic_paper | INFO : 1918 - Listener Loop Started
+2019-11-25 17:22:17,553 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:22:20,904 - psychic_paper | INFO : 1917 - Time Engine Chronograph has started.
+2019-11-25 17:22:20,908 - psychic_paper | INFO : 1917 - Listener Loop Started
+2019-11-25 17:47:01,571 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:47:04,631 - psychic_paper | INFO : 1917 - Time Engine Chronograph has started.
+2019-11-25 17:47:04,634 - psychic_paper | INFO : 1917 - Listener Loop Started
+2019-11-25 17:47:51,282 - psychic_paper | INFO : 1917 - Clocking out...
+2019-11-25 17:47:51,466 - psychic_paper | INFO : 1917 - Clocked out at 2019-11-26 01:47:51 UTC
+2019-11-25 17:50:47,604 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 17:50:50,552 - psychic_paper | INFO : 1916 - Time Engine Chronograph has started.
+2019-11-25 17:50:50,555 - psychic_paper | INFO : 1916 - Listener Loop Started
+2019-11-25 18:19:25,319 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 18:19:28,526 - psychic_paper | INFO : 1930 - Time Engine Chronograph has started.
+2019-11-25 18:19:28,529 - psychic_paper | INFO : 1930 - Listener Loop Started
+2019-11-25 18:24:31,493 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 18:24:34,665 - psychic_paper | INFO : 1930 - Time Engine Chronograph has started.
+2019-11-25 18:24:34,667 - psychic_paper | INFO : 1930 - Listener Loop Started
+2019-11-25 18:26:11,753 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 18:26:14,937 - psychic_paper | INFO : 1930 - Time Engine Chronograph has started.
+2019-11-25 18:26:14,940 - psychic_paper | INFO : 1930 - Listener Loop Started
+2019-11-25 18:33:20,798 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 18:33:23,828 - psychic_paper | INFO : 1930 - Time Engine Chronograph has started.
+2019-11-25 18:33:23,832 - psychic_paper | INFO : 1930 - Listener Loop Started
+2019-11-25 18:40:29,927 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 18:40:32,974 - psychic_paper | INFO : 1930 - Time Engine Chronograph has started.
+2019-11-25 18:40:32,977 - psychic_paper | INFO : 1930 - Listener Loop Started
+2019-11-25 18:42:57,559 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 18:43:00,841 - psychic_paper | INFO : 1931 - Time Engine Chronograph has started.
+2019-11-25 18:43:00,844 - psychic_paper | INFO : 1931 - Listener Loop Started
+2019-11-25 18:44:29,130 - psychic_paper | INFO : 1931 - Clocking out...
+2019-11-25 18:44:29,278 - psychic_paper | INFO : 1931 - Clocked out at 2019-11-26 02:44:29 UTC
+2019-11-25 18:47:00,171 - psychic_paper | INFO : 1931 - Clocking out...
+2019-11-25 18:47:00,480 - psychic_paper | INFO : 1931 - Clocked out at 2019-11-26 02:47:00 UTC
+2019-11-25 18:47:29,788 - psychic_paper | INFO : 1931 - Clocking out...
+2019-11-25 18:47:29,917 - psychic_paper | INFO : 1931 - Clocked out at 2019-11-26 02:47:29 UTC
+2019-11-25 18:56:13,963 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 18:56:17,022 - psychic_paper | INFO : 1931 - Time Engine Chronograph has started.
+2019-11-25 18:56:17,025 - psychic_paper | INFO : 1931 - Listener Loop Started
+2019-11-25 18:56:25,809 - psychic_paper | INFO : 1931 - Clocking out...
+2019-11-25 18:56:26,177 - psychic_paper | INFO : 1931 - Clocked out at 2019-11-26 02:56:25 UTC
+2019-11-25 19:06:19,493 - psychic_paper | INFO : 1931 - Clocking out...
+2019-11-25 19:06:19,687 - psychic_paper | INFO : 1931 - Clocked out at 2019-11-26 03:06:19 UTC
+2019-11-25 19:08:58,118 - psychic_paper | INFO : 72 - The Time Lord has started!
+2019-11-25 19:09:01,466 - psychic_paper | INFO : 1931 - Time Engine Chronograph has started.
+2019-11-25 19:09:01,469 - psychic_paper | INFO : 1931 - Listener Loop Started
+2019-11-25 19:09:07,247 - psychic_paper | INFO : 1931 - Clocking out...
+2019-11-25 19:09:07,391 - psychic_paper | INFO : 1931 - Clocked out at 2019-11-26 03:09:07 UTC

@@ -1,0 +1,309 @@
+2019-11-25 12:27:24,158 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-11-25 12:27:24,538 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:27:24,647 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:27:24,720 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:27:24,832 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:27:24,924 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:27:25,006 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:27:25,099 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:27:25,190 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:27:25,282 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:27:25,428 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:27:26,265 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:27:26,885 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:27:29,500 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:23,239 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-11-25 12:28:23,502 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:23,602 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:28:23,687 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:28:23,773 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:23,858 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:28:23,943 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:24,028 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:24,112 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:28:24,194 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:24,359 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:28:25,144 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 12:28:25,862 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:28,039 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:30,368 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:28:32,592 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:29:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:29:33,470 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:29:36,323 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:29:38,536 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:29:39,032 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:29:41,220 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:30:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:30:44,020 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:30:46,220 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:30:46,957 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:30:49,173 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:30:49,729 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:30:54,278 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:31:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:31:15,138 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:31:17,352 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:31:17,836 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:31:20,035 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:31:20,122 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:31:20,778 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:31:22,976 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:31:23,061 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:32:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:32:00,076 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:32:00,688 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:32:01,000 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
+2019-11-25 12:32:01,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:32:02,871 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:32:03,321 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:32:05,507 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:32:05,946 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:32:08,171 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:33:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:34:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:34:00,069 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:34:00,400 - time_lord_continuum | ERROR : 414 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-11-25 12:34:01,000 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
+2019-11-25 12:34:01,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:35:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:36:01,023 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:09,349 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:37:10,540 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:17,142 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:37:17,663 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:23,688 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:37:24,217 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:29,826 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:37:30,342 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:36,250 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:37:36,766 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:43,348 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:37:43,934 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:49,914 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:37:50,453 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:37:56,315 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:37:56,831 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:38:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:38:02,788 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:38:03,285 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:38:09,585 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:38:11,901 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:16,657 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:18,982 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:19,766 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:22,122 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:22,950 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:25,217 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:25,888 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:28,153 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:28,871 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:31,121 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:31,914 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:34,157 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:39:34,266 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:40:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:40:00,109 - time_lord_continuum | ERROR : 523 - Bad connection.  Trying again...
+2019-11-25 12:40:02,349 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:40:04,578 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:40:04,694 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:41:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:00,193 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:41:01,517 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
+2019-11-25 12:41:01,517 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:03,829 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:06,197 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:07,181 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:09,576 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:10,563 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:12,961 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:14,078 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:16,515 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:41:16,697 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:42:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:00,154 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:42:01,490 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:01,520 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
+2019-11-25 12:42:01,522 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:04,553 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:07,194 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:09,598 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:10,003 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:12,362 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:12,714 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:15,342 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:15,651 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:17,938 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:18,250 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:20,582 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:21,063 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:23,489 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:23,859 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:26,470 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:26,895 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:29,355 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:29,799 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:32,328 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:32,489 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-11-25 12:42:35,815 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:38,257 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:38,752 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:41,141 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:41,701 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:44,178 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:44,743 - time_lord_continuum | ERROR : 523 - Bad connection.  Trying again...
+2019-11-25 12:42:46,953 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:49,262 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:49,575 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:51,887 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:52,243 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:54,559 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:42:55,118 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:42:55,599 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:01,562 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:02,104 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:07,811 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:08,357 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:14,252 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:14,750 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:20,710 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:21,230 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:26,993 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:27,558 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:33,480 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:34,036 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:40,187 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:40,729 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:46,460 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:47,012 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:53,023 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 12:43:53,585 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:43:59,421 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:44:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:44:01,641 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:44:04,259 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:44:06,486 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 12:44:07,038 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:21,434 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-11-25 13:13:21,693 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:21,775 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:13:21,855 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:13:21,930 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:22,025 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:13:22,105 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:22,190 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:22,266 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:13:22,345 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:22,493 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:13:23,233 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:13:23,938 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:28,467 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:33,130 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:37,671 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:39,961 - time_lord_continuum | ERROR : 523 - Bad connection.  Trying again...
+2019-11-25 13:13:42,177 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:46,667 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:48,875 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:49,351 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:51,548 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:52,052 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:54,250 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:54,700 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:56,894 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:13:57,230 - time_lord_continuum | ERROR : 523 - Bad connection.  Trying again...
+2019-11-25 13:13:59,443 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:01,657 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:04,436 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:06,667 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:07,197 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:11,740 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:14,641 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:16,861 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:18,049 - time_lord_continuum | INFO : 219 - Timesheet updated.
+2019-11-25 13:14:18,142 - time_lord_continuum | ERROR : 523 - Bad connection.  Trying again...
+2019-11-25 13:14:21,244 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:23,453 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:23,934 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:26,141 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:26,618 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:28,944 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:29,278 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:31,592 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:31,884 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:34,190 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:34,493 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:36,848 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:37,197 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:39,525 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:39,826 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:42,144 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:42,497 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:44,861 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:45,187 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:47,486 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:47,832 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:50,141 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:50,434 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:52,739 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:53,082 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:55,378 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:55,667 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:57,976 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:14:58,298 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:00,625 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:00,966 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:03,289 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:03,575 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:05,871 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:06,180 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:08,516 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:08,927 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:11,247 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:11,576 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:13,885 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:14,194 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:16,516 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:16,811 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:19,142 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:19,438 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:21,726 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:22,062 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:24,417 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:24,742 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:27,055 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:27,382 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:29,690 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:30,053 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:32,380 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:32,747 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:35,059 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:35,371 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:37,687 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:37,984 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:40,276 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:40,582 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:42,947 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:43,262 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:45,552 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:45,854 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:15:48,157 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:30:28,598 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-11-25 13:30:28,933 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:30:29,030 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:30:29,135 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:30:29,220 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:30:29,322 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:30:29,405 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:30:29,500 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:30:29,608 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:30:29,697 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:30:29,848 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:30:30,602 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
+2019-11-25 13:30:31,311 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:30:35,801 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
+2019-11-25 13:30:38,503 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson

@@ -1,0 +1,49 @@
+2019-11-19 23:33:45,039 - time_lord_sg_collection | INFO : 46 - Shotgun Collection Activated!
+2019-11-19 23:33:47,108 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:33:47,229 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:33:47,230 - time_lord_sg_collection | INFO : 73 - Getting project assets...
+2019-11-19 23:33:47,348 - time_lord_sg_collection | INFO : 86 - Assets collected.
+2019-11-19 23:33:47,348 - time_lord_sg_collection | INFO : 92 - Getting project shots...
+2019-11-19 23:33:47,480 - time_lord_sg_collection | INFO : 105 - Shots collected
+2019-11-19 23:33:47,594 - time_lord_sg_collection | INFO : 112 - Getting tasks for entity ID 2471...
+2019-11-19 23:33:47,594 - time_lord_sg_collection | INFO : 73 - Getting project assets...
+2019-11-19 23:33:47,704 - time_lord_sg_collection | INFO : 86 - Assets collected.
+2019-11-19 23:33:47,704 - time_lord_sg_collection | INFO : 92 - Getting project shots...
+2019-11-19 23:33:47,822 - time_lord_sg_collection | INFO : 105 - Shots collected
+2019-11-19 23:33:47,961 - time_lord_sg_collection | INFO : 134 - Tasks collected
+2019-11-19 23:33:51,627 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:33:51,740 - time_lord_sg_collection | ERROR : 66 - Failed to get projects.  Trying again...
+2019-11-19 23:33:53,743 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:33:53,898 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:33:56,773 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:33:57,382 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:34:06,987 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:34:07,618 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:34:10,635 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:34:11,167 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:34:18,507 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:34:19,084 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:34:21,743 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:34:22,303 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:35:05,503 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:35:05,951 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:35:08,595 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:35:41,713 - time_lord_sg_collection | INFO : 46 - Shotgun Collection Activated!
+2019-11-19 23:35:43,947 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:35:44,088 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:35:44,089 - time_lord_sg_collection | INFO : 73 - Getting project assets...
+2019-11-19 23:35:44,207 - time_lord_sg_collection | INFO : 86 - Assets collected.
+2019-11-19 23:35:44,207 - time_lord_sg_collection | INFO : 92 - Getting project shots...
+2019-11-19 23:35:44,326 - time_lord_sg_collection | INFO : 105 - Shots collected
+2019-11-19 23:35:44,440 - time_lord_sg_collection | INFO : 112 - Getting tasks for entity ID 2471...
+2019-11-19 23:35:44,440 - time_lord_sg_collection | INFO : 73 - Getting project assets...
+2019-11-19 23:35:44,553 - time_lord_sg_collection | INFO : 86 - Assets collected.
+2019-11-19 23:35:44,555 - time_lord_sg_collection | INFO : 92 - Getting project shots...
+2019-11-19 23:35:44,674 - time_lord_sg_collection | INFO : 105 - Shots collected
+2019-11-19 23:35:44,802 - time_lord_sg_collection | INFO : 134 - Tasks collected
+2019-11-19 23:36:01,250 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:36:01,361 - time_lord_sg_collection | ERROR : 66 - Failed to get projects.  Trying again...
+2019-11-19 23:36:03,369 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:36:03,515 - time_lord_sg_collection | INFO : 63 - Projects collected!
+2019-11-19 23:36:06,140 - time_lord_sg_collection | INFO : 51 - Getting active projects
+2019-11-19 23:36:06,700 - time_lord_sg_collection | INFO : 63 - Projects collected!

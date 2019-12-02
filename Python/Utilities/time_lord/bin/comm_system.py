@@ -288,7 +288,7 @@ class comm_sys(object):
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": '%s has quit the TARDIS*!' % user['name']
+                            "text": '*%s has quit the TARDIS*!' % user['name']
                         }
                     },
                     {

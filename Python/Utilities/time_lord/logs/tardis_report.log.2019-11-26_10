@@ -1,0 +1,61 @@
+2019-11-26 10:18:37,683 - tardis_report | INFO : 65 - The TARDIS has started!
+2019-11-26 10:18:38,788 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
+2019-11-26 10:18:38,796 - tardis_report | INFO : 79 - time_continuum is opened...
+2019-11-26 10:18:38,940 - tardis_report | INFO : 84 - User information collected...
+2019-11-26 10:18:38,944 - tardis_report | INFO : 88 - Shotgun commands brought in.
+2019-11-26 10:43:39,674 - tardis_report | INFO : 65 - The TARDIS has started!
+2019-11-26 10:43:40,714 - tardis_report | DEBUG : 71 - Shotgun is connected.
+2019-11-26 10:43:40,714 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
+2019-11-26 10:43:40,717 - tardis_report | INFO : 79 - time_continuum is opened...
+2019-11-26 10:43:40,825 - tardis_report | INFO : 84 - User information collected...
+2019-11-26 10:43:40,825 - tardis_report | INFO : 88 - Shotgun commands brought in.
+2019-11-26 10:43:40,825 - tardis_report | DEBUG : 460 - Starting the chronograph thread...
+2019-11-26 10:43:41,217 - tardis_report | DEBUG : 171 - Start cleanup....
+2019-11-26 10:43:46,625 - tardis_report | DEBUG : 108 - CLEANUP: [{'sg_task_end': None, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-26', 'type': 'TimeLog', 'id': 2375, 'sg_task_start': datetime.datetime(2019, 11, 26, 10, 19, 7, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037501D0>)}, {'sg_task_end': None, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-26', 'type': 'TimeLog', 'id': 2374, 'sg_task_start': datetime.datetime(2019, 11, 26, 10, 19, 7, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037501D0>)}]
+2019-11-26 10:43:46,625 - tardis_report | DEBUG : 109 - Cleanup processing... [{'sg_task_end': None, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-26', 'type': 'TimeLog', 'id': 2375, 'sg_task_start': datetime.datetime(2019, 11, 26, 10, 19, 7, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037501D0>)}, {'sg_task_end': None, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-26', 'type': 'TimeLog', 'id': 2374, 'sg_task_start': datetime.datetime(2019, 11, 26, 10, 19, 7, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000037501D0>)}]
+2019-11-26 10:43:46,836 - tardis_report | DEBUG : 112 - Timesheet consistency check finished: [{'sg_task_end': '2019-11-25 20:26:50 UTC', 'type': 'TimeLog', 'id': 2300}]
+2019-11-26 10:43:46,836 - tardis_report | DEBUG : 113 - Consistency check: [{'sg_task_end': '2019-11-25 20:26:50 UTC', 'type': 'TimeLog', 'id': 2300}]
+2019-11-26 10:43:46,836 - tardis_report | DEBUG : 174 - Cleanup done!
+2019-11-26 10:47:00,329 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 10:50:45,338 - tardis_report | INFO : 65 - The TARDIS has started!
+2019-11-26 10:50:46,382 - tardis_report | DEBUG : 71 - Shotgun is connected.
+2019-11-26 10:50:46,382 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
+2019-11-26 10:50:46,384 - tardis_report | INFO : 79 - time_continuum is opened...
+2019-11-26 10:50:46,493 - tardis_report | INFO : 84 - User information collected...
+2019-11-26 10:50:46,494 - tardis_report | INFO : 88 - Shotgun commands brought in.
+2019-11-26 10:50:46,494 - tardis_report | DEBUG : 460 - Starting the chronograph thread...
+2019-11-26 10:50:46,974 - tardis_report | DEBUG : 171 - Start cleanup....
+2019-11-26 10:50:52,184 - tardis_report | DEBUG : 108 - CLEANUP: [{'sg_task_end': None, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-26', 'type': 'TimeLog', 'id': 2375, 'sg_task_start': datetime.datetime(2019, 11, 26, 10, 19, 7, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003E1E1D0>)}]
+2019-11-26 10:50:52,184 - tardis_report | DEBUG : 109 - Cleanup processing... [{'sg_task_end': None, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-26', 'type': 'TimeLog', 'id': 2375, 'sg_task_start': datetime.datetime(2019, 11, 26, 10, 19, 7, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003E1E1D0>)}]
+2019-11-26 10:50:52,512 - tardis_report | DEBUG : 112 - Timesheet consistency check finished: [{'sg_task_end': '2019-11-25 20:31:09 UTC', 'type': 'TimeLog', 'id': 2301}]
+2019-11-26 10:50:52,512 - tardis_report | DEBUG : 113 - Consistency check: [{'sg_task_end': '2019-11-25 20:31:09 UTC', 'type': 'TimeLog', 'id': 2301}]
+2019-11-26 10:50:52,512 - tardis_report | DEBUG : 174 - Cleanup done!
+2019-11-26 10:53:00,292 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 10:54:00,174 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 10:55:00,173 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 10:56:00,176 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:00:00,082 - tardis_report | DEBUG : 171 - Start cleanup....
+2019-11-26 11:00:05,394 - tardis_report | DEBUG : 108 - CLEANUP: [{'sg_task_end': None, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-26', 'type': 'TimeLog', 'id': 2375, 'sg_task_start': datetime.datetime(2019, 11, 26, 10, 19, 7, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003E1E1D0>)}]
+2019-11-26 11:00:05,394 - tardis_report | DEBUG : 109 - Cleanup processing... [{'sg_task_end': None, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-11-26', 'type': 'TimeLog', 'id': 2375, 'sg_task_start': datetime.datetime(2019, 11, 26, 10, 19, 7, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003E1E1D0>)}]
+2019-11-26 11:00:05,615 - tardis_report | DEBUG : 112 - Timesheet consistency check finished: [{'sg_task_end': '2019-11-25 20:31:09 UTC', 'type': 'TimeLog', 'id': 2301}]
+2019-11-26 11:00:05,615 - tardis_report | DEBUG : 113 - Consistency check: [{'sg_task_end': '2019-11-25 20:31:09 UTC', 'type': 'TimeLog', 'id': 2301}]
+2019-11-26 11:00:05,615 - tardis_report | DEBUG : 174 - Cleanup done!
+2019-11-26 11:00:05,763 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:05:00,282 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:06:00,170 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:07:00,167 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:08:00,161 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:10:00,311 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:18:00,279 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:19:00,246 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:20:00,167 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:23:00,256 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:27:00,344 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:30:00,308 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:34:00,288 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:36:00,289 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:39:00,290 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:40:00,187 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:44:00,267 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:45:00,178 - tardis_report | DEBUG : 456 - EOD: 19:00:00
+2019-11-26 11:46:00,198 - tardis_report | DEBUG : 456 - EOD: 19:00:00
