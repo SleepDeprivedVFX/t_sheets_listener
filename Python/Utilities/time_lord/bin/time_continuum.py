@@ -11,7 +11,7 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 """
 
 __author__ = 'Adam Benson'
-__version__ = '0.1.0'
+__version__ = '0.3.0'
 
 import datetime
 import logging

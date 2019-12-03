@@ -26,8 +26,11 @@ WISH LIST:
                 Because some of the routines create multiple entries in quick succession, and I wouldn't want to process
                 multiple hits within a few microseconds.
 """
+# FIXME: I may have to upgrade this system to PySide2 to solve some of the screen scaling issues.  Probably for
+#       the best, but still a major pain in the ass.  Consider it sooner than later.
+
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
 import shotgun_api3 as sgapi
 import os
