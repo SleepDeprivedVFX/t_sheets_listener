@@ -60,7 +60,7 @@ class comm_sys(object):
         self.logger.addHandler(fh)
         self.logger.info('Comm System Activated!')
 
-    def get_supervisors(self, maintenance=False):
+    def get_supervisors(self, maintenance=False, coordinators=False):
         """
         This gets the Coordinators and Supervisors with which to send hipchats to.
         :return: admins (dict) {name: email}
@@ -69,6 +69,11 @@ class comm_sys(object):
             slack_groups = [self.config['maintenance']]
         else:
             slack_groups = [self.config['admins']]
+
+        # Add Coordinators if needed
+        if coordinators:
+            slack_groups.append(self.config['coords'])
+
         self.logger.info('Collecting Support team members from the groups...')
         admins = {}
         groups = []
@@ -278,7 +283,7 @@ class comm_sys(object):
                 self.logger.error('Something went wrong sending the message!  %s' % error)
 
     def send_on_quit_alert(self, user=None):
-        admins = self.get_supervisors()
+        admins = self.get_supervisors(coordinators=True)
         for admin in admins:
             email = admins[admin]
             slack_id = self.get_slack_user(email=email)

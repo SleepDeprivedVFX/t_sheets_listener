@@ -63,6 +63,7 @@ def get_configuration():
 
     # Slack
     config['admins'] = configuration.get('Slack', 'admins')
+    config['coords'] = configuration.get('Slack', 'coordinators')
     config['maintenance'] = configuration.get('Slack', 'maintenance')
     config['slack_entity'] = configuration.get('Slack', 'slack_entity')
     config['slack_id'] = configuration.get('Slack', 'slack_field_id')
