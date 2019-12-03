@@ -30,7 +30,7 @@ WISH LIST:
 #       the best, but still a major pain in the ass.  Consider it sooner than later.
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 import shotgun_api3 as sgapi
 import os
@@ -1083,9 +1083,13 @@ class time_lord_ui(QtGui.QMainWindow):
         projects = sg_data.get_active_projects()
         if projects:
             # Check the saved project against the current timesheet
-            if self.saved_project != self.latest_timesheet['project']['name']:
-                self.saved_project = self.latest_timesheet['project']['name']
-                self.saved_project_id = self.latest_timesheet['project']['id']
+            try:
+                if self.saved_project != self.latest_timesheet['project']['name']:
+                    self.saved_project = self.latest_timesheet['project']['name']
+                    self.saved_project_id = self.latest_timesheet['project']['id']
+            except TypeError as e:
+                logger.error('Couldn\'t compare latest timesheet: %s ' % e)
+                comm.send_error_alert(user=user, error=e)
 
             # Update the dropdown list
             self.update_projects_dropdown(projects)
@@ -1097,17 +1101,22 @@ class time_lord_ui(QtGui.QMainWindow):
             entities = assets + shots
 
             # Get the timesheet entity and compare it to the saved entity
-            ts_task_id = self.latest_timesheet['entity']['id']
-            get_current_entity = sg_data.get_entity_from_task(task_id=ts_task_id)
-            current_entity = get_current_entity['entity']['name']
-            current_entity_id = get_current_entity['entity']['id']
-            if self.saved_entity != current_entity:
-                self.saved_entity = current_entity
-                self.saved_entity_id = current_entity_id
+            try:
+                ts_task_id = self.latest_timesheet['entity']['id']
+                get_current_entity = sg_data.get_entity_from_task(task_id=ts_task_id)
+                current_entity = get_current_entity['entity']['name']
+                current_entity_id = get_current_entity['entity']['id']
+                if self.saved_entity != current_entity:
+                    self.saved_entity = current_entity
+                    self.saved_entity_id = current_entity_id
 
-            if self.saved_task != self.latest_timesheet['entity']['name']:
-                self.saved_task = self.latest_timesheet['entity']['name']
-                self.saved_task_id = self.latest_timesheet['entity']['id']
+                if self.saved_task != self.latest_timesheet['entity']['name']:
+                    self.saved_task = self.latest_timesheet['entity']['name']
+                    self.saved_task_id = self.latest_timesheet['entity']['id']
+            except TypeError as e:
+                logger.error('Can\'t compare timesheets. Most likely there was no previous timesheet:'
+                             '%s' % e)
+                comm.send_error_alert(user=user, error=e)
 
             # Update the Entities dropdown
             self.update_entity_dropdown(entities=entities)

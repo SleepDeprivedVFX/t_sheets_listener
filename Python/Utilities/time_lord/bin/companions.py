@@ -3,7 +3,7 @@ The companions are the human users who run along with our Time Lord.
 """
 
 __author__ = 'Adam Benson'
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 import platform
 import logging
