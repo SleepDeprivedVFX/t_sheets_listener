@@ -976,6 +976,27 @@ class time_lord_ui(QtGui.QMainWindow):
         # Setup and connect the last timesheet.
         # Declare Class Variables
         self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
+        if not self.latest_timesheet['project'] and not self.latest_timesheet['entity'] \
+                and not self.latest_timesheet['date'] and not self.latest_timesheet['sg_task_start']:
+            project_id = int(config['admin_proj_id'])
+            task_id = int(config['admin_task_id'])
+            entity_id = sg_data.get_entity_from_task(task_id=task_id)
+            context = {
+                'Project': {
+                    'id': project_id
+                },
+                'Task': {
+                    'id': task_id
+                },
+                'Entity': {
+                    'id': entity_id,
+                }
+            }
+            start_time = datetime.now()
+            first_sheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
+            if first_sheet:
+                tl_time.clock_out_time_sheet(timesheet=first_sheet, clock_out=start_time)
+
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
 
         # Connect to the threads
