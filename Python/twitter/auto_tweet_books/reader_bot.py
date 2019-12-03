@@ -211,6 +211,7 @@ class readerBotTools(object):
     def twit_search(self, terms=None, result_type='recent', count=20):
         search = self.api.GetSearch(term=terms, result_type=result_type, count=count)
         found = {}
+        all_found = []
         for txt in search:
             text = str(txt)
             parse_search = json.loads(text)
@@ -218,7 +219,9 @@ class readerBotTools(object):
                 if k in parse_search.keys():
                     tweet = parse_search[k]
                     found[k] = tweet
-        return found
+                    continue
+                all_found.append(found)
+        return all_found
 
     def check_twitter_temperature(self):
         """
@@ -268,7 +271,9 @@ if __name__ == "__main__":
     results = test.twit_search(terms='book')
     print(results)
     for book in results:
-        print(book, results[book])
+        for page in book:
+            print(page, book[page])
+        print('-' * 60)
 
 # for x in range(0, 98):
 #     print(int(math.fmod(x, 12)))
