@@ -489,8 +489,8 @@ class tardis(object):
         permissions = user['permission_rule_set']['name']
         if permissions == 'Admin' or permissions == 'Coordinator':
             menu_options = menu_options + (('Run Payroll', None, self.payroll),)
-        # The "Quit" option can be made an admin feature by simple indenting this here.
-        menu_options = menu_options + (('Quit', None, self.QUIT),)
+            # The "Quit" option can be made an admin feature by simple indenting this here.
+            menu_options = menu_options + (('Quit', None, self.QUIT),)
 
         self._next_action_id = self.FIRST_ID
         self.menu_actions_by_id = set()
