@@ -8,8 +8,8 @@ from the mouse.
 The TARDIS launches different applications based on conditions set in the configuration file.
 """
 
-__author__ = 'Adam Benson'
-__version__ = '0.3.1'
+__author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
+__version__ = '0.3.2'
 
 import os
 import sys
@@ -234,8 +234,9 @@ def chronograph():
                 now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
                                           datetime.now().time().second)
                 # Opens at the Early start of day trigger instead of the regular start of day.
-                if not user_clocked_in and str(now) == str(early_sod):
-                    time.sleep(2)
+                one_minute = str((datetime.combine(datetime.today(), early_sod) + timedelta(minutes=1)).time())
+                if not user_clocked_in and one_minute >= str(now) >= str(early_sod):
+                    time.sleep(62)
                     logger.info('Time to clock in!')
                     sod_launch_path = os.path.join(path, 'time_lord.py')
                     if debug == 'True' or debug == 'true' or debug == True:
@@ -324,8 +325,9 @@ def chronograph():
 
             now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
                                       datetime.now().time().second)
-            if not user_clocked_in and str(now) == str(sod):
-                time.sleep(2)
+            one_minute = str((datetime.combine(datetime.today(), early_sod) + timedelta(minutes=1)).time())
+            if not user_clocked_in and one_minute >= str(now) >= str(early_sod):
+                time.sleep(62)
                 sod_launch_path = os.path.join(path, 'time_lord.py')
                 if debug == 'True' or debug == 'true' or debug == True:
                     process = 'python.exe'
@@ -476,13 +478,20 @@ class tardis(object):
                  menu_options,
                  on_quit=None,
                  default_menu_index=None,
-                 window_class_name=None, ):
+                 window_class_name=None,
+                 payroll=None, ):
 
         self.icon = icon
         self.hover_text = hover_text
         self.on_quit = on_quit
+        self.payroll = payroll
 
+        permissions = user['permission_rule_set']['name']
+        if permissions == 'Admin' or permissions == 'Coordinator':
+            menu_options = menu_options + (('Run Payroll', None, self.payroll),)
+        # The "Quit" option can be made an admin feature by simple indenting this here.
         menu_options = menu_options + (('Quit', None, self.QUIT),)
+
         self._next_action_id = self.FIRST_ID
         self.menu_actions_by_id = set()
         self.menu_options = self._add_ids_to_menu_options(list(menu_options))
@@ -670,7 +679,7 @@ def non_string_iterable(obj):
 if __name__ == '__main__':
 
     icons = itertools.cycle(glob.glob('icons/*.ico'))
-    hover_text = "Time Lord TARDIS"
+    hover_text = "Time Lord TARDIS v%s" % __version__
 
 
     def run_time_lord(tardis):
@@ -682,6 +691,9 @@ if __name__ == '__main__':
 
     def overtime(tardis):
         print("overtime.")
+        path = sys.path[0]
+        ot_path = os.path.join(path, 'overtime.py')
+        subprocess.Popen('pythonw.exe %s' % ot_path)
 
 
     def lunch(tardis):
@@ -696,11 +708,19 @@ if __name__ == '__main__':
         logger.info('%s has quit their TARDIS!' % user['name'])
         comm.send_on_quit_alert(user=user)
 
-    menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
-                    ('Tools', icons.next(), (('Overtime Tool', icons.next(), overtime),
-                                             ('Lunch Break', icons.next(), lunch),
-                                             )))
+    def payroll(tardis):
+        # Admin Payroll tool
+        print('Payroll activated')
+        logger.info('%s has activated the Payroll tool' % user['name'])
+        path = sys.path[0]
+        payroll_path = os.path.join(path, 'tl_alpha_payroll_collector.py')
+        subprocess.Popen('pythonw.exe %s' % payroll_path)
 
-    tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0)
+    menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
+                    ('Lunch Break', icons.next(), lunch),
+                    ('Overtime Tool', icons.next(), overtime),
+                    )
+
+    tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll)
 
 

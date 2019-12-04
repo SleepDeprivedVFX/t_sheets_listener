@@ -2,8 +2,8 @@
 The lunch pop-up for getting the lunch times.
 """
 
-__author__ = 'Adam Benson'
-__version__ = '0.3.1'
+__author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
+__version__ = '0.3.2'
 
 import shotgun_api3 as sgapi
 import os
@@ -119,6 +119,7 @@ class lunch_break(QtGui.QWidget):
         self.ui.setupUi(self)
         self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.setWindowTitle('The Lunch Line v%s' % __version__)
 
         self.ui.lunch_message.setText('Hey %s! Were you at lunch at the following times?' % user['name'].split(' ')[0])
 

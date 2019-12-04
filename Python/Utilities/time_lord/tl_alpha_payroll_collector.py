@@ -21,7 +21,7 @@ import shotgun_api3 as sgapi
 import webbrowser
 
 
-__author__ = 'Adam Benson'
+__author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
 __version__ = '0.0.1'
 
 config = configuration.get_configuration()

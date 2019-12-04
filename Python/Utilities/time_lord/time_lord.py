@@ -30,7 +30,7 @@ WISH LIST:
 #       the best, but still a major pain in the ass.  Consider it sooner than later.
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.1'
+__version__ = '0.3.2'
 
 import shotgun_api3 as sgapi
 import os
@@ -1010,6 +1010,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui = tlu.Ui_TimeLord()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.setWindowTitle("Time Lord v%s" % __version__)
         self.window_on_top_tested = False
         self.set_window_on_top()
         # Set main user info
