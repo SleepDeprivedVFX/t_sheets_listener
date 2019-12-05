@@ -118,7 +118,6 @@ class eod_timer(QtCore.QThread):
         while not self.kill_it:
             if int(datetime.now().second) != second:
                 # Make sure the chronograph has the set time from the ui
-                print('right before not self.set_time: %s' % self.set_time)
                 if not self.set_time:
                     self.eod_signals.get_time.emit(True)
 

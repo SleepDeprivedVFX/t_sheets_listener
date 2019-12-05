@@ -178,8 +178,10 @@ class continuum(object):
                 'code'
             ]
             try:
-                latest_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
-                                                                                      'direction': 'desc'}])
+                latest_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
+                                                                                        'direction': 'desc'},
+                                                                                       {'field_name': 'id',
+                                                                                        'direction': 'desc'}])
                 self.logger.debug('Timesheet found: %s' % latest_timesheet)
             except (AttributeError, Exception), e:
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
@@ -276,6 +278,11 @@ class continuum(object):
             try:
                 if not timesheet['sg_task_end']:
                     start_datetime = timesheet['sg_task_start']
+                    self.logger.debug('~' * 50)
+                    self.logger.debug('start_datetime: %s' % start_datetime)
+                    self.logger.debug('start_datetime TYPE: %s' % type(start_datetime))
+                    if type(start_datetime) != datetime.datetime:
+                        return running_time
                     start_date = start_datetime.date()
                     start_time = start_datetime.time()
                     start = parser.parse('%s %s' % (start_date, start_time))
@@ -487,7 +494,9 @@ class continuum(object):
                 'sg_task_end'
             ]
             try:
-                clocked_in = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'id',
+                clocked_in = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
+                                                                                  'direction': 'desc'},
+                                                                                 {'field_name': 'id',
                                                                                   'direction': 'desc'}])
             except Exception, e:
                 self.logger.error('Could not check clocked in: %s' % e)

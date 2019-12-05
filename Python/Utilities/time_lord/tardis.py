@@ -252,7 +252,9 @@ def chronograph():
                 # --------------------------------------------------------------------------------------
                 # End of Day
                 # --------------------------------------------------------------------------------------
-                if set_timer > trigger and datetime.now().time() > eod and not user_ignored:
+                if set_timer > trigger and datetime.now().time() > eod and not user_ignored or set_timer > trigger \
+                        and datetime.now().time < early_sod and not user_ignored:
+                    logger.debug('EOD conditions met.  Checking User clocked in...')
                     if tl_time.is_user_clocked_in(user=user):
                         logger.info('IT IS AFTER HOURS!!!')
                         eod_launch_path = os.path.join(path, 'eod.py')
@@ -261,6 +263,7 @@ def chronograph():
                             process = 'python.exe'
                         else:
                             process = 'pythonw.exe'
+                        logger.debug('Launching EOD...')
                         eod_launch = subprocess.Popen('%s %s' % (process, eod_launch_path))
                         logger.debug('eod_launch command: %s' % eod_launch)
                         eod_launch.wait()
@@ -268,13 +271,13 @@ def chronograph():
                         time.sleep(3)
                         if tl_time.is_user_clocked_in(user=user):
                             user_ignored = True
-                        # do_cleanup = tl_time.timesheet_cleanup(user=user)
-                        # logger.debug('Cleanup results: %s' % do_cleanup)
-                        # logger.info('Timesheet Cleanup run.')
                 elif user_ignored and datetime.now().time() < eod and set_timer < trigger:
                     user_ignored = False
-                elif user_ignored and datetime.now().time() > eod and set_timer > trigger:
+                    logger.debug('Setting user_ignored to false due to " new day" conditions')
+                elif user_ignored and datetime.now().time() > eod and set_timer > trigger or user_ignored \
+                        and datetime.now().time() < early_sod and set_timer > trigger:
                     user_ignored = False
+                    logger.debug('Setting user_ignored to false due to extended inactivity')
                 set_timer += 1
 
         else:
