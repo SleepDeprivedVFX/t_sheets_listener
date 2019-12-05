@@ -29,7 +29,7 @@ from bin.comm_system import comm_sys
 from ui import time_lord_ot_alert as ot
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.2'
+__version__ = '0.3.3'
 
 config = bin.configuration.get_configuration()
 

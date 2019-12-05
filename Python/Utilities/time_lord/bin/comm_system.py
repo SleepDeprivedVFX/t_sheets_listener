@@ -1,6 +1,6 @@
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.2'
+__version__ = '0.3.3'
 
 import datetime
 import logging
