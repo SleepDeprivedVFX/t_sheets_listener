@@ -484,9 +484,6 @@ class time_machine(QtCore.QThread):
         while not self.kill_it:
             # Adding a sleep timer to better minimize the data load
             time.sleep(1)
-            # TODO: I've discovered that I need to have every time sheet update the time_capsule.
-            #       It doesn't have to update all the information, but at the very least must update the timeLogID
-            #       I'll have to work that into the TARDIS as well.
             events = self.get_new_events()
             # time_capsule = self.get_time_capsule()
             # print 'returned events: %s' % events
@@ -1567,8 +1564,8 @@ class time_lord_ui(QtGui.QMainWindow):
                                                 'end_y_ones_%s.png);' % y_ones)
 
     def set_dropdown(self, data={}):
-        logger.debug('Update Signal received: %s | %s' % (data['type'], data['name']))
-        self.time_lord.time_signal.mutex_2.lock()
+        print('+++Update Signal received: %s | %s' % (data['type'], data['name']))
+        # self.time_lord.time_signal.mutex_2.lock()
         if data:
             dd_type = data['type']
             dd_value = data['name']
@@ -1584,8 +1581,8 @@ class time_lord_ui(QtGui.QMainWindow):
                 if new_index:
                     widge.setCurrentIndex(new_index)
                     logger.debug('widge set')
-        self.time_lord.time_signal.mutex_2.unlock()
-        self.time_lord.time_signal.wait_cond_2.wakeAll()
+        # self.time_lord.time_signal.mutex_2.unlock()
+        # self.time_lord.time_signal.wait_cond_2.wakeAll()
 
     # ----------------------------------------------------------------------------------------------------------------
     # OUTPUT MONITORS

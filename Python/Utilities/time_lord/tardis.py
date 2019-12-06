@@ -253,7 +253,7 @@ def chronograph():
                 # End of Day
                 # --------------------------------------------------------------------------------------
                 if set_timer > trigger and datetime.now().time() > eod and not user_ignored or set_timer > trigger \
-                        and datetime.now().time < early_sod and not user_ignored:
+                        and datetime.now().time() < early_sod and not user_ignored:
                     logger.debug('EOD conditions met.  Checking User clocked in...')
                     if tl_time.is_user_clocked_in(user=user):
                         logger.info('IT IS AFTER HOURS!!!')
