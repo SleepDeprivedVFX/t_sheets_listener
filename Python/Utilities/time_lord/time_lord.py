@@ -659,7 +659,7 @@ class time_lord(QtCore.QThread):
 
     def send_project_update(self, message=None):
         self.time_signal.debug.emit('Collecting projects for return')
-        projects = sg_data.get_active_projects()
+        projects = sg_data.get_active_projects(user=user)
         self.time_signal.send_project_update.emit(projects)
 
     def send_entity_update(self, proj_id=None):
@@ -804,7 +804,7 @@ class time_lord(QtCore.QThread):
     def get_active_projects(self, message=None):
         if message:
             self.time_signal.debug.emit('Project List Requested!')
-            active_projects = sg_data.get_active_projects()
+            active_projects = sg_data.get_active_projects(user=user)
             if active_projects:
                 # wait_cond.wakeAll()
                 if message == 'initialize':
@@ -1099,7 +1099,7 @@ class time_lord_ui(QtGui.QMainWindow):
         :return: None
         """
         # NOTE: I may have to remove the __init__ call to self.time_lord.time_signal.update.emit()
-        projects = sg_data.get_active_projects()
+        projects = sg_data.get_active_projects(user=user)
         if projects:
             # Check the saved project against the current timesheet
             try:
