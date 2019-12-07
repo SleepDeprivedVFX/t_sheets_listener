@@ -127,8 +127,10 @@ class lunch_break(QtGui.QWidget):
         self.ui.skip_btn.clicked.connect(self.skip_lunch)
         if start_time:
             self.ui.start_time.setTime(start_time)
+            self.ui.start_time.setDisabled(True)
         if end_time:
             self.ui.end_time.setTime(end_time)
+            self.ui.end_time.setDisabled(True)
 
     def take_lunch(self, message=None):
         self.signals.yes.emit(message)
