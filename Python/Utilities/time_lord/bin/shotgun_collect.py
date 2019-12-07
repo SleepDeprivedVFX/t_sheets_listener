@@ -47,25 +47,36 @@ class sg_data(object):
         self.sg = sg
         self.logger.debug('Shotgun sg sub-loaded.')
 
-    def get_active_projects(self):
+    def get_active_projects(self, user=None):
         self.logger.info('Getting active projects')
-        try:
-            filters = [
-                ['sg_status', 'is', 'Active']
-            ]
-            fields = [
-                'name',
-                'tank_name',
-                'code'
-            ]
-            active_projects = self.sg.find('Project', filters, fields, order=[{'field_name': 'name',
-                                                                               'direction': 'asc'}])
-            self.logger.info('Projects collected!')
-            self.logger.debug('Project List: %s' % active_projects)
-        except Exception as e:
-            self.logger.error('Failed to get projects.  Trying again...')
-            time.sleep(2)
-            active_projects = self.get_active_projects()
+        if user:
+            try:
+               active_projects = user['projects']
+               for t in active_projects:
+                   print t
+            except Exception as e:
+                self.logger.error('Failed to get projects.  Trying again...')
+                time.sleep(2)
+                active_projects = self.get_active_projects(user=user)
+            # return active_projects
+        else:
+            try:
+                filters = [
+                    ['sg_status', 'is', 'Active']
+                ]
+                fields = [
+                    'name',
+                    'tank_name',
+                    'code'
+                ]
+                active_projects = self.sg.find('Project', filters, fields, order=[{'field_name': 'name',
+                                                                                   'direction': 'asc'}])
+                self.logger.info('Projects collected!')
+                self.logger.debug('Project List: %s' % active_projects)
+            except Exception as e:
+                self.logger.error('Failed to get projects.  Trying again...')
+                time.sleep(2)
+                active_projects = self.get_active_projects()
         return active_projects
 
     def get_project_assets(self, proj_id=None):
