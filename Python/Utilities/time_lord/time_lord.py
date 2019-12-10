@@ -200,13 +200,14 @@ class time_signals(QtCore.QObject):
 
     # Update Signals
     update = QtCore.Signal(dict)
+    update_ui = QtCore.Signal(str)
     req_project_update = QtCore.Signal(str)
     req_entity_update = QtCore.Signal(int)
     req_task_update = QtCore.Signal(dict)
     send_project_update = QtCore.Signal(dict)
     send_entity_update = QtCore.Signal(dict)
     send_task_update = QtCore.Signal(dict)
-    set_dropdown = QtCore.Signal(str)
+    set_dropdown = QtCore.Signal(dict)
 
     # Data Signals
     latest_timesheet = QtCore.Signal(dict)
@@ -221,13 +222,13 @@ class time_signals(QtCore.QObject):
 
     # MUTEX & WAIT CONDITIONS
     mutex_1 = QtCore.QMutex()
-    # mutex_2 = QtCore.QMutex()
-    # mutex_3 = QtCore.QMutex()
-    # mutex_4 = QtCore.QMutex()
+    mutex_2 = QtCore.QMutex()
+    mutex_3 = QtCore.QMutex()
+    mutex_4 = QtCore.QMutex()
     wait_cond_1 = QtCore.QWaitCondition()
-    # wait_cond_2 = QtCore.QWaitCondition()
-    # wait_cond_3 = QtCore.QWaitCondition()
-    # wait_cond_4 = QtCore.QWaitCondition()
+    wait_cond_2 = QtCore.QWaitCondition()
+    wait_cond_3 = QtCore.QWaitCondition()
+    wait_cond_4 = QtCore.QWaitCondition()
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -335,7 +336,8 @@ class time_engine(QtCore.QThread):
                 self.set_start_end_output()
                 self.set_user_output(user=user)
 
-                if datetime.now().minute != minute:
+                # if datetime.now().minute != minute:
+                if (second % 10) == 0:
                     minute = datetime.now().minute
                     self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
                     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
@@ -658,15 +660,12 @@ class time_lord(QtCore.QThread):
         self.time_signal.trt_output.emit(set_message)
 
     def send_project_update(self, message=None):
-        self.time_signal.mutex_1.lock()
         self.time_signal.debug.emit('Collecting projects for return')
         projects = sg_data.get_active_projects(user=user)
         self.time_signal.send_project_update.emit(projects)
-        self.time_signal.mutex_1.unlock()
-        self.time_signal.wait_cond_1.wakeAll()
+        return projects
 
     def send_entity_update(self, proj_id=None):
-        self.time_signal.mutex_1.lock()
         self.time_signal.debug.emit('send_entity_update: %s' % proj_id)
         if proj_id:
             self.time_signal.debug.emit('Project ID received by Entity Update Request: %s' % proj_id)
@@ -678,11 +677,8 @@ class time_lord(QtCore.QThread):
             self.time_signal.debug.emit('Shots Collected: %s' % shot_entities)
             entities = asset_entities + shot_entities
             self.time_signal.send_entity_update.emit(entities)
-        self.time_signal.mutex_1.unlock()
-        self.time_signal.wait_cond_1.wakeAll()
 
     def send_task_update(self, context=None):
-        # self.time_signal.mutex_1.lock()
         self.time_signal.debug.emit('Send tasks activated! %s' % context)
         if context:
             self.time_signal.debug.emit('send_task_update context: %s' % context)
@@ -699,8 +695,6 @@ class time_lord(QtCore.QThread):
                 self.time_signal.send_task_update.emit(tasks)
                 self.time_signal.debug.emit('Task signal sent.')
                 self.time_signal.debug.emit('Tasks emitted: %s' % tasks)
-        # self.time_signal.mutex_1.unlock()
-        # self.time_signal.wait_cond_1.wakeAll()
 
     def req_start_end_output(self):
         latest_timesheet = tl_time.get_latest_timesheet(user=user)
@@ -749,7 +743,7 @@ class time_lord(QtCore.QThread):
         :return:
         """
         # TODO: This needs a MutEx Lock
-        # self.time_signal.mutex_1.lock()
+        mutex = QtCore.QMutexLocker(self.time_signal.mutex_1)
         self.time_signal.debug.emit('Update Detected: %s' % data)
         # print('update_ui:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
         #       inspect.stack()[1][3])
@@ -787,30 +781,17 @@ class time_lord(QtCore.QThread):
         send_task = {'type': 'task_dropdown',
                      'name': task}
         print('About to send signals for update...')
+        self.time_signal.update_ui.emit('Do it!')
+        # self.time_signal.wait_cond_1.wakeAll()
+        # self.send_project_update()
+        # self.time_signal.set_dropdown.emit(send_proj)
+        # self.time_signal.set_dropdown.emit(send_ent)
+        # self.time_signal.set_dropdown.emit(send_task)
+        projects = self.send_project_update(message='Update Projects')
+        self.time_signal.send_project_update.emit(projects)
         print('==> SEND PROJ: %s' % send_proj['name'])
         print('==> SEND ENT: %s' % send_ent['name'])
         print('==> SEND TASK: %s' % send_task['name'])
-        # self.time_signal.mutex_1.unlock()
-        self.time_signal.wait_cond_1.wakeAll()
-
-        # Update Projects
-        self.send_project_update()
-        self.time_signal.wait_cond_1.wait(self.time_signal.mutex_1)
-        # Update Entities
-        self.send_entity_update(proj_id=project_id)
-        self.time_signal.wait_cond_1.wait(self.time_signal.mutex_1)
-        # Update Tasks
-        context = {
-            'entity_id': entity_id,
-            'entity_name': entity,
-            'proj_id': project_id
-        }
-        self.send_task_update(context=context)
-        # self.time_signal.wait_cond_1.wait(self.time_signal.mutex_1)
-
-        # self.time_signal.set_dropdown.emit(str(send_proj))
-        # self.time_signal.set_dropdown.emit(str(send_ent))
-        # self.time_signal.set_dropdown.emit(str(send_task))
         print('Three signals sent.')
 
     def quick_update(self):
@@ -1124,6 +1105,7 @@ class time_lord_ui(QtGui.QMainWindow):
         The idea is that this routine will set the initial values from the saved settings.
         :return: None
         """
+        print('INITIALIZING UI...')
         # NOTE: I may have to remove the __init__ call to self.time_lord.time_signal.update.emit()
         projects = sg_data.get_active_projects(user=user)
         if projects:
@@ -1774,6 +1756,7 @@ class time_lord_ui(QtGui.QMainWindow):
     # ----------------------------------------------------------------------------------------------------------------
     def update_projects_dropdown(self, projects=None):
         # Clear out the projects so that we are not double adding entries.
+        print('Updating projects dropdown...')
         logger.debug('Update projects dropdown...')
         self.ui.project_dropdown.clear()
         # Iterate through the list and add all the active projects to the dropdown
