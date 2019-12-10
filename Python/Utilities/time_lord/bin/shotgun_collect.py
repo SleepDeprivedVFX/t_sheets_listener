@@ -3,7 +3,7 @@ The Shotgun Collect will grab data about projects, assets, shots and tasks.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.3'
+__version__ = '0.3.4'
 
 import logging
 from logging.handlers import TimedRotatingFileHandler

@@ -1,52 +1,26 @@
-2019-12-03 13:48:11,598 - tardis_comm_sys | INFO : 77 - Collecting Support team members from the groups...
-2019-12-03 13:48:11,709 - tardis_comm_sys | INFO : 116 - Collecting user data to find email...
-2019-12-03 13:48:11,816 - tardis_comm_sys | INFO : 116 - Collecting user data to find email...
-2019-12-03 13:48:11,930 - tardis_comm_sys | INFO : 116 - Collecting user data to find email...
-2019-12-03 13:48:12,069 - tardis_comm_sys | INFO : 116 - Collecting user data to find email...
-2019-12-03 13:48:12,180 - tardis_comm_sys | INFO : 116 - Collecting user data to find email...
-2019-12-03 13:48:12,293 - tardis_comm_sys | INFO : 116 - Collecting user data to find email...
-2019-12-03 13:48:12,403 - tardis_comm_sys | INFO : 116 - Collecting user data to find email...
-2019-12-03 13:48:12,497 - tardis_comm_sys | INFO : 143 - Getting slack user ID...
-2019-12-03 13:48:12,986 - tardis_comm_sys | INFO : 143 - Getting slack user ID...
-2019-12-03 13:48:13,398 - tardis_comm_sys | INFO : 143 - Getting slack user ID...
-2019-12-03 13:48:13,908 - tardis_comm_sys | INFO : 143 - Getting slack user ID...
-2019-12-03 13:48:14,430 - tardis_comm_sys | INFO : 143 - Getting slack user ID...
-2019-12-03 13:48:14,819 - tardis_comm_sys | INFO : 143 - Getting slack user ID...
-2019-12-03 13:48:15,210 - tardis_comm_sys | INFO : 143 - Getting slack user ID...
-2019-12-03 13:48:22,282 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:27:04,776 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:27:50,601 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:35:22,960 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:38:09,638 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:44:52,693 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:45:19,736 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:45:36,344 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:46:48,681 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:50:39,562 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 15:58:03,069 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 16:02:04,635 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 16:15:01,407 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 16:22:59,345 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 16:25:59,009 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-03 16:30:15,230 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-04 13:26:01,477 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-04 14:34:47,088 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-04 14:36:53,956 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 10:16:44,240 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 11:54:56,240 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 11:57:24,286 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 11:59:03,069 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:07:06,910 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:10:40,098 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:13:43,558 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:16:55,325 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:19:39,055 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:21:11,109 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:23:17,265 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:26:42,801 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:27:50,348 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:30:23,006 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 12:30:38,344 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 14:08:35,368 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 16:28:45,033 - tardis_comm_sys | INFO : 61 - Comm System Activated!
-2019-12-05 17:57:53,532 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 10:30:01,530 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 11:52:36,206 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 13:34:29,207 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 13:35:31,355 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 13:36:43,951 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 13:52:28,503 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 13:56:38,427 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 15:00:52,855 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 15:04:13,937 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 15:10:00,772 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 15:27:01,631 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 15:35:08,687 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 15:36:56,404 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 15:49:03,335 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 16:19:32,236 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 16:29:06,598 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 16:38:26,384 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 16:39:18,720 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 16:40:54,914 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 16:43:31,638 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 17:00:11,019 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 17:22:27,532 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 17:24:12,789 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-09 17:45:46,759 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-10 10:38:42,779 - tardis_comm_sys | INFO : 61 - Comm System Activated!
+2019-12-10 11:02:28,384 - tardis_comm_sys | INFO : 61 - Comm System Activated!

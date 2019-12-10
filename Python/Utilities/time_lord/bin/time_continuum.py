@@ -11,7 +11,7 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.3'
+__version__ = '0.3.4'
 
 import datetime
 import logging
@@ -707,22 +707,25 @@ class continuum(object):
                 previous_id = int(ordered_timesheets[ts+1]['id'])
             except Exception as e:
                 print 'Shit fucked up: %s' % e
-            print current_start, previous_end, current_start < previous_end
-            if previous_end > current_start:
-                if ts == ts_count - 1:
-                    previous_end = ordered_timesheets[ts-1]['sg_task_start']
-                else:
-                    previous_end = current_start
-                data = {
-                    'sg_task_end': previous_end
-                }
-                try:
-                    update = self.sg.update('TimeLog', previous_id, data)
-                    print 'update output: %s' % update
-                    updates.append(update)
-                except AttributeError as e:
-                    self.logger.error('Failed to update the TimeLog.')
-                    # NOTE: I could probably add a retry here.
+                previous_start = None
+                previous_end = None
+                previous_id = None
+            if previous_end and current_start:
+                if previous_end > current_start:
+                    if ts == ts_count - 1:
+                        previous_end = ordered_timesheets[ts-1]['sg_task_start']
+                    else:
+                        previous_end = current_start
+                    data = {
+                        'sg_task_end': previous_end
+                    }
+                    try:
+                        update = self.sg.update('TimeLog', previous_id, data)
+                        print 'update output: %s' % update
+                        updates.append(update)
+                    except AttributeError as e:
+                        self.logger.error('Failed to update the TimeLog.')
+                        # NOTE: I could probably add a retry here.
 
         return updates
 

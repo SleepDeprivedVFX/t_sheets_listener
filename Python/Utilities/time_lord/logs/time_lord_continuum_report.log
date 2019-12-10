@@ -1,417 +1,144 @@
-2019-12-02 10:21:17,928 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 10:21:18,661 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:21:18,796 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
-2019-12-02 10:21:18,898 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
-2019-12-02 10:21:18,990 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:21:19,092 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
-2019-12-02 10:21:19,209 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:21:19,292 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:21:19,381 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
-2019-12-02 10:21:19,457 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:21:19,588 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
-2019-12-02 10:21:20,335 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
-2019-12-02 10:21:23,779 - time_lord_continuum | INFO : 477 - Looking to see if Adam Benson is clocked in....
-2019-12-02 10:21:24,467 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:21:26,684 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:22:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:23:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:24:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:24:00,089 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-02 10:24:01,000 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-02 10:24:01,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:25:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:26:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:27:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:28:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:28:00,065 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-02 10:28:01,377 - time_lord_continuum | ERROR : 358 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-02 10:28:01,680 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-02 10:28:01,681 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:29:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:30:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:31:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:31:00,187 - time_lord_continuum | ERROR : 358 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-02 10:32:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:32:00,091 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-02 10:32:01,000 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-02 10:32:01,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:33:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:34:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:35:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:36:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:36:00,187 - time_lord_continuum | ERROR : 358 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-02 10:37:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:38:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:39:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:40:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:41:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:42:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:43:00,005 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:44:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:45:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:46:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:47:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:48:00,005 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:49:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:50:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:51:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:52:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:53:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:54:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:55:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:56:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:57:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:58:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 10:59:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:00:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:00:00,280 - time_lord_continuum | ERROR : 414 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-02 11:01:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:02:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:02:00,085 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-02 11:02:01,388 - time_lord_continuum | ERROR : 358 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-02 11:02:01,642 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-02 11:02:01,642 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:03:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:04:01,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:05:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:06:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:07:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:08:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:09:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:09:00,292 - time_lord_continuum | ERROR : 414 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-02 11:10:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:11:00,003 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:12:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:13:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 11:14:00,000 - time_lord_continuum | INFO : 163 - Finding the last timesheet for Adam Benson
-2019-12-02 15:25:44,867 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 15:26:00,026 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-02 15:26:01,357 - time_lord_continuum | ERROR : 358 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-02 15:26:02,915 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-02 15:29:04,821 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 17:04:47,756 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 17:05:00,145 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-02 17:05:01,266 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-02 17:09:11,174 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 17:47:08,384 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 17:47:26,246 - time_lord_continuum | INFO : 219 - Timesheet updated.
-2019-12-02 17:48:27,549 - time_lord_continuum | ERROR : 715 - Failed to update the TimeLog.
-2019-12-02 17:49:00,098 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-02 17:49:01,108 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-02 18:54:54,198 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 18:57:00,085 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-02 18:57:01,000 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-02 18:58:00,171 - time_lord_continuum | ERROR : 358 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-02 19:02:40,423 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 19:04:19,316 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-02 19:17:36,293 - time_lord_continuum | INFO : 219 - Timesheet updated.
-2019-12-03 10:05:36,010 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 10:06:00,453 - time_lord_continuum | ERROR : 358 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-03 10:07:00,562 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-03 10:07:01,338 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-03 10:07:01,444 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-03 10:07:02,601 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-03 10:07:11,980 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-03 10:08:00,308 - time_lord_continuum | ERROR : 414 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-03 12:36:48,736 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 15:24:10,582 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 15:25:31,019 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 15:50:54,775 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 16:43:09,335 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 16:48:00,480 - time_lord_continuum | ERROR : 414 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-03 18:27:09,286 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 18:27:33,838 - time_lord_continuum | INFO : 219 - Timesheet updated.
-2019-12-03 18:27:34,302 - time_lord_continuum | ERROR : 564 - Couldn't get emtpies. Connection failure: 'NoneType' object has no attribute 'connections'
-2019-12-03 18:27:34,618 - time_lord_continuum | ERROR : 523 - Bad connection.  Trying again...
-2019-12-03 18:29:00,039 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-03 18:29:01,000 - time_lord_continuum | ERROR : 317 - Yeah, the shit hit the fan: 'NoneType' object has no attribute 'date'
-2019-12-03 18:29:32,864 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-03 18:30:23,482 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-03 18:31:01,759 - time_lord_continuum | ERROR : 185 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-03 18:34:24,344 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 18:35:02,160 - time_lord_continuum | ERROR : 493 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
-2019-12-03 18:35:37,572 - time_lord_continuum | INFO : 219 - Timesheet updated.
-2019-12-03 18:36:26,825 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 18:36:36,944 - time_lord_continuum | INFO : 219 - Timesheet updated.
-2019-12-03 18:36:37,023 - time_lord_continuum | ERROR : 523 - Bad connection.  Trying again...
-2019-12-03 18:53:10,494 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-03 19:05:57,134 - time_lord_continuum | INFO : 219 - Timesheet updated.
-2019-12-04 13:27:22,338 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-04 13:27:23,006 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:27:23,006 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:27:23,153 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003612E10>)}
-2019-12-04 13:27:23,154 - time_lord_continuum | DEBUG : 480 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:27:23,279 - time_lord_continuum | DEBUG : 480 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:27:23,397 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:27:23,397 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:27:23,530 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003612E10>)}
-2019-12-04 13:27:23,532 - time_lord_continuum | DEBUG : 480 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:27:23,654 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:27:23,654 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:27:23,796 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003612E10>)}
-2019-12-04 13:27:23,798 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:27:23,798 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:27:23,933 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003612E10>)}
-2019-12-04 13:27:23,933 - time_lord_continuum | DEBUG : 480 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:27:24,085 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:27:24,085 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:27:24,250 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003612E10>)}
-2019-12-04 13:27:24,381 - time_lord_continuum | DEBUG : 480 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:27:25,717 - time_lord_continuum | DEBUG : 480 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:27:26,013 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:09:01-08:00
-2019-12-04 13:27:26,015 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:25:14-08:00
-2019-12-04 13:27:26,015 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:48:27-08:00
-2019-12-04 13:27:26,016 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 13:27:26,016 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 13:27:26,016 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 13:27:26,016 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 15:12:35-08:00
-2019-12-04 13:27:26,016 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 17:49:32-08:00
-2019-12-04 13:27:26,016 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:27:34-08:00
-2019-12-04 13:27:26,017 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:35:01-08:00
-2019-12-04 13:27:26,017 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:36:55-08:00
-2019-12-04 13:27:26,017 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 09:10:00-08:00
-2019-12-04 13:27:27,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 13:27:27,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 09:10:00-08:00
-2019-12-04 13:27:27,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 13:27:29,306 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 13:27:29,308 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 09:10:00-08:00
-2019-12-04 13:27:29,308 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 13:32:05,811 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-04 13:32:06,311 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:32:06,312 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:32:06,463 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003B80E10>)}
-2019-12-04 13:32:06,463 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:32:06,592 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:32:06,723 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:32:06,724 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:32:06,842 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003B80E10>)}
-2019-12-04 13:32:06,844 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:32:06,963 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:32:06,963 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:32:07,085 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003B80E10>)}
-2019-12-04 13:32:07,085 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:32:07,085 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:32:07,216 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003B80E10>)}
-2019-12-04 13:32:07,217 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:32:07,331 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 13:32:07,332 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 13:32:07,460 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2581, 'sg_task_start': datetime.datetime(2019, 12, 4, 9, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003B80E10>)}
-2019-12-04 13:32:07,536 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:32:08,875 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 13:32:09,144 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:09:01-08:00
-2019-12-04 13:32:09,144 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:25:14-08:00
-2019-12-04 13:32:09,145 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:48:27-08:00
-2019-12-04 13:32:09,145 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 13:32:09,145 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 13:32:09,147 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 13:32:09,147 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 15:12:35-08:00
-2019-12-04 13:32:09,147 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 17:49:32-08:00
-2019-12-04 13:32:09,148 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:27:34-08:00
-2019-12-04 13:32:09,148 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:35:01-08:00
-2019-12-04 13:32:09,148 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:36:55-08:00
-2019-12-04 13:32:09,148 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 09:10:00-08:00
-2019-12-04 13:32:10,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 13:32:10,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 09:10:00-08:00
-2019-12-04 13:32:10,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 13:32:12,519 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 13:32:12,520 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 09:10:00-08:00
-2019-12-04 13:32:12,522 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 13:32:26,946 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-04 13:37:26,427 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-04 13:39:00,861 - time_lord_continuum | ERROR : 363 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-04 13:41:07,117 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-04 13:42:10,357 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-04 14:34:53,151 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-04 14:35:00,845 - time_lord_continuum | ERROR : 363 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-04 14:35:05,565 - time_lord_continuum | INFO : 219 - Timesheet updated.
-2019-12-04 14:37:00,832 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-04 14:37:01,651 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 14:37:01,651 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 14:37:01,770 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2614, 'sg_task_start': datetime.datetime(2019, 12, 4, 14, 35, 6, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003FA0E10>)}
-2019-12-04 14:37:01,770 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 14:37:01,900 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 14:37:02,032 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 14:37:02,032 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 14:37:02,163 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2614, 'sg_task_start': datetime.datetime(2019, 12, 4, 14, 35, 6, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003FA0E10>)}
-2019-12-04 14:37:02,163 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 14:37:02,289 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 14:37:02,289 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 14:37:02,411 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2614, 'sg_task_start': datetime.datetime(2019, 12, 4, 14, 35, 6, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003FA0E10>)}
-2019-12-04 14:37:02,411 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 14:37:02,411 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 14:37:02,539 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2614, 'sg_task_start': datetime.datetime(2019, 12, 4, 14, 35, 6, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003FA0E10>)}
-2019-12-04 14:37:02,539 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 14:37:02,667 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-04 14:37:02,667 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-04 14:37:02,799 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22841, 'name': 'Admin'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2614, 'sg_task_start': datetime.datetime(2019, 12, 4, 14, 35, 6, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x0000000003FA0E10>)}
-2019-12-04 14:37:02,864 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 14:37:04,131 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-04 14:37:04,375 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:09:01-08:00
-2019-12-04 14:37:04,375 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:25:14-08:00
-2019-12-04 14:37:04,377 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-02 17:48:27-08:00
-2019-12-04 14:37:04,377 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 14:37:04,378 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 14:37:04,378 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 10:05:44-08:00
-2019-12-04 14:37:04,378 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 15:12:35-08:00
-2019-12-04 14:37:04,378 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 17:49:32-08:00
-2019-12-04 14:37:04,378 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:27:34-08:00
-2019-12-04 14:37:04,378 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:35:01-08:00
-2019-12-04 14:37:04,378 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:36:55-08:00
-2019-12-04 14:37:04,380 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 09:10:00-08:00
-2019-12-04 14:37:04,380 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:05,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:05,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:05,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:06,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:06,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:06,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:07,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:07,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:07,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:08,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:08,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:08,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:09,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:09,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:09,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:10,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:10,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:10,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:11,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:11,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:11,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:12,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:12,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:12,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:13,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:13,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:13,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:14,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:14,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:14,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:15,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:15,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:15,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:16,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:16,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:16,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:17,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:17,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:17,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:18,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:18,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:18,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:19,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:19,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:19,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:20,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:20,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:20,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:21,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:21,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:21,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:22,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:22,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:22,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-04 14:37:23,000 - time_lord_continuum | DEBUG : 279 - ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2019-12-04 14:37:23,000 - time_lord_continuum | DEBUG : 280 - start_datetime: 2019-12-04 14:35:06-08:00
-2019-12-04 14:37:23,000 - time_lord_continuum | DEBUG : 281 - start_datetime TYPE: <type 'datetime.datetime'>
-2019-12-05 10:16:49,961 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 10:16:51,075 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 10:16:51,075 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 10:16:51,441 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>), 'entity': {'type': 'Task', 'id': 23848, 'name': 'rig.main'}, 'project': {'type': 'Project', 'id': 439, 'name': 'WeVR'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2646, 'sg_task_start': datetime.datetime(2019, 12, 4, 15, 52, 9, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>)}
-2019-12-05 10:16:51,443 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 10:16:51,543 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 10:16:51,634 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 10:16:51,634 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 10:16:51,740 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>), 'entity': {'type': 'Task', 'id': 23848, 'name': 'rig.main'}, 'project': {'type': 'Project', 'id': 439, 'name': 'WeVR'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2646, 'sg_task_start': datetime.datetime(2019, 12, 4, 15, 52, 9, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>)}
-2019-12-05 10:16:51,740 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 10:16:51,832 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 10:16:51,832 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 10:16:51,924 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>), 'entity': {'type': 'Task', 'id': 23848, 'name': 'rig.main'}, 'project': {'type': 'Project', 'id': 439, 'name': 'WeVR'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2646, 'sg_task_start': datetime.datetime(2019, 12, 4, 15, 52, 9, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>)}
-2019-12-05 10:16:51,924 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 10:16:51,924 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 10:16:52,026 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>), 'entity': {'type': 'Task', 'id': 23848, 'name': 'rig.main'}, 'project': {'type': 'Project', 'id': 439, 'name': 'WeVR'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2646, 'sg_task_start': datetime.datetime(2019, 12, 4, 15, 52, 9, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>)}
-2019-12-05 10:16:52,028 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 10:16:52,134 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 10:16:52,134 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 10:16:52,244 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>), 'entity': {'type': 'Task', 'id': 23848, 'name': 'rig.main'}, 'project': {'type': 'Project', 'id': 439, 'name': 'WeVR'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-04', 'type': 'TimeLog', 'id': 2646, 'sg_task_start': datetime.datetime(2019, 12, 4, 15, 52, 9, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000034280F0>)}
-2019-12-05 10:16:52,344 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 10:16:53,434 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 10:16:53,719 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 17:49:32-08:00
-2019-12-05 10:16:53,719 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:27:34-08:00
-2019-12-05 10:16:53,719 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:35:01-08:00
-2019-12-05 10:16:53,720 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:36:55-08:00
-2019-12-05 10:16:53,720 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 09:10:00-08:00
-2019-12-05 10:16:53,720 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 14:35:06-08:00
-2019-12-05 10:16:53,720 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 15:52:09-08:00
-2019-12-05 10:17:03,730 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 10:17:03,732 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 10:17:15,581 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 12:21:14,809 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 12:21:15,976 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 12:21:15,976 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 12:21:16,078 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-05', 'type': 'TimeLog', 'id': 2678, 'sg_task_start': datetime.datetime(2019, 12, 4, 16, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>)}
-2019-12-05 12:21:16,078 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 12:21:16,167 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 12:21:16,257 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 12:21:16,257 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 12:21:16,351 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-05', 'type': 'TimeLog', 'id': 2678, 'sg_task_start': datetime.datetime(2019, 12, 4, 16, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>)}
-2019-12-05 12:21:16,351 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 12:21:16,430 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 12:21:16,430 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 12:21:16,513 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-05', 'type': 'TimeLog', 'id': 2678, 'sg_task_start': datetime.datetime(2019, 12, 4, 16, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>)}
-2019-12-05 12:21:16,513 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 12:21:16,513 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 12:21:16,601 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-05', 'type': 'TimeLog', 'id': 2678, 'sg_task_start': datetime.datetime(2019, 12, 4, 16, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>)}
-2019-12-05 12:21:16,601 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 12:21:16,681 - time_lord_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-05 12:21:16,681 - time_lord_continuum | DEBUG : 165 - USER ID: 41
-2019-12-05 12:21:16,789 - time_lord_continuum | DEBUG : 183 - Timesheet found: {'sg_task_end': datetime.datetime(2019, 12, 4, 18, 35, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>), 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-05', 'type': 'TimeLog', 'id': 2678, 'sg_task_start': datetime.datetime(2019, 12, 4, 16, 10, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000039A80F0>)}
-2019-12-05 12:21:16,838 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 12:21:17,568 - time_lord_continuum | DEBUG : 482 - Looking to see if Adam Benson is clocked in....
-2019-12-05 12:21:17,766 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 17:49:32-08:00
-2019-12-05 12:21:17,766 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:27:34-08:00
-2019-12-05 12:21:17,766 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:35:01-08:00
-2019-12-05 12:21:17,766 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-03 18:36:55-08:00
-2019-12-05 12:21:17,766 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 09:10:00-08:00
-2019-12-05 12:21:17,766 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 14:35:06-08:00
-2019-12-05 12:21:17,766 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 15:52:09-08:00
-2019-12-05 12:21:17,766 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-05 10:12:00-08:00
-2019-12-05 12:21:17,767 - time_lord_continuum | DEBUG : 113 - Date converted: 2019-12-04 16:10:00-08:00
-2019-12-05 12:21:36,851 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 12:23:23,315 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 12:26:46,921 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 12:27:00,101 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-05 12:30:41,496 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 12:30:50,137 - time_lord_continuum | ERROR : 502 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
-2019-12-05 12:56:02,517 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 14:54:04,696 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 14:54:22,687 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
-2019-12-05 14:54:22,915 - time_lord_continuum | INFO : 221 - Timesheet updated.
-2019-12-05 15:19:09,384 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 15:19:29,144 - time_lord_continuum | INFO : 221 - Timesheet updated.
-2019-12-05 15:19:29,321 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
-2019-12-05 15:19:38,236 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-05 15:23:16,846 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 16:23:22,990 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 16:23:45,828 - time_lord_continuum | INFO : 221 - Timesheet updated.
-2019-12-05 16:25:00,351 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-05 16:28:52,765 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 16:29:03,798 - time_lord_continuum | INFO : 221 - Timesheet updated.
-2019-12-05 16:29:05,081 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
-2019-12-05 16:31:18,716 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 16:34:18,947 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 16:34:40,280 - time_lord_continuum | INFO : 221 - Timesheet updated.
-2019-12-05 16:34:40,844 - time_lord_continuum | ERROR : 573 - Couldn't get emtpies. Connection failure: 'NoneType' object has no attribute 'connections'
-2019-12-05 16:35:02,512 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-05 16:35:30,940 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 16:35:38,240 - time_lord_continuum | INFO : 221 - Timesheet updated.
-2019-12-05 16:35:38,342 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
-2019-12-05 16:39:15,138 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 17:57:58,723 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 17:58:09,960 - time_lord_continuum | INFO : 221 - Timesheet updated.
-2019-12-05 17:58:10,484 - time_lord_continuum | ERROR : 573 - Couldn't get emtpies. Connection failure: 'NoneType' object has no attribute 'connections'
-2019-12-05 18:02:00,713 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-05 18:02:27,450 - time_lord_continuum | INFO : 59 - Continuum Activated!
-2019-12-05 18:04:29,131 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 10:17:00,960 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 10:17:15,197 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 10:17:15,601 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 10:17:15,937 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
+2019-12-09 10:17:35,690 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 10:24:00,312 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 10:25:00,290 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 11:52:40,944 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 11:53:03,012 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 13:32:24,971 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 13:33:00,282 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 13:34:33,292 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 13:35:35,055 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 13:36:47,275 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 13:37:09,433 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 13:37:09,526 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
+2019-12-09 13:52:38,831 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 13:56:51,013 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 13:57:28,545 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 13:58:17,857 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 13:58:42,792 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 13:58:49,730 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:02:00,180 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 14:02:15,989 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 14:02:16,433 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
+2019-12-09 14:02:24,503 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:09:00,180 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:09:01,494 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 14:19:00,197 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:24:00,349 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:24:01,668 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 14:26:00,255 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:27:00,339 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 14:28:00,191 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:29:00,118 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:33:00,331 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 14:43:00,763 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:43:01,108 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 14:58:00,092 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 14:58:01,036 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 15:01:05,614 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 15:04:36,255 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 15:04:52,650 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 15:04:52,898 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 15:10:05,529 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 15:15:00,197 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 15:15:01,513 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 15:17:00,344 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 15:27:06,772 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 15:28:00,299 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 15:28:47,707 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 15:28:47,786 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
+2019-12-09 15:35:28,299 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 15:35:44,306 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
+2019-12-09 15:35:44,526 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 15:37:50,072 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 15:38:09,944 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 15:38:17,161 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 15:49:09,048 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 15:49:28,898 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 15:51:48,753 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 15:54:00,321 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 15:57:00,305 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 16:02:00,055 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 16:05:00,122 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 16:05:00,454 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 16:05:38,141 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:08:00,150 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 16:08:07,483 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 16:08:07,605 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
+2019-12-09 16:08:10,752 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 16:09:41,562 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:11:24,384 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:15:00,022 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 16:16:46,857 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:17:46,328 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:19:37,073 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:21:03,424 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 16:21:25,400 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:23:25,561 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:23:49,033 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 16:24:37,795 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:29:11,707 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:29:28,862 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 16:29:29,250 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 16:30:00,207 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 16:38:00,099 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 16:38:29,864 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:38:49,081 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 16:39:22,964 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:41:09,742 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:42:33,059 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 16:42:33,275 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 16:43:36,039 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:45:00,312 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 16:48:05,657 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 16:48:25,213 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 17:00:16,433 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:02:31,944 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:02:40,328 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:02:50,203 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:02:50,469 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 17:04:40,236 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:04:41,562 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:04:51,690 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:06:30,099 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:06:31,450 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:06:50,058 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:06:50,417 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:08:20,076 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:09:50,082 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:10:00,348 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:16:50,359 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:18:00,030 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:19:11,631 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:19:20,329 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:20:20,384 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:21:30,030 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:22:45,232 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:23:40,335 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:24:25,811 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:24:42,022 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 17:27:17,612 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:29:20,076 - time_lord_continuum | ERROR : 187 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:29:50,345 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:31:18,759 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:31:38,976 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 17:31:39,568 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:31:40,209 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
+2019-12-09 17:31:40,591 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:31:42,303 - time_lord_continuum | ERROR : 421 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2019-12-09 17:32:40,180 - time_lord_continuum | ERROR : 365 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-09 17:35:04,734 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:45:12,111 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:45:55,125 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:49:25,535 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 17:49:43,881 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 17:51:06,493 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 18:20:28,599 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-09 18:20:38,061 - time_lord_continuum | INFO : 221 - Timesheet updated.
+2019-12-09 18:20:40,793 - time_lord_continuum | ERROR : 532 - Bad connection.  Trying again...
+2019-12-10 10:14:54,480 - time_lord_continuum | INFO : 59 - Continuum Activated!
+2019-12-10 10:15:02,858 - time_lord_continuum | ERROR : 502 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
+2019-12-10 11:03:42,213 - time_lord_continuum | INFO : 59 - Continuum Activated!
