@@ -12,10 +12,13 @@ import sys
 import inspect
 from datetime import datetime
 import time
+import comm_system
 
 
 class sg_data(object):
     def __init__(self, sg=None, config=None, sub=None):
+
+        self.comm = comm_system.comm_sys(sg=sg, config=config, sub='sg_data')
 
         # ------------------------------------------------------------------------------------------------------
         # Create logging system
@@ -181,6 +184,9 @@ class sg_data(object):
                     self.logger.debug('Still couldn\'t find shit! %s' % tryagain)
                 except (AttributeError, TypeError, KeyError, Exception), e:
                     self.logger.error('Well, Fuck.  %s' % e)
+                    error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                       inspect.stack()[1][2], inspect.stack()[1][3])
+                    self.comm.send_error_alert(error=error)
         self.logger.debug('No Project found!')
         return None
 
@@ -198,7 +204,6 @@ class sg_data(object):
             except (AttributeError, Exception), e:
                 self.logger.error('Bad connection... Try again... %s' % e)
                 time.sleep(2)
-                print('Lame ass connection.  Trying again...')
                 link = self.get_entity_links(ent_type=ent_type, name=name, ent_id=ent_id, proj_id=proj_id)
             return link
         return None
@@ -237,6 +242,9 @@ class sg_data(object):
             return
         except Exception, e:
             self.logger.error('Some shit when down! %s' % e)
+            error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                               inspect.stack()[1][2], inspect.stack()[1][3])
+            self.comm.send_error_alert(user=None, error=error)
             return False
 
     def get_entity_id(self, proj_id=None, entity_name=None):

@@ -146,11 +146,11 @@ class time_stream(logging.StreamHandler):
         if len(current_text) > 300:
             self.edit.clear()
         # self.edit.appendPlainText('%s\n' % message)
-        # del info
-        # del error
-        # del debug
-        # del warning
-        # del formatter
+        del info
+        del error
+        del debug
+        del warning
+        del formatter
         # del cursor
 
 
@@ -298,7 +298,9 @@ class time_engine(QtCore.QThread):
             self.time_signal.start_end_output.emit(set_message)
         except Exception as e:
             self.time_signal.error.emit('Failed to update: %s' % e)
-            comm.send_error_alert(user=user, error=e)
+            error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                               inspect.stack()[1][2], inspect.stack()[1][3])
+            comm.send_error_alert(user=user, error=error)
 
     def set_user_output(self, user=None):
         if self.latest_timesheet['sg_task_end']:
@@ -477,7 +479,9 @@ class time_machine(QtCore.QThread):
                     time.sleep(5)
                     if conn_attempts > 10:
                         self.time_signal.error.emit('Something went wrong! %s' % err)
-                        comm.send_error_alert(user=user, error=err)
+                        error = '%s:\n%s | %s\n%s | %s' % (err, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                           inspect.stack()[1][2], inspect.stack()[1][3])
+                        comm.send_error_alert(user=user, error=error)
                         break
         return []
 
@@ -718,7 +722,9 @@ class time_lord(QtCore.QThread):
             self.set_start_end_output(start=start, end=end)
         except Exception as e:
             self.time_signal.error.emit('Failed to update: %s' % e)
-            comm.send_error_alert(user=user, error=e)
+            error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                               inspect.stack()[1][2], inspect.stack()[1][3])
+            comm.send_error_alert(user=user, error=error)
 
     def set_start_end_output(self, start=None, end=None):
         set_message = 'Start: %s\nEnd: %s' % (start, end)
@@ -1075,6 +1081,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.send_entity_update.connect(self.update_entity_dropdown)
         self.time_lord.time_signal.send_task_update.connect(self.update_task_dropdown)
         self.time_lord.time_signal.update_ui.connect(self.init_ui)
+        self.time_machine.time_signal.update_ui.connect(self.init_ui)
+        self.time_engine.time_signal.update_ui.connect(self.init_ui)
         self.time_signal.update_ui.connect(self.init_ui)
         self.time_machine.time_signal.latest_timesheet.connect(self.update_latest_timesheet)
         self.time_engine.time_signal.latest_timesheet.connect(self.update_latest_timesheet)
@@ -1136,7 +1144,9 @@ class time_lord_ui(QtGui.QMainWindow):
                     self.saved_project_id = self.latest_timesheet['project']['id']
             except TypeError as e:
                 logger.error('Couldn\'t compare latest timesheet: %s ' % e)
-                comm.send_error_alert(user=user, error=e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                comm.send_error_alert(user=user, error=error)
 
             # Update the dropdown list
             self.update_projects_dropdown(projects)
@@ -1163,7 +1173,9 @@ class time_lord_ui(QtGui.QMainWindow):
             except TypeError as e:
                 logger.error('Can\'t compare timesheets. Most likely there was no previous timesheet:'
                              '%s' % e)
-                comm.send_error_alert(user=user, error=e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                comm.send_error_alert(user=user, error=error)
 
             # Update the Entities dropdown
             self.update_entity_dropdown(entities=entities)
@@ -1470,7 +1482,9 @@ class time_lord_ui(QtGui.QMainWindow):
                     minutes = (6 * (minute + (second / 60.0)))
             except Exception, e:
                 logger.error('The fit hit the shan: %s' % e)
-                comm.send_error_alert(user=user, error=e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                comm.send_error_alert(user=user, error=error)
                 return False
         else:
             hours = in_time[0]

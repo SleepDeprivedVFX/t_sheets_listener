@@ -22,12 +22,14 @@ from dateutil import parser
 from dateutil import relativedelta
 import time
 import inspect
+import comm_system
 
 
 class continuum(object):
     def __init__(self, sg=None, config=None, sub=None):
         # self.logger = logging.getLogger('time continuum')
         self.sg = sg
+        self.comm = comm_system.comm_sys(sg=sg, config=config, sub='continuum')
 
         # ------------------------------------------------------------------------------------------------------
         # Create logging system
@@ -185,6 +187,9 @@ class continuum(object):
                 self.logger.debug('Timesheet found: %s' % latest_timesheet)
             except (AttributeError, Exception), e:
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                self.comm.send_error_alert(user=user, error=error)
                 latest_timesheet = None
             if latest_timesheet:
                 return latest_timesheet
@@ -275,6 +280,10 @@ class continuum(object):
             's': '00'
         }
         if timesheet:
+            if 'user' in timesheet.keys():
+                user = timesheet['user']
+            else:
+                user = {'name': os.environ['USERNAME'], 'id': 0, 'sg_computer': os.environ['COMPUTERNAME']}
             try:
                 if not timesheet['sg_task_end']:
                     start_datetime = timesheet['sg_task_start']
@@ -309,7 +318,9 @@ class continuum(object):
                             h = '%02d' % int(d_to_h + h)
                         else:
                             self.logger.error('Can\'t parse the hours!')
-                            raise e
+                            error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                               inspect.stack()[1][2], inspect.stack()[1][3])
+                            self.comm.send_error_alert(user=user, error=error)
                         m = '%02d' % int(split_time[1])
                         s = float(split_time[2])
                         s = '%02d' % int(s)
@@ -322,6 +333,9 @@ class continuum(object):
                     }
             except (AttributeError, TypeError) as e:
                 self.logger.error('Yeah, the shit hit the fan: %s' % e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                self.comm.send_error_alert(user=user, error=error)
         return running_time
 
     def get_daily_total(self, user=None, lunch_id=None, break_id=None):
@@ -363,6 +377,9 @@ class continuum(object):
                 timesheets = self.sg.find('TimeLog', filters, fields)
             except (AttributeError, Exception), e:
                 self.logger.error('Time sheet failed to acquire: %s' % e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                self.comm.send_error_alert(user=user, error=error)
                 timesheets = None
             if timesheets:
                 for timesheet in timesheets:
@@ -419,6 +436,9 @@ class continuum(object):
                 timesheets = self.sg.find('TimeLog', filters, fields)
             except (AttributeError, Exception), e:
                 self.logger.error('Failed to get the timesheet! %s' % e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                self.comm.send_error_alert(user=user, error=error)
                 timesheets = None
             if timesheets:
                 for timesheet in timesheets:
@@ -500,6 +520,9 @@ class continuum(object):
                                                                                   'direction': 'desc'}])
             except Exception, e:
                 self.logger.error('Could not check clocked in: %s' % e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                self.comm.send_error_alert(user=user, error=error)
                 clocked_in = None
 
             if clocked_in and clocked_in['sg_task_end']:
@@ -571,6 +594,9 @@ class continuum(object):
                 empties = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
             except Exception as e:
                 self.logger.error('Couldn\'t get emtpies. Connection failure: %s' % e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                self.comm.send_error_alert(user=user, error=error)
                 empties = None
             if empties:
                 latest_timesheet = {'project': None}
@@ -677,6 +703,9 @@ class continuum(object):
             ordered_timesheets = sorted(get_timesheets, key=lambda x: (x('sg_task_start'), x['id']), reverse=True)
         except Exception as e:
             self.logger.error('Could not order the timesheets!')
+            error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                               inspect.stack()[1][2], inspect.stack()[1][3])
+            self.comm.send_error_alert(user=user, error=error)
             return False
         ts_count = len(ordered_timesheets)
         updates = []
@@ -716,6 +745,9 @@ class continuum(object):
                 previous_id = int(ordered_timesheets[ts+1]['id'])
             except Exception as e:
                 print('Timesheet consistency error: %s' % e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                self.comm.send_error_alert(user=user, error=error)
                 previous_start = None
                 previous_end = None
                 previous_id = None
@@ -735,6 +767,9 @@ class continuum(object):
                     except AttributeError as e:
                         self.logger.error('Failed to update the TimeLog.')
                         # NOTE: I could probably add a retry here.
+                        error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                           inspect.stack()[1][2], inspect.stack()[1][3])
+                        self.comm.send_error_alert(user=user, error=error)
 
         return updates
 

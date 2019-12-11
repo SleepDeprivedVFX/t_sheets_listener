@@ -89,7 +89,17 @@ class comm_sys(object):
             'users',
             'code'
         ]
-        group_members = self.sg.find('Group', filters, fields)
+        tries = 0
+        try:
+            group_members = self.sg.find('Group', filters, fields)
+        except Exception as e:
+            # FIXME: This does nothing.
+            group_members = None
+            tries += 1
+            self.logger.error('Comm System failure to get data: %s' % e)
+            if tries > 10:
+                self.logger.error('Total failure, returning False!')
+                return False
         self.logger.debug('GROUP %s' % group_members)
         for group in group_members:
             users = group['users']
@@ -327,6 +337,8 @@ class comm_sys(object):
 
     def send_error_alert(self, user=None, error=None):
         maintenance = self.get_supervisors(maintenance=True)
+        if not user:
+            user = {'name': os.environ['USERNAME'], 'id': 0, 'sg_computer': os.environ['COMPUTERNAME']}
 
         for maint in maintenance:
             email = maintenance[maint]
