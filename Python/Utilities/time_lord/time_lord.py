@@ -121,16 +121,16 @@ class time_stream(logging.StreamHandler):
         warning = QtGui.QColor(218, 145, 0)
         formatter = QtGui.QTextCharFormat()
         if level == 'ERROR':
-            print('Error Message formatting')
+            print('::ERROR: %s' % message)
             formatter.setForeground(error)
         elif level == 'DEBUG':
-            print('Debug Message formatting')
+            print('::DEBUG: %s' % message)
             formatter.setForeground(debug)
         elif level == 'WARNING':
-            print('Warning Message formatting')
+            print('::WARN: %s' % message)
             formatter.setForeground(warning)
         else:
-            print('Info Message Formatting')
+            print('::INFO: %s' % message)
             formatter.setForeground(info)
         self.edit.setCurrentCharFormat(formatter)
 
@@ -140,17 +140,17 @@ class time_stream(logging.StreamHandler):
         self.edit.setTextCursor(cursor)
         # #
         # # # Insert Log
-        print('Log Message: %s' % message)
+        # print('Log Message: %s' % message)
         self.edit.insertPlainText('%s\n' % message)
-        # current_text = self.edit.toPlainText()
-        # if len(current_text) > 300:
-        #     self.edit.clear()
+        current_text = self.edit.toPlainText()
+        if len(current_text) > 300:
+            self.edit.clear()
         # self.edit.appendPlainText('%s\n' % message)
-        del info
-        del error
-        del debug
-        del warning
-        del formatter
+        # del info
+        # del error
+        # del debug
+        # del warning
+        # del formatter
         # del cursor
 
 
@@ -257,9 +257,11 @@ class time_engine(QtCore.QThread):
         self.kill_it = True
 
     def set_latest_timesheet(self, ts=None):
+        self.time_signal.log.emit('Updating Engine Timesheet...')
         self.time_signal.debug.emit('time_engine: Last Timesheet Updated: %s' % ts)
         if ts:
             self.latest_timesheet = ts
+            self.time_signal.log.emit('Engine Timesheet Updated.')
 
     def run(self, *args, **kwargs):
         self.chronograph()
@@ -340,8 +342,8 @@ class time_engine(QtCore.QThread):
                 if (second % 10) == 0:
                     last_timesheet = self.latest_timesheet
                     self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
-                    if last_timesheet['id'] != self.latest_timesheet['id']:
-                        print('Time Engine Timesheets don\'t match.  Updating Timesheet...')
+                    if last_timesheet != self.latest_timesheet:
+                        self.time_signal.log.emit('Time Engine Timesheets don\'t match.  Updating Timesheet...')
                         self.time_signal.latest_timesheet.emit(self.latest_timesheet)
                     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
                     weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
@@ -459,7 +461,7 @@ class time_machine(QtCore.QThread):
                     events = sg.find('EventLogEntry', filters, fields, order=order, limit=100)
                     # print 'found events: %s' % events
                     if events:
-                        logger.debug('Events collected! %s' % events)
+                        self.time_signal.debug.emit('Events collected! %s' % events)
                         # print 'New Events Collected!', events
                         return events
                 except (sgapi.ProtocolError, sgapi.ResponseError, socket.error) as err:
@@ -481,7 +483,7 @@ class time_machine(QtCore.QThread):
 
     def listener(self):
         """
-        The main loop listener.
+        The main loop listener.  This is listening for Shotgun events, and specifically TimeLog events.
         :return:
         """
         self.time_signal.debug.emit('Starting the main event listener loop...')
@@ -536,6 +538,7 @@ class time_machine(QtCore.QThread):
                                     self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
                                     # print('The Wait is OVER!')
                                     self.time_lord.time_signal.latest_timesheet.emit(timesheet_info)
+                                    self.time_signal.latest_timesheet.emit(timesheet_info)
                                     self.time_signal.debug.emit('Timesheet update emitted.')
 
                                     data = {
@@ -783,7 +786,7 @@ class time_lord(QtCore.QThread):
                     'name': entity}
         send_task = {'type': 'task_dropdown',
                      'name': task}
-        print('About to send signals for update...')
+        self.time_signal.log.emit('About to send signals for update...')
         self.time_signal.update_ui.emit(self.latest_timesheet)
         # self.time_signal.wait_cond_1.wakeAll()
         # self.send_project_update()
@@ -792,10 +795,10 @@ class time_lord(QtCore.QThread):
         # self.time_signal.set_dropdown.emit(send_task)
         # projects = self.send_project_update(message='Update Projects')
         # self.time_signal.send_project_update.emit(projects)
-        print('==> SEND PROJ: %s' % send_proj['name'])
-        print('==> SEND ENT: %s' % send_ent['name'])
-        print('==> SEND TASK: %s' % send_task['name'])
-        print('Three signals sent.')
+        self.time_signal.log.emit('==> SEND PROJ: %s' % send_proj['name'])
+        self.time_signal.log.emit('==> SEND ENT: %s' % send_ent['name'])
+        self.time_signal.log.emit('==> SEND TASK: %s' % send_task['name'])
+        self.time_signal.log.emit('Three signals sent.')
 
     def quick_update(self):
         """
@@ -888,10 +891,12 @@ class time_lord(QtCore.QThread):
         #       inspect.stack()[1][3])
         if data:
             self.clocked_in = True
+            self.time_signal.log.emit('Clocking in...')
             context = data[0]
             start_time = data[1]
             self.time_signal.mutex_1.lock()
             timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
+            self.time_signal.log.emit('New Timesheet: %s' % timesheet['id'])
             self.time_signal.mutex_1.unlock()
             self.set_user_output(user=user)
             self.time_signal.user_has_clocked_in.emit(timesheet)
@@ -1010,6 +1015,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord = time_lord()
         self.time_engine = time_engine()
         self.time_machine = time_machine()
+        self.time_signal = time_signals()
 
         # --------------------------------------------------------------------------------------------------------
         # Setup UI
@@ -1069,7 +1075,11 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.send_entity_update.connect(self.update_entity_dropdown)
         self.time_lord.time_signal.send_task_update.connect(self.update_task_dropdown)
         self.time_lord.time_signal.update_ui.connect(self.init_ui)
+        self.time_signal.update_ui.connect(self.init_ui)
         self.time_machine.time_signal.latest_timesheet.connect(self.update_latest_timesheet)
+        self.time_engine.time_signal.latest_timesheet.connect(self.update_latest_timesheet)
+        self.time_lord.time_signal.latest_timesheet.connect(self.update_latest_timesheet)
+        self.time_signal.latest_timesheet.connect(self.update_latest_timesheet)
         self.time_engine.time_signal.trt_output.connect(self.trt_output)
         self.time_engine.time_signal.start_end_output.connect(self.start_end_output)
         self.time_engine.time_signal.user_output.connect(self.user_output)
@@ -1110,12 +1120,12 @@ class time_lord_ui(QtGui.QMainWindow):
         :return: None
         """
         if received_timesheet:
-            print('CLEARING UI...')
+            logger.info('CLEARING UI...')
             self.ui.project_dropdown.clear()
             self.ui.entity_dropdown.clear()
             self.ui.task_dropdown.clear()
             self.latest_timesheet = received_timesheet
-        print('INITIALIZING UI...')
+        logger.info('INITIALIZING UI...')
         # NOTE: I may have to remove the __init__ call to self.time_lord.time_signal.update.emit()
         projects = sg_data.get_active_projects(user=user)
         if projects:
@@ -1407,8 +1417,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 hours = (30 * (hour + (minute / 60.0)))
                 minutes = (6 * (minute + (second / 60.0)))
             else:
-                print('Bad Start Time!  Returning False', datetime.now())
-                logger.warning('Bad Start Time. Data lost somewhere.  Returning False.')
+                logger.warning('Bad Start Time!  Returning False', datetime.now())
                 return False
         else:
             hours = in_time[0]
@@ -1574,7 +1583,7 @@ class time_lord_ui(QtGui.QMainWindow):
                                                 'end_y_ones_%s.png);' % y_ones)
 
     def set_dropdown(self, data=None):
-        print('+++Update Signal received: %s | %s' % (data['type'], data['name']))
+        logger.debug('+++Update Signal received: %s | %s' % (data['type'], data['name']))
         # self.time_lord.time_signal.mutex_2.lock()
         if data:
             dd_type = data['type']
@@ -1758,7 +1767,6 @@ class time_lord_ui(QtGui.QMainWindow):
     # ----------------------------------------------------------------------------------------------------------------
     def update_projects_dropdown(self, projects=None):
         # Clear out the projects so that we are not double adding entries.
-        print('Updating projects dropdown...')
         logger.debug('Update projects dropdown...')
         self.ui.project_dropdown.clear()
         # Iterate through the list and add all the active projects to the dropdown
@@ -1968,9 +1976,11 @@ class time_lord_ui(QtGui.QMainWindow):
             logger.debug('Button connected.')
 
     def update_latest_timesheet(self, timesheet=None):
-        logger.debug('updating last timesheet... %s' % timesheet)
+        logger.info('Updating UI timesheet...')
+        logger.debug('timesheet data... %s' % timesheet)
         if timesheet:
             self.latest_timesheet = timesheet
+            logger.info('Timesheet updated! %s' % timesheet['id'])
             self.time_engine.time_signal.get_running_clock.emit(timesheet)
 
     # --------------------------------------------------------------------------------------------------

@@ -617,6 +617,7 @@ class continuum(object):
                                     try:
                                         update = self.sg.update('TimeLog', empty['id'], data)
                                     except Exception as e:
+                                        # FIXME: This does nothing!
                                         tries += 1
                                         self.logger.error('Cleanup process failed while updating... '
                                                           'Making another atempt: #%i' % tries)
@@ -668,7 +669,15 @@ class continuum(object):
         except Exception:
             print(Exception)
             return False
-        ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']), reverse=True)
+        try:
+            ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']),
+                                        reverse=True)
+        except TypeError as e:
+            self.logger.warning('Missing data for sort.  Switching methods')
+            ordered_timesheets = sorted(get_timesheets, key=lambda x: (x('sg_task_start'), x['id']), reverse=True)
+        except Exception as e:
+            self.logger.error('Could not order the timesheets!')
+            return False
         ts_count = len(ordered_timesheets)
         updates = []
 
@@ -706,7 +715,7 @@ class continuum(object):
                 previous_end = ordered_timesheets[ts+1]['sg_task_end']
                 previous_id = int(ordered_timesheets[ts+1]['id'])
             except Exception as e:
-                print 'Shit fucked up: %s' % e
+                print('Timesheet consistency error: %s' % e)
                 previous_start = None
                 previous_end = None
                 previous_id = None
