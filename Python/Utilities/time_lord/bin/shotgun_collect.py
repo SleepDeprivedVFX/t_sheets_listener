@@ -271,16 +271,16 @@ class sg_data(object):
                     break
         return entity_type
 
-    def get_task_id(self, entity_id=None, task_name=None, entity_name=None, proj_id=None):
-        task_id = None
-        if entity_id and task_name:
-            tasks = self.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
-            if tasks:
-                for task in tasks:
-                    if task['content'] == task_name:
-                        task_id = task['id']
-                        break
-        return task_id
+    # def get_task_id(self, entity_id=None, task_name=None, entity_name=None, proj_id=None):
+    #     task_id = None
+    #     if entity_id and task_name:
+    #         tasks = self.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
+    #         if tasks:
+    #             for task in tasks:
+    #                 if task['content'] == task_name:
+    #                     task_id = task['id']
+    #                     break
+    #     return task_id
 
     def get_lunch_task(self, lunch_proj_id=None, task_name=None):
         if lunch_proj_id and task_name:

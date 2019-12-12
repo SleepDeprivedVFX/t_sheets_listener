@@ -344,9 +344,9 @@ class time_engine(QtCore.QThread):
                 if (second % 10) == 0:
                     last_timesheet = self.latest_timesheet
                     self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
-                    if last_timesheet != self.latest_timesheet:
-                        self.time_signal.log.emit('Time Engine Timesheets don\'t match.  Updating Timesheet...')
-                        self.time_signal.latest_timesheet.emit(self.latest_timesheet)
+                    # if last_timesheet != self.latest_timesheet:
+                        # self.time_signal.log.emit('Time Engine Timesheets don\'t match.  Updating Timesheet...')
+                        # self.time_signal.latest_timesheet.emit(self.latest_timesheet)
                     daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
                     weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
                     if daily_total:
@@ -528,6 +528,22 @@ class time_machine(QtCore.QThread):
                                     # print('CLOCK OUT RECORD! %s' % event)
                                     self.time_signal.debug.emit('CLOCK OUT RECORD! %s' % event)
 
+                                    # ts_data = {
+                                    #     'project': timesheet_info['project']['name'],
+                                    #     'project_id': timesheet_info['project']['id'],
+                                    #     'entity': ts_entity['entity']['name'],
+                                    #     'entity_id': ts_entity['entity']['id'],
+                                    #     'task': timesheet_info['entity']['name'],
+                                    #     'task_id': timesheet_info['entity']['id']
+                                    # }
+                                    # # self.time_lord.time_signal.update.emit(ts_data)
+                                    # self.time_signal.update.emit(ts_data)
+                                    # # QUERY: Perhaps here is where I set a Wait Condition.
+                                    # #       Then, the connecting signal would spawn a wake all.
+                                    # # self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                    # # print('The Wait is OVER!')
+                                    # # self.time_lord.time_signal.latest_timesheet.emit(timesheet_info)
+
                                     self.time_signal.latest_timesheet.emit(timesheet_info)
                                     self.time_signal.debug.emit('Timesheet update emitted.')
 
@@ -566,7 +582,7 @@ class time_machine(QtCore.QThread):
                                     self.time_lord.time_signal.update.emit(ts_data)
                                     self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
                                     new_timesheet = tl_time.get_latest_timesheet(user=user)
-                                    self.time_lord.time_signal.latest_timesheet.emit(new_timesheet)
+                                    self.time_signal.latest_timesheet.emit(new_timesheet)
 
                                     data = {
                                         'EventLogID': event['id'],
@@ -883,8 +899,8 @@ class time_lord(QtCore.QThread):
         This may need some addition inputs, but for now... nothing.
         :return:
         """
-        # print('clock_in_user:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
-        #       inspect.stack()[1][3])
+        print('clock_in_user:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
+              inspect.stack()[1][3])
         if data and not self.clocked_in:
             self.clocked_in = True
             self.time_signal.log.emit('Clocking in...')
@@ -896,6 +912,7 @@ class time_lord(QtCore.QThread):
             self.time_signal.mutex_1.unlock()
             self.set_user_output(user=user)
             self.time_signal.user_has_clocked_in.emit(timesheet)
+            self.time_signal.wait_cond_1.wakeAll()
 
     def set_user_output(self, user=None):
         if self.clocked_in:
@@ -920,19 +937,19 @@ class time_lord(QtCore.QThread):
                 self.time_signal.set_entity_list.emit((latest_timesheet, entities))
             self.time_signal.debug.emit('get_entities: %s' % entities)
 
-    def get_tasks(self, context=None, r=False):
-        self.time_signal.debug.emit('get_tasks activated: %s' % context)
-        if context:
-            entity_id = context['entity_id']
-            entity_name = context['entity_name']
-            proj_id = context['proj_id']
-            tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
-            if tasks:
-                if r:
-                    return tasks
-                else:
-                    self.time_signal.set_task_list.emit(tasks)
-                self.time_signal.debug.emit('Tasks emitted: %s' % tasks)
+    # def get_tasks(self, context=None, r=False):
+    #     self.time_signal.debug.emit('get_tasks activated: %s' % context)
+    #     if context:
+    #         entity_id = context['entity_id']
+    #         entity_name = context['entity_name']
+    #         proj_id = context['proj_id']
+    #         tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
+    #         if tasks:
+    #             if r:
+    #                 return tasks
+    #             else:
+    #                 self.time_signal.set_task_list.emit(tasks)
+    #             self.time_signal.debug.emit('Tasks emitted: %s' % tasks)
 
     def set_latest_timesheet(self, message=None):
         if message:
@@ -1129,6 +1146,7 @@ class time_lord_ui(QtGui.QMainWindow):
         projects = sg_data.get_active_projects(user=user)
         if projects:
             # Check the saved project against the current timesheet
+            logger.debug('Checking Saved Settings against Current Timesheet...')
             try:
                 if self.saved_project != self.latest_timesheet['project']['name']:
                     self.saved_project = self.latest_timesheet['project']['name']
@@ -1140,6 +1158,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 comm.send_error_alert(user=user, error=error)
 
             # Update the dropdown list
+            logger.debug('Updating Project Dropdown...')
             self.update_projects_dropdown(projects)
             proj_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
 
@@ -1177,12 +1196,10 @@ class time_lord_ui(QtGui.QMainWindow):
             tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity, proj_id=proj_id)
             self.update_task_dropdown(tasks=tasks)
 
-            print('+++ BEFORE Button state is set by the init_ui')
             if tl_time.is_user_clocked_in(user=user):
                 self.clock_in_button_state(1)
             else:
                 self.clock_in_button_state(0)
-            print('=== AFTER button state is set by the init_ui')
 
             daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
             weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
@@ -1315,7 +1332,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.time_minute.update()
 
     def start_time(self):
-        logger.debug('start_time activated!')
+        logger.info('start_time activated!')
         # TODO: Add features that start other processes as well.  Change the button connections, et cetera
         if not self.time_lord.isRunning():
             self.time_lord.start()
@@ -1358,16 +1375,15 @@ class time_lord_ui(QtGui.QMainWindow):
 
     def clock_in(self, message=None):
         # Check to see if the UI settings are valid for a new timesheet.
-        logger.debug('Clock in requested.  Checking selection')
+        logger.info('Clock in requested.  Checking selection')
         if not self.selection_check():
             logger.debug('The selections are invalid!')
             # The settings are invalid.  Kick it back.
             return False
-        logger.debug('selection passed!')
+        logger.info('selection passed!')
 
         # Emit the Steady State green light signal, and update the output monitor.
         self.clock_in_button_state(1)
-        logger.info('New Timesheet created!')
 
         # Create context
         project_selection = self.ui.project_dropdown.currentText()
@@ -1396,8 +1412,12 @@ class time_lord_ui(QtGui.QMainWindow):
         if not start_time:
             start_time = datetime.now()
 
+        if not self.time_lord.isRunning():
+            self.time_lord.start()
+
         data = (context, start_time)
         self.time_lord.time_signal.clock_in_user.emit(data)
+        logger.info('New Timesheet Request Sent!')
         self.set_window_on_top()
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
         if not self.time_machine.isRunning():
@@ -1985,11 +2005,15 @@ class time_lord_ui(QtGui.QMainWindow):
         logger.info('Updating UI timesheet...')
         logger.debug('timesheet data... %s' % timesheet)
         if timesheet:
+            # NOTE: The following changes got the updater to work... a little too much... perhaps.
             if type(timesheet) == dict and 'id' in timesheet.keys():
                 if timesheet != self.latest_timesheet:
+                    logger.info('Reinitializing UI with updated timesheet...')
                     self.init_ui(received_timesheet=timesheet)
+                    logger.info('Finishing local timesheet update...')
                     self.latest_timesheet = timesheet
                     logger.info('Timesheet updated! %s' % timesheet['id'])
+                    logger.info('Updating runtime clock...')
                     self.time_engine.time_signal.get_running_clock.emit(timesheet)
 
     # --------------------------------------------------------------------------------------------------
