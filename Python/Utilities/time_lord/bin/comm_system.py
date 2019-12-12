@@ -94,7 +94,7 @@ class comm_sys(object):
             group_members = self.sg.find('Group', filters, fields)
         except Exception as e:
             # FIXME: This does nothing.
-            group_members = None
+            group_members = []
             tries += 1
             self.logger.error('Comm System failure to get data: %s' % e)
             if tries > 10:
@@ -131,8 +131,12 @@ class comm_sys(object):
                 'email',
                 'projects',
             ]
-            find_user = self.sg.find_one('HumanUser', filters, fields)
-            self.logger.debug('find_user returns: %s' % find_user)
+            try:
+                find_user = self.sg.find_one('HumanUser', filters, fields)
+                self.logger.debug('find_user returns: %s' % find_user)
+            except AttributeError as e:
+                self.logger.error('Couldn\'t find user: %s ' % e)
+                find_user = None
             if find_user:
                 user_id = find_user['id']
                 sg_email = find_user['email']

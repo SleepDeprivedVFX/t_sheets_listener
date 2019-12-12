@@ -377,6 +377,10 @@ class time_machine(QtCore.QThread):
 
         # Setup the streams
         self.time_signal = time_signals()
+        # FIXME: THIS IS WHY THE UI DOES NOT RELOAD!!!!
+        #       The problem is this:
+        #           This version of time_lord is its own, unrelated animal to the time_lord in the time_lord_ui, thus
+        #           it will never share signals with the UI; only with the time_machine.
         self.time_lord = time_lord()
         self.time_signal.log.emit('Time Machine Started.')
 
@@ -528,22 +532,27 @@ class time_machine(QtCore.QThread):
                                     # print('CLOCK OUT RECORD! %s' % event)
                                     self.time_signal.debug.emit('CLOCK OUT RECORD! %s' % event)
 
-                                    ts_data = {
-                                        'project': timesheet_info['project']['name'],
-                                        'project_id': timesheet_info['project']['id'],
-                                        'entity': ts_entity['entity']['name'],
-                                        'entity_id': ts_entity['entity']['id'],
-                                        'task': timesheet_info['entity']['name'],
-                                        'task_id': timesheet_info['entity']['id']
-                                    }
-                                    self.time_lord.time_signal.update.emit(ts_data)
-                                    # QUERY: Perhaps here is where I set a Wait Condition.
-                                    #       Then, the connecting signal would spawn a wake all.
-                                    self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
-                                    # print('The Wait is OVER!')
-                                    self.time_lord.time_signal.latest_timesheet.emit(timesheet_info)
+                                    # ts_data = {
+                                    #     'project': timesheet_info['project']['name'],
+                                    #     'project_id': timesheet_info['project']['id'],
+                                    #     'entity': ts_entity['entity']['name'],
+                                    #     'entity_id': ts_entity['entity']['id'],
+                                    #     'task': timesheet_info['entity']['name'],
+                                    #     'task_id': timesheet_info['entity']['id']
+                                    # }
+                                    # self.time_lord.time_signal.update.emit(ts_data)
+                                    # # QUERY: Perhaps here is where I set a Wait Condition.
+                                    # #       Then, the connecting signal would spawn a wake all.
+                                    # self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
+                                    # # print('The Wait is OVER!')
+                                    # self.time_lord.time_signal.latest_timesheet.emit(timesheet_info)
+
+
                                     self.time_signal.latest_timesheet.emit(timesheet_info)
                                     self.time_signal.debug.emit('Timesheet update emitted.')
+
+                                    # Update the time_lord ui
+                                    self.time_signal.update_ui.emit(timesheet_info)
 
                                     data = {
                                         'EventLogID': event['id'],
@@ -1133,6 +1142,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.ui.entity_dropdown.clear()
             self.ui.task_dropdown.clear()
             self.latest_timesheet = received_timesheet
+            logger.info('CLEARED!!! Updating: %s' % self.latest_timesheet)
         logger.info('INITIALIZING UI...')
         # NOTE: I may have to remove the __init__ call to self.time_lord.time_signal.update.emit()
         projects = sg_data.get_active_projects(user=user)
@@ -1186,10 +1196,12 @@ class time_lord_ui(QtGui.QMainWindow):
             tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity, proj_id=proj_id)
             self.update_task_dropdown(tasks=tasks)
 
+            print('+++ BEFORE Button state is set by the init_ui')
             if tl_time.is_user_clocked_in(user=user):
                 self.clock_in_button_state(1)
             else:
                 self.clock_in_button_state(0)
+            print('=== AFTER button state is set by the init_ui')
 
             daily_total = tl_time.get_daily_total(user=user, lunch_id=int(lunch_task['id']))
             weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
@@ -1993,9 +2005,12 @@ class time_lord_ui(QtGui.QMainWindow):
         logger.info('Updating UI timesheet...')
         logger.debug('timesheet data... %s' % timesheet)
         if timesheet:
-            self.latest_timesheet = timesheet
-            logger.info('Timesheet updated! %s' % timesheet['id'])
-            self.time_engine.time_signal.get_running_clock.emit(timesheet)
+            if type(timesheet) == dict and 'id' in timesheet.keys():
+                if timesheet != self.latest_timesheet:
+                    self.init_ui(received_timesheet=timesheet)
+                    self.latest_timesheet = timesheet
+                    logger.info('Timesheet updated! %s' % timesheet['id'])
+                    self.time_engine.time_signal.get_running_clock.emit(timesheet)
 
     # --------------------------------------------------------------------------------------------------
     # Log handlers

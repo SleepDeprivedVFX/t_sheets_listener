@@ -187,9 +187,6 @@ class continuum(object):
                 self.logger.debug('Timesheet found: %s' % latest_timesheet)
             except (AttributeError, Exception), e:
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
-                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
-                                                   inspect.stack()[1][2], inspect.stack()[1][3])
-                self.comm.send_error_alert(user=user, error=error)
                 latest_timesheet = None
             if latest_timesheet:
                 return latest_timesheet
@@ -377,9 +374,6 @@ class continuum(object):
                 timesheets = self.sg.find('TimeLog', filters, fields)
             except (AttributeError, Exception), e:
                 self.logger.error('Time sheet failed to acquire: %s' % e)
-                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
-                                                   inspect.stack()[1][2], inspect.stack()[1][3])
-                self.comm.send_error_alert(user=user, error=error)
                 timesheets = None
             if timesheets:
                 for timesheet in timesheets:
@@ -436,9 +430,6 @@ class continuum(object):
                 timesheets = self.sg.find('TimeLog', filters, fields)
             except (AttributeError, Exception), e:
                 self.logger.error('Failed to get the timesheet! %s' % e)
-                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
-                                                   inspect.stack()[1][2], inspect.stack()[1][3])
-                self.comm.send_error_alert(user=user, error=error)
                 timesheets = None
             if timesheets:
                 for timesheet in timesheets:
@@ -520,9 +511,6 @@ class continuum(object):
                                                                                   'direction': 'desc'}])
             except Exception, e:
                 self.logger.error('Could not check clocked in: %s' % e)
-                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
-                                                   inspect.stack()[1][2], inspect.stack()[1][3])
-                self.comm.send_error_alert(user=user, error=error)
                 clocked_in = None
 
             if clocked_in and clocked_in['sg_task_end']:
@@ -710,7 +698,7 @@ class continuum(object):
         ts_count = len(ordered_timesheets)
         updates = []
 
-        for ts in range(0, ts_count):
+        for ts in range(0, (ts_count - 1)):
             current_start = ordered_timesheets[ts]['sg_task_start']
             current_end = ordered_timesheets[ts]['sg_task_end']
 
