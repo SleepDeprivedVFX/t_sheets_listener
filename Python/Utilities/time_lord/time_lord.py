@@ -518,10 +518,6 @@ class time_machine(QtCore.QThread):
                             user_info = timesheet_info['user']
                             user_id = user_info['id']
                             if user_id == user['id']:
-                                # print 'User ID lines up'
-                                # QUERY: Do I actually need to get the entity here?  Is this just slowing it down?
-                                #       Yes.  BUT:  Should I do it only after the following conditions are met? Is this
-                                #       premature?
                                 if timesheet_info['sg_task_end'] and time_capsule['current'] and \
                                         event['entity']['id'] == time_capsule['TimeLogID']:
                                     # This is the first time the timesheet has been clocked out.
@@ -532,27 +528,11 @@ class time_machine(QtCore.QThread):
                                     # print('CLOCK OUT RECORD! %s' % event)
                                     self.time_signal.debug.emit('CLOCK OUT RECORD! %s' % event)
 
-                                    # ts_data = {
-                                    #     'project': timesheet_info['project']['name'],
-                                    #     'project_id': timesheet_info['project']['id'],
-                                    #     'entity': ts_entity['entity']['name'],
-                                    #     'entity_id': ts_entity['entity']['id'],
-                                    #     'task': timesheet_info['entity']['name'],
-                                    #     'task_id': timesheet_info['entity']['id']
-                                    # }
-                                    # self.time_lord.time_signal.update.emit(ts_data)
-                                    # # QUERY: Perhaps here is where I set a Wait Condition.
-                                    # #       Then, the connecting signal would spawn a wake all.
-                                    # self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
-                                    # # print('The Wait is OVER!')
-                                    # self.time_lord.time_signal.latest_timesheet.emit(timesheet_info)
-
-
                                     self.time_signal.latest_timesheet.emit(timesheet_info)
                                     self.time_signal.debug.emit('Timesheet update emitted.')
 
                                     # Update the time_lord ui
-                                    self.time_signal.update_ui.emit(timesheet_info)
+                                    # self.time_signal.update_ui.emit(timesheet_info)
 
                                     data = {
                                         'EventLogID': event['id'],
@@ -894,6 +874,7 @@ class time_lord(QtCore.QThread):
             self.set_user_output(user=user)
             self.set_daily_output(daily=daily_total)
             self.set_weekly_output(weekly=weekly_total)
+            self.clocked_in = False
             self.do_cleanup()
             # self.time_signal.update_timesheet.emit('Update')
 
@@ -904,7 +885,7 @@ class time_lord(QtCore.QThread):
         """
         # print('clock_in_user:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
         #       inspect.stack()[1][3])
-        if data:
+        if data and not self.clocked_in:
             self.clocked_in = True
             self.time_signal.log.emit('Clocking in...')
             context = data[0]
@@ -1386,8 +1367,7 @@ class time_lord_ui(QtGui.QMainWindow):
 
         # Emit the Steady State green light signal, and update the output monitor.
         self.clock_in_button_state(1)
-        # TODO: Turn the lower_output into a stream handler.
-        self.time_lord.time_signal.lower_output.emit('New Timesheet created!')
+        logger.info('New Timesheet created!')
 
         # Create context
         project_selection = self.ui.project_dropdown.currentText()
