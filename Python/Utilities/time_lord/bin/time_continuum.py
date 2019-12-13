@@ -23,6 +23,7 @@ from dateutil import relativedelta
 import time
 import inspect
 import comm_system
+import cPickle as pickle
 
 
 class continuum(object):
@@ -30,6 +31,11 @@ class continuum(object):
         # self.logger = logging.getLogger('time continuum')
         self.sg = sg
         self.comm = comm_system.comm_sys(sg=sg, config=config, sub='continuum')
+
+        # Get the TLD Time Capsule File
+        self.db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')
+        if not os.path.exists(self.db_path):
+            os.makedirs(self.db_path)
 
         # ------------------------------------------------------------------------------------------------------
         # Create logging system
@@ -73,6 +79,34 @@ class continuum(object):
 
         # get time configurations
         self.double_time_mins = int(config['dt_hours']) * 60
+
+    def get_time_capsule(self):
+        """
+        This will open and collect the current time capsule file.
+        :return:
+        """
+        if os.path.exists(self.db_path):
+            fh = open(self.db_path, 'rb')
+            db_file = pickle.load(fh)
+            fh.close()
+            return db_file
+
+    def save_time_capsule(self, data={}):
+        """
+        Saves the last EventLogEntry and TimeLog to the time_capsule, allowing for checks of existing timesheets
+        and preventing the processing of events more than once.
+        :param data: (dict): A collection of 2 values:
+                   data =   {
+                                'EventLogID': 123,
+                                'TimeLogID': 456
+                            }
+        :return: None
+        """
+        if data:
+            if os.path.exists(self.db_path):
+                fh = open(self.db_path, 'wb')
+                pickle.dump(data, fh)
+                fh.close()
 
     def start_of_week(self):
         # Get the first day of the week
@@ -227,7 +261,7 @@ class continuum(object):
             return update
         return None
 
-    def create_new_timesheet(self, user=None, context=None, start_time=None, entry='User'):
+    def create_new_timesheet(self, user=None, context=None, start_time=None, entry='User', tries=0):
         """
         Creates a new timesheet.  Works with Stand alone, DCC and drag-n-drop publisher
         :param user: (dict) Contains the Shotgun User ID number
@@ -261,7 +295,33 @@ class continuum(object):
                 timesheet = self.sg.create('TimeLog', data)
             except Exception as e:
                 print('Something failed.  Trying again... %s' % e)
-                timesheet = self.create_new_timesheet(user=user, context=context, start_time=start_time, entry=entry)
+                timesheet = None
+                time.sleep(2)
+                test_clocked_in = self.is_user_clocked_in(user=user)
+                if not test_clocked_in and tries <= 5:
+                    tries += 1
+                    timesheet = self.create_new_timesheet(user=user, context=context, start_time=start_time,
+                                                          entry=entry, tries=tries)
+                else:
+                    self.logger.error('Failed to create timesheet!')
+
+            if timesheet:
+                print timesheet
+                current_data = self.get_time_capsule()
+                print current_data
+                data = {
+                    'EventLogID': current_data['EventLogID'],
+                    'TimeLogID': timesheet['id'],
+                    'current': True
+                }
+
+                try:
+                    self.save_time_capsule(data)
+                    self.logger.info('Time Capsule saved!')
+                except IOError as e:
+                    self.logger.error('Failed to save the file.  Trying again in a few seconds... %s' % e)
+                    time.sleep(2)
+                    self.save_time_capsule(data)
             return timesheet
 
     def get_running_time(self, timesheet=None):
@@ -582,9 +642,9 @@ class continuum(object):
                 empties = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
             except Exception as e:
                 self.logger.error('Couldn\'t get emtpies. Connection failure: %s' % e)
-                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
-                                                   inspect.stack()[1][2], inspect.stack()[1][3])
-                self.comm.send_error_alert(user=user, error=error)
+                # error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                #                                    inspect.stack()[1][2], inspect.stack()[1][3])
+                # self.comm.send_error_alert(user=user, error=error)
                 empties = None
             if empties:
                 latest_timesheet = {'project': None}
