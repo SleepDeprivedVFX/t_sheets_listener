@@ -197,14 +197,22 @@ class reports_ui(QtGui.QWidget):
         self.guess_dates()
 
         # Set combo box options
-        width = self.ui.secondary_org.minimumSizeHint().width()
-        self.ui.secondary_org.setMinimumWidth(width)
+        self.ui.secondary_org.hide()
+        self.ui.trinary_org.hide()
+        self.ui.quaternary_org.hide()
+        self.ui.quinternary_org.hide()
 
         # Make change set connections
         self.ui.primary_org.currentIndexChanged.connect(lambda: self.set_search_options(driver=self.ui.primary_org,
                                                                                         list=self.ui.secondary_org))
         self.ui.secondary_org.currentIndexChanged.connect(lambda: self.set_search_options(driver=self.ui.secondary_org,
                                                                                           list=self.ui.trinary_org))
+        self.ui.trinary_org.currentIndexChanged.connect(lambda: self.set_search_options(driver=self.ui.trinary_org,
+                                                                                        list=self.ui.quaternary_org))
+        self.ui.quaternary_org.currentIndexChanged.connect(lambda: self.set_search_options(
+            driver=self.ui.quaternary_org,
+            list=self.ui.quinternary_org)
+                                                           )
 
     def guess_dates(self):
         guess_end_date = (datetime.today() - timedelta(days=(datetime.today().isoweekday() % 7) + 1)).date()
@@ -217,8 +225,10 @@ class reports_ui(QtGui.QWidget):
         drv_obj_index = driver.currentIndex()
         drv_obj_name = driver.objectName()
         if drv_obj != 'None' or drv_obj_index > 0:
+            # list.show()
             list.clear()
             if drv_obj_name == 'primary_org':
+                list.show()
                 if drv_obj == 'Artists':
                     list.addItem('All Artists', 1)
                     all_users = users.get_all_users()
@@ -253,14 +263,63 @@ class reports_ui(QtGui.QWidget):
                         for thing in everything:
                             list.addItem(thing['code'], thing['id'])
                 elif drv_obj == 'Tasks':
-                    pass
+                    list.addItem('All Tasks')
+                    all_tasks = sg_data.get_all_tasks()
+                    if all_tasks:
+                        for task in all_tasks:
+                            list.addItem(task)
                 else:
                     list.addItem('None', 0)
+            elif drv_obj_name == 'secondary_org':
+                list.show()
+                list.addItem('All Data', 1)
+                if driver.findText('All Artists', 1) >= 0:
+                    list.addItem('Projects', 2)
+                    list.addItem('Assets', 3)
+                    list.addItem('Shots', 4)
+                    list.addItem('Tasks', 5)
+                if driver.findText('All Projects', 1) >= 0:
+                    list.addItem('Artists', 2)
+                    list.addItem('Assets', 3)
+                    list.addItem('Shots', 4)
+                    list.addItem('Tasks', 5)
+                if driver.findText('All Assets', 1) >= 0:
+                    list.addItem('Artists', 2)
+                    list.addItem('Projects', 3)
+                    list.addItem('Tasks', 4)
+                if driver.findText('All Shots', 1) >= 0:
+                    list.addItem('Artists', 2)
+                    list.addItem('Projects', 3)
+                    list.addItem('Tasks', 4)
+                if driver.findText('All Entities', 1) >= 0:
+                    list.addItem('Artists', 2)
+                    list.addItem('Projects', 3)
+                    list.addItem('Tasks', 4)
+                if driver.findText('All Tasks', 1) >= 0:
+                    list.addItem('Artists', 2),
+                    list.addItem('Projects', 3)
+            elif drv_obj_name == 'trinary_org':
+                if drv_obj == 'Projects':
+                    list.show()
+                    all_projects = sg_data.get_active_projects()
+                    if all_projects:
+                        list.addItem('All Projects', 1)
+                        for proj in all_projects:
+                            list.addItem(proj['name'], proj['id'])
+                elif drv_obj == 'Artists':
+                    list.show()
+                    all_users = users.get_all_users()
+                    if all_users:
+                        list.addItem('All Artists', 1)
+                        for u in all_users:
+                            list.addItem(u['name'], u['id'])
+                else:
+                    list.hide()
         else:
             list.clear()
             list.addItem('None', 0)
+            list.hide()
         width = list.minimumSizeHint().width()
-        print('Width: %s' % width)
         list.setMinimumWidth(width * 3)
 
     def set_trinary_search_options(self):

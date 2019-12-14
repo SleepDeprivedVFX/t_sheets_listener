@@ -99,6 +99,44 @@ class sg_data(object):
             self.logger.debug('Assets List: %s' % assets)
             return assets
 
+    def get_active_assets(self):
+        active_projects = self.get_active_projects()
+        filters = [
+            {
+                "filter_operator": "any",
+                "filters": [['project', 'is', {'type': 'Project', 'id': x['id']}] for x in active_projects]
+            }
+        ]
+        fields = [
+            'code'
+        ]
+        try:
+            assets = self.sg.find('Asset', filters, fields)
+        except Exception as e:
+            self.logger.error('Get Active Assets failed. %s' % e)
+            print('Get Active Assets failed. %s' % e)
+            assets = None
+        return assets
+
+    def get_active_shots(self):
+        active_projects = self.get_active_projects()
+        filters = [
+            {
+                "filter_operator": "any",
+                "filters": [['project', 'is', {'type': 'Project', 'id': x['id']}] for x in active_projects]
+            }
+        ]
+        fields = [
+            'code'
+        ]
+        try:
+            shots = self.sg.find('Shot', filters, fields)
+        except Exception as e:
+            self.logger.error('Get Active Shots failed. %s' % e)
+            print("Active Shots failed %s" % e)
+            shots = None
+        return shots
+
     def get_project_shots(self, proj_id=None):
         if proj_id:
             self.logger.info('Getting project shots...')
@@ -148,6 +186,20 @@ class sg_data(object):
             self.logger.debug('Tasks List: %s' % tasks)
             return tasks
         return None
+
+    def get_all_tasks(self):
+        tasks = []
+        filters = []
+        fields = [
+            'code',
+            'entity_type'
+        ]
+        steps = self.sg.find('Step', filters, fields)
+        if steps:
+            for step in steps:
+                if step['code'] not in tasks:
+                    tasks.append(step['code'])
+        return tasks
 
     def get_project_details_by_name(self, proj_name=None):
         '''
