@@ -71,6 +71,7 @@ sg_data = shotgun_collect.sg_data(sg, config=config)
 lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])
 
+
 # ------------------------------------------------------------------------------------------------
 # Signal Emitters
 # ------------------------------------------------------------------------------------------------
