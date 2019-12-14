@@ -5,7 +5,7 @@ a possible NIM connection (for ASC) and possibly a direct connection to PayChex.
 goes.
 """
 
-from ui import time_lord_alpha_payroll_collector as apc
+from ui import time_lord_reports as tlr
 from PySide import QtCore, QtGui
 import xlsxwriter as xls
 from bin.companions import companions
@@ -29,7 +29,7 @@ config = configuration.get_configuration()
 # ------------------------------------------------------------------------------------------------------
 # Create logging system
 # ------------------------------------------------------------------------------------------------------
-log_file = 'tl_alpha_payroll_collect.log'
+log_file = 'tl_reports.log'
 log_root = os.path.join(sys.path[0], 'logs')
 if not os.path.exists(log_root):
     os.makedirs(log_root)
@@ -39,7 +39,7 @@ if debug == 'True' or debug == 'true' or debug == True:
     level = logging.DEBUG
 else:
     level = logging.INFO
-logger = logging.getLogger('payroll_collect')
+logger = logging.getLogger('tl_reports')
 logger.setLevel(level=level)
 fh = TimedRotatingFileHandler(log_path, when='%s' % config['log_interval'], interval=1,
                               backupCount=int(config['log_days']))
@@ -47,7 +47,7 @@ fm = logging.Formatter(fmt='%(asctime)s - %(name)s | %(levelname)s : %(lineno)d 
 fh.setFormatter(fm)
 logger.addHandler(fh)
 
-logger.info('Alpha Payroll Collection Utility has started.')
+logger.info('Time Lord Reports Utility has started.')
 
 # --------------------------------------------------------------------------------------------------
 # Setup Shotgun Connection
@@ -71,10 +71,11 @@ sg_data = shotgun_collect.sg_data(sg, config=config)
 lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])
 
+
 # ------------------------------------------------------------------------------------------------
 # Signal Emitters
 # ------------------------------------------------------------------------------------------------
-class payroll_signals(QtCore.QObject):
+class report_signals(QtCore.QObject):
     output_monitor = QtCore.Signal(dict)
     get_payroll = QtCore.Signal(dict)
 
@@ -84,12 +85,13 @@ class payroll_engine(QtCore.QThread):
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
 
-        self.signals = payroll_signals()
+        self.signals = report_signals()
 
         # Connections
-        self.signals.get_payroll.connect(self.collect_payroll)
+        self.signals.get_payroll.connect(self.make_reports)
 
-    def collect_payroll(self, data={}):
+    def make_reports(self, data={}):
+        # This saves the data into an excel spreadsheet
         if data:
             print('Data: %s' % data)
             output = data['output']
@@ -177,7 +179,7 @@ class payroll_engine(QtCore.QThread):
             webbrowser.open(output)
 
 
-class payroll_ui(QtGui.QWidget):
+class reports_ui(QtGui.QWidget):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
 
@@ -187,86 +189,82 @@ class payroll_ui(QtGui.QWidget):
         self.engine = payroll_engine()
         self.engine.start()
 
-        self.ui = apc.Ui_QuickPayroll()
+        self.ui = tlr.Ui_Time_Lord_Reports()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
 
-        # Setup column widths
-        header = self.ui.screen_output.horizontalHeader()
-        header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(3, QtGui.QHeaderView.Stretch)
-        header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
-
-        # Setup the connections.
-        self.ui.file_output_btn.clicked.connect(self.set_output_file)
-        self.ui.cancel_btn.clicked.connect(self.cancel)
-        self.ui.process_btn.clicked.connect(self.request_payroll)
-
-        # Defaults
-        self.ui.screen_output.clear()
+        # Set the start and end dates
         self.guess_dates()
 
-        self.engine.signals.output_monitor.connect(self.update_monitor)
+        # Set combo box options
+        width = self.ui.secondary_org.minimumSizeHint().width()
+        self.ui.secondary_org.setMinimumWidth(width)
+
+        # Make change set connections
+        self.ui.primary_org.currentIndexChanged.connect(lambda: self.set_search_options(driver=self.ui.primary_org,
+                                                                                        list=self.ui.secondary_org))
+        self.ui.secondary_org.currentIndexChanged.connect(lambda: self.set_search_options(driver=self.ui.secondary_org,
+                                                                                          list=self.ui.trinary_org))
 
     def guess_dates(self):
         guess_end_date = (datetime.today() - timedelta(days=(datetime.today().isoweekday() % 7) + 1)).date()
         guess_start_date = (guess_end_date - timedelta(days=13))
-        self.ui.start_date.setDate(guess_start_date)
-        self.ui.end_date.setDate(guess_end_date)
+        self.ui.start_time.setDate(guess_start_date)
+        self.ui.end_time.setDate(guess_end_date)
 
-    def cancel(self):
-        self.close()
+    def set_search_options(self, driver=None, list=None):
+        drv_obj = driver.currentText()
+        drv_obj_index = driver.currentIndex()
+        drv_obj_name = driver.objectName()
+        if drv_obj != 'None' or drv_obj_index > 0:
+            list.clear()
+            if drv_obj_name == 'primary_org':
+                if drv_obj == 'Artists':
+                    list.addItem('All Artists', 1)
+                    all_users = users.get_all_users()
+                    if all_users:
+                        for u in all_users:
+                            list.addItem(u['name'], u['id'], u['email'])
+                elif drv_obj == 'Projects':
+                    list.addItem('All Projects', 1)
+                    all_projects = sg_data.get_active_projects()
+                    if all_projects:
+                        for proj in all_projects:
+                            list.addItem(proj['name'], proj['id'])
+                elif drv_obj == 'Entities (Assets)':
+                    list.addItem('All Assets', 1)
+                    all_assets = sg_data.get_active_assets()
+                    if all_assets:
+                        for asset in all_assets:
+                            list.addItem(asset['code'], asset['id'])
+                elif drv_obj == 'Entities (Shots)':
+                    list.addItem('All Shots', 1)
+                    all_shots = sg_data.get_active_shots()
+                    if all_shots:
+                        for shot in all_shots:
+                            list.addItem(shot['code'], shot['id'])
+                elif drv_obj == 'All Entities':
+                    list.addItem('All Entities', 1)
+                    all_shots = sg_data.get_active_shots()
+                    all_assets = sg_data.get_active_assets()
+                    entities = all_assets + all_shots
+                    everything = sorted(entities, key=lambda x: (x['code']))
+                    if everything:
+                        for thing in everything:
+                            list.addItem(thing['code'], thing['id'])
+                elif drv_obj == 'Tasks':
+                    pass
+                else:
+                    list.addItem('None', 0)
+        else:
+            list.clear()
+            list.addItem('None', 0)
+        width = list.minimumSizeHint().width()
+        print('Width: %s' % width)
+        list.setMinimumWidth(width * 3)
 
-    def set_output_file(self):
-        output = QtGui.QFileDialog.getSaveFileName(self, 'Save File As', self.settings.value('last_output'),
-                                                   '*.xlsx *.xls')
-        if output[0]:
-            self.settings.setValue('last_output', output[0])
-            self.ui.file_output.setText(output[0])
-
-    def request_payroll(self):
-        output_file = self.ui.file_output.text()
-        if not output_file:
-            logger.warning('No File Output Set!')
-            return False
-        start_date = self.ui.start_date.text()
-        print('Start_date: %s' % start_date)
-        end_date = self.ui.end_date.text()
-        print('End_date: %s' % end_date)
-
-        request = {'output': output_file, 'start': start_date, 'end': end_date}
-        self.engine.signals.get_payroll.emit(request)
-
-    def update_monitor(self, monitor=None):
-        if monitor:
-            name = monitor['name']
-            wage_type = ' %s ' % monitor['type']
-            level = ' %s ' % monitor['level']
-            total = str(monitor['total'])
-
-            row_count = self.ui.screen_output.rowCount()
-            if row_count > 1:
-                row = row_count - 1
-            else:
-                row = 0
-            self.ui.screen_output.insertRow(row)
-            name_label = QtGui.QLabel()
-            name_label.setText(name)
-            self.ui.screen_output.setCellWidget(row, 0, name_label)
-            wage_label = QtGui.QLabel()
-            wage_label.setText(wage_type)
-            self.ui.screen_output.setCellWidget(row, 1, wage_label)
-            level_label = QtGui.QLabel()
-            level_label.setText(level)
-            self.ui.screen_output.setCellWidget(row, 2, level_label)
-            dots = QtGui.QLabel()
-            dots.setText('.' * 200)
-            self.ui.screen_output.setCellWidget(row, 3, dots)
-            total_label = QtGui.QLabel()
-            total_label.setText(total)
-            self.ui.screen_output.setCellWidget(row, 4, total_label)
+    def set_trinary_search_options(self):
+        pass
 
     def closeEvent(self, *args, **kwargs):
         if self.engine.isRunning():
@@ -275,7 +273,7 @@ class payroll_ui(QtGui.QWidget):
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
-    w = payroll_ui()
+    w = reports_ui()
     w.show()
     sys.exit(app.exec_())
 
