@@ -86,6 +86,32 @@ def super_cleanup(user_id=None):
             print 'No Empties Found'
 
 
-super_cleanup(user_id=41)
+def close_all_completed_timesheets():
+    filters = [
+        {
+            'filter_operator': 'all',
+            'filters': [
+                ['sg_task_start', 'is_not', None],
+                ['sg_task_end', 'is_not', None]
+            ]
+        },
+        ['sg_closed', 'is_not', True]
+    ]
+    fields = [
+        'sg_closed'
+    ]
+    timesheets = sg.find('TimeLog', filters, fields)
+    if timesheets:
+        for ts in timesheets:
+            print ts
+            data = {
+                'sg_closed': True
+            }
+            check = sg.update('TimeLog', ts['id'], data=data)
+            print check
+            print '=' * 120
 
+
+# super_cleanup(user_id=41)
+close_all_completed_timesheets()
 
