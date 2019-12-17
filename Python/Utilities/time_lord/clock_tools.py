@@ -112,6 +112,27 @@ def close_all_completed_timesheets():
             print '=' * 120
 
 
+def super_duration_checker():
+    filters = [
+        {
+            'filter_operator': 'any',
+            'filters': [
+                ['duration', 'greater_than', 600.0],
+                ['duration', 'less_than', 0.0]
+            ]
+        }
+    ]
+    fields = []
+    timesheets = sg.find('TimeLog', filters, fields)
+    if timesheets:
+        for ts in timesheets:
+            data = {
+                'sg_needs_approval': True
+            }
+            update = sg.update('TimeLog', ts['id'], data)
+            print('Updated: %s' % update)
+
+
 # super_cleanup(user_id=41)
-close_all_completed_timesheets()
+# close_all_completed_timesheets()
 
