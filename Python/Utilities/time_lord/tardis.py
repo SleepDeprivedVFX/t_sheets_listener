@@ -16,6 +16,7 @@ import sys
 import win32api
 import win32con
 import win32gui_struct
+import win32ts
 import itertools
 import glob
 import subprocess
@@ -463,6 +464,45 @@ time_loop = threading.Thread(target=chronograph, name='Chronograph')
 time_loop.setDaemon(True)
 time_loop.start()
 
+# window messages
+WM_WTSSESSION_CHANGE = 0x2B1
+
+# WM_WTSSESSION_CHANGE events (wparam)
+WTS_CONSOLE_CONNECT = 0x1
+WTS_CONSOLE_DISCONNECT = 0x2
+WTS_REMOTE_CONNECT = 0x3
+WTS_REMOTE_DISCONNECT = 0x4
+WTS_SESSION_LOGON = 0x5
+WTS_SESSION_LOGOFF = 0x6
+WTS_SESSION_LOCK = 0x7
+WTS_SESSION_UNLOCK = 0x8
+WTS_SESSION_REMOTE_CONTROL = 0x9
+
+methods = {
+    WTS_CONSOLE_CONNECT: "ConsoleConnect",
+    WTS_CONSOLE_DISCONNECT: "ConsoleDisconnect",
+    WTS_REMOTE_CONNECT: "RemoteConnect",
+    WTS_REMOTE_DISCONNECT: "RemoteDisconnect",
+    WTS_SESSION_LOGON: "SessionLogon",
+    WTS_SESSION_LOGOFF: "SessionLogoff",
+    WTS_SESSION_LOCK: "SessionLock",
+    WTS_SESSION_UNLOCK: "SessionUnlock",
+    WTS_SESSION_REMOTE_CONTROL: "SessionRemoteControl",
+}
+
+class tardis_events:
+    def default(self, event, session):
+        pass
+
+    def unknown(self, event, session):
+        pass
+
+    def SessionLock(self, event, session):
+        print('SESSION LOCKED: ID: %s DATETIME: %s' % (session, datetime.now()))
+
+    def SessionUnlock(self, event, session):
+        print('SESSION UNLOCKED: ID: %s DATETIME: %s' % (session, datetime.now()))
+
 
 class tardis(object):
     """
@@ -482,7 +522,8 @@ class tardis(object):
                  on_quit=None,
                  default_menu_index=None,
                  window_class_name=None,
-                 payroll=None, ):
+                 payroll=None,
+                 all_sessions=False, ):
 
         self.icon = icon
         self.hover_text = hover_text
@@ -507,7 +548,8 @@ class tardis(object):
         message_map = {win32gui.RegisterWindowMessage("TaskbarCreated"): self.restart,
                        win32con.WM_DESTROY: self.destroy,
                        win32con.WM_COMMAND: self.command,
-                       win32con.WM_USER + 20: self.notify, }
+                       win32con.WM_USER + 20: self.notify,
+                       WM_WTSSESSION_CHANGE: self.onSession}
         # Register the Window class.
         window_class = win32gui.WNDCLASS()
         hinst = window_class.hInstance = win32gui.GetModuleHandle(None)
@@ -515,7 +557,7 @@ class tardis(object):
         window_class.style = win32con.CS_VREDRAW | win32con.CS_HREDRAW;
         window_class.hCursor = win32gui.LoadCursor(0, win32con.IDC_ARROW)
         window_class.hbrBackground = win32con.COLOR_WINDOW
-        window_class.lpfnWndProc = message_map  # could also specify a wndproc.
+        window_class.lpfnWndProc = self.wndProc  # could also specify a wndproc.
         classAtom = win32gui.RegisterClass(window_class)
         # Create the Window.
         style = win32con.WS_OVERLAPPED | win32con.WS_SYSMENU
@@ -534,7 +576,42 @@ class tardis(object):
         self.notify_id = None
         self.refresh_icon()
 
+        if all_sessions:
+            scope = win32ts.NOTIFY_FOR_ALL_SESSIONS
+        else:
+            scope = win32ts.NOTIFY_FOR_THIS_SESSION
+        win32ts.WTSRegisterSessionNotification(self.hwnd, scope)
+
         win32gui.PumpMessages()
+
+    def wndProc(self, hwnd, message, wparam, lparam):
+        if message == WM_WTSSESSION_CHANGE:
+            self.onSession(wparam, lparam)
+        elif message == win32gui.RegisterWindowMessage("TaskbarCreated"):
+            self.restart(hwnd, message, wparam, lparam)
+        elif message == win32con.WM_CLOSE:
+            self.destroy(hwnd, message, wparam, lparam)
+        elif message == win32con.WM_DESTROY:
+            win32gui.PostQuitMessage(0)
+        elif message == win32con.WM_COMMAND:
+            self.command(hwnd, message, wparam, lparam)
+        elif message == win32con.WM_USER + 20:
+            self.notify(hwnd, message, wparam, lparam)
+        elif message == win32con.WM_QUERYENDSESSION:
+            return True
+
+    def onSession(self, event, sessionID):
+        name = methods.get(event, 'unknown')
+        print('event %s on session %d' % (
+            methods.get(event, 'unknown(0x%x)' % event), sessionID))
+
+        events = tardis_events()
+        try:
+            method = getattr(events, name)
+        except AttributeError:
+            method = getattr(events, 'default', lambda e, s: None)
+
+        method(event, sessionID)
 
     def _add_ids_to_menu_options(self, menu_options):
         result = []
@@ -724,6 +801,7 @@ if __name__ == '__main__':
                     ('Overtime Tool', icons.next(), overtime),
                     )
 
-    tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll)
+    tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll,
+           all_sessions=True)
 
 
