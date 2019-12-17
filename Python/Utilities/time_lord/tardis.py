@@ -9,7 +9,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.5'
+__version__ = '0.4.0'
 
 import os
 import sys
@@ -91,6 +91,14 @@ logger.info('Shotgun commands brought in.')
 comm = comm_system.comm_sys(sg, config=config, sub='tardis')
 logger.info('Communication system online.')
 
+# Set Lunch Constants.
+lunch_timer = int(config['lunch_minutes'])
+lunch_break = lunch_timer * 60
+lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']), task_name=config['lunch'])
+if lunch_task_id:
+    lunch_task_id = lunch_task_id['id']
+lunch_timesheet = False
+
 
 class POINT(Structure):
     _fields_ = [("x", c_long), ("y", c_long)]
@@ -132,12 +140,6 @@ def chronograph():
     end_time = parser.parse(config['approx_lunch_end']).time()
     lunch_start = None
     lunch_end = None
-    lunch_timer = int(config['lunch_minutes'])
-    lunch_break = lunch_timer * 60
-    lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']), task_name=config['lunch'])
-    if lunch_task_id:
-        lunch_task_id = lunch_task_id['id']
-    lunch_timesheet = False
 
     # Set start and end of day
     early_sod = parser.parse(config['early_start']).time()
@@ -191,18 +193,6 @@ def chronograph():
                     if not user_clocked_in:
                         logger.debug('user_clocked_in BEFORE: %s' % user_clocked_in)
                         user_clocked_in = tl_time.is_user_clocked_in(user=user)
-                        # FIXME: For some reason, the user clocked in is not updating.s
-                        # print('user_clocked_in  AFTER: %s' % user_clocked_in)
-                        # if start_time > datetime.now().time() > sod:
-                        #     if not sod_launch:
-                        #         print('Time to clock in...')
-                        #         sod_launch_path = os.path.join(path, 'time_lord.py')
-                        #
-                        #         sod_launch = subprocess.Popen('pythonw.exe %s' % sod_launch_path)
-                        #         print(sod_launch)
-                        # user_clocked_in = tl_time.is_user_clocked_in(user=user)
-                        # if user_clocked_in and sod_launch:
-                        #     sod_launch = None
 
                 # --------------------------------------------------------------------------------------
                 # Lunch Timer
@@ -490,7 +480,23 @@ methods = {
     WTS_SESSION_REMOTE_CONTROL: "SessionRemoteControl",
 }
 
+path = sys.path[0]
+
+
 class tardis_events:
+    set_timer = None
+    sleep = 0.1
+    timer_trigger = int(config['timer'])
+    trigger = (timer_trigger * 60) / sleep
+
+    # Set start and end of day
+    early_sod = parser.parse(config['early_start']).time()
+    sod = parser.parse(config['regular_start']).time()
+    eod = parser.parse(config['regular_end'])
+    eod = eod.time()
+    ot_hours = float(config['ot_hours'])
+    user_ignored = False
+
     def default(self, event, session):
         pass
 
@@ -498,10 +504,74 @@ class tardis_events:
         pass
 
     def SessionLock(self, event, session):
-        print('SESSION LOCKED: ID: %s DATETIME: %s' % (session, datetime.now()))
+        print('Session Lock Detected! %s' % datetime.now())
+        self.user_ignored = False
+        if not self.set_timer:
+            self.set_timer = 0
+        user_clocked_in = tl_time.is_user_clocked_in(user=user)
+        launch_eod = True
+        dt = tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
+
+        while launch_eod:
+            time.sleep(self.sleep)
+            if not self.user_ignored and user_clocked_in:
+                if datetime.now().time() > self.eod or dt > self.ot_hours or datetime.now().time() < self.early_sod:
+                    if self.set_timer > self.trigger:
+                        eod_launch_path = os.path.join(path, 'eod.py')
+                        logger.debug('eod_launch_path: %s' % eod_launch_path)
+                        if debug == 'True' or debug == 'true' or debug == True:
+                            process = 'python.exe'
+                        else:
+                            process = 'pythonw.exe'
+                        logger.debug('Launching EOD...')
+                        eod_launch = subprocess.Popen('%s %s' % (process, eod_launch_path))
+                        logger.debug('eod_launch command: %s' % eod_launch)
+                        eod_launch.wait()
+                        launch_eod = False
+                        time.sleep(10)
+                        user_clocked_in = tl_time.is_user_clocked_in(user=user)
+                        if user_clocked_in:
+                            self.user_ignored = True
+                else:
+                    launch_eod = False
+            else:
+                launch_eod = False
+            self.set_timer += 1
+            if self.set_timer % 10 == 0:
+                dt = tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
 
     def SessionUnlock(self, event, session):
-        print('SESSION UNLOCKED: ID: %s DATETIME: %s' % (session, datetime.now()))
+        print('Session Unlock Detected! %s' % datetime.now())
+        user_clocked_in = tl_time.is_user_clocked_in(user)
+        if not user_clocked_in:
+            print('%s is not clocked in.  Opening the Time Lord!' % user['name'])
+            self.set_timer = None
+            sod_launch_path = os.path.join(path, 'time_lord.py')
+            if debug == 'True' or debug == 'true' or debug:
+                process = 'python.exe'
+            else:
+                process = 'pythonw.exe'
+            subprocess.call('%s %s' % (process, sod_launch_path))
+
+    def SessionLogoff(self, event, session):
+        print('Session Log Off Detected. %s' % datetime.now())
+        current_ts = tl_time.get_latest_timesheet(user=user)
+        user_clocked_in = tl_time.is_user_clocked_in(user)
+        if user_clocked_in:
+            print('%s is clocked in.  Clocking out the last timesheet! ID: %s' % (user['name'], current_ts['id']))
+            tl_time.clock_out_time_sheet(current_ts, datetime.now())
+
+    def SessionLogon(self, event, session):
+        print('Session Logon Detected! %s' % datetime.now())
+        user_clocked_in = tl_time.is_user_clocked_in(user)
+        if not user_clocked_in:
+            print('%s is not clocked in.  Opening the Time Lord!' % user['name'])
+            sod_launch_path = os.path.join(path, 'time_lord.py')
+            if debug == 'True' or debug == 'true' or debug:
+                process = 'python.exe'
+            else:
+                process = 'pythonw.exe'
+            subprocess.call('%s %s' % (process, sod_launch_path))
 
 
 class tardis(object):
@@ -549,7 +619,8 @@ class tardis(object):
                        win32con.WM_DESTROY: self.destroy,
                        win32con.WM_COMMAND: self.command,
                        win32con.WM_USER + 20: self.notify,
-                       WM_WTSSESSION_CHANGE: self.onSession}
+                       WM_WTSSESSION_CHANGE: self.onSession,
+                       win32con.WM_QUERYENDSESSION: True }
         # Register the Window class.
         window_class = win32gui.WNDCLASS()
         hinst = window_class.hInstance = win32gui.GetModuleHandle(None)
@@ -557,7 +628,7 @@ class tardis(object):
         window_class.style = win32con.CS_VREDRAW | win32con.CS_HREDRAW;
         window_class.hCursor = win32gui.LoadCursor(0, win32con.IDC_ARROW)
         window_class.hbrBackground = win32con.COLOR_WINDOW
-        window_class.lpfnWndProc = self.wndProc  # could also specify a wndproc.
+        window_class.lpfnWndProc = message_map  # could also specify a wndproc.
         classAtom = win32gui.RegisterClass(window_class)
         # Create the Window.
         style = win32con.WS_OVERLAPPED | win32con.WS_SYSMENU
@@ -584,23 +655,7 @@ class tardis(object):
 
         win32gui.PumpMessages()
 
-    def wndProc(self, hwnd, message, wparam, lparam):
-        if message == WM_WTSSESSION_CHANGE:
-            self.onSession(wparam, lparam)
-        elif message == win32gui.RegisterWindowMessage("TaskbarCreated"):
-            self.restart(hwnd, message, wparam, lparam)
-        elif message == win32con.WM_CLOSE:
-            self.destroy(hwnd, message, wparam, lparam)
-        elif message == win32con.WM_DESTROY:
-            win32gui.PostQuitMessage(0)
-        elif message == win32con.WM_COMMAND:
-            self.command(hwnd, message, wparam, lparam)
-        elif message == win32con.WM_USER + 20:
-            self.notify(hwnd, message, wparam, lparam)
-        elif message == win32con.WM_QUERYENDSESSION:
-            return True
-
-    def onSession(self, event, sessionID):
+    def onSession(self, hwnd, message, event, sessionID):
         name = methods.get(event, 'unknown')
         print('event %s on session %d' % (
             methods.get(event, 'unknown(0x%x)' % event), sessionID))
