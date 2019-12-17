@@ -211,7 +211,8 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
-                'code'
+                'code',
+                'sg_closed'
             ]
             try:
                 latest_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
@@ -247,6 +248,30 @@ class continuum(object):
         total = (diff.total_seconds() / 60)
         if timesheet:
             self.logger.debug('Timesheet: %s' % timesheet)
+            # Check to see if the timesheet has already been closed.
+            if timesheet['sg_closed']:
+                # Find the next empty timesheet
+                filters = [
+                    ['user', 'is', {'type': 'HumanUser', 'id': timesheet['user']['id']}],
+                    ['sg_task_end', 'is', None],
+                    ['id', 'is_not', timesheet['id']]
+                ]
+                fields = [
+                    'user',
+                    'date',
+                    'sg_task_start',
+                    'sg_task_end',
+                    'project',
+                    'entity',
+                    'code',
+                    'sg_closed'
+                ]
+                empty_timesheets = self.sg.find('TimeLog', filters, fields,
+                                                order=[{'field_name': 'id', 'direction': 'desc'}])
+                if empty_timesheets:
+                    for e_ts in empty_timesheets:
+                        # figure out if the current timesheet
+                        print('Empty_Timesheet: %s' % e_ts)
             data = {
                 'sg_task_end': clock_out,
                 'duration': total
@@ -762,7 +787,9 @@ class continuum(object):
             current_start = ordered_timesheets[ts]['sg_task_start']
             current_end = ordered_timesheets[ts]['sg_task_end']
 
-            # Check for timesheets that have excessive hours, or go across days
+            # Start Natural Anomalies checks. These include timesheets that span across days, negative times or
+            # excesive hours
+            # First check for timesheets whose start and end DATES don't match - spanning across days.
             if type(current_start) == datetime.datetime and type(current_end) == datetime.datetime:
                 current_start_date = current_start.date()
                 current_end_date = current_end.date()
@@ -774,9 +801,10 @@ class continuum(object):
                     print 'Update Needs Approval'
                     updates.append(update)
 
-            # Check Duration
+            # Next check for durations greater than double time hours, or durations having negative values.
+            # I am currently skipping durations over 8 hours because it would get ridiculous. 12 hours seems fair here.
             duration = ordered_timesheets[ts]['duration']
-            if duration > self.double_time_mins or duration < 0:
+            if duration > self.double_time_mins or duration < 0.0:
                 data = {
                     'sg_needs_approval': True
                 }
@@ -786,6 +814,7 @@ class continuum(object):
 
             # Check against previous time sheets
             if (ts + 1) > ts_count:
+                # Break if the next record doesn't exist.
                 break
             try:
                 previous_start = ordered_timesheets[ts+1]['sg_task_start']
@@ -796,9 +825,12 @@ class continuum(object):
                 error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
                                                    inspect.stack()[1][2], inspect.stack()[1][3])
                 self.comm.send_error_alert(user=user, error=error)
+
+                # Set Values to None
                 previous_start = None
                 previous_end = None
                 previous_id = None
+
             if previous_end and current_start:
                 if previous_end > current_start:
                     if ts == ts_count - 1:
@@ -806,7 +838,8 @@ class continuum(object):
                     else:
                         previous_end = current_start
                     data = {
-                        'sg_task_end': previous_end
+                        'sg_task_end': previous_end,
+                        'sg_closed': True
                     }
                     try:
                         update = self.sg.update('TimeLog', previous_id, data)
