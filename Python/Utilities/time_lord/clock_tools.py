@@ -132,6 +132,15 @@ def super_duration_checker():
             update = sg.update('TimeLog', ts['id'], data)
             print('Updated: %s' % update)
 
+def emit_restart_event():
+    """
+    The idea behind this is that it will generate a specific Shotgun event that can then effectively be listened to by
+    the TARDIS and cause the TARDIS to reset itself.
+    :return:
+    """
+    print('Reset TARDIS protocall activated...')
+
+
 
 # super_cleanup(user_id=41)
 # close_all_completed_timesheets()

@@ -30,7 +30,7 @@ WISH LIST:
 #       the best, but still a major pain in the ass.  Consider it sooner than later.
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.0'
+__version__ = '0.4.1'
 
 import shotgun_api3 as sgapi
 import os
@@ -165,6 +165,7 @@ class time_signals(QtCore.QObject):
     warning = QtCore.Signal(str)
     # End Thread Signals
     kill_signal = QtCore.Signal(bool)
+    auto_close = QtCore.Signal(bool)
 
     # Time Signals / Clock Faces
     main_clock = QtCore.Signal(tuple)
@@ -310,6 +311,7 @@ class time_engine(QtCore.QThread):
     def chronograph(self):
         self.time_signal.log.emit('Time Engine Chronograph has started.')
         second = int(datetime.now().second)
+        day = datetime.now().day
 
         while not self.kill_it:
             if int(datetime.now().second) != second:
@@ -350,6 +352,9 @@ class time_engine(QtCore.QThread):
                         self.time_signal.daily_total.emit(daily_total)
                     if weekly_total:
                         self.time_signal.weekly_total.emit(weekly_total)
+                if datetime.now().day != day:
+                    print('Auto Close At Midnight')
+                    self.time_signal.auto_close.emit(True)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -1077,6 +1082,9 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.entity_dropdown.currentIndexChanged.connect(self.req_update_tasks)
         self.ui.entity_dropdown.currentIndexChanged.connect(lambda: self.switch_state(self.latest_timesheet))
         self.switch_state(self.latest_timesheet)
+
+        # Kill Signal
+        self.time_engine.time_signal.auto_close.connect(self.close)
 
         # Do First Update
         data = {

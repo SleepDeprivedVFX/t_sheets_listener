@@ -11,7 +11,7 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.0'
+__version__ = '0.4.1'
 
 import datetime
 import logging
@@ -603,6 +603,38 @@ class continuum(object):
             if clocked_in and clocked_in['sg_task_end']:
                 return False
             return True
+
+    def get_active_timesheets(self):
+        # TODO: Might add some calendar day checks in here too
+        filters = [
+            ['sg_task_start', 'is_not', None],
+            ['sg_task_end', 'is', None]
+        ]
+        fields = [
+            'user',
+            'sg_task_start',
+            'sg_task_end',
+            'project',
+            'entity',
+            'duration'
+        ]
+        conn_attempts = 0
+        timesheets = None
+        while True:
+            try:
+                timesheets = self.sg.find('TimeLog', filters, fields)
+            except Exception as e:
+                if conn_attempts > 5:
+                    self.logger.error('Failed to connect!')
+                    break
+                else:
+                    self.logger.error('Bad connection.  Trying again...')
+                    conn_attempts += 1
+                    time.sleep(2)
+            if timesheets:
+                return timesheets
+        return None
+
 
     def get_timesheet_by_id(self, tid=None):
         if tid:

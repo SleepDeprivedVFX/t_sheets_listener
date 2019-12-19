@@ -19,7 +19,7 @@ color: rgb(230, 230, 230);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="Title">
      <property name="styleSheet">
       <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
@@ -29,7 +29,7 @@ color: rgb(230, 230, 230);</string>
     </widget>
    </item>
    <item>
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QTableWidget" name="slave_list">
      <attribute name="horizontalHeaderVisible">
       <bool>false</bool>
      </attribute>

@@ -9,7 +9,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.0'
+__version__ = '0.4.1'
 
 import os
 import sys
@@ -585,7 +585,8 @@ class tardis(object):
     the Icon down in the Task Bar, creates a right-click menu for additional features, and allows the
     """
     QUIT = 'QUIT'
-    SPECIAL_ACTIONS = [QUIT]
+    RESTART = 'RESTART'
+    SPECIAL_ACTIONS = [QUIT, RESTART]
 
     FIRST_ID = 1023
 
@@ -609,6 +610,8 @@ class tardis(object):
             menu_options = menu_options + (('Run Payroll', None, self.payroll),)
             # The "Quit" option can be made an admin feature by simple indenting this here.
             menu_options = menu_options + (('Quit', None, self.QUIT),)
+
+        menu_options = menu_options + (('Restart', None, self.RESTART),)
 
         self._next_action_id = self.FIRST_ID
         self.menu_actions_by_id = set()
@@ -800,6 +803,12 @@ class tardis(object):
         menu_action = self.menu_actions_by_id[id]
         if menu_action == self.QUIT:
             win32gui.DestroyWindow(self.hwnd)
+        elif menu_action == self.RESTART:
+            win32gui.DestroyWindow(self.hwnd)
+            bat_file = os.path.join(sys.path[0], 'launch_tardis.bat')
+            time.sleep(3)
+            subprocess.Popen([bat_file])
+            print('Old Process is DEAD!')
         else:
             menu_action(self)
 
@@ -845,7 +854,7 @@ if __name__ == '__main__':
         # Tardis killer.  May need to eventually kill all other processes as well.
         print('Why you quiting bro?')
         logger.info('%s has quit their TARDIS!' % user['name'])
-        comm.send_on_quit_alert(user=user)
+        # comm.send_on_quit_alert(user=user)
 
     def payroll(tardis):
         # Admin Payroll tool
