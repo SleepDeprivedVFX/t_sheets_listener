@@ -829,7 +829,7 @@ if __name__ == '__main__':
 
 
     def overtime(tardis):
-        print("overtime.")
+        logger.info("overtime.")
         path = sys.path[0]
         ot_path = os.path.join(path, 'overtime.py')
         subprocess.Popen('pythonw.exe %s' % ot_path)
