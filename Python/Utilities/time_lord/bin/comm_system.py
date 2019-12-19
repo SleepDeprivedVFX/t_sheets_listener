@@ -1,6 +1,6 @@
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.5'
+__version__ = '0.4.0'
 
 import datetime
 import logging
@@ -310,7 +310,7 @@ class comm_sys(object):
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": '*%s has quit the TARDIS*!' % user['name']
+                            "text": '*%s has quit the Time Lord TARDIS*!' % user['name']
                         }
                     },
                     {

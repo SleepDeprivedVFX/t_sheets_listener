@@ -11,7 +11,7 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.5'
+__version__ = '0.4.0'
 
 import datetime
 import logging
@@ -238,7 +238,7 @@ class continuum(object):
             self.logger.debug('End date assumed: %s' % new_datetime)
             return new_datetime
 
-    def clock_out_time_sheet(self, timesheet=None, clock_out=None):
+    def clock_out_time_sheet(self, timesheet=None, clock_out=None, auto=None):
         start = timesheet['sg_task_start']
         start_time = start.time()
         start_date = start.date()
@@ -276,6 +276,8 @@ class continuum(object):
                 'sg_task_end': clock_out,
                 'duration': total
             }
+            if auto:
+                data['sg_auto_clock_out'] = True
             try:
                 update = self.sg.update('TimeLog', timesheet['id'], data)
                 print('Successfully clocked out. %s' % update)

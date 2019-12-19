@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.3.5'
+__version__ = '0.4.0'
 
 import shotgun_api3 as sgapi
 import os
@@ -14,6 +14,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime, timedelta
 from dateutil import parser
+import time
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
@@ -82,6 +83,8 @@ class eod_signals(QtCore.QObject):
     kill_signal = QtCore.Signal(bool)
     set_time = QtCore.Signal(str)
     get_time = QtCore.Signal(bool)
+    set_button = QtCore.Signal(str)
+    interrupt = QtCore.Signal(bool)
 
 
 class eod_timer(QtCore.QThread):
@@ -97,7 +100,7 @@ class eod_timer(QtCore.QThread):
         self.timer = int(config['timer'])
 
     def out_time(self, message=None):
-        print('out_time message: %s' % message)
+        logger.info('out_time message: %s' % message)
         # if message:
         self.set_time = message
         # else:
@@ -123,7 +126,7 @@ class eod_timer(QtCore.QThread):
 
                 # Set the auto-clock-out time
                 if self.set_time:
-                    print('if self.set_time: %s' % self.set_time)
+                    # print('if self.set_time: %s' % self.set_time)
                     set_time = parser.parse(self.set_time)
                     auto_clock_out = set_time + timedelta(minutes=(self.timer * 2))
                 else:
@@ -133,14 +136,21 @@ class eod_timer(QtCore.QThread):
                 # Do an occasional check of user clock in status
                 if int(datetime.now().minute) != minute:
                     minute = int(datetime.now().minute)
+                    # if not user_clocked_in:
+                    user_clocked_in = tl_time.is_user_clocked_in(user=user)
                     if not user_clocked_in:
-                        user_clocked_in = tl_time.is_user_clocked_in(user=user)
+                        self.eod_signals.interrupt.emit(True)
                 # Set the clocks
                 second = int(datetime.now().second)
-                print('auto_clock_out', auto_clock_out)
-                print(datetime.now())
+                if auto_clock_out:
+                    time_left = str(auto_clock_out - datetime.now())
+                else:
+                    time_left = '00:00:00'
+                self.eod_signals.set_button.emit('Clock Out: %s' % time_left)
+                # logger.info('auto_clock_out', auto_clock_out)
+                # logger.info(datetime.now())
                 if auto_clock_out and datetime.now() > auto_clock_out and user_clocked_in:
-                    self.eod_signals.last_time.emit('Clock out')
+                    self.eod_signals.last_time.emit('Time Lord Auto Clock Out')
                     self.kill_it = True
 
 
@@ -160,7 +170,7 @@ class end_of_day(QtGui.QWidget):
             for opt, arg in split_options:
                 if opt in ('-o', '--out'):
                     time_out = parser.parse(arg)
-                    print('out time: %s' % time_out)
+                    logger.info('out time: %s' % time_out)
 
         if not time_out:
             time_out = datetime.now()
@@ -183,10 +193,17 @@ class end_of_day(QtGui.QWidget):
         self.eod_timer = eod_timer()
         self.eod_timer.eod_signals.last_time.connect(self.clock_out)
         self.eod_timer.eod_signals.get_time.connect(self.set_time)
+        self.eod_timer.eod_signals.set_button.connect(self.set_button)
+        self.eod_timer.eod_signals.interrupt.connect(self.stay_clocked_in)
         self.eod_timer.start()
         self.eod_timer.eod_signals.set_time.emit(time_out)
 
+    def set_button(self, text=None):
+        if text:
+            self.ui.no_btn.setText(text)
+
     def stay_clocked_in(self):
+        # This routine basically just closes the window and takes no further action.  It's like a close feature.
         self.stay_opened = False
         self.eod_timer.kill_it = True
         self.close()
@@ -196,12 +213,12 @@ class end_of_day(QtGui.QWidget):
         time_out = str(parser.parse(get_time))
         self.eod_timer.eod_signals.set_time.emit(time_out)
 
-    def clock_out(self):
+    def clock_out(self, auto=None):
         self.stay_opened = False
         time_out = parser.parse(self.ui.last_time.text())
         if tl_time.is_user_clocked_in(user=user):
             latest_timesheet = tl_time.get_latest_timesheet(user=user)
-            tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=time_out)
+            tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=time_out, auto=auto)
         self.eod_timer.kill_it = True
         self.close()
 

@@ -517,6 +517,7 @@ class tardis_events:
             if not self.user_ignored and user_clocked_in:
                 if datetime.now().time() > self.eod or dt > self.ot_hours or datetime.now().time() < self.early_sod:
                     if self.set_timer > self.trigger:
+                        logger.info('End of day triggers have been met.  Requesting user confirmation...')
                         eod_launch_path = os.path.join(path, 'eod.py')
                         logger.debug('eod_launch_path: %s' % eod_launch_path)
                         if debug == 'True' or debug == 'true' or debug == True:
@@ -531,7 +532,10 @@ class tardis_events:
                         time.sleep(10)
                         user_clocked_in = tl_time.is_user_clocked_in(user=user)
                         if user_clocked_in:
+                            logger.info('%s has chosen to stay logged in.' % user['name'])
                             self.user_ignored = True
+                        else:
+                            logger.info('%s has been automatically clocked out at %s' % (user['name'], datetime.now()))
                 else:
                     launch_eod = False
             else:

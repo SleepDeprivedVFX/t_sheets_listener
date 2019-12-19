@@ -135,4 +135,5 @@ def super_duration_checker():
 
 # super_cleanup(user_id=41)
 # close_all_completed_timesheets()
+# super_duration_checker()
 

@@ -58,6 +58,6 @@ class Ui_endofday(object):
         self.title.setText(QtGui.QApplication.translate("endofday", "It\'s Over!", None, QtGui.QApplication.UnicodeUTF8))
         self.question.setText(QtGui.QApplication.translate("endofday", "The day is done, and it looks like you haven\'t touched the computer in a while.  Are you still working?", None, QtGui.QApplication.UnicodeUTF8))
         self.last_time_label.setText(QtGui.QApplication.translate("endofday", "Last Detected Time:", None, QtGui.QApplication.UnicodeUTF8))
-        self.yes_btn.setText(QtGui.QApplication.translate("endofday", "Yes I am!", None, QtGui.QApplication.UnicodeUTF8))
-        self.no_btn.setText(QtGui.QApplication.translate("endofday", "No!  I\'m done.", None, QtGui.QApplication.UnicodeUTF8))
+        self.yes_btn.setText(QtGui.QApplication.translate("endofday", "Still Working", None, QtGui.QApplication.UnicodeUTF8))
+        self.no_btn.setText(QtGui.QApplication.translate("endofday", "Clock Out: 00:00:00", None, QtGui.QApplication.UnicodeUTF8))
 

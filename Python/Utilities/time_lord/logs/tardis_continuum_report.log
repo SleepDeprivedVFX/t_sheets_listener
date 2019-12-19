@@ -1,232 +1,59 @@
-2019-12-09 10:30:01,313 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 11:52:35,996 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 13:34:29,016 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 13:35:31,163 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 13:36:43,762 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 13:52:28,302 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 13:56:38,229 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 15:00:52,618 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 15:04:13,746 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 15:10:00,559 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 15:27:01,357 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 15:35:08,434 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 15:36:56,187 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 15:49:03,160 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 16:19:32,020 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 16:29:06,403 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 16:38:26,204 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 16:39:18,552 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 16:40:54,714 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 16:43:30,420 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 17:00:10,818 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 17:22:27,344 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 17:24:12,543 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-09 17:45:46,568 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 10:38:42,540 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 11:02:28,201 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 11:54:58,992 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 12:15:23,838 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 12:16:53,125 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 12:19:51,301 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 12:36:16,134 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 12:38:32,546 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 14:54:42,237 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 15:13:10,322 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 15:25:32,082 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 15:57:07,085 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 15:58:26,361 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 16:16:53,872 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 16:16:54,142 - tardis_continuum | DEBUG : 484 - Looking to see if Adam Benson is clocked in....
-2019-12-10 16:16:54,342 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:08:10-08:00
-2019-12-10 16:16:54,342 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:08:11-08:00
-2019-12-10 16:16:54,342 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:18:12-08:00
-2019-12-10 16:16:54,344 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:21:04-08:00
-2019-12-10 16:16:54,344 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:21:05-08:00
-2019-12-10 16:16:54,344 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:21:55-08:00
-2019-12-10 16:16:54,344 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:23:49-08:00
-2019-12-10 16:16:54,344 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:23:50-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:25:47-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:29:30-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:29:31-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:32:29-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:38:49-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:38:49-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:38:50-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:39:53-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:42:34-08:00
-2019-12-10 16:16:54,345 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:42:35-08:00
-2019-12-10 16:16:54,346 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:43:58-08:00
-2019-12-10 16:16:54,346 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:48:26-08:00
-2019-12-10 16:16:54,346 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:48:27-08:00
-2019-12-10 16:16:54,346 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:00:53-08:00
-2019-12-10 16:16:54,346 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:02:51-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:02:52-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:23:25-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:25:43-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:25:44-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:30:05-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:30:13-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:31:40-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:31:40-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:31:41-08:00
-2019-12-10 16:16:54,348 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:46:42-08:00
-2019-12-10 16:16:54,349 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:49:44-08:00
-2019-12-10 16:16:54,349 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 10:15:02-08:00
-2019-12-10 16:16:54,349 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 10:15:03-08:00
-2019-12-10 16:16:54,351 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:05:29-08:00
-2019-12-10 16:16:54,351 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:49:46-08:00
-2019-12-10 16:16:54,351 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:49:47-08:00
-2019-12-10 16:16:54,351 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:55:55-08:00
-2019-12-10 16:16:54,351 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:08-08:00
-2019-12-10 16:16:54,352 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:08-08:00
-2019-12-10 16:16:54,352 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:16:54,352 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:16:54,354 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:16:54,354 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:16:54,354 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:16:54,355 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:16:54,355 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:16:54,355 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:11-08:00
-2019-12-10 16:16:54,355 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:11-08:00
-2019-12-10 16:16:54,357 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:12-08:00
-2019-12-10 16:16:54,357 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:12-08:00
-2019-12-10 16:16:54,358 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:13-08:00
-2019-12-10 16:16:54,358 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:13-08:00
-2019-12-10 16:16:54,358 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:14-08:00
-2019-12-10 16:16:54,358 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:14-08:00
-2019-12-10 16:16:54,358 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:14-08:00
-2019-12-10 16:16:54,358 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:21:16-08:00
-2019-12-10 16:16:54,359 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:32:02-08:00
-2019-12-10 16:16:54,359 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:38:48-08:00
-2019-12-10 16:16:54,361 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:55:55-08:00
-2019-12-10 16:16:54,361 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 14:20:32-08:00
-2019-12-10 16:16:54,361 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 14:51:27-08:00
-2019-12-10 16:16:54,361 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 14:51:28-08:00
-2019-12-10 16:16:54,361 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 14:56:15-08:00
-2019-12-10 16:16:54,362 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 15:03:19-08:00
-2019-12-10 16:16:54,362 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 15:03:19-08:00
-2019-12-10 16:16:54,362 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 15:03:19-08:00
-2019-12-10 16:16:54,364 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 15:15:29-08:00
-2019-12-10 16:16:54,556 - tardis_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-10 16:16:54,556 - tardis_continuum | DEBUG : 165 - USER ID: 41
-2019-12-10 16:16:54,648 - tardis_continuum | DEBUG : 185 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-10', 'type': 'TimeLog', 'id': 3094, 'sg_task_start': datetime.datetime(2019, 12, 10, 15, 15, 29, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x00000000036A52B0>)}
-2019-12-10 16:24:01,382 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 16:24:01,676 - tardis_continuum | DEBUG : 484 - Looking to see if Adam Benson is clocked in....
-2019-12-10 16:24:01,905 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:08:10-08:00
-2019-12-10 16:24:01,905 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:08:11-08:00
-2019-12-10 16:24:01,905 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:18:12-08:00
-2019-12-10 16:24:01,905 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:21:04-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:21:05-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:21:55-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:23:49-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:23:50-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:25:47-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:29:30-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:29:31-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:32:29-08:00
-2019-12-10 16:24:01,907 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:38:49-08:00
-2019-12-10 16:24:01,908 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:38:49-08:00
-2019-12-10 16:24:01,908 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:38:50-08:00
-2019-12-10 16:24:01,908 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:39:53-08:00
-2019-12-10 16:24:01,908 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:42:34-08:00
-2019-12-10 16:24:01,908 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:42:35-08:00
-2019-12-10 16:24:01,910 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:43:58-08:00
-2019-12-10 16:24:01,910 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:48:26-08:00
-2019-12-10 16:24:01,910 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 16:48:27-08:00
-2019-12-10 16:24:01,910 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:00:53-08:00
-2019-12-10 16:24:01,910 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:02:51-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:02:52-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:23:25-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:25:43-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:25:44-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:30:05-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:30:13-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:31:40-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:31:40-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:31:41-08:00
-2019-12-10 16:24:01,911 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:46:42-08:00
-2019-12-10 16:24:01,913 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-09 17:49:44-08:00
-2019-12-10 16:24:01,913 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 10:15:02-08:00
-2019-12-10 16:24:01,913 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 10:15:03-08:00
-2019-12-10 16:24:01,914 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:05:29-08:00
-2019-12-10 16:24:01,914 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:49:46-08:00
-2019-12-10 16:24:01,914 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:49:47-08:00
-2019-12-10 16:24:01,914 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:55:55-08:00
-2019-12-10 16:24:01,914 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:08-08:00
-2019-12-10 16:24:01,915 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:08-08:00
-2019-12-10 16:24:01,915 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:24:01,915 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:24:01,917 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:24:01,917 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:24:01,917 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:24:01,917 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:24:01,917 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 11:59:09-08:00
-2019-12-10 16:24:01,918 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:11-08:00
-2019-12-10 16:24:01,918 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:11-08:00
-2019-12-10 16:24:01,918 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:12-08:00
-2019-12-10 16:24:01,920 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:12-08:00
-2019-12-10 16:24:01,920 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:13-08:00
-2019-12-10 16:24:01,921 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:13-08:00
-2019-12-10 16:24:01,921 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:14-08:00
-2019-12-10 16:24:01,921 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:14-08:00
-2019-12-10 16:24:01,921 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:00:14-08:00
-2019-12-10 16:24:01,921 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:21:16-08:00
-2019-12-10 16:24:01,923 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:32:02-08:00
-2019-12-10 16:24:01,923 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:38:48-08:00
-2019-12-10 16:24:01,923 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 12:55:55-08:00
-2019-12-10 16:24:01,924 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 14:20:32-08:00
-2019-12-10 16:24:01,924 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 14:51:27-08:00
-2019-12-10 16:24:01,924 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 14:51:28-08:00
-2019-12-10 16:24:01,924 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 14:56:15-08:00
-2019-12-10 16:24:01,924 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 15:03:19-08:00
-2019-12-10 16:24:01,926 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 15:03:19-08:00
-2019-12-10 16:24:01,926 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 15:03:19-08:00
-2019-12-10 16:24:01,927 - tardis_continuum | DEBUG : 113 - Date converted: 2019-12-10 15:15:29-08:00
-2019-12-10 16:24:02,109 - tardis_continuum | DEBUG : 163 - Finding the last timesheet for Adam Benson
-2019-12-10 16:24:02,109 - tardis_continuum | DEBUG : 165 - USER ID: 41
-2019-12-10 16:24:02,198 - tardis_continuum | DEBUG : 185 - Timesheet found: {'sg_task_end': None, 'entity': {'type': 'Task', 'id': 22843, 'name': 'Pipeline'}, 'project': {'type': 'Project', 'id': 547, 'name': 'Admin'}, 'user': {'type': 'HumanUser', 'id': 41, 'name': 'Adam Benson'}, 'date': '2019-12-10', 'type': 'TimeLog', 'id': 3094, 'sg_task_start': datetime.datetime(2019, 12, 10, 15, 15, 29, tzinfo=<shotgun_api3.lib.sgtimezone.LocalTimezone object at 0x000000000401F2B0>)}
-2019-12-10 16:30:01,132 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 16:49:11,091 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 17:24:22,561 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 17:29:30,033 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 17:31:05,016 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 17:34:05,390 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 17:37:25,519 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 17:42:21,482 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 17:44:51,387 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 17:49:48,075 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 18:01:15,444 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-10 18:43:30,163 - tardis_continuum | INFO : 59 - Continuum Activated!
-2019-12-11 12:43:06,611 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-11 12:46:48,503 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-11 14:26:28,203 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-11 16:55:04,315 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-11 17:16:54,243 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-11 17:31:29,668 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-11 17:53:43,361 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-11 18:53:19,815 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 10:20:12,908 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 10:39:56,434 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 11:26:14,976 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 11:37:37,530 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 11:50:06,766 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 11:50:59,006 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 12:07:22,104 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 12:20:38,855 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 12:25:41,196 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 12:31:45,125 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 14:33:34,486 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 14:42:12,674 - tardis_continuum | INFO : 61 - Continuum Activated!
-2019-12-12 14:53:23,075 - tardis_continuum | INFO : 64 - Continuum Activated!
-2019-12-12 15:09:37,440 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 15:16:51,969 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 16:08:56,713 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 16:13:33,275 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 16:17:07,188 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 16:26:31,303 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 16:34:13,572 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 16:39:42,384 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 16:54:25,907 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 18:24:40,604 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-12 19:26:21,778 - tardis_continuum | INFO : 67 - Continuum Activated!
-2019-12-13 11:14:15,983 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 10:43:59,759 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 10:44:48,802 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 10:49:52,977 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 10:51:34,170 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 10:53:35,148 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 11:48:01,190 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 12:44:25,891 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 16:57:39,338 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 16:59:50,707 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 17:03:59,362 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 17:09:34,953 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 17:12:00,598 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 17:20:55,381 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 17:41:11,240 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 17:45:24,989 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 17:47:39,757 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 18:27:00,474 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 18:30:55,236 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 18:44:00,118 - tardis_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-16 18:46:00,161 - tardis_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-16 18:49:00,132 - tardis_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-16 18:49:54,553 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 18:55:28,698 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 19:00:47,765 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 19:02:10,598 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-16 19:04:38,638 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:32:57,503 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:33:29,594 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:34:53,536 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:35:30,006 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:36:28,131 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:37:27,454 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:40:52,049 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:49:13,023 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:50:57,993 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 10:52:00,122 - tardis_continuum | ERROR : 598 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
+2019-12-17 10:53:51,484 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 11:21:42,000 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 11:27:56,880 - tardis_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-17 11:34:03,632 - tardis_continuum | ERROR : 598 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
+2019-12-17 11:34:04,121 - tardis_continuum | ERROR : 598 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
+2019-12-17 11:34:04,573 - tardis_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-17 11:34:05,375 - tardis_continuum | ERROR : 598 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
+2019-12-17 11:44:25,039 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 11:50:30,490 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 11:54:31,742 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 11:54:37,802 - tardis_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2019-12-17 11:57:51,493 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 11:58:41,647 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 11:59:52,404 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 12:45:28,336 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-17 20:01:32,361 - tardis_continuum | ERROR : 598 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
+2019-12-18 15:27:49,634 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-18 15:28:35,167 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-18 15:38:20,273 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-18 15:57:30,058 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-18 16:01:09,799 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-18 16:02:53,328 - tardis_continuum | INFO : 67 - Continuum Activated!
+2019-12-18 16:40:45,895 - tardis_continuum | INFO : 67 - Continuum Activated!
