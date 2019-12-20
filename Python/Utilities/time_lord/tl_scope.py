@@ -213,6 +213,7 @@ class scope(QtGui.QWidget):
         # Setup column widths
         header = self.ui.slave_list.horizontalHeader()
         header.setResizeMode(4, QtGui.QHeaderView.Stretch)
+        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Edit'])
 
         self.scope_engine.scope_signals.add_user.connect(self.add_user)
         self.scope_engine.scope_signals.remove_user.connect(self.remove_user)
@@ -275,6 +276,12 @@ class scope(QtGui.QWidget):
         start_time_label.setText(str(start_time))
         self.ui.slave_list.setCellWidget(row, 3, start_time_label)
 
+        # Create the button
+        clock_out_btn = QtGui.QPushButton()
+        clock_out_btn.setText('Clock Out')
+        clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid))
+        self.ui.slave_list.setCellWidget(row, 4, clock_out_btn)
+
         self.scope_viewer[uid] = data[uid]
 
         # Return the Scope Viewer Data
@@ -317,6 +324,13 @@ class scope(QtGui.QWidget):
         del(self.scope_viewer[uid])
 
         self.scope_engine.scope_signals.view_list.emit(self.scope_viewer)
+
+    def clock_out_user(self, uid=None):
+        print('Clock out requested for %s!' % uid)
+        _user = users.get_user_by_id(uid)
+        latest_timesheet = tl_time.get_latest_timesheet(user=_user)
+        clocked_out = tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=datetime.now())
+        print('Clocked Out: %s' % clocked_out)
 
 
 if __name__ == '__main__':
