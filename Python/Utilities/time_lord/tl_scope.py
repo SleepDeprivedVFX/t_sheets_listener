@@ -139,6 +139,14 @@ class scope_engine(QtCore.QThread):
                 if vuid not in self.scope.keys():
                     # Remove it from the list.
                     self.scope_signals.remove_user.emit({vuid: vdata})
+                else:
+                    v_task_id = vdata['task_id']
+                    task_id = self.scope[vuid]['task_id']
+                    print v_task_id
+                    print task_id
+                    if v_task_id != task_id:
+                        print('Update Task')
+
 
     def compare_scope_to_timesheets(self, timesheets=None):
         # Check the timesheets against the scope list
@@ -165,12 +173,17 @@ class scope_engine(QtCore.QThread):
                         'task_id': task_id,
                         'start_time': start_time
                     }
+                elif userid in self.scope.keys() and self.scope[userid]['task_id'] != task_id:
+                    print('WRONG TASK!')
+                    print('userid: %s' % userid)
+                    print('scope task: %s' % self.scope[userid]['task_id'])
+                    print('task_id: %s' % task_id)
 
         # Check Scope List against Timesheets
         for uid, data in self.scope.items():
             # test = next(item for item in timesheets if item['user']['id'] == uid)
-            test = filter(lambda item: item['user']['id'] == uid, timesheets)
-            if not test:
+            still_clocked_in = filter(lambda item: item['user']['id'] == uid, timesheets)
+            if not still_clocked_in:
                 # remove from the scope
                 del self.scope[uid]
 
@@ -188,17 +201,18 @@ class scope(QtGui.QWidget):
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
 
+        self.ui.slave_list.setStyleSheet("QHeaderView::section{\n"
+                                          "    \n"
+                                          "    background-color: rgb(97, 97, 97);\n"
+                                          "}\n"
+                                          "QTableView::item{\n"
+                                          "    border: 0px;\n"
+                                          "    padding: 5px;\n"
+                                          "}")
+
         # Setup column widths
-        self.ui.slave_list.insertColumn(3)
         header = self.ui.slave_list.horizontalHeader()
-        header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(3, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(4, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(5, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(6, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(7, QtGui.QHeaderView.Stretch)
+        header.setResizeMode(4, QtGui.QHeaderView.Stretch)
 
         self.scope_engine.scope_signals.add_user.connect(self.add_user)
         self.scope_engine.scope_signals.remove_user.connect(self.remove_user)

@@ -74,7 +74,16 @@ QTableView::item{
 	padding: 5px;
 }</string>
      </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
      <attribute name="horizontalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
       <bool>true</bool>
      </attribute>
      <attribute name="verticalHeaderVisible">
