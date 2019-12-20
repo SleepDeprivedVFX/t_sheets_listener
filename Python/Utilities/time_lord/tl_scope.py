@@ -97,15 +97,29 @@ class scope_engine(QtCore.QThread):
 
     def run(self, *args, **kwargs):
         second = int(datetime.now().second)
-        minute = datetime.now().minute
         active_timesheets = tl_time.get_active_timesheets()
         self.compare_scope_to_timesheets(active_timesheets)
         self.compare_scope_to_viewer()
         while True:
             if second != int(datetime.now().second):
                 second = int(datetime.now().second)
-                if minute != datetime.now().minute:
-                    minute = datetime.now().minute
+                for u, d in self.scope_viewer.items():
+                    _date = d['start_time'].date()
+                    _hours = d['start_time'].time().hour
+                    _minutes = d['start_time'].time().minute
+                    _seconds = d['start_time'].time().second
+                    then = parser.parse('%s %s:%s:%s' % (_date, _hours, _minutes, _seconds))
+
+                    duration = datetime.now() - then
+                    split_duration = str(duration).split(':')
+                    duration = '%i:%i:%02d' % (int(split_duration[0]), int(split_duration[1]), float(split_duration[2]))
+                    update = {
+                        'uid': u,
+                        'row': d['row_id'],
+                        'duration': duration
+                    }
+                    self.scope_signals.user_running_time.emit(update)
+                if second % 10 == 0:
                     active_timesheets = tl_time.get_active_timesheets()
 
                     # The compare_scope_to_timesheets() function sets the self.scope.  Which in turn gives us the
@@ -142,19 +156,19 @@ class scope_engine(QtCore.QThread):
                 else:
                     v_task_id = vdata['task_id']
                     task_id = self.scope[vuid]['task_id']
-                    print v_task_id
-                    print task_id
+                    # print v_task_id
+                    # print task_id
                     if v_task_id != task_id:
-                        print('Update Task')
-
+                        print('Update Task.  Row ID: %s' % vdata['row_id'])
 
     def compare_scope_to_timesheets(self, timesheets=None):
         # Check the timesheets against the scope list
         if timesheets:
             for timesheet in timesheets:
-                user = timesheet['user']
-                username = user['name']
-                userid = user['id']
+                timesheet_id = timesheet['id']
+                _user = timesheet['user']
+                username = _user['name']
+                userid = _user['id']
                 project = timesheet['project']
                 proj_name = project['name']
                 proj_id = project['id']
@@ -162,6 +176,17 @@ class scope_engine(QtCore.QThread):
                 task_name = task['name']
                 task_id = task['id']
                 start_time = timesheet['sg_task_start']
+
+                current_data = {
+                    'name': username,
+                    'project': proj_name,
+                    'proj_id': proj_id,
+                    'entity': None,
+                    'task': task_name,
+                    'task_id': task_id,
+                    'start_time': start_time,
+                    'row_id': None
+                }
 
                 if userid not in self.scope.keys():
                     self.scope[userid] = {
@@ -171,13 +196,17 @@ class scope_engine(QtCore.QThread):
                         'entity': None,
                         'task': task_name,
                         'task_id': task_id,
-                        'start_time': start_time
+                        'start_time': start_time,
+                        'row_id': None
                     }
                 elif userid in self.scope.keys() and self.scope[userid]['task_id'] != task_id:
                     print('WRONG TASK!')
                     print('userid: %s' % userid)
                     print('scope task: %s' % self.scope[userid]['task_id'])
                     print('task_id: %s' % task_id)
+                    print('ROW: %s' % self.scope[userid]['row_id'])
+                    self.scope_signals.remove_user.emit({userid: self.scope[userid]})
+                    self.scope_signals.add_user.emit({userid: current_data})
 
         # Check Scope List against Timesheets
         for uid, data in self.scope.items():
@@ -217,9 +246,17 @@ class scope(QtGui.QWidget):
 
         self.scope_engine.scope_signals.add_user.connect(self.add_user)
         self.scope_engine.scope_signals.remove_user.connect(self.remove_user)
+        self.scope_engine.scope_signals.user_running_time.connect(self.set_user_running_time)
 
         self.ui.slave_list.clear()
         self.scope_engine.start()
+
+    def set_user_running_time(self, data):
+        if data:
+            userid = data['uid']
+            row = data['row']
+            duration = data['duration']
+            self.ui.slave_list.cellWidget(row, 3).setText(str(duration))
 
     def send_viewer_list(self, view_list=None):
         if view_list:
@@ -257,6 +294,7 @@ class scope(QtGui.QWidget):
         else:
             row = 0
         self.ui.slave_list.insertRow(row)
+        u_data['row_id'] = row
 
         name_label = QtGui.QLabel()
         name_label.setText(name)
@@ -282,7 +320,7 @@ class scope(QtGui.QWidget):
         clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid))
         self.ui.slave_list.setCellWidget(row, 4, clock_out_btn)
 
-        self.scope_viewer[uid] = data[uid]
+        self.scope_viewer[uid] = u_data
 
         # Return the Scope Viewer Data
         self.scope_engine.scope_signals.view_list.emit(self.scope_viewer)
@@ -321,7 +359,11 @@ class scope(QtGui.QWidget):
                 self.ui.slave_list.removeRow(i)
                 break
 
-        del(self.scope_viewer[uid])
+        try:
+            del(self.scope_viewer[uid])
+        except KeyError as e:
+            print('Failed to delete Scope View ID.  Error: %s' % e)
+            pass
 
         self.scope_engine.scope_signals.view_list.emit(self.scope_viewer)
 
