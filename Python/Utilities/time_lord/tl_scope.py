@@ -76,6 +76,9 @@ comm = comm_sys(sg, config=config, sub='scope')
 
 class scope_signals(QtCore.QObject):
     user_running_time = QtCore.Signal(dict)
+    view_list = QtCore.Signal(dict)
+    add_user = QtCore.Signal(dict)
+    remove_user = QtCore.Signal(dict)
 
 
 class scope_engine(QtCore.QThread):
@@ -85,25 +88,59 @@ class scope_engine(QtCore.QThread):
         self.scope_signals = scope_signals()
 
         # Build Scope
-        self.scope = {258: {'name': 'John Ployhar'}}
+        self.scope = {}
+
+        # UI Table List
+        self.scope_viewer = {}
+
+        self.scope_signals.view_list.connect(self.set_scope_viewer)
 
     def run(self, *args, **kwargs):
         second = int(datetime.now().second)
         minute = datetime.now().minute
         active_timesheets = tl_time.get_active_timesheets()
-        self.compare_lists(active_timesheets)
+        self.compare_scope_to_timesheets(active_timesheets)
+        self.compare_scope_to_viewer()
         while True:
             if second != int(datetime.now().second):
                 second = int(datetime.now().second)
                 if minute != datetime.now().minute:
                     minute = datetime.now().minute
                     active_timesheets = tl_time.get_active_timesheets()
-                    self.compare_lists(active_timesheets)
-                    print self.scope
+
+                    # The compare_scope_to_timesheets() function sets the self.scope.  Which in turn gives us the
+                    # master list of Artists to be displayed in the Scope Viewer.
+                    self.compare_scope_to_timesheets(active_timesheets)
+                    # print self.scope
 
                     # Update the Lists:
+                    self.compare_scope_to_viewer()
 
-    def compare_lists(self, timesheets=None):
+    def set_scope_viewer(self, viewer=None):
+        if viewer:
+            self.scope_viewer = viewer
+
+    def add_user(self, uid=None):
+        pass
+
+    def remove_user(self, uid=None):
+        pass
+
+    def compare_scope_to_viewer(self):
+        if self.scope:
+            for uid, data in self.scope.items():
+                if uid not in self.scope_viewer.keys():
+                    # The UID from the timesheets is not found in the return list from the UI
+                    # NOTE: Might need a MUTEX here?
+                    # So, Send the track to the UI to add a new Row.
+                    self.scope_signals.add_user.emit({uid: data})
+
+            for vuid, vdata in self.scope_viewer.items():
+                if vuid not in self.scope.keys():
+                    # Remove it from the list.
+                    self.scope_signals.remove_user.emit({vuid: vdata})
+
+    def compare_scope_to_timesheets(self, timesheets=None):
         # Check the timesheets against the scope list
         if timesheets:
             for timesheet in timesheets:
@@ -145,6 +182,9 @@ class scope(QtGui.QWidget):
 
         self.scope_engine = scope_engine()
 
+        # Set Viewer record
+        self.scope_viewer = {}
+
         self.ui = tls.Ui_WhosWorking()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
@@ -156,8 +196,112 @@ class scope(QtGui.QWidget):
         header.setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
         header.setResizeMode(3, QtGui.QHeaderView.Stretch)
 
+        self.scope_engine.scope_signals.add_user.connect(self.add_user)
+        self.scope_engine.scope_signals.remove_user.connect(self.remove_user)
+
         self.ui.slave_list.clear()
         self.scope_engine.start()
+
+    def send_viewer_list(self, view_list=None):
+        if view_list:
+            self.scope_engine.scope_signals.view_list.emit(view_list)
+
+    def add_user(self, data=None):
+        """
+        Add a user to the Table
+        :param data: (dict) { ID: {
+                                name
+                                project
+                                proj_id
+                                entity
+                                task
+                                task_id
+                                start_time
+                                table_id
+                                }
+                            }
+        :return:
+        """
+        uid = data.keys()[0]
+        u_data = data[uid]
+        name = u_data['name']
+        project = u_data['project']
+        proj_id = u_data['proj_id']
+        entity = u_data['entity']
+        task = u_data['task']
+        task_id = u_data['task_id']
+        start_time = u_data['start_time']
+        table_id = u_data['table_id']
+
+        row_count = self.ui.slave_list.rowCount()
+        if row_count > 1:
+            row = row_count - 1
+        else:
+            row = 0
+        self.ui.slave_list.insertRow(row)
+
+        name_label = QtGui.QLabel()
+        name_label.setText(name)
+        self.ui.slave_list.setCellWidget(row, 0, name_label)
+        proj_label = QtGui.QLabel()
+        proj_label.setText(project)
+        self.ui.slave_list.setCellWidget(row, 1, proj_label)
+        proj_id_label = QtGui.QLabel()
+        proj_id_label.setNum(proj_id)
+        self.ui.slave_list.setCellWidget(row, 2, proj_id_label)
+        entity_label = QtGui.QLabel()
+        entity_label.setText(entity)
+        self.ui.slave_list.setCellWidget(row, 3, entity_label)
+        task_label = QtGui.QLabel()
+        task_label.setText(task)
+        self.ui.slave_list.setCellWidget(row, 4, task_label)
+        task_id_label = QtGui.QLabel()
+        task_id_label.setNum(task_id)
+        self.ui.slave_list.setCellWidget(row, 5, task_id_label)
+        start_time_label = QtGui.QLabel()
+        start_time_label.setText(str(start_time))
+        self.ui.slave_list.setCellWidget(row, 6, start_time_label)
+        row_label = QtGui.QLabel()
+        row_label.setNum(row)
+        self.ui.slave_list.setCellWidget(row, 7, row_label)
+
+        self.scope_viewer[uid] = data[uid]
+        self.scope_viewer[uid]['table_id'] = row
+
+        # Return the Scope Viewer Data
+        self.scope_engine.scope_signals.view_list.emit(self.scope_viewer)
+
+    def remove_user(self, data=None):
+        """
+        Add a user to the Table
+        :param data: (dict) { ID: {
+                                name
+                                project
+                                proj_id
+                                entity
+                                task
+                                task_id
+                                start_time
+                                table_id
+                                }
+                            }
+        :return:
+        """
+        uid = data.keys()[0]
+        u_data = data[uid]
+        name = u_data['name']
+        project = u_data['project']
+        proj_id = u_data['proj_id']
+        entity = u_data['entity']
+        task = u_data['task']
+        task_id = u_data['task_id']
+        start_time = u_data['start_time']
+        table_id = u_data['table_id']
+        self.ui.slave_list.removeRow(table_id)
+        del(self.scope_viewer[uid])
+        list_remaining = self.ui.slave_list.items()
+        print list_remaining
+        self.scope_engine.scope_signals.view_list.emit(self.scope_viewer)
 
 
 if __name__ == '__main__':
