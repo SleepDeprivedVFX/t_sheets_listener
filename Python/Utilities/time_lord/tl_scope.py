@@ -163,8 +163,7 @@ class scope_engine(QtCore.QThread):
                         'entity': None,
                         'task': task_name,
                         'task_id': task_id,
-                        'start_time': start_time,
-                        'table_id': None
+                        'start_time': start_time
                     }
 
         # Check Scope List against Timesheets
@@ -190,11 +189,16 @@ class scope(QtGui.QWidget):
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
 
         # Setup column widths
+        self.ui.slave_list.insertColumn(3)
         header = self.ui.slave_list.horizontalHeader()
         header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
         header.setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
         header.setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(3, QtGui.QHeaderView.Stretch)
+        header.setResizeMode(3, QtGui.QHeaderView.ResizeToContents)
+        header.setResizeMode(4, QtGui.QHeaderView.ResizeToContents)
+        header.setResizeMode(5, QtGui.QHeaderView.ResizeToContents)
+        header.setResizeMode(6, QtGui.QHeaderView.ResizeToContents)
+        header.setResizeMode(7, QtGui.QHeaderView.Stretch)
 
         self.scope_engine.scope_signals.add_user.connect(self.add_user)
         self.scope_engine.scope_signals.remove_user.connect(self.remove_user)
@@ -231,7 +235,6 @@ class scope(QtGui.QWidget):
         task = u_data['task']
         task_id = u_data['task_id']
         start_time = u_data['start_time']
-        table_id = u_data['table_id']
 
         row_count = self.ui.slave_list.rowCount()
         if row_count > 1:
@@ -242,31 +245,23 @@ class scope(QtGui.QWidget):
 
         name_label = QtGui.QLabel()
         name_label.setText(name)
+        name_label.setToolTip('%s' % uid)
         self.ui.slave_list.setCellWidget(row, 0, name_label)
         proj_label = QtGui.QLabel()
         proj_label.setText(project)
+        proj_label.setToolTip('Project ID: %s' % proj_id)
         self.ui.slave_list.setCellWidget(row, 1, proj_label)
-        proj_id_label = QtGui.QLabel()
-        proj_id_label.setNum(proj_id)
-        self.ui.slave_list.setCellWidget(row, 2, proj_id_label)
-        entity_label = QtGui.QLabel()
-        entity_label.setText(entity)
-        self.ui.slave_list.setCellWidget(row, 3, entity_label)
         task_label = QtGui.QLabel()
         task_label.setText(task)
-        self.ui.slave_list.setCellWidget(row, 4, task_label)
-        task_id_label = QtGui.QLabel()
-        task_id_label.setNum(task_id)
-        self.ui.slave_list.setCellWidget(row, 5, task_id_label)
+        task_tool = 'Entity: %s\n' \
+                    'Task ID: %s' % (entity, task_id)
+        task_label.setToolTip(task_tool)
+        self.ui.slave_list.setCellWidget(row, 2, task_label)
         start_time_label = QtGui.QLabel()
         start_time_label.setText(str(start_time))
-        self.ui.slave_list.setCellWidget(row, 6, start_time_label)
-        row_label = QtGui.QLabel()
-        row_label.setNum(row)
-        self.ui.slave_list.setCellWidget(row, 7, row_label)
+        self.ui.slave_list.setCellWidget(row, 3, start_time_label)
 
         self.scope_viewer[uid] = data[uid]
-        self.scope_viewer[uid]['table_id'] = row
 
         # Return the Scope Viewer Data
         self.scope_engine.scope_signals.view_list.emit(self.scope_viewer)
@@ -296,11 +291,17 @@ class scope(QtGui.QWidget):
         task = u_data['task']
         task_id = u_data['task_id']
         start_time = u_data['start_time']
-        table_id = u_data['table_id']
-        self.ui.slave_list.removeRow(table_id)
+
+        # Search through the table and find the UID?
+        row_count = self.ui.slave_list.rowCount()
+        for i in range(0, row_count-1):
+            this_uid = int(self.ui.slave_list.cellWidget(i, 0).toolTip())
+            if uid == this_uid:
+                self.ui.slave_list.removeRow(i)
+                break
+
         del(self.scope_viewer[uid])
-        list_remaining = self.ui.slave_list.items()
-        print list_remaining
+
         self.scope_engine.scope_signals.view_list.emit(self.scope_viewer)
 
 

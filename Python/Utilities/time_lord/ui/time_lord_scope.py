@@ -60,9 +60,5 @@ class Ui_WhosWorking(object):
         self.slave_list.horizontalHeaderItem(3).setText(QtGui.QApplication.translate("WhosWorking", "Edit", None, QtGui.QApplication.UnicodeUTF8))
         __sortingEnabled = self.slave_list.isSortingEnabled()
         self.slave_list.setSortingEnabled(False)
-        self.slave_list.item(0, 0).setText(QtGui.QApplication.translate("WhosWorking", "Adam Benson", None, QtGui.QApplication.UnicodeUTF8))
-        self.slave_list.item(0, 1).setText(QtGui.QApplication.translate("WhosWorking", "WeVR\\nThing\\nTask", None, QtGui.QApplication.UnicodeUTF8))
-        self.slave_list.item(0, 2).setText(QtGui.QApplication.translate("WhosWorking", "00:12:15", None, QtGui.QApplication.UnicodeUTF8))
-        self.slave_list.item(0, 3).setText(QtGui.QApplication.translate("WhosWorking", "BUTTON", None, QtGui.QApplication.UnicodeUTF8))
         self.slave_list.setSortingEnabled(__sortingEnabled)
 
