@@ -86,6 +86,7 @@ class scope_engine(QtCore.QThread):
         QtCore.QThread.__init__(self)
 
         self.scope_signals = scope_signals()
+        self.kill_it = False
 
         # Build Scope
         self.scope = {}
@@ -100,7 +101,7 @@ class scope_engine(QtCore.QThread):
         active_timesheets = tl_time.get_active_timesheets()
         self.compare_scope_to_timesheets(active_timesheets)
         self.compare_scope_to_viewer()
-        while True:
+        while not self.kill_it:
             if second != int(datetime.now().second):
                 second = int(datetime.now().second)
                 for u, d in self.scope_viewer.items():
@@ -112,7 +113,8 @@ class scope_engine(QtCore.QThread):
 
                     duration = datetime.now() - then
                     split_duration = str(duration).split(':')
-                    duration = '%i:%i:%02d' % (int(split_duration[0]), int(split_duration[1]), float(split_duration[2]))
+                    duration = '%02d:%02d:%02d' % (int(split_duration[0]), int(split_duration[1]),
+                                                   float(split_duration[2]))
                     update = {
                         'uid': u,
                         'row': d['row_id'],
@@ -240,16 +242,26 @@ class scope(QtGui.QWidget):
                                           "}")
 
         # Setup column widths
+        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Edit'])
         header = self.ui.slave_list.horizontalHeader()
         header.setResizeMode(4, QtGui.QHeaderView.Stretch)
-        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Edit'])
 
         self.scope_engine.scope_signals.add_user.connect(self.add_user)
         self.scope_engine.scope_signals.remove_user.connect(self.remove_user)
         self.scope_engine.scope_signals.user_running_time.connect(self.set_user_running_time)
 
+        self.ui.stay_on_top.clicked.connect(self.window_state)
+
         self.ui.slave_list.clear()
         self.scope_engine.start()
+
+    def window_state(self):
+        state = self.ui.stay_on_top.checkState()
+        if state == QtCore.Qt.CheckState.Checked:
+            self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
+        else:
+            self.setWindowFlags(self.windowFlags() & ~QtCore.Qt.WindowStaysOnTopHint)
+        self.show()
 
     def set_user_running_time(self, data):
         if data:
@@ -373,6 +385,15 @@ class scope(QtGui.QWidget):
         latest_timesheet = tl_time.get_latest_timesheet(user=_user)
         clocked_out = tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=datetime.now())
         print('Clocked Out: %s' % clocked_out)
+
+    # ----------------------------------------------------------------------------------------------------------------
+    # UI Events - Close, Update Saved Settings, Update UI Data
+    # ----------------------------------------------------------------------------------------------------------------
+    def closeEvent(self, *args, **kwargs):
+        if self.scope_engine.isRunning():
+            self.scope_engine.kill_it = True
+        self.scope_engine.kill_it = True
+        time.sleep(1)
 
 
 if __name__ == '__main__':
