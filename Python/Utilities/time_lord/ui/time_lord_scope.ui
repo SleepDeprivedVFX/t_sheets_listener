@@ -24,23 +24,62 @@ color: rgb(230, 230, 230);</string>
       <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="text">
-      <string>Who's Working On What?</string>
+      <string>Time Scope</string>
      </property>
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="question">
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Who's working on what?</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="stay_on_top">
+       <property name="text">
+        <string>Keep On Top</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <widget class="QTableWidget" name="slave_list">
+     <property name="styleSheet">
+      <string notr="true">QHeaderView::section{
+	
+	background-color: rgb(97, 97, 97);
+}
+QTableView::item{
+	border: 0px;
+	padding: 5px;
+}</string>
+     </property>
      <attribute name="horizontalHeaderVisible">
-      <bool>false</bool>
+      <bool>true</bool>
      </attribute>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
      </attribute>
-     <row>
-      <property name="text">
-       <string>1</string>
-      </property>
-     </row>
      <column>
       <property name="text">
        <string>Artist</string>
@@ -66,26 +105,6 @@ color: rgb(230, 230, 230);</string>
        <string>Edit</string>
       </property>
      </column>
-     <item row="0" column="0">
-      <property name="text">
-       <string>Adam Benson</string>
-      </property>
-     </item>
-     <item row="0" column="2">
-      <property name="text">
-       <string>WeVR\nThing\nTask</string>
-      </property>
-     </item>
-     <item row="0" column="3">
-      <property name="text">
-       <string>00:12:15</string>
-      </property>
-     </item>
-     <item row="0" column="4">
-      <property name="text">
-       <string>BUTTON</string>
-      </property>
-     </item>
     </widget>
    </item>
   </layout>
