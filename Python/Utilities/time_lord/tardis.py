@@ -9,7 +9,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.1'
+__version__ = '0.4.2'
 
 import os
 import sys
@@ -598,16 +598,19 @@ class tardis(object):
                  default_menu_index=None,
                  window_class_name=None,
                  payroll=None,
+                 scope=None,
                  all_sessions=False, ):
 
         self.icon = icon
         self.hover_text = hover_text
         self.on_quit = on_quit
         self.payroll = payroll
+        self.scope = scope
 
         permissions = user['permission_rule_set']['name']
         if permissions == 'Admin' or permissions == 'Coordinator':
-            menu_options = menu_options + (('Run Payroll', None, self.payroll),)
+            menu_options = menu_options + (('Run Payroll', None, self.payroll),
+                                           ('Scope', None, self.scope), )
             # The "Quit" option can be made an admin feature by simple indenting this here.
             menu_options = menu_options + (('Quit', None, self.QUIT),)
 
@@ -864,12 +867,20 @@ if __name__ == '__main__':
         payroll_path = os.path.join(path, 'tl_alpha_payroll_collector.py')
         subprocess.Popen('pythonw.exe %s' % payroll_path)
 
+    def scope(tardis):
+        # Runs the Time Lord Scope
+        print('Time Lord Scope Activated!')
+        logger.info('%s has activeated the Time Lord Scope' % user['name'])
+        path = sys.path[0]
+        scope_path = os.path.join(path, 'tl_scope.py')
+        subprocess.Popen('pythonw.exe %s' % scope_path)
+
     menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
                     ('Lunch Break', icons.next(), lunch),
                     ('Overtime Tool', icons.next(), overtime),
                     )
 
-    tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll,
+    tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll, scope=scope,
            all_sessions=True)
 
 
