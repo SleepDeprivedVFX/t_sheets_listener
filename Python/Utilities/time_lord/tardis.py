@@ -9,7 +9,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.2'
+__version__ = '0.4.3'
 
 import os
 import sys
@@ -610,7 +610,7 @@ class tardis(object):
         permissions = user['permission_rule_set']['name']
         if permissions == 'Admin' or permissions == 'Coordinator':
             menu_options = menu_options + (('Run Payroll', None, self.payroll),
-                                           ('Scope', None, self.scope), )
+                                           ('Time Scope', None, self.scope), )
             # The "Quit" option can be made an admin feature by simple indenting this here.
             menu_options = menu_options + (('Quit', None, self.QUIT),)
 
@@ -875,6 +875,12 @@ if __name__ == '__main__':
         scope_path = os.path.join(path, 'tl_scope.py')
         subprocess.Popen('pythonw.exe %s' % scope_path)
 
+    # Start the Time Lord for the first time on Tardis Startup
+    path = sys.path[0]
+    time_lord_path = os.path.join(path, 'time_lord.py')
+    subprocess.Popen('pythonw.exe %s' % time_lord_path)
+
+    # Prep the menu and start the Tardis
     menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
                     ('Lunch Break', icons.next(), lunch),
                     ('Overtime Tool', icons.next(), overtime),

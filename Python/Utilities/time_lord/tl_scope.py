@@ -24,7 +24,7 @@ from bin.comm_system import comm_sys
 from ui import time_lord_scope as tls
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.2'
+__version__ = '0.4.3'
 
 config = bin.configuration.get_configuration()
 
@@ -127,7 +127,6 @@ class scope_engine(QtCore.QThread):
                     # The compare_scope_to_timesheets() function sets the self.scope.  Which in turn gives us the
                     # master list of Artists to be displayed in the Scope Viewer.
                     self.compare_scope_to_timesheets(active_timesheets)
-                    # print self.scope
 
                     # Update the Lists:
                     self.compare_scope_to_viewer()
@@ -143,6 +142,11 @@ class scope_engine(QtCore.QThread):
         pass
 
     def compare_scope_to_viewer(self):
+        '''
+        The uid and data in the self.scope are the items that are stored in memory.
+        the vuid and vdata in the self.scope_viewer are the items that are currently listed in the UI table, or "viewer"
+        :return:
+        '''
         if self.scope:
             for uid, data in self.scope.items():
                 if uid not in self.scope_viewer.keys():
@@ -158,10 +162,8 @@ class scope_engine(QtCore.QThread):
                 else:
                     v_task_id = vdata['task_id']
                     task_id = self.scope[vuid]['task_id']
-                    # print v_task_id
-                    # print task_id
                     if v_task_id != task_id:
-                        print('Update Task.  Row ID: %s' % vdata['row_id'])
+                        logger.debug('Update Task.  Row ID: %s' % vdata['row_id'])
 
     def compare_scope_to_timesheets(self, timesheets=None):
         # Check the timesheets against the scope list
@@ -202,11 +204,11 @@ class scope_engine(QtCore.QThread):
                         'row_id': None
                     }
                 elif userid in self.scope.keys() and self.scope[userid]['task_id'] != task_id:
-                    print('WRONG TASK!')
-                    print('userid: %s' % userid)
-                    print('scope task: %s' % self.scope[userid]['task_id'])
-                    print('task_id: %s' % task_id)
-                    print('ROW: %s' % self.scope[userid]['row_id'])
+                    logger.debug('WRONG TASK!')
+                    logger.debug('userid: %s' % userid)
+                    logger.debug('scope task: %s' % self.scope[userid]['task_id'])
+                    logger.debug('task_id: %s' % task_id)
+                    logger.debug('ROW: %s' % self.scope[userid]['row_id'])
                     self.scope_signals.remove_user.emit({userid: self.scope[userid]})
                     self.scope_signals.add_user.emit({userid: current_data})
 
@@ -231,6 +233,7 @@ class scope(QtGui.QWidget):
         self.ui = tls.Ui_WhosWorking()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.setWindowTitle("Time Lord Scope v%s" % __version__)
 
         self.ui.slave_list.setStyleSheet("QHeaderView::section{\n"
                                           "    \n"
@@ -241,11 +244,6 @@ class scope(QtGui.QWidget):
                                           "    padding: 5px;\n"
                                           "}")
 
-        # Setup column widths
-        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Edit'])
-        header = self.ui.slave_list.horizontalHeader()
-        header.setResizeMode(4, QtGui.QHeaderView.Stretch)
-
         self.scope_engine.scope_signals.add_user.connect(self.add_user)
         self.scope_engine.scope_signals.remove_user.connect(self.remove_user)
         self.scope_engine.scope_signals.user_running_time.connect(self.set_user_running_time)
@@ -254,6 +252,11 @@ class scope(QtGui.QWidget):
 
         self.ui.slave_list.clear()
         self.scope_engine.start()
+
+        # Setup column widths
+        header = self.ui.slave_list.horizontalHeader()
+        header.setResizeMode(4, QtGui.QHeaderView.Stretch)
+        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Edit'])
 
     def window_state(self):
         state = self.ui.stay_on_top.checkState()
@@ -268,6 +271,7 @@ class scope(QtGui.QWidget):
             userid = data['uid']
             row = data['row']
             duration = data['duration']
+            logger.debug('set_user_running_time: uid: %s | row: %s' % (userid, row))
             self.ui.slave_list.cellWidget(row, 3).setText(str(duration))
 
     def send_viewer_list(self, view_list=None):
@@ -300,11 +304,8 @@ class scope(QtGui.QWidget):
         task_id = u_data['task_id']
         start_time = u_data['start_time']
 
-        row_count = self.ui.slave_list.rowCount()
-        if row_count > 1:
-            row = row_count - 1
-        else:
-            row = 0
+        row = self.ui.slave_list.rowCount()
+
         self.ui.slave_list.insertRow(row)
         u_data['row_id'] = row
 
@@ -324,11 +325,13 @@ class scope(QtGui.QWidget):
         self.ui.slave_list.setCellWidget(row, 2, task_label)
         start_time_label = QtGui.QLabel()
         start_time_label.setText(str(start_time))
+        start_time_label.setStyleSheet('color: #0000AA;')
         self.ui.slave_list.setCellWidget(row, 3, start_time_label)
 
         # Create the button
         clock_out_btn = QtGui.QPushButton()
         clock_out_btn.setText('Clock Out')
+        clock_out_btn.setStyleSheet('background-color: #990000;')
         clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid))
         self.ui.slave_list.setCellWidget(row, 4, clock_out_btn)
 
@@ -374,17 +377,35 @@ class scope(QtGui.QWidget):
         try:
             del(self.scope_viewer[uid])
         except KeyError as e:
-            print('Failed to delete Scope View ID.  Error: %s' % e)
+            logger.error('Failed to delete Scope View ID.  Error: %s' % e)
             pass
+
+        self.update_scope_viewer()
 
         self.scope_engine.scope_signals.view_list.emit(self.scope_viewer)
 
+    def update_scope_viewer(self):
+        '''
+        This will update the current list to make sure that the row numbers are correct after deletion
+        :return:
+        '''
+        row_count = self.ui.slave_list.rowCount()
+        for i in range(0, row_count):
+            uid = int(self.ui.slave_list.cellWidget(i, 0).toolTip())
+            u_row = int(self.scope_viewer[uid]['row_id'])
+            if u_row != i:
+                logger.debug('Row does not match.  Updating.')
+                logger.debug('UID: %s | Previous Row: %s | New row: %s' % (uid, u_row, i))
+                self.scope_viewer[uid]['row_id'] = i
+        self.scope_engine.scope_viewer = self.scope_viewer
+
+
     def clock_out_user(self, uid=None):
-        print('Clock out requested for %s!' % uid)
+        logger.debug('Clock out requested for %s!' % uid)
         _user = users.get_user_by_id(uid)
         latest_timesheet = tl_time.get_latest_timesheet(user=_user)
         clocked_out = tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=datetime.now())
-        print('Clocked Out: %s' % clocked_out)
+        logger.info('Clocked Out: %s' % clocked_out)
 
     # ----------------------------------------------------------------------------------------------------------------
     # UI Events - Close, Update Saved Settings, Update UI Data
