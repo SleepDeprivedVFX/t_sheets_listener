@@ -11,7 +11,7 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.2'
+__version__ = '0.4.3'
 
 import datetime
 import logging
@@ -271,7 +271,7 @@ class continuum(object):
                 if empty_timesheets:
                     for e_ts in empty_timesheets:
                         # figure out if the current timesheet
-                        print('Empty_Timesheet: %s' % e_ts)
+                        self.logger.debug('Empty_Timesheet: %s' % e_ts)
             data = {
                 'sg_task_end': clock_out,
                 'duration': total
@@ -280,10 +280,10 @@ class continuum(object):
                 data['sg_auto_clock_out'] = True
             try:
                 update = self.sg.update('TimeLog', timesheet['id'], data)
-                print('Successfully clocked out. %s' % update)
+                self.logger.info('Successfully clocked out. %s' % update)
                 self.logger.info('Timesheet updated.')
             except Exception as e:
-                print('Failed to connect.  Trying again... %s' % e)
+                self.logger.error('Failed to connect.  Trying again... %s' % e)
                 update = self.clock_out_time_sheet(timesheet=timesheet, clock_out=clock_out)
             return update
         return None
@@ -300,7 +300,7 @@ class continuum(object):
                                 Auto = Drag-n-Drop Publisher
         :return: New timesheet.
         """
-        print('create_new:', inspect.stack()[0][3], inspect.stack()[1][3])
+        self.logger.debug('create_new:', inspect.stack()[0][3], inspect.stack()[1][3])
         if user and context:
             project_id = context['Project']['id']
             task_id = context['Task']['id']
@@ -321,7 +321,7 @@ class continuum(object):
             try:
                 timesheet = self.sg.create('TimeLog', data)
             except Exception as e:
-                print('Something failed.  Trying again... %s' % e)
+                self.logger.debug('Something failed.  Trying again... %s' % e)
                 timesheet = None
                 time.sleep(2)
                 test_clocked_in = self.is_user_clocked_in(user=user)
@@ -333,9 +333,9 @@ class continuum(object):
                     self.logger.error('Failed to create timesheet!')
 
             if timesheet:
-                print timesheet
+                self.logger.debug(timesheet)
                 current_data = self.get_time_capsule()
-                print current_data
+                self.logger.debug(current_data)
                 data = {
                     'EventLogID': current_data['EventLogID'],
                     'TimeLogID': timesheet['id'],
@@ -564,13 +564,13 @@ class continuum(object):
             try:
                 get_lunch = self.sg.find('TimeLog', filters, fields)
             except AttributeError, e:
-                print('Get Lunch failed.  Trying again.')
+                self.logger.error('Get Lunch failed.  Trying again.')
                 get_lunch = self.get_todays_lunch(user=user, lunch_id=lunch_id, lunch_proj_id=lunch_proj_id)
             if get_lunch:
-                print('lunch_returns: %s' % get_lunch)
+                self.logger.debug('lunch_returns: %s' % get_lunch)
                 return get_lunch
             else:
-                print('No lunch for you!')
+                self.logger.info('No lunch for you!')
                 return False
 
     def create_lunch_break(self, user=None, lunch_id=None, task_id=None):
@@ -723,23 +723,23 @@ class continuum(object):
                         sell_by_date = datetime.datetime.date(datetime.datetime.now()) - datetime.timedelta(days=30)
                         if date > sell_by_date:
                             if not empty['sg_task_start'] and not empty['sg_task_end']:
-                                print('Total shitshow.  Ignore or delete.')
+                                self.logger.debug('Total shitshow.  Ignore or delete.')
                             elif empty['sg_task_start'] and not empty['sg_task_end']:
                                 next_ts = None
                                 get_next_id = empty['id'] + 1
                                 while not next_ts:
                                     try_next = self.get_timesheet_by_id(tid=get_next_id)
                                     if try_next and try_next['user']['id'] == user['id']:
-                                        print('Found Next!')
+                                        self.logger.debug('Found Next!')
                                         next_ts = try_next
                                         break
                                     get_next_id += 1
                                 next_start = next_ts['sg_task_start']
-                                print(type(next_start))
+                                self.logger.debug(type(next_start))
                                 if type(next_start) != datetime.datetime:
                                     next_start = parser.parse(next_start)
                                 if self.aint_today(next_start):
-                                    print('Current timesheet is from previous day!')
+                                    self.logger.debug('Current timesheet is from previous day!')
                                     # Compare start time to EOD, if before: set EOD, else: set start time + 5 minutes.
                                 else:
                                     data = {
@@ -760,7 +760,7 @@ class continuum(object):
                                             return False
                                         update = None
 
-                                    print('Updated: %s' % update)
+                                    self.logger.debug('Updated: %s' % update)
                 return empties
 
         return False
@@ -800,7 +800,7 @@ class continuum(object):
         try:
             get_timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'id', 'direction': 'desc'}])
         except Exception:
-            print(Exception)
+            self.logger.error(Exception)
             return False
         try:
             ordered_timesheets = sorted(get_timesheets, key=lambda x: (x['sg_task_start'], x['sg_task_end']),
@@ -832,7 +832,7 @@ class continuum(object):
                         'sg_needs_approval': True
                     }
                     update = self.sg.update('TimeLog', ordered_timesheets[ts]['id'], data)
-                    print 'Update Needs Approval'
+                    self.logger.debug('Update Needs Approval')
                     updates.append(update)
 
             # Next check for durations greater than double time hours, or durations having negative values.
@@ -843,7 +843,7 @@ class continuum(object):
                     'sg_needs_approval': True
                 }
                 update = self.sg.update('TimeLog', ordered_timesheets[ts]['id'], data)
-                print 'Update Needs Approval on Duration'
+                self.logger.debug('Update Needs Approval on Duration')
                 updates.append(update)
 
             # Check against previous time sheets
@@ -855,7 +855,7 @@ class continuum(object):
                 previous_end = ordered_timesheets[ts+1]['sg_task_end']
                 previous_id = int(ordered_timesheets[ts+1]['id'])
             except Exception as e:
-                print('Timesheet consistency error: %s' % e)
+                self.logger.debug('Timesheet consistency error: %s' % e)
                 error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
                                                    inspect.stack()[1][2], inspect.stack()[1][3])
                 self.comm.send_error_alert(user=user, error=error)
@@ -877,7 +877,7 @@ class continuum(object):
                     }
                     try:
                         update = self.sg.update('TimeLog', previous_id, data)
-                        print 'update output: %s' % update
+                        self.logger.debug('update output: %s' % update)
                         updates.append(update)
                     except AttributeError as e:
                         self.logger.error('Failed to update the TimeLog.')
