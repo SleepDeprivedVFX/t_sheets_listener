@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.2'
+__version__ = '0.4.3'
 
 import shotgun_api3 as sgapi
 import os
@@ -105,6 +105,24 @@ class lunch_break(QtGui.QWidget):
         self.entity = config['unpaid_time_off']
         self.entity_id = sg_data.get_entity_id(proj_id=self.lunch_proj_id, entity_name=self.entity)
 
+        # Setup the UI
+        self.ui = tll.Ui_lunch_form()
+        self.ui.setupUi(self)
+        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
+        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.setWindowTitle('The Lunch Line v%s' % __version__)
+
+        # See if we need to lock the time editors
+        permissions = user['permission_rule_set']['name']
+        if start_time:
+            self.ui.start_time.setDisabled(True)
+        else:
+            self.ui.start_time.setEnabled(True)
+        if end_time:
+            self.ui.end_time.setDisabled(True)
+        else:
+            self.ui.end_time.setEnabled(True)
+
         arguments = sys.argv[1:]
         options = getopt.getopt(arguments, 's:e:', longopts=['start=', 'end='])
         if options[0]:
@@ -115,22 +133,14 @@ class lunch_break(QtGui.QWidget):
                 elif opt in ('-e', '--end'):
                     end_time = QtCore.QTime.fromString(arg)
 
-        self.ui = tll.Ui_lunch_form()
-        self.ui.setupUi(self)
-        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
-        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
-        self.setWindowTitle('The Lunch Line v%s' % __version__)
-
         self.ui.lunch_message.setText('Hey %s! Were you at lunch at the following times?' % user['name'].split(' ')[0])
 
         self.ui.ok_btn.clicked.connect(self.take_lunch)
         self.ui.skip_btn.clicked.connect(self.skip_lunch)
         if start_time:
             self.ui.start_time.setTime(start_time)
-            self.ui.start_time.setDisabled(True)
         if end_time:
             self.ui.end_time.setTime(end_time)
-            self.ui.end_time.setDisabled(True)
 
     def take_lunch(self, message=None):
         self.signals.yes.emit(message)
