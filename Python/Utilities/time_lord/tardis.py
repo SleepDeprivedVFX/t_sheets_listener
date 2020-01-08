@@ -551,7 +551,7 @@ class tardis_events:
             print('%s is not clocked in.  Opening the Time Lord!' % user['name'])
             self.set_timer = None
             sod_launch_path = os.path.join(path, 'time_lord.py')
-            if debug == 'True' or debug == 'true' or debug:
+            if debug == 'True' or debug == 'true' or debug == True:
                 process = 'python.exe'
             else:
                 process = 'pythonw.exe'
@@ -571,7 +571,7 @@ class tardis_events:
         if not user_clocked_in:
             print('%s is not clocked in.  Opening the Time Lord!' % user['name'])
             sod_launch_path = os.path.join(path, 'time_lord.py')
-            if debug == 'True' or debug == 'true' or debug:
+            if debug == 'True' or debug == 'true' or debug == True:
                 process = 'python.exe'
             else:
                 process = 'pythonw.exe'
