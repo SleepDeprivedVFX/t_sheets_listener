@@ -569,10 +569,16 @@ class continuum(object):
                 get_lunch = self.get_todays_lunch(user=user, lunch_id=lunch_id, lunch_proj_id=lunch_proj_id)
             if get_lunch:
                 self.logger.debug('lunch_returns: %s' % get_lunch)
+                today = datetime.datetime.now().date()
+                for lunch in get_lunch:
+                    start_date = lunch['sg_task_start'].date()
+                    index = get_lunch.index(lunch)
+                    if start_date != today:
+                        get_lunch.pop(index)
                 return get_lunch
             else:
                 self.logger.info('No lunch for you!')
-                return False
+                return []
 
     def create_lunch_break(self, user=None, lunch_id=None, task_id=None):
         if user:
