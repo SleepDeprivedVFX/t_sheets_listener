@@ -283,6 +283,15 @@ class scope(QtGui.QWidget):
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         self.setWindowTitle("Time Lord Scope v%s" % __version__)
 
+        self.settings = QtCore.QSettings(__author__, 'TimeScope')
+        self.stay_on_top = self.settings.value('stayontop', '.')
+        self.position = self.settings.value('geometry', '')
+        self.restoreGeometry(self.position)
+
+        if self.stay_on_top == 'true' or self.stay_on_top == True:
+            self.ui.stay_on_top.setChecked(True)
+            self.window_state()
+
         self.ui.slave_list.setStyleSheet("QHeaderView::section{\n"
                                           "    \n"
                                           "    background-color: rgb(97, 97, 97);\n"
@@ -473,6 +482,8 @@ class scope(QtGui.QWidget):
     # UI Events - Close, Update Saved Settings, Update UI Data
     # ----------------------------------------------------------------------------------------------------------------
     def closeEvent(self, *args, **kwargs):
+        self.settings.setValue('stayontop', self.ui.stay_on_top.isChecked())
+        self.settings.setValue('geometry', self.saveGeometry())
         if self.scope_engine.isRunning():
             self.scope_engine.kill_it = True
         self.scope_engine.kill_it = True
@@ -481,6 +492,9 @@ class scope(QtGui.QWidget):
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
+    app.setOrganizationName('AdamBenson')
+    app.setOrganizationDomain('adamdbenson.com')
+    app.setApplicationName('TimeScope')
     o = scope()
     o.show()
     sys.exit(app.exec_())

@@ -11,7 +11,7 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.3'
+__version__ = '0.4.4'
 
 import datetime
 import logging
@@ -548,7 +548,8 @@ class continuum(object):
                 {
                     "filter_operator": "any",
                     "filters": [
-                        ['sg_task_start', 'in_calendar_day', 0]
+                        ['sg_task_start', 'in_calendar_day', 0],
+                        ['sg_task_start', 'in_calendar_day', -1]
                     ]
                 }
             ]

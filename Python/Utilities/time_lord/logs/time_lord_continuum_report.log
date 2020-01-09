@@ -1,160 +1,71 @@
-2019-12-16 10:48:54,502 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 10:49:00,585 - time_lord_continuum | INFO : 257 - Timesheet updated.
-2019-12-16 10:49:00,683 - time_lord_continuum | ERROR : 603 - Bad connection.  Trying again...
-2019-12-16 10:49:02,875 - time_lord_continuum | ERROR : 223 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-16 10:49:10,184 - time_lord_continuum | ERROR : 436 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 10:49:20,096 - time_lord_continuum | ERROR : 223 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-16 10:49:21,471 - time_lord_continuum | ERROR : 436 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 10:51:04,252 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 10:51:10,039 - time_lord_continuum | ERROR : 603 - Bad connection.  Trying again...
-2019-12-16 10:51:20,121 - time_lord_continuum | ERROR : 223 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-16 10:51:21,460 - time_lord_continuum | ERROR : 436 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 10:57:04,078 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 10:58:30,095 - time_lord_continuum | ERROR : 223 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-16 11:48:06,990 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 11:48:20,029 - time_lord_continuum | ERROR : 223 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-16 11:49:00,099 - time_lord_continuum | ERROR : 223 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-16 12:33:40,648 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 12:44:31,154 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 12:44:42,186 - time_lord_continuum | INFO : 281 - Timesheet updated.
-2019-12-16 12:44:54,201 - time_lord_continuum | ERROR : 597 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
-2019-12-16 12:44:55,539 - time_lord_continuum | ERROR : 460 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 12:45:48,977 - time_lord_continuum | INFO : 344 - Time Capsule saved!
-2019-12-16 12:45:55,730 - time_lord_continuum | ERROR : 516 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-16 13:03:32,789 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 13:03:42,434 - time_lord_continuum | INFO : 281 - Timesheet updated.
-2019-12-16 13:03:43,441 - time_lord_continuum | INFO : 344 - Time Capsule saved!
-2019-12-16 13:03:50,213 - time_lord_continuum | ERROR : 460 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 17:00:02,601 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 17:41:17,075 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 17:47:44,242 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 17:47:51,894 - time_lord_continuum | INFO : 282 - Timesheet updated.
-2019-12-16 17:47:52,476 - time_lord_continuum | ERROR : 669 - Couldn't get emtpies. Connection failure: 'NoneType' object has no attribute 'connections'
-2019-12-16 17:48:00,348 - time_lord_continuum | ERROR : 628 - Bad connection.  Trying again...
-2019-12-16 17:49:11,644 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 17:49:20,316 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 17:49:21,618 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-16 17:49:26,032 - time_lord_continuum | INFO : 345 - Time Capsule saved!
-2019-12-16 17:49:30,184 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 18:11:17,417 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 18:15:00,186 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 18:15:00,434 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-16 18:15:10,198 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 18:15:10,523 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-16 18:16:20,180 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 18:16:59,280 - time_lord_continuum | INFO : 345 - Time Capsule saved!
-2019-12-16 18:17:00,178 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-16 18:27:38,187 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 18:50:00,309 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 18:50:09,480 - time_lord_continuum | INFO : 282 - Timesheet updated.
-2019-12-16 18:53:11,266 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-16 18:53:20,035 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-16 19:05:01,780 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-16 19:25:00,303 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-17 10:41:46,453 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-17 10:41:53,663 - time_lord_continuum | INFO : 282 - Timesheet updated.
-2019-12-17 10:41:54,303 - time_lord_continuum | ERROR : 669 - Couldn't get emtpies. Connection failure: 'NoneType' object has no attribute 'connections'
-2019-12-17 10:54:05,293 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-17 10:54:10,342 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-17 12:06:15,753 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-17 12:29:38,532 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-17 12:30:10,000 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-17 12:33:31,969 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-17 12:34:30,220 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-17 12:34:40,109 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-17 12:34:40,490 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-17 12:45:31,994 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-17 15:36:00,184 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-17 15:36:00,519 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-17 15:44:20,766 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
-2019-12-17 16:10:40,203 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-17 18:49:00,180 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-17 18:49:00,513 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 08:01:06,813 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 08:01:20,039 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:02:50,025 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:02:51,355 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:04:40,243 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:07:20,036 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:08:30,015 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:08:31,336 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:10:20,094 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:11:59,986 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:13:20,371 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 08:17:30,345 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 08:26:50,042 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:28:00,334 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 08:30:00,052 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:32:00,318 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 08:34:00,049 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:38:39,987 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:44:40,355 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 08:48:30,332 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 08:50:00,112 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:51:00,036 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:58:30,095 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:58:31,467 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:58:40,098 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 08:58:41,427 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:01:40,002 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:02:50,019 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:06:00,032 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:07:20,114 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:07:20,471 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:11:20,328 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:13:19,996 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:22:10,055 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:22:11,421 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:25:10,342 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:26:10,418 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:27:20,046 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:32:10,335 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:35:30,065 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:37:39,996 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:38:20,023 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:38:20,388 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:39:00,213 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:39:01,589 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:41:20,101 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:41:50,421 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:43:30,354 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:43:40,200 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:46:30,101 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:46:31,447 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:47:20,124 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:48:40,038 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:49:10,062 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:50:40,115 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:50:41,490 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:51:50,211 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:52:10,345 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:53:10,045 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:54:19,996 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:54:20,355 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 09:55:00,108 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:55:01,447 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 09:55:10,079 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 10:00:30,134 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 10:00:30,605 - time_lord_continuum | ERROR : 517 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 10:00:40,256 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 10:03:20,184 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 10:06:20,013 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
-2019-12-18 10:08:51,051 - time_lord_continuum | INFO : 345 - Time Capsule saved!
-2019-12-18 10:08:51,075 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 10:09:00,223 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 10:51:02,772 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 10:53:30,216 - time_lord_continuum | ERROR : 461 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 11:55:52,250 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 15:31:14,178 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 15:32:32,572 - time_lord_continuum | INFO : 284 - Timesheet updated.
-2019-12-18 15:32:34,016 - time_lord_continuum | INFO : 347 - Time Capsule saved!
-2019-12-18 16:34:54,039 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 16:45:42,763 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 16:45:50,775 - time_lord_continuum | INFO : 347 - Time Capsule saved!
-2019-12-18 16:46:00,193 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
-2019-12-18 16:46:00,529 - time_lord_continuum | ERROR : 519 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
-2019-12-18 19:19:50,269 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 19:20:57,552 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 19:21:28,209 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-18 19:21:43,118 - time_lord_continuum | INFO : 67 - Continuum Activated!
-2019-12-19 14:53:21,957 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 11:36:08,767 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 11:36:49,900 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 12:01:12,835 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 12:06:38,026 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 12:07:48,321 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 12:08:46,299 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 12:09:05,292 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 12:44:28,552 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 12:52:44,499 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 12:53:57,430 - time_lord_continuum | INFO : 284 - Timesheet updated.
+2020-01-06 12:56:06,701 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+2020-01-06 12:56:10,009 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2020-01-06 14:07:23,239 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 14:34:07,630 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 14:34:24,055 - time_lord_continuum | INFO : 284 - Timesheet updated.
+2020-01-06 14:34:24,885 - time_lord_continuum | INFO : 347 - Time Capsule saved!
+2020-01-06 14:34:30,213 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2020-01-06 14:34:39,118 - time_lord_continuum | ERROR : 519 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2020-01-06 15:43:14,966 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 19:22:00,489 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-06 19:30:46,795 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-07 14:22:27,167 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-07 17:48:15,062 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 15:32:38,933 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 15:40:00,430 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 15:43:30,190 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 15:43:47,065 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 15:53:49,977 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 15:54:25,582 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 15:55:09,263 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 16:21:23,648 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 16:21:47,408 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 16:23:12,720 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 16:49:37,028 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 16:49:47,529 - time_lord_continuum | INFO : 283 - Successfully clocked out. {'duration': 180, 'sg_task_end': '2020-01-09 00:49:47 UTC', 'type': 'TimeLog', 'id': 4547}
+2020-01-08 16:49:47,529 - time_lord_continuum | INFO : 284 - Timesheet updated.
+2020-01-08 16:49:47,734 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2020-01-08 16:49:48,463 - time_lord_continuum | INFO : 347 - Time Capsule saved!
+2020-01-08 16:49:56,723 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+2020-01-08 16:50:00,028 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2020-01-08 16:50:19,677 - time_lord_continuum | INFO : 283 - Successfully clocked out. {'duration': 0, 'sg_task_end': '2020-01-09 00:50:19 UTC', 'type': 'TimeLog', 'id': 4559}
+2020-01-08 16:50:19,677 - time_lord_continuum | INFO : 284 - Timesheet updated.
+2020-01-08 16:50:19,947 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2020-01-08 16:50:26,913 - time_lord_continuum | INFO : 347 - Time Capsule saved!
+2020-01-08 16:51:50,092 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2020-01-08 16:52:00,305 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2020-01-08 16:52:16,137 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 
+2020-01-08 16:52:45,069 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 16:58:09,578 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 16:58:18,203 - time_lord_continuum | INFO : 283 - Successfully clocked out. {'duration': 7, 'sg_task_end': '2020-01-09 00:58:18 UTC', 'type': 'TimeLog', 'id': 4560}
+2020-01-08 16:58:18,203 - time_lord_continuum | INFO : 284 - Timesheet updated.
+2020-01-08 16:58:28,377 - time_lord_continuum | INFO : 347 - Time Capsule saved!
+2020-01-08 16:58:33,290 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2020-01-08 16:58:33,290 - time_lord_continuum | ERROR : 663 - Bad connection.  Trying again...
+2020-01-08 16:58:39,601 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2020-01-08 16:58:40,213 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2020-01-08 17:01:22,523 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 17:01:30,095 - time_lord_continuum | ERROR : 286 - Failed to connect.  Trying again... 'NoneType' object has no attribute 'connections'
+2020-01-08 17:01:30,385 - time_lord_continuum | INFO : 283 - Successfully clocked out. {'duration': 3, 'sg_task_end': '2020-01-09 01:01:30 UTC', 'type': 'TimeLog', 'id': 4561}
+2020-01-08 17:01:30,387 - time_lord_continuum | INFO : 284 - Timesheet updated.
+2020-01-08 17:01:33,526 - time_lord_continuum | ERROR : 663 - Bad connection.  Trying again...
+2020-01-08 17:01:36,375 - time_lord_continuum | INFO : 347 - Time Capsule saved!
+2020-01-08 17:01:39,683 - time_lord_continuum | ERROR : 519 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1864)
+2020-01-08 17:01:53,345 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2020-01-08 17:03:57,180 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-08 17:04:09,724 - time_lord_continuum | INFO : 283 - Successfully clocked out. {'duration': 2, 'sg_task_end': '2020-01-09 01:04:09 UTC', 'type': 'TimeLog', 'id': 4562}
+2020-01-08 17:04:09,724 - time_lord_continuum | INFO : 284 - Timesheet updated.
+2020-01-08 17:04:10,042 - time_lord_continuum | ERROR : 519 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2020-01-08 17:04:17,065 - time_lord_continuum | INFO : 347 - Time Capsule saved!
+2020-01-08 17:04:20,207 - time_lord_continuum | ERROR : 463 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2020-01-08 17:04:30,030 - time_lord_continuum | ERROR : 224 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'

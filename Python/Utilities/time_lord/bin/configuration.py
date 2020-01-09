@@ -3,7 +3,7 @@ This will basically just streamline the configuration and cleanup the main code 
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.2'
+__version__ = '0.4.4'
 
 import ConfigParser
 import sys
@@ -32,7 +32,9 @@ def get_configuration():
     configuration.read(config_path)
 
     config = {}
+
     # Parse out the configuration to local variables
+
     # Shotgun
     config['sg_url'] = configuration.get('Shotgun', 'sg_url')
     config['sg_key'] = configuration.get('Shotgun', 'sg_key')
@@ -46,6 +48,7 @@ def get_configuration():
     config['break'] = configuration.get('Shotgun', 'Break')
     config['ot_approved_proj'] = configuration.get('Shotgun', 'ot_approved_proj')
     config['ot_approved_entity'] = configuration.get('Shotgun', 'ot_approved_entity')
+    config['permissions'] = configuration.get('Shotgun', 'permissions').split(',')
 
     # Time Lord
     config['regular_days'] = configuration.get('Time Lord', 'regular_days').split(',')

@@ -9,7 +9,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.3'
+__version__ = '0.4.4'
 
 import os
 import sys
@@ -607,8 +607,8 @@ class tardis(object):
         self.payroll = payroll
         self.scope = scope
 
-        permissions = user['permission_rule_set']['name']
-        if permissions == 'Admin' or permissions == 'Coordinator':
+        permission = user['permission_rule_set']['name']
+        if permission in config['permissions']:
             menu_options = menu_options + (('Run Payroll', None, self.payroll),
                                            ('Time Scope', None, self.scope), )
             # The "Quit" option can be made an admin feature by simple indenting this here.
