@@ -599,6 +599,8 @@ class tardis(object):
                  window_class_name=None,
                  payroll=None,
                  scope=None,
+                 file_lister=None,
+                 image_collector=None,
                  all_sessions=False, ):
 
         self.icon = icon
@@ -606,13 +608,20 @@ class tardis(object):
         self.on_quit = on_quit
         self.payroll = payroll
         self.scope = scope
+        self.file_lister = file_lister
+        self.image_collector = image_collector
 
         permission = user['permission_rule_set']['name']
         if permission in config['permissions']:
-            menu_options = menu_options + (('Run Payroll', None, self.payroll),
-                                           ('Time Scope', None, self.scope), )
             # The "Quit" option can be made an admin feature by simple indenting this here.
-            menu_options = menu_options + (('Quit', None, self.QUIT),)
+            menu_options = menu_options + (('Admin', None, (('Payroll', None, self.payroll),
+                                                            ('Time Scope', None, self.scope),
+                                                            ('File Lister', None, self.file_lister),
+                                                            ('Image Collector', None, self.image_collector),
+                                                            ('Quit', None, self.QUIT),
+                                                            )
+                                            ), )
+            # menu_options = menu_options + (('Quit', None, self.QUIT),)
 
         menu_options = menu_options + (('Restart', None, self.RESTART),)
 
@@ -875,18 +884,34 @@ if __name__ == '__main__':
         scope_path = os.path.join(path, 'tl_scope.py')
         subprocess.Popen('pythonw.exe %s' % scope_path)
 
+    def file_lister(tardis):
+        # One of the tools menus that adds options for the artists
+        # The tools will have hard-coded paths set here for convenience.
+        print('Launching the file lister')
+        logger.info('%s has launched the File Lister Tool.' % user['name'])
+        path = r'\\skynet\Tools\scripts\python\utilities\fileLister\file_lister.py'
+        subprocess.Popen('pythonw.exe %s' % path)
+
+    def image_collector(tardis):
+        # One of the tools menus that adds options for the artists
+        # The tools will have hard-coded paths set here for convenience.
+        print('Launching the file lister')
+        logger.info('%s has launched the File Lister Tool.' % user['name'])
+        path = r'\\skynet\Tools\scripts\python\utilities\image_collector\image_collector.py'
+        subprocess.Popen('pythonw.exe %s' % path)
+
+
     # Start the Time Lord for the first time on Tardis Startup
     path = sys.path[0]
     time_lord_path = os.path.join(path, 'time_lord.py')
-    subprocess.Popen('pythonw.exe %s' % time_lord_path)
+    # subprocess.Popen('pythonw.exe %s' % time_lord_path)
 
     # Prep the menu and start the Tardis
     menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
                     ('Lunch Break', icons.next(), lunch),
                     ('Overtime Tool', icons.next(), overtime),
                     )
-
     tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll, scope=scope,
-           all_sessions=True)
+           file_lister=file_lister, image_collector=image_collector, all_sessions=True)
 
 
