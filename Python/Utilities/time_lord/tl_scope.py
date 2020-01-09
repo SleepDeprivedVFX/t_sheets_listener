@@ -122,14 +122,20 @@ class scope_engine(QtCore.QThread):
                     # Sub timer loop for getting lunch status.
                     if second % 60 == 0:
                         # Get the lunch break and add it to the mix
-                        lunch = tl_time.get_todays_lunch(user={'id': u}, lunch_id=lunch_task_id,
-                                                         lunch_proj_id=lunch_proj_id)
-                        if lunch:
-                            # Do some lunch shit
-                            pass
-                        else:
-                            # Print a series of 00:00:00
-                            pass
+                        lunch_time = tl_time.get_todays_lunch(user={'id': u}, lunch_id=lunch_task_id,
+                                                             lunch_proj_id=lunch_proj_id)
+                        if lunch_time:
+                            l_start = lunch_time[0]['sg_task_start']
+                            l_end = lunch_time[0]['sg_task_end']
+                            if not l_end:
+                                ls_date = l_start.date()
+                                ls_hour = l_start.hour
+                                ls_min = l_start.minute
+                                ls_sec = l_start.second
+                                l_start = parser.parse('%s %2d:%2d:%2d' % (ls_date, ls_hour, ls_min, ls_sec))
+                                l_end = datetime.now()
+                            lunch_duration = l_end - l_start
+                            lunch = '%s' % lunch_duration
 
                     duration = datetime.now() - then
                     split_duration = str(duration).split(':')
@@ -138,7 +144,8 @@ class scope_engine(QtCore.QThread):
                     update = {
                         'uid': u,
                         'row': d['row_id'],
-                        'duration': duration
+                        'duration': duration,
+                        'lunch_time': lunch
                     }
                     self.scope_signals.user_running_time.emit(update)
 
@@ -202,6 +209,23 @@ class scope_engine(QtCore.QThread):
                 task_id = task['id']
                 start_time = timesheet['sg_task_start']
 
+                lunch_time = tl_time.get_todays_lunch(user={'id': userid}, lunch_id=lunch_task_id,
+                                                      lunch_proj_id=lunch_proj_id)
+                if lunch_time:
+                    l_start = lunch_time[0]['sg_task_start']
+                    l_end = lunch_time[0]['sg_task_end']
+                    if not l_end:
+                        ls_date = l_start.date()
+                        ls_hour = l_start.hour
+                        ls_min = l_start.minute
+                        ls_sec = l_start.second
+                        l_start = parser.parse('%s %2d:%2d:%2d' % (ls_date, ls_hour, ls_min, ls_sec))
+                        l_end = datetime.now()
+                    lunch_duration = l_end - l_start
+                    lunch_time = '%s' % lunch_duration
+                else:
+                    lunch_time = '00:00:00'
+
                 current_data = {
                     'name': username,
                     'project': proj_name,
@@ -210,26 +234,11 @@ class scope_engine(QtCore.QThread):
                     'task': task_name,
                     'task_id': task_id,
                     'start_time': start_time,
-                    'row_id': None
+                    'row_id': None,
+                    'lunch_time': lunch_time
                 }
 
                 if userid not in self.scope.keys():
-                    lunch_time = tl_time.get_todays_lunch(user={'id': userid}, lunch_id=lunch_task_id,
-                                                          lunch_proj_id=lunch_proj_id)
-                    if lunch_time:
-                        l_start = lunch_time[0]['sg_task_start']
-                        l_end = lunch_time[0]['sg_task_end']
-                        if not l_end:
-                            ls_date = l_start.date()
-                            ls_hour = l_start.hour
-                            ls_min = l_start.minute
-                            ls_sec = l_start.second
-                            l_start = parser.parse('%s %2d:%2d:%2d' % (ls_date, ls_hour, ls_min, ls_sec))
-                            l_end = datetime.now()
-                        lunch_duration = l_end - l_start
-                        lunch_time = '%s' % lunch_duration
-                    else:
-                        lunch_time = '00:00:00'
 
                     self.scope[userid] = {
                         'name': username,
@@ -307,11 +316,17 @@ class scope(QtGui.QWidget):
 
     def set_user_running_time(self, data):
         if data:
-            userid = data['uid']
-            row = data['row']
-            duration = data['duration']
-            logger.debug('set_user_running_time: uid: %s | row: %s' % (userid, row))
-            self.ui.slave_list.cellWidget(row, 3).setText(str(duration))
+            try:
+                userid = data['uid']
+                row = data['row']
+                duration = data['duration']
+                lunch = data['lunch_time']
+                logger.debug('set_user_running_time: uid: %s | row: %s' % (userid, row))
+                self.ui.slave_list.cellWidget(row, 3).setText(str(duration))
+                self.ui.slave_list.cellWidget(row, 4).setText(str(lunch))
+                self.scope_viewer[userid]['lunch_time'] = lunch
+            except (KeyError, AttributeError) as e:
+                logger.error('There was an error updating the Time Scope! %s' % e)
 
     def send_viewer_list(self, view_list=None):
         if view_list:
@@ -436,12 +451,15 @@ class scope(QtGui.QWidget):
         '''
         row_count = self.ui.slave_list.rowCount()
         for i in range(0, row_count):
-            uid = int(self.ui.slave_list.cellWidget(i, 0).toolTip())
-            u_row = int(self.scope_viewer[uid]['row_id'])
-            if u_row != i:
-                logger.debug('Row does not match.  Updating.')
-                logger.debug('UID: %s | Previous Row: %s | New row: %s' % (uid, u_row, i))
-                self.scope_viewer[uid]['row_id'] = i
+            try:
+                uid = int(self.ui.slave_list.cellWidget(i, 0).toolTip())
+                u_row = int(self.scope_viewer[uid]['row_id'])
+                if u_row != i:
+                    logger.debug('Row does not match.  Updating.')
+                    logger.debug('UID: %s | Previous Row: %s | New row: %s' % (uid, u_row, i))
+                    self.scope_viewer[uid]['row_id'] = i
+            except KeyError as e:
+                logger.error('Cannot find key: %s' % e)
         self.scope_engine.scope_viewer = self.scope_viewer
 
     def clock_out_user(self, uid=None):
