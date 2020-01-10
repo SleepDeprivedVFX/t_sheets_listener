@@ -21,7 +21,7 @@ from bin.companions import companions
 import bin.configuration
 import bin.shotgun_collect
 
-from ui import time_lord_lunch as tll
+from ui import time_lord_sheets as tls
 
 config = bin.configuration.get_configuration()
 
@@ -73,8 +73,33 @@ if lunch_task_id:
     lunch_task_id = int(lunch_task_id['id'])
 
 
+class sheet_signals(QtCore.QObject):
+    message = QtCore.Signal(str)
+
+
+class sheet_engine(QtCore.QThread):
+    def __init__(self):
+        QtCore.QThread.__init__(self)
+        self.kill_it = False
+
+
 class sheets(QtGui.QWidget):
-    pass
+    def __init__(self):
+        QtGui.QWidget.__init__(self)
+
+        self.ui = tls.Ui_TimeSheets()
+        self.ui.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.setWindowTitle('Time Lord Sheets v%s' % __version__)
+
+        # set the user name
+        self.ui.artist_name.setText(user['name'])
+
+        # Set the default start and end times
+        start_time = (datetime.now() - timedelta(weeks=2)).date()
+        end_time = datetime.now().date()
+        self.ui.start_date.setDate(start_time)
+        self.ui.end_date.setDate(end_time)
 
 
 if __name__ == '__main__':

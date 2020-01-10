@@ -887,6 +887,13 @@ if __name__ == '__main__':
         subprocess.Popen('pythonw.exe %s' % time_lord_path)
 
 
+    def sheets(tardis):
+        logger.info('Sheets.')
+        path = sys.path[0]
+        sheets_path = os.path.join(path, 'tl_sheets.py')
+        subprocess.Popen('pythonw.exe %s' % sheets_path)
+
+
     def overtime(tardis):
         logger.info("overtime.")
         path = sys.path[0]
@@ -968,6 +975,7 @@ if __name__ == '__main__':
 
     # Prep the menu and start the Tardis
     menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
+                    ('Time Sheets', icons.next(), sheets),
                     ('Lunch Break', icons.next(), lunch),
                     ('Overtime Tool', icons.next(), overtime),
                     )
