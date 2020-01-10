@@ -199,7 +199,7 @@ def chronograph():
                 path = sys.path[0]
                 lunch_path = os.path.join(path, 'lunch.py')
                 get_lunch = subprocess.Popen('%s %s' % (process, lunch_path))
-                get_lunch.wait()
+                # get_lunch.wait()
                 time.sleep(1)
 
         if pos == query_mouse_position():
@@ -282,7 +282,7 @@ def chronograph():
                         logger.debug('eod_launch command: %s' % eod_launch)
                         eod_launch.wait()
                         user_clocked_in = False
-                        time.sleep(3)
+                        time.sleep(2)
                         if tl_time.is_user_clocked_in(user=user):
                             user_ignored = True
                 elif user_ignored and datetime.now().time() < eod and set_timer < trigger:
@@ -323,7 +323,7 @@ def chronograph():
                         process = 'pythonw.exe'
                     get_lunch = subprocess.Popen('%s %s -s "%s" -e "%s"' % (process, lunch_launch_path,
                                                                             lunch_start.time(), lunch_end.time()))
-                    get_lunch.wait()
+                    # get_lunch.wait()
                     time.sleep(2)
             elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
                     and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
@@ -350,7 +350,7 @@ def chronograph():
                     process = 'python.exe'
                 else:
                     process = 'pythonw.exe'
-                subprocess.call('%s %s' % (process, sod_launch_path))
+                subprocess.Popen('%s %s' % (process, sod_launch_path))
 
             # -----------------------------------------------------------------------------------------
             # End of Day
@@ -420,7 +420,7 @@ def chronograph():
                         process = 'python.exe'
                     else:
                         process = 'pythonw.exe'
-                    subprocess.call('%s %s' % (process, ot_launch_path))
+                    subprocess.Popen('%s %s' % (process, ot_launch_path))
                 elif ot_check == 1 or ot_check == 0 and daily_total > float(config['ot_hours']) and user['sg_hourly']:
                     # Check OT Approval statuses
                     latest_timesheet = tl_time.get_latest_timesheet(user=user)
@@ -464,7 +464,7 @@ def chronograph():
                         process = 'python.exe'
                     else:
                         process = 'pythonw.exe'
-                    subprocess.call('%s %s' % (process, ot_launch_path))
+                    subprocess.Popen('%s %s' % (process, ot_launch_path))
                 elif datetime.now().time() < sod:
                     ot_check = 0
                     logger.debug('ot_check reset')
@@ -578,7 +578,7 @@ class tardis_events:
                 process = 'python.exe'
             else:
                 process = 'pythonw.exe'
-            subprocess.call('%s %s' % (process, sod_launch_path))
+            subprocess.Popen('%s %s' % (process, sod_launch_path))
 
     def SessionLogoff(self, event, session):
         print('Session Log Off Detected. %s' % datetime.now())
@@ -598,7 +598,7 @@ class tardis_events:
                 process = 'python.exe'
             else:
                 process = 'pythonw.exe'
-            subprocess.call('%s %s' % (process, sod_launch_path))
+            subprocess.Popen('%s %s' % (process, sod_launch_path))
 
 
 class tardis(object):
