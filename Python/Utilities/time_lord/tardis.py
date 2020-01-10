@@ -927,7 +927,7 @@ if __name__ == '__main__':
     # Start the Time Lord for the first time on Tardis Startup
     path = sys.path[0]
     time_lord_path = os.path.join(path, 'time_lord.py')
-    # subprocess.Popen('pythonw.exe %s' % time_lord_path)
+    subprocess.Popen('pythonw.exe %s' % time_lord_path)
 
     # Prep the menu and start the Tardis
     menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
