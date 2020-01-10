@@ -14,6 +14,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime, timedelta
 from dateutil import parser
+import time
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
@@ -75,17 +76,39 @@ if lunch_task_id:
 
 class sheet_signals(QtCore.QObject):
     message = QtCore.Signal(str)
+    update = QtCore.Signal(list)
+    req_update = QtCore.Signal(dict)
 
 
 class sheet_engine(QtCore.QThread):
     def __init__(self):
         QtCore.QThread.__init__(self)
         self.kill_it = False
+        self.signals = sheet_signals()
+
+        # Signal connections
+        self.signals.req_update.connect(self.prep_update)
+
+    def prep_update(self, data):
+        if data:
+            start_date = data['start_date']
+            end_date = data['end_date']
+            whose_timesheet = data['whose_timesheet']
+            sort_by = data['sort_by']
+
+            if sort_by:
+                # Sort by Date is True
+                pass
+            else:
+                # Sort by Person is True
+                pass
 
 
 class sheets(QtGui.QWidget):
     def __init__(self):
         QtGui.QWidget.__init__(self)
+
+        self.engine = sheet_engine()
 
         self.ui = tls.Ui_TimeSheets()
         self.ui.setupUi(self)
@@ -95,11 +118,54 @@ class sheets(QtGui.QWidget):
         # set the user name
         self.ui.artist_name.setText(user['name'])
 
+        # Set Whose_Timesheet
+        self.ui.whose_timesheets.clear()
+        self.ui.whose_timesheets.addItem('My Timesheets', user['id'])
+        if user['permission_rule_set']['name'] in config['permissions']:
+            self.ui.whose_timesheets.addItem('All Artists', 0)
+            get_all_artists = users.get_all_users()
+            for artist in get_all_artists:
+                self.ui.whose_timesheets.addItem(artist['name'], artist['id'])
+
         # Set the default start and end times
         start_time = (datetime.now() - timedelta(weeks=2)).date()
         end_time = datetime.now().date()
         self.ui.start_date.setDate(start_time)
         self.ui.end_date.setDate(end_time)
+
+        # Replace Saved settings
+        self.settings = QtCore.QSettings(__author__, 'TimeSheets')
+        self.saved_window_position = self.settings.value('geometry', '')
+        self.saved_whose_timesheet = self.settings.value('whose_timesheet', '.')
+        self.saved_sort_by = self.settings.value('sort_by', '.')
+        self.restoreGeometry(self.saved_window_position)
+
+        # Setup connections.
+        self.engine.signals.update.connect(self.update_list)
+
+        # Emit the initial data to start the first load of the data.  Based on the initial settings.
+        whose_timesheet = self.ui.whose_timesheets.currentText()
+        sort_by = self.ui.date_rdo.isChecked()
+        start_date = self.ui.start_date.date()
+        end_date = self.ui.end_date.date()
+        updata = {
+            'whose_timesheet': whose_timesheet,
+            'sort_by': sort_by,
+            'start_date': start_date,
+            'end_date': end_date
+        }
+        self.engine.signals.req_update.emit(updata)
+
+    def update_list(self, data=None):
+        if data:
+            pass
+
+    def update_saved_settings(self):
+        self.settings.setValue('geometry', self.saveGeometry())
+
+    def closeEvent(self, *args, **kwargs):
+        self.update_saved_settings()
+        time.sleep(1)
 
 
 if __name__ == '__main__':
@@ -107,7 +173,13 @@ if __name__ == '__main__':
     app.setOrganizationName('AdamBenson')
     app.setOrganizationDomain('adamdbenson.com')
     app.setApplicationName('Sheets')
+    splash_pix = QtGui.QPixmap('ui/resources/Time_Lord_Logo.png')
+    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash.setMask(splash_pix.mask())
+    splash.show()
+    app.processEvents()
     o = sheets()
     o.show()
+    splash.finish(o)
     sys.exit(app.exec_())
 

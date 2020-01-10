@@ -105,6 +105,48 @@ QTabBar::tab:!selected {
           </spacer>
          </item>
          <item>
+          <widget class="QComboBox" name="whose_timesheets">
+           <item>
+            <property name="text">
+             <string>My Timesheets</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="sort_by">
+           <property name="title">
+            <string>Sort By</string>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QRadioButton" name="date_rdo">
+                <property name="text">
+                 <string>Date</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="person_rdo">
+                <property name="text">
+                 <string>Person</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
           <widget class="QLabel" name="start_date_label">
            <property name="text">
             <string>Start Date</string>

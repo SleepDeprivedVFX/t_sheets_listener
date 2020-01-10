@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_sheets.ui'
 #
-# Created: Thu Jan 09 19:07:36 2020
+# Created: Fri Jan 10 12:26:36 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -74,6 +74,26 @@ class Ui_TimeSheets(object):
         self.horizontalLayout.addWidget(self.artist_name)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
+        self.whose_timesheets = QtGui.QComboBox(self.time_sheets_tab)
+        self.whose_timesheets.setObjectName("whose_timesheets")
+        self.whose_timesheets.addItem("")
+        self.horizontalLayout.addWidget(self.whose_timesheets)
+        self.sort_by = QtGui.QGroupBox(self.time_sheets_tab)
+        self.sort_by.setFlat(True)
+        self.sort_by.setObjectName("sort_by")
+        self.horizontalLayout_3 = QtGui.QHBoxLayout(self.sort_by)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.date_rdo = QtGui.QRadioButton(self.sort_by)
+        self.date_rdo.setChecked(True)
+        self.date_rdo.setObjectName("date_rdo")
+        self.horizontalLayout_2.addWidget(self.date_rdo)
+        self.person_rdo = QtGui.QRadioButton(self.sort_by)
+        self.person_rdo.setObjectName("person_rdo")
+        self.horizontalLayout_2.addWidget(self.person_rdo)
+        self.horizontalLayout_3.addLayout(self.horizontalLayout_2)
+        self.horizontalLayout.addWidget(self.sort_by)
         self.start_date_label = QtGui.QLabel(self.time_sheets_tab)
         self.start_date_label.setObjectName("start_date_label")
         self.horizontalLayout.addWidget(self.start_date_label)
@@ -116,6 +136,10 @@ class Ui_TimeSheets(object):
         TimeSheets.setWindowTitle(QtGui.QApplication.translate("TimeSheets", "Time Sheets", None, QtGui.QApplication.UnicodeUTF8))
         self.title.setText(QtGui.QApplication.translate("TimeSheets", "Time Lord Sheets", None, QtGui.QApplication.UnicodeUTF8))
         self.artist_name.setText(QtGui.QApplication.translate("TimeSheets", "Artist", None, QtGui.QApplication.UnicodeUTF8))
+        self.whose_timesheets.setItemText(0, QtGui.QApplication.translate("TimeSheets", "My Timesheets", None, QtGui.QApplication.UnicodeUTF8))
+        self.sort_by.setTitle(QtGui.QApplication.translate("TimeSheets", "Sort By", None, QtGui.QApplication.UnicodeUTF8))
+        self.date_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Date", None, QtGui.QApplication.UnicodeUTF8))
+        self.person_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Person", None, QtGui.QApplication.UnicodeUTF8))
         self.start_date_label.setText(QtGui.QApplication.translate("TimeSheets", "Start Date", None, QtGui.QApplication.UnicodeUTF8))
         self.end_date_label.setText(QtGui.QApplication.translate("TimeSheets", "End Date", None, QtGui.QApplication.UnicodeUTF8))
         self.update_btn.setText(QtGui.QApplication.translate("TimeSheets", "Update", None, QtGui.QApplication.UnicodeUTF8))
