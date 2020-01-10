@@ -9,7 +9,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.4.6'
 
 import os
 import sys
@@ -624,6 +624,9 @@ class tardis(object):
                  scope=None,
                  file_lister=None,
                  image_collector=None,
+                 ui_compiler=None,
+                 rollout_machine=None,
+                 gozer=None,
                  all_sessions=False, ):
 
         self.icon = icon
@@ -633,6 +636,9 @@ class tardis(object):
         self.scope = scope
         self.file_lister = file_lister
         self.image_collector = image_collector
+        self.ui_compiler = ui_compiler
+        self.rollout_machine = rollout_machine
+        self.gozer = gozer
 
         permission = user['permission_rule_set']['name']
         if permission in config['permissions']:
@@ -645,6 +651,15 @@ class tardis(object):
                                                             )
                                             ), )
             # menu_options = menu_options + (('Quit', None, self.QUIT),)
+
+        groups = user['groups']
+        # print filter(lambda g: g['name'] == config['development'], groups)
+        development = [g for g in groups if g['name'] == config['development']]
+        if development:
+            menu_options = menu_options + (('Dev', None, (('UI Compiler', None, self.ui_compiler),
+                                                          ('Rollout Machine', None, self.rollout_machine),
+                                                          ('Bull Gozer', None, self.gozer),
+                                                          )), )
 
         menu_options = menu_options + (('Restart', None, self.RESTART),)
 
@@ -907,6 +922,10 @@ if __name__ == '__main__':
         scope_path = os.path.join(path, 'tl_scope.py')
         subprocess.Popen('pythonw.exe %s' % scope_path)
 
+    # ----------------------------------------------------------------------------------------
+    # Start of the Studio Tools
+    # ----------------------------------------------------------------------------------------
+
     def file_lister(tardis):
         # One of the tools menus that adds options for the artists
         # The tools will have hard-coded paths set here for convenience.
@@ -923,6 +942,24 @@ if __name__ == '__main__':
         path = r'\\skynet\Tools\scripts\python\utilities\image_collector\image_collector.py'
         subprocess.Popen('pythonw.exe %s' % path)
 
+    def ui_compiler(tardis):
+        print('Launching the UI Compiler')
+        logger.info('%s has launched the UI Compiler.' % user['name'])
+        path = r'\\skynet\tools\scripts\python\utilities\PySide_UI_Converter\ui_converter.py'
+        subprocess.Popen('pythonw.exe %s' % path)
+
+    def rollout_machine(tardis):
+        print('Launching the Rollout Machine')
+        logger.info('%s has launched the Rollout Machine.' % user['name'])
+        path = r'\\skynet\tools\scripts\python\utilities\rolloutMachine\rolloutMachine.py'
+        subprocess.Popen('pythonw.exe %s' % path)
+
+    def gozer(tardis):
+        print('Launching Bull Gozer, The Destroyer of Files')
+        logger.info('%s has launched Bull Gozer.' % user['name'])
+        path = r'\\skynet\tools\scripts\python\utilities\BullGozer_TheDestroyer\bullgozer.py'
+        subprocess.Popen('pythonw.exe %s' % path)
+
 
     # Start the Time Lord for the first time on Tardis Startup
     path = sys.path[0]
@@ -935,6 +972,7 @@ if __name__ == '__main__':
                     ('Overtime Tool', icons.next(), overtime),
                     )
     tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll, scope=scope,
-           file_lister=file_lister, image_collector=image_collector, all_sessions=True)
+           file_lister=file_lister, image_collector=image_collector, ui_compiler=ui_compiler,
+           rollout_machine=rollout_machine, gozer=gozer, all_sessions=True)
 
 

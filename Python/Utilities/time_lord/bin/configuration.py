@@ -49,6 +49,7 @@ def get_configuration():
     config['ot_approved_proj'] = configuration.get('Shotgun', 'ot_approved_proj')
     config['ot_approved_entity'] = configuration.get('Shotgun', 'ot_approved_entity')
     config['permissions'] = configuration.get('Shotgun', 'permissions').split(',')
+    config['development'] = configuration.get('Shotgun', 'development')
 
     # Time Lord
     config['regular_days'] = configuration.get('Time Lord', 'regular_days').split(',')
