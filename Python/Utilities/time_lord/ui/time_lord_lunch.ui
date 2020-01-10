@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>561</width>
-    <height>145</height>
+    <width>557</width>
+    <height>170</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,11 +39,12 @@ border-width: 4px;</string>
     <widget class="QLabel" name="lunch_message">
      <property name="styleSheet">
       <string notr="true">background-color: rgb(250, 175, 24);
-font: 12pt &quot;Arial Rounded MT Bold&quot;;
-color:rgb(239, 30, 36);</string>
+font: 10pt &quot;Arial Rounded MT Bold&quot;;
+color:rgb(239, 30, 36);
+padding: 5px;</string>
      </property>
      <property name="text">
-      <string>Hey %s, were you at lunch at the following times?</string>
+      <string>Hey %s, The system detected you were gone to lunch between the following times.  Is this correct?</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -126,7 +127,7 @@ color:rgb(239, 30, 36);</string>
 color: rgb(250, 175, 24);</string>
        </property>
        <property name="text">
-        <string>I Skipped Lunch</string>
+        <string>No</string>
        </property>
       </widget>
      </item>
@@ -150,7 +151,7 @@ color: rgb(250, 175, 24);</string>
 color: rgb(250, 175, 24);</string>
        </property>
        <property name="text">
-        <string>I Took My Lunch</string>
+        <string>Yes! I Took My Lunch</string>
        </property>
       </widget>
      </item>
