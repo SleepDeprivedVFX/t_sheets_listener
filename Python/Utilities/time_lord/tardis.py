@@ -9,7 +9,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.4'
+__version__ = '0.4.5'
 
 import os
 import sys
@@ -94,7 +94,8 @@ logger.info('Communication system online.')
 # Set Lunch Constants.
 lunch_timer = int(config['lunch_minutes'])
 lunch_break = lunch_timer * 60
-lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']), task_name=config['lunch'])
+lunch_proj_id = int(config['admin_proj_id'])
+lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=config['lunch'])
 if lunch_task_id:
     lunch_task_id = lunch_task_id['id']
 lunch_timesheet = False
@@ -167,6 +168,8 @@ def chronograph():
     hour = datetime.now().hour
     hour = 2
 
+    global lunch_timesheet
+
     while True:
         pos = query_mouse_position()
         time.sleep(sleep)
@@ -178,6 +181,26 @@ def chronograph():
             do_cleanup()
             hour = datetime.now().hour
             logger.debug('Cleanup done!')
+
+        # Later in the day, check to see if the user took a lunch, and if not, prompt them to record one.
+        now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
+                                  datetime.now().time().second)
+        date = datetime.now().date()
+        later_date = parser.parse('%s %s:%s:%s' % (date, end_time.hour, end_time.minute, end_time.second))
+        later = str((later_date + timedelta(hours=1)).time())
+        if later == now:
+            lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
+                                                       lunch_proj_id=lunch_proj_id)
+            if not lunch_timesheet:
+                if debug == 'True' or debug == 'true' or debug == True:
+                    process = 'python.exe'
+                else:
+                    process = 'pythonw.exe'
+                path = sys.path[0]
+                lunch_path = os.path.join(path, 'lunch.py')
+                get_lunch = subprocess.Popen('%s %s' % (process, lunch_path))
+                get_lunch.wait()
+                time.sleep(1)
 
         if pos == query_mouse_position():
             # -------------------------------------------------------------------------------------------------------
@@ -208,7 +231,7 @@ def chronograph():
                     if not lunch_timesheet:
                         # If lunch_timesheet is false, check it again to make sure that it hasn't since been added.
                         lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
-                                                                   lunch_proj_id=int(config['admin_proj_id']))
+                                                                   lunch_proj_id=lunch_proj_id)
                         logger.debug('first pass: lunchtime: %s' % lunch_timesheet)
                     if not lunch_timesheet:
                         # If the lunch_timesheet is STILL false, THEN set the lunch start time

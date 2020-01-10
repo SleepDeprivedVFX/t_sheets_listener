@@ -11,7 +11,7 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.4'
+__version__ = '0.4.5'
 
 import datetime
 import logging
@@ -564,7 +564,7 @@ class continuum(object):
             ]
             try:
                 get_lunch = self.sg.find('TimeLog', filters, fields)
-            except AttributeError, e:
+            except AttributeError as e:
                 self.logger.error('Get Lunch failed.  Trying again.')
                 get_lunch = self.get_todays_lunch(user=user, lunch_id=lunch_id, lunch_proj_id=lunch_proj_id)
             if get_lunch:
@@ -575,10 +575,12 @@ class continuum(object):
                     index = get_lunch.index(lunch)
                     if start_date != today:
                         get_lunch.pop(index)
+                    if not get_lunch:
+                        get_lunch = False
                 return get_lunch
             else:
                 self.logger.info('No lunch for you!')
-                return []
+                return False
 
     def create_lunch_break(self, user=None, lunch_id=None, task_id=None):
         if user:

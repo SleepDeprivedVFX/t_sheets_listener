@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.4'
+__version__ = '0.4.5'
 
 import shotgun_api3 as sgapi
 import os
@@ -67,6 +67,10 @@ user = users.get_user_from_computer()
 # setup shotgun data connection
 sg_data = bin.shotgun_collect.sg_data(sg, config=config, sub='lunch')
 
+lunch_proj_id = int(config['admin_proj_id'])
+lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=config['lunch'])
+if lunch_task_id:
+    lunch_task_id = int(lunch_task_id['id'])
 
 # --------------------------------------------------------------------------------------------------
 # Signal Emitters
@@ -82,11 +86,34 @@ class tardis_signals(QtCore.QObject):
 
 # Check the system arguments and append current start and end times if they're missing.
 lock_times = True
+lunch_message = 'Hey %s!\nThe system detected you were at lunch during the times below. ' \
+                'Did you take your lunch?' % user['name'].split(' ')[0]
+skip_button = 'Not Now'
+ok_button = 'Yes! I took my lunch'
+lock_buttons = False
+
+# Get the current lunch status
+todays_lunch = tl_time.get_todays_lunch(user=user, lunch_id=int(lunch_task_id), lunch_proj_id=int(lunch_proj_id))
+
+# Check the incoming arguments and set ui variables
 if len(sys.argv) < 2:
-    start = (datetime.now() - timedelta(hours=1)).time()
-    end = datetime.now().time()
+    if todays_lunch:
+        start = todays_lunch[0]['sg_task_start'].time()
+        end = todays_lunch[0]['sg_task_end'].time()
+        lunch_message = 'You have already logged a lunch for today.  If you need to make changes, see one of the ' \
+                        'supervisors.'
+        skip_button = 'Close'
+        lock_times = True
+        lock_buttons = True
+    else:
+        start = (datetime.now() - timedelta(hours=1)).time()
+        end = datetime.now().time()
+        lunch_message = 'Hey %s\n. You have not clocked a lunch today! ' \
+                        'Please record your lunch now!' % user['name'].split(' ')[0]
+        skip_button = 'I skipped lunch.'
+        ok_button = 'Record my lunch!'
+        lock_times = False
     sys.argv += ['-s', str(start), '-e', str(end)]
-    lock_times = False
 
 
 class lunch_break(QtGui.QWidget):
@@ -123,11 +150,19 @@ class lunch_break(QtGui.QWidget):
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         self.setWindowTitle('The Lunch Line v%s' % __version__)
 
-        self.ui.lunch_message.setText('Hey %s! Were you at lunch at the following times?' % user['name'].split(' ')[0])
+        self.ui.lunch_message.setText(lunch_message)
+        self.ui.skip_btn.setText(skip_button)
 
         self.ui.ok_btn.clicked.connect(self.take_lunch)
         self.ui.skip_btn.clicked.connect(self.skip_lunch)
         permission = user['permission_rule_set']['name']
+
+        if lock_buttons:
+            self.ui.ok_btn.setText('Already Logged')
+            self.ui.ok_btn.setStyleSheet('background-color: rgb(85, 85, 127)')
+            self.ui.ok_btn.setDisabled(True)
+        else:
+            self.ui.ok_btn.setText(ok_button)
 
         if start_time:
             self.ui.start_time.setTime(start_time)
