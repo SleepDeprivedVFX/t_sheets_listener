@@ -934,14 +934,19 @@ class continuum(object):
         return total_duration
 
     def get_all_user_timesheets_by_date(self, user=None, date=None, order='desc'):
-        print 'tl_time get timesheets', date.date()
         if user and date:
-            calendar_day = 0 - (datetime.datetime.now() - date).days
+            calendar_day = 1 - (datetime.datetime.now() - date).days
             user_id = user['id']
 
             filters = [
                 ['user', 'is', {'type': 'HumanUser', 'id': user_id}],
-                ['sg_task_start', 'in_calendar_day', calendar_day],
+                {
+                    'filter_operator': 'any',
+                    'filters': [
+                        ['sg_task_start', 'in_calendar_day', calendar_day],
+                        ['sg_task_start', 'in_calendar_day', (calendar_day - 1)]
+                    ]
+                },
                 ['duration', 'greater_than', 0.0]
             ]
             fields = [
@@ -961,15 +966,10 @@ class continuum(object):
                                                                              {'field_name': 'id',
                                                                               'direction': order}])
                 if timesheets:
-                    print('~' * 120)
-                    print timesheets
                     for sheet in timesheets:
-                        if date.date() != sheet['sg_task_start'].date():
-                            print('Dates don\'t match: %s - %s' % (date.date(), sheet['sg_task_start'].date()))
+                        if str(date.date()) != (sheet['sg_task_start'].date()):
                             index = timesheets.index(sheet)
-                            print('Before: %s' % len(timesheets))
                             timesheets.pop(index)
-                            print('After: %s' % len(timesheets))
             except Exception as e:
                 self.logger.error('Get all user timesheets by date failed.')
                 timesheets = []
