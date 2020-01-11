@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1148</width>
-    <height>665</height>
+    <width>1083</width>
+    <height>651</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -143,6 +143,20 @@ QTabBar::tab:!selected {
               </item>
              </layout>
             </item>
+            <item>
+             <widget class="QComboBox" name="order">
+              <item>
+               <property name="text">
+                <string>Ascending</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Decending</string>
+               </property>
+              </item>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>
@@ -194,6 +208,58 @@ QTabBar::tab:!selected {
           </property>
          </column>
         </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QRadioButton" name="excel_rdo">
+             <property name="text">
+              <string>Excel</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="csv_rdo">
+             <property name="text">
+              <string>CSV</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="txt_rdo">
+             <property name="text">
+              <string>TXT</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="export_btn">
+           <property name="text">
+            <string>Export</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_sheets.ui'
 #
-# Created: Fri Jan 10 12:26:36 2020
+# Created: Fri Jan 10 14:04:27 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_TimeSheets(object):
     def setupUi(self, TimeSheets):
         TimeSheets.setObjectName("TimeSheets")
-        TimeSheets.resize(1148, 665)
+        TimeSheets.resize(1083, 651)
         TimeSheets.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout_2 = QtGui.QVBoxLayout(TimeSheets)
@@ -93,6 +93,11 @@ class Ui_TimeSheets(object):
         self.person_rdo.setObjectName("person_rdo")
         self.horizontalLayout_2.addWidget(self.person_rdo)
         self.horizontalLayout_3.addLayout(self.horizontalLayout_2)
+        self.order = QtGui.QComboBox(self.sort_by)
+        self.order.setObjectName("order")
+        self.order.addItem("")
+        self.order.addItem("")
+        self.horizontalLayout_3.addWidget(self.order)
         self.horizontalLayout.addWidget(self.sort_by)
         self.start_date_label = QtGui.QLabel(self.time_sheets_tab)
         self.start_date_label.setObjectName("start_date_label")
@@ -116,6 +121,27 @@ class Ui_TimeSheets(object):
         self.sheet_tree.setObjectName("sheet_tree")
         self.sheet_tree.header().setVisible(False)
         self.verticalLayout.addWidget(self.sheet_tree)
+        self.horizontalLayout_4 = QtGui.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem1)
+        self.horizontalLayout_5 = QtGui.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.excel_rdo = QtGui.QRadioButton(self.time_sheets_tab)
+        self.excel_rdo.setChecked(True)
+        self.excel_rdo.setObjectName("excel_rdo")
+        self.horizontalLayout_5.addWidget(self.excel_rdo)
+        self.csv_rdo = QtGui.QRadioButton(self.time_sheets_tab)
+        self.csv_rdo.setObjectName("csv_rdo")
+        self.horizontalLayout_5.addWidget(self.csv_rdo)
+        self.txt_rdo = QtGui.QRadioButton(self.time_sheets_tab)
+        self.txt_rdo.setObjectName("txt_rdo")
+        self.horizontalLayout_5.addWidget(self.txt_rdo)
+        self.horizontalLayout_4.addLayout(self.horizontalLayout_5)
+        self.export_btn = QtGui.QPushButton(self.time_sheets_tab)
+        self.export_btn.setObjectName("export_btn")
+        self.horizontalLayout_4.addWidget(self.export_btn)
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.tabs.addTab(self.time_sheets_tab, "")
         self.manual_time = QtGui.QWidget()
         self.manual_time.setObjectName("manual_time")
@@ -140,10 +166,16 @@ class Ui_TimeSheets(object):
         self.sort_by.setTitle(QtGui.QApplication.translate("TimeSheets", "Sort By", None, QtGui.QApplication.UnicodeUTF8))
         self.date_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Date", None, QtGui.QApplication.UnicodeUTF8))
         self.person_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Person", None, QtGui.QApplication.UnicodeUTF8))
+        self.order.setItemText(0, QtGui.QApplication.translate("TimeSheets", "Ascending", None, QtGui.QApplication.UnicodeUTF8))
+        self.order.setItemText(1, QtGui.QApplication.translate("TimeSheets", "Decending", None, QtGui.QApplication.UnicodeUTF8))
         self.start_date_label.setText(QtGui.QApplication.translate("TimeSheets", "Start Date", None, QtGui.QApplication.UnicodeUTF8))
         self.end_date_label.setText(QtGui.QApplication.translate("TimeSheets", "End Date", None, QtGui.QApplication.UnicodeUTF8))
         self.update_btn.setText(QtGui.QApplication.translate("TimeSheets", "Update", None, QtGui.QApplication.UnicodeUTF8))
         self.sheet_tree.headerItem().setText(0, QtGui.QApplication.translate("TimeSheets", "None", None, QtGui.QApplication.UnicodeUTF8))
+        self.excel_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Excel", None, QtGui.QApplication.UnicodeUTF8))
+        self.csv_rdo.setText(QtGui.QApplication.translate("TimeSheets", "CSV", None, QtGui.QApplication.UnicodeUTF8))
+        self.txt_rdo.setText(QtGui.QApplication.translate("TimeSheets", "TXT", None, QtGui.QApplication.UnicodeUTF8))
+        self.export_btn.setText(QtGui.QApplication.translate("TimeSheets", "Export", None, QtGui.QApplication.UnicodeUTF8))
         self.tabs.setTabText(self.tabs.indexOf(self.time_sheets_tab), QtGui.QApplication.translate("TimeSheets", "Time Sheets", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("TimeSheets", "Coming Eventually!", None, QtGui.QApplication.UnicodeUTF8))
         self.tabs.setTabText(self.tabs.indexOf(self.manual_time), QtGui.QApplication.translate("TimeSheets", "Manual Time Card", None, QtGui.QApplication.UnicodeUTF8))

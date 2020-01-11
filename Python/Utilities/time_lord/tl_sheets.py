@@ -90,18 +90,69 @@ class sheet_engine(QtCore.QThread):
         self.signals.req_update.connect(self.prep_update)
 
     def prep_update(self, data):
+        # Create Database to return
+        print('Update has been requested.  Processing...')
+        update_list = []
         if data:
             start_date = data['start_date']
             end_date = data['end_date']
             whose_timesheet = data['whose_timesheet']
             sort_by = data['sort_by']
+            order = data['order']
+
+            if order == 0:
+                order = 'asc'
+            else:
+                order = 'desc'
+
+            if whose_timesheet == 0:
+                users_list = users.get_all_users()
+            else:
+                users_list = [user]
+
+            # Sort by Date is True
+
+            # Get the date difference
+            start_month = start_date.month()
+            start_day = start_date.day()
+            start_year = start_date.year()
+            end_month = end_date.month()
+            end_day = end_date.day()
+            end_year = end_date.year()
+            start_date = parser.parse('%02d/%02d/%02d' % (start_month, start_day, start_year))
+            end_date = parser.parse('%02d/%02d/%02d' % (end_month, end_day, end_year))
+            date_diff = end_date - start_date
+            date_diff = date_diff.days
 
             if sort_by:
-                # Sort by Date is True
-                pass
+                # Iterate through the days to start building the update_list
+                print('Date sorting the timesheets')
+                for x in range(0, int(date_diff)):
+                    date_record = start_date + timedelta(days=x)
+                    timesheet_list = {}
+                    for this_user in users_list:
+                        user_name = this_user['name']
+                        timesheet_list[user_name] = tl_time.get_all_user_timesheets_by_date(user=this_user,
+                                                                                            date=date_record,
+                                                                                            order=order)
+                    update_list.append({date_record: timesheet_list})
             else:
                 # Sort by Person is True
-                pass
+                print('Person sorting the timesheets')
+                for this_user in users_list:
+                    user_name = this_user['name']
+                    timesheet_list = {}
+                    for x in range(0, int(date_diff)):
+                        date_record = start_date + timedelta(days=x)
+                        timesheet_list[date_record] = tl_time.get_all_user_timesheets_by_date(user=this_user,
+                                                                                              date=date_record,
+                                                                                              order=order)
+                    update_list.append({user_name: timesheet_list})
+        print('Returning Update list...')
+        print('update list length: %s' % len(update_list))
+        self.signals.update.emit(update_list)
+        print('Update list returned.')
+        return update_list
 
 
 class sheets(QtGui.QWidget):
@@ -138,34 +189,63 @@ class sheets(QtGui.QWidget):
         self.saved_window_position = self.settings.value('geometry', '')
         self.saved_whose_timesheet = self.settings.value('whose_timesheet', '.')
         self.saved_sort_by = self.settings.value('sort_by', '.')
+        self.saved_order = self.settings.value('order', '.')
         self.restoreGeometry(self.saved_window_position)
+
+        # Connect buttons
+        self.ui.update_btn.clicked.connect(self.request_update)
+
+        # Set the saved settings.
+        try:
+            self.ui.whose_timesheets.setCurrentIndex(self.saved_whose_timesheet)
+            self.ui.order.setCurrentIndex(self.saved_order)
+            if self.saved_sort_by:
+                self.ui.date_rdo.setChecked()
+            else:
+                self.ui.person_rdo.setChecked()
+        except:
+            pass
 
         # Setup connections.
         self.engine.signals.update.connect(self.update_list)
+        self.request_update()
 
+    def request_update(self):
+        print('Requesting Update...')
         # Emit the initial data to start the first load of the data.  Based on the initial settings.
-        whose_timesheet = self.ui.whose_timesheets.currentText()
+        whose_timesheet = self.ui.whose_timesheets.itemData(self.ui.whose_timesheets.currentIndex())
         sort_by = self.ui.date_rdo.isChecked()
+        order = self.ui.order.currentIndex()
         start_date = self.ui.start_date.date()
         end_date = self.ui.end_date.date()
         updata = {
             'whose_timesheet': whose_timesheet,
             'sort_by': sort_by,
+            'order': order,
             'start_date': start_date,
             'end_date': end_date
         }
         self.engine.signals.req_update.emit(updata)
+        print('Update requested.')
 
     def update_list(self, data=None):
         if data:
-            pass
+            for record in data:
+                main_key = record.keys()[0]
+                sorted_by = type(main_key)
+                if sorted_by == datetime:
+                    main_key = str(main_key.date())
+                print main_key
 
     def update_saved_settings(self):
         self.settings.setValue('geometry', self.saveGeometry())
+        self.settings.setValue('sort_by', self.ui.date_rdo.isChecked())
+        self.settings.setValue('whose_timesheet', self.ui.whose_timesheets.currentIndex())
+        self.settings.setValue('order', self.ui.order.currentIndex())
 
     def closeEvent(self, *args, **kwargs):
         self.update_saved_settings()
-        time.sleep(1)
+        time.sleep(0.5)
 
 
 if __name__ == '__main__':
