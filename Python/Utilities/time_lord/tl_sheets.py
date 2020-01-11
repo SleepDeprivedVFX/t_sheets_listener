@@ -244,18 +244,17 @@ class sheets(QtGui.QWidget):
 
                 for key, val in block_data.items():
                     print key
+                    if type(key) == datetime:
+                        key = str(key.date())
                     add_key = QtGui.QTreeWidgetItem()
                     add_key.setText(0, key)
                     for timesheet in val:
                         print timesheet['id']
                         time_table = QtGui.QTreeWidgetItem()
-                        time_table_widge = QtGui.QTableWidget()
-                        add_time = QtGui.QTableWidgetItem()
-                        add_time.setText(timesheet['project']['name'])
-                        time_table_widge.setItem(0, 0, add_time)
-                        time_table.addChild(time_table_widge)
+                        time_table.setText(0, timesheet['entity']['name'])
                         add_key.addChild(time_table)
                     add_main_key.addChild(add_key)
+                self.ui.sheet_tree.addTopLevelItem(add_main_key)
 
     def update_saved_settings(self):
         self.settings.setValue('geometry', self.saveGeometry())
