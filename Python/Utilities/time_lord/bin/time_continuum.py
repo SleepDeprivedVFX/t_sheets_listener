@@ -644,7 +644,6 @@ class continuum(object):
                 return timesheets
         return None
 
-
     def get_timesheet_by_id(self, tid=None):
         if tid:
             filters = [
@@ -933,4 +932,47 @@ class continuum(object):
                 for timesheet in get_timesheets:
                     total_duration += (float(timesheet['duration']) / 60.0)
         return total_duration
+
+    def get_all_user_timesheets_by_date(self, user=None, date=None, order='desc'):
+        print 'tl_time get timesheets', date.date()
+        if user and date:
+            calendar_day = 0 - (datetime.datetime.now() - date).days
+            user_id = user['id']
+
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user_id}],
+                ['sg_task_start', 'in_calendar_day', calendar_day],
+                ['duration', 'greater_than', 0.0]
+            ]
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'code',
+                'sg_closed'
+            ]
+
+            try:
+                timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
+                                                                              'direction': order},
+                                                                             {'field_name': 'id',
+                                                                              'direction': order}])
+                if timesheets:
+                    print('~' * 120)
+                    print timesheets
+                    for sheet in timesheets:
+                        if date.date() != sheet['sg_task_start'].date():
+                            print('Dates don\'t match: %s - %s' % (date.date(), sheet['sg_task_start'].date()))
+                            index = timesheets.index(sheet)
+                            print('Before: %s' % len(timesheets))
+                            timesheets.pop(index)
+                            print('After: %s' % len(timesheets))
+            except Exception as e:
+                self.logger.error('Get all user timesheets by date failed.')
+                timesheets = []
+                # print self.get_latest_timesheet(user=user)
+        return timesheets
 
