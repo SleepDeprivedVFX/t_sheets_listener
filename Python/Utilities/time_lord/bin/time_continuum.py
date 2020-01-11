@@ -936,6 +936,7 @@ class continuum(object):
     def get_all_user_timesheets_by_date(self, user=None, date=None, order='desc'):
         if user and date:
             calendar_day = 1 - (datetime.datetime.now() - date).days
+            print 'calendar day', calendar_day
             user_id = user['id']
 
             filters = [
