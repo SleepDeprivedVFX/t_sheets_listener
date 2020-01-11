@@ -230,12 +230,32 @@ class sheets(QtGui.QWidget):
 
     def update_list(self, data=None):
         if data:
+            self.ui.sheet_tree.clear()
             for record in data:
                 main_key = record.keys()[0]
+                block_data = record[main_key]
                 sorted_by = type(main_key)
                 if sorted_by == datetime:
                     main_key = str(main_key.date())
                 print main_key
+
+                add_main_key = QtGui.QTreeWidgetItem()
+                add_main_key.setText(0, main_key)
+
+                for key, val in block_data.items():
+                    print key
+                    add_key = QtGui.QTreeWidgetItem()
+                    add_key.setText(0, key)
+                    for timesheet in val:
+                        print timesheet['id']
+                        time_table = QtGui.QTreeWidgetItem()
+                        time_table_widge = QtGui.QTableWidget()
+                        add_time = QtGui.QTableWidgetItem()
+                        add_time.setText(timesheet['project']['name'])
+                        time_table_widge.setItem(0, 0, add_time)
+                        time_table.addChild(time_table_widge)
+                        add_key.addChild(time_table)
+                    add_main_key.addChild(add_key)
 
     def update_saved_settings(self):
         self.settings.setValue('geometry', self.saveGeometry())
