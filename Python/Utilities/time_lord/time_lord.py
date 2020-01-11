@@ -30,7 +30,7 @@ WISH LIST:
 #       the best, but still a major pain in the ass.  Consider it sooner than later.
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.4.6'
 
 import shotgun_api3 as sgapi
 import os
@@ -209,6 +209,7 @@ class time_signals(QtCore.QObject):
     send_entity_update = QtCore.Signal(dict)
     send_task_update = QtCore.Signal(dict)
     set_dropdown = QtCore.Signal(dict)
+    self_destruct = QtCore.Signal(str)
 
     # Data Signals
     latest_timesheet = QtCore.Signal(dict)
@@ -314,6 +315,9 @@ class time_engine(QtCore.QThread):
         day = datetime.now().day
 
         while not self.kill_it:
+            midnight = datetime.combine(datetime.date(datetime.now()), datetime.min.time())
+            if datetime.now() == midnight:
+                self.time_signal.self_destruct.emit('Die!')
             if int(datetime.now().second) != second:
                 # Set the clocks
                 second = int(datetime.now().second)
@@ -1073,6 +1077,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.time_signal.trt_output.connect(self.trt_output)
         self.time_engine.time_signal.start_end_output.connect(self.start_end_output)
         self.time_engine.time_signal.user_output.connect(self.user_output)
+        self.time_engine.time_signal.self_destruct.connect(self.close)
 
         # Dropdown Change Index Connections
         self.time_lord.time_signal.set_dropdown.connect(self.set_dropdown)
