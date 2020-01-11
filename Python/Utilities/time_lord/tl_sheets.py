@@ -108,7 +108,7 @@ class sheet_engine(QtCore.QThread):
             if whose_timesheet == 0:
                 users_list = users.get_all_users()
             else:
-                users_list = [user]
+                users_list = [users.get_user_by_id(uid=whose_timesheet)]
 
             # Sort by Date is True
 
@@ -121,33 +121,50 @@ class sheet_engine(QtCore.QThread):
             end_year = end_date.year()
             start_date = parser.parse('%02d/%02d/%02d' % (start_month, start_day, start_year))
             end_date = parser.parse('%02d/%02d/%02d' % (end_month, end_day, end_year))
-            date_diff = end_date - start_date
+
+            if order == 'desc':
+                date_diff = start_date - end_date
+            else:
+                date_diff = end_date - start_date
             date_diff = date_diff.days
 
             if sort_by:
                 # Iterate through the days to start building the update_list
                 print('Date sorting the timesheets')
-                for x in range(0, int(date_diff)):
-                    date_record = start_date + timedelta(days=x)
+                for x in range(0, int(date_diff) + 1):
+                    if order == 'desc':
+                        date_record = end_date - timedelta(days=x)
+                    else:
+                        date_record = start_date + timedelta(days=x)
                     timesheet_list = {}
                     for this_user in users_list:
                         user_name = this_user['name']
-                        timesheet_list[user_name] = tl_time.get_all_user_timesheets_by_date(user=this_user,
-                                                                                            date=date_record,
-                                                                                            order=order)
+                        # print date_record, order
+                        timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
+                                                                             date=date_record,
+                                                                             order=order)
+                        # print timesheets
+                        timesheet_list[user_name] = timesheets
                     update_list.append({date_record: timesheet_list})
+                    del timesheet_list
             else:
                 # Sort by Person is True
                 print('Person sorting the timesheets')
                 for this_user in users_list:
                     user_name = this_user['name']
                     timesheet_list = {}
-                    for x in range(0, int(date_diff)):
-                        date_record = start_date + timedelta(days=x)
-                        timesheet_list[date_record] = tl_time.get_all_user_timesheets_by_date(user=this_user,
-                                                                                              date=date_record,
-                                                                                              order=order)
+                    for x in range(0, int(date_diff) + 1):
+                        if order == 'desc':
+                            date_record = end_date - timedelta(days=x)
+                        else:
+                            date_record = start_date + timedelta(days=x)
+                        timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
+                                                                             date=date_record,
+                                                                             order=order)
+                        # print timesheets
+                        timesheet_list[date_record] = timesheets
                     update_list.append({user_name: timesheet_list})
+                    del timesheet_list
         print('Returning Update list...')
         print('update list length: %s' % len(update_list))
         self.signals.update.emit(update_list)
@@ -206,6 +223,8 @@ class sheets(QtGui.QWidget):
         except:
             pass
 
+        self.engine.start()
+
         # Setup connections.
         self.engine.signals.update.connect(self.update_list)
         self.request_update()
@@ -237,24 +256,27 @@ class sheets(QtGui.QWidget):
                 sorted_by = type(main_key)
                 if sorted_by == datetime:
                     main_key = str(main_key.date())
-                print main_key
+                # print main_key
 
                 add_main_key = QtGui.QTreeWidgetItem()
                 add_main_key.setText(0, main_key)
 
                 for key, val in block_data.items():
-                    print key
+                    # print key
                     if type(key) == datetime:
                         key = str(key.date())
                     add_key = QtGui.QTreeWidgetItem()
                     add_key.setText(0, key)
                     for timesheet in val:
-                        print timesheet['id']
+                        # print timesheet['id']
                         time_table = QtGui.QTreeWidgetItem()
-                        time_table.setText(0, timesheet['entity']['name'])
+                        # time_table.setText(0, str(timesheet['entity']['id']))
+                        # time_table.setText(1, timesheet['project']['name'])
+                        time_table.setText(0, str(timesheet['id']))
                         add_key.addChild(time_table)
                     add_main_key.addChild(add_key)
                 self.ui.sheet_tree.addTopLevelItem(add_main_key)
+            self.ui.sheet_tree.expandAll()
 
     def update_saved_settings(self):
         self.settings.setValue('geometry', self.saveGeometry())

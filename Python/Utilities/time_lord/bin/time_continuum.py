@@ -935,17 +935,20 @@ class continuum(object):
 
     def get_all_user_timesheets_by_date(self, user=None, date=None, order='desc'):
         if user and date:
-            calendar_day = 1 - (datetime.datetime.now() - date).days
-            print 'calendar day', calendar_day
+            previous_date = date - datetime.timedelta(days=1)
+            print 'previous date: %s' % previous_date
+            print 'date: %s' % date
+            next_date = date + datetime.timedelta(days=1)
+            print 'next_date: %s' % next_date
             user_id = user['id']
 
             filters = [
                 ['user', 'is', {'type': 'HumanUser', 'id': user_id}],
                 {
-                    'filter_operator': 'any',
+                    'filter_operator': 'all',
                     'filters': [
-                        ['sg_task_start', 'in_calendar_day', calendar_day],
-                        ['sg_task_start', 'in_calendar_day', (calendar_day - 1)]
+                        ['sg_task_start', 'greater_than', previous_date],
+                        ['sg_task_start', 'less_than', next_date]
                     ]
                 },
                 ['duration', 'greater_than', 0.0]
