@@ -269,11 +269,21 @@ class sheets(QtGui.QWidget):
                     add_key.setText(0, key)
                     for timesheet in val:
                         # print timesheet['id']
+                        # NOTE: The next few lines are temporary.
                         time_table = QtGui.QTreeWidgetItem()
-                        # time_table.setText(0, str(timesheet['entity']['id']))
-                        # time_table.setText(1, timesheet['project']['name'])
+                        time_table.setText(0, str(timesheet['entity']['id']))
+                        time_table.setText(1, timesheet['project']['name'])
                         time_table.setText(0, str(timesheet['id']))
                         add_key.addChild(time_table)
+                        # FIXME: I have to get the table into the row of the Tree.  Below crashes.
+                        # time_table = QtGui.QTableWidget()
+                        # time_table.insertRow(0)
+                        # label = QtGui.QLabel()
+                        # label.setText(timesheet['project']['name'])
+                        # time_table.setCellWidget(0, 0, label)
+                        # time_item = QtGui.QTableWidgetItem()
+                        # time_item.setForeground(time_table)
+                        # add_key.addChild(time_item)
                     add_main_key.addChild(add_key)
                 self.ui.sheet_tree.addTopLevelItem(add_main_key)
             self.ui.sheet_tree.expandAll()
