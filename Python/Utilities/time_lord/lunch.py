@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.4.6'
 
 import shotgun_api3 as sgapi
 import os
@@ -72,20 +72,8 @@ lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=co
 if lunch_task_id:
     lunch_task_id = int(lunch_task_id['id'])
 
-# --------------------------------------------------------------------------------------------------
-# Signal Emitters
-# --------------------------------------------------------------------------------------------------
-class tardis_signals(QtCore.QObject):
-    yes = QtCore.Signal(str)
-    no = QtCore.Signal(str)
-    timer = QtCore.Signal(str)
-    start_time = QtCore.Signal(str)
-    end_time = QtCore.Signal(str)
-    launch_lunch = QtCore.Signal(str)
-
-
 # Check the system arguments and append current start and end times if they're missing.
-lock_times = True
+lock_times = False
 lunch_message = 'Hey %s!\nThe system detected you were at lunch during the times below. ' \
                 'Did you take your lunch?' % user['name'].split(' ')[0]
 skip_button = 'Not Now'
@@ -114,6 +102,18 @@ if len(sys.argv) < 2:
         ok_button = 'Record my lunch!'
         lock_times = False
     sys.argv += ['-s', str(start), '-e', str(end)]
+
+
+# --------------------------------------------------------------------------------------------------
+# Signal Emitters
+# --------------------------------------------------------------------------------------------------
+class tardis_signals(QtCore.QObject):
+    yes = QtCore.Signal(str)
+    no = QtCore.Signal(str)
+    timer = QtCore.Signal(str)
+    start_time = QtCore.Signal(str)
+    end_time = QtCore.Signal(str)
+    launch_lunch = QtCore.Signal(str)
 
 
 class lunch_break(QtGui.QWidget):
