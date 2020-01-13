@@ -28,6 +28,7 @@ from ctypes import windll, Structure, c_long, byref
 import time
 from datetime import datetime, timedelta
 from dateutil import parser
+import webbrowser
 
 from bin import companions, configuration, time_continuum, shotgun_collect, comm_system
 
@@ -627,6 +628,7 @@ class tardis(object):
                  ui_compiler=None,
                  rollout_machine=None,
                  gozer=None,
+                 time_logs=None,
                  all_sessions=False, ):
 
         self.icon = icon
@@ -639,12 +641,15 @@ class tardis(object):
         self.ui_compiler = ui_compiler
         self.rollout_machine = rollout_machine
         self.gozer = gozer
+        self.time_logs = time_logs
+        print(self.icon)
 
         permission = user['permission_rule_set']['name']
         if permission in config['permissions']:
             # The "Quit" option can be made an admin feature by simple indenting this here.
             menu_options = menu_options + (('Admin', None, (('Payroll', None, self.payroll),
                                                             ('Time Scope', None, self.scope),
+                                                            ('SG Time Logs', None, self.time_logs),
                                                             ('File Lister', None, self.file_lister),
                                                             ('Image Collector', None, self.image_collector),
                                                             ('Quit', None, self.QUIT),
@@ -967,6 +972,12 @@ if __name__ == '__main__':
         path = r'\\skynet\tools\scripts\python\utilities\BullGozer_TheDestroyer\bullgozer.py'
         subprocess.Popen('pythonw.exe %s' % path)
 
+    def sg_time_logs(tardis):
+        print('Opening Time Logs on Shotgun')
+        logger.info('Opening time logs on Shotgun...')
+        url = 'https://radiowaves.shotgunstudio.com/page/955'
+        webbrowser.open(url=url, new=2, autoraise=True)
+
 
     # Start the Time Lord for the first time on Tardis Startup
     path = sys.path[0]
@@ -981,6 +992,6 @@ if __name__ == '__main__':
                     )
     tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll, scope=scope,
            file_lister=file_lister, image_collector=image_collector, ui_compiler=ui_compiler,
-           rollout_machine=rollout_machine, gozer=gozer, all_sessions=True)
+           rollout_machine=rollout_machine, gozer=gozer, time_logs=sg_time_logs, all_sessions=True)
 
 
