@@ -22,8 +22,9 @@ from dateutil import parser
 from dateutil import relativedelta
 import time
 import inspect
-import comm_system
-import cPickle as pickle
+# import comm_system
+from bin import comm_system
+import pickle
 
 
 class continuum(object):
@@ -220,7 +221,7 @@ class continuum(object):
                                                                                        {'field_name': 'id',
                                                                                         'direction': 'desc'}])
                 self.logger.debug('Timesheet found: %s' % latest_timesheet)
-            except (AttributeError, Exception), e:
+            except (AttributeError, Exception) as e:
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
                 latest_timesheet = None
             if latest_timesheet:
@@ -387,7 +388,7 @@ class continuum(object):
                         m = '%02d' % int(split_time[1])
                         s = float(split_time[2])
                         s = '%02d' % int(s)
-                    except ValueError, e:
+                    except ValueError as e:
                         if 'days,' in split_time[0]:
                             split_hours = split_time[0].split('days,')
                             d = int(split_hours[0])
@@ -459,7 +460,7 @@ class continuum(object):
                 # be "yesterday".  Thus, the in_calendar_day query has to test for both, or not all records will be
                 # acquired.  Then I can iterate through them to get dates from "today"
                 timesheets = self.sg.find('TimeLog', filters, fields)
-            except (AttributeError, Exception), e:
+            except (AttributeError, Exception) as e:
                 self.logger.error('Time sheet failed to acquire: %s' % e)
                 timesheets = None
             if timesheets:
@@ -515,7 +516,7 @@ class continuum(object):
             ]
             try:
                 timesheets = self.sg.find('TimeLog', filters, fields)
-            except (AttributeError, Exception), e:
+            except (AttributeError, Exception) as e:
                 self.logger.error('Failed to get the timesheet! %s' % e)
                 timesheets = None
             if timesheets:
@@ -605,7 +606,7 @@ class continuum(object):
                                                                                   'direction': 'desc'},
                                                                                  {'field_name': 'id',
                                                                                   'direction': 'desc'}])
-            except Exception, e:
+            except Exception as e:
                 self.logger.error('Could not check clocked in: %s' % e)
                 clocked_in = None
 
@@ -936,10 +937,10 @@ class continuum(object):
     def get_all_user_timesheets_by_date(self, user=None, date=None, order='desc'):
         if user and date:
             previous_date = date - datetime.timedelta(days=1)
-            print 'previous date: %s' % previous_date
-            print 'date: %s' % date
+            print('previous date: %s' % previous_date)
+            print('date: %s' % date)
             next_date = date + datetime.timedelta(days=1)
-            print 'next_date: %s' % next_date
+            print('next_date: %s' % next_date)
             user_id = user['id']
 
             filters = [

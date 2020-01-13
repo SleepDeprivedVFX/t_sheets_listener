@@ -5,7 +5,7 @@ This will basically just streamline the configuration and cleanup the main code 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
 __version__ = '0.4.5'
 
-import ConfigParser
+import configparser
 import sys
 import os
 
@@ -23,11 +23,11 @@ def get_configuration():
         config_path = [f for f in sys_path if os.path.isfile(f + '/' + config_file)][0] + '/' + config_file
         config_path = config_path.replace('\\', '/')
         print('Configuration found!')
-    except IndexError, e:
+    except IndexError as e:
         raise e
 
     # Create the configuration connection
-    configuration = ConfigParser.ConfigParser()
+    configuration = configparser.ConfigParser()
     print('Reading the configuration file...')
     configuration.read(config_path)
 
