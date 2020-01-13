@@ -316,7 +316,9 @@ class time_engine(QtCore.QThread):
 
         while not self.kill_it:
             midnight = datetime.combine(datetime.date(datetime.now()), datetime.min.time())
-            if datetime.now() == midnight:
+            now = datetime.now()
+            dt_now = '%s %02d:%02d:%02d' % (now.date(), now.hour, now.minute, int(now.second))
+            if dt_now == midnight:
                 self.time_signal.self_destruct.emit('Die!')
             if int(datetime.now().second) != second:
                 # Set the clocks
