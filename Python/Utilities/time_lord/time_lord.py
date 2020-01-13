@@ -862,7 +862,7 @@ class time_lord(QtCore.QThread):
                 end = '%s %s' % (latest_timesheet['sg_task_end'].date(),
                                  latest_timesheet['sg_task_end'].time())
                 self.set_start_end_output(start=start, end=end)
-            except (AttributeError, KeyError), e:
+            except (AttributeError, KeyError) as e:
                 self.time_signal.warning.emit('Couldn\'t update the start and end times! %s' % e)
             daily_total = self.set_daily_total('Get')
             weekly_total = self.set_weekly_total('Get')
@@ -1437,7 +1437,7 @@ class time_lord_ui(QtGui.QMainWindow):
                     second = end_time.second
                     hours = (30 * (hour + (minute / 60.0)))
                     minutes = (6 * (minute + (second / 60.0)))
-            except Exception, e:
+            except Exception as e:
                 logger.error('The fit hit the shan: %s' % e)
                 error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
                                                    inspect.stack()[1][2], inspect.stack()[1][3])

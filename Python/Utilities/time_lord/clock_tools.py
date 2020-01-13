@@ -54,36 +54,36 @@ def super_cleanup(user_id=None):
             print('Shit hit the fan: %s' % e)
         if empties:
             for empty in empties:
-                print '-' * 120
-                print empty
+                print('-' * 120)
+                print(empty)
                 date = empty['date']
                 start = empty['sg_task_start']
                 end = empty['sg_task_end']
                 if start and not end:
                     end = start + timedelta(hours=1)
-                    print 'new end: %s' % end
+                    print('new end: %s' % end)
                     data = {
                         'sg_task_end': end,
                         'description': 'Clock Tools Super Cleanup'
                     }
                     update = sg.update('TimeLog', empty['id'], data)
-                    print 'Updated: %s' % update
+                    print('Updated: %s' % update)
                 elif not start and not end:
                     start = '%s %s' % (date, config['regular_start'])
                     start = parser.parse(start)
                     end = '%s %s' % (date, config['regular_end'])
                     end = parser.parse(end)
-                    print 'New Start: %s' % start
-                    print 'New End: %s ' % end
+                    print('New Start: %s' % start)
+                    print('New End: %s ' % end)
                     data = {
                         'sg_task_start': start,
                         'sg_task_end': end,
                         'description': 'Clock Tools Super Cleanup'
                     }
                     update = sg.update('TimeLog', empty['id'], data)
-                    print 'Updated: %s' % update
+                    print('Updated: %s' % update)
         else:
-            print 'No Empties Found'
+            print('No Empties Found')
 
 
 def close_all_completed_timesheets():
@@ -103,13 +103,13 @@ def close_all_completed_timesheets():
     timesheets = sg.find('TimeLog', filters, fields)
     if timesheets:
         for ts in timesheets:
-            print ts
+            print(ts)
             data = {
                 'sg_closed': True
             }
             check = sg.update('TimeLog', ts['id'], data=data)
-            print check
-            print '=' * 120
+            print(check)
+            print('=' * 120)
 
 
 def super_duration_checker():

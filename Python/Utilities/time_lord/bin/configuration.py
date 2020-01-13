@@ -23,7 +23,7 @@ def get_configuration():
         config_path = [f for f in sys_path if os.path.isfile(f + '/' + config_file)][0] + '/' + config_file
         config_path = config_path.replace('\\', '/')
         print('Configuration found!')
-    except IndexError, e:
+    except IndexError as e:
         raise e
 
     # Create the configuration connection

@@ -223,7 +223,7 @@ class sg_data(object):
                 project = self.sg.find_one('Project', filters, fields)
                 self.logger.debug('Project Details found: %s' % project)
                 return project
-            except (AttributeError, TypeError), e:
+            except (AttributeError, TypeError) as e:
                 self.logger.error('Could not get the project: %s' % e)
                 try:
                     time.sleep(1)
@@ -235,7 +235,7 @@ class sg_data(object):
                         self.logger.debug('Project Details Found: %s' % project)
                         return project
                     self.logger.debug('Still couldn\'t find shit! %s' % tryagain)
-                except (AttributeError, TypeError, KeyError, Exception), e:
+                except (AttributeError, TypeError, KeyError, Exception) as e:
                     self.logger.error('Well, Fuck.  %s' % e)
                     error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
                                                        inspect.stack()[1][2], inspect.stack()[1][3])
@@ -254,7 +254,7 @@ class sg_data(object):
             ]
             try:
                 link = self.sg.find_one(ent_type, filters, fields)
-            except (AttributeError, Exception), e:
+            except (AttributeError, Exception) as e:
                 self.logger.error('Bad connection... Try again... %s' % e)
                 time.sleep(2)
                 link = self.get_entity_links(ent_type=ent_type, name=name, ent_id=ent_id, proj_id=proj_id)
@@ -293,7 +293,7 @@ class sg_data(object):
                     self.logger.debug(('.' * 35) + 'END get_configuration' + ('.' * 35))
                     return config_path
             return
-        except Exception, e:
+        except Exception as e:
             self.logger.error('Some shit when down! %s' % e)
             error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
                                                inspect.stack()[1][2], inspect.stack()[1][3])
@@ -346,7 +346,7 @@ class sg_data(object):
             ]
             try:
                 find_task = self.sg.find_one('Task', filters, fields)
-            except AttributeError, e:
+            except AttributeError as e:
                 self.logger.debug('get_lunch_task failed!  %s' % e)
                 time.sleep(2)
                 find_task = self.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=task_name)
