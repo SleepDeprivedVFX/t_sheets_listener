@@ -652,7 +652,6 @@ class tardis(object):
                                                             ('SG Time Logs', None, self.time_logs),
                                                             ('File Lister', None, self.file_lister),
                                                             ('Image Collector', None, self.image_collector),
-                                                            ('Quit', None, self.QUIT),
                                                             )
                                             ), )
             # menu_options = menu_options + (('Quit', None, self.QUIT),)
@@ -664,6 +663,7 @@ class tardis(object):
             menu_options = menu_options + (('Dev', None, (('UI Compiler', None, self.ui_compiler),
                                                           ('Rollout Machine', None, self.rollout_machine),
                                                           ('Bull Gozer', None, self.gozer),
+                                                          ('Quit', None, self.QUIT),
                                                           )), )
 
         menu_options = menu_options + (('Restart', None, self.RESTART),)
