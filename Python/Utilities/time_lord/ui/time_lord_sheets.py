@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_sheets.ui'
 #
-# Created: Mon Jan 13 16:24:44 2020
+# Created: Mon Jan 13 17:41:33 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -122,17 +122,19 @@ class Ui_TimeSheets(object):
         self.sheet_tree.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "alternate-background-color: rgb(120, 120, 120);")
         self.sheet_tree.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
-        self.sheet_tree.setColumnCount(6)
+        self.sheet_tree.setColumnCount(8)
         self.sheet_tree.setObjectName("sheet_tree")
         self.sheet_tree.headerItem().setText(1, "2")
         self.sheet_tree.headerItem().setText(2, "3")
         self.sheet_tree.headerItem().setText(3, "4")
         self.sheet_tree.headerItem().setText(4, "5")
         self.sheet_tree.headerItem().setText(5, "6")
+        self.sheet_tree.headerItem().setText(6, "7")
+        self.sheet_tree.headerItem().setText(7, "8")
         self.sheet_tree.header().setVisible(False)
         self.sheet_tree.header().setCascadingSectionResizes(True)
-        self.sheet_tree.header().setDefaultSectionSize(125)
-        self.sheet_tree.header().setMinimumSectionSize(50)
+        self.sheet_tree.header().setDefaultSectionSize(120)
+        self.sheet_tree.header().setMinimumSectionSize(26)
         self.verticalLayout.addWidget(self.sheet_tree)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")

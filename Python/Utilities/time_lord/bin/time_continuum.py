@@ -936,10 +936,10 @@ class continuum(object):
     def get_all_user_timesheets_by_date(self, user=None, date=None, order='desc'):
         if user and date:
             previous_date = date - datetime.timedelta(days=1)
-            print('previous date: %s' % previous_date)
-            print('date: %s' % date)
+            # print('previous date: %s' % previous_date)
+            # print('date: %s' % date)
             next_date = date + datetime.timedelta(days=1)
-            print('next_date: %s' % next_date)
+            # print('next_date: %s' % next_date)
             user_id = user['id']
 
             filters = [
@@ -972,7 +972,7 @@ class continuum(object):
                                                                               'direction': order}])
                 if timesheets:
                     for sheet in timesheets:
-                        if str(date.date()) != (sheet['sg_task_start'].date()):
+                        if str(date.date()) != str(sheet['sg_task_start'].date()):
                             index = timesheets.index(sheet)
                             timesheets.pop(index)
             except Exception as e:
