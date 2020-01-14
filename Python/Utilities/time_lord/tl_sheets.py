@@ -317,6 +317,8 @@ class sheets(QtGui.QWidget):
                                                 'Duration', 'Edit'])
             # self.ui.sheet_tree.setColumnWidth(150, 150)
             self.ui.sheet_tree.setAlternatingRowColors(True)
+
+            # Rummage through the data
             for record in data:
                 main_key = record.keys()[0]
                 block_data = record[main_key]
@@ -335,6 +337,28 @@ class sheets(QtGui.QWidget):
                     add_key = QtGui.QTreeWidgetItem()
                     add_key.setFirstColumnSpanned(False)
                     add_key.setText(0, key)
+
+                    # Creating lists for all the widgets
+                    # List of timesheet rows
+                    all_rows = []
+
+                    # List of Widgets
+                    all_starts = []
+                    all_ends = []
+                    all_projects = []
+                    all_entities = []
+                    all_tasks = []
+                    all_ts_ids = []
+                    all_durations = []
+                    all_edits = []
+
+                    # Add all the rows
+                    for i in range(0, (len(val)-1)):
+                        all_rows.append(QtGui.QTreeWidgetItem())
+                        add_key.addChild(all_rows[i])
+
+                    # Set an incrementer for the next loop
+                    x = 0
                     for timesheet in val:
                         # sheet = sheet_editor_button(self.ui.sheet_tree, add_key, timesheet)
                         # add_key.addChild(sheet)
@@ -353,60 +377,53 @@ class sheets(QtGui.QWidget):
                             end = datetime.now().time()
                         duration = timesheet['duration'] / 60.0
 
-                        time_table = QtGui.QTreeWidgetItem()
+                        add_ts_id = QtGui.QLabel()
+                        add_ts_id.setText(str(timesheet['id']))
+                        all_ts_ids.append(add_ts_id)
 
-                        self.ts_id = QtGui.QLabel()
-                        self.ts_id.setText(str(timesheet['id']))
-                        # self.ui.sheet_tree.setItemWidget(time_table, 0, self.ts_id)
+                        add_project = QtGui.QLabel()
+                        add_project.setText(project)
+                        all_projects.append(add_project)
 
-                        self.project = QtGui.QLabel()
-                        self.project.setText(project)
-                        # self.ui.sheet_tree.setItemWidget(time_table, 1, self.project)
+                        add_entity = QtGui.QLabel()
+                        add_entity.setText(entity_name)
+                        all_entities.append(add_entity)
 
-                        self.entity = QtGui.QLabel()
-                        self.entity.setText(entity_name)
-                        # self.ui.sheet_tree.setItemWidget(time_table, 2, self.entity)
+                        add_task = QtGui.QLabel()
+                        add_task.setText(task)
+                        all_tasks.append(add_task)
 
-                        self.task = QtGui.QLabel()
-                        self.task.setText(task)
-                        # self.ui.sheet_tree.setItemWidget(time_table, 3, self.task)
+                        add_start = QtGui.QTimeEdit()
+                        add_start.setTime(start)
+                        all_starts.append(add_start)
 
-                        self.start = QtGui.QTimeEdit()
-                        self.start.setTime(start)
-                        # self.ui.sheet_tree.setItemWidget(time_table, 4, self.start)
+                        add_end = QtGui.QTimeEdit()
+                        add_end.setTime(end)
+                        all_ends.append(add_end)
 
-                        self.end = QtGui.QTimeEdit()
-                        self.end.setTime(end)
-                        # self.ui.sheet_tree.setItemWidget(time_table, 5, self.end)
+                        add_duration = QtGui.QLabel()
+                        add_duration.setText('%0.2f hrs' % duration)
+                        all_durations.append(add_duration)
 
-                        self.duration = QtGui.QLabel()
-                        self.duration.setText('%0.2f hrs' % duration)
-                        # self.ui.sheet_tree.setItemWidget(time_table, 6, self.duration)
+                        add_edit = QtGui.QPushButton()
+                        add_edit.setText('Edit')
+                        all_edits.append(add_edit)
 
-                        self.edit = QtGui.QPushButton()
-                        self.edit.setText('Edit')
-                        # self.ui.sheet_tree.setItemWidget(time_table, 7, self.edit)
-
-                        add_key.addChild(time_table)
-                        #
-                        # time_table = QtGui.QTreeWidgetItem(add_key, [QtGui.QWidgetItem(self.ts_id),
-                        #                                              self.project,
-                        #                                              self.entity,
-                        #                                              self.task,
-                        #                                              self.start,
-                        #                                              self.end,
-                        #                                              self.duration,
-                        #                                              self.edit
-                        #                                              ]
-                        #                                    )
-                        # # # time_table.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
-                        # print('time_table: ', time_table)
-                        # add_key.addChild(time_table)
-                        # edit = QtGui.QPushButton('Edit')
-                        # # edit.clicked.connect(lambda: self.edit_timesheet(timesheet['id']))
-                        # self.ui.sheet_tree.setItemWidget(time_table, 7, edit)
+                        x += 1
 
                     add_main_key.addChild(add_key)
+
+                    # FIXME: This loop is crashing the system every time.  Can't seem to add widgets to the Tree
+                    for w in range(0, (len(val)-1)):
+                        self.ui.sheet_tree.setItemWidget(all_rows[w], 0, all_ts_ids[w])
+                        self.ui.sheet_tree.setItemWidget(all_rows[w], 1, all_projects[w])
+                        self.ui.sheet_tree.setItemWidget(all_rows[w], 2, all_entities[w])
+                        self.ui.sheet_tree.setItemWidget(all_rows[w], 3, all_tasks[w])
+                        self.ui.sheet_tree.setItemWidget(all_rows[w], 4, all_starts[w])
+                        self.ui.sheet_tree.setItemWidget(all_rows[w], 5, all_ends[w])
+                        self.ui.sheet_tree.setItemWidget(all_rows[w], 6, all_durations[w])
+                        self.ui.sheet_tree.setItemWidget(all_rows[w], 7, all_edits[w])
+
                 self.ui.sheet_tree.addTopLevelItem(add_main_key)
             self.ui.sheet_tree.expandAll()
             self.ui.sheet_tree.resizeColumnToContents(True)
