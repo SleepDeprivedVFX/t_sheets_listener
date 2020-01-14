@@ -961,7 +961,8 @@ class continuum(object):
                 'project',
                 'entity',
                 'code',
-                'sg_closed'
+                'sg_closed',
+                'duration'
             ]
 
             try:

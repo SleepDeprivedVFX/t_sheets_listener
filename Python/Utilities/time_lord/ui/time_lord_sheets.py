@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_sheets.ui'
 #
-# Created: Fri Jan 10 14:04:27 2020
+# Created: Mon Jan 13 16:24:44 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -85,13 +85,14 @@ class Ui_TimeSheets(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.date_rdo = QtGui.QRadioButton(self.sort_by)
-        self.date_rdo.setChecked(True)
-        self.date_rdo.setObjectName("date_rdo")
-        self.horizontalLayout_2.addWidget(self.date_rdo)
         self.person_rdo = QtGui.QRadioButton(self.sort_by)
+        self.person_rdo.setChecked(True)
         self.person_rdo.setObjectName("person_rdo")
         self.horizontalLayout_2.addWidget(self.person_rdo)
+        self.date_rdo = QtGui.QRadioButton(self.sort_by)
+        self.date_rdo.setChecked(False)
+        self.date_rdo.setObjectName("date_rdo")
+        self.horizontalLayout_2.addWidget(self.date_rdo)
         self.horizontalLayout_3.addLayout(self.horizontalLayout_2)
         self.order = QtGui.QComboBox(self.sort_by)
         self.order.setObjectName("order")
@@ -118,8 +119,20 @@ class Ui_TimeSheets(object):
         self.horizontalLayout.addWidget(self.update_btn)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.sheet_tree = QtGui.QTreeWidget(self.time_sheets_tab)
+        self.sheet_tree.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"alternate-background-color: rgb(120, 120, 120);")
+        self.sheet_tree.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
+        self.sheet_tree.setColumnCount(6)
         self.sheet_tree.setObjectName("sheet_tree")
+        self.sheet_tree.headerItem().setText(1, "2")
+        self.sheet_tree.headerItem().setText(2, "3")
+        self.sheet_tree.headerItem().setText(3, "4")
+        self.sheet_tree.headerItem().setText(4, "5")
+        self.sheet_tree.headerItem().setText(5, "6")
         self.sheet_tree.header().setVisible(False)
+        self.sheet_tree.header().setCascadingSectionResizes(True)
+        self.sheet_tree.header().setDefaultSectionSize(125)
+        self.sheet_tree.header().setMinimumSectionSize(50)
         self.verticalLayout.addWidget(self.sheet_tree)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
@@ -164,8 +177,8 @@ class Ui_TimeSheets(object):
         self.artist_name.setText(QtGui.QApplication.translate("TimeSheets", "Artist", None, QtGui.QApplication.UnicodeUTF8))
         self.whose_timesheets.setItemText(0, QtGui.QApplication.translate("TimeSheets", "My Timesheets", None, QtGui.QApplication.UnicodeUTF8))
         self.sort_by.setTitle(QtGui.QApplication.translate("TimeSheets", "Sort By", None, QtGui.QApplication.UnicodeUTF8))
-        self.date_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Date", None, QtGui.QApplication.UnicodeUTF8))
         self.person_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Person", None, QtGui.QApplication.UnicodeUTF8))
+        self.date_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Date", None, QtGui.QApplication.UnicodeUTF8))
         self.order.setItemText(0, QtGui.QApplication.translate("TimeSheets", "Ascending", None, QtGui.QApplication.UnicodeUTF8))
         self.order.setItemText(1, QtGui.QApplication.translate("TimeSheets", "Decending", None, QtGui.QApplication.UnicodeUTF8))
         self.start_date_label.setText(QtGui.QApplication.translate("TimeSheets", "Start Date", None, QtGui.QApplication.UnicodeUTF8))

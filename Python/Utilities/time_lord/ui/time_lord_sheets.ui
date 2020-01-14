@@ -125,9 +125,9 @@ QTabBar::tab:!selected {
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
-               <widget class="QRadioButton" name="date_rdo">
+               <widget class="QRadioButton" name="person_rdo">
                 <property name="text">
-                 <string>Date</string>
+                 <string>Person</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
@@ -135,9 +135,12 @@ QTabBar::tab:!selected {
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="person_rdo">
+               <widget class="QRadioButton" name="date_rdo">
                 <property name="text">
-                 <string>Person</string>
+                 <string>Date</string>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -199,12 +202,56 @@ QTabBar::tab:!selected {
        </item>
        <item>
         <widget class="QTreeWidget" name="sheet_tree">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(100, 100, 100);
+alternate-background-color: rgb(120, 120, 120);</string>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="columnCount">
+          <number>6</number>
+         </property>
          <attribute name="headerVisible">
           <bool>false</bool>
+         </attribute>
+         <attribute name="headerCascadingSectionResizes">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="headerDefaultSectionSize">
+          <number>125</number>
+         </attribute>
+         <attribute name="headerMinimumSectionSize">
+          <number>50</number>
          </attribute>
          <column>
           <property name="text">
            <string>None</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string notr="true">2</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string notr="true">3</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string notr="true">4</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string notr="true">5</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string notr="true">6</string>
           </property>
          </column>
         </widget>

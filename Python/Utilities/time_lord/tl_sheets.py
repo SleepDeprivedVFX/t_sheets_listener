@@ -250,6 +250,9 @@ class sheets(QtGui.QWidget):
     def update_list(self, data=None):
         if data:
             self.ui.sheet_tree.clear()
+            self.ui.sheet_tree.setHeaderLabels(['Edit', 'TS ID', 'Project', 'task', 'Start', 'End', 'Duration'])
+            self.ui.sheet_tree.setColumnWidth(200, 200)
+            self.ui.sheet_tree.setAlternatingRowColors(True)
             for record in data:
                 main_key = record.keys()[0]
                 block_data = record[main_key]
@@ -266,27 +269,46 @@ class sheets(QtGui.QWidget):
                     if type(key) == datetime:
                         key = str(key.date())
                     add_key = QtGui.QTreeWidgetItem()
+                    add_key.setFirstColumnSpanned(False)
                     add_key.setText(0, key)
                     for timesheet in val:
                         # print timesheet['id']
                         # NOTE: The next few lines are temporary.
-                        time_table = QtGui.QTreeWidgetItem()
-                        time_table.setText(0, str(timesheet['entity']['id']))
-                        time_table.setText(1, timesheet['project']['name'])
-                        time_table.setText(0, str(timesheet['id']))
+                        # time_table = QtGui.QTreeWidgetItem()
+                        # time_table.setText(0, str(timesheet['entity']['id']))
+                        # time_table.setText(1, timesheet['project']['name'])
+                        # time_table.setText(0, str(timesheet['id']))
+                        # add_key.addChild(time_table)
+                        # NOTE: The next few lines are temporary.
+                        # start_time = QtGui.QDateTimeEdit()
+                        # start_time.setDate(timesheet['sg_task_start'])
+                        time_table = QtGui.QTreeWidgetItem(add_key, ['',
+                                                                     str(timesheet['id']),
+                                                                     timesheet['project']['name'],
+                                                                     timesheet['entity']['name'],
+                                                                     'start: %s' % timesheet['sg_task_start'].time(),
+                                                                     'end: %s' % timesheet['sg_task_end'].time(),
+                                                                     'total: %0.2f hrs' % (timesheet['duration'] / 60.0)
+                                                                     ]
+                                                           )
+                        time_table.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
                         add_key.addChild(time_table)
                         # FIXME: I have to get the table into the row of the Tree.  Below crashes.
                         # time_table = QtGui.QTableWidget()
                         # time_table.insertRow(0)
                         # label = QtGui.QLabel()
                         # label.setText(timesheet['project']['name'])
+                        # test_check = QtGui.QCheckBox()
+                        # test_check.setText('Fuck?')
                         # time_table.setCellWidget(0, 0, label)
-                        # time_item = QtGui.QTableWidgetItem()
-                        # time_item.setForeground(time_table)
-                        # add_key.addChild(time_item)
+                        # time_table.setCellWidget(0, 1, test_check)
+                        # time_tree = QtGui.QTreeWidgetItem()
+                        # time_tree.addChild(time_table)
+                        # add_key.addChild(time_tree)
                     add_main_key.addChild(add_key)
                 self.ui.sheet_tree.addTopLevelItem(add_main_key)
             self.ui.sheet_tree.expandAll()
+            self.ui.sheet_tree.resizeColumnToContents(True)
 
     def update_saved_settings(self):
         self.settings.setValue('geometry', self.saveGeometry())
