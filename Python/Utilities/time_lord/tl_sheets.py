@@ -172,6 +172,7 @@ class sheet_engine(QtCore.QThread):
         print('Update list returned.')
         return update_list
 
+
 class sheet_editor_button(QtGui.QTreeWidgetItem):
 
     def __init__(self, parent, sub, timesheet):
@@ -184,40 +185,43 @@ class sheet_editor_button(QtGui.QTreeWidgetItem):
         entity_name = entity['entity']['name']
         entity_id = entity['entity']['id']
         start = timesheet['sg_task_start'].time()
-        end = timesheet['sg_task_end'].time()
+        if timesheet['sg_task_end']:
+            end = timesheet['sg_task_end'].time()
+        else:
+            end = datetime.now().time()
         duration = timesheet['duration'] / 60.0
 
         self.ts_id = QtGui.QLabel()
         self.ts_id.setText(str(timesheet['id']))
-        self.treeWidget().setItemWidget(self, 0, self.ts_id)
+        parent.setItemWidget(self, 0, self.ts_id)
 
         self.project = QtGui.QLabel()
         self.project.setText(project)
-        self.treeWidget().setItemWidget(self, 1, self.project)
+        parent.setItemWidget(self, 1, self.project)
 
         self.entity = QtGui.QLabel()
         self.entity.setText(entity_name)
-        self.treeWidget().setItemWidget(self, 2, self.entity)
+        parent.setItemWidget(self, 2, self.entity)
 
         self.task = QtGui.QLabel()
         self.task.setText(task)
-        self.treeWidget().setItemWidget(self, 3, self.task)
+        parent.setItemWidget(self, 3, self.task)
 
         self.start = QtGui.QTimeEdit()
         self.start.setTime(start)
-        self.treeWidget().setItemWidget(self, 4, self.start)
+        parent.setItemWidget(self, 4, self.start)
 
         self.end = QtGui.QTimeEdit()
         self.end.setTime(end)
-        self.treeWidget().setItemWidget(self, 5, self.end)
+        parent.setItemWidget(self, 5, self.end)
 
         self.duration = QtGui.QLabel()
         self.duration.setText('%0.2f hrs' % duration)
-        self.treeWidget().setItemWidget(self, 6, self.duration)
+        parent.setItemWidget(self, 6, self.duration)
 
         self.edit = QtGui.QPushButton()
         self.edit.setText('Edit')
-        self.treeWidget().setItemWidget(self, 7, self.edit)
+        parent.setItemWidget(self, 7, self.edit)
 
         # time_table = QtGui.QTreeWidgetItem(add_key, [str(timesheet['id']),            # 0
         #                                              project,                         # 1
@@ -255,7 +259,7 @@ class sheets(QtGui.QWidget):
                 self.ui.whose_timesheets.addItem(artist['name'], artist['id'])
 
         # Set the default start and end times
-        start_time = (datetime.now() - timedelta(weeks=2)).date()
+        start_time = (datetime.now() - timedelta(weeks=1)).date()
         end_time = datetime.now().date()
         self.ui.start_date.setDate(start_time)
         self.ui.end_date.setDate(end_time)
@@ -332,27 +336,67 @@ class sheets(QtGui.QWidget):
                     add_key.setFirstColumnSpanned(False)
                     add_key.setText(0, key)
                     for timesheet in val:
-                        sheet = sheet_editor_button(self.ui.sheet_tree, add_key, timesheet)
-                        print(sheet)
-                        # task_id = timesheet['entity']['id']
-                        # task = timesheet['entity']['name']
-                        # project = timesheet['project']['name']
-                        # project_id = timesheet['project']['id']
-                        # entity = sg_data.get_entity_from_task(task_id=task_id)
-                        # entity_name = entity['entity']['name']
-                        # entity_id = entity['entity']['id']
-                        # start = timesheet['sg_task_start'].time().strftime('%I:%M %p')
-                        # end = timesheet['sg_task_end'].time().strftime('%I:%M %p')
-                        # duration = timesheet['duration'] / 60.0
+                        # sheet = sheet_editor_button(self.ui.sheet_tree, add_key, timesheet)
+                        # add_key.addChild(sheet)
+                        # print(sheet)
+                        task_id = timesheet['entity']['id']
+                        task = timesheet['entity']['name']
+                        project = timesheet['project']['name']
+                        project_id = timesheet['project']['id']
+                        entity = sg_data.get_entity_from_task(task_id=task_id)
+                        entity_name = entity['entity']['name']
+                        entity_id = entity['entity']['id']
+                        start = timesheet['sg_task_start'].time()
+                        if timesheet['sg_task_end']:
+                            end = timesheet['sg_task_end'].time()
+                        else:
+                            end = datetime.now().time()
+                        duration = timesheet['duration'] / 60.0
+
+                        time_table = QtGui.QTreeWidgetItem()
+
+                        self.ts_id = QtGui.QLabel()
+                        self.ts_id.setText(str(timesheet['id']))
+                        # self.ui.sheet_tree.setItemWidget(time_table, 0, self.ts_id)
+
+                        self.project = QtGui.QLabel()
+                        self.project.setText(project)
+                        # self.ui.sheet_tree.setItemWidget(time_table, 1, self.project)
+
+                        self.entity = QtGui.QLabel()
+                        self.entity.setText(entity_name)
+                        # self.ui.sheet_tree.setItemWidget(time_table, 2, self.entity)
+
+                        self.task = QtGui.QLabel()
+                        self.task.setText(task)
+                        # self.ui.sheet_tree.setItemWidget(time_table, 3, self.task)
+
+                        self.start = QtGui.QTimeEdit()
+                        self.start.setTime(start)
+                        # self.ui.sheet_tree.setItemWidget(time_table, 4, self.start)
+
+                        self.end = QtGui.QTimeEdit()
+                        self.end.setTime(end)
+                        # self.ui.sheet_tree.setItemWidget(time_table, 5, self.end)
+
+                        self.duration = QtGui.QLabel()
+                        self.duration.setText('%0.2f hrs' % duration)
+                        # self.ui.sheet_tree.setItemWidget(time_table, 6, self.duration)
+
+                        self.edit = QtGui.QPushButton()
+                        self.edit.setText('Edit')
+                        # self.ui.sheet_tree.setItemWidget(time_table, 7, self.edit)
+
+                        add_key.addChild(time_table)
                         #
-                        # time_table = QtGui.QTreeWidgetItem(add_key, [str(timesheet['id']),
-                        #                                              project,
-                        #                                              entity_name,
-                        #                                              task,
-                        #                                              'start: %s' % start,
-                        #                                              'end: %s' % end,
-                        #                                              'total: %0.2f hrs' % duration,
-                        #                                              ''
+                        # time_table = QtGui.QTreeWidgetItem(add_key, [QtGui.QWidgetItem(self.ts_id),
+                        #                                              self.project,
+                        #                                              self.entity,
+                        #                                              self.task,
+                        #                                              self.start,
+                        #                                              self.end,
+                        #                                              self.duration,
+                        #                                              self.edit
                         #                                              ]
                         #                                    )
                         # # # time_table.setCheckState(0, QtCore.Qt.CheckState.Unchecked)
