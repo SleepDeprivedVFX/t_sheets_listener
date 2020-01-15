@@ -549,7 +549,7 @@ class tardis_events:
                         else:
                             process = 'pythonw.exe'
                         logger.debug('Launching EOD...')
-                        eod_launch = subprocess.Popen('%s %s' % (process, eod_launch_path))
+                        eod_launch = subprocess.Popen('%s %s -o %s' % (process, eod_launch_path, datetime.now()))
                         logger.debug('eod_launch command: %s' % eod_launch)
                         eod_launch.wait()
                         launch_eod = False
