@@ -1742,7 +1742,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.kill_it = True
         self.time_engine.kill_it = True
         self.time_machine.kill_it = True
-        time.sleep()
+        time.sleep(0.5)
 
     def update_saved_settings(self):
         """
