@@ -319,6 +319,17 @@ class sheets(QtGui.QWidget):
             self.ui.sheet_tree.setAlternatingRowColors(True)
 
             # Rummage through the data
+            all_rows = []
+
+            all_starts = []
+            all_ends = []
+            all_projects = []
+            all_entities = []
+            all_tasks = []
+            all_ts_ids = []
+            all_durations = []
+            all_edits = []
+
             for record in data:
                 main_key = record.keys()[0]
                 block_data = record[main_key]
@@ -340,22 +351,22 @@ class sheets(QtGui.QWidget):
 
                     # Creating lists for all the widgets
                     # List of timesheet rows
-                    all_rows = []
+                    child_rows = []
 
                     # List of Widgets
-                    all_starts = []
-                    all_ends = []
-                    all_projects = []
-                    all_entities = []
-                    all_tasks = []
-                    all_ts_ids = []
-                    all_durations = []
-                    all_edits = []
+                    child_starts = []
+                    child_ends = []
+                    child_projects = []
+                    child_entities = []
+                    child_tasks = []
+                    child_ts_ids = []
+                    child_durations = []
+                    child_edits = []
 
                     # Add all the rows
                     for i in range(0, (len(val)-1)):
-                        all_rows.append(QtGui.QTreeWidgetItem())
-                        add_key.addChild(all_rows[i])
+                        child_rows.append(QtGui.QTreeWidgetItem())
+                        add_key.addChild(child_rows[i])
 
                     # Set an incrementer for the next loop
                     x = 0
@@ -379,55 +390,81 @@ class sheets(QtGui.QWidget):
 
                         add_ts_id = QtGui.QLabel()
                         add_ts_id.setText(str(timesheet['id']))
-                        all_ts_ids.append(add_ts_id)
+                        child_ts_ids.append(add_ts_id)
 
                         add_project = QtGui.QLabel()
                         add_project.setText(project)
-                        all_projects.append(add_project)
+                        child_projects.append(add_project)
 
                         add_entity = QtGui.QLabel()
                         add_entity.setText(entity_name)
-                        all_entities.append(add_entity)
+                        child_entities.append(add_entity)
 
                         add_task = QtGui.QLabel()
                         add_task.setText(task)
-                        all_tasks.append(add_task)
+                        child_tasks.append(add_task)
 
                         add_start = QtGui.QTimeEdit()
                         add_start.setTime(start)
-                        all_starts.append(add_start)
+                        child_starts.append(add_start)
 
                         add_end = QtGui.QTimeEdit()
                         add_end.setTime(end)
-                        all_ends.append(add_end)
+                        child_ends.append(add_end)
 
                         add_duration = QtGui.QLabel()
                         add_duration.setText('%0.2f hrs' % duration)
-                        all_durations.append(add_duration)
+                        child_durations.append(add_duration)
 
                         add_edit = QtGui.QPushButton()
                         add_edit.setText('Edit')
-                        all_edits.append(add_edit)
+                        child_edits.append(add_edit)
 
                         x += 1
 
                     add_main_key.addChild(add_key)
 
-                    # FIXME: This loop is crashing the system every time.  Can't seem to add widgets to the Tree
-                    #       It's possible that all of this needs to happen at the end, requiring a much more elaborate
-                    #       data structure for keeping and passing those widgets.  I'll need to see how I've achieved
-                    #       this in the past (nothing exactly like it, but... you know...)
-                    for w in range(0, (len(val)-1)):
-                        self.ui.sheet_tree.setItemWidget(all_rows[w], 0, all_ts_ids[w])
-                        self.ui.sheet_tree.setItemWidget(all_rows[w], 1, all_projects[w])
-                        self.ui.sheet_tree.setItemWidget(all_rows[w], 2, all_entities[w])
-                        self.ui.sheet_tree.setItemWidget(all_rows[w], 3, all_tasks[w])
-                        self.ui.sheet_tree.setItemWidget(all_rows[w], 4, all_starts[w])
-                        self.ui.sheet_tree.setItemWidget(all_rows[w], 5, all_ends[w])
-                        self.ui.sheet_tree.setItemWidget(all_rows[w], 6, all_durations[w])
-                        self.ui.sheet_tree.setItemWidget(all_rows[w], 7, all_edits[w])
+                    # Collect these rows
+                    all_rows.append(child_rows)
+
+                    all_ts_ids.append(child_ts_ids)
+                    all_projects.append(child_projects)
+                    all_entities.append(child_entities)
+                    all_tasks.append(child_tasks)
+                    all_starts.append(child_starts)
+                    all_ends.append(child_ends)
+                    all_durations.append(child_durations)
+                    all_edits.append(child_edits)
 
                 self.ui.sheet_tree.addTopLevelItem(add_main_key)
+
+                # FIXME: This loop is crashing the system every time.  Can't seem to add widgets to the Tree
+                #       It's possible that all of this needs to happen at the end, requiring a much more elaborate
+                #       data structure for keeping and passing those widgets.  I'll need to see how I've achieved
+                #       this in the past (nothing exactly like it, but... you know...)
+                # for w in range(0, (len(val) - 1)):
+                #     self.ui.sheet_tree.setItemWidget(child_rows[w], 0, all_ts_ids[w])
+                #     self.ui.sheet_tree.setItemWidget(child_rows[w], 1, all_projects[w])
+                #     self.ui.sheet_tree.setItemWidget(child_rows[w], 2, all_entities[w])
+                #     self.ui.sheet_tree.setItemWidget(child_rows[w], 3, all_tasks[w])
+                #     self.ui.sheet_tree.setItemWidget(child_rows[w], 4, all_starts[w])
+                #     self.ui.sheet_tree.setItemWidget(child_rows[w], 5, all_ends[w])
+                #     self.ui.sheet_tree.setItemWidget(child_rows[w], 6, all_durations[w])
+                #     self.ui.sheet_tree.setItemWidget(child_rows[w], 7, all_edits[w])
+
+            this_row = 0
+            for row in all_rows:
+                for r in range(0, (len(row) - 1)):
+                    self.ui.sheet_tree.setItemWidget(row[r], 0, all_ts_ids[this_row][r])
+                    self.ui.sheet_tree.setItemWidget(row[r], 1, all_projects[this_row][r])
+                    self.ui.sheet_tree.setItemWidget(row[r], 2, all_entities[this_row][r])
+                    self.ui.sheet_tree.setItemWidget(row[r], 3, all_tasks[this_row][r])
+                    self.ui.sheet_tree.setItemWidget(row[r], 4, all_starts[this_row][r])
+                    self.ui.sheet_tree.setItemWidget(row[r], 5, all_ends[this_row][r])
+                    self.ui.sheet_tree.setItemWidget(row[r], 6, all_durations[this_row][r])
+                    self.ui.sheet_tree.setItemWidget(row[r], 7, all_edits[this_row][r])
+                this_row += 1
+
             self.ui.sheet_tree.expandAll()
             self.ui.sheet_tree.resizeColumnToContents(True)
 
