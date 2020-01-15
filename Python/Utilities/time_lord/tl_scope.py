@@ -320,7 +320,7 @@ class scope(QtGui.QWidget):
                                           "    border: 0px;\n"
                                           "    padding: 5px;\n"
                                           "}"
-                                         "QToolTip:{\n"
+                                         "QTableView::tool-tip{\n"
                                          "    \n"
                                          "    background-color: rgb(80, 80, 80);\n"
                                          "    color: rgb(200, 200, 200);\n"
@@ -452,7 +452,7 @@ class scope(QtGui.QWidget):
         clock_out_btn = QtGui.QPushButton()
         clock_out_btn.setText('Clock Out')
         clock_out_btn.setStyleSheet('background-color: #990000;')
-        clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid))
+        clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid, button=clock_out_btn))
         self.ui.slave_list.setCellWidget(row, 7, clock_out_btn)
         self.ui.slave_list.updateEditorGeometries()
 
@@ -516,8 +516,11 @@ class scope(QtGui.QWidget):
                 logger.error('Cannot find key: %s' % e)
         self.scope_engine.scope_viewer = self.scope_viewer
 
-    def clock_out_user(self, uid=None):
+    def clock_out_user(self, uid=None, button=None):
         logger.debug('Clock out requested for %s!' % uid)
+        if button:
+            button.setStyleSheet('background-color: rgb(150, 150, 150);')
+            button.setDisabled(True)
         _user = users.get_user_by_id(uid)
         latest_timesheet = tl_time.get_latest_timesheet(user=_user)
         clocked_out = tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=datetime.now())
