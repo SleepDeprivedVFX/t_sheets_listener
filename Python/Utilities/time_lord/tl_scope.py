@@ -345,7 +345,7 @@ class scope(QtGui.QWidget):
                 self.ui.slave_list.cellWidget(row, 3).setText(str(duration))
                 self.ui.slave_list.cellWidget(row, 4).setText('%0.2f hrs' % total)
                 if total > 8.0:
-                    self.ui.slave_list.cellWidget(row, 4).setStyleSheet('color: #990000;')
+                    self.ui.slave_list.cellWidget(row, 4).setStyleSheet('color: #AA0000;')
                 self.ui.slave_list.cellWidget(row, 5).setText(str(lunch))
                 self.scope_viewer[userid]['lunch_time'] = lunch
             except (KeyError, AttributeError) as e:
@@ -411,13 +411,13 @@ class scope(QtGui.QWidget):
         # Add the start time
         start_time_label = QtGui.QLabel()
         start_time_label.setText(str(start_time))
-        start_time_label.setStyleSheet('color: #0000EE;')
+        start_time_label.setStyleSheet('color: #00DD00;')
         self.ui.slave_list.setCellWidget(row, 3, start_time_label)
 
         # Add the Total Time
         total_label = QtGui.QLabel()
         total_label.setText('%0.2f hrs' % total)
-        total_label.setStyleSheet('color: #006600;')
+        total_label.setStyleSheet('color: #0000FF;')
         self.ui.slave_list.setCellWidget(row, 4, total_label)
 
         # Add the lunch break
@@ -431,6 +431,7 @@ class scope(QtGui.QWidget):
         clock_out_btn.setStyleSheet('background-color: #990000;')
         clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid))
         self.ui.slave_list.setCellWidget(row, 6, clock_out_btn)
+        self.ui.slave_list.updateEditorGeometries()
 
         self.scope_viewer[uid] = u_data
 
