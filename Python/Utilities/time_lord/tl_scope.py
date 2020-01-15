@@ -24,7 +24,7 @@ from bin.comm_system import comm_sys
 from ui import time_lord_scope as tls
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.6'
+__version__ = '0.4.7'
 
 config = bin.configuration.get_configuration()
 
@@ -319,7 +319,12 @@ class scope(QtGui.QWidget):
                                           "QTableView::item{\n"
                                           "    border: 0px;\n"
                                           "    padding: 5px;\n"
-                                          "}")
+                                          "}"
+                                         "QToolTip:{\n"
+                                         "    \n"
+                                         "    background-color: rgb(80, 80, 80);\n"
+                                         "    color: rgb(200, 200, 200);\n"
+                                         "}")
 
         self.scope_engine.scope_signals.add_user.connect(self.add_user)
         self.scope_engine.scope_signals.remove_user.connect(self.remove_user)

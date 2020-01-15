@@ -106,6 +106,9 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QComboBox" name="whose_timesheets">
+           <property name="toolTip">
+            <string>List of available people and time sheets</string>
+           </property>
            <item>
             <property name="text">
              <string>My Timesheets</string>
@@ -213,7 +216,7 @@ alternate-background-color: rgb(120, 120, 120);</string>
           <number>8</number>
          </property>
          <attribute name="headerVisible">
-          <bool>false</bool>
+          <bool>true</bool>
          </attribute>
          <attribute name="headerCascadingSectionResizes">
           <bool>true</bool>
@@ -226,42 +229,42 @@ alternate-background-color: rgb(120, 120, 120);</string>
          </attribute>
          <column>
           <property name="text">
-           <string>None</string>
+           <string>Timesheet</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">2</string>
+           <string notr="true">Project</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">3</string>
+           <string notr="true">Entity</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">4</string>
+           <string notr="true">Task</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">5</string>
+           <string notr="true">Start</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">6</string>
+           <string notr="true">End</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">7</string>
+           <string notr="true">Duration</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string notr="true">8</string>
+           <string notr="true">Edit</string>
           </property>
          </column>
         </widget>

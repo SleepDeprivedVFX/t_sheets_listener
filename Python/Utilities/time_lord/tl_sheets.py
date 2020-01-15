@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.6'
+__version__ = '0.4.7'
 
 import shotgun_api3 as sgapi
 import os
@@ -453,17 +453,17 @@ class sheets(QtGui.QWidget):
                 #     self.ui.sheet_tree.setItemWidget(child_rows[w], 7, all_edits[w])
 
             this_row = 0
-            for row in all_rows:
-                for r in range(0, (len(row) - 1)):
-                    self.ui.sheet_tree.setItemWidget(row[r], 0, all_ts_ids[this_row][r])
-                    self.ui.sheet_tree.setItemWidget(row[r], 1, all_projects[this_row][r])
-                    self.ui.sheet_tree.setItemWidget(row[r], 2, all_entities[this_row][r])
-                    self.ui.sheet_tree.setItemWidget(row[r], 3, all_tasks[this_row][r])
-                    self.ui.sheet_tree.setItemWidget(row[r], 4, all_starts[this_row][r])
-                    self.ui.sheet_tree.setItemWidget(row[r], 5, all_ends[this_row][r])
-                    self.ui.sheet_tree.setItemWidget(row[r], 6, all_durations[this_row][r])
-                    self.ui.sheet_tree.setItemWidget(row[r], 7, all_edits[this_row][r])
-                this_row += 1
+            # for row in all_rows:
+            #     for r in range(0, (len(row) - 1)):
+            #         self.ui.sheet_tree.setItemWidget(row[r], 0, all_ts_ids[this_row][r])
+            #         self.ui.sheet_tree.setItemWidget(row[r], 1, all_projects[this_row][r])
+            #         self.ui.sheet_tree.setItemWidget(row[r], 2, all_entities[this_row][r])
+            #         self.ui.sheet_tree.setItemWidget(row[r], 3, all_tasks[this_row][r])
+            #         self.ui.sheet_tree.setItemWidget(row[r], 4, all_starts[this_row][r])
+            #         self.ui.sheet_tree.setItemWidget(row[r], 5, all_ends[this_row][r])
+            #         self.ui.sheet_tree.setItemWidget(row[r], 6, all_durations[this_row][r])
+            #         self.ui.sheet_tree.setItemWidget(row[r], 7, all_edits[this_row][r])
+            #     this_row += 1
 
             self.ui.sheet_tree.expandAll()
             self.ui.sheet_tree.resizeColumnToContents(True)
