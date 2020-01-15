@@ -48,6 +48,7 @@ class TreeWidgetWithWidgetItems(QtGui.QDialog):
         # self.childButton_2.clicked.connect(self.child_button_2_clicked)
         # self.childButton_3.clicked.connect(self.child_button_3_clicked)
         # self.childLineEdit.textEdited.connect(self.child_lineedit_edited)
+
         # Setting the layout
         self.setWindowTitle("QTreeWidget with Button Example")
         self.setLayout(self.vboxLayout)
