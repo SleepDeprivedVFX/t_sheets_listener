@@ -414,6 +414,9 @@ class sheets(QtGui.QWidget):
                     add_main_key.addChild(add_key)
 
                     # FIXME: This loop is crashing the system every time.  Can't seem to add widgets to the Tree
+                    #       It's possible that all of this needs to happen at the end, requiring a much more elaborate
+                    #       data structure for keeping and passing those widgets.  I'll need to see how I've achieved
+                    #       this in the past (nothing exactly like it, but... you know...)
                     for w in range(0, (len(val)-1)):
                         self.ui.sheet_tree.setItemWidget(all_rows[w], 0, all_ts_ids[w])
                         self.ui.sheet_tree.setItemWidget(all_rows[w], 1, all_projects[w])
