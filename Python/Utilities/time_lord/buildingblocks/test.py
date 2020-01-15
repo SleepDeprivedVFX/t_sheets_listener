@@ -28,6 +28,7 @@ class TreeWidgetWithWidgetItems(QtGui.QDialog):
         self.childButton_3 = QtGui.QPushButton("Child 3")
         self.childLineEdit = QtGui.QLineEdit()
         self.childLineEdit.setPlaceholderText("Add Text Here")
+
         # Adding the child to the top level item
         self.childItems = []
         for i in range(4):

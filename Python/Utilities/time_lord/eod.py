@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.4.6'
 
 # FIXME: I beleive there is an issue with the Session lock basically subtracting 15 minutes where no time
 #       had actually passed.  I need to make sure that the timer is not removing time that was actually worked.
