@@ -118,6 +118,7 @@ class scope_engine(QtCore.QThread):
                     then = parser.parse('%s %s:%s:%s' % (_date, _hours, _minutes, _seconds))
 
                     lunch = d['lunch_time']
+                    total = d['total']
 
                     # Sub timer loop for getting lunch status.
                     if second % 60 == 0:
@@ -137,6 +138,8 @@ class scope_engine(QtCore.QThread):
                             lunch_duration = l_end - l_start
                             lunch = '%s' % lunch_duration
 
+                            total = tl_time.get_daily_total(user={'id': u}, lunch_id=lunch_task_id)
+
                     duration = datetime.now() - then
                     split_duration = str(duration).split(':')
                     duration = '%02d:%02d:%02d' % (int(split_duration[0]), int(split_duration[1]),
@@ -145,6 +148,7 @@ class scope_engine(QtCore.QThread):
                         'uid': u,
                         'row': d['row_id'],
                         'duration': duration,
+                        'total': total,
                         'lunch_time': lunch
                     }
                     self.scope_signals.user_running_time.emit(update)
@@ -226,6 +230,10 @@ class scope_engine(QtCore.QThread):
                 else:
                     lunch_time = '00:00:00'
 
+                total = tl_time.get_daily_total(user=_user, lunch_id=lunch_task_id)
+                if not total:
+                    total = 0.0
+
                 current_data = {
                     'name': username,
                     'project': proj_name,
@@ -235,7 +243,8 @@ class scope_engine(QtCore.QThread):
                     'task_id': task_id,
                     'start_time': start_time,
                     'row_id': None,
-                    'lunch_time': lunch_time
+                    'lunch_time': lunch_time,
+                    'total': total
                 }
 
                 if userid not in self.scope.keys():
@@ -249,7 +258,8 @@ class scope_engine(QtCore.QThread):
                         'task_id': task_id,
                         'start_time': start_time,
                         'lunch_time': lunch_time,
-                        'row_id': None
+                        'row_id': None,
+                        'total': total
                     }
                 elif userid in self.scope.keys() and self.scope[userid]['task_id'] != task_id:
                     logger.debug('WRONG TASK!')
@@ -312,8 +322,8 @@ class scope(QtGui.QWidget):
 
         # Setup column widths
         header = self.ui.slave_list.horizontalHeader()
+        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Total', 'Lunch', ''])
         header.setResizeMode(4, QtGui.QHeaderView.Stretch)
-        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Lunch', ''])
 
     def window_state(self):
         state = self.ui.stay_on_top.checkState()
@@ -330,9 +340,13 @@ class scope(QtGui.QWidget):
                 row = data['row']
                 duration = data['duration']
                 lunch = data['lunch_time']
+                total = data['total']
                 logger.debug('set_user_running_time: uid: %s | row: %s' % (userid, row))
                 self.ui.slave_list.cellWidget(row, 3).setText(str(duration))
-                self.ui.slave_list.cellWidget(row, 4).setText(str(lunch))
+                self.ui.slave_list.cellWidget(row, 4).setText('%0.2f hrs' % total)
+                if total > 8.0:
+                    self.ui.slave_list.cellWidget(row, 4).setStyleSheet('color: #990000;')
+                self.ui.slave_list.cellWidget(row, 5).setText(str(lunch))
                 self.scope_viewer[userid]['lunch_time'] = lunch
             except (KeyError, AttributeError) as e:
                 logger.error('There was an error updating the Time Scope! %s' % e)
@@ -366,6 +380,7 @@ class scope(QtGui.QWidget):
         task = u_data['task']
         task_id = u_data['task_id']
         start_time = u_data['start_time']
+        total = u_data['total']
         lunch_time = u_data['lunch_time']
 
         row = self.ui.slave_list.rowCount()
@@ -396,20 +411,26 @@ class scope(QtGui.QWidget):
         # Add the start time
         start_time_label = QtGui.QLabel()
         start_time_label.setText(str(start_time))
-        start_time_label.setStyleSheet('color: #0000AA;')
+        start_time_label.setStyleSheet('color: #0000EE;')
         self.ui.slave_list.setCellWidget(row, 3, start_time_label)
+
+        # Add the Total Time
+        total_label = QtGui.QLabel()
+        total_label.setText('%0.2f hrs' % total)
+        total_label.setStyleSheet('color: #006600;')
+        self.ui.slave_list.setCellWidget(row, 4, total_label)
 
         # Add the lunch break
         lunch_time_label = QtGui.QLabel()
         lunch_time_label.setText(str(lunch_time))
-        self.ui.slave_list.setCellWidget(row, 4, lunch_time_label)
+        self.ui.slave_list.setCellWidget(row, 5, lunch_time_label)
 
         # Create the button
         clock_out_btn = QtGui.QPushButton()
         clock_out_btn.setText('Clock Out')
         clock_out_btn.setStyleSheet('background-color: #990000;')
         clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid))
-        self.ui.slave_list.setCellWidget(row, 5, clock_out_btn)
+        self.ui.slave_list.setCellWidget(row, 6, clock_out_btn)
 
         self.scope_viewer[uid] = u_data
 
@@ -437,7 +458,7 @@ class scope(QtGui.QWidget):
 
         # Search through the table and find the UID?
         row_count = self.ui.slave_list.rowCount()
-        for i in range(0, row_count-1):
+        for i in range(0, row_count):
             this_uid = int(self.ui.slave_list.cellWidget(i, 0).toolTip())
             if uid == this_uid:
                 self.ui.slave_list.removeRow(i)
