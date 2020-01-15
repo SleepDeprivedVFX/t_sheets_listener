@@ -124,7 +124,7 @@ class scope_engine(QtCore.QThread):
                     if second % 60 == 0:
                         # Get the lunch break and add it to the mix
                         lunch_time = tl_time.get_todays_lunch(user={'id': u}, lunch_id=lunch_task_id,
-                                                             lunch_proj_id=lunch_proj_id)
+                                                              lunch_proj_id=lunch_proj_id)
                         if lunch_time:
                             l_start = lunch_time[0]['sg_task_start']
                             l_end = lunch_time[0]['sg_task_end']
@@ -138,7 +138,7 @@ class scope_engine(QtCore.QThread):
                             lunch_duration = l_end - l_start
                             lunch = '%s' % lunch_duration
 
-                            total = tl_time.get_daily_total(user={'id': u}, lunch_id=lunch_task_id)
+                        total = tl_time.get_daily_total(user={'id': u}, lunch_id=lunch_task_id)
 
                     duration = datetime.now() - then
                     split_duration = str(duration).split(':')
