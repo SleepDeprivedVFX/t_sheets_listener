@@ -133,7 +133,7 @@ class scope_engine(QtCore.QThread):
                                 ls_hour = l_start.hour
                                 ls_min = l_start.minute
                                 ls_sec = l_start.second
-                                l_start = parser.parse('%s %2d:%2d:%2d' % (ls_date, ls_hour, ls_min, ls_sec))
+                                l_start = parser.parse('%s %s:%s:%s' % (ls_date, ls_hour, ls_min, int(ls_sec)))
                                 l_end = datetime.now()
                             lunch_duration = l_end - l_start
                             lunch = '%s' % lunch_duration
@@ -231,7 +231,7 @@ class scope_engine(QtCore.QThread):
                         ls_hour = l_start.hour
                         ls_min = l_start.minute
                         ls_sec = l_start.second
-                        l_start = parser.parse('%s %s:%s:%s' % (ls_date, ls_hour, ls_min, ls_sec))
+                        l_start = parser.parse('%s %s:%s:%s' % (ls_date, ls_hour, ls_min, int(ls_sec)))
                         l_end = datetime.now()
                     lunch_duration = l_end - l_start
                     lunch_time = '%s' % lunch_duration
