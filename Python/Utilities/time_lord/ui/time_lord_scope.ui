@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
+    <width>820</width>
     <height>520</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>720</width>
+    <width>820</width>
     <height>481</height>
    </size>
   </property>
@@ -103,6 +103,11 @@ QTableView::item{
      <column>
       <property name="text">
        <string>Project</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Entity</string>
       </property>
      </column>
      <column>

@@ -153,7 +153,7 @@ class scope_engine(QtCore.QThread):
                     }
                     self.scope_signals.user_running_time.emit(update)
 
-                if second % 10 == 0:
+                if second % 30 == 0:
                     active_timesheets = tl_time.get_active_timesheets()
 
                     # The compare_scope_to_timesheets() function sets the self.scope.  Which in turn gives us the
@@ -213,6 +213,14 @@ class scope_engine(QtCore.QThread):
                 task_id = task['id']
                 start_time = timesheet['sg_task_start']
 
+                get_entity = sg_data.get_entity_from_task(task_id=task_id)
+                if get_entity:
+                    entity = get_entity['entity']['name']
+                    entity_id = get_entity['entity']['id']
+                else:
+                    entity = None
+                    entity_id = None
+
                 lunch_time = tl_time.get_todays_lunch(user={'id': userid}, lunch_id=lunch_task_id,
                                                       lunch_proj_id=lunch_proj_id)
                 if lunch_time:
@@ -238,7 +246,8 @@ class scope_engine(QtCore.QThread):
                     'name': username,
                     'project': proj_name,
                     'proj_id': proj_id,
-                    'entity': None,
+                    'entity': entity,
+                    'entity_id': entity_id,
                     'task': task_name,
                     'task_id': task_id,
                     'start_time': start_time,
@@ -253,7 +262,8 @@ class scope_engine(QtCore.QThread):
                         'name': username,
                         'project': proj_name,
                         'proj_id': proj_id,
-                        'entity': None,
+                        'entity': entity,
+                        'entity_id': entity_id,
                         'task': task_name,
                         'task_id': task_id,
                         'start_time': start_time,
@@ -322,8 +332,9 @@ class scope(QtGui.QWidget):
 
         # Setup column widths
         header = self.ui.slave_list.horizontalHeader()
-        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Total', 'Lunch', ''])
-        header.setResizeMode(4, QtGui.QHeaderView.Stretch)
+        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Entity', 'Task', 'Time', 'Total',
+                                                      'Lunch', ''])
+        header.setResizeMode(7, QtGui.QHeaderView.Stretch)
 
     def window_state(self):
         state = self.ui.stay_on_top.checkState()
@@ -342,11 +353,11 @@ class scope(QtGui.QWidget):
                 lunch = data['lunch_time']
                 total = data['total']
                 logger.debug('set_user_running_time: uid: %s | row: %s' % (userid, row))
-                self.ui.slave_list.cellWidget(row, 3).setText(str(duration))
-                self.ui.slave_list.cellWidget(row, 4).setText('%0.2f hrs' % total)
+                self.ui.slave_list.cellWidget(row, 4).setText(str(duration))
+                self.ui.slave_list.cellWidget(row, 5).setText('%0.2f hrs' % total)
                 if total > 8.0:
-                    self.ui.slave_list.cellWidget(row, 4).setStyleSheet('color: #AA0000;')
-                self.ui.slave_list.cellWidget(row, 5).setText(str(lunch))
+                    self.ui.slave_list.cellWidget(row, 5).setStyleSheet('color: #AA0000;')
+                self.ui.slave_list.cellWidget(row, 6).setText(str(lunch))
                 self.scope_viewer[userid]['lunch_time'] = lunch
             except (KeyError, AttributeError) as e:
                 logger.error('There was an error updating the Time Scope! %s' % e)
@@ -377,6 +388,7 @@ class scope(QtGui.QWidget):
         project = u_data['project']
         proj_id = u_data['proj_id']
         entity = u_data['entity']
+        entity_id = u_data['entity_id']
         task = u_data['task']
         task_id = u_data['task_id']
         start_time = u_data['start_time']
@@ -400,37 +412,43 @@ class scope(QtGui.QWidget):
         proj_label.setToolTip('Project ID: %s' % proj_id)
         self.ui.slave_list.setCellWidget(row, 1, proj_label)
 
+        # Add the entity name and tool tip
+        entity_label = QtGui.QLabel()
+        entity_label.setText(entity)
+        entity_label.setToolTip('Entity ID: %s' % entity_id)
+        self.ui.slave_list.setCellWidget(row, 2, entity_label)
+
         # Add the task name and tool tip
         task_label = QtGui.QLabel()
         task_label.setText(task)
         task_tool = 'Entity: %s\n' \
                     'Task ID: %s' % (entity, task_id)
         task_label.setToolTip(task_tool)
-        self.ui.slave_list.setCellWidget(row, 2, task_label)
+        self.ui.slave_list.setCellWidget(row, 3, task_label)
 
         # Add the start time
         start_time_label = QtGui.QLabel()
         start_time_label.setText(str(start_time))
         start_time_label.setStyleSheet('color: #00DD00;')
-        self.ui.slave_list.setCellWidget(row, 3, start_time_label)
+        self.ui.slave_list.setCellWidget(row, 4, start_time_label)
 
         # Add the Total Time
         total_label = QtGui.QLabel()
         total_label.setText('%0.2f hrs' % total)
         total_label.setStyleSheet('color: #0000FF;')
-        self.ui.slave_list.setCellWidget(row, 4, total_label)
+        self.ui.slave_list.setCellWidget(row, 5, total_label)
 
         # Add the lunch break
         lunch_time_label = QtGui.QLabel()
         lunch_time_label.setText(str(lunch_time))
-        self.ui.slave_list.setCellWidget(row, 5, lunch_time_label)
+        self.ui.slave_list.setCellWidget(row, 6, lunch_time_label)
 
         # Create the button
         clock_out_btn = QtGui.QPushButton()
         clock_out_btn.setText('Clock Out')
         clock_out_btn.setStyleSheet('background-color: #990000;')
         clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid))
-        self.ui.slave_list.setCellWidget(row, 6, clock_out_btn)
+        self.ui.slave_list.setCellWidget(row, 7, clock_out_btn)
         self.ui.slave_list.updateEditorGeometries()
 
         self.scope_viewer[uid] = u_data
