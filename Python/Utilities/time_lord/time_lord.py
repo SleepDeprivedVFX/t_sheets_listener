@@ -39,6 +39,7 @@ from PySide import QtGui, QtCore
 import logging
 from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime
+from dateutil import parser
 import cPickle as pickle
 
 # Time Lord Libraries
@@ -175,6 +176,8 @@ class time_signals(QtCore.QObject):
     out_date = QtCore.Signal(str)
     running_clock = QtCore.Signal(str)
     get_running_clock = QtCore.Signal(dict)
+    rec_user_start = QtCore.Signal(tuple)
+    rec_user_end = QtCore.Signal(tuple)
 
     # Monitor Output Signals
     trt_output = QtCore.Signal(str)
@@ -255,6 +258,9 @@ class time_engine(QtCore.QThread):
         self.time_signal.get_running_clock.connect(self.set_latest_timesheet)
         self.time_signal.log.emit('Time Engine Started.')
 
+        self.user_start = None
+        self.user_end = None
+
     def kill(self):
         self.kill_it = True
 
@@ -283,20 +289,34 @@ class time_engine(QtCore.QThread):
             last_in_time = latest_timesheet['sg_task_start']
             last_out_time = latest_timesheet['sg_task_end']
 
+        if self.user_start:
+            start_time = self.user_start
+        else:
+            start_time = datetime.now()
+
+        if self.user_end:
+            end_time = self.user_end
+        else:
+            end_time = datetime.now()
+
         try:
             if last_out_time:
-                start = '%s %02d:%02d:%02d' % (datetime.now().date(), datetime.now().time().hour,
-                                               datetime.now().time().minute, datetime.now().time().second)
+                if self.user_end:
+                    last_out_time = self.user_end
+                start = '%s %02d:%02d:%02d' % (start_time.date(), start_time.time().hour,
+                                               start_time.time().minute, start_time.time().second)
                 end = '%s %02d:%02d:%02d' % (last_out_time.date(), last_out_time.time().hour,
                                              last_out_time.time().minute, last_out_time.time().second)
             else:
+                if self.user_start:
+                    last_in_time = self.user_start
                 start = '%s %02d:%02d:%02d' % (last_in_time.date(), last_in_time.time().hour,
                                                last_in_time.time().minute, last_in_time.time().second)
-                end = '%s %02d:%02d:%02d' % (datetime.now().date(), datetime.now().time().hour,
-                                             datetime.now().time().minute, datetime.now().time().second)
+                end = '%s %02d:%02d:%02d' % (end_time.date(), end_time.time().hour,
+                                             end_time.time().minute, end_time.time().second)
 
             # Take the initial values and set their outputs.
-            set_message = 'Start: %s\nEnd: %s' % (start, end)
+            set_message = 'Start: %s\nEnd:   %s' % (start, end)
             self.time_signal.start_end_output.emit(set_message)
         except Exception as e:
             self.time_signal.error.emit('Failed to update: %s' % e)
@@ -330,8 +350,22 @@ class time_engine(QtCore.QThread):
 
                 # Send the time to the clocks.
                 self.time_signal.main_clock.emit(time)
-                self.time_signal.in_clock.emit(time)
-                self.time_signal.out_clock.emit(time)
+                if self.user_start:
+                    print('user start triggered')
+                    hours = (30 * (self.user_start.hour + (self.user_start.minute / 60.0)))
+                    minutes = (6 * (self.user_start.minute + (self.user_start.second / 60.0)))
+                    u_time = (hours, minutes)
+                    self.time_signal.in_clock.emit(u_time)
+                else:
+                    self.time_signal.in_clock.emit(time)
+
+                if self.user_end:
+                    hours = (30 * (self.user_end.hour + (self.user_end.minute / 60.0)))
+                    minutes = (6 * (self.user_end.minute + (self.user_end.second / 60.0)))
+                    u_time = (hours, minutes)
+                    self.time_signal.out_clock.emit(u_time)
+                else:
+                    self.time_signal.out_clock.emit(time)
 
                 # Setting the TRT
                 rt = tl_time.get_running_time(timesheet=self.latest_timesheet)
@@ -845,11 +879,15 @@ class time_lord(QtCore.QThread):
                 self.time_signal.debug.emit('Weekly total emitted')
         return weekly_total
 
-    def clock_out_user(self, latest_timesheet=None):
+    def clock_out_user(self, latest_timesheet=None, user_start=None, user_end=None):
         if latest_timesheet:
             self.time_signal.mutex_1.lock()
             self.time_signal.log.emit('Clocking out...')
-            clocked_out = tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=datetime.now())
+            if user_end:
+                time_out = user_end
+            else:
+                time_out = datetime.now()
+            clocked_out = tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=time_out)
             self.time_signal.log.emit('Clocked out at %s' % clocked_out['sg_task_end'])
             latest_timesheet = tl_time.get_timesheet_by_id(tid=latest_timesheet['id'])
             self.time_signal.mutex_1.unlock()
@@ -1022,6 +1060,11 @@ class time_lord_ui(QtGui.QMainWindow):
         self.set_window_on_top()
         # Set main user info
         self.ui.artist_label.setText(user['name'])
+
+        # Build dynamic start/end clock variables.
+        self.user_start = None
+        self.user_end = None
+
         # Set the rollers
         # TODO: Make sure the date rollers are pulling from the Time Sheet as well
         now = datetime.now()
@@ -1080,6 +1123,8 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_engine.time_signal.start_end_output.connect(self.start_end_output)
         self.time_engine.time_signal.user_output.connect(self.user_output)
         self.time_engine.time_signal.self_destruct.connect(self.close)
+        self.time_engine.time_signal.rec_user_start.connect(self.update_user_start)
+        self.time_engine.time_signal.rec_user_end.connect(self.update_user_end)
 
         # Dropdown Change Index Connections
         self.time_lord.time_signal.set_dropdown.connect(self.set_dropdown)
@@ -1089,6 +1134,10 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.entity_dropdown.currentIndexChanged.connect(self.req_update_tasks)
         self.ui.entity_dropdown.currentIndexChanged.connect(lambda: self.switch_state(self.latest_timesheet))
         self.switch_state(self.latest_timesheet)
+
+        # Connect the clock set buttons
+        self.ui.start_date_button.clicked.connect(self.get_user_start_time)
+        self.ui.end_date_button.clicked.connect(self.get_user_end_time)
 
         # Kill Signal
         self.time_engine.time_signal.auto_close.connect(self.close)
@@ -1320,9 +1369,16 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.req_daily_total.emit('Update!')
         self.time_lord.time_signal.req_weekly_total.emit('Update!')
         self.time_lord.time_signal.clock_out_user.emit(self.latest_timesheet)
+        self.user_start = None
+        self.time_engine.user_start = None
+        self.user_end = None
+        self.time_engine.user_end = None
         logger.debug('clock_out has set state and emitted update requests')
 
     def clock_in(self, message=None):
+        # FIXME: Currently, the clock_in routine is getting the start_time either from the get_user_start_time() or
+        #       from datetime.now().  Here's the catch... it needs to pull it from the UI, or some database that stores
+        #       the current start_time in the UI.
         # Check to see if the UI settings are valid for a new timesheet.
         logger.debug('Clock in requested.  Checking selection')
         if not self.selection_check():
@@ -1357,16 +1413,19 @@ class time_lord_ui(QtGui.QMainWindow):
             }
         }
 
-        # NOTE: This is a future feature that currently does nothing
-        start_time = self.get_user_start_time()
-        # Set the start time
-        if not start_time:
+        if self.user_start:
+            start_time = self.user_start
+        else:
             start_time = datetime.now()
 
         data = (context, start_time)
         self.time_lord.time_signal.clock_in_user.emit(data)
         self.set_window_on_top()
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
+        self.user_start = None
+        self.time_engine.user_start = None
+        self.user_end = None
+        self.time_engine.user_end = None
         if not self.time_machine.isRunning():
             self.time_machine.start()
 
@@ -1380,7 +1439,10 @@ class time_lord_ui(QtGui.QMainWindow):
         :return:
         """
         if self.clocked_in:
-            start_time = self.latest_timesheet['sg_task_start']
+            if self.user_start:
+                start_time = self.user_start
+            else:
+                start_time = self.latest_timesheet['sg_task_start']
             if start_time:
                 hour = start_time.time().hour
                 minute = start_time.time().minute
@@ -1423,7 +1485,10 @@ class time_lord_ui(QtGui.QMainWindow):
             # self.timesheet_update.time_signal.ui_update.emit('Update!')
             # self.time_lord.time_signal.ui_update.emit()
             try:
-                end_time = self.latest_timesheet['sg_task_end']
+                if self.user_end:
+                    end_time = self.user_end
+                else:
+                    end_time = self.latest_timesheet['sg_task_end']
                 if end_time:
                     logger.debug('end_time: %s' % end_time)
                     hour = end_time.time().hour
@@ -1873,12 +1938,37 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_lord.time_signal.steady_state.emit(True)
         return True
 
-    def get_user_start_time(self):
+    def update_user_start(self, user_start=None):
+        self.user_start = user_start
+
+    def update_user_end(self, user_end=None):
+        self.user_end = user_end
+
+    def get_user_start_time(self, user_start=None):
         """
         Eventually, this should return a user set start time from the UI.  Not sure right off hand yet how to do that.
         :return:
         """
-        return None
+        # if user_start:
+        #     self.user_start = user_start
+        d, t, ok = DateDialog.getDateTime()
+        if ok:
+            self.user_start = parser.parse('%s %s:%s:%s' % (d.toString('yyyy-MM-dd'), t.hour(), t.minute(), t.second()))
+            print('Setting the user start: %s' % self.user_start)
+            # self.time_engine.time_signal.snd_user_start.emit(self.user_start)
+            self.time_engine.user_start = self.user_start
+
+    def get_user_end_time(self):
+        """
+        Eventually, this should return a user set end time from the UI.  Same as above
+        :return:
+        """
+        d, t, ok = DateDialog.getDateTime()
+        if ok:
+            self.user_end = parser.parse('%s %s:%s:%s' % (d.toString('yyyy-MM-dd'), t.hour(), t.minute(), t.second()))
+            print('Setting the user end: %s' % self.user_end)
+            # self.time_engine.time_signal.snd_user_end.emit(self.user_end)
+            self.time_engine.user_end = self.user_end
 
     def clock_in_button_state(self, message=None):
         """
@@ -1964,6 +2054,45 @@ class time_lord_ui(QtGui.QMainWindow):
         if message:
             # print('WARNING MESSAGE RECEIVED: %s' % message)
             logger.warning(message)
+
+
+class DateDialog(QtGui.QDialog):
+    def __init__(self, parent = None):
+        super(DateDialog, self).__init__(parent)
+
+        layout = QtGui.QVBoxLayout(self)
+
+        # nice widget for editing the date
+        self.datetime = QtGui.QDateTimeEdit(self)
+        self.datetime.setCalendarPopup(True)
+        self.datetime.setDateTime(QtCore.QDateTime.currentDateTime())
+        layout.addWidget(self.datetime)
+
+        self.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+
+        self.setWindowTitle('DateTime Lord')
+        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+
+        # OK and Cancel buttons
+        buttons = QtGui.QDialogButtonBox(
+            QtGui.QDialogButtonBox.Ok | QtGui.QDialogButtonBox.Cancel,
+            QtCore.Qt.Horizontal, self)
+        buttons.accepted.connect(self.accept)
+        buttons.rejected.connect(self.reject)
+        layout.addWidget(buttons)
+
+    # get current date and time from the dialog
+    def dateTime(self):
+        return self.datetime.dateTime()
+
+    # static method to create the dialog and return (date, time, accepted)
+    @staticmethod
+    def getDateTime(parent = None):
+        dialog = DateDialog(parent)
+        result = dialog.exec_()
+        date = dialog.dateTime()
+        return date.date(), date.time(), result == QtGui.QDialog.Accepted
 
 
 if __name__ == '__main__':
