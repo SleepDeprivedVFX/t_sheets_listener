@@ -178,6 +178,8 @@ class time_signals(QtCore.QObject):
     get_running_clock = QtCore.Signal(dict)
     rec_user_start = QtCore.Signal(tuple)
     rec_user_end = QtCore.Signal(tuple)
+    snd_user_start = QtCore.Signal(tuple)
+    snd_user_end = QtCore.Signal(tuple)
 
     # Monitor Output Signals
     trt_output = QtCore.Signal(str)
@@ -685,7 +687,15 @@ class time_lord(QtCore.QThread):
         self.time_signal.clock_in_user.connect(self.clock_in_user)
         self.time_signal.clock_out_user.connect(self.clock_out_user)
         self.time_signal.user_clocked_in.connect(self.set_user_status)
+        self.time_signal.snd_user_start.connect(self.update_timesheet_start)
         self.time_signal.log.emit('Time Lord Started.')
+
+    def update_timesheet_start(self, start_time=None):
+        if start_time:
+            self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
+            update_sheet = tl_time.update_current_start_time(user=user, tid=self.latest_timesheet['id'],
+                                                             start_time=start_time)
+            print('update timesheet start returns: %s' % update_sheet)
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -879,7 +889,16 @@ class time_lord(QtCore.QThread):
                 self.time_signal.debug.emit('Weekly total emitted')
         return weekly_total
 
-    def clock_out_user(self, latest_timesheet=None, user_start=None, user_end=None):
+    def clock_out_user(self, data=None):
+        if data:
+            latest_timesheet = data['timesheet']
+            if 'end' in data.keys():
+                user_end = data['end']
+            else:
+                user_end = None
+        else:
+            latest_timesheet = None
+
         if latest_timesheet:
             self.time_signal.mutex_1.lock()
             self.time_signal.log.emit('Clocking out...')
@@ -1368,7 +1387,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.clock_in_button_state(0)
         self.time_lord.time_signal.req_daily_total.emit('Update!')
         self.time_lord.time_signal.req_weekly_total.emit('Update!')
-        self.time_lord.time_signal.clock_out_user.emit(self.latest_timesheet)
+        self.time_lord.time_signal.clock_out_user.emit({'timesheet': self.latest_timesheet})
         self.user_start = None
         self.time_engine.user_start = None
         self.user_end = None
@@ -1954,9 +1973,27 @@ class time_lord_ui(QtGui.QMainWindow):
         d, t, ok = DateDialog.getDateTime()
         if ok:
             self.user_start = parser.parse('%s %s:%s:%s' % (d.toString('yyyy-MM-dd'), t.hour(), t.minute(), t.second()))
-            print('Setting the user start: %s' % self.user_start)
+            logger.debug('Setting the user start: %s' % self.user_start)
             # self.time_engine.time_signal.snd_user_start.emit(self.user_start)
             self.time_engine.user_start = self.user_start
+
+            if self.clocked_in:
+                update_question = QtGui.QMessageBox(self)
+                update_question.setWindowTitle('Update Start Time?')
+                update_question.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+                update_question.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+                update_question.setText('Are you sure you want to update the current start time?')
+                update_question.addButton('Yes! Update', QtGui.QMessageBox.AcceptRole)
+                update_question.addButton('No!', QtGui.QMessageBox.RejectRole)
+                ask = update_question.exec_()
+
+                if ask == QtGui.QMessageBox.AcceptRole:
+                    logger.debug('Send the Timesheet update signal')
+                    self.time_lord.time_signal.snd_user_start.emit(self.user_start)
+
+                self.user_start = None
+                self.time_engine.user_start = None
 
     def get_user_end_time(self):
         """
@@ -1966,9 +2003,29 @@ class time_lord_ui(QtGui.QMainWindow):
         d, t, ok = DateDialog.getDateTime()
         if ok:
             self.user_end = parser.parse('%s %s:%s:%s' % (d.toString('yyyy-MM-dd'), t.hour(), t.minute(), t.second()))
-            print('Setting the user end: %s' % self.user_end)
+            logger.debug('Setting the user end: %s' % self.user_end)
             # self.time_engine.time_signal.snd_user_end.emit(self.user_end)
             self.time_engine.user_end = self.user_end
+
+            if self.clocked_in:
+                update_question = QtGui.QMessageBox(self)
+                update_question.setWindowTitle('Clock Out At Specific Time?')
+                update_question.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+                update_question.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+                                              "color: rgb(230, 230, 230);")
+                update_question.setText('Setting an Out Time while clocked in will clock you out.\n'
+                                        'Go ahead and clock out?')
+                update_question.addButton('Yes! Clock Out', QtGui.QMessageBox.AcceptRole)
+                update_question.addButton('No!', QtGui.QMessageBox.RejectRole)
+                ask = update_question.exec_()
+
+                if ask == QtGui.QMessageBox.AcceptRole:
+                    logger.debug('Send the Timesheet update signal')
+                    self.time_lord.time_signal.clock_out_user.emit({'timesheet': self.latest_timesheet,
+                                                                    'end': self.user_end})
+
+                self.user_start = None
+                self.time_engine.user_start = None
 
     def clock_in_button_state(self, message=None):
         """
