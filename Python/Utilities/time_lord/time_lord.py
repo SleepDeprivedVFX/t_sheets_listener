@@ -690,6 +690,9 @@ class time_lord(QtCore.QThread):
         self.time_signal.snd_user_start.connect(self.update_timesheet_start)
         self.time_signal.log.emit('Time Lord Started.')
 
+    def kill(self):
+        self.kill_it = True
+
     def update_timesheet_start(self, start_time=None):
         if start_time:
             self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
@@ -1734,8 +1737,12 @@ class time_lord_ui(QtGui.QMainWindow):
             self.time_engine.kill()
         if self.time_machine.isRunning():
             self.time_machine.kill()
+        if self.time_lord.isRunning():
+            self.time_lord.kill()
+        self.time_lord.kill_it = True
         self.time_engine.kill_it = True
         self.time_machine.kill_it = True
+        time.sleep()
 
     def update_saved_settings(self):
         """
