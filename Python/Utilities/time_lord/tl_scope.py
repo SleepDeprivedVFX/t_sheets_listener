@@ -319,12 +319,7 @@ class scope(QtGui.QWidget):
                                           "QTableView::item{\n"
                                           "    border: 0px;\n"
                                           "    padding: 5px;\n"
-                                          "}"
-                                         "QTableView::tool-tip{\n"
-                                         "    \n"
-                                         "    background-color: rgb(80, 80, 80);\n"
-                                         "    color: rgb(200, 200, 200);\n"
-                                         "}")
+                                          "}")
 
         self.scope_engine.scope_signals.add_user.connect(self.add_user)
         self.scope_engine.scope_signals.remove_user.connect(self.remove_user)
@@ -408,19 +403,22 @@ class scope(QtGui.QWidget):
         # Add the user name and tool tip
         name_label = QtGui.QLabel()
         name_label.setText(name)
-        name_label.setToolTip('%s' % uid)
+        name_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Time Log ID: %s'
+                              '</span></p></body></html>' % uid)
         self.ui.slave_list.setCellWidget(row, 0, name_label)
 
         # Add the project name and tool tip
         proj_label = QtGui.QLabel()
         proj_label.setText(project)
-        proj_label.setToolTip('Project ID: %s' % proj_id)
+        proj_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Project ID: %s'
+                              '</span></p></body></html>' % proj_id)
         self.ui.slave_list.setCellWidget(row, 1, proj_label)
 
         # Add the entity name and tool tip
         entity_label = QtGui.QLabel()
         entity_label.setText(entity)
-        entity_label.setToolTip('Entity ID: %s' % entity_id)
+        entity_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Entity ID: %s'
+                                '</span></p></body></html>' % entity_id)
         self.ui.slave_list.setCellWidget(row, 2, entity_label)
 
         # Add the task name and tool tip
@@ -428,7 +426,8 @@ class scope(QtGui.QWidget):
         task_label.setText(task)
         task_tool = 'Entity: %s\n' \
                     'Task ID: %s' % (entity, task_id)
-        task_label.setToolTip(task_tool)
+        task_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">%s'
+                              '</span></p></body></html>' % task_tool)
         self.ui.slave_list.setCellWidget(row, 3, task_label)
 
         # Add the start time
@@ -452,6 +451,8 @@ class scope(QtGui.QWidget):
         clock_out_btn = QtGui.QPushButton()
         clock_out_btn.setText('Clock Out')
         clock_out_btn.setStyleSheet('background-color: #990000;')
+        clock_out_btn.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Clock Out %s?'
+                                 '</span></p></body></html>' % name)
         clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid, button=clock_out_btn))
         self.ui.slave_list.setCellWidget(row, 7, clock_out_btn)
         self.ui.slave_list.updateEditorGeometries()
