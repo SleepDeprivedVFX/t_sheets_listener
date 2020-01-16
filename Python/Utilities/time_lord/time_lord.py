@@ -353,7 +353,6 @@ class time_engine(QtCore.QThread):
                 # Send the time to the clocks.
                 self.time_signal.main_clock.emit(time)
                 if self.user_start:
-                    print('user start triggered')
                     hours = (30 * (self.user_start.hour + (self.user_start.minute / 60.0)))
                     minutes = (6 * (self.user_start.minute + (self.user_start.second / 60.0)))
                     u_time = (hours, minutes)
@@ -1977,7 +1976,11 @@ class time_lord_ui(QtGui.QMainWindow):
         """
         # if user_start:
         #     self.user_start = user_start
-        d, t, ok = DateDialog.getDateTime()
+        if self.clocked_in:
+            start_time = self.latest_timesheet['sg_task_start']
+        else:
+            start_time = datetime.now()
+        d, t, ok = DateDialog.getDateTime(_time=start_time)
         if ok:
             self.user_start = parser.parse('%s %s:%s:%s' % (d.toString('yyyy-MM-dd'), t.hour(), t.minute(), t.second()))
             logger.debug('Setting the user start: %s' % self.user_start)
@@ -2121,15 +2124,18 @@ class time_lord_ui(QtGui.QMainWindow):
 
 
 class DateDialog(QtGui.QDialog):
-    def __init__(self, parent = None):
+    def __init__(self, parent=None, _time=None):
         super(DateDialog, self).__init__(parent)
+
+        if not _time:
+            _time = datetime.now()
 
         layout = QtGui.QVBoxLayout(self)
 
         # nice widget for editing the date
         self.datetime = QtGui.QDateTimeEdit(self)
         self.datetime.setCalendarPopup(True)
-        self.datetime.setDateTime(QtCore.QDateTime.currentDateTime())
+        self.datetime.setDateTime(_time)
         layout.addWidget(self.datetime)
 
         self.setStyleSheet("background-color: rgb(100, 100, 100);\n"
@@ -2152,8 +2158,8 @@ class DateDialog(QtGui.QDialog):
 
     # static method to create the dialog and return (date, time, accepted)
     @staticmethod
-    def getDateTime(parent = None):
-        dialog = DateDialog(parent)
+    def getDateTime(parent=None, _time=None):
+        dialog = DateDialog(parent, _time=_time)
         result = dialog.exec_()
         date = dialog.dateTime()
         return date.date(), date.time(), result == QtGui.QDialog.Accepted
