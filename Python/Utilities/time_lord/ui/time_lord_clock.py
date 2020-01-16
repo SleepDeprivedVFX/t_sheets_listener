@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_clock.ui'
 #
-# Created: Fri Jul 19 12:15:52 2019
+# Created: Thu Jan 16 13:21:39 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -19,6 +19,7 @@ class Ui_TimeLord(object):
         self.centralwidget = QtGui.QWidget(TimeLord)
         self.centralwidget.setObjectName("centralwidget")
         self.bg = QtGui.QFrame(self.centralwidget)
+        self.bg.setEnabled(True)
         self.bg.setGeometry(QtCore.QRect(0, 0, 978, 805))
         self.bg.setStyleSheet("QFrame {\n"
 "    image: url(:/backgrounds/time_lord_bg.png);\n"
@@ -74,23 +75,6 @@ class Ui_TimeLord(object):
         self.start_ones_month.setFrameShape(QtGui.QFrame.NoFrame)
         self.start_ones_month.setFrameShadow(QtGui.QFrame.Plain)
         self.start_ones_month.setObjectName("start_ones_month")
-
-        # Timesheet ID
-        self.timesheet_id = QtGui.QLabel(self.bg)
-        self.timesheet_id.setGeometry(QtCore.QRect(819, 730, 97, 20))
-        self.timesheet_id.setTextFormat(QtCore.Qt.AutoText)
-        self.timesheet_id.setObjectName('timesheet_id')
-        self.timesheet_id.setText('12345')
-        self.timesheet_id.hide()
-
-        # Task ID
-        self.task_id = QtGui.QLabel(self.bg)
-        self.task_id.setGeometry(QtCore.QRect(819, 700, 97, 20))
-        self.task_id.setTextFormat(QtCore.Qt.AutoText)
-        self.task_id.setObjectName('task_id')
-        self.task_id.setText('1')
-        self.task_id.hide()
-
         self.artist_label = QtGui.QLabel(self.bg)
         self.artist_label.setGeometry(QtCore.QRect(161, 440, 231, 40))
         font = QtGui.QFont()
@@ -130,7 +114,7 @@ class Ui_TimeLord(object):
         self.output_monitor.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 10pt \"MS UI Gothic\";\n"
+"font: 75 7pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_monitor.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_monitor.setFrameShadow(QtGui.QFrame.Plain)
@@ -239,24 +223,8 @@ class Ui_TimeLord(object):
         brush.setStyle(QtCore.Qt.NoBrush)
         self.green_light.setBackgroundBrush(brush)
         self.green_light.setObjectName("green_light")
-        self.lower_output_sep = QtGui.QPlainTextEdit(self.bg)
-        self.lower_output_sep.setGeometry(QtCore.QRect(694, 210, 206, 30))
-        self.lower_output_sep.setStyleSheet("QPlainTextEdit{\n"
-"border-color: rgba(0, 0, 0, 0);\n"
-"background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 8pt \"MS UI Gothic\";\n"
-"color: rgb(130, 231, 130);\n"
-"}\n"
-"")
-        self.lower_output_sep.setFrameShape(QtGui.QFrame.NoFrame)
-        self.lower_output_sep.setFrameShadow(QtGui.QFrame.Plain)
-        self.lower_output_sep.setLineWidth(0)
-        self.lower_output_sep.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.lower_output_sep.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.lower_output_sep.setDocumentTitle("")
-        self.lower_output_sep.setObjectName("lower_output_sep")
         self.lower_output = QtGui.QPlainTextEdit(self.bg)
-        self.lower_output.setGeometry(QtCore.QRect(694, 222, 206, 108))
+        self.lower_output.setGeometry(QtCore.QRect(694, 187, 206, 152))
         self.lower_output.setStyleSheet("QPlainTextEdit{\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
@@ -270,6 +238,7 @@ class Ui_TimeLord(object):
         self.lower_output.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.lower_output.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.lower_output.setDocumentTitle("")
+        self.lower_output.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.lower_output.setObjectName("lower_output")
         self.entity_dropdown = QtGui.QComboBox(self.bg)
         self.entity_dropdown.setGeometry(QtCore.QRect(151, 609, 242, 39))
@@ -410,11 +379,11 @@ class Ui_TimeLord(object):
         self.end_clock_minute.setAlignment(QtCore.Qt.AlignCenter)
         self.end_clock_minute.setObjectName("end_clock_minute")
         self.output_trt = QtGui.QPlainTextEdit(self.bg)
-        self.output_trt.setGeometry(QtCore.QRect(695, 114, 205, 17))
+        self.output_trt.setGeometry(QtCore.QRect(695, 111, 205, 17))
         self.output_trt.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 10pt \"MS UI Gothic\";\n"
+"font: 75 8pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_trt.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_trt.setFrameShadow(QtGui.QFrame.Plain)
@@ -422,14 +391,15 @@ class Ui_TimeLord(object):
         self.output_trt.setMidLineWidth(0)
         self.output_trt.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.output_trt.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_trt.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.output_trt.setBackgroundVisible(False)
         self.output_trt.setObjectName("output_trt")
         self.output_start_end = QtGui.QPlainTextEdit(self.bg)
-        self.output_start_end.setGeometry(QtCore.QRect(695, 130, 204, 30))
+        self.output_start_end.setGeometry(QtCore.QRect(695, 122, 204, 28))
         self.output_start_end.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 10pt \"MS UI Gothic\";\n"
+"font: 75 8pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_start_end.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_start_end.setFrameShadow(QtGui.QFrame.Plain)
@@ -438,14 +408,15 @@ class Ui_TimeLord(object):
         self.output_start_end.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.output_start_end.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.output_start_end.setLineWrapMode(QtGui.QPlainTextEdit.NoWrap)
+        self.output_start_end.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.output_start_end.setBackgroundVisible(False)
         self.output_start_end.setObjectName("output_start_end")
         self.output_user = QtGui.QPlainTextEdit(self.bg)
-        self.output_user.setGeometry(QtCore.QRect(695, 160, 204, 17))
+        self.output_user.setGeometry(QtCore.QRect(695, 145, 204, 20))
         self.output_user.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 10pt \"MS UI Gothic\";\n"
+"font: 75 8pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_user.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_user.setFrameShadow(QtGui.QFrame.Plain)
@@ -453,14 +424,15 @@ class Ui_TimeLord(object):
         self.output_user.setMidLineWidth(0)
         self.output_user.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.output_user.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_user.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.output_user.setBackgroundVisible(False)
         self.output_user.setObjectName("output_user")
         self.output_daily = QtGui.QPlainTextEdit(self.bg)
-        self.output_daily.setGeometry(QtCore.QRect(695, 176, 204, 17))
+        self.output_daily.setGeometry(QtCore.QRect(695, 157, 204, 17))
         self.output_daily.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 10pt \"MS UI Gothic\";\n"
+"font: 75 8pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_daily.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_daily.setFrameShadow(QtGui.QFrame.Plain)
@@ -468,14 +440,15 @@ class Ui_TimeLord(object):
         self.output_daily.setMidLineWidth(0)
         self.output_daily.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.output_daily.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_daily.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.output_daily.setBackgroundVisible(False)
         self.output_daily.setObjectName("output_daily")
         self.output_weekly = QtGui.QPlainTextEdit(self.bg)
-        self.output_weekly.setGeometry(QtCore.QRect(695, 192, 204, 17))
+        self.output_weekly.setGeometry(QtCore.QRect(695, 170, 204, 17))
         self.output_weekly.setStyleSheet("\n"
 "border-color: rgba(0, 0, 0, 0);\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 10pt \"MS UI Gothic\";\n"
+"font: 75 8pt \"MS UI Gothic\";\n"
 "color: rgb(130, 231, 130);")
         self.output_weekly.setFrameShape(QtGui.QFrame.NoFrame)
         self.output_weekly.setFrameShadow(QtGui.QFrame.Plain)
@@ -483,6 +456,7 @@ class Ui_TimeLord(object):
         self.output_weekly.setMidLineWidth(0)
         self.output_weekly.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.output_weekly.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.output_weekly.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.output_weekly.setBackgroundVisible(False)
         self.output_weekly.setObjectName("output_weekly")
         TimeLord.setCentralWidget(self.centralwidget)
@@ -521,21 +495,58 @@ class Ui_TimeLord(object):
 
     def retranslateUi(self, TimeLord):
         TimeLord.setWindowTitle(QtGui.QApplication.translate("TimeLord", "Time Lord", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_tens_month.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Start Month</span><span style=\" color:#010101;\"><br/>The month record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_tens_year.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Start Year</span><span style=\" color:#010101;\"><br/>The year record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_date_button.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Set End Time Button</span><span style=\" color:#010101;\"><br/>This will manually set the end time for the latest timesheet.  If you are clocked in, it will clock you out at the time you set.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.run_hour_one.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Running Time Hours</span><span style=\" color:#010101;\"><br/>The total hours recorded on the current timesheet task</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.red_light.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Error Light</span><span style=\" color:#010101;\"><br/>This light comes on when something is not kosher.  Either the selected Project/Entity/Task is not valid, or something has gone wrong!  See the Output Window.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_ones_month.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Start Month</span><span style=\" color:#010101;\"><br/>The month record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.artist_label.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Artist Name</span><span style=\" color:#010101;\"><br/>Set by the system by default. If you </span><span style=\" font-weight:600; color:#010101;\">do not</span><span style=\" color:#010101;\"> see your name here, chances are that this won\'t clock you in properly.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.artist_label.setText(QtGui.QApplication.translate("TimeLord", "Artist", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_tens_day.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Start Day</span><span style=\" color:#010101;\"><br/>The day record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.run_hour_ten.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Running Time Hours</span><span style=\" color:#010101;\"><br/>The total hours recorded on the current timesheet task</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.output_monitor.setPlainText(QtGui.QApplication.translate("TimeLord", "OUTPUT MONITOR\n"
 "------------------------------------", None, QtGui.QApplication.UnicodeUTF8))
-        self.lower_output_sep.setPlainText(QtGui.QApplication.translate("TimeLord", "-------------------------------", None, QtGui.QApplication.UnicodeUTF8))
-        self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_ones_day.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">End Day</span><span style=\" color:#010101;\"><br/>The end day record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_tens_month.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">End Month</span><span style=\" color:#010101;\"><br/>The end month record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.run_minute_one.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Running Time Minutes</span><span style=\" color:#010101;\"><br/>The total minutes recorded on the current timesheet task</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_tens_day.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">End Day</span><span style=\" color:#010101;\"><br/>The end day record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.run_second_ten.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Running Time Seconds</span><span style=\" color:#010101;\"><br/>The total seconds recorded on the current timesheet task</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_ones_year.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Start Year</span><span style=\" color:#010101;\"><br/>The year record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_ones_day.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#030303;\">Start Day</span><span style=\" color:#030303;\"><br/>The day record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_tens_year.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">End Year</span><span style=\" color:#010101;\"><br/>The end year record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.clock_button.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600;\">Clock In/Out/Switch Button<br/></span>This button clocks you in, out or switches your timesheet</p><p><span style=\" font-weight:600;\">Green:</span><span style=\" font-style:italic;\">Clock in<br/></span><span style=\" font-weight:600;\">Red: </span><span style=\" font-style:italic;\">Clock Out<br/></span><span style=\" font-weight:600;\">Yellow: </span><span style=\" font-style:italic;\">Switch Tasks</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.run_minute_ten.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Running Time Minutes</span><span style=\" color:#010101;\"><br/>The total minutes recorded on the current timesheet task</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_date_button.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Set Start Time Button<br/></span><span style=\" color:#010101;\">This will manually set the start time. If you are clocked in, it will adjust the current timesheet. If you are clocked out, it will set the time you would like to clock in to.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.green_light.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0a0a0a;\">Activity Light</span><span style=\" color:#0a0a0a;\"><br/>Will be steady on, or flashing when things are either being processed, or are going well.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.lower_output.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0a0a0a;\">Output Window<br/></span><span style=\" color:#0a0a0a;\">This displays functional information from under the hood of the Time Lord. Error and status messages can be found here.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.lower_output.setPlainText(QtGui.QApplication.translate("TimeLord", "Raw Data Ouput", None, QtGui.QApplication.UnicodeUTF8))
+        self.entity_dropdown.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Entity Dropdown</span><span style=\" color:#010101;\"><br/>Sets either the Asset Entity or Shot entity that you are working on. Displays current values if you are clocked in.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.entity_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Asset/Shot", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_ones_month.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">End Month</span><span style=\" color:#010101;\"><br/>The end month record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.task_dropdown.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Task Dropdown</span><span style=\" color:#010101;\"><br/>The actual task you are working on.  If you are clocked in, it displays the current task.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.task_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Task", None, QtGui.QApplication.UnicodeUTF8))
+        self.project_dropdown.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#020202;\">Project Dropdown<br/></span><span style=\" color:#020202;\">Sets the project that will be clocked in to.  If you are already clocked in, it will display what you are currently clocked in to.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.project_dropdown.setItemText(0, QtGui.QApplication.translate("TimeLord", "Select Project", None, QtGui.QApplication.UnicodeUTF8))
+        self.run_second_one.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Running Time Seconds</span><span style=\" color:#010101;\"><br/>The total seconds recorded on the current timesheet task</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_ones_year.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">End Year</span><span style=\" color:#010101;\"><br/>The end year record of the current timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.time_minute.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0b0b0b;\">Real Time Clock</span><span style=\" color:#0b0b0b;\"><br/>This is what time it is now.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.day_meter.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0a0a0a;\">Daily Total Meter<br/></span><span style=\" color:#0a0a0a;\">Graphically displays the amount of hours worked so far.  Red line indicates Over Time.</span><span style=\" color:#0a0a0a;\"><br/>Today: %s hrs</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.week_meter.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600;\">Weekly Total Meter</span><br/>Graphically displays the hours accumulated for the week.  A red line indicates over time<br/>Total: %s hrs</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_clock_hour.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Current Task Start Time</span><span style=\" color:#010101;\"><br/>Shows the time of the latest timesheet start time</span><span style=\" color:#010101;\">. If you\'re not clocked in, this is the Current Time.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_clock_minute.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#010101;\">Current Timesheet Out Time</span><span style=\" color:#010101;\"><br/>Shows the out time of the latest timesheet. If you are Clocked in, this is the Current Time.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_trt.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0a0a0a;\">Total Running Time</span><span style=\" color:#0a0a0a;\"><br/>Displays TRT for the current Timesheet.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.output_trt.setPlainText(QtGui.QApplication.translate("TimeLord", "TRT: 00:12:24\n"
 "", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_start_end.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0a0a0a;\">Current Start and End Times<br/></span><span style=\" color:#0a0a0a;\">Shows when the Current Timesheet Was clocked in and out.  If you are clocked in, the End is the current time.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.output_start_end.setPlainText(QtGui.QApplication.translate("TimeLord", "Start: 07/02/19\n"
 "End:", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_user.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0a0a0a;\">Clocked In Status</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.output_user.setPlainText(QtGui.QApplication.translate("TimeLord", "USER CLOCKED IN", None, QtGui.QApplication.UnicodeUTF8))
-        self.output_daily.setPlainText(QtGui.QApplication.translate("TimeLord", "Daily Total: 0", None, QtGui.QApplication.UnicodeUTF8))
-        self.output_weekly.setPlainText(QtGui.QApplication.translate("TimeLord", "Weekly Total: 0  ", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_daily.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0a0a0a;\">Daily Total</span><span style=\" color:#0a0a0a;\"><br/>Daily total of hours worked so far.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_daily.setPlainText(QtGui.QApplication.translate("TimeLord", "Daily Total: 6", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_weekly.setToolTip(QtGui.QApplication.translate("TimeLord", "<html><head/><body><p><span style=\" font-weight:600; color:#0a0a0a;\">Weekly Total</span><span style=\" color:#0a0a0a;\"><br/>Weekly Total of Hours worked so far.</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.output_weekly.setPlainText(QtGui.QApplication.translate("TimeLord", "Weekly Total: 18", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCrash_Computer.setText(QtGui.QApplication.translate("TimeLord", "Crash Computer", None, QtGui.QApplication.UnicodeUTF8))
 
 from resources import time_lord_resources_rc
