@@ -20,6 +20,9 @@ color: rgb(230, 230, 230);</string>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QLabel" name="title">
+     <property name="toolTip">
+      <string/>
+     </property>
      <property name="styleSheet">
       <string notr="true">font: 24pt &quot;SeriaSansPro&quot;;</string>
      </property>
@@ -107,7 +110,7 @@ QTabBar::tab:!selected {
          <item>
           <widget class="QComboBox" name="whose_timesheets">
            <property name="toolTip">
-            <string>List of available people and time sheets</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;List of available people and time sheets&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <item>
             <property name="text">
@@ -118,6 +121,9 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QGroupBox" name="sort_by">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;Sorting Options&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="title">
             <string>Sort By</string>
            </property>
@@ -129,6 +135,9 @@ QTabBar::tab:!selected {
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
                <widget class="QRadioButton" name="person_rdo">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0b0b0b;&quot;&gt;Sort By Person/Date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>Person</string>
                 </property>
@@ -139,6 +148,9 @@ QTabBar::tab:!selected {
               </item>
               <item>
                <widget class="QRadioButton" name="date_rdo">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0b0b0b;&quot;&gt;Sort By Date/Person&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>Date</string>
                 </property>
@@ -151,6 +163,9 @@ QTabBar::tab:!selected {
             </item>
             <item>
              <widget class="QComboBox" name="order">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;Dates in Ascending or Descending Order&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <item>
                <property name="text">
                 <string>Ascending</string>
@@ -168,6 +183,9 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QLabel" name="start_date_label">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;Start Search Date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>Start Date</string>
            </property>
@@ -175,6 +193,9 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QDateEdit" name="start_date">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;Start Search Date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="calendarPopup">
             <bool>true</bool>
            </property>
@@ -182,6 +203,9 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QLabel" name="end_date_label">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;End Search Date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>End Date</string>
            </property>
@@ -189,6 +213,9 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QDateEdit" name="end_date">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;End Search Date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="calendarPopup">
             <bool>true</bool>
            </property>
@@ -196,6 +223,9 @@ QTabBar::tab:!selected {
          </item>
          <item>
           <widget class="QPushButton" name="update_btn">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0b0b0b;&quot;&gt;Update the Sheets&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>Update</string>
            </property>
@@ -216,7 +246,7 @@ alternate-background-color: rgb(120, 120, 120);</string>
           <number>8</number>
          </property>
          <attribute name="headerVisible">
-          <bool>true</bool>
+          <bool>false</bool>
          </attribute>
          <attribute name="headerCascadingSectionResizes">
           <bool>true</bool>
@@ -288,6 +318,9 @@ alternate-background-color: rgb(120, 120, 120);</string>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
             <widget class="QRadioButton" name="excel_rdo">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;Export EXCEL sheet&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>Excel</string>
              </property>
@@ -298,6 +331,9 @@ alternate-background-color: rgb(120, 120, 120);</string>
            </item>
            <item>
             <widget class="QRadioButton" name="csv_rdo">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;Export CSV Sheet&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>CSV</string>
              </property>
@@ -305,6 +341,9 @@ alternate-background-color: rgb(120, 120, 120);</string>
            </item>
            <item>
             <widget class="QRadioButton" name="txt_rdo">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;Export TXT File&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>TXT</string>
              </property>
@@ -314,6 +353,9 @@ alternate-background-color: rgb(120, 120, 120);</string>
          </item>
          <item>
           <widget class="QPushButton" name="export_btn">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0a0a0a;&quot;&gt;Run the export&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>Export</string>
            </property>
