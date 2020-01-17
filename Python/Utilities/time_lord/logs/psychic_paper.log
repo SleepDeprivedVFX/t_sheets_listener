@@ -1363,3 +1363,113 @@
 2020-01-16 16:52:26,882 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
 2020-01-16 16:52:27,332 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
 2020-01-16 16:52:27,336 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 19:58:43,392 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 19:58:44,644 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 19:58:45,759 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 19:58:47,397 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 19:58:47,759 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 19:58:47,763 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:01:12,311 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:01:13,642 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:01:14,957 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:01:16,882 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:01:17,121 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:01:17,125 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:01:39,556 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:01:40,874 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:01:42,013 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:01:43,704 - psychic_paper | INFO : 1254 - Setting button to "Clocked Out"
+2020-01-16 20:01:44,270 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:01:44,276 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:03:55,348 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:03:56,628 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:03:57,805 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:03:59,480 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:03:59,746 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:03:59,752 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:04:24,477 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:04:25,783 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:04:26,898 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:04:28,586 - psychic_paper | INFO : 1254 - Setting button to "Clocked Out"
+2020-01-16 20:04:29,131 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:04:29,135 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:07:44,516 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:07:45,841 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:07:47,005 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:07:48,635 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:07:48,986 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:07:48,990 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:08:52,467 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:08:53,792 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:08:54,971 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:08:56,546 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:08:56,779 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:08:56,782 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:09:17,418 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:09:18,766 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:09:19,865 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:09:21,607 - psychic_paper | INFO : 1254 - Setting button to "Clocked Out"
+2020-01-16 20:09:22,108 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:09:22,112 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:09:50,084 - psychic_paper | INFO : 2108 - Time Engine Timesheets don't match.  Updating Timesheet...
+2020-01-16 20:09:50,086 - psychic_paper | INFO : 2087 - Updating UI timesheet...
+2020-01-16 20:09:50,088 - psychic_paper | INFO : 2094 - Reinitializing UI with updated timesheet...
+2020-01-16 20:09:50,088 - psychic_paper | INFO : 1193 - CLEARING UI...
+2020-01-16 20:09:50,096 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:09:57,210 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:09:57,519 - psychic_paper | INFO : 2096 - Finishing local timesheet update...
+2020-01-16 20:09:57,522 - psychic_paper | INFO : 2098 - Timesheet updated! 5097
+2020-01-16 20:09:57,526 - psychic_paper | INFO : 2099 - Updating runtime clock...
+2020-01-16 20:09:57,529 - psychic_paper | INFO : 2108 - Updating Engine Timesheet...
+2020-01-16 20:09:57,533 - psychic_paper | INFO : 2108 - Engine Timesheet Updated.
+2020-01-16 20:11:10,216 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:11:11,487 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:11:12,598 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:11:14,217 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:11:14,440 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:11:14,444 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:12:06,572 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:12:07,826 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:12:08,947 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:12:10,579 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:12:10,815 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:12:10,819 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:12:39,516 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:12:40,766 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:12:41,878 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:13:32,602 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:13:33,812 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:13:34,944 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:13:36,592 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:13:36,832 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:13:36,838 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:14:05,490 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:14:06,865 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:14:08,046 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:14:09,726 - psychic_paper | INFO : 1254 - Setting button to "Clocked Out"
+2020-01-16 20:14:10,035 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:14:10,036 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:19:11,509 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:19:12,780 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:19:13,858 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:19:15,493 - psychic_paper | INFO : 1254 - Setting button to "Clocked Out"
+2020-01-16 20:19:16,137 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:19:16,141 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:22:05,375 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:22:06,607 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:22:07,707 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:22:09,505 - psychic_paper | INFO : 1254 - Setting button to "Clocked Out"
+2020-01-16 20:22:10,009 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:22:10,009 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:25:09,996 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:25:11,233 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:25:12,380 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:25:14,144 - psychic_paper | INFO : 1251 - Setting button to "Clocked In"
+2020-01-16 20:25:14,433 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:25:14,438 - psychic_paper | INFO : 2108 - Listener Loop Started
+2020-01-16 20:26:01,174 - psychic_paper | INFO : 77 - The Time Lord has started!
+2020-01-16 20:26:02,391 - psychic_paper | INFO : 105 - Communication system online.
+2020-01-16 20:26:03,604 - psychic_paper | INFO : 1198 - INITIALIZING UI...
+2020-01-16 20:26:05,233 - psychic_paper | INFO : 1254 - Setting button to "Clocked Out"
+2020-01-16 20:26:05,802 - psychic_paper | INFO : 2108 - Time Engine Chronograph has started.
+2020-01-16 20:26:05,805 - psychic_paper | INFO : 2108 - Listener Loop Started

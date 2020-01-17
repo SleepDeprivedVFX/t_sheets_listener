@@ -1,16 +1,55 @@
-2020-01-07 19:22:35,562 - end_of_day | INFO : 51 - End of Day has started.
-2020-01-07 19:22:36,815 - end_of_day | INFO : 173 - out time: 2020-01-07 19:07:36.807000
-2020-01-07 19:22:36,897 - end_of_day | INFO : 103 - out_time message: 
-2020-01-07 19:22:37,003 - end_of_day | INFO : 103 - out_time message: 2020-01-07 19:07:36
-2020-01-07 19:22:37,006 - end_of_day | INFO : 103 - out_time message: 2020-01-07 19:07:36
-2020-01-08 10:25:40,105 - end_of_day | INFO : 51 - End of Day has started.
-2020-01-08 10:25:41,463 - end_of_day | INFO : 173 - out time: 2020-01-08 10:10:41.446000
-2020-01-08 10:25:41,582 - end_of_day | INFO : 103 - out_time message: 
-2020-01-08 10:25:42,000 - end_of_day | INFO : 103 - out_time message: 2020-01-08 10:10:41
-2020-01-08 10:25:42,003 - end_of_day | INFO : 103 - out_time message: 2020-01-08 10:10:41
-2020-01-08 10:26:11,724 - end_of_day | INFO : 51 - End of Day has started.
-2020-01-08 10:26:13,045 - end_of_day | INFO : 173 - out time: 2020-01-08 10:11:13.035000
-2020-01-08 10:26:13,134 - end_of_day | INFO : 103 - out_time message: 
-2020-01-08 10:26:14,003 - end_of_day | INFO : 103 - out_time message: 2020-01-08 10:11:13
-2020-01-08 10:26:14,006 - end_of_day | INFO : 103 - out_time message: 2020-01-08 10:11:13
-2020-01-08 10:27:09,161 - end_of_day | WARNING : 229 - You can't close the window this way!
+2020-01-16 19:57:54,831 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 19:57:56,015 - end_of_day | INFO : 173 - out time: 2020-01-16 19:42:56.004000
+2020-01-16 19:57:56,122 - end_of_day | INFO : 103 - out_time message: 
+2020-01-16 19:57:57,000 - end_of_day | INFO : 103 - out_time message: 2020-01-16 19:42:56
+2020-01-16 19:57:57,003 - end_of_day | INFO : 103 - out_time message: 2020-01-16 19:42:56
+2020-01-16 19:58:09,236 - end_of_day | WARNING : 230 - You can't close the window this way!
+2020-01-16 20:01:25,359 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:01:26,615 - end_of_day | INFO : 173 - out time: 2020-01-16 00:00:00
+2020-01-16 20:01:26,724 - end_of_day | INFO : 103 - out_time message: 
+2020-01-16 20:01:27,000 - end_of_day | INFO : 103 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:01:27,002 - end_of_day | INFO : 103 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:04:10,081 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:04:11,278 - end_of_day | INFO : 174 - out time: 2020-01-16 00:00:00
+2020-01-16 20:04:11,410 - end_of_day | INFO : 104 - out_time message: 
+2020-01-16 20:04:12,000 - end_of_day | INFO : 104 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:04:12,003 - end_of_day | INFO : 104 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:09:03,290 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:09:04,515 - end_of_day | INFO : 174 - out time: 2020-01-16 00:00:00
+2020-01-16 20:09:04,615 - end_of_day | INFO : 104 - out_time message: 
+2020-01-16 20:09:05,000 - end_of_day | INFO : 104 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:09:05,003 - end_of_day | INFO : 104 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:11:14,158 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:11:15,295 - end_of_day | INFO : 176 - out time: 2020-01-16 19:56:15.288000
+2020-01-16 20:11:15,427 - end_of_day | INFO : 106 - out_time message: 
+2020-01-16 20:11:16,000 - end_of_day | INFO : 106 - out_time message: 2020-01-16 19:56:15
+2020-01-16 20:11:16,003 - end_of_day | INFO : 106 - out_time message: 2020-01-16 19:56:15
+2020-01-16 20:12:25,430 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:12:26,654 - end_of_day | INFO : 176 - out time: 2020-01-16 00:00:00
+2020-01-16 20:12:26,769 - end_of_day | INFO : 106 - out_time message: 
+2020-01-16 20:12:27,000 - end_of_day | INFO : 106 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:12:27,002 - end_of_day | INFO : 106 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:13:50,987 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:13:52,227 - end_of_day | INFO : 176 - out time: 2020-01-16 00:00:00
+2020-01-16 20:13:52,329 - end_of_day | INFO : 106 - out_time message: 
+2020-01-16 20:13:53,000 - end_of_day | INFO : 106 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:13:53,003 - end_of_day | INFO : 106 - out_time message: 2020-01-16 00:00:00
+2020-01-16 20:16:28,035 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:16:29,141 - end_of_day | INFO : 176 - out time: 2020-01-16 20:01:29.126000
+2020-01-16 20:16:29,260 - end_of_day | INFO : 106 - out_time message: 
+2020-01-16 20:16:30,000 - end_of_day | INFO : 106 - out_time message: 2020-01-16 20:01:29
+2020-01-16 20:16:30,002 - end_of_day | INFO : 106 - out_time message: 2020-01-16 20:01:29
+2020-01-16 20:22:38,081 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:23:27,931 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:24:48,724 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:24:49,950 - end_of_day | INFO : 106 - out_time message: 
+2020-01-16 20:24:50,033 - end_of_day | INFO : 106 - out_time message: 2020-01-16 20:24:49
+2020-01-16 20:24:50,036 - end_of_day | INFO : 106 - out_time message: 2020-01-16 20:24:49
+2020-01-16 20:25:21,528 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:25:22,986 - end_of_day | INFO : 106 - out_time message: 
+2020-01-16 20:25:23,072 - end_of_day | INFO : 106 - out_time message: 2020-01-16 20:25:22
+2020-01-16 20:25:23,075 - end_of_day | INFO : 106 - out_time message: 2020-01-16 20:25:22
+2020-01-16 20:27:08,611 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:27:13,907 - end_of_day | INFO : 104 - out_time message: 
+2020-01-16 20:27:14,002 - end_of_day | INFO : 104 - out_time message: 2020-01-16 20:27:13
+2020-01-16 20:27:14,003 - end_of_day | INFO : 104 - out_time message: 2020-01-16 20:27:13

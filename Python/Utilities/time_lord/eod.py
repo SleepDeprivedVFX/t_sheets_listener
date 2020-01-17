@@ -71,8 +71,9 @@ sg_data = bin.shotgun_collect.sg_data(sg, config=config, sub='eod')
 
 # Check the system arguments and append current start and end times if they're missing.
 if len(sys.argv) < 2:
-    out_time = (datetime.now() - timedelta(minutes=int(config['timer'])))
-    sys.argv += ['-o', str(out_time)]
+    out_date = (datetime.now() - timedelta(minutes=int(config['timer']))).date()
+    out_time = (datetime.now() - timedelta(minutes=int(config['timer']))).time()
+    sys.argv += ['-o', str(out_date), '-t', str(out_time)]
 
 
 # -----------------------------------------------------------------------------------------------------------
@@ -163,13 +164,22 @@ class end_of_day(QtGui.QWidget):
 
         # Preps the arguments in case they are missing.
         arguments = sys.argv[1:]
-        options = getopt.getopt(arguments, 'o:', longopts=['out='])
+        options = getopt.getopt(arguments, 'o:t', longopts=['out=', 'time='])
         time_out = None
         if options[0]:
             split_options = options[0]
             for opt, arg in split_options:
                 if opt in ('-o', '--out'):
-                    time_out = parser.parse(arg)
+                    date_out = arg
+                else:
+                    date_out = None
+                if opt in ('-t', '--time'):
+                    time_out = arg
+                else:
+                    time_out = None
+
+                if date_out and time_out:
+                    time_out = parser.parse('%s %s' % (date_out, time_out))
                     logger.info('out time: %s' % time_out)
 
         if not time_out:
