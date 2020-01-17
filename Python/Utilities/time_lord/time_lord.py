@@ -1127,6 +1127,12 @@ class time_lord_ui(QtGui.QMainWindow):
         self.time_lord.time_signal.daily_total.connect(self.set_daily_total_needle)
         self.time_engine.time_signal.weekly_total.connect(self.set_weekly_total_needle)
         self.time_lord.time_signal.weekly_total.connect(self.set_weekly_total_needle)
+        self.time_engine.time_signal.steady_state.connect(self.steady_state)
+        self.time_machine.time_signal.steady_state.connect(self.steady_state)
+        self.time_lord.time_signal.steady_state.connect(self.steady_state)
+        self.time_engine.time_signal.error_state.connect(self.error_state)
+        self.time_machine.time_signal.error_state.connect(self.error_state)
+        self.time_lord.time_signal.error_state.connect(self.error_state)
 
         # Update Connections
         self.time_lord.time_signal.send_project_update.connect(self.update_projects_dropdown)
@@ -1260,6 +1266,8 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.set_daily_total_needle(daily_total)
             if weekly_total:
                 self.set_weekly_total_needle(weekly_total)
+            self.error_state(False)
+            self.steady_state(True)
 
     # ----------------------------------------------------------------------------------------------------------------
     # Status lights and button states.
