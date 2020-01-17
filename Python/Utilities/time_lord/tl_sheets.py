@@ -336,7 +336,7 @@ class sheets(QtGui.QWidget):
         self.ui.editor_status.setText('Edit triggered!')
         self.ui.editor_progress.setValue(10)
         if data:
-            ts_id = data.text(0)
+            ts_id = int(data.text(0))
             project = data.text(1)
             entity = data.text(2)
             task = data.text(3)
@@ -355,11 +355,13 @@ class sheets(QtGui.QWidget):
                 else:
                     start = None
                     end = None
+                print('start: %s' % start)
+                print('end: %s' % end)
                 print('Sending to the Editor...')
 
                 self.ui.editor_status.setText('Sending to the Editor...')
                 self.ui.editor_progress.setValue(100)
-                time_editor.edit_timesheet(ts_id=ts_id, proj=project, entity=entity, task=task, start=start, end=end)
+                time_editor.edit_timesheet(ts_id=ts_id, proj=project, ent=entity, task=task, start=start, end=end)
                 self.ui.editor_status.setText('')
                 self.ui.editor_progress.setValue(0)
 
@@ -375,41 +377,48 @@ class sheets(QtGui.QWidget):
 
 
 class time_editor(QtGui.QDialog):
-    def __init__(self, Editor=None, ts_id=None, proj=None, entity=None, task=None, start=None, end=None):
-        super(time_editor, self).__init__(Editor)
+    def __init__(self, parent=None, ts_id=None, proj=None, ent=None, task=None, start=None, end=None):
+        super(time_editor, self).__init__(parent)
+        print('start __init__: %s' % start)
+        print('end __init__: %s' % end)
 
         if not start:
             start = datetime.now()
         if not end:
             end = datetime.now()
 
-        # Editor.setStyleSheet("background-color: rgb(100, 100, 100);\n"
-        #                      "color: rgb(230, 230, 230);")
-        self.verticalLayout = QtGui.QVBoxLayout(Editor)
+        self.setObjectName("Editor")
+        self.resize(285, 201)
+        self.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+        self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.title = QtGui.QLabel(Editor)
+        self.title = QtGui.QLabel(self)
         self.title.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";")
         self.title.setObjectName("title")
         self.verticalLayout.addWidget(self.title)
-        self.project = QtGui.QLabel(Editor)
+        self.sheet_id = QtGui.QLabel(self)
+        self.sheet_id.setObjectName("sheet_id")
+        self.verticalLayout.addWidget(self.sheet_id)
+        self.project = QtGui.QLabel(self)
         self.project.setObjectName("project")
         self.verticalLayout.addWidget(self.project)
-        self.entity = QtGui.QLabel(Editor)
+        self.entity = QtGui.QLabel(self)
         self.entity.setObjectName("entity")
         self.verticalLayout.addWidget(self.entity)
-        self.task = QtGui.QLabel(Editor)
+        self.task = QtGui.QLabel(self)
         self.task.setObjectName("task")
         self.verticalLayout.addWidget(self.task)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.start_label = QtGui.QLabel(Editor)
+        self.start_label = QtGui.QLabel(self)
         self.start_label.setObjectName("start_label")
         self.horizontalLayout.addWidget(self.start_label)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
-        self.start = QtGui.QDateTimeEdit(Editor)
+        self.start = QtGui.QDateTimeEdit(self)
         self.start.setCalendarPopup(True)
         self.start.setObjectName("start")
         self.horizontalLayout.addWidget(self.start)
@@ -418,35 +427,79 @@ class time_editor(QtGui.QDialog):
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.end_label = QtGui.QLabel(Editor)
+        self.end_label = QtGui.QLabel(self)
         self.end_label.setObjectName("end_label")
         self.horizontalLayout_2.addWidget(self.end_label)
         spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
-        self.end = QtGui.QDateTimeEdit(Editor)
+        self.end = QtGui.QDateTimeEdit(self)
         self.end.setObjectName("end")
+        self.end.setCalendarPopup(True)
         self.horizontalLayout_2.addWidget(self.end)
         spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem4)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.buttonBox = QtGui.QDialogButtonBox(Editor)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(
-            QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Discard | QtGui.QDialogButtonBox.Save)
-        self.buttonBox.setObjectName("buttonBox")
-        self.verticalLayout.addWidget(self.buttonBox)
+        self.horizontalLayout_3 = QtGui.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem5)
+        self.update_btn = QtGui.QPushButton(self)
+        self.update_btn.setObjectName("update_btn")
+        self.horizontalLayout_3.addWidget(self.update_btn)
+        self.delete_btn = QtGui.QPushButton(self)
+        self.delete_btn.setObjectName("delete_btn")
+        self.horizontalLayout_3.addWidget(self.delete_btn)
+        self.cancel_btn = QtGui.QPushButton(self)
+        self.cancel_btn.setObjectName("cancel_btn")
+        self.horizontalLayout_3.addWidget(self.cancel_btn)
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
 
-        # self.retranslateUi(Editor)
-        # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Editor.accept)
-        # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Editor.reject)
-        # QtCore.QMetaObject.connectSlotsByName(Editor)
+        self.retranslateUi()
+        # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), self.accept)
+        # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), self.reject)
+        # QtCore.QMetaObject.connectSlotsByName(self)
+        self.cancel_btn.clicked.connect(self.reject)
+        self.update_btn.clicked.connect(self.accept)
+        self.delete_btn.clicked.connect(self.delete)
+
+        self.ts_id = ts_id
+        self.proj = proj
+        self.ent = ent
+        self.tsk = task
+        self.start_time = start
+        self.end_time = end
+
         self.start.setDateTime(start)
         self.end.setDateTime(end)
+        self.project.setText('PRJ: %s' % self.proj)
+        self.entity.setText('ENT: %s' % self.ent)
+        self.task.setText('TSK: %s' % self.tsk)
+        self.sheet_id.setText('TID: %s' % self.ts_id)
+
+    def delete(self, *args):
+        print(args)
+        return 2
+
+    def retranslateUi(self):
+        self.setWindowTitle(QtGui.QApplication.translate("Editor", "Timesheet Editor", None, QtGui.QApplication.UnicodeUTF8))
+        self.title.setText(QtGui.QApplication.translate("Editor", "Timesheet Editor", None, QtGui.QApplication.UnicodeUTF8))
+        self.project.setText(QtGui.QApplication.translate("Editor", "Project", None, QtGui.QApplication.UnicodeUTF8))
+        self.entity.setText(QtGui.QApplication.translate("Editor", "Entity", None, QtGui.QApplication.UnicodeUTF8))
+        self.task.setText(QtGui.QApplication.translate("Editor", "Task", None, QtGui.QApplication.UnicodeUTF8))
+        self.start_label.setText(QtGui.QApplication.translate("Editor", "Start Time", None, QtGui.QApplication.UnicodeUTF8))
+        self.end_label.setText(QtGui.QApplication.translate("Editor", "End Time", None, QtGui.QApplication.UnicodeUTF8))
+        self.update_btn.setText(QtGui.QApplication.translate("Editor", "Update", None, QtGui.QApplication.UnicodeUTF8))
+        self.delete_btn.setText(QtGui.QApplication.translate("Editor", "Delete", None, QtGui.QApplication.UnicodeUTF8))
+        self.cancel_btn.setText(QtGui.QApplication.translate("Editor", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
+
 
     @staticmethod
-    def edit_timesheet(parent=None, ts_id=None, proj=None, entity=None, task=None, start=None, end=None):
-        editor = time_editor(parent, ts_id, proj, entity, task, start, end)
+    def edit_timesheet(parent=None, ts_id=None, proj=None, ent=None, task=None, start=None, end=None):
+        print('start edit_timesheet: %s' % start)
+        print('end edit_timesheet: %s' % end)
+        editor = time_editor(parent, ts_id, proj, ent, task, start, end)
         result = editor.exec_()
+        print('RESULTS: %s' % result)
         return result
 
 
