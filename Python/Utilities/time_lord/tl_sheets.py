@@ -299,6 +299,8 @@ class sheets(QtGui.QWidget):
             record_len = len(data)
             progress_add = record_len / 25
 
+            record_date = datetime.now().date()
+
             for record in data:
                 progress_total += progress_add
                 self.update_progress(['Adding timesheets...', progress_total])
@@ -306,6 +308,7 @@ class sheets(QtGui.QWidget):
                 block_data = record[main_key]
                 sorted_by = type(main_key)
                 if sorted_by == datetime:
+                    record_date = main_key.date()
                     main_key = str(main_key.date())
                 # print main_key
 
@@ -316,6 +319,7 @@ class sheets(QtGui.QWidget):
                     # print key
                     if type(key) == datetime:
                         key = str(key.date())
+                        record_date = key.date()
                     add_key = QtGui.QTreeWidgetItem()
                     add_key.setFirstColumnSpanned(False)
                     add_key.setText(0, key)
@@ -333,26 +337,28 @@ class sheets(QtGui.QWidget):
                         entity_name = entity['entity']['name']
                         entity_id = entity['entity']['id']
                         start = timesheet['sg_task_start']
-                        start = datetime.strftime(start, '%I:%M %p')
-                        # print(d)
-                        if timesheet['sg_task_end']:
-                            end = timesheet['sg_task_end']
-                        else:
-                            end = datetime.now()
-                        end = datetime.strftime(end, '%I:%M %p')
-                        duration = timesheet['duration'] / 60.0
+                        start_date = start.date()
+                        if start_date == record_date:
+                            start = datetime.strftime(start, '%I:%M %p')
+                            # print(d)
+                            if timesheet['sg_task_end']:
+                                end = timesheet['sg_task_end']
+                            else:
+                                end = datetime.now()
+                            end = datetime.strftime(end, '%I:%M %p')
+                            duration = timesheet['duration'] / 60.0
 
-                        time_table = QtGui.QTreeWidgetItem(add_key, [str(timesheet['id']),
-                                                                     project,
-                                                                     entity_name,
-                                                                     task,
-                                                                     'start: %s' % start,
-                                                                     'end: %s' % end,
-                                                                     'total: %0.2f hrs' % duration,
-                                                                     'Double Click To Edit'
-                                                                     ]
-                                                           )
-                        add_key.addChild(time_table)
+                            time_table = QtGui.QTreeWidgetItem(add_key, [str(timesheet['id']),
+                                                                         project,
+                                                                         entity_name,
+                                                                         task,
+                                                                         'start: %s' % start,
+                                                                         'end: %s' % end,
+                                                                         'total: %0.2f hrs' % duration,
+                                                                         'Double Click To Edit'
+                                                                         ]
+                                                               )
+                            add_key.addChild(time_table)
                     add_main_key.addChild(add_key)
 
                 self.ui.sheet_tree.addTopLevelItem(add_main_key)
