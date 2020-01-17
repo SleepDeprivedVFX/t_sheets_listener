@@ -53,3 +53,11 @@
 2020-01-16 20:27:13,907 - end_of_day | INFO : 104 - out_time message: 
 2020-01-16 20:27:14,002 - end_of_day | INFO : 104 - out_time message: 2020-01-16 20:27:13
 2020-01-16 20:27:14,003 - end_of_day | INFO : 104 - out_time message: 2020-01-16 20:27:13
+2020-01-16 20:35:08,744 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:35:10,049 - end_of_day | INFO : 104 - out_time message: 
+2020-01-16 20:35:11,000 - end_of_day | INFO : 104 - out_time message: 2020-01-16 20:35:09
+2020-01-16 20:35:11,003 - end_of_day | INFO : 104 - out_time message: 2020-01-16 20:35:09
+2020-01-16 20:50:17,811 - end_of_day | INFO : 51 - End of Day has started.
+2020-01-16 20:50:19,099 - end_of_day | INFO : 104 - out_time message: 
+2020-01-16 20:50:20,000 - end_of_day | INFO : 104 - out_time message: 2020-01-16 20:50:18
+2020-01-16 20:50:20,003 - end_of_day | INFO : 104 - out_time message: 2020-01-16 20:50:18

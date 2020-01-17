@@ -80,6 +80,7 @@ class sheet_signals(QtCore.QObject):
     message = QtCore.Signal(str)
     update = QtCore.Signal(list)
     req_update = QtCore.Signal(dict)
+    progress = QtCore.Signal(list)
 
 
 class sheet_engine(QtCore.QThread):
@@ -97,6 +98,8 @@ class sheet_engine(QtCore.QThread):
     def prep_update(self, data):
         # Create Database to return
         print('Update has been requested.  Processing...')
+        progress_total = 20
+        self.signals.progress.emit(['Beginning update...', progress_total])
         update_list = []
         if data:
             start_date = data['start_date']
@@ -133,6 +136,9 @@ class sheet_engine(QtCore.QThread):
                 date_diff = end_date - start_date
             date_diff = date_diff.days
 
+            record_totals = date_diff + len(users_list)
+            progress_add = record_totals / 40  # Percentage of the progress bar this will cover
+
             if sort_by:
                 # Iterate through the days to start building the update_list
                 print('Date sorting the timesheets')
@@ -144,6 +150,8 @@ class sheet_engine(QtCore.QThread):
                     timesheet_list = {}
                     for this_user in users_list:
                         user_name = this_user['name']
+                        progress_total += progress_add
+                        self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
                         # print date_record, order
                         timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
                                                                              date=date_record,
@@ -163,6 +171,8 @@ class sheet_engine(QtCore.QThread):
                             date_record = end_date - timedelta(days=x)
                         else:
                             date_record = start_date + timedelta(days=x)
+                        progress_total += progress_add
+                        self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
                         timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
                                                                              date=date_record,
                                                                              order=order)
@@ -171,6 +181,9 @@ class sheet_engine(QtCore.QThread):
                     update_list.append({user_name: timesheet_list})
                     del timesheet_list
         print('Returning Update list...')
+
+        progress_total = 65
+        self.signals.progress.emit(['Sending the updated list...', progress_total])
         print('update list length: %s' % len(update_list))
         self.signals.update.emit(update_list)
         print('Update list returned.')
@@ -219,17 +232,25 @@ class sheets(QtGui.QWidget):
 
         # Connect buttons
         self.ui.update_btn.clicked.connect(self.request_update)
+        self.engine.signals.progress.connect(self.update_progress)
+
+        # NOTE: Temporary for quicker release, but the following need to go once fixed
+        self.ui.sort_by.hide()
+        self.ui.export_btn.setStyleSheet('color: rgb(120, 120, 120);')
+        self.ui.export_btn.setDisabled(True)
 
         # Set the saved settings.
         try:
             self.ui.whose_timesheets.setCurrentIndex(self.saved_whose_timesheet)
             self.ui.order.setCurrentIndex(self.saved_order)
             if self.saved_sort_by:
-                self.ui.date_rdo.setChecked()
+                self.ui.date_rdo.setChecked(True)
             else:
-                self.ui.person_rdo.setChecked()
+                self.ui.person_rdo.setChecked(True)
         except:
             pass
+        # NOTE: Also temp
+        self.ui.date_rdo.setChecked(True)
 
         self.engine.start()
 
@@ -238,7 +259,9 @@ class sheets(QtGui.QWidget):
         self.request_update()
 
     def request_update(self):
-        print('Requesting Update...')
+        logger.info('Requesting Update...')
+        self.ui.editor_status.setText('Updating Time Sheets')
+        self.ui.editor_progress.setValue(5)
         # Emit the initial data to start the first load of the data.  Based on the initial settings.
         whose_timesheet = self.ui.whose_timesheets.itemData(self.ui.whose_timesheets.currentIndex())
         sort_by = self.ui.date_rdo.isChecked()
@@ -252,30 +275,33 @@ class sheets(QtGui.QWidget):
             'start_date': start_date,
             'end_date': end_date
         }
+        self.ui.editor_status.setText('Request sent...')
+        self.ui.editor_progress.setValue(15)
         self.engine.signals.req_update.emit(updata)
-        print('Update requested.')
+        logger.debug('Update requested.')
+
+    def update_progress(self, data):
+        status = data[0]
+        progress = data[1]
+        self.ui.editor_status.setText(status)
+        self.ui.editor_progress.setValue(int(progress))
 
     def update_list(self, data=None):
         if data:
+            progress_total = 65
+            self.update_progress(['Updating UI...', progress_total])
             self.ui.sheet_tree.clear()
             self.ui.sheet_tree.setHeaderLabels(['TS ID', 'Project', 'Asset', 'Task', 'Start', 'End',
                                                 'Duration', 'Edit'])
             # self.ui.sheet_tree.setColumnWidth(150, 150)
             self.ui.sheet_tree.setAlternatingRowColors(True)
 
-            # Rummage through the data
-            all_rows = []
-
-            all_starts = []
-            all_ends = []
-            all_projects = []
-            all_entities = []
-            all_tasks = []
-            all_ts_ids = []
-            all_durations = []
-            all_edits = []
+            record_len = len(data)
+            progress_add = record_len / 25
 
             for record in data:
+                progress_total += progress_add
+                self.update_progress(['Adding timesheets...', progress_total])
                 main_key = record.keys()[0]
                 block_data = record[main_key]
                 sorted_by = type(main_key)
@@ -331,44 +357,58 @@ class sheets(QtGui.QWidget):
 
                 self.ui.sheet_tree.addTopLevelItem(add_main_key)
 
+            progress_total = 100
+            self.update_progress(['Finalizing and expanding...', progress_total])
+
             self.ui.sheet_tree.itemDoubleClicked.connect(self.edit_timesheet)
             self.ui.sheet_tree.expandAll()
             self.ui.sheet_tree.resizeColumnToContents(True)
+            progress_total = 0
+            self.update_progress(['', progress_total])
 
     def edit_timesheet(self, data=None):
         self.ui.editor_status.setText('Edit triggered!')
         self.ui.editor_progress.setValue(10)
         if data:
-            ts_id = int(data.text(0))
-            project = data.text(1)
-            entity = data.text(2)
-            task = data.text(3)
+            try:
+                ts_id = int(data.text(0))
+                project = data.text(1)
+                entity = data.text(2)
+                task = data.text(3)
 
-            if ts_id:
-                print('Getting timesheet....')
-                self.ui.editor_status.setText('Getting timesheet....')
-                self.ui.editor_progress.setValue(25)
-                edit_timesheet = tl_time.get_timesheet_by_id(tid=ts_id)
-                self.ui.editor_status.setText('Timesheet Received!')
-                self.ui.editor_progress.setValue(65)
-                print('Timesheet recieved.')
-                if edit_timesheet:
-                    start = edit_timesheet['sg_task_start']
-                    end = edit_timesheet['sg_task_end']
-                else:
-                    start = None
-                    end = None
-                print('start: %s' % start)
-                print('end: %s' % end)
-                print('Sending to the Editor...')
+                if ts_id:
+                    print('Getting timesheet....')
+                    self.ui.editor_status.setText('Getting timesheet....')
+                    self.ui.editor_progress.setValue(25)
+                    edit_timesheet = tl_time.get_timesheet_by_id(tid=ts_id)
+                    self.ui.editor_status.setText('Timesheet Received!')
+                    self.ui.editor_progress.setValue(65)
+                    print('Timesheet recieved.')
+                    if edit_timesheet:
+                        start = edit_timesheet['sg_task_start']
+                        end = edit_timesheet['sg_task_end']
+                        _user = edit_timesheet['user']
+                    else:
+                        start = None
+                        end = None
+                        _user = None
+                    print('start: %s' % start)
+                    print('end: %s' % end)
+                    print('user: %s' % _user)
+                    print('Sending to the Editor...')
 
-                self.ui.editor_status.setText('Sending to the Editor...')
-                self.ui.editor_progress.setValue(100)
-                ts = time_editor(tid=ts_id, proj=project, ent=entity, task=task, start=start, end=end)
-                ts.exec_()
-                print('TS: %s' % ts)
-                self.ui.editor_status.setText('')
-                self.ui.editor_progress.setValue(0)
+                    self.ui.editor_status.setText('Sending to the Editor...')
+                    self.ui.editor_progress.setValue(100)
+                    ts = time_editor(tid=ts_id, proj=project, ent=entity, task=task, start=start, end=end, user=_user)
+                    ts.exec_()
+                    self.ui.editor_status.setText('')
+                    self.ui.editor_progress.setValue(0)
+                    if ts.result() == 1:
+                        self.ui.sheet_tree.clear()
+                        time.sleep(0.5)
+                        self.request_update()
+            except Exception as e:
+                print('Unable to edit this record: %s' % e)
 
     def update_saved_settings(self):
         self.settings.setValue('geometry', self.saveGeometry())
@@ -385,7 +425,7 @@ class sheets(QtGui.QWidget):
 
 
 class time_editor(QtGui.QDialog):
-    def __init__(self, parent=None, tid=None, proj=None, ent=None, task=None, start=None, end=None):
+    def __init__(self, parent=None, tid=None, proj=None, ent=None, task=None, start=None, end=None, user=None):
         QtGui.QDialog.__init__(self, parent)
 
         self.editor = editor.Ui_Editor()
@@ -398,6 +438,7 @@ class time_editor(QtGui.QDialog):
         self.editor.task.setText('TSK: %s' % task)
         self.editor.start.setDateTime(start)
         self.editor.end.setDateTime(end)
+        self.user = user
 
         self.editor.update_btn.clicked.connect(self.update_timesheet)
         self.editor.delete_btn.clicked.connect(self.delete_timesheet)
@@ -405,150 +446,39 @@ class time_editor(QtGui.QDialog):
 
     def update_timesheet(self):
         tid = self.editor.tid.text()
-        self.accept()
+        tid = int(tid.split(': ')[1])
+        update = QtGui.QMessageBox()
+        update.setText('Are you sure you want to update %s?' % tid)
+        update.addButton('Yes', QtGui.QMessageBox.AcceptRole)
+        update.addButton('No', QtGui.QMessageBox.RejectRole)
+        ret = update.exec_()
+        if ret == QtGui.QMessageBox.AcceptRole:
+            start = self.editor.start.dateTime().toPython()
+            end = self.editor.end.dateTime().toPython()
+            print('start: %s' % start)
+            print('end: %s' % end)
+            print('Doing update...')
+            do_update = tl_time.update_current_times(user=user, tid=tid, start_time=start, end_time=end)
+            print('Updated: %s' % do_update)
+            self.accept()
+        else:
+            print('Rejected!')
+            self.close()
 
     def delete_timesheet(self):
         tid = self.editor.tid.text()
-        self.destroy()
-
-    # def edit_timesheet(self, parent, tid=None, proj=None, ent=None, task=None, start=None, end=None):
-    #     editor = time_editor(parent, tid, proj, ent, task, start, end)
-    #     result = editor.exec_()
-    #     print('RESULT: %s' % result)
-    #     return result
-
-# class time_editor(QtGui.QDialog):
-#     def __init__(self, parent=None, ts_id=None, proj=None, ent=None, task=None, start=None, end=None):
-#         super(time_editor, self).__init__(parent)
-#         print('start __init__: %s' % start)
-#         print('end __init__: %s' % end)
-#
-#         if not start:
-#             start = datetime.now()
-#         if not end:
-#             end = datetime.now()
-#
-#         self.setObjectName("Editor")
-#         self.resize(285, 201)
-#         self.setStyleSheet("background-color: rgb(100, 100, 100);\n"
-# "color: rgb(230, 230, 230);")
-#         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
-#         self.verticalLayout = QtGui.QVBoxLayout(self)
-#         self.verticalLayout.setObjectName("verticalLayout")
-#         self.title = QtGui.QLabel(self)
-#         self.title.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";")
-#         self.title.setObjectName("title")
-#         self.verticalLayout.addWidget(self.title)
-#         self.sheet_id = QtGui.QLabel(self)
-#         self.sheet_id.setObjectName("sheet_id")
-#         self.verticalLayout.addWidget(self.sheet_id)
-#         self.project = QtGui.QLabel(self)
-#         self.project.setObjectName("project")
-#         self.verticalLayout.addWidget(self.project)
-#         self.entity = QtGui.QLabel(self)
-#         self.entity.setObjectName("entity")
-#         self.verticalLayout.addWidget(self.entity)
-#         self.task = QtGui.QLabel(self)
-#         self.task.setObjectName("task")
-#         self.verticalLayout.addWidget(self.task)
-#         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-#         self.verticalLayout.addItem(spacerItem)
-#         self.horizontalLayout = QtGui.QHBoxLayout()
-#         self.horizontalLayout.setObjectName("horizontalLayout")
-#         self.start_label = QtGui.QLabel(self)
-#         self.start_label.setObjectName("start_label")
-#         self.horizontalLayout.addWidget(self.start_label)
-#         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-#         self.horizontalLayout.addItem(spacerItem1)
-#         self.start = QtGui.QDateTimeEdit(self)
-#         self.start.setCalendarPopup(True)
-#         self.start.setObjectName("start")
-#         self.horizontalLayout.addWidget(self.start)
-#         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
-#         self.horizontalLayout.addItem(spacerItem2)
-#         self.verticalLayout.addLayout(self.horizontalLayout)
-#         self.horizontalLayout_2 = QtGui.QHBoxLayout()
-#         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-#         self.end_label = QtGui.QLabel(self)
-#         self.end_label.setObjectName("end_label")
-#         self.horizontalLayout_2.addWidget(self.end_label)
-#         spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-#         self.horizontalLayout_2.addItem(spacerItem3)
-#         self.end = QtGui.QDateTimeEdit(self)
-#         self.end.setObjectName("end")
-#         self.end.setCalendarPopup(True)
-#         self.horizontalLayout_2.addWidget(self.end)
-#         spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
-#         self.horizontalLayout_2.addItem(spacerItem4)
-#         self.verticalLayout.addLayout(self.horizontalLayout_2)
-#         self.horizontalLayout_3 = QtGui.QHBoxLayout()
-#         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-#         spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-#         self.horizontalLayout_3.addItem(spacerItem5)
-#         self.update_btn = QtGui.QPushButton(self)
-#         self.update_btn.setObjectName("update_btn")
-#         self.horizontalLayout_3.addWidget(self.update_btn)
-#         self.delete_btn = QtGui.QPushButton(self)
-#         self.delete_btn.setObjectName("delete_btn")
-#         self.horizontalLayout_3.addWidget(self.delete_btn)
-#         self.cancel_btn = QtGui.QPushButton(self)
-#         self.cancel_btn.setObjectName("cancel_btn")
-#         self.horizontalLayout_3.addWidget(self.cancel_btn)
-#         self.verticalLayout.addLayout(self.horizontalLayout_3)
-#
-#         self.retranslateUi()
-#         # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), self.accept)
-#         # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), self.reject)
-#         # QtCore.QMetaObject.connectSlotsByName(self)
-#         self.cancel_btn.clicked.connect(self.reject)
-#         self.update_btn.clicked.connect(self.update_sheet)
-#         self.delete_btn.clicked.connect(self.delete)
-#
-#         self.ts_id = ts_id
-#         self.proj = proj
-#         self.ent = ent
-#         self.tsk = task
-#         self.start_time = start
-#         self.end_time = end
-#
-#         self.start.setDateTime(start)
-#         self.end.setDateTime(end)
-#         self.project.setText('PRJ: %s' % self.proj)
-#         self.entity.setText('ENT: %s' % self.ent)
-#         self.task.setText('TSK: %s' % self.tsk)
-#         self.sheet_id.setText('TID: %s' % self.ts_id)
-#
-#     def delete(self):
-#         ts_id = 1
-#         message = 'Delete TS: %s' % ts_id
-#         return message
-#
-#     def update_sheet(self, *args, **kwargs):
-#         ts_id = 2
-#         message = 'Update TS: %s' % ts_id
-#         return message
-#
-#     def retranslateUi(self):
-#         self.setWindowTitle(QtGui.QApplication.translate("Editor", "Timesheet Editor", None, QtGui.QApplication.UnicodeUTF8))
-#         self.title.setText(QtGui.QApplication.translate("Editor", "Timesheet Editor", None, QtGui.QApplication.UnicodeUTF8))
-#         self.project.setText(QtGui.QApplication.translate("Editor", "Project", None, QtGui.QApplication.UnicodeUTF8))
-#         self.entity.setText(QtGui.QApplication.translate("Editor", "Entity", None, QtGui.QApplication.UnicodeUTF8))
-#         self.task.setText(QtGui.QApplication.translate("Editor", "Task", None, QtGui.QApplication.UnicodeUTF8))
-#         self.start_label.setText(QtGui.QApplication.translate("Editor", "Start Time", None, QtGui.QApplication.UnicodeUTF8))
-#         self.end_label.setText(QtGui.QApplication.translate("Editor", "End Time", None, QtGui.QApplication.UnicodeUTF8))
-#         self.update_btn.setText(QtGui.QApplication.translate("Editor", "Update", None, QtGui.QApplication.UnicodeUTF8))
-#         self.delete_btn.setText(QtGui.QApplication.translate("Editor", "Delete", None, QtGui.QApplication.UnicodeUTF8))
-#         self.cancel_btn.setText(QtGui.QApplication.translate("Editor", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
-#
-#
-#     @staticmethod
-#     def edit_timesheet(parent=None, ts_id=None, proj=None, ent=None, task=None, start=None, end=None):
-#         print('start edit_timesheet: %s' % start)
-#         print('end edit_timesheet: %s' % end)
-#         editor = time_editor(parent, ts_id, proj, ent, task, start, end)
-#         result = editor.exec_()
-#         print('RESULTS: %s' % result)
-#         return result
+        tid = int(tid.split(': ')[1])
+        delete = QtGui.QMessageBox()
+        delete.setText('Are you sure you want to delete TID %s?  This can not be undone!' % tid)
+        delete.addButton('Delete', QtGui.QMessageBox.AcceptRole)
+        delete.addButton('Cancel', QtGui.QMessageBox.RejectRole)
+        ret = delete.exec_()
+        if ret == QtGui.QMessageBox.AcceptRole:
+            tl_time.delete_timelog_by_id(tid=tid)
+            self.accept()
+        else:
+            print('Rejected!')
+            self.close()
 
 
 if __name__ == '__main__':

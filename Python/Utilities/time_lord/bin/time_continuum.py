@@ -1055,19 +1055,27 @@ class continuum(object):
                 # print self.get_latest_timesheet(user=user)
         return timesheets
 
-    def update_current_start_time(self, user=None, tid=None, start_time=None):
+    def update_current_times(self, user=None, tid=None, start_time=None, end_time=None):
         update = None
         if user and tid and start_time:
             data = {
                 'sg_task_start': start_time,
                 'description': 'Updated by %s through Time Lord' % user['name']
             }
+            if end_time:
+                data['sg_task_end'] = end_time
             try:
                 update = self.sg.update('TimeLog', tid, data)
                 self.logger.debug('update start time output: %s' % update)
             except Exception as e:
+                print('Shit the bed: %s' % e)
                 self.logger.error('Timesheet update failed: %s' % e)
             if update:
                 self.timesheet_consistency_cleanup(user=user)
         return update
+
+    def delete_timelog_by_id(self, tid=None):
+        if tid:
+            deleted = self.sg.delete('TimeLog', int(tid))
+            return deleted
 

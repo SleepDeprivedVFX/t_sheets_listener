@@ -695,8 +695,8 @@ class time_lord(QtCore.QThread):
     def update_timesheet_start(self, start_time=None):
         if start_time:
             self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
-            update_sheet = tl_time.update_current_start_time(user=user, tid=self.latest_timesheet['id'],
-                                                             start_time=start_time)
+            update_sheet = tl_time.update_current_times(user=user, tid=self.latest_timesheet['id'],
+                                                        start_time=start_time)
             print('update timesheet start returns: %s' % update_sheet)
 
     def set_trt_output(self, trt=None):

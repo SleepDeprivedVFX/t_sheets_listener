@@ -237,7 +237,7 @@ class lunch_break(QtGui.QWidget):
                                                 next_sheet_start.time().minute, next_sheet_start.time().second)
             next_sheet_start = datetime.strptime(next_sheet_start, '%Y-%m-%d %H:%M:%S')
             if next_sheet_start < end_time:
-                tl_time.update_current_start_time(user=user, tid=next_timesheet['id'], start_time=end_time)
+                tl_time.update_current_times(user=user, tid=next_timesheet['id'], start_time=end_time)
             elif next_sheet_start > end_time:
                 filler_timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=end_time)
                 if current_timesheet_out:
