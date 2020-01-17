@@ -186,7 +186,9 @@ class lunch_break(QtGui.QWidget):
         end_time = parser.parse(get_end_time)
         previous_out_time = start_time
         next_start_time = end_time
+        latest_timesheet = tl_time.get_latest_timesheet(user=user)
         current_timesheet = tl_time.get_previous_timesheet(user=user, start_time=start_time)
+        current_timesheet_out = current_timesheet['sg_task_end']
 
         # Clock the user out of the current task at the start of lunch time.
         # FIXME: This automatically clocks someone out, but that doesn't work for manually added lunch breaks.
@@ -226,7 +228,20 @@ class lunch_break(QtGui.QWidget):
             }
         }
 
-        tl_time.create_new_timesheet(user=user, context=context, start_time=next_start_time)
+        if current_timesheet['id'] == latest_timesheet['id']:
+            tl_time.create_new_timesheet(user=user, context=context, start_time=next_start_time)
+        else:
+            next_timesheet = tl_time.get_next_timesheet(user=user, start_time=start_time, tid=current_timesheet['id'])
+            next_sheet_start = next_timesheet['sg_task_start']
+            next_sheet_start = '%s %s:%s:%s' % (next_sheet_start.date(), next_sheet_start.time().hour,
+                                                next_sheet_start.time().minute, next_sheet_start.time().second)
+            next_sheet_start = datetime.strptime(next_sheet_start, '%Y-%m-%d %H:%M:%S')
+            if next_sheet_start < end_time:
+                tl_time.update_current_start_time(user=user, tid=next_timesheet['id'], start_time=end_time)
+            elif next_sheet_start > end_time:
+                filler_timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=end_time)
+                if current_timesheet_out:
+                    tl_time.clock_out_time_sheet(timesheet=filler_timesheet, clock_out=current_timesheet_out)
         self.stay_opened = False
         self.close()
 
