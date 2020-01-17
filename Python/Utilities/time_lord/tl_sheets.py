@@ -97,7 +97,7 @@ class sheet_engine(QtCore.QThread):
 
     def prep_update(self, data):
         # Create Database to return
-        print('Update has been requested.  Processing...')
+        logger.debug('Update has been requested.  Processing...')
         progress_total = 20
         self.signals.progress.emit(['Beginning update...', progress_total])
         update_list = []
@@ -141,7 +141,7 @@ class sheet_engine(QtCore.QThread):
 
             if sort_by:
                 # Iterate through the days to start building the update_list
-                print('Date sorting the timesheets')
+                logger.debug('Date sorting the timesheets')
                 for x in range(0, int(date_diff) + 1):
                     if order == 'desc':
                         date_record = end_date - timedelta(days=x)
@@ -162,7 +162,7 @@ class sheet_engine(QtCore.QThread):
                     del timesheet_list
             else:
                 # Sort by Person is True
-                print('Person sorting the timesheets')
+                logger.debug('Person sorting the timesheets')
                 for this_user in users_list:
                     user_name = this_user['name']
                     timesheet_list = {}
@@ -180,13 +180,13 @@ class sheet_engine(QtCore.QThread):
                         timesheet_list[date_record] = timesheets
                     update_list.append({user_name: timesheet_list})
                     del timesheet_list
-        print('Returning Update list...')
+        logger.debug('Returning Update list...')
 
         progress_total = 65
         self.signals.progress.emit(['Sending the updated list...', progress_total])
-        print('update list length: %s' % len(update_list))
+        logger.debug('update list length: %s' % len(update_list))
         self.signals.update.emit(update_list)
-        print('Update list returned.')
+        logger.debug('Update list returned.')
         return update_list
 
 
@@ -377,13 +377,13 @@ class sheets(QtGui.QWidget):
                 task = data.text(3)
 
                 if ts_id:
-                    print('Getting timesheet....')
+                    logger.debug('Getting timesheet....')
                     self.ui.editor_status.setText('Getting timesheet....')
                     self.ui.editor_progress.setValue(25)
                     edit_timesheet = tl_time.get_timesheet_by_id(tid=ts_id)
                     self.ui.editor_status.setText('Timesheet Received!')
                     self.ui.editor_progress.setValue(65)
-                    print('Timesheet recieved.')
+                    logger.debug('Timesheet recieved.')
                     if edit_timesheet:
                         start = edit_timesheet['sg_task_start']
                         end = edit_timesheet['sg_task_end']
@@ -392,10 +392,6 @@ class sheets(QtGui.QWidget):
                         start = None
                         end = None
                         _user = None
-                    print('start: %s' % start)
-                    print('end: %s' % end)
-                    print('user: %s' % _user)
-                    print('Sending to the Editor...')
 
                     self.ui.editor_status.setText('Sending to the Editor...')
                     self.ui.editor_progress.setValue(100)
@@ -408,7 +404,7 @@ class sheets(QtGui.QWidget):
                         time.sleep(0.5)
                         self.request_update()
             except Exception as e:
-                print('Unable to edit this record: %s' % e)
+                logger.debug('Unable to edit this record: %s' % e)
 
     def update_saved_settings(self):
         self.settings.setValue('geometry', self.saveGeometry())
@@ -455,14 +451,12 @@ class time_editor(QtGui.QDialog):
         if ret == QtGui.QMessageBox.AcceptRole:
             start = self.editor.start.dateTime().toPython()
             end = self.editor.end.dateTime().toPython()
-            print('start: %s' % start)
-            print('end: %s' % end)
-            print('Doing update...')
+            logger.debug('Doing update...')
             do_update = tl_time.update_current_times(user=user, tid=tid, start_time=start, end_time=end)
-            print('Updated: %s' % do_update)
+            logger.debug('Updated: %s' % do_update)
             self.accept()
         else:
-            print('Rejected!')
+            logger.debug('Rejected!')
             self.close()
 
     def delete_timesheet(self):
@@ -477,7 +471,7 @@ class time_editor(QtGui.QDialog):
             tl_time.delete_timelog_by_id(tid=tid)
             self.accept()
         else:
-            print('Rejected!')
+            logger.debug('Rejected!')
             self.close()
 
 
