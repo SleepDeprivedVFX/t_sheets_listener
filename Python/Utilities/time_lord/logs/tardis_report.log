@@ -1,52 +1,10 @@
-2020-01-14 19:21:19,088 - tardis_report | INFO : 66 - The TARDIS has started!
-2020-01-14 19:21:19,594 - tardis_report | INFO : 78 - Opening a portal to the time continuum...
-2020-01-14 19:21:19,680 - tardis_report | INFO : 80 - time_continuum is opened...
-2020-01-14 19:21:19,796 - tardis_report | INFO : 85 - User information collected...
-2020-01-14 19:21:19,890 - tardis_report | INFO : 89 - Shotgun commands brought in.
-2020-01-14 19:21:19,977 - tardis_report | INFO : 93 - Communication system online.
-2020-01-14 19:21:30,864 - tardis_report | INFO : 959 - Adam Benson has launched the UI Compiler.
-2020-01-14 19:29:19,519 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:30:27,674 - tardis_report | INFO : 66 - The TARDIS has started!
-2020-01-14 19:30:28,167 - tardis_report | INFO : 78 - Opening a portal to the time continuum...
-2020-01-14 19:30:28,252 - tardis_report | INFO : 80 - time_continuum is opened...
-2020-01-14 19:30:28,368 - tardis_report | INFO : 85 - User information collected...
-2020-01-14 19:30:28,450 - tardis_report | INFO : 89 - Shotgun commands brought in.
-2020-01-14 19:30:28,528 - tardis_report | INFO : 93 - Communication system online.
-2020-01-14 19:30:42,076 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:35:14,667 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:36:26,730 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:38:37,627 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:39:40,924 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:44:51,721 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:45:25,082 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:46:13,013 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:48:08,573 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:49:32,986 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:49:57,775 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:50:58,651 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-14 19:57:45,704 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:33:18,687 - tardis_report | INFO : 66 - The TARDIS has started!
-2020-01-15 10:33:19,193 - tardis_report | INFO : 78 - Opening a portal to the time continuum...
-2020-01-15 10:33:19,279 - tardis_report | INFO : 80 - time_continuum is opened...
-2020-01-15 10:33:19,392 - tardis_report | INFO : 85 - User information collected...
-2020-01-15 10:33:19,477 - tardis_report | INFO : 89 - Shotgun commands brought in.
-2020-01-15 10:33:19,555 - tardis_report | INFO : 93 - Communication system online.
-2020-01-15 10:33:38,937 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:35:27,161 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:35:54,246 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:37:20,802 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:38:19,005 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:39:06,931 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:39:43,595 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:42:56,694 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:46:05,694 - tardis_report | INFO : 959 - Adam Benson has launched the UI Compiler.
-2020-01-15 10:54:28,750 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 10:58:53,832 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 11:00:44,628 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 11:04:13,862 - tardis_report | INFO : 932 - Adam Benson has activeated the Time Lord Scope
-2020-01-15 13:56:21,634 - tardis_report | INFO : 66 - The TARDIS has started!
-2020-01-15 13:56:22,176 - tardis_report | INFO : 78 - Opening a portal to the time continuum...
-2020-01-15 13:56:22,285 - tardis_report | INFO : 80 - time_continuum is opened...
-2020-01-15 13:56:22,417 - tardis_report | INFO : 85 - User information collected...
-2020-01-15 13:56:22,507 - tardis_report | INFO : 89 - Shotgun commands brought in.
-2020-01-15 13:56:22,592 - tardis_report | INFO : 93 - Communication system online.
+2020-01-16 14:49:31,316 - tardis_report | INFO : 230 - Start the Lunch Timer
+2020-01-16 14:49:31,326 - tardis_report | INFO : 231 - Getting the most recent timesheet...
+2020-01-16 15:32:20,591 - tardis_report | INFO : 333 - Gone too long.  Clocking out...
+2020-01-16 16:20:45,436 - tardis_report | INFO : 959 - Adam Benson has launched the UI Compiler.
+2020-01-16 16:52:15,697 - tardis_report | INFO : 66 - The TARDIS has started!
+2020-01-16 16:52:16,713 - tardis_report | INFO : 78 - Opening a portal to the time continuum...
+2020-01-16 16:52:16,895 - tardis_report | INFO : 80 - time_continuum is opened...
+2020-01-16 16:52:17,092 - tardis_report | INFO : 85 - User information collected...
+2020-01-16 16:52:17,282 - tardis_report | INFO : 89 - Shotgun commands brought in.
+2020-01-16 16:52:17,473 - tardis_report | INFO : 93 - Communication system online.

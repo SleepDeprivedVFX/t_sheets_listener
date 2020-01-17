@@ -238,6 +238,40 @@ class continuum(object):
             self.logger.debug('End date assumed: %s' % new_datetime)
             return new_datetime
 
+    def get_previous_timesheet(self, user=None, start_time=None):
+        if user:
+            self.logger.debug('Finding the last timesheet for %s' % user['name'])
+            user_id = user['id']
+            self.logger.debug('USER ID: %s' % user_id)
+
+            # List all the timesheets for the user
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user_id}],
+                ['sg_task_start', 'less_than', start_time]
+            ]
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'code',
+                'sg_closed'
+            ]
+            try:
+                previous_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
+                                                                                        'direction': 'desc'},
+                                                                                       {'field_name': 'id',
+                                                                                        'direction': 'desc'}])
+                self.logger.debug('Timesheet found: %s' % previous_timesheet)
+            except (AttributeError, Exception) as e:
+                self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
+                previous_timesheet = None
+            if previous_timesheet:
+                return previous_timesheet
+            return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
+
     def clock_out_time_sheet(self, timesheet=None, clock_out=None, auto=None):
         start = timesheet['sg_task_start']
         start_time = start.time()
@@ -249,29 +283,32 @@ class continuum(object):
         if timesheet:
             self.logger.debug('Timesheet: %s' % timesheet)
             # Check to see if the timesheet has already been closed.
-            if timesheet['sg_closed']:
-                # Find the next empty timesheet
-                filters = [
-                    ['user', 'is', {'type': 'HumanUser', 'id': timesheet['user']['id']}],
-                    ['sg_task_end', 'is', None],
-                    ['id', 'is_not', timesheet['id']]
-                ]
-                fields = [
-                    'user',
-                    'date',
-                    'sg_task_start',
-                    'sg_task_end',
-                    'project',
-                    'entity',
-                    'code',
-                    'sg_closed'
-                ]
-                empty_timesheets = self.sg.find('TimeLog', filters, fields,
-                                                order=[{'field_name': 'id', 'direction': 'desc'}])
-                if empty_timesheets:
-                    for e_ts in empty_timesheets:
-                        # figure out if the current timesheet
-                        self.logger.debug('Empty_Timesheet: %s' % e_ts)
+            try:
+                if timesheet['sg_closed']:
+                    # Find the next empty timesheet
+                    filters = [
+                        ['user', 'is', {'type': 'HumanUser', 'id': timesheet['user']['id']}],
+                        ['sg_task_end', 'is', None],
+                        ['id', 'is_not', timesheet['id']]
+                    ]
+                    fields = [
+                        'user',
+                        'date',
+                        'sg_task_start',
+                        'sg_task_end',
+                        'project',
+                        'entity',
+                        'code',
+                        'sg_closed'
+                    ]
+                    empty_timesheets = self.sg.find('TimeLog', filters, fields,
+                                                    order=[{'field_name': 'id', 'direction': 'desc'}])
+                    if empty_timesheets:
+                        for e_ts in empty_timesheets:
+                            # figure out if the current timesheet
+                            self.logger.debug('Empty_Timesheet: %s' % e_ts)
+            except KeyError as e:
+                self.logger.error('Couldn\'t find the key: %s' % e)
             data = {
                 'sg_task_end': clock_out,
                 'duration': total

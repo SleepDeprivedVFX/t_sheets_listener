@@ -1,5 +1,7 @@
 """
 TARDIS : Time Lord Event Listener
+T.A.R.D.I.S. (noun): Time And Relative Dimension In Shotgun
+
 The TARDIS is the engine that drives the Time Lord.  The TARDIS is the event listener that listens for times of day
 and mouse movements to determine what the Time Lord should do.
 Mouse movements are only listening for whether or not the mouse is moving, and then only between certain times of day

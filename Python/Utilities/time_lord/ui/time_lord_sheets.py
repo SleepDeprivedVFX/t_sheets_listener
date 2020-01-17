@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_sheets.ui'
 #
-# Created: Wed Jan 15 17:06:32 2020
+# Created: Thu Jan 16 14:06:22 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -15,13 +15,13 @@ class Ui_TimeSheets(object):
         TimeSheets.resize(1083, 651)
         TimeSheets.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
-        self.verticalLayout_2 = QtGui.QVBoxLayout(TimeSheets)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout_4 = QtGui.QVBoxLayout(TimeSheets)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.title = QtGui.QLabel(TimeSheets)
         self.title.setToolTip("")
         self.title.setStyleSheet("font: 24pt \"SeriaSansPro\";")
         self.title.setObjectName("title")
-        self.verticalLayout_2.addWidget(self.title)
+        self.verticalLayout_4.addWidget(self.title)
         self.tabs = QtGui.QTabWidget(TimeSheets)
         self.tabs.setStyleSheet("QTabWidget::pane { /* The tab widget frame */\n"
 "    border-top: 2px solid rgb(65, 65, 65);\n"
@@ -139,6 +139,28 @@ class Ui_TimeSheets(object):
         self.verticalLayout.addWidget(self.sheet_tree)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.verticalLayout_2 = QtGui.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.editor_status = QtGui.QLabel(self.time_sheets_tab)
+        self.editor_status.setObjectName("editor_status")
+        self.verticalLayout_2.addWidget(self.editor_status)
+        self.editor_progress = QtGui.QProgressBar(self.time_sheets_tab)
+        self.editor_progress.setStatusTip("")
+        self.editor_progress.setStyleSheet("QProgressBar {\n"
+"    text-align: center;\n"
+"    color: rgb(90, 90, 90);\n"
+"}\n"
+"\n"
+"QProgressBar::chunk {\n"
+"    background-color: rgb(224, 149, 0);\n"
+"    width: 20px;\n"
+"    margin: 1px;\n"
+"}")
+        self.editor_progress.setProperty("value", 24)
+        self.editor_progress.setInvertedAppearance(False)
+        self.editor_progress.setObjectName("editor_progress")
+        self.verticalLayout_2.addWidget(self.editor_progress)
+        self.horizontalLayout_4.addLayout(self.verticalLayout_2)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem1)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
@@ -168,7 +190,7 @@ class Ui_TimeSheets(object):
         self.label.setObjectName("label")
         self.verticalLayout_3.addWidget(self.label)
         self.tabs.addTab(self.manual_time, "")
-        self.verticalLayout_2.addWidget(self.tabs)
+        self.verticalLayout_4.addWidget(self.tabs)
 
         self.retranslateUi(TimeSheets)
         self.tabs.setCurrentIndex(0)
@@ -198,6 +220,7 @@ class Ui_TimeSheets(object):
         self.update_btn.setToolTip(QtGui.QApplication.translate("TimeSheets", "<html><head/><body><p><span style=\" color:#0b0b0b;\">Update the Sheets</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.update_btn.setText(QtGui.QApplication.translate("TimeSheets", "Update", None, QtGui.QApplication.UnicodeUTF8))
         self.sheet_tree.headerItem().setText(0, QtGui.QApplication.translate("TimeSheets", "Timesheet", None, QtGui.QApplication.UnicodeUTF8))
+        self.editor_status.setText(QtGui.QApplication.translate("TimeSheets", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
         self.excel_rdo.setToolTip(QtGui.QApplication.translate("TimeSheets", "<html><head/><body><p><span style=\" color:#0a0a0a;\">Export EXCEL sheet</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.excel_rdo.setText(QtGui.QApplication.translate("TimeSheets", "Excel", None, QtGui.QApplication.UnicodeUTF8))
         self.csv_rdo.setToolTip(QtGui.QApplication.translate("TimeSheets", "<html><head/><body><p><span style=\" color:#0a0a0a;\">Export CSV Sheet</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))

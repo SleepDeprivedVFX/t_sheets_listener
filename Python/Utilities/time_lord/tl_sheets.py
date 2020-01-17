@@ -24,6 +24,7 @@ import bin.configuration
 import bin.shotgun_collect
 
 from ui import time_lord_sheets as tls
+from ui import time_lord_edit_timesheet as editor
 
 config = bin.configuration.get_configuration()
 
@@ -196,6 +197,9 @@ class sheets(QtGui.QWidget):
             for artist in get_all_artists:
                 self.ui.whose_timesheets.addItem(artist['name'], artist['id'])
 
+        self.ui.editor_progress.setValue(0)
+        self.ui.editor_status.setText('')
+
         # Set the default start and end times
         start_time = (datetime.now() - timedelta(weeks=2)).date()
         end_time = datetime.now().date()
@@ -316,7 +320,7 @@ class sheets(QtGui.QWidget):
                                                                      'start: %s' % start,
                                                                      'end: %s' % end,
                                                                      'total: %0.2f hrs' % duration,
-                                                                     ' Double Click To Edit'
+                                                                     'Double Click To Edit'
                                                                      ]
                                                            )
                         add_key.addChild(time_table)
@@ -329,6 +333,8 @@ class sheets(QtGui.QWidget):
             self.ui.sheet_tree.resizeColumnToContents(True)
 
     def edit_timesheet(self, data=None):
+        self.ui.editor_status.setText('Edit triggered!')
+        self.ui.editor_progress.setValue(10)
         if data:
             ts_id = data.text(0)
             project = data.text(1)
@@ -336,14 +342,26 @@ class sheets(QtGui.QWidget):
             task = data.text(3)
 
             if ts_id:
+                print('Getting timesheet....')
+                self.ui.editor_status.setText('Getting timesheet....')
+                self.ui.editor_progress.setValue(25)
                 edit_timesheet = tl_time.get_timesheet_by_id(tid=ts_id)
+                self.ui.editor_status.setText('Timesheet Received!')
+                self.ui.editor_progress.setValue(65)
+                print('Timesheet recieved.')
                 if edit_timesheet:
                     start = edit_timesheet['sg_task_start']
                     end = edit_timesheet['sg_task_end']
                 else:
                     start = None
                     end = None
+                print('Sending to the Editor...')
+
+                self.ui.editor_status.setText('Sending to the Editor...')
+                self.ui.editor_progress.setValue(100)
                 time_editor.edit_timesheet(ts_id=ts_id, proj=project, entity=entity, task=task, start=start, end=end)
+                self.ui.editor_status.setText('')
+                self.ui.editor_progress.setValue(0)
 
     def update_saved_settings(self):
         self.settings.setValue('geometry', self.saveGeometry())
@@ -357,43 +375,79 @@ class sheets(QtGui.QWidget):
 
 
 class time_editor(QtGui.QDialog):
-    def __init__(self, parent=None, ts_id=None, proj=None, entity=None, task=None, start=None, end=None):
-        super(time_editor, self).__init__(parent)
+    def __init__(self, Editor=None, ts_id=None, proj=None, entity=None, task=None, start=None, end=None):
+        super(time_editor, self).__init__(Editor)
 
         if not start:
             start = datetime.now()
         if not end:
             end = datetime.now()
 
-        layout = QtGui.QVBoxLayout(self)
+        # Editor.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+        #                      "color: rgb(230, 230, 230);")
+        self.verticalLayout = QtGui.QVBoxLayout(Editor)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.title = QtGui.QLabel(Editor)
+        self.title.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";")
+        self.title.setObjectName("title")
+        self.verticalLayout.addWidget(self.title)
+        self.project = QtGui.QLabel(Editor)
+        self.project.setObjectName("project")
+        self.verticalLayout.addWidget(self.project)
+        self.entity = QtGui.QLabel(Editor)
+        self.entity.setObjectName("entity")
+        self.verticalLayout.addWidget(self.entity)
+        self.task = QtGui.QLabel(Editor)
+        self.task.setObjectName("task")
+        self.verticalLayout.addWidget(self.task)
+        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.start_label = QtGui.QLabel(Editor)
+        self.start_label.setObjectName("start_label")
+        self.horizontalLayout.addWidget(self.start_label)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.start = QtGui.QDateTimeEdit(Editor)
+        self.start.setCalendarPopup(True)
+        self.start.setObjectName("start")
+        self.horizontalLayout.addWidget(self.start)
+        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.end_label = QtGui.QLabel(Editor)
+        self.end_label.setObjectName("end_label")
+        self.horizontalLayout_2.addWidget(self.end_label)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem3)
+        self.end = QtGui.QDateTimeEdit(Editor)
+        self.end.setObjectName("end")
+        self.horizontalLayout_2.addWidget(self.end)
+        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem4)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.buttonBox = QtGui.QDialogButtonBox(Editor)
+        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
+        self.buttonBox.setStandardButtons(
+            QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Discard | QtGui.QDialogButtonBox.Save)
+        self.buttonBox.setObjectName("buttonBox")
+        self.verticalLayout.addWidget(self.buttonBox)
 
-        self.setStyleSheet("background-color: rgb(100, 100, 100);\n"
-"color: rgb(230, 230, 230);")
-
-        self.start_date = QtGui.QDateTimeEdit(self)
-        self.start_date.setCalendarPopup(True)
-        self.start_date.setDateTime(start)
-        layout.addWidget(self.start_date)
-
-        self.end_date = QtGui.QDateTimeEdit(self)
-        self.end_date.setCalendarPopup(True)
-        self.end_date.setDateTime(end)
-        layout.addWidget(self.end_date)
-
-        # OK and Cancel buttons
-        buttons = QtGui.QDialogButtonBox(
-            QtGui.QDialogButtonBox.Ok | QtGui.QDialogButtonBox.Cancel,
-            QtCore.Qt.Horizontal, self)
-        buttons.accepted.connect(self.accept)
-        buttons.rejected.connect(self.reject)
-        layout.addWidget(buttons)
+        # self.retranslateUi(Editor)
+        # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Editor.accept)
+        # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Editor.reject)
+        # QtCore.QMetaObject.connectSlotsByName(Editor)
+        self.start.setDateTime(start)
+        self.end.setDateTime(end)
 
     @staticmethod
     def edit_timesheet(parent=None, ts_id=None, proj=None, entity=None, task=None, start=None, end=None):
         editor = time_editor(parent, ts_id, proj, entity, task, start, end)
         result = editor.exec_()
         return result
-
 
 
 if __name__ == '__main__':
