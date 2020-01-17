@@ -403,8 +403,7 @@ class scope(QtGui.QWidget):
         # Add the user name and tool tip
         name_label = QtGui.QLabel()
         name_label.setText(name)
-        name_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Time Log ID: %s'
-                              '</span></p></body></html>' % uid)
+        name_label.setToolTip(str(uid))
         self.ui.slave_list.setCellWidget(row, 0, name_label)
 
         # Add the project name and tool tip
