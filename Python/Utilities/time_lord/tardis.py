@@ -342,18 +342,19 @@ def chronograph():
             # --------------------------------------------------------------------------------------
             # Start of Day
             # --------------------------------------------------------------------------------------
-
-            now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
-                                      datetime.now().time().second)
-            one_minute = str((datetime.combine(datetime.today(), early_sod) + timedelta(minutes=1)).time())
-            if not user_clocked_in and one_minute >= str(now) >= str(early_sod):
-                time.sleep(62)
-                sod_launch_path = os.path.join(path, 'time_lord.py')
-                if debug == 'True' or debug == 'true' or debug == True:
-                    process = 'python.exe'
-                else:
-                    process = 'pythonw.exe'
-                subprocess.Popen('%s %s' % (process, sod_launch_path))
+            # NOTE: This is an old start up routine that I am removing due to redundancy
+            #       The SessionUnlock() works far better
+            # now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
+            #                           datetime.now().time().second)
+            # one_minute = str((datetime.combine(datetime.today(), early_sod) + timedelta(minutes=1)).time())
+            # if not user_clocked_in and one_minute >= str(now) >= str(early_sod):
+            #     time.sleep(62)
+            #     sod_launch_path = os.path.join(path, 'time_lord.py')
+            #     if debug == 'True' or debug == 'true' or debug == True:
+            #         process = 'python.exe'
+            #     else:
+            #         process = 'pythonw.exe'
+            #     subprocess.Popen('%s %s' % (process, sod_launch_path))
 
             # -----------------------------------------------------------------------------------------
             # End of Day
