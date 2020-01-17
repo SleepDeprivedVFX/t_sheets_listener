@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_edit_timesheet.ui'
 #
-# Created: Thu Jan 16 13:43:10 2020
+# Created: Thu Jan 16 19:34:37 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_Editor(object):
     def setupUi(self, Editor):
         Editor.setObjectName("Editor")
-        Editor.resize(285, 201)
+        Editor.resize(315, 193)
         Editor.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout = QtGui.QVBoxLayout(Editor)
@@ -21,6 +21,9 @@ class Ui_Editor(object):
         self.title.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";")
         self.title.setObjectName("title")
         self.verticalLayout.addWidget(self.title)
+        self.tid = QtGui.QLabel(Editor)
+        self.tid.setObjectName("tid")
+        self.verticalLayout.addWidget(self.tid)
         self.project = QtGui.QLabel(Editor)
         self.project.setObjectName("project")
         self.verticalLayout.addWidget(self.project)
@@ -59,23 +62,34 @@ class Ui_Editor(object):
         spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem4)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.buttonBox = QtGui.QDialogButtonBox(Editor)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Discard|QtGui.QDialogButtonBox.Save)
-        self.buttonBox.setObjectName("buttonBox")
-        self.verticalLayout.addWidget(self.buttonBox)
+        self.horizontalLayout_3 = QtGui.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem5)
+        self.update_btn = QtGui.QPushButton(Editor)
+        self.update_btn.setObjectName("update_btn")
+        self.horizontalLayout_3.addWidget(self.update_btn)
+        self.delete_btn = QtGui.QPushButton(Editor)
+        self.delete_btn.setObjectName("delete_btn")
+        self.horizontalLayout_3.addWidget(self.delete_btn)
+        self.cancel_btn = QtGui.QPushButton(Editor)
+        self.cancel_btn.setObjectName("cancel_btn")
+        self.horizontalLayout_3.addWidget(self.cancel_btn)
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
 
         self.retranslateUi(Editor)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Editor.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Editor.reject)
         QtCore.QMetaObject.connectSlotsByName(Editor)
 
     def retranslateUi(self, Editor):
         Editor.setWindowTitle(QtGui.QApplication.translate("Editor", "Timesheet Editor", None, QtGui.QApplication.UnicodeUTF8))
         self.title.setText(QtGui.QApplication.translate("Editor", "Timesheet Editor", None, QtGui.QApplication.UnicodeUTF8))
+        self.tid.setText(QtGui.QApplication.translate("Editor", "TID", None, QtGui.QApplication.UnicodeUTF8))
         self.project.setText(QtGui.QApplication.translate("Editor", "Project", None, QtGui.QApplication.UnicodeUTF8))
         self.entity.setText(QtGui.QApplication.translate("Editor", "Entity", None, QtGui.QApplication.UnicodeUTF8))
         self.task.setText(QtGui.QApplication.translate("Editor", "Task", None, QtGui.QApplication.UnicodeUTF8))
         self.start_label.setText(QtGui.QApplication.translate("Editor", "Start Time", None, QtGui.QApplication.UnicodeUTF8))
         self.end_label.setText(QtGui.QApplication.translate("Editor", "End Time", None, QtGui.QApplication.UnicodeUTF8))
+        self.update_btn.setText(QtGui.QApplication.translate("Editor", "Update", None, QtGui.QApplication.UnicodeUTF8))
+        self.delete_btn.setText(QtGui.QApplication.translate("Editor", "Delete", None, QtGui.QApplication.UnicodeUTF8))
+        self.cancel_btn.setText(QtGui.QApplication.translate("Editor", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
 

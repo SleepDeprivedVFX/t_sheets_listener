@@ -477,7 +477,8 @@ class time_editor(QtGui.QDialog):
         self.sheet_id.setText('TID: %s' % self.ts_id)
 
     def delete(self, *args):
-        print(args)
+        print(2)
+        self.close()
         return 2
 
     def retranslateUi(self):
