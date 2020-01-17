@@ -718,6 +718,8 @@ class continuum(object):
 
     def get_timesheet_by_id(self, tid=None):
         if tid:
+            if type(tid) != int:
+                tid = int(tid)
             filters = [
                 ['id', 'is', tid]
             ]
