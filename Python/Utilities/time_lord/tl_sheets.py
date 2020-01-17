@@ -391,6 +391,7 @@ class time_editor(QtGui.QDialog):
         self.resize(285, 201)
         self.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
+        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setObjectName("verticalLayout")
         self.title = QtGui.QLabel(self)
@@ -459,7 +460,7 @@ class time_editor(QtGui.QDialog):
         # QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), self.reject)
         # QtCore.QMetaObject.connectSlotsByName(self)
         self.cancel_btn.clicked.connect(self.reject)
-        self.update_btn.clicked.connect(self.accept)
+        self.update_btn.clicked.connect(self.update_sheet)
         self.delete_btn.clicked.connect(self.delete)
 
         self.ts_id = ts_id
@@ -476,10 +477,15 @@ class time_editor(QtGui.QDialog):
         self.task.setText('TSK: %s' % self.tsk)
         self.sheet_id.setText('TID: %s' % self.ts_id)
 
-    def delete(self, *args):
-        print(2)
-        self.close()
-        return 2
+    def delete(self):
+        ts_id = 1
+        message = 'Delete TS: %s' % ts_id
+        return message
+
+    def update_sheet(self, *args, **kwargs):
+        ts_id = 2
+        message = 'Update TS: %s' % ts_id
+        return message
 
     def retranslateUi(self):
         self.setWindowTitle(QtGui.QApplication.translate("Editor", "Timesheet Editor", None, QtGui.QApplication.UnicodeUTF8))
