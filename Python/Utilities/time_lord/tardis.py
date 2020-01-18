@@ -633,6 +633,7 @@ class tardis(object):
                  rollout_machine=None,
                  gozer=None,
                  time_logs=None,
+                 reports=None,
                  all_sessions=False, ):
 
         self.icon = icon
@@ -646,12 +647,14 @@ class tardis(object):
         self.rollout_machine = rollout_machine
         self.gozer = gozer
         self.time_logs = time_logs
+        self.reports = reports
         print(self.icon)
 
         permission = user['permission_rule_set']['name']
         if permission in config['permissions']:
             # The "Quit" option can be made an admin feature by simple indenting this here.
-            menu_options = menu_options + (('Admin', None, (('Payroll', None, self.payroll),
+            menu_options = menu_options + (('Admin', None, (('Reports', None, self.reports),
+                                                            ('Payroll', None, self.payroll),
                                                             ('Time Scope', None, self.scope),
                                                             ('SG Time Logs', None, self.time_logs),
                                                             ('File Lister', None, self.file_lister),

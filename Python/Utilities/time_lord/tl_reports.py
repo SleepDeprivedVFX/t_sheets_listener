@@ -183,7 +183,7 @@ class reports_ui(QtGui.QWidget):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
 
-        self.settings = QtCore.QSettings('Adam Benson', 'alpha_payroll_collector')
+        self.settings = QtCore.QSettings('Adam Benson', 'time_lord_reports')
         self.last_output = self.settings.value('last_output', '.')
 
         self.engine = payroll_engine()
