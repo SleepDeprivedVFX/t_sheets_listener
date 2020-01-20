@@ -271,6 +271,8 @@ class payroll_ui(QtGui.QWidget):
 
     def closeEvent(self, *args, **kwargs):
         if self.engine.isRunning():
+            while self.engine.isRunning():
+                self.engine.quit()
             self.engine.exit()
 
 

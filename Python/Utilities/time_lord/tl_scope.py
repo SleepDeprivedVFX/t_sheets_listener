@@ -533,7 +533,9 @@ class scope(QtGui.QWidget):
         self.settings.setValue('stayontop', self.ui.stay_on_top.isChecked())
         self.settings.setValue('geometry', self.saveGeometry())
         if self.scope_engine.isRunning():
-            self.scope_engine.kill_it = True
+            while self.scope_engine.isRunning():
+                self.scope_engine.kill_it = True
+                self.scope_engine.quit()
         self.scope_engine.kill_it = True
         time.sleep(1)
 

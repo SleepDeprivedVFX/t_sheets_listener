@@ -1741,11 +1741,17 @@ class time_lord_ui(QtGui.QMainWindow):
     def closeEvent(self, *args, **kwargs):
         self.update_saved_settings()
         if self.time_engine.isRunning():
-            self.time_engine.kill()
+            while self.time_engine.isRunning():
+                self.time_engine.kill()
+                self.time_engine.quit()
         if self.time_machine.isRunning():
-            self.time_machine.kill()
+            if self.time_machine.isRunning():
+                self.time_machine.kill()
+                self.time_machine.quit()
         if self.time_lord.isRunning():
-            self.time_lord.kill()
+            while self.time_lord.isRunning():
+                self.time_lord.kill()
+                self.time_lord.quit()
         self.time_lord.kill_it = True
         self.time_engine.kill_it = True
         self.time_machine.kill_it = True
