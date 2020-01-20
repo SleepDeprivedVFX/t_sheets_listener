@@ -528,7 +528,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       </rect>
      </property>
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Clock In/Out/Switch Button&lt;br/&gt;&lt;/span&gt;This button clocks you in, out or switches your timesheet&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Green:&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Clock in&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Red: &lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Clock Out&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Yellow: &lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Switch Tasks&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Clock In/Out/Switch Button&lt;br/&gt;&lt;/span&gt;This button clocks you in, out or switches your timesheet&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#00aa00;&quot;&gt;Green&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;:  &lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Clock in&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ce0000;&quot;&gt;Red&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;:      &lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Clock Out&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#b1b100;&quot;&gt;Yellow&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;: &lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Switch Tasks&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background-image: url(:/lights buttons/elements/clock_button_1.png);
@@ -801,7 +801,7 @@ selection-background-color: rgba(118, 104, 79, 0);</string>
        <string>Select Project</string>
       </property>
       <property name="icon">
-       <iconset resource="resources/time_lord_resources.qrc">
+       <iconset>
         <normaloff>:/backgrounds/elements/project_bg.png</normaloff>
         <normalon>:/backgrounds/elements/project_bg.png</normalon>
         <activeoff>:/backgrounds/elements/project_bg.png</activeoff>
@@ -881,7 +881,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <enum>Qt::PlainText</enum>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_1_hour.png</pixmap>
+      <pixmap>:/dial hands/elements/clock_1_hour.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -909,7 +909,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_1_minute.png</pixmap>
+      <pixmap>:/dial hands/elements/clock_1_minute.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -934,7 +934,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
+      <pixmap>:/dial hands/elements/meter_1_needle.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -962,7 +962,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/meter_1_needle.png</pixmap>
+      <pixmap>:/dial hands/elements/meter_1_needle.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -984,7 +984,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_2_minute.png</pixmap>
+      <pixmap>:/dial hands/elements/clock_2_minute.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -1009,7 +1009,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_2_hour.png</pixmap>
+      <pixmap>:/dial hands/elements/clock_2_hour.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -1031,7 +1031,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_3_hour.png</pixmap>
+      <pixmap>:/dial hands/elements/clock_3_hour.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -1056,7 +1056,7 @@ background-color: rgba(0, 0, 0, 0);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources/time_lord_resources.qrc">:/dial hands/elements/clock_3_minute.png</pixmap>
+      <pixmap>:/dial hands/elements/clock_3_minute.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

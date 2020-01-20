@@ -57,6 +57,7 @@ class Ui_Editor(object):
         spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
         self.end = QtGui.QDateTimeEdit(Editor)
+        self.end.setCalendarPopup(True)
         self.end.setObjectName("end")
         self.horizontalLayout_2.addWidget(self.end)
         spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)

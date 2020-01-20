@@ -323,6 +323,8 @@ class sheets(QtGui.QWidget):
                     add_key = QtGui.QTreeWidgetItem()
                     add_key.setFirstColumnSpanned(False)
                     add_key.setText(0, key)
+                    daily_total = 0.0
+                    add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
 
                     # Set an incrementer for the next loop
                     for timesheet in val:
@@ -347,6 +349,9 @@ class sheets(QtGui.QWidget):
                                 end = datetime.now()
                             end = datetime.strftime(end, '%I:%M %p')
                             duration = timesheet['duration'] / 60.0
+                            if task_id != lunch_task_id:
+                                daily_total += (timesheet['duration'] / 60.0)
+                            add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
 
                             time_table = QtGui.QTreeWidgetItem(add_key, [str(timesheet['id']),
                                                                          project,
