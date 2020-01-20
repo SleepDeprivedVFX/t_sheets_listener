@@ -14,6 +14,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime, timedelta
 from dateutil import parser
+import time
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
@@ -114,6 +115,33 @@ class tardis_signals(QtCore.QObject):
     start_time = QtCore.Signal(str)
     end_time = QtCore.Signal(str)
     launch_lunch = QtCore.Signal(str)
+    kill_it = QtCore.Signal(bool)
+
+
+class self_destruct(QtCore.QThread):
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+        self.kill_me = False
+
+        # Setup a lunch window open time variable and a close time variable
+        self.close_time = datetime.now() + timedelta(hours=3)
+
+        self.signals = tardis_signals()
+
+    def run(self, *args, **kwargs):
+        self.check_time()
+
+    def kill(self):
+        self.kill_me = True
+
+    def check_time(self):
+        while not self.kill_me:
+            time.sleep(1)
+            print('Looping....')
+            if datetime.now() > self.close_time:
+                print('SEND CLOSE')
+                self.kill_me = True
+                self.signals.kill_it.emit(True)
 
 
 class lunch_break(QtGui.QWidget):
@@ -176,6 +204,16 @@ class lunch_break(QtGui.QWidget):
                 self.ui.end_time.setDisabled(True)
             else:
                 self.ui.end_time.setEnabled(True)
+
+        # Connect the Kill It Timer
+        self.destruct = self_destruct()
+        self.destruct.signals.kill_it.connect(self.kill_it)
+        self.destruct.start()
+
+    def kill_it(self, death=False):
+        if death:
+            self.stay_opened = False
+            self.close()
 
     def take_lunch(self, message=None):
         self.signals.yes.emit(message)
@@ -255,6 +293,10 @@ class lunch_break(QtGui.QWidget):
         if self.stay_opened:
             event.ignore()
             logger.warning('You can\'t close the window this way!')
+        if self.destruct.isRunning():
+            while self.destruct.isRunning():
+                self.destruct.kill_me = True
+                self.destruct.quit()
 
 
 if __name__ == '__main__':
