@@ -81,6 +81,8 @@ class sheet_signals(QtCore.QObject):
     update = QtCore.Signal(list)
     req_update = QtCore.Signal(dict)
     progress = QtCore.Signal(list)
+    daily_total = QtCore.Signal(float)
+    weekly_total = QtCore.Signal(float)
 
 
 class sheet_engine(QtCore.QThread):
@@ -189,6 +191,17 @@ class sheet_engine(QtCore.QThread):
         logger.debug('Update list returned.')
         return update_list
 
+    def update_totals(self):
+        while not self.kill_it:
+            daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
+            weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task_id)
+            self.signals.daily_total.emit(daily_total)
+            self.signals.weekly_total.emit(weekly_total)
+            time.sleep(20)
+
+    def run(self, *args, **kwargs):
+        self.update_totals()
+
 
 class sheets(QtGui.QWidget):
     def __init__(self):
@@ -233,6 +246,8 @@ class sheets(QtGui.QWidget):
         # Connect buttons
         self.ui.update_btn.clicked.connect(self.request_update)
         self.engine.signals.progress.connect(self.update_progress)
+        self.engine.signals.daily_total.connect(self.update_daily_total)
+        self.engine.signals.weekly_total.connect(self.update_weekly_total)
 
         # NOTE: Temporary for quicker release, but the following need to go once fixed
         self.ui.sort_by.hide()
@@ -252,11 +267,21 @@ class sheets(QtGui.QWidget):
         # NOTE: Also temp
         self.ui.date_rdo.setChecked(True)
 
-        self.engine.start()
-
         # Setup connections.
         self.engine.signals.update.connect(self.update_list)
         self.request_update()
+
+        self.engine.start()
+
+    def update_daily_total(self, total=None):
+        if total:
+            daily_total = total
+            self.ui.todays_total.setText('%0.2f' % daily_total)
+
+    def update_weekly_total(self, total=None):
+        if total:
+            weekly_total = total
+            self.ui.weeks_total.setText('%0.2f' % weekly_total)
 
     def request_update(self):
         logger.info('Requesting Update...')
@@ -426,7 +451,9 @@ class sheets(QtGui.QWidget):
     def closeEvent(self, *args, **kwargs):
         self.update_saved_settings()
         if self.engine.isRunning():
-            self.engine.kill()
+            while self.engine.isRunning():
+                self.engine.kill()
+                self.engine.quit()
         self.engine.kill_it = True
         time.sleep(0.5)
 
