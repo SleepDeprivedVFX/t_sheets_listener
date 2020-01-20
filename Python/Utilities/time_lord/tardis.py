@@ -149,7 +149,7 @@ def chronograph():
     early_sod = parser.parse(config['early_start']).time()
     sod = parser.parse(config['regular_start']).time()
     eod = parser.parse(config['regular_end'])
-    eod_countdown = (eod - timedelta(minutes=timer_trigger)).time()
+    # eod_countdown = (eod - timedelta(minutes=timer_trigger)).time()
     eod = eod.time()
     user_ignored = False
     user_clocked_in = tl_time.is_user_clocked_in(user=user)
@@ -164,11 +164,11 @@ def chronograph():
     # 4 = In DT
     ot_check = 0
     ot_alert_min = float(config['ot_alert_mins'])
-    time_left = float(config['ot_hours']) - tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
+    # time_left = float(config['ot_hours']) - tl_time.get_daily_total(user=user, lunch_id=lunch_task_id)
 
     path = sys.path[0]
     minute = int(datetime.now().minute)
-    hour = datetime.now().hour
+    # hour = datetime.now().hour
     hour = 2
 
     global lunch_timesheet
@@ -191,7 +191,7 @@ def chronograph():
         date = datetime.now().date()
         later_date = parser.parse('%s %s:%s:%s' % (date, end_time.hour, end_time.minute, end_time.second))
         later = str((later_date + timedelta(hours=1)).time())
-        if later == now:
+        if later == now and tl_time.is_user_clocked_in(user=user):
             lunch_timesheet = tl_time.get_todays_lunch(user=user, lunch_id=lunch_task_id,
                                                        lunch_proj_id=lunch_proj_id)
             if not lunch_timesheet:
