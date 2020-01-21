@@ -24,7 +24,7 @@ from bin.comm_system import comm_sys
 from ui import time_lord_scope as tls
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.8'
+__version__ = '0.4.9'
 
 config = bin.configuration.get_configuration()
 
