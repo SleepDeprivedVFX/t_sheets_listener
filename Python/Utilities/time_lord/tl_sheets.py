@@ -83,6 +83,12 @@ class sheet_signals(QtCore.QObject):
     progress = QtCore.Signal(list)
     daily_total = QtCore.Signal(float)
     weekly_total = QtCore.Signal(float)
+    req_project_update = QtCore.Signal(str)
+    req_entity_update = QtCore.Signal(int)
+    req_task_update = QtCore.Signal(dict)
+    send_project_update = QtCore.Signal(dict)
+    send_entity_update = QtCore.Signal(dict)
+    send_task_update = QtCore.Signal(dict)
 
 
 class sheet_engine(QtCore.QThread):
@@ -93,9 +99,28 @@ class sheet_engine(QtCore.QThread):
 
         # Signal connections
         self.signals.req_update.connect(self.prep_update)
+        self.signals.req_entity_update.connect(self.send_entity_update)
+        self.signals.req_task_update.connect(self.send_task_update)
 
     def kill(self):
         self.kill_it = True
+
+    def send_entity_update(self, proj_id=None):
+        logger.debug('Collecting Entities for return')
+        if proj_id:
+            asset_entities = sg_data.get_project_assets(proj_id=proj_id)
+            shot_entities = sg_data.get_project_shots(proj_id=proj_id)
+            entities = asset_entities + shot_entities
+            self.signals.send_entity_update.emit(entities)
+
+    def send_task_update(self, context=None):
+        if context:
+            entity_id = context['entity_id']
+            entity_name = context['entity_name']
+            proj_id = context['proj_id']
+            tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
+            if tasks:
+                self.signals.send_task_update.emit(tasks)
 
     def prep_update(self, data):
         # Create Database to return
@@ -249,10 +274,18 @@ class sheets(QtGui.QWidget):
         self.engine.signals.daily_total.connect(self.update_daily_total)
         self.engine.signals.weekly_total.connect(self.update_weekly_total)
 
+        # Manual Sheet Triggers
+        self.ui.new_project.currentIndexChanged.connect(self.req_update_entities)
+        self.ui.new_entity.currentIndexChanged.connect(self.req_update_tasks)
+        self.engine.signals.send_entity_update.connect(self.update_entities)
+        self.engine.signals.send_task_update.connect(self.update_tasks)
+
         # NOTE: Temporary for quicker release, but the following need to go once fixed
         self.ui.sort_by.hide()
         self.ui.export_btn.setStyleSheet('color: rgb(120, 120, 120);')
         self.ui.export_btn.setDisabled(True)
+        self.ui.add_time_btn.hide()
+        self.ui.pushButton.hide()
 
         # Set the saved settings.
         try:
@@ -267,11 +300,96 @@ class sheets(QtGui.QWidget):
         # NOTE: Also temp
         self.ui.date_rdo.setChecked(True)
 
+        # Setup Manual Timesheet entry
+        self.setup_manual_timesheets()
+
         # Setup connections.
         self.engine.signals.update.connect(self.update_list)
         self.request_update()
 
         self.engine.start()
+
+    def setup_manual_timesheets(self):
+        all_projects = sg_data.get_active_projects(user=user)
+        self.ui.new_project.addItem('Select A Project', 0)
+        for proj in all_projects:
+            self.ui.new_project.addItem(proj['name'], proj['id'])
+
+    def req_update_entities(self, message=None):
+        """
+        This function will trigger another function that will update_entities.  The reason for this (instead of going
+        directly to update_entities) is that update_entities requires more elaborate data than a
+        currentIndexChanged.connect() event can support.
+        :param message: String trigger.  Does nothing.
+        :return:
+        """
+        logger.debug('req_update_entities: %s' % message)
+        proj_id = self.ui.new_project.itemData(self.ui.new_project.currentIndex())
+        self.engine.signals.req_entity_update.emit(proj_id)
+        self.update_task_dropdown()
+
+    def req_update_tasks(self, message=None):
+        """
+        This method askes for a regular update from an onChangeEvent with no data
+        :param message:
+        :return:
+        """
+        logger.debug('Request Update Tasks activated.')
+        ent_id = self.ui.new_entity.itemData(self.ui.new_entity.currentIndex())
+        ent_name = self.ui.new_entity.currentText()
+        proj_index = self.ui.new_project.currentIndex()
+
+        if ent_id:
+            context = {
+                'entity_id': ent_id,
+                'entity_name': ent_name,
+                'proj_id': self.ui.new_project.itemData(proj_index)
+            }
+            logger.debug('sending the req_task_update: %s' % context)
+            self.engine.signals.req_task_update.emit(context)
+            logger.debug('Done sending task context.')
+
+    def update_entities(self, entities=None):
+        """
+        Processes data from a Shotgun Assets and Shots entity collection.
+        :param entities: (dict) A combined dictionary from 2 queries
+        :return: None
+        """
+        logger.debug('update entity dropdown signal %s' % entities)
+        logger.debug(entities)
+        if entities:
+            # Put in the Assets first... Oh!  Use the categories and Sequences?
+            self.ui.new_entity.clear()
+            self.ui.new_entity.addItem('Select Asset/Shot', 0)
+            for entity in entities:
+                self.ui.new_entity.addItem(entity['code'], entity['id'])
+            self.ui.new_entity.update()
+
+    def update_tasks(self, tasks=None):
+        logger.debug('update_task_dropdown message received: %s' % tasks)
+        logger.debug('Setting tasks...')
+        logger.debug(tasks)
+        if tasks:
+            self.ui.new_task.clear()
+            self.ui.new_task.addItem('Select Task', 0)
+            for task in tasks:
+                self.ui.new_task.addItem(task['content'], task['id'])
+        else:
+            self.ui.new_task.clear()
+            self.ui.new_task.addItem('Select Task', 0)
+
+    def update_task_dropdown(self, tasks=None):
+        logger.debug('update_task_dropdown message received: %s' % tasks)
+        logger.debug('Setting tasks...')
+        logger.debug(tasks)
+        if tasks:
+            self.ui.new_task.clear()
+            self.ui.new_task.addItem('Select Task', 0)
+            for task in tasks:
+                self.ui.new_task.addItem(task['content'], task['id'])
+        else:
+            self.ui.new_task.clear()
+            self.ui.new_task.addItem('Select Task', 0)
 
     def update_daily_total(self, total=None):
         if total:
@@ -451,11 +569,14 @@ class sheets(QtGui.QWidget):
     def closeEvent(self, *args, **kwargs):
         self.update_saved_settings()
         if self.engine.isRunning():
+            closing = 0.0
+            self.ui.editor_status.setText('Closing...')
             while self.engine.isRunning():
+                self.ui.editor_progress.setValue(closing)
                 self.engine.kill()
                 self.engine.quit()
+                closing += 0.000002
         self.engine.kill_it = True
-        time.sleep(0.5)
 
 
 class time_editor(QtGui.QDialog):
@@ -482,6 +603,9 @@ class time_editor(QtGui.QDialog):
         tid = self.editor.tid.text()
         tid = int(tid.split(': ')[1])
         update = QtGui.QMessageBox()
+        update.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        update.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
         update.setText('Are you sure you want to update %s?' % tid)
         update.addButton('Yes', QtGui.QMessageBox.AcceptRole)
         update.addButton('No', QtGui.QMessageBox.RejectRole)
@@ -501,6 +625,9 @@ class time_editor(QtGui.QDialog):
         tid = self.editor.tid.text()
         tid = int(tid.split(': ')[1])
         delete = QtGui.QMessageBox()
+        delete.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        delete.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
         delete.setText('Are you sure you want to delete TID %s?  This can not be undone!' % tid)
         delete.addButton('Delete', QtGui.QMessageBox.AcceptRole)
         delete.addButton('Cancel', QtGui.QMessageBox.RejectRole)
