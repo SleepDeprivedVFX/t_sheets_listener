@@ -1079,3 +1079,17 @@ class continuum(object):
             deleted = self.sg.delete('TimeLog', int(tid))
             return deleted
 
+    def pretty_date_time(self, date_time=None):
+        if date_time and type(date_time) == datetime.datetime:
+            _date = date_time.date()
+            _time = date_time.time()
+            try:
+                fmt_date = _date.strftime('%m/%d/%Y')
+                fmt_time = _time.strftime('%I:%M %p')
+                new_datetime = '%s %s' % (fmt_date, fmt_time)
+                return new_datetime
+            except Exception as e:
+                self.logger.error('Can\'t convert datetime', e)
+                return date_time
+
+

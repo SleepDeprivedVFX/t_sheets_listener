@@ -305,17 +305,13 @@ class time_engine(QtCore.QThread):
             if last_out_time:
                 if self.user_end:
                     last_out_time = self.user_end
-                start = '%s %02d:%02d:%02d' % (start_time.date(), start_time.time().hour,
-                                               start_time.time().minute, start_time.time().second)
-                end = '%s %02d:%02d:%02d' % (last_out_time.date(), last_out_time.time().hour,
-                                             last_out_time.time().minute, last_out_time.time().second)
+                start = tl_time.pretty_date_time(start_time)
+                end = tl_time.pretty_date_time(last_out_time)
             else:
                 if self.user_start:
                     last_in_time = self.user_start
-                start = '%s %02d:%02d:%02d' % (last_in_time.date(), last_in_time.time().hour,
-                                               last_in_time.time().minute, last_in_time.time().second)
-                end = '%s %02d:%02d:%02d' % (end_time.date(), end_time.time().hour,
-                                             end_time.time().minute, end_time.time().second)
+                start = tl_time.pretty_date_time(last_in_time)
+                end = tl_time.pretty_date_time(end_time)
 
             # Take the initial values and set their outputs.
             set_message = 'Start: %s\nEnd:   %s' % (start, end)
