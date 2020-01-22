@@ -199,26 +199,33 @@ class payroll_engine(QtCore.QThread):
             if primary == 'Projects':
                 print('Project Searching...')
                 if secondary_id == 1:
-                    # NOTE: If the secondary_id is 1, then "All Proejcts" is selected
-                    #       Thus the trinary will need to search data for all project IDs that are active
-                    if trinary_id == 1:
-                        # Total Hours must be collected
-                        active_projects = sg_data.get_active_projects()
-                        for proj in active_projects:
-                            timesheets = tl_time.get_all_timesheets_by_project(proj_id=proj['id'])
-                            if timesheets:
-                                duration = 0.0
-                                # print('PROJ: %s' % proj['name'])
-                                # print('-' * 120)
-                                for sheet in timesheets:
-                                    duration += sheet['duration']
-                                # print('Total Duration: %0.2f hrs' % (duration / 60.0))
-                                # print('+' * 120)
-                                if duration > highest_value:
-                                    highest_value = duration
-                                return_data[proj['name']] = {'total_hours': duration}
-                        return_data['__specs__'] = {'highest_val': highest_value}
-                        self.signals.snd_report_project_hours.emit(return_data)
+                    active_projects = sg_data.get_active_projects()
+                else:
+                    active_projects = [{'name': secondary, 'id': secondary_id}]
+                if trinary_id == 1:
+                    # Total Hours must be collected
+                    for proj in active_projects:
+                        timesheets = tl_time.get_all_timesheets_by_project(proj_id=proj['id'])
+                        if timesheets:
+                            duration = 0.0
+                            for sheet in timesheets:
+                                duration += sheet['duration']
+                            if duration > highest_value:
+                                highest_value = duration
+                            return_data[proj['name']] = {'total_hours': duration}
+                    return_data['__specs__'] = {'highest_val': highest_value}
+                    self.signals.snd_report_project_hours.emit(return_data)
+                elif trinary_id == 2:
+                    # Artist Info must be collected.
+                    if quaternary_id == 1:
+                        artists = users.get_all_users()
+                    else:
+                        artists = [users.get_user_by_id(quaternary_id)]
+                    for proj in active_projects:
+                        timesheets = tl_time.get_all_timesheets_by_project(proj_id=proj['id'], users=artists)
+                        for t in timesheets:
+                            print(t)
+
             elif primary == 'Artists':
                 print('Artists Searching...')
             elif primary == 'Tasks':
@@ -311,6 +318,7 @@ class reports_ui(QtGui.QWidget):
         print('DATA RECIEVED: %s' % data.keys())
         if data:
             self.ui.graphs_table.clear()
+            self.ui.graphs_table.setRowCount(0)
             header = self.ui.graphs_table.horizontalHeader()
             header.setResizeMode(2, QtGui.QHeaderView.Stretch)
             row = self.ui.graphs_table.rowCount()
@@ -319,8 +327,8 @@ class reports_ui(QtGui.QWidget):
             highest_value = float(specs['highest_val'])
             for proj, reports in data.items():
                 if proj != '__specs__':
-                    print('proj: %s' % proj)
-                    print(row)
+                    # print('proj: %s' % proj)
+                    # print(row)
                     self.ui.graphs_table.insertRow(row)
                     proj_name = QtGui.QLabel()
                     proj_name.setText(proj)
@@ -329,7 +337,7 @@ class reports_ui(QtGui.QWidget):
                         row += 1
                         self.ui.graphs_table.insertRow(row)
                         info = QtGui.QLabel()
-                        print('keys: %s' % keys)
+                        # print('keys: %s' % keys)
                         info.setText(keys)
                         self.ui.graphs_table.setCellWidget(row, 1, info)
                         graph = QtGui.QProgressBar()
@@ -339,7 +347,7 @@ class reports_ui(QtGui.QWidget):
                         value.setText('%0.2f hrs' % (vals / 60.0))
                         self.ui.graphs_table.setCellWidget(row, 3, value)
                     row += 1
-                    print(row)
+                    # print(row)
             self.ui.graphs_table.updateEditorGeometries()
 
     def set_search_options(self, driver=None, list=None):
