@@ -748,6 +748,30 @@ class continuum(object):
                     return timesheet
         return None
 
+    def get_all_timesheets_by_project(self, proj_id):
+        timesheets = []
+        if proj_id:
+            filters = [
+                ['project', 'is', {'type': 'Project', 'id': proj_id}],
+                ['duration', 'greater_than', 0.0]
+            ]
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'code',
+                'sg_closed',
+                'duration'
+            ]
+            try:
+                timesheets = self.sg.find('TimeLog', filters, fields)
+            except Exception as e:
+                self.logger.error('Get all user timesheets by date failed.')
+        return timesheets
+
     def timesheet_cleanup(self, user=None):
         """
         This method is designed to check for dead or accidental timesheets.  Time sheets that are not current, and

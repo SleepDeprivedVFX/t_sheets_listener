@@ -78,6 +78,8 @@ lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
 class report_signals(QtCore.QObject):
     output_monitor = QtCore.Signal(dict)
     get_payroll = QtCore.Signal(dict)
+    req_report = QtCore.Signal(dict)
+    snd_report_project_hours = QtCore.Signal(dict)
 
 
 class payroll_engine(QtCore.QThread):
@@ -88,9 +90,10 @@ class payroll_engine(QtCore.QThread):
         self.signals = report_signals()
 
         # Connections
-        self.signals.get_payroll.connect(self.make_reports)
+        self.signals.get_payroll.connect(self.make_payroll_reports)
+        self.signals.req_report.connect(self.start_reports)
 
-    def make_reports(self, data={}):
+    def make_payroll_reports(self, data={}):
         # This saves the data into an excel spreadsheet
         if data:
             print('Data: %s' % data)
@@ -178,6 +181,58 @@ class payroll_engine(QtCore.QThread):
             # Open the Excel sheet
             webbrowser.open(output)
 
+    def start_reports(self, data={}):
+        return_data = {}
+        highest_value = 0.0
+        if data:
+            primary = data['primary']
+            primary_id = data['primary_id']
+            secondary = data['secondary']
+            secondary_id = data['secondary_id']
+            trinary = data['trinary']
+            trinary_id = data['trinary_id']
+            quaternary = data['quaternary']
+            quaternary_id = data['quaternary_id']
+            quinternary = data['quinternary']
+            quinternary_id = data['quinternary_id']
+
+            if primary == 'Projects':
+                print('Project Searching...')
+                if secondary_id == 1:
+                    # NOTE: If the secondary_id is 1, then "All Proejcts" is selected
+                    #       Thus the trinary will need to search data for all project IDs that are active
+                    if trinary_id == 1:
+                        # Total Hours must be collected
+                        active_projects = sg_data.get_active_projects()
+                        for proj in active_projects:
+                            timesheets = tl_time.get_all_timesheets_by_project(proj_id=proj['id'])
+                            if timesheets:
+                                duration = 0.0
+                                # print('PROJ: %s' % proj['name'])
+                                # print('-' * 120)
+                                for sheet in timesheets:
+                                    duration += sheet['duration']
+                                # print('Total Duration: %0.2f hrs' % (duration / 60.0))
+                                # print('+' * 120)
+                                if duration > highest_value:
+                                    highest_value = duration
+                                return_data[proj['name']] = {'total_hours': duration}
+                        return_data['__specs__'] = {'highest_val': highest_value}
+                        self.signals.snd_report_project_hours.emit(return_data)
+            elif primary == 'Artists':
+                print('Artists Searching...')
+            elif primary == 'Tasks':
+                print('Tasks Searching...')
+            elif primary == 'All Entities':
+                print('All Entities Searching...')
+            elif primary == 'Entities (Assets)':
+                print('Asset Entities Searching...')
+            elif primary == 'Entities (Shots)':
+                print('Shot Entities Searching...')
+            else:
+                print('You must pick something to report on.')
+                return False
+
 
 class reports_ui(QtGui.QWidget):
     def __init__(self, parent=None):
@@ -214,11 +269,78 @@ class reports_ui(QtGui.QWidget):
             list=self.ui.quinternary_org)
                                                            )
 
+        # Connect the buttons
+        self.ui.run_btn.clicked.connect(self.run_reports)
+
+        # Connect report processors
+        self.engine.signals.snd_report_project_hours.connect(self.project_hours_report)
+
+    def run_reports(self):
+        primary = self.ui.primary_org.currentText()
+        primary_id = self.ui.primary_org.itemData(self.ui.primary_org.currentIndex())
+        secondary = self.ui.secondary_org.currentText()
+        secondary_id = self.ui.secondary_org.itemData(self.ui.secondary_org.currentIndex())
+        trinary = self.ui.trinary_org.currentText()
+        trinary_id = self.ui.trinary_org.itemData(self.ui.trinary_org.currentIndex())
+        quaternary = self.ui.quaternary_org.currentText()
+        quaternary_id = self.ui.quaternary_org.itemData(self.ui.quaternary_org.currentIndex())
+        quinternary = self.ui.quinternary_org.currentText()
+        quinternary_id = self.ui.quinternary_org.itemData(self.ui.quinternary_org.currentIndex())
+
+        data = {
+            'primary': primary,
+            'primary_id': primary_id,
+            'secondary': secondary,
+            'secondary_id': secondary_id,
+            'trinary': trinary,
+            'trinary_id': trinary_id,
+            'quaternary': quaternary,
+            'quaternary_id': quaternary_id,
+            'quinternary': quinternary,
+            'quinternary_id': quinternary_id,
+        }
+        self.engine.signals.req_report.emit(data)
+
     def guess_dates(self):
         guess_end_date = (datetime.today() - timedelta(days=(datetime.today().isoweekday() % 7) + 1)).date()
         guess_start_date = (guess_end_date - timedelta(days=13))
         self.ui.start_time.setDate(guess_start_date)
         self.ui.end_time.setDate(guess_end_date)
+
+    def project_hours_report(self, data=None):
+        print('DATA RECIEVED: %s' % data.keys())
+        if data:
+            self.ui.graphs_table.clear()
+            header = self.ui.graphs_table.horizontalHeader()
+            header.setResizeMode(2, QtGui.QHeaderView.Stretch)
+            row = self.ui.graphs_table.rowCount()
+            print(row)
+            specs = data['__specs__']
+            highest_value = float(specs['highest_val'])
+            for proj, reports in data.items():
+                if proj != '__specs__':
+                    print('proj: %s' % proj)
+                    print(row)
+                    self.ui.graphs_table.insertRow(row)
+                    proj_name = QtGui.QLabel()
+                    proj_name.setText(proj)
+                    self.ui.graphs_table.setCellWidget(row, 0, proj_name)
+                    for keys, vals in reports.items():
+                        row += 1
+                        self.ui.graphs_table.insertRow(row)
+                        info = QtGui.QLabel()
+                        print('keys: %s' % keys)
+                        info.setText(keys)
+                        self.ui.graphs_table.setCellWidget(row, 1, info)
+                        graph = QtGui.QProgressBar()
+                        graph.setValue((vals / highest_value) * 100.0)
+                        self.ui.graphs_table.setCellWidget(row, 2, graph)
+                        value = QtGui.QLabel()
+                        value.setText('%0.2f hrs' % (vals / 60.0))
+                        self.ui.graphs_table.setCellWidget(row, 3, value)
+                    row += 1
+                    print(row)
+            self.ui.graphs_table.updateEditorGeometries()
 
     def set_search_options(self, driver=None, list=None):
         drv_obj = driver.currentText()
@@ -272,12 +394,14 @@ class reports_ui(QtGui.QWidget):
                     list.addItem('None', 0)
             elif drv_obj_name == 'secondary_org':
                 list.show()
-                list.addItem('All Data', 1)
+                list.addItem('Total Hours', 1)
                 if driver.findText('All Artists', 1) >= 0:
-                    list.addItem('Projects', 2)
-                    list.addItem('Assets', 3)
-                    list.addItem('Shots', 4)
-                    list.addItem('Tasks', 5)
+                    list.addItem('Hours', 2)
+                    list.addItem('Projects', 3)
+                    list.addItem('Assets', 4)
+                    list.addItem('Shots', 5)
+                    list.addItem('Tasks', 6)
+                    list.addItem('Lunches', 7)
                 if driver.findText('All Projects', 1) >= 0:
                     list.addItem('Artists', 2)
                     list.addItem('Assets', 3)
@@ -315,6 +439,11 @@ class reports_ui(QtGui.QWidget):
                             list.addItem(u['name'], u['id'])
                 else:
                     list.hide()
+            elif drv_obj_name == 'quaternary_org':
+                if drv_obj == 'All Artists':
+                    list.show()
+                    # TODO: Here I will probably need to start getting actual data:
+                    #       But it's going to depend on the primary organizer
         else:
             list.clear()
             list.addItem('None', 0)

@@ -2153,6 +2153,7 @@ class DateDialog(QtGui.QDialog):
 
         self.setWindowTitle('DateTime Lord')
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
 
         # OK and Cancel buttons
         buttons = QtGui.QDialogButtonBox(
