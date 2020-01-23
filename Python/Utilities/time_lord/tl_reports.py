@@ -195,50 +195,84 @@ class payroll_engine(QtCore.QThread):
             quaternary_id = data['quaternary_id']
             quinternary = data['quinternary']
             quinternary_id = data['quinternary_id']
+            all_time = data['all_time']
+            start = data['start']
+            end = data['end']
 
             if primary == 'Projects':
-                print('Project Searching...')
                 if secondary_id == 1:
-                    active_projects = sg_data.get_active_projects()
+                    all_timesheets = tl_time.get_all_timsheets_in_range(start=start, end=end, all_time=all_time)
                 else:
-                    active_projects = [{'name': secondary, 'id': secondary_id}]
-                if trinary_id == 1:
-                    # Total Hours must be collected
-                    for proj in active_projects:
-                        timesheets = tl_time.get_all_timesheets_by_project(proj_id=proj['id'])
-                        if timesheets:
-                            duration = 0.0
-                            for sheet in timesheets:
-                                duration += sheet['duration']
-                            if duration > highest_value:
-                                highest_value = duration
-                            return_data[proj['name']] = {'total_hours': duration}
-                    return_data['__specs__'] = {'highest_val': highest_value}
-                    self.signals.snd_report_project_hours.emit(return_data)
-                elif trinary_id == 2:
-                    # Artist Info must be collected.
-                    if quaternary_id == 1:
-                        artists = users.get_all_users()
-                    else:
-                        artists = [users.get_user_by_id(quaternary_id)]
-                    for proj in active_projects:
-                        timesheets = tl_time.get_all_timesheets_by_project(proj_id=proj['id'], users=artists)
-                        for t in timesheets:
-                            print(t)
+                    all_timesheets = tl_time.get_all_timsheets_in_range(proj_id=secondary_id, start=start, end=end,
+                                                                        all_time=all_time)
+                total_time = 0.0
+                projects = []
+                artists = []
+                tasks = []
+                for ts in all_timesheets:
+                    total_time += ts['duration']
+                    if ts['project']['name'] not in projects:
+                        projects.append(ts['project']['name'])
+                    if ts['user'] not in artists:
+                        artists.append(ts['user'])
+                    if ts['entity'] not in tasks:
+                        tasks.append(ts['entity'])
+                    # entity = sg_data.get_entity_from_task(task_id=int(ts['entity']['id']))
+                    entity = 1
+                    if entity:
+                        ts['asset_shot'] = entity
+                return_data['__specs__'] = {'total_time': total_time}
+                return_data['timesheets'] = all_timesheets
+                return_data['projects'] = projects
+                return_data['artists'] = artists
+                return_data['tasks'] = tasks
+                self.signals.snd_report_project_hours.emit(return_data)
 
-            elif primary == 'Artists':
-                print('Artists Searching...')
-            elif primary == 'Tasks':
-                print('Tasks Searching...')
-            elif primary == 'All Entities':
-                print('All Entities Searching...')
-            elif primary == 'Entities (Assets)':
-                print('Asset Entities Searching...')
-            elif primary == 'Entities (Shots)':
-                print('Shot Entities Searching...')
-            else:
-                print('You must pick something to report on.')
-                return False
+                # for x in all_timesheets:
+                #     print(x)
+                # return all_timesheets
+            #     print('Project Searching...')
+            #     if secondary_id == 1:
+            #         active_projects = sg_data.get_active_projects()
+            #     else:
+            #         active_projects = [{'name': secondary, 'id': secondary_id}]
+            #     if trinary_id == 1:
+            #         # Total Hours must be collected
+            #         for proj in active_projects:
+            #             timesheets = tl_time.get_all_timesheets_by_project(proj_id=proj['id'])
+            #             if timesheets:
+            #                 duration = 0.0
+            #                 for sheet in timesheets:
+            #                     duration += sheet['duration']
+            #                 if duration > highest_value:
+            #                     highest_value = duration
+            #                 return_data[proj['name']] = {'total_hours': duration}
+            #         return_data['__specs__'] = {'highest_val': highest_value}
+            #         self.signals.snd_report_project_hours.emit(return_data)
+            #     elif trinary_id == 2:
+            #         # Artist Info must be collected.
+            #         if quaternary_id == 1:
+            #             artists = users.get_all_users()
+            #         else:
+            #             artists = [users.get_user_by_id(quaternary_id)]
+            #         for proj in active_projects:
+            #             timesheets = tl_time.get_all_timesheets_by_project(proj_id=proj['id'], users=artists)
+            #             for t in timesheets:
+            #                 print(t)
+
+            # elif primary == 'Artists':
+            #     print('Artists Searching...')
+            # elif primary == 'Tasks':
+            #     print('Tasks Searching...')
+            # elif primary == 'All Entities':
+            #     print('All Entities Searching...')
+            # elif primary == 'Entities (Assets)':
+            #     print('Asset Entities Searching...')
+            # elif primary == 'Entities (Shots)':
+            #     print('Shot Entities Searching...')
+            # else:
+            #     print('You must pick something to report on.')
+            #     return False
 
 
 class reports_ui(QtGui.QWidget):
@@ -293,6 +327,9 @@ class reports_ui(QtGui.QWidget):
         quaternary_id = self.ui.quaternary_org.itemData(self.ui.quaternary_org.currentIndex())
         quinternary = self.ui.quinternary_org.currentText()
         quinternary_id = self.ui.quinternary_org.itemData(self.ui.quinternary_org.currentIndex())
+        all_time = self.ui.all_time.isChecked()
+        start = self.ui.start_time.dateTime().toPython()
+        end = self.ui.end_time.dateTime().toPython()
 
         data = {
             'primary': primary,
@@ -305,6 +342,9 @@ class reports_ui(QtGui.QWidget):
             'quaternary_id': quaternary_id,
             'quinternary': quinternary,
             'quinternary_id': quinternary_id,
+            'all_time': all_time,
+            'start': start,
+            'end': end,
         }
         self.engine.signals.req_report.emit(data)
 
@@ -317,38 +357,48 @@ class reports_ui(QtGui.QWidget):
     def project_hours_report(self, data=None):
         print('DATA RECIEVED: %s' % data.keys())
         if data:
-            self.ui.graphs_table.clear()
-            self.ui.graphs_table.setRowCount(0)
-            header = self.ui.graphs_table.horizontalHeader()
-            header.setResizeMode(2, QtGui.QHeaderView.Stretch)
-            row = self.ui.graphs_table.rowCount()
-            print(row)
+            self.ui.data_tree.clear()
+            # header = self.ui.data_tree.horizontalHeader()
+            # header.setResizeMode(2, QtGui.QHeaderView.Stretch)
+            # row = self.ui.graphs_table.rowCount()
+            # print(row)
             specs = data['__specs__']
-            highest_value = float(specs['highest_val'])
-            for proj, reports in data.items():
-                if proj != '__specs__':
-                    # print('proj: %s' % proj)
+            projects = data['projects']
+            artists = data['artists']
+            tasks = data['tasks']
+            timesheets = data['timesheets']
+            total_time = float(specs['total_time'])
+            print('total time: %s' % total_time)
+            for timesheet in timesheets:
+                print('-' * 120)
+                print('Project: %s' % timesheet['project'])
+                print('Entity: %s' % timesheet['asset_shot'])
+                print('Task: %s' % timesheet['entity'])
+                print('Duration: %s' % timesheet['duration'])
+            # for proj, reports in data.items():
+            #     if proj != '__specs__':
+            #         print('%s: %s' % (proj, reports))
                     # print(row)
-                    self.ui.graphs_table.insertRow(row)
-                    proj_name = QtGui.QLabel()
-                    proj_name.setText(proj)
-                    self.ui.graphs_table.setCellWidget(row, 0, proj_name)
-                    for keys, vals in reports.items():
-                        row += 1
-                        self.ui.graphs_table.insertRow(row)
-                        info = QtGui.QLabel()
-                        # print('keys: %s' % keys)
-                        info.setText(keys)
-                        self.ui.graphs_table.setCellWidget(row, 1, info)
-                        graph = QtGui.QProgressBar()
-                        graph.setValue((vals / highest_value) * 100.0)
-                        self.ui.graphs_table.setCellWidget(row, 2, graph)
-                        value = QtGui.QLabel()
-                        value.setText('%0.2f hrs' % (vals / 60.0))
-                        self.ui.graphs_table.setCellWidget(row, 3, value)
-                    row += 1
+                    # self.ui.graphs_table.insertRow(row)
+                    # proj_name = QtGui.QLabel()
+                    # proj_name.setText(proj)
+                    # self.ui.graphs_table.setCellWidget(row, 0, proj_name)
+                    # for keys, vals in reports.items():
+                    #     row += 1
+                    #     self.ui.graphs_table.insertRow(row)
+                    #     info = QtGui.QLabel()
+                    #     # print('keys: %s' % keys)
+                    #     info.setText(keys)
+                    #     self.ui.graphs_table.setCellWidget(row, 1, info)
+                    #     graph = QtGui.QProgressBar()
+                    #     graph.setValue((vals / highest_value) * 100.0)
+                    #     self.ui.graphs_table.setCellWidget(row, 2, graph)
+                    #     value = QtGui.QLabel()
+                    #     value.setText('%0.2f hrs' % (vals / 60.0))
+                    #     self.ui.graphs_table.setCellWidget(row, 3, value)
+                    # row += 1
                     # print(row)
-            self.ui.graphs_table.updateEditorGeometries()
+            # self.ui.graphs_table.updateEditorGeometries()
 
     def set_search_options(self, driver=None, list=None):
         drv_obj = driver.currentText()
@@ -370,7 +420,7 @@ class reports_ui(QtGui.QWidget):
                     all_projects = sg_data.get_active_projects()
                     if all_projects:
                         for proj in all_projects:
-                            list.addItem(proj['name'], proj['id'])
+                            list.addItem(proj['name'], int(proj['id']))
                 elif drv_obj == 'Entities (Assets)':
                     list.addItem('All Assets', 1)
                     all_assets = sg_data.get_active_assets()

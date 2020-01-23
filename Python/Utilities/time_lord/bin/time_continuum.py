@@ -748,13 +748,22 @@ class continuum(object):
                     return timesheet
         return None
 
-    def get_all_timesheets_by_project(self, proj_id):
+    def get_all_timesheets_by_project(self, proj_id=None, users=None):
         timesheets = []
         if proj_id:
             filters = [
                 ['project', 'is', {'type': 'Project', 'id': proj_id}],
                 ['duration', 'greater_than', 0.0]
             ]
+            if users:
+                add_filters = []
+                for user in users:
+                    add_filters.append(['user', 'is', {'type': 'HumanUser', 'id': user['id']}])
+                filter_ops = {
+                    'filter_operator': 'any',
+                    'filters': add_filters
+                }
+                filters.append(filter_ops)
             fields = [
                 'user',
                 'date',
@@ -1077,6 +1086,57 @@ class continuum(object):
                 self.logger.error('Get all user timesheets by date failed.')
                 timesheets = []
                 # print self.get_latest_timesheet(user=user)
+        return timesheets
+
+    def get_all_timsheets_in_range(self, proj_id=None, start=None, end=None, all_time=False, order='desc'):
+        timesheets = []
+        if start and end:
+            previous_start = start - datetime.timedelta(days=1)
+            next_end = end + datetime.timedelta(days=1)
+
+            filters = [
+                ['duration', 'greater_than', 0.0]
+            ]
+            if not all_time:
+                filters.append(
+                    {
+                        'filter_operator': 'all',
+                        'filters': [
+                            ['sg_task_start', 'greater_than', previous_start],
+                            ['sg_task_end', 'less_than', next_end]
+                        ]
+                    }
+                )
+            if proj_id:
+                filters.append(
+                    ['project', 'is', {'type': 'Project', 'id': int(proj_id)}]
+                )
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'code',
+                'sg_closed',
+                'duration'
+            ]
+            try:
+                timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
+                                                                              'direction': order},
+                                                                             {'field_name': 'id',
+                                                                              'direction': order}])
+                if timesheets:
+                    for sheet in timesheets:
+                        if type(sheet['sg_task_start']) == datetime.datetime:
+                            if str(start.date()) != str(sheet['sg_task_start'].date()):
+                                index = timesheets.index(sheet)
+                                timesheets.pop(index)
+            except Exception as e:
+                print('Shit the bed: %s' % e)
+                self.logger.error('Cannot get all the timesheets! %s' % e)
+                timesheets = []
         return timesheets
 
     def update_current_times(self, user=None, tid=None, start_time=None, end_time=None):

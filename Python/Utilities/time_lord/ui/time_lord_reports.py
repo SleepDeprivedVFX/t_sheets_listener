@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_reports.ui'
 #
-# Created: Fri Dec 13 18:35:47 2019
+# Created: Wed Jan 22 16:45:24 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_Time_Lord_Reports(object):
     def setupUi(self, Time_Lord_Reports):
         Time_Lord_Reports.setObjectName("Time_Lord_Reports")
-        Time_Lord_Reports.resize(1227, 430)
+        Time_Lord_Reports.resize(1109, 1000)
         Time_Lord_Reports.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout_8 = QtGui.QVBoxLayout(Time_Lord_Reports)
@@ -29,6 +29,7 @@ class Ui_Time_Lord_Reports(object):
         self.start_time_label.setObjectName("start_time_label")
         self.verticalLayout.addWidget(self.start_time_label)
         self.start_time = QtGui.QDateTimeEdit(Time_Lord_Reports)
+        self.start_time.setCalendarPopup(True)
         self.start_time.setObjectName("start_time")
         self.verticalLayout.addWidget(self.start_time)
         self.horizontalLayout_2.addLayout(self.verticalLayout)
@@ -38,9 +39,13 @@ class Ui_Time_Lord_Reports(object):
         self.label.setObjectName("label")
         self.verticalLayout_2.addWidget(self.label)
         self.end_time = QtGui.QDateTimeEdit(Time_Lord_Reports)
+        self.end_time.setCalendarPopup(True)
         self.end_time.setObjectName("end_time")
         self.verticalLayout_2.addWidget(self.end_time)
         self.horizontalLayout_2.addLayout(self.verticalLayout_2)
+        self.all_time = QtGui.QCheckBox(Time_Lord_Reports)
+        self.all_time.setObjectName("all_time")
+        self.horizontalLayout_2.addWidget(self.all_time)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.verticalLayout_8.addLayout(self.horizontalLayout_2)
@@ -104,11 +109,26 @@ class Ui_Time_Lord_Reports(object):
         spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem5)
         self.verticalLayout_8.addLayout(self.horizontalLayout)
-        self.output_table = QtGui.QTableWidget(Time_Lord_Reports)
-        self.output_table.setObjectName("output_table")
-        self.output_table.setColumnCount(0)
-        self.output_table.setRowCount(0)
-        self.verticalLayout_8.addWidget(self.output_table)
+        self.data_tree = QtGui.QTreeWidget(Time_Lord_Reports)
+        self.data_tree.setFrameShape(QtGui.QFrame.NoFrame)
+        self.data_tree.setAlternatingRowColors(True)
+        self.data_tree.setAnimated(True)
+        self.data_tree.setWordWrap(True)
+        self.data_tree.setColumnCount(8)
+        self.data_tree.setObjectName("data_tree")
+        self.data_tree.headerItem().setText(0, "1")
+        self.data_tree.headerItem().setText(1, "2")
+        self.data_tree.headerItem().setText(2, "3")
+        self.data_tree.headerItem().setText(3, "4")
+        self.data_tree.headerItem().setText(4, "5")
+        self.data_tree.headerItem().setText(5, "6")
+        self.data_tree.headerItem().setText(6, "7")
+        self.data_tree.headerItem().setText(7, "8")
+        self.data_tree.header().setVisible(False)
+        self.data_tree.header().setCascadingSectionResizes(True)
+        self.data_tree.header().setDefaultSectionSize(120)
+        self.data_tree.header().setHighlightSections(False)
+        self.verticalLayout_8.addWidget(self.data_tree)
 
         self.retranslateUi(Time_Lord_Reports)
         QtCore.QMetaObject.connectSlotsByName(Time_Lord_Reports)
@@ -118,17 +138,19 @@ class Ui_Time_Lord_Reports(object):
         self.Title.setText(QtGui.QApplication.translate("Time_Lord_Reports", "Time Lord Reports", None, QtGui.QApplication.UnicodeUTF8))
         self.start_time_label.setText(QtGui.QApplication.translate("Time_Lord_Reports", "Start Time", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Time_Lord_Reports", "End Time", None, QtGui.QApplication.UnicodeUTF8))
+        self.all_time.setText(QtGui.QApplication.translate("Time_Lord_Reports", "All Time", None, QtGui.QApplication.UnicodeUTF8))
         self.primary_org_label.setText(QtGui.QApplication.translate("Time_Lord_Reports", "Primary Organizer", None, QtGui.QApplication.UnicodeUTF8))
         self.primary_org.setItemText(0, QtGui.QApplication.translate("Time_Lord_Reports", "None", None, QtGui.QApplication.UnicodeUTF8))
-        self.primary_org.setItemText(1, QtGui.QApplication.translate("Time_Lord_Reports", "Artists", None, QtGui.QApplication.UnicodeUTF8))
-        self.primary_org.setItemText(2, QtGui.QApplication.translate("Time_Lord_Reports", "Projects", None, QtGui.QApplication.UnicodeUTF8))
-        self.primary_org.setItemText(3, QtGui.QApplication.translate("Time_Lord_Reports", "Entities (Assets)", None, QtGui.QApplication.UnicodeUTF8))
-        self.primary_org.setItemText(4, QtGui.QApplication.translate("Time_Lord_Reports", "Entities (Shots)", None, QtGui.QApplication.UnicodeUTF8))
-        self.primary_org.setItemText(5, QtGui.QApplication.translate("Time_Lord_Reports", "All Entities", None, QtGui.QApplication.UnicodeUTF8))
-        self.primary_org.setItemText(6, QtGui.QApplication.translate("Time_Lord_Reports", "Tasks", None, QtGui.QApplication.UnicodeUTF8))
+        self.primary_org.setItemText(1, QtGui.QApplication.translate("Time_Lord_Reports", "Projects", None, QtGui.QApplication.UnicodeUTF8))
+        self.primary_org.setItemText(2, QtGui.QApplication.translate("Time_Lord_Reports", "Artists", None, QtGui.QApplication.UnicodeUTF8))
+        self.primary_org.setItemText(3, QtGui.QApplication.translate("Time_Lord_Reports", "Tasks", None, QtGui.QApplication.UnicodeUTF8))
+        self.primary_org.setItemText(4, QtGui.QApplication.translate("Time_Lord_Reports", "All Entities", None, QtGui.QApplication.UnicodeUTF8))
+        self.primary_org.setItemText(5, QtGui.QApplication.translate("Time_Lord_Reports", "Entities (Assets)", None, QtGui.QApplication.UnicodeUTF8))
+        self.primary_org.setItemText(6, QtGui.QApplication.translate("Time_Lord_Reports", "Entities (Shots)", None, QtGui.QApplication.UnicodeUTF8))
         self.secondary_org.setItemText(0, QtGui.QApplication.translate("Time_Lord_Reports", "None", None, QtGui.QApplication.UnicodeUTF8))
         self.trinary_org.setItemText(0, QtGui.QApplication.translate("Time_Lord_Reports", "None", None, QtGui.QApplication.UnicodeUTF8))
         self.quaternary_org.setItemText(0, QtGui.QApplication.translate("Time_Lord_Reports", "None", None, QtGui.QApplication.UnicodeUTF8))
         self.quinternary_org.setItemText(0, QtGui.QApplication.translate("Time_Lord_Reports", "None", None, QtGui.QApplication.UnicodeUTF8))
         self.run_btn.setText(QtGui.QApplication.translate("Time_Lord_Reports", "Run", None, QtGui.QApplication.UnicodeUTF8))
+        self.data_tree.setSortingEnabled(True)
 
