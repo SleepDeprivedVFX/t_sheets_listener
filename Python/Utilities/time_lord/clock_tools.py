@@ -140,8 +140,13 @@ def emit_restart_event():
     """
     print('Reset TARDIS protocall activated...')
 
+def get_fields():
+    check = sg.schema_field_read('TimeLog')
+    for x in check:
+        print x
 
 
+get_fields()
 # super_cleanup(user_id=41)
 # close_all_completed_timesheets()
 # super_duration_checker()

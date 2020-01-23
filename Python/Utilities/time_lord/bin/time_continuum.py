@@ -211,6 +211,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'code',
                 'sg_closed'
             ]
@@ -224,6 +225,7 @@ class continuum(object):
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
                 latest_timesheet = None
             if latest_timesheet:
+                print('Latest: %s' % latest_timesheet)
                 return latest_timesheet
             return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
 
@@ -256,6 +258,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'code',
                 'sg_closed'
             ]
@@ -291,6 +294,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'code',
                 'sg_closed'
             ]
@@ -333,6 +337,7 @@ class continuum(object):
                         'sg_task_end',
                         'project',
                         'entity',
+                'entity.Task.entity',
                         'code',
                         'sg_closed'
                     ]
@@ -632,6 +637,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'duration'
             ]
             try:
@@ -697,6 +703,7 @@ class continuum(object):
             'sg_task_end',
             'project',
             'entity',
+                'entity.Task.entity',
             'duration'
         ]
         conn_attempts = 0
@@ -729,6 +736,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'duration'
             ]
             conn_attempts = 0
@@ -771,6 +779,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'code',
                 'sg_closed',
                 'duration'
@@ -1067,6 +1076,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'code',
                 'sg_closed',
                 'duration'
@@ -1118,6 +1128,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'code',
                 'sg_closed',
                 'duration'

@@ -478,9 +478,9 @@ class sheets(QtGui.QWidget):
                         task = timesheet['entity']['name']
                         project = timesheet['project']['name']
                         project_id = timesheet['project']['id']
-                        entity = sg_data.get_entity_from_task(task_id=task_id)
-                        entity_name = entity['entity']['name']
-                        entity_id = entity['entity']['id']
+                        entity = timesheet['entity.Task.entity']
+                        entity_name = entity['name']
+                        entity_id = entity['id']
                         start = timesheet['sg_task_start']
                         start_date = start.date()
                         if start_date == record_date:

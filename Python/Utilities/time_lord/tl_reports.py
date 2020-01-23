@@ -218,9 +218,9 @@ class payroll_engine(QtCore.QThread):
                     if ts['entity'] not in tasks:
                         tasks.append(ts['entity'])
                     # entity = sg_data.get_entity_from_task(task_id=int(ts['entity']['id']))
-                    entity = 1
-                    if entity:
-                        ts['asset_shot'] = entity
+                    # entity = ts['entity.Task.entity']
+                    # if entity:
+                    #     ts['asset_shot'] = entity
                 return_data['__specs__'] = {'total_time': total_time}
                 return_data['timesheets'] = all_timesheets
                 return_data['projects'] = projects
@@ -372,7 +372,7 @@ class reports_ui(QtGui.QWidget):
             for timesheet in timesheets:
                 print('-' * 120)
                 print('Project: %s' % timesheet['project'])
-                print('Entity: %s' % timesheet['asset_shot'])
+                print('Entity: %s' % timesheet['entity.Task.entity'])
                 print('Task: %s' % timesheet['entity'])
                 print('Duration: %s' % timesheet['duration'])
             # for proj, reports in data.items():

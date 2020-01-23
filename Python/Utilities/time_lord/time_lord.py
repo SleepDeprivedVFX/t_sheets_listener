@@ -556,7 +556,7 @@ class time_machine(QtCore.QThread):
                                     # This is the first time the timesheet has been clocked out.
 
                                     # Collect the entity
-                                    ts_entity = sg_data.get_entity_from_task(task_id=timesheet_info['entity']['id'])
+                                    ts_entity = timesheet_info['entity.Task.entity']
 
                                     self.time_signal.debug.emit('CLOCK OUT RECORD! %s' % event)
 
@@ -583,14 +583,14 @@ class time_machine(QtCore.QThread):
                                         event['entity']['id'] > time_capsule['TimeLogID']:
 
                                     # Collect the entity
-                                    ts_entity = sg_data.get_entity_from_task(task_id=timesheet_info['entity']['id'])
+                                    ts_entity = timesheet_info['entity.Task.entity']
 
                                     self.time_signal.debug.emit('NEW RECORD! %s' % event['id'])
                                     ts_data = {
                                         'project': timesheet_info['project']['name'],
                                         'project_id': timesheet_info['project']['id'],
-                                        'entity': ts_entity['entity']['name'],
-                                        'entity_id': ts_entity['entity']['id'],
+                                        'entity': ts_entity['name'],
+                                        'entity_id': ts_entity['id'],
                                         'task': timesheet_info['entity']['name'],
                                         'task_id': timesheet_info['entity']['id']
                                     }
@@ -811,9 +811,9 @@ class time_lord(QtCore.QThread):
         task_id = self.latest_timesheet['entity']['id']
 
         # Get Entity from task and project IDs
-        entity_info = sg_data.get_entity_from_task(task_id=task_id)
-        entity = entity_info['entity']['name']
-        entity_id = entity_info['entity']['id']
+        entity_info = self.latest_timesheet['entity.Task.entity']
+        entity = entity_info['name']
+        entity_id = entity_info['id']
 
         # Emit update signals.
         send_proj = {'type': 'project_dropdown',
@@ -1041,7 +1041,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 and not self.latest_timesheet['date'] and not self.latest_timesheet['sg_task_start']:
             project_id = int(config['admin_proj_id'])
             task_id = int(config['admin_task_id'])
-            entity_id = sg_data.get_entity_from_task(task_id=task_id)
+            entity_id = self.latest_timesheet['entity.Task.entity']
             context = {
                 'Project': {
                     'id': project_id
@@ -1223,9 +1223,9 @@ class time_lord_ui(QtGui.QMainWindow):
             # Get the timesheet entity and compare it to the saved entity
             try:
                 ts_task_id = self.latest_timesheet['entity']['id']
-                get_current_entity = sg_data.get_entity_from_task(task_id=ts_task_id)
-                current_entity = get_current_entity['entity']['name']
-                current_entity_id = get_current_entity['entity']['id']
+                get_current_entity = self.latest_timesheet['entity.Task.entity']
+                current_entity = get_current_entity['name']
+                current_entity_id = get_current_entity['id']
                 if self.saved_entity != current_entity:
                     self.saved_entity = current_entity
                     self.saved_entity_id = current_entity_id

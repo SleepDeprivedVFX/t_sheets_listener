@@ -213,10 +213,10 @@ class scope_engine(QtCore.QThread):
                 task_id = task['id']
                 start_time = timesheet['sg_task_start']
 
-                get_entity = sg_data.get_entity_from_task(task_id=task_id)
+                get_entity = timesheet['entity.Task.entity']
                 if get_entity:
-                    entity = get_entity['entity']['name']
-                    entity_id = get_entity['entity']['id']
+                    entity = get_entity['name']
+                    entity_id = get_entity['id']
                 else:
                     entity = None
                     entity_id = None

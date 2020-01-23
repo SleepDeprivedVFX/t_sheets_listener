@@ -399,10 +399,10 @@ def chronograph():
                             if get_project_ot[config['ot_approved_proj']]:
                                 ot_check = -1
                         if task_id:
-                            entity = sg_data.get_entity_from_task(task_id=task_id)
+                            entity = latest_timesheet['entity.Task.entity']
                             if entity:
-                                entity_id = entity['entity']['id']
-                                entity_type = entity['entity']['type']
+                                entity_id = entity['id']
+                                entity_type = entity['type']
                             else:
                                 entity_id = None
                                 entity_type = None
@@ -444,10 +444,10 @@ def chronograph():
                             if get_project_ot[config['ot_approved_proj']]:
                                 ot_check = -1
                         if task_id:
-                            entity = sg_data.get_entity_from_task(task_id=task_id)
+                            entity = latest_timesheet['entity.Task.entity']
                             if entity:
-                                entity_id = entity['entity']['id']
-                                entity_type = entity['entity']['type']
+                                entity_id = entity['id']
+                                entity_type = entity['type']
                             else:
                                 entity_id = None
                                 entity_type = None
