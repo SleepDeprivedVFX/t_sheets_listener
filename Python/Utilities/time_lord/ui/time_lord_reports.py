@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_reports.ui'
 #
-# Created: Wed Jan 22 16:45:24 2020
+# Created: Thu Jan 23 15:55:24 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -14,6 +14,7 @@ class Ui_Time_Lord_Reports(object):
         Time_Lord_Reports.setObjectName("Time_Lord_Reports")
         Time_Lord_Reports.resize(1109, 1000)
         Time_Lord_Reports.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"alternate-background-color: rgb(120, 120, 120);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout_8 = QtGui.QVBoxLayout(Time_Lord_Reports)
         self.verticalLayout_8.setObjectName("verticalLayout_8")

@@ -132,6 +132,7 @@ def super_duration_checker():
             update = sg.update('TimeLog', ts['id'], data)
             print('Updated: %s' % update)
 
+
 def emit_restart_event():
     """
     The idea behind this is that it will generate a specific Shotgun event that can then effectively be listened to by
@@ -140,13 +141,17 @@ def emit_restart_event():
     """
     print('Reset TARDIS protocall activated...')
 
+
 def get_fields():
     check = sg.schema_field_read('TimeLog')
     for x in check:
         print x
 
+# def get_steps():
+#     get = sg.
 
-get_fields()
+
+# get_fields()
 # super_cleanup(user_id=41)
 # close_all_completed_timesheets()
 # super_duration_checker()

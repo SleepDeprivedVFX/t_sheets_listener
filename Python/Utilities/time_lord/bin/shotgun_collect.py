@@ -344,6 +344,12 @@ class sg_data(object):
         return False
 
     def get_entity_from_task(self, task_id=None):
+        """
+        Old routine that got task entities before I figured out how to get them from the timesheet.
+        It is currently obsolete, but may have a use in the future.
+        :param task_id:
+        :return:
+        """
         if task_id:
             filters = [
                 ['id', 'is', task_id]
