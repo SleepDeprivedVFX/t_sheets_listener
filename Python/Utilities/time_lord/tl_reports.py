@@ -333,6 +333,7 @@ class reports_ui(QtGui.QWidget):
             asset_steps = data['asset_steps']
             shot_steps = data['shot_steps']
 
+            # FIXME: The following needs to be moved up into the thread.  The algorithm, hoever, seems solid.
             report = {
                 'project': {
                     'Assets': {
