@@ -236,46 +236,55 @@ class payroll_engine(QtCore.QThread):
                         proj = ts['project']['name']
                         if proj not in tree_structure.keys():
                             tree_structure[proj] = {
-                                '_duration_': ts['duration']
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']]
                             }
                         else:
                             duration = tree_structure[proj]['_duration_']
                             duration += ts['duration']
                             tree_structure[proj]['_duration_'] = duration
+                            tree_structure[proj].setdefault('_avg_time_', []).append(ts['duration'])
 
                         # Get and set the Entity Type: Usually "Asset" or "Shot"
                         ent_type = ts['entity.Task.entity']['type']
                         if ent_type not in tree_structure[proj].keys():
                             tree_structure[proj][ent_type] = {
-                                '_duration_': ts['duration']
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']]
                             }
                         else:
                             duration = tree_structure[proj][ent_type]['_duration_']
                             duration += ts['duration']
                             tree_structure[proj][ent_type]['_duration_'] = duration
+                            tree_structure[proj][ent_type].setdefault('_avg_time_', []).append(ts['duration'])
 
                         # Get and set the Entity data
                         entity = ts['entity.Task.entity']['name']
                         if entity not in tree_structure[proj][ent_type].keys():
                             tree_structure[proj][ent_type][entity] = {
-                                '_duration_': ts['duration']
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']]
                             }
                         else:
                             duration = tree_structure[proj][ent_type][entity]['_duration_']
                             duration += ts['duration']
                             tree_structure[proj][ent_type][entity]['_duration_'] = duration
+                            tree_structure[proj][ent_type][entity].setdefault('_avg_time_', []).append(ts['duration'])
 
                         # Get and set the task level
                         task = ts['entity']['name'].split('.')[0]
                         if task not in tree_structure[proj][ent_type][entity].keys():
                             tree_structure[proj][ent_type][entity][task] = {
                                 'timesheets': [ts],
-                                '_duration_': ts['duration']
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']]
                             }
                         else:
                             duration = tree_structure[proj][ent_type][entity][task]['_duration_']
                             duration += ts['duration']
                             tree_structure[proj][ent_type][entity][task].setdefault('timesheets', []).append(ts)
+                            tree_structure[proj][ent_type][entity][task].setdefault('_avg_time_',
+                                                                                    []).append(ts['duration'])
                             tree_structure[proj][ent_type][entity][task]['_duration_'] = duration
                     except Exception as e:
                         print(e)
@@ -398,19 +407,25 @@ class reports_ui(QtGui.QWidget):
                 proj_duration = float(details['_duration_']) / 60.0
                 proj_label.setText(6, 'Total: %0.2f hrs' % proj_duration)
                 for ent_type, entities in details.items():
-                    if ent_type != '_duration_':
+                    if ent_type not in ['_duration_', '_avg_time_']:
                         ent_type_label = QtGui.QTreeWidgetItem()
                         ent_type_label.setText(1, ent_type)
                         ent_type_duration = float(entities['_duration_']) / 60.0
                         ent_type_label.setText(6, 'Total: %0.2f hrs' % ent_type_duration)
+                        ent_type_avg_count = len(entities['_avg_time_'])
+                        ent_type_avg = (sum(details['_avg_time_']) / float(ent_type_avg_count)) / 60.0
+                        ent_type_label.setText(7, 'Avg Time: %0.2f hrs' % ent_type_avg)
                         for entity, steps in entities.items():
-                            if entity != '_duration_':
+                            if entity not in ['_duration_', '_avg_time_']:
                                 entity_label = QtGui.QTreeWidgetItem()
                                 entity_label.setText(2, entity)
                                 entity_duration = float(steps['_duration_']) / 60.0
                                 entity_label.setText(6, 'Total: %0.2f hrs' % entity_duration)
+                                entity_avg_count = len(steps['_avg_time_'])
+                                entity_avg = (sum(steps['_avg_time_']) / float(entity_avg_count)) / 60.0
+                                entity_label.setText(7, 'Avg Per: %0.2f hrs' % entity_avg)
                                 for step, tasks in steps.items():
-                                    if step != '_duration_':
+                                    if step not in ['_duration_', '_avg_time_']:
                                         step_label = QtGui.QTreeWidgetItem()
                                         step_label.setText(3, step)
                                         step_duration = float(tasks['_duration_']) / 60.0
