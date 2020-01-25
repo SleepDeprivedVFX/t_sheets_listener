@@ -333,17 +333,6 @@ class reports_ui(QtGui.QWidget):
             asset_steps = data['asset_steps']
             shot_steps = data['shot_steps']
 
-            import time
-
-            print('projects: %s' % projects)
-            print('artists: %s' % artists)
-            print('tasks: %s' % tasks)
-            print('total_time: %s' % total_time)
-            print('asset_steps: %s' % asset_steps)
-            print('shot_steps: %s' % shot_steps)
-            print('+' * 120)
-            time.sleep(10)
-
             report = {
                 'project': {
                     'Assets': {
@@ -376,92 +365,6 @@ class reports_ui(QtGui.QWidget):
                 else:
                     report[proj][ent_type][entity].setdefault(task, []).append(ts)
             print(report)
-
-
-
-            # for proj in projects:
-            #     print('=' * 120)
-            #     print(proj)
-            #     if proj not in report.keys():
-            #         report[proj] = {}
-            #     project_total = 0.0
-            #     project_widget = QtGui.QTreeWidgetItem()
-            #     project_timesheets = []
-            #     project_assets = []
-            #     project_shots = []
-            #     project_tasks = []
-            #     task_timesheets = {}
-            #     for ts in timesheets:
-            #         if proj == ts['project']['name']:
-            #             project_timesheets.append(ts)
-            #             project_total += ts['duration'] / 60.0
-            #             if ts['entity.Task.entity']['type'] == 'Asset' and \
-            #                     ts['entity.Task.entity'] not in project_assets:
-            #                 project_assets.append(ts)
-            #             elif ts['entity.Task.entity']['type'] == 'Shot' and \
-            #                     ts['entity.Task.entity'] not in project_shots:
-            #                 project_shots.append(ts)
-            #             task = ts['entity']['name'].split('.')[0]
-            #             if task not in project_tasks:
-            #                 project_tasks.append(task)
-            #             task_timesheets[ts['id']] = (task, ts)
-            #             # if ts['entity'] not in project_tasks:
-            #             #     project_tasks.append(ts)
-            #     for asset in project_assets:
-            #         print(asset['entity.Task.entity']['name'])
-            #         for t in project_tasks:
-            #             print(t)
-            #             for tid, task in task_timesheets.items():
-            #                 if t == task[0]:
-            #                     if task[1]['entity.Task.entity']['type'] == 'Asset' and \
-            #                             task[0] in asset['entity']['name']:
-            #                         print(tid, task[1])
-            #
-            #     project_widget.setText(0, proj)
-            #     project_widget.setText(6, 'Total Hours: %0.2f' % project_total)
-            #
-            #     # for asset in project_assets:
-            #     #     print(asset['entity.Task.entity']['name'])
-            #     #     print('- ' * 120)
-            #     #     asset_duration = 0.0
-            #     #     asset_widget = QtGui.QTreeWidgetItem()
-            #     #     asset_widget.setText(0, asset['entity.Task.entity']['name'])
-            #     #     for ts in timesheets:
-            #     #         if asset == ts:
-            #     #             asset_duration += ts['duration'] / 60.0
-            #     #             for step in asset_steps:
-            #     #                 step_tasks = []
-            #     #                 for task in project_tasks:
-            #     #                     if step['code'] in task['entity']['name']:
-            #     #                         step_tasks.append(ts)
-            #     #                 if step_tasks:
-            #     #                     print(step['code'])
-            #     #                     task_duration = 0.0
-            #     #                     step_widget = QtGui.QTreeWidgetItem()
-            #     #                     step_widget.setText(0, step['code'])
-            #     #                     for task in step_tasks:
-            #     #                         task_duration += task['duration'] / 60.0
-            #     #                         print(task)
-            #     #                         task_widget = QtGui.QTreeWidgetItem()
-            #     #                         task_widget.setText(0, task['entity']['name'])
-            #     #                         task_widget.setText(6, 'Hours: %0.2f' % (task['duration'] / 60.0))
-            #     #                         step_widget.addChild(task_widget)
-            #     #                     step_widget.setText(6, 'Task Hours: %0.2f' % task_duration)
-            #     #                     asset_widget.addChild(step_widget)
-            #     #
-            #     #     asset_widget.setText(6, 'Total Hours: %0.2f' % asset_duration)
-            #     #     project_widget.addChild(asset_widget)
-            #     # for shot in project_shots:
-            #     #     print(shot['entity.Task.entity']['name'])
-            #     #     print(' -' * 120)
-            #     #     shot_duration = 0.0
-            #     #     shot_widget = QtGui.QTreeWidgetItem()
-            #     #     shot_widget.setText(0, shot['entity.Task.entity']['name'])
-            #     #     for ts in timesheets:
-            #     #         if shot == ts['entity.Task.entity']:
-            #     #             shot_duration += ts['duration'] / 60.0
-            #     #     shot_widget.setText(6, 'Total Hours: %0.2f' % shot_duration)
-            #     self.ui.data_tree.addTopLevelItem(project_widget)
 
     def set_search_options(self, driver=None, list=None):
         drv_obj = driver.currentText()
