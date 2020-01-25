@@ -91,7 +91,7 @@ class payroll_engine(QtCore.QThread):
 
         # Connections
         self.signals.get_payroll.connect(self.make_payroll_reports)
-        self.signals.req_report.connect(self.start_reports)
+        self.signals.req_report.connect(self.start_project_reports)
 
     def make_payroll_reports(self, data={}):
         # This saves the data into an excel spreadsheet
@@ -181,7 +181,7 @@ class payroll_engine(QtCore.QThread):
             # Open the Excel sheet
             webbrowser.open(output)
 
-    def start_reports(self, data={}):
+    def start_project_reports(self, data={}):
         return_data = {}
         highest_value = 0.0
         if data:
@@ -219,6 +219,9 @@ class payroll_engine(QtCore.QThread):
                 projects = []
                 artists = []
                 tasks = []
+
+                tree_structure = {}
+
                 for ts in all_timesheets:
                     total_time += ts['duration']
                     if ts['project']['name'] not in projects:
@@ -227,6 +230,53 @@ class payroll_engine(QtCore.QThread):
                         artists.append(ts['user'])
                     if ts['entity'] not in tasks:
                         tasks.append(ts['entity'])
+
+                    # Add the project database
+                    proj = ts['project']['name']
+                    if proj not in tree_structure.keys():
+                        tree_structure[proj] = {
+                            '_duration_': ts['duration']
+                        }
+                    else:
+                        duration = tree_structure[proj]['_duration_']
+                        duration += ts['duration']
+                        tree_structure[proj]['_duration_'] = duration
+
+                    # Get and set the Entity Type: Usually "Asset" or "Shot"
+                    ent_type = ts['entity.Task.entity']['type']
+                    if ent_type not in tree_structure[proj].keys():
+                        tree_structure[proj][ent_type] = {
+                            '_duration_': ts['duration']
+                        }
+                    else:
+                        duration = tree_structure[proj][ent_type]['_duration_']
+                        duration += ts['duration']
+                        tree_structure[proj][ent_type]['_duration_'] = duration
+
+                    # Get and set the Entity data
+                    entity = ts['entity.Task.entity']['name']
+                    if entity not in tree_structure[proj][ent_type].keys():
+                        tree_structure[proj][ent_type][entity] = {
+                            '_duration_': ts['duration']
+                        }
+                    else:
+                        duration = tree_structure[proj][ent_type][entity]['_duration_']
+                        duration += ts['duration']
+                        tree_structure[proj][ent_type][entity]['_duration_'] = duration
+
+                    # Get and set the task level
+                    task = ts['entity']['name'].split('.')[0]
+                    if task not in tree_structure[proj][ent_type][entity].keys():
+                        tree_structure[proj][ent_type][entity][task] = {
+                            'timesheets': [ts],
+                            '_duration_': ts['duration']
+                        }
+                    else:
+                        duration = tree_structure[proj][ent_type][entity][task]['_duration_']
+                        duration += ts['duration']
+                        tree_structure[proj][ent_type][entity][task].setdefault('timesheets', []).append(ts)
+                        tree_structure[proj][ent_type][entity][task]['_duration_'] = duration
+
                 return_data['__specs__'] = {'total_time': total_time}
                 return_data['timesheets'] = all_timesheets
                 return_data['projects'] = projects
@@ -234,6 +284,7 @@ class payroll_engine(QtCore.QThread):
                 return_data['tasks'] = tasks
                 return_data['asset_steps'] = asset_steps
                 return_data['shot_steps'] = shot_steps
+                return_data['tree_structure'] = tree_structure
                 self.signals.snd_report_project_hours.emit(return_data)
 
 
@@ -332,40 +383,38 @@ class reports_ui(QtGui.QWidget):
             total_time = float(specs['total_time'])
             asset_steps = data['asset_steps']
             shot_steps = data['shot_steps']
+            tree_structure = data['tree_structure']
 
-            # FIXME: The following needs to be moved up into the thread.  The algorithm, hoever, seems solid.
-            report = {
-                'project': {
-                    'Assets': {
-                        'asset': {
-                            'Tasks': {
-                                'Timesheet': []
-                            }
-                        }
-                    },
-                    'Shots': {
-                        'Tasks': {
-                            'Timesheets': []
-                        }
-                    }
-                }
-            }
-            for ts in timesheets:
-                proj = ts['project']['name']
-                if proj not in report.keys():
-                    report[proj] = {}
-                ent_type = ts['entity.Task.entity']['type']
-                if ent_type not in report[proj].keys():
-                    report[proj][ent_type] = {}
-                entity = ts['entity.Task.entity']['name']
-                if entity not in report[proj][ent_type].keys():
-                    report[proj][ent_type][entity] = {}
-                task = ts['entity']['name'].split('.')[0]
-                if task not in report[proj][ent_type][entity].keys():
-                    report[proj][ent_type][entity][task] = [ts]
-                else:
-                    report[proj][ent_type][entity].setdefault(task, []).append(ts)
-            print(report)
+            # Build the tree
+            for proj, details in tree_structure.items():
+                proj_label = QtGui.QTreeWidgetItem()
+                proj_label.setText(0, proj)
+                proj_duration = float(details['_duration_']) / 60.0
+                proj_label.setText(6, 'Total: %0.2f hrs' % proj_duration)
+                for ent_type, entities in details.items():
+                    if ent_type != '_duration_':
+                        ent_type_label = QtGui.QTreeWidgetItem()
+                        ent_type_label.setText(1, ent_type)
+                        ent_type_duration = float(entities['_duration_']) / 60.0
+                        ent_type_label.setText(6, 'Total: %0.2f hrs' % ent_type_duration)
+                        for entity, steps in entities.items():
+                            if entity != '_duration_':
+                                entity_label = QtGui.QTreeWidgetItem()
+                                entity_label.setText(2, entity)
+                                entity_duration = float(steps['_duration_']) / 60.0
+                                entity_label.setText(6, 'Total: %0.2f hrs' % entity_duration)
+                                for step, tasks in steps.items():
+                                    if step != '_duration_':
+                                        step_label = QtGui.QTreeWidgetItem()
+                                        step_label.setText(3, step)
+                                        step_duration = float(tasks['_duration_']) / 60.0
+                                        step_label.setText(6, 'Total: %0.2f hrs' % step_duration)
+
+                                        entity_label.addChild(step_label)
+                                ent_type_label.addChild(entity_label)
+                        proj_label.addChild(ent_type_label)
+
+                self.ui.data_tree.addTopLevelItem(proj_label)
 
     def set_search_options(self, driver=None, list=None):
         drv_obj = driver.currentText()
