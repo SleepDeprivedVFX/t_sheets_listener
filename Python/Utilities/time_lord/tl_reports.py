@@ -223,59 +223,63 @@ class payroll_engine(QtCore.QThread):
                 tree_structure = {}
 
                 for ts in all_timesheets:
-                    total_time += ts['duration']
-                    if ts['project']['name'] not in projects:
-                        projects.append(ts['project']['name'])
-                    if ts['user'] not in artists:
-                        artists.append(ts['user'])
-                    if ts['entity'] not in tasks:
-                        tasks.append(ts['entity'])
+                    try:
+                        total_time += ts['duration']
+                        if ts['project']['name'] not in projects:
+                            projects.append(ts['project']['name'])
+                        if ts['user'] not in artists:
+                            artists.append(ts['user'])
+                        if ts['entity'] not in tasks:
+                            tasks.append(ts['entity'])
 
-                    # Add the project database
-                    proj = ts['project']['name']
-                    if proj not in tree_structure.keys():
-                        tree_structure[proj] = {
-                            '_duration_': ts['duration']
-                        }
-                    else:
-                        duration = tree_structure[proj]['_duration_']
-                        duration += ts['duration']
-                        tree_structure[proj]['_duration_'] = duration
+                        # Add the project database
+                        proj = ts['project']['name']
+                        if proj not in tree_structure.keys():
+                            tree_structure[proj] = {
+                                '_duration_': ts['duration']
+                            }
+                        else:
+                            duration = tree_structure[proj]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj]['_duration_'] = duration
 
-                    # Get and set the Entity Type: Usually "Asset" or "Shot"
-                    ent_type = ts['entity.Task.entity']['type']
-                    if ent_type not in tree_structure[proj].keys():
-                        tree_structure[proj][ent_type] = {
-                            '_duration_': ts['duration']
-                        }
-                    else:
-                        duration = tree_structure[proj][ent_type]['_duration_']
-                        duration += ts['duration']
-                        tree_structure[proj][ent_type]['_duration_'] = duration
+                        # Get and set the Entity Type: Usually "Asset" or "Shot"
+                        ent_type = ts['entity.Task.entity']['type']
+                        if ent_type not in tree_structure[proj].keys():
+                            tree_structure[proj][ent_type] = {
+                                '_duration_': ts['duration']
+                            }
+                        else:
+                            duration = tree_structure[proj][ent_type]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj][ent_type]['_duration_'] = duration
 
-                    # Get and set the Entity data
-                    entity = ts['entity.Task.entity']['name']
-                    if entity not in tree_structure[proj][ent_type].keys():
-                        tree_structure[proj][ent_type][entity] = {
-                            '_duration_': ts['duration']
-                        }
-                    else:
-                        duration = tree_structure[proj][ent_type][entity]['_duration_']
-                        duration += ts['duration']
-                        tree_structure[proj][ent_type][entity]['_duration_'] = duration
+                        # Get and set the Entity data
+                        entity = ts['entity.Task.entity']['name']
+                        if entity not in tree_structure[proj][ent_type].keys():
+                            tree_structure[proj][ent_type][entity] = {
+                                '_duration_': ts['duration']
+                            }
+                        else:
+                            duration = tree_structure[proj][ent_type][entity]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj][ent_type][entity]['_duration_'] = duration
 
-                    # Get and set the task level
-                    task = ts['entity']['name'].split('.')[0]
-                    if task not in tree_structure[proj][ent_type][entity].keys():
-                        tree_structure[proj][ent_type][entity][task] = {
-                            'timesheets': [ts],
-                            '_duration_': ts['duration']
-                        }
-                    else:
-                        duration = tree_structure[proj][ent_type][entity][task]['_duration_']
-                        duration += ts['duration']
-                        tree_structure[proj][ent_type][entity][task].setdefault('timesheets', []).append(ts)
-                        tree_structure[proj][ent_type][entity][task]['_duration_'] = duration
+                        # Get and set the task level
+                        task = ts['entity']['name'].split('.')[0]
+                        if task not in tree_structure[proj][ent_type][entity].keys():
+                            tree_structure[proj][ent_type][entity][task] = {
+                                'timesheets': [ts],
+                                '_duration_': ts['duration']
+                            }
+                        else:
+                            duration = tree_structure[proj][ent_type][entity][task]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj][ent_type][entity][task].setdefault('timesheets', []).append(ts)
+                            tree_structure[proj][ent_type][entity][task]['_duration_'] = duration
+                    except Exception as e:
+                        print(e)
+                        continue
 
                 return_data['__specs__'] = {'total_time': total_time}
                 return_data['timesheets'] = all_timesheets
@@ -310,6 +314,8 @@ class reports_ui(QtGui.QWidget):
         self.ui.trinary_org.hide()
         self.ui.quaternary_org.hide()
         self.ui.quinternary_org.hide()
+
+        self.ui.all_time.setChecked(True)
 
         # Make change set connections
         self.ui.primary_org.currentIndexChanged.connect(lambda: self.set_search_options(driver=self.ui.primary_org,
@@ -415,6 +421,7 @@ class reports_ui(QtGui.QWidget):
                         proj_label.addChild(ent_type_label)
 
                 self.ui.data_tree.addTopLevelItem(proj_label)
+            self.ui.data_tree.resizeColumnToContents(6)
 
     def set_search_options(self, driver=None, list=None):
         drv_obj = driver.currentText()
