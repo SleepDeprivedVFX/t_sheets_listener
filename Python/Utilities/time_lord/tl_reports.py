@@ -286,6 +286,19 @@ class payroll_engine(QtCore.QThread):
                             tree_structure[proj][ent_type][entity][task].setdefault('_avg_time_',
                                                                                     []).append(ts['duration'])
                             tree_structure[proj][ent_type][entity][task]['_duration_'] = duration
+
+                        artist = ts['user']['name']
+                        if artist not in tree_structure[proj][ent_type][entity][task].keys():
+                            tree_structure[proj][ent_type][entity][task][artist] = {
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']]
+                            }
+                        else:
+                            duration = tree_structure[proj][ent_type][entity][task][artist]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj][ent_type][entity][task][artist]['_duration_'] = duration
+                            tree_structure[proj][ent_type][entity][task][artist].setdefault('_avg_time_',
+                                                                                            []).append(ts['duration'])
                     except Exception as e:
                         print(e)
                         continue
@@ -430,6 +443,21 @@ class reports_ui(QtGui.QWidget):
                                         step_label.setText(3, step)
                                         step_duration = float(tasks['_duration_']) / 60.0
                                         step_label.setText(6, 'Total: %0.2f hrs' % step_duration)
+                                        step_avg_count = len(tasks['_avg_time_'])
+                                        step_average = (sum(tasks['_avg_time_']) / float(step_avg_count)) / 60.0
+                                        step_label.setText(7, 'Avg Per: %0.2f hrs' % step_average)
+                                        # print('task_items: %s' % tasks.items())
+                                        # for artist, info in tasks.items():
+                                        print tasks
+                                        # artist = tasks['timesheets']['user']['name']
+                                        # artist_label = QtGui.QTreeWidgetItem()
+                                        # artist_label.setText(4, artist)
+                                        # artist_label.setText(6, 'Total: %0.2f hrs' % step_duration)
+                                        # artist_avg_count = len(tasks['_avg_time_'])
+                                        # artist_avg = (sum(tasks['_avg_time_']) / float(artist_avg_count)) / 60.0
+                                        # artist_label.setText(7, 'Avg Per: %0.2f hrs' % artist_avg)
+
+                                        step_label.addChild(artist_label)
 
                                         entity_label.addChild(step_label)
                                 ent_type_label.addChild(entity_label)
