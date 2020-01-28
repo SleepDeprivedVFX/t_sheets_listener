@@ -246,6 +246,9 @@ class payroll_engine(QtCore.QThread):
                             duration += ts['duration']
                             tree_structure[proj]['_duration_'] = duration
                             tree_structure[proj].setdefault('_avg_time_', []).append(ts['duration'])
+                            # NOTE: The _avgs_ have to be based on totals of totals, thus the following line won't
+                            #       actually work.
+                            # tree_structure[proj].setdefault('_avgs_', []).append(ts['duration'])
 
                         # ----------------------------------------------------------------------------------------
                         # Get and set the Entity Type: Usually "Asset" or "Shot"
@@ -489,64 +492,54 @@ class reports_ui(QtGui.QWidget):
             tree_structure = data['tree_structure']
 
             # Build the tree
+            proj_count = len(tree_structure.keys())
             for proj, details in tree_structure.items():
                 proj_label = QtGui.QTreeWidgetItem()
                 proj_label.setText(0, proj)
                 proj_duration = float(details['_duration_']) / 60.0
                 proj_label.setText(6, 'Total: %0.2f hrs' % proj_duration)
 
+                ent_type_count = len(details.keys())
                 for ent_type, entities in details.items():
                     # Get the current averages.
                     avg = 0.0
-                    cnt = 0
                     for k, v in details['_avgs_'].items():
                         if k == ent_type:
                             avg += v
-                            cnt += 1
-                    if cnt > 0:
-                        avg = (avg / cnt) / 60.0
+                    avg = (avg / proj_count) / 60.0
 
                     if ent_type not in ['_duration_', '_avg_time_', '_avgs_']:
                         ent_type_label = QtGui.QTreeWidgetItem()
                         ent_type_label.setText(1, ent_type)
                         ent_type_duration = float(entities['_duration_']) / 60.0
                         ent_type_label.setText(6, 'Total: %0.2f hrs' % ent_type_duration)
-                        # ent_type_avg_count = len(entities['_avg_time_'])
-                        # ent_type_avg = (sum(details['_avg_time_']) / float(ent_type_avg_count)) / 60.0
-                        # ent_type_label.setText(7, 'Avg Time: %0.2f hrs' % ent_type_avg)
+                        ent_type_avg = (sum(details['_avg_time_']) / float(ent_type_count)) / 60.0
+                        ent_type_label.setText(7, 'Avg Time: %0.2f hrs' % ent_type_avg)
                         ent_type_label.setText(7, '%s avg: %0.2f hrs' % (ent_type, avg))
+
+                        entity_count = len(entities.keys())
                         for entity, steps in entities.items():
-                            print('entity: %s' % entity)
                             # Get the current averages.
                             avg = 0.0
-                            cnt = 0
                             for k, v in entities['_avgs_'].items():
-                                # FIXME: The issue here is that when I add these up (up north) they're all pre-added
-                                #       thus, there is always only one record.  So, cnt only ever equals no more than 1
                                 if k == entity:
                                     avg += v
-                                    cnt += 1
-                                    print('acc avg: %s' % avg)
-                                    print('cnt: %s' % cnt)
-                            if cnt > 0:
-                                avg = (avg / cnt) / 60.0
 
                             if entity not in ['_duration_', '_avg_time_', '_avgs_']:
                                 entity_label = QtGui.QTreeWidgetItem()
                                 entity_label.setText(2, entity)
                                 entity_duration = float(steps['_duration_']) / 60.0
                                 entity_label.setText(6, 'Total: %0.2f hrs' % entity_duration)
-                                # entity_avg_count = len(steps['_avg_time_'])
-                                # entity_avg = (sum(steps['_avg_time_']) / float(entity_avg_count)) / 60.0
-                                entity_label.setText(7, '%s avg: %0.2f hrs' % (entity, avg))
+                                entity_avg = (sum(steps['_avg_time_']) / float(entity_count)) / 60.0
+                                entity_label.setText(7, '%s avg: %0.2f hrs' % (entity, entity_avg))
+                                step_count = len(steps)
                                 for step, tasks in steps.items():
                                     if step not in ['_duration_', '_avg_time_', '_avgs_']:
                                         step_label = QtGui.QTreeWidgetItem()
                                         step_label.setText(3, step)
                                         step_duration = float(tasks['_duration_']) / 60.0
                                         step_label.setText(6, 'Total: %0.2f hrs' % step_duration)
-                                        step_avg_count = len(tasks['_avg_time_'])
-                                        step_average = (sum(tasks['_avg_time_']) / float(step_avg_count)) / 60.0
+                                        step_average = (sum(tasks['_avg_time_']) / float(step_count)) / 60.0
                                         step_label.setText(7, 'Avg Per: %0.2f hrs' % step_average)
                                         # print('task_items: %s' % tasks.items())
                                         # for artist, info in tasks.items():
