@@ -249,7 +249,14 @@ class continuum(object):
             # List all the timesheets for the user
             filters = [
                 ['user', 'is', {'type': 'HumanUser', 'id': user_id}],
-                ['sg_task_start', 'less_than', start_time]
+                ['sg_task_start', 'less_than', start_time],
+                {
+                    "filter_operator": "any",
+                    "filters": [
+                        ['sg_task_start', 'in_calendar_day', 0],
+                        ['sg_task_start', 'in_calendar_day', -1]
+                    ]
+                }
             ]
             fields = [
                 'user',
@@ -272,7 +279,9 @@ class continuum(object):
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
                 previous_timesheet = None
             if previous_timesheet:
-                return previous_timesheet
+                if previous_timesheet['sg_task_end']:
+                    if previous_timesheet['sg_task_end'].date() == datetime.datetime.now().date():
+                        return previous_timesheet
             return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
 
     def get_next_timesheet(self, user=None, start_time=None, tid=None):
