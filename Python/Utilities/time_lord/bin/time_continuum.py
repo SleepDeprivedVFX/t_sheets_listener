@@ -1107,7 +1107,7 @@ class continuum(object):
                 # print self.get_latest_timesheet(user=user)
         return timesheets
 
-    def get_all_timsheets_in_range(self, proj_id=None, start=None, end=None, all_time=False, order='desc', user=None):
+    def get_all_timsheets_in_range(self, proj_id=None, start=None, end=None, all_time=False, order='desc', users=[]):
         timesheets = []
         if start and end:
             previous_start = start - datetime.timedelta(days=1)
@@ -1130,10 +1130,23 @@ class continuum(object):
                 filters.append(
                     ['project', 'is', {'type': 'Project', 'id': int(proj_id)}]
                 )
-            if user:
-                filters.append(
-                    ['user', 'is', {'type': 'HumanUser', 'id': user['id']}]
-                )
+            if users:
+                if len(users) > 1:
+                    sub_filters = []
+                    for user in users:
+                        sub_filters.append(
+                            ['user', 'is', {'type': 'HumanUser', 'id': user['id']}]
+                        )
+                    filters.append(
+                        {
+                            'filter_operator': 'any',
+                            'filters': sub_filters
+                        }
+                    )
+                else:
+                    filters.append(
+                        ['user', 'is', {'type': 'HumanUser', 'id': users[0]['id']}]
+                    )
             fields = [
                 'user',
                 'date',

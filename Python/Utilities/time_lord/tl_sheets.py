@@ -130,9 +130,14 @@ class sheet_engine(QtCore.QThread):
         self.signals.progress.emit(['Beginning update...', progress_total])
         update_list = []
         if data:
-            start_date = data['start_date']
-            end_date = data['end_date']
+            start_date = data['start_date'].toPython()
+            end_date = data['end_date'].toPython()
+            sod = parser.parse('00:00:00').time()
+            eod = parser.parse('23:59:59').time()
+            start_date = datetime.combine(start_date, sod)
+            end_date = datetime.combine(end_date, eod)
             whose_timesheet = data['whose_timesheet']
+            # sort_by is "Date" when True and "Artist" when false.
             sort_by = data['sort_by']
             order = data['order']
 
@@ -146,23 +151,56 @@ class sheet_engine(QtCore.QThread):
             else:
                 users_list = [users.get_user_by_id(uid=whose_timesheet)]
 
+            timesheets = tl_time.get_all_timsheets_in_range(start=start_date, end=end_date, users=users_list)
+            ordered_timesheets = {}
+            if timesheets:
+                for ts in timesheets:
+                    if sort_by:
+                        ts_start = ts['sg_task_start']
+                        ts_start_date = ts_start.date()
+                        if ts_start_date not in ordered_timesheets.keys():
+                            ordered_timesheets[ts_start_date] = {}
+                        artist = ts['user']
+                        artist_id = artist['id']
+                        artist_name = artist['name']
+                        if artist_name not in ordered_timesheets[ts_start_date].keys():
+                            ordered_timesheets[ts_start_date][artist_name] = {
+                                'timesheet': [ts]
+                            }
+                        else:
+                            ordered_timesheets[ts_start_date][artist_name].setdefault('timesheet', []).append(ts)
+                    else:
+                        artist = ts['user']
+                        artist_id = artist['id']
+                        artist_name = artist['name']
+                        if artist_name not in ordered_timesheets.keys():
+                            ordered_timesheets[artist_name] = {}
+                        ts_start = ts['sg_task_start']
+                        ts_start_date = ts_start.date()
+                        if ts_start_date not in ordered_timesheets[artist_name].keys():
+                            ordered_timesheets[artist_name][ts_start_date] = {
+                                'timesheet': [ts]
+                            }
+                        else:
+                            ordered_timesheets[artist_name][ts_start_date].setdefault('timesheet', []).append(ts)
+
             # Sort by Date is True
 
             # Get the date difference
-            start_month = start_date.month()
-            start_day = start_date.day()
-            start_year = start_date.year()
-            end_month = end_date.month()
-            end_day = end_date.day()
-            end_year = end_date.year()
-            start_date = parser.parse('%02d/%02d/%02d' % (start_month, start_day, start_year))
-            end_date = parser.parse('%02d/%02d/%02d' % (end_month, end_day, end_year))
-
-            if order == 'desc':
-                date_diff = start_date - end_date
-            else:
-                date_diff = end_date - start_date
-            date_diff = date_diff.days
+            # start_month = start_date.month()
+            # start_day = start_date.day()
+            # start_year = start_date.year()
+            # end_month = end_date.month()
+            # end_day = end_date.day()
+            # end_year = end_date.year()
+            # start_date = parser.parse('%02d/%02d/%02d' % (start_month, start_day, start_year))
+            # end_date = parser.parse('%02d/%02d/%02d' % (end_month, end_day, end_year))
+            #
+            # if order == 'desc':
+            #     date_diff = start_date - end_date
+            # else:
+            #     date_diff = end_date - start_date
+            # date_diff = date_diff.days
             # NOTE: Above, I am getting the date difference from the start and end date in order to iterate
             #       through getting the time sheets.
             #       BUT, I'm wondering why I can't just get all the timesheets for a range, and then iterate
@@ -170,69 +208,70 @@ class sheet_engine(QtCore.QThread):
 
             # NOTE: It also give me a progress bar record_account and divisor for other things... which also might
             #       be unnecessary.
-            record_totals = date_diff + len(users_list)
-            progress_add = record_totals / 40  # Percentage of the progress bar this will cover
+            # record_totals = date_diff + len(users_list)
+            # progress_add = record_totals / 40  # Percentage of the progress bar this will cover
 
             # NOTE: The sort_by might also be made moot by a new algorithm.
-            if sort_by:
-                # Iterate through the days to start building the update_list
-                logger.debug('Date sorting the timesheets')
-
-                # TODO: The following might be able to be rebuilt with a single call and then iterated through
-                #       afterward (See the Reports algorithm)
-                for x in range(0, int(date_diff) + 1):
-                    if order == 'desc':
-                        date_record = end_date - timedelta(days=x)
-                    else:
-                        date_record = start_date + timedelta(days=x)
-
-                    timesheet_list = {}
-                    for this_user in users_list:
-                        user_name = this_user['name']
-                        progress_total += progress_add
-                        self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
-                        # print date_record, order
-                        print('start data A: %s' % datetime.now())
-                        timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
-                                                                             date=date_record,
-                                                                             order=order)
-                        print('end data A: %s' % datetime.now())
-                        # print timesheets
-                        timesheet_list[user_name] = timesheets
-                    update_list.append({date_record: timesheet_list})
-                    del timesheet_list
-            else:
-                # Sort by Person is True
-                logger.debug('Person sorting the timesheets')
-                for this_user in users_list:
-                    user_name = this_user['name']
-                    timesheet_list = {}
-
-                    # TODO: The following might be able to be rebuilt with a single call and then iterated through
-                    #       afterward (See the Reports algorithm)
-                    for x in range(0, int(date_diff) + 1):
-                        if order == 'desc':
-                            date_record = end_date - timedelta(days=x)
-                        else:
-                            date_record = start_date + timedelta(days=x)
-                        progress_total += progress_add
-                        self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
-                        print('start data B: %s' % datetime.now())
-                        timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
-                                                                             date=date_record,
-                                                                             order=order)
-                        print('end data B: %s' % datetime.now())
-                        # print timesheets
-                        timesheet_list[date_record] = timesheets
-                    update_list.append({user_name: timesheet_list})
-                    del timesheet_list
+            # if sort_by:
+            #     # Iterate through the days to start building the update_list
+            #     logger.debug('Date sorting the timesheets')
+            #
+            #     # TODO: The following might be able to be rebuilt with a single call and then iterated through
+            #     #       afterward (See the Reports algorithm)
+            #     for x in range(0, int(date_diff) + 1):
+            #         if order == 'desc':
+            #             date_record = end_date - timedelta(days=x)
+            #         else:
+            #             date_record = start_date + timedelta(days=x)
+            #
+            #         timesheet_list = {}
+            #         for this_user in users_list:
+            #             user_name = this_user['name']
+            #             progress_total += progress_add
+            #             self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
+            #             # print date_record, order
+            #             print('start data A: %s' % datetime.now())
+            #             timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
+            #                                                                  date=date_record,
+            #                                                                  order=order)
+            #             print('end data A: %s' % datetime.now())
+            #             # print timesheets
+            #             timesheet_list[user_name] = timesheets
+            #         update_list.append({date_record: timesheet_list})
+            #         del timesheet_list
+            # else:
+            #     # Sort by Person is True
+            #     logger.debug('Person sorting the timesheets')
+            #     for this_user in users_list:
+            #         user_name = this_user['name']
+            #         timesheet_list = {}
+            #
+            #         # TODO: The following might be able to be rebuilt with a single call and then iterated through
+            #         #       afterward (See the Reports algorithm)
+            #         for x in range(0, int(date_diff) + 1):
+            #             if order == 'desc':
+            #                 date_record = end_date - timedelta(days=x)
+            #             else:
+            #                 date_record = start_date + timedelta(days=x)
+            #             progress_total += progress_add
+            #             self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
+            #             print('start data B: %s' % datetime.now())
+            #             timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
+            #                                                                  date=date_record,
+            #                                                                  order=order)
+            #             print('end data B: %s' % datetime.now())
+            #             # print timesheets
+            #             timesheet_list[date_record] = timesheets
+            #         update_list.append({user_name: timesheet_list})
+            #         del timesheet_list
         logger.debug('Returning Update list...')
 
         progress_total = 65
         self.signals.progress.emit(['Sending the updated list...', progress_total])
         logger.debug('update list length: %s' % len(update_list))
-        self.signals.update.emit(update_list)
+        self.signals.update.emit(ordered_timesheets)
         logger.debug('Update list returned.')
+        update_list = ordered_timesheets
         return update_list
 
     def update_totals(self):
@@ -300,11 +339,11 @@ class sheets(QtGui.QWidget):
         self.engine.signals.send_task_update.connect(self.update_tasks)
 
         # NOTE: Temporary for quicker release, but the following need to go once fixed
-        self.ui.sort_by.hide()
-        self.ui.export_btn.setStyleSheet('color: rgb(120, 120, 120);')
-        self.ui.export_btn.setDisabled(True)
-        self.ui.add_time_btn.hide()
-        self.ui.pushButton.hide()
+        # self.ui.sort_by.hide()
+        # self.ui.export_btn.setStyleSheet('color: rgb(120, 120, 120);')
+        # self.ui.export_btn.setDisabled(True)
+        # self.ui.add_time_btn.hide()
+        # self.ui.pushButton.hide()
 
         # Set the saved settings.
         try:
@@ -449,6 +488,57 @@ class sheets(QtGui.QWidget):
         self.ui.editor_progress.setValue(int(progress))
 
     def update_list(self, data=None):
+        if data:
+            sort_dir = self.ui.order.currentIndex()
+
+            self.ui.sheet_tree.clear()
+            self.ui.sheet_tree.setHeaderLabels(['TS ID', 'Project', 'Asset', 'Task', 'Start', 'End',
+                                                'Duration', 'Edit'])
+            self.ui.sheet_tree.setAlternatingRowColors(True)
+
+            primary_keys = data.keys()
+            if type(primary_keys[0]) == str:
+                print(type(primary_keys[0]))
+                sort_dir = 0
+            primary_keys = sorted(primary_keys, reverse=sort_dir)
+            # Reset the sort direction
+            sort_dir = self.ui.order.currentIndex()
+
+            for primary in primary_keys:
+                print('primary: %s' % primary, type(primary))
+                if type(primary) != str:
+                    print('TURD')
+                    key = '%s' % primary
+                    secondary_sort = 0
+                else:
+                    key = primary
+                    secondary_sort = sort_dir
+                add_main_key = QtGui.QTreeWidgetItem()
+                add_main_key.setText(0, str(key))
+                secondary_keys = data[primary].keys()
+                secondary_keys = sorted(secondary_keys, reverse=secondary_sort)
+                for secondary in secondary_keys:
+                    if type(secondary) == datetime.date:
+                        sub_key = '%s' % secondary
+                    else:
+                        sub_key = secondary
+                    add_key = QtGui.QTreeWidgetItem()
+                    add_key.setFirstColumnSpanned(False)
+                    add_key.setText(0, str(sub_key))
+                    daily_total = 0.0
+                    add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
+
+                    these_timesheets = data[primary][secondary].values()[0]
+                    these_timesheets = sorted(these_timesheets, key=lambda i: i['sg_task_end'], reverse=sort_dir)
+                    # print(these_timesheets)
+                    for timesheet in these_timesheets:
+                        print(timesheet['sg_task_start'])
+
+                    add_main_key.addChild(add_key)
+
+                self.ui.sheet_tree.addTopLevelItem(add_main_key)
+
+    def update_list_OLD(self, data=None):
         if data:
             progress_total = 65
             self.update_progress(['Updating UI...', progress_total])
