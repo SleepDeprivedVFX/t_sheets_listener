@@ -1360,6 +1360,7 @@ class time_lord_ui(QtGui.QMainWindow):
         self.ui.time_minute.update()
 
     def start_time(self):
+        self.ui.clock_button.setDisabled(True)
         logger.debug('start_time activated!')
         if not self.time_lord.isRunning():
             self.time_lord.start()
@@ -1371,16 +1372,20 @@ class time_lord_ui(QtGui.QMainWindow):
         self.clock_in()
         self.update_saved_settings()
         logger.debug('clock_in() completed.')
+        self.ui.clock_button.setEnabled(True)
 
     def stop_time(self):
+        self.ui.clock_button.setDisabled(True)
         self.time_lord.clocked_in = False
         self.time_lord.kill_it = True
         self.clock_out()
         logger.debug('stop_time: clock_out() routing run')
         self.update_saved_settings()
         logger.debug('saved settings updated.')
+        self.ui.clock_button.setEnabled(True)
 
     def switch_time(self):
+        self.ui.clock_button.setDisabled(True)
         if self.selection_check():
             self.time_lord.clocked_in = False
             self.clock_out()
@@ -1388,6 +1393,7 @@ class time_lord_ui(QtGui.QMainWindow):
             self.update_saved_settings()
             if not self.time_machine.isRunning():
                 self.time_machine.start()
+        self.ui.clock_button.setEnabled(True)
 
     def clock_out(self):
         self.clock_in_button_state(0)
