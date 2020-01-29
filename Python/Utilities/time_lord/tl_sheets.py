@@ -124,6 +124,7 @@ class sheet_engine(QtCore.QThread):
 
     def prep_update(self, data):
         # Create Database to return
+        print('DATA: %s' % data)
         logger.debug('Update has been requested.  Processing...')
         progress_total = 20
         self.signals.progress.emit(['Beginning update...', progress_total])
@@ -162,27 +163,40 @@ class sheet_engine(QtCore.QThread):
             else:
                 date_diff = end_date - start_date
             date_diff = date_diff.days
+            # NOTE: Above, I am getting the date difference from the start and end date in order to iterate
+            #       through getting the time sheets.
+            #       BUT, I'm wondering why I can't just get all the timesheets for a range, and then iterate
+            #       through that single data grab.
 
+            # NOTE: It also give me a progress bar record_account and divisor for other things... which also might
+            #       be unnecessary.
             record_totals = date_diff + len(users_list)
             progress_add = record_totals / 40  # Percentage of the progress bar this will cover
 
+            # NOTE: The sort_by might also be made moot by a new algorithm.
             if sort_by:
                 # Iterate through the days to start building the update_list
                 logger.debug('Date sorting the timesheets')
+
+                # TODO: The following might be able to be rebuilt with a single call and then iterated through
+                #       afterward (See the Reports algorithm)
                 for x in range(0, int(date_diff) + 1):
                     if order == 'desc':
                         date_record = end_date - timedelta(days=x)
                     else:
                         date_record = start_date + timedelta(days=x)
+
                     timesheet_list = {}
                     for this_user in users_list:
                         user_name = this_user['name']
                         progress_total += progress_add
                         self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
                         # print date_record, order
+                        print('start data A: %s' % datetime.now())
                         timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
                                                                              date=date_record,
                                                                              order=order)
+                        print('end data A: %s' % datetime.now())
                         # print timesheets
                         timesheet_list[user_name] = timesheets
                     update_list.append({date_record: timesheet_list})
@@ -193,6 +207,9 @@ class sheet_engine(QtCore.QThread):
                 for this_user in users_list:
                     user_name = this_user['name']
                     timesheet_list = {}
+
+                    # TODO: The following might be able to be rebuilt with a single call and then iterated through
+                    #       afterward (See the Reports algorithm)
                     for x in range(0, int(date_diff) + 1):
                         if order == 'desc':
                             date_record = end_date - timedelta(days=x)
@@ -200,9 +217,11 @@ class sheet_engine(QtCore.QThread):
                             date_record = start_date + timedelta(days=x)
                         progress_total += progress_add
                         self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
+                        print('start data B: %s' % datetime.now())
                         timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
                                                                              date=date_record,
                                                                              order=order)
+                        print('end data B: %s' % datetime.now())
                         # print timesheets
                         timesheet_list[date_record] = timesheets
                     update_list.append({user_name: timesheet_list})

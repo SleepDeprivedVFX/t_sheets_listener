@@ -271,9 +271,9 @@ class continuum(object):
             ]
             try:
                 previous_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
-                                                                                        'direction': 'desc'},
-                                                                                       {'field_name': 'id',
-                                                                                        'direction': 'desc'}])
+                                                                                          'direction': 'desc'},
+                                                                                         {'field_name': 'id',
+                                                                                          'direction': 'desc'}])
                 self.logger.debug('Timesheet found: %s' % previous_timesheet)
             except (AttributeError, Exception) as e:
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
@@ -1107,7 +1107,7 @@ class continuum(object):
                 # print self.get_latest_timesheet(user=user)
         return timesheets
 
-    def get_all_timsheets_in_range(self, proj_id=None, start=None, end=None, all_time=False, order='desc'):
+    def get_all_timsheets_in_range(self, proj_id=None, start=None, end=None, all_time=False, order='desc', user=None):
         timesheets = []
         if start and end:
             previous_start = start - datetime.timedelta(days=1)
@@ -1129,6 +1129,10 @@ class continuum(object):
             if proj_id:
                 filters.append(
                     ['project', 'is', {'type': 'Project', 'id': int(proj_id)}]
+                )
+            if user:
+                filters.append(
+                    ['user', 'is', {'type': 'HumanUser', 'id': user['id']}]
                 )
             fields = [
                 'user',
