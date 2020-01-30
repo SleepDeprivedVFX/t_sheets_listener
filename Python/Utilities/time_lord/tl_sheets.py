@@ -124,7 +124,6 @@ class sheet_engine(QtCore.QThread):
 
     def prep_update(self, data):
         # Create Database to return
-        print('DATA: %s' % data)
         logger.debug('Update has been requested.  Processing...')
         progress_total = 20
         self.signals.progress.emit(['Beginning update...', progress_total])
@@ -139,12 +138,6 @@ class sheet_engine(QtCore.QThread):
             whose_timesheet = data['whose_timesheet']
             # sort_by is "Date" when True and "Artist" when false.
             sort_by = data['sort_by']
-            order = data['order']
-
-            if order == 0:
-                order = 'asc'
-            else:
-                order = 'desc'
 
             if whose_timesheet == 0:
                 users_list = users.get_all_users()
@@ -184,86 +177,6 @@ class sheet_engine(QtCore.QThread):
                         else:
                             ordered_timesheets[artist_name][ts_start_date].setdefault('timesheet', []).append(ts)
 
-            # Sort by Date is True
-
-            # Get the date difference
-            # start_month = start_date.month()
-            # start_day = start_date.day()
-            # start_year = start_date.year()
-            # end_month = end_date.month()
-            # end_day = end_date.day()
-            # end_year = end_date.year()
-            # start_date = parser.parse('%02d/%02d/%02d' % (start_month, start_day, start_year))
-            # end_date = parser.parse('%02d/%02d/%02d' % (end_month, end_day, end_year))
-            #
-            # if order == 'desc':
-            #     date_diff = start_date - end_date
-            # else:
-            #     date_diff = end_date - start_date
-            # date_diff = date_diff.days
-            # NOTE: Above, I am getting the date difference from the start and end date in order to iterate
-            #       through getting the time sheets.
-            #       BUT, I'm wondering why I can't just get all the timesheets for a range, and then iterate
-            #       through that single data grab.
-
-            # NOTE: It also give me a progress bar record_account and divisor for other things... which also might
-            #       be unnecessary.
-            # record_totals = date_diff + len(users_list)
-            # progress_add = record_totals / 40  # Percentage of the progress bar this will cover
-
-            # NOTE: The sort_by might also be made moot by a new algorithm.
-            # if sort_by:
-            #     # Iterate through the days to start building the update_list
-            #     logger.debug('Date sorting the timesheets')
-            #
-            #     # TODO: The following might be able to be rebuilt with a single call and then iterated through
-            #     #       afterward (See the Reports algorithm)
-            #     for x in range(0, int(date_diff) + 1):
-            #         if order == 'desc':
-            #             date_record = end_date - timedelta(days=x)
-            #         else:
-            #             date_record = start_date + timedelta(days=x)
-            #
-            #         timesheet_list = {}
-            #         for this_user in users_list:
-            #             user_name = this_user['name']
-            #             progress_total += progress_add
-            #             self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
-            #             # print date_record, order
-            #             print('start data A: %s' % datetime.now())
-            #             timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
-            #                                                                  date=date_record,
-            #                                                                  order=order)
-            #             print('end data A: %s' % datetime.now())
-            #             # print timesheets
-            #             timesheet_list[user_name] = timesheets
-            #         update_list.append({date_record: timesheet_list})
-            #         del timesheet_list
-            # else:
-            #     # Sort by Person is True
-            #     logger.debug('Person sorting the timesheets')
-            #     for this_user in users_list:
-            #         user_name = this_user['name']
-            #         timesheet_list = {}
-            #
-            #         # TODO: The following might be able to be rebuilt with a single call and then iterated through
-            #         #       afterward (See the Reports algorithm)
-            #         for x in range(0, int(date_diff) + 1):
-            #             if order == 'desc':
-            #                 date_record = end_date - timedelta(days=x)
-            #             else:
-            #                 date_record = start_date + timedelta(days=x)
-            #             progress_total += progress_add
-            #             self.signals.progress.emit(['Getting timesheets for %s' % user_name, progress_total])
-            #             print('start data B: %s' % datetime.now())
-            #             timesheets = tl_time.get_all_user_timesheets_by_date(user=this_user,
-            #                                                                  date=date_record,
-            #                                                                  order=order)
-            #             print('end data B: %s' % datetime.now())
-            #             # print timesheets
-            #             timesheet_list[date_record] = timesheets
-            #         update_list.append({user_name: timesheet_list})
-            #         del timesheet_list
         logger.debug('Returning Update list...')
 
         progress_total = 65
@@ -280,7 +193,7 @@ class sheet_engine(QtCore.QThread):
             weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task_id)
             self.signals.daily_total.emit(daily_total)
             self.signals.weekly_total.emit(weekly_total)
-            time.sleep(20)
+            time.sleep(2)
 
     def run(self, *args, **kwargs):
         self.update_totals()
@@ -338,12 +251,28 @@ class sheets(QtGui.QWidget):
         self.engine.signals.send_entity_update.connect(self.update_entities)
         self.engine.signals.send_task_update.connect(self.update_tasks)
 
+        # Set manual date and times
+        new_start_date = datetime.now().date()
+        new_start_time = datetime.now().time()
+        new_end_date = new_start_date
+        new_end_time = (datetime.now() + timedelta(hours=1)).time()
+
+        self.ui.new_start_date.setDate(new_start_date)
+        self.ui.new_start_time.setTime(new_start_time)
+        self.ui.new_end_date.setDate(new_end_date)
+        self.ui.new_end_time.setTime(new_end_time)
+
+        self.ui.new_entity.addItem('Select Asset/Shot', 0)
+        self.ui.add_time_btn.clicked.connect(self.req_add_time)
+        self.ui.cancel_btn.clicked.connect(self.reset_manual_form)
+        self.ui.new_artist_label.setText('%s' % user['name'])
+
         # NOTE: Temporary for quicker release, but the following need to go once fixed
-        # self.ui.sort_by.hide()
-        # self.ui.export_btn.setStyleSheet('color: rgb(120, 120, 120);')
-        # self.ui.export_btn.setDisabled(True)
-        # self.ui.add_time_btn.hide()
-        # self.ui.pushButton.hide()
+        self.ui.export_btn.setStyleSheet('color: rgb(120, 120, 120);')
+        self.ui.export_btn.setDisabled(True)
+        self.ui.excel_rdo.setDisabled(True)
+        self.ui.csv_rdo.setDisabled(True)
+        self.ui.txt_rdo.setDisabled(True)
 
         # Set the saved settings.
         try:
@@ -372,6 +301,62 @@ class sheets(QtGui.QWidget):
         self.ui.new_project.addItem('Select A Project', 0)
         for proj in all_projects:
             self.ui.new_project.addItem(proj['name'], proj['id'])
+
+    def req_add_time(self):
+        """
+        This function will collect the data and send the signal to add a new timesheet entry.
+        :return:
+        """
+        project_index = self.ui.new_project.currentIndex()
+        project = self.ui.new_project.itemData(project_index)
+        project_name = self.ui.new_project.currentText()
+        if project == 0:
+            print('ADD ALERT: You must select a project!')
+            return False
+        entity_index = self.ui.new_entity.currentIndex()
+        entity = self.ui.new_entity.itemData(entity_index)
+        if entity == 0:
+            print('ADD ALERT: You must select an entity')
+            return False
+        task_index = self.ui.new_task.currentIndex()
+        task = self.ui.new_task.itemData(task_index)
+        task_name = self.ui.new_task.currentText()
+        if task == 0:
+            print('ADD ALERT: You must select a task!')
+            return False
+
+        # Build new context and clock the user back in to what they were clocked into before lunch
+        context = {
+            'Project': {
+                'id': project,
+                'name': project_name
+            },
+            'Task': {
+                'id': task,
+                'content': task_name
+            }
+        }
+        start_date = self.ui.new_start_date.date().toPython()
+        start_time = self.ui.new_start_time.time().toPython()
+        start = datetime.combine(start_date, start_time)
+        end_date = self.ui.new_end_date.date().toPython()
+        end_time = self.ui.new_end_time.time().toPython()
+        end = datetime.combine(end_date, end_time)
+
+        # Add the timesheet
+        new_timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start)
+        if new_timesheet:
+            clock_out = tl_time.clock_out_time_sheet(timesheet=new_timesheet, clock_out=end)
+            if clock_out:
+                self.ui.new_project.setCurrentIndex(0)
+                self.ui.new_entity.clear()
+                self.ui.new_entity.addItem('Select Asset/Shot', 0)
+                self.request_update()
+
+    def reset_manual_form(self):
+        self.ui.new_project.setCurrentIndex(0)
+        self.ui.new_entity.clear()
+        self.ui.new_entity.addItem('Select Asset/Shot', 0)
 
     def req_update_entities(self, message=None):
         """
@@ -501,7 +486,6 @@ class sheets(QtGui.QWidget):
 
             primary_keys = data.keys()
             if type(primary_keys[0]) == str:
-                print(type(primary_keys[0]))
                 sort_dir = 0
             primary_keys = sorted(primary_keys, reverse=sort_dir)
             # Reset the sort direction

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_sheets.ui'
 #
-# Created: Mon Jan 20 14:22:01 2020
+# Created: Wed Jan 29 16:51:24 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -230,6 +230,7 @@ class Ui_TimeSheets(object):
         spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_9.addItem(spacerItem6)
         self.new_project = QtGui.QComboBox(self.manual_time)
+        self.new_project.setMinimumSize(QtCore.QSize(200, 0))
         self.new_project.setObjectName("new_project")
         self.horizontalLayout_9.addWidget(self.new_project)
         spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -243,6 +244,7 @@ class Ui_TimeSheets(object):
         spacerItem8 = QtGui.QSpacerItem(45, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_10.addItem(spacerItem8)
         self.new_entity = QtGui.QComboBox(self.manual_time)
+        self.new_entity.setMinimumSize(QtCore.QSize(200, 0))
         self.new_entity.setObjectName("new_entity")
         self.horizontalLayout_10.addWidget(self.new_entity)
         spacerItem9 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -256,6 +258,7 @@ class Ui_TimeSheets(object):
         spacerItem10 = QtGui.QSpacerItem(51, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_11.addItem(spacerItem10)
         self.new_task = QtGui.QComboBox(self.manual_time)
+        self.new_task.setMinimumSize(QtCore.QSize(200, 0))
         self.new_task.setObjectName("new_task")
         self.horizontalLayout_11.addWidget(self.new_task)
         spacerItem11 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -268,8 +271,11 @@ class Ui_TimeSheets(object):
         self.horizontalLayout_12.addWidget(self.new_start_time_label)
         spacerItem12 = QtGui.QSpacerItem(46, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_12.addItem(spacerItem12)
-        self.new_start_time = QtGui.QDateTimeEdit(self.manual_time)
-        self.new_start_time.setCalendarPopup(True)
+        self.new_start_date = QtGui.QDateEdit(self.manual_time)
+        self.new_start_date.setCalendarPopup(True)
+        self.new_start_date.setObjectName("new_start_date")
+        self.horizontalLayout_12.addWidget(self.new_start_date)
+        self.new_start_time = QtGui.QTimeEdit(self.manual_time)
         self.new_start_time.setObjectName("new_start_time")
         self.horizontalLayout_12.addWidget(self.new_start_time)
         spacerItem13 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -282,10 +288,13 @@ class Ui_TimeSheets(object):
         self.horizontalLayout_13.addWidget(self.new_end_label)
         spacerItem14 = QtGui.QSpacerItem(52, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_13.addItem(spacerItem14)
-        self.dateTimeEdit = QtGui.QDateTimeEdit(self.manual_time)
-        self.dateTimeEdit.setCalendarPopup(True)
-        self.dateTimeEdit.setObjectName("dateTimeEdit")
-        self.horizontalLayout_13.addWidget(self.dateTimeEdit)
+        self.new_end_date = QtGui.QDateEdit(self.manual_time)
+        self.new_end_date.setCalendarPopup(True)
+        self.new_end_date.setObjectName("new_end_date")
+        self.horizontalLayout_13.addWidget(self.new_end_date)
+        self.new_end_time = QtGui.QTimeEdit(self.manual_time)
+        self.new_end_time.setObjectName("new_end_time")
+        self.horizontalLayout_13.addWidget(self.new_end_time)
         spacerItem15 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_13.addItem(spacerItem15)
         self.verticalLayout_3.addLayout(self.horizontalLayout_13)
@@ -298,9 +307,9 @@ class Ui_TimeSheets(object):
         self.add_time_btn = QtGui.QPushButton(self.manual_time)
         self.add_time_btn.setObjectName("add_time_btn")
         self.horizontalLayout_14.addWidget(self.add_time_btn)
-        self.pushButton = QtGui.QPushButton(self.manual_time)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_14.addWidget(self.pushButton)
+        self.cancel_btn = QtGui.QPushButton(self.manual_time)
+        self.cancel_btn.setObjectName("cancel_btn")
+        self.horizontalLayout_14.addWidget(self.cancel_btn)
         self.verticalLayout_3.addLayout(self.horizontalLayout_14)
         self.tabs.addTab(self.manual_time, "")
         self.verticalLayout_5.addWidget(self.tabs)
@@ -354,6 +363,6 @@ class Ui_TimeSheets(object):
         self.new_start_time_label.setText(QtGui.QApplication.translate("TimeSheets", "Start", None, QtGui.QApplication.UnicodeUTF8))
         self.new_end_label.setText(QtGui.QApplication.translate("TimeSheets", "End", None, QtGui.QApplication.UnicodeUTF8))
         self.add_time_btn.setText(QtGui.QApplication.translate("TimeSheets", "Add", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton.setText(QtGui.QApplication.translate("TimeSheets", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
+        self.cancel_btn.setText(QtGui.QApplication.translate("TimeSheets", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
         self.tabs.setTabText(self.tabs.indexOf(self.manual_time), QtGui.QApplication.translate("TimeSheets", "Manual Time Card", None, QtGui.QApplication.UnicodeUTF8))
 

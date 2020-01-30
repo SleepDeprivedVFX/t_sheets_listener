@@ -553,7 +553,14 @@ QProgressBar::chunk {
           </spacer>
          </item>
          <item>
-          <widget class="QComboBox" name="new_project"/>
+          <widget class="QComboBox" name="new_project">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_16">
@@ -596,7 +603,14 @@ QProgressBar::chunk {
           </spacer>
          </item>
          <item>
-          <widget class="QComboBox" name="new_entity"/>
+          <widget class="QComboBox" name="new_entity">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_15">
@@ -639,7 +653,14 @@ QProgressBar::chunk {
           </spacer>
          </item>
          <item>
-          <widget class="QComboBox" name="new_task"/>
+          <widget class="QComboBox" name="new_task">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_14">
@@ -682,11 +703,14 @@ QProgressBar::chunk {
           </spacer>
          </item>
          <item>
-          <widget class="QDateTimeEdit" name="new_start_time">
+          <widget class="QDateEdit" name="new_start_date">
            <property name="calendarPopup">
             <bool>true</bool>
            </property>
           </widget>
+         </item>
+         <item>
+          <widget class="QTimeEdit" name="new_start_time"/>
          </item>
          <item>
           <spacer name="horizontalSpacer_10">
@@ -729,11 +753,14 @@ QProgressBar::chunk {
           </spacer>
          </item>
          <item>
-          <widget class="QDateTimeEdit" name="dateTimeEdit">
+          <widget class="QDateEdit" name="new_end_date">
            <property name="calendarPopup">
             <bool>true</bool>
            </property>
           </widget>
+         </item>
+         <item>
+          <widget class="QTimeEdit" name="new_end_time"/>
          </item>
          <item>
           <spacer name="horizontalSpacer_11">
@@ -786,7 +813,7 @@ QProgressBar::chunk {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="cancel_btn">
            <property name="text">
             <string>Cancel</string>
            </property>

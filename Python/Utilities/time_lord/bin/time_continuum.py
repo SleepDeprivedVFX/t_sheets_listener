@@ -225,7 +225,7 @@ class continuum(object):
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
                 latest_timesheet = None
             if latest_timesheet:
-                print('Latest: %s' % latest_timesheet)
+                # print('Latest: %s' % latest_timesheet)
                 return latest_timesheet
             return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
 
@@ -1167,7 +1167,7 @@ class continuum(object):
                 if timesheets:
                     for sheet in timesheets:
                         if type(sheet['sg_task_start']) == datetime.datetime:
-                            if str(start.date()) != str(sheet['sg_task_start'].date()):
+                            if str(start.date()) > str(sheet['sg_task_start'].date()):
                                 index = timesheets.index(sheet)
                                 timesheets.pop(index)
             except Exception as e:
