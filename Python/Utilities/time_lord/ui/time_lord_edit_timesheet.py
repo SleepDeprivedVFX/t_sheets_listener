@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_edit_timesheet.ui'
 #
-# Created: Thu Jan 16 19:34:37 2020
+# Created: Wed Jan 29 15:57:44 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_Editor(object):
     def setupUi(self, Editor):
         Editor.setObjectName("Editor")
-        Editor.resize(315, 193)
+        Editor.resize(318, 212)
         Editor.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout = QtGui.QVBoxLayout(Editor)
@@ -42,10 +42,15 @@ class Ui_Editor(object):
         self.horizontalLayout.addWidget(self.start_label)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
-        self.start = QtGui.QDateTimeEdit(Editor)
-        self.start.setCalendarPopup(True)
-        self.start.setObjectName("start")
-        self.horizontalLayout.addWidget(self.start)
+        self.start_date = QtGui.QDateEdit(Editor)
+        self.start_date.setFrame(False)
+        self.start_date.setCalendarPopup(True)
+        self.start_date.setObjectName("start_date")
+        self.horizontalLayout.addWidget(self.start_date)
+        self.start_time = QtGui.QTimeEdit(Editor)
+        self.start_time.setCalendarPopup(False)
+        self.start_time.setObjectName("start_time")
+        self.horizontalLayout.addWidget(self.start_time)
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -56,10 +61,13 @@ class Ui_Editor(object):
         self.horizontalLayout_2.addWidget(self.end_label)
         spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
-        self.end = QtGui.QDateTimeEdit(Editor)
-        self.end.setCalendarPopup(True)
-        self.end.setObjectName("end")
-        self.horizontalLayout_2.addWidget(self.end)
+        self.end_date = QtGui.QDateEdit(Editor)
+        self.end_date.setCalendarPopup(True)
+        self.end_date.setObjectName("end_date")
+        self.horizontalLayout_2.addWidget(self.end_date)
+        self.end_time = QtGui.QTimeEdit(Editor)
+        self.end_time.setObjectName("end_time")
+        self.horizontalLayout_2.addWidget(self.end_time)
         spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem4)
         self.verticalLayout.addLayout(self.horizontalLayout_2)

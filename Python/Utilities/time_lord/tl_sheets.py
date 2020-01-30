@@ -496,6 +496,9 @@ class sheets(QtGui.QWidget):
                                                 'Duration', 'Edit'])
             self.ui.sheet_tree.setAlternatingRowColors(True)
 
+            expand = None
+            expand_2 = None
+
             primary_keys = data.keys()
             if type(primary_keys[0]) == str:
                 print(type(primary_keys[0]))
@@ -505,26 +508,32 @@ class sheets(QtGui.QWidget):
             sort_dir = self.ui.order.currentIndex()
 
             for primary in primary_keys:
-                print('primary: %s' % primary, type(primary))
                 if type(primary) != str:
-                    print('TURD')
                     key = '%s' % primary
                     secondary_sort = 0
+                    record_date = primary
                 else:
                     key = primary
                     secondary_sort = sort_dir
                 add_main_key = QtGui.QTreeWidgetItem()
                 add_main_key.setText(0, str(key))
+
+                # Check to expand the first row
+                if not expand:
+                    expand = add_main_key
                 secondary_keys = data[primary].keys()
                 secondary_keys = sorted(secondary_keys, reverse=secondary_sort)
                 for secondary in secondary_keys:
                     if type(secondary) == datetime.date:
                         sub_key = '%s' % secondary
+                        record_date = secondary
                     else:
                         sub_key = secondary
                     add_key = QtGui.QTreeWidgetItem()
                     add_key.setFirstColumnSpanned(False)
                     add_key.setText(0, str(sub_key))
+                    if not expand_2:
+                        expand_2 = add_key
                     daily_total = 0.0
                     add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
 
@@ -532,11 +541,56 @@ class sheets(QtGui.QWidget):
                     these_timesheets = sorted(these_timesheets, key=lambda i: i['sg_task_end'], reverse=sort_dir)
                     # print(these_timesheets)
                     for timesheet in these_timesheets:
-                        print(timesheet['sg_task_start'])
+
+                        task_id = timesheet['entity']['id']
+                        task = timesheet['entity']['name']
+                        project = timesheet['project']['name']
+                        project_id = timesheet['project']['id']
+                        entity = timesheet['entity.Task.entity']
+                        entity_name = entity['name']
+                        entity_id = entity['id']
+                        start = timesheet['sg_task_start']
+                        start_date = start.date()
+                        if start_date == record_date:
+                            start = datetime.strftime(start, '%I:%M %p')
+                            # print(d)
+                            if timesheet['sg_task_end']:
+                                end = timesheet['sg_task_end']
+                            else:
+                                end = datetime.now()
+                            end = datetime.strftime(end, '%I:%M %p')
+                            duration = timesheet['duration'] / 60.0
+                            if task_id != lunch_task_id:
+                                daily_total += (timesheet['duration'] / 60.0)
+                            add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
+
+                            time_table = QtGui.QTreeWidgetItem(add_key, [str(timesheet['id']),
+                                                                         project,
+                                                                         entity_name,
+                                                                         task,
+                                                                         'start: %s' % start,
+                                                                         'end: %s' % end,
+                                                                         'total: %0.2f hrs' % duration,
+                                                                         'Double Click To Edit'
+                                                                         ]
+                                                               )
+                            add_key.addChild(time_table)
 
                     add_main_key.addChild(add_key)
 
                 self.ui.sheet_tree.addTopLevelItem(add_main_key)
+
+            progress_total = 100
+            self.update_progress(['Finalizing and expanding...', progress_total])
+
+            self.ui.sheet_tree.itemDoubleClicked.connect(self.edit_timesheet)
+            row = self.ui.sheet_tree.indexFromItem(expand)
+            row_2 = self.ui.sheet_tree.indexFromItem(expand_2)
+            self.ui.sheet_tree.expand(row)
+            self.ui.sheet_tree.expand(row_2)
+            self.ui.sheet_tree.resizeColumnToContents(True)
+            progress_total = 0
+            self.update_progress(['', progress_total])
 
     def update_list_OLD(self, data=None):
         if data:
@@ -700,8 +754,14 @@ class time_editor(QtGui.QDialog):
         self.editor.project.setText('PRJ: %s' % proj)
         self.editor.entity.setText('ENT: %s' % ent)
         self.editor.task.setText('TSK: %s' % task)
-        self.editor.start.setDateTime(start)
-        self.editor.end.setDateTime(end)
+        start_date = start.date()
+        start_time = start.time()
+        end_date = end.date()
+        end_time = end.time()
+        self.editor.start_date.setDate(start_date)
+        self.editor.start_time.setTime(start_time)
+        self.editor.end_date.setDate(end_date)
+        self.editor.end_time.setTime(end_time)
         self.user = user
 
         self.editor.update_btn.clicked.connect(self.update_timesheet)
@@ -720,8 +780,12 @@ class time_editor(QtGui.QDialog):
         update.addButton('No', QtGui.QMessageBox.RejectRole)
         ret = update.exec_()
         if ret == QtGui.QMessageBox.AcceptRole:
-            start = self.editor.start.dateTime().toPython()
-            end = self.editor.end.dateTime().toPython()
+            start_date = self.editor.start_date.date().toPython()
+            start_time = self.editor.start_time.time().toPython()
+            end_date = self.editor.end_date.date().toPython()
+            end_time = self.editor.end_time.time().toPython()
+            start = datetime.combine(start_date, start_time)
+            end = datetime.combine(end_date, end_time)
             logger.debug('Doing update...')
             do_update = tl_time.update_current_times(user=user, tid=tid, start_time=start, end_time=end)
             logger.debug('Updated: %s' % do_update)
