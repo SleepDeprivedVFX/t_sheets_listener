@@ -3,7 +3,7 @@ This will basically just streamline the configuration and cleanup the main code 
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.9'
+__version__ = '0.4.10'
 
 import ConfigParser
 import sys
