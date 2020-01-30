@@ -137,7 +137,7 @@ class self_destruct(QtCore.QThread):
     def check_time(self):
         while not self.kill_me:
             time.sleep(1)
-            print('Looping....')
+            # print('Looping....')
             if datetime.now() > self.close_time:
                 print('SEND CLOSE')
                 self.kill_me = True
@@ -222,11 +222,18 @@ class lunch_break(QtGui.QWidget):
         get_end_time = self.ui.end_time.time().toString()
         start_time = parser.parse(get_start_time)
         end_time = parser.parse(get_end_time)
+        print('lunch: %s' % start_time)
+        # Take the lunch start time and use it to create a "previous" out time for the existing record.
         previous_out_time = start_time
         next_start_time = end_time
+
         latest_timesheet = tl_time.get_latest_timesheet(user=user)
         current_timesheet = tl_time.get_previous_timesheet(user=user, start_time=start_time)
-        current_timesheet_out = current_timesheet['sg_task_end']
+        if current_timesheet['sg_task_start'] and current_timesheet['sg_task_end']:
+            current_timesheet_out = current_timesheet['sg_task_end']
+        else:
+            current_timesheet = latest_timesheet
+            current_timesheet_out = current_timesheet['sg_task_end']
 
         # Clock the user out of the current task at the start of lunch time.
         # FIXME: This automatically clocks someone out, but that doesn't work for manually added lunch breaks.
