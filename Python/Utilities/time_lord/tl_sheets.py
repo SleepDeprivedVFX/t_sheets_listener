@@ -273,6 +273,8 @@ class sheets(QtGui.QWidget):
         self.ui.excel_rdo.setDisabled(True)
         self.ui.csv_rdo.setDisabled(True)
         self.ui.txt_rdo.setDisabled(True)
+        self.ui.editor_progress.hide()
+        self.ui.editor_status.hide()
 
         # Set the saved settings.
         try:
@@ -311,18 +313,36 @@ class sheets(QtGui.QWidget):
         project = self.ui.new_project.itemData(project_index)
         project_name = self.ui.new_project.currentText()
         if project == 0:
-            print('ADD ALERT: You must select a project!')
+            alert = QtGui.QMessageBox()
+            alert.setText('You Must Select A Project!')
+            alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+            alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+            alert.exec_()
+            self.ui.new_project.setFocus()
             return False
         entity_index = self.ui.new_entity.currentIndex()
         entity = self.ui.new_entity.itemData(entity_index)
         if entity == 0:
-            print('ADD ALERT: You must select an entity')
+            alert = QtGui.QMessageBox()
+            alert.setText('You Must Select an Asset or Shot!')
+            alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+            alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+            alert.exec_()
+            self.ui.new_entity.setFocus()
             return False
         task_index = self.ui.new_task.currentIndex()
         task = self.ui.new_task.itemData(task_index)
         task_name = self.ui.new_task.currentText()
         if task == 0:
-            print('ADD ALERT: You must select a task!')
+            alert = QtGui.QMessageBox()
+            alert.setText('You Must Select A Task!')
+            alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+            alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+            alert.exec_()
+            self.ui.new_task.setFocus()
             return False
 
         # Build new context and clock the user back in to what they were clocked into before lunch
@@ -352,11 +372,13 @@ class sheets(QtGui.QWidget):
                 self.ui.new_entity.clear()
                 self.ui.new_entity.addItem('Select Asset/Shot', 0)
                 self.request_update()
+                self.ui.tabs.setCurrentIndex(0)
 
     def reset_manual_form(self):
         self.ui.new_project.setCurrentIndex(0)
         self.ui.new_entity.clear()
         self.ui.new_entity.addItem('Select Asset/Shot', 0)
+        self.ui.tabs.setCurrentIndex(0)
 
     def req_update_entities(self, message=None):
         """
