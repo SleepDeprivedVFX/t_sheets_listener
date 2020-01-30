@@ -205,6 +205,8 @@ class sheets(QtGui.QWidget):
 
         self.engine = sheet_engine()
 
+        self.dropdowns = sg_data.get_all_project_dropdowns(user=user)
+
         self.ui = tls.Ui_TimeSheets()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
@@ -598,97 +600,6 @@ class sheets(QtGui.QWidget):
             progress_total = 0
             self.update_progress(['', progress_total])
 
-    def update_list_OLD(self, data=None):
-        if data:
-            progress_total = 65
-            self.update_progress(['Updating UI...', progress_total])
-            self.ui.sheet_tree.clear()
-            self.ui.sheet_tree.setHeaderLabels(['TS ID', 'Project', 'Asset', 'Task', 'Start', 'End',
-                                                'Duration', 'Edit'])
-            # self.ui.sheet_tree.setColumnWidth(150, 150)
-            self.ui.sheet_tree.setAlternatingRowColors(True)
-
-            record_len = len(data)
-            progress_add = record_len / 25
-
-            record_date = datetime.now().date()
-
-            for record in data:
-                progress_total += progress_add
-                self.update_progress(['Adding timesheets...', progress_total])
-                main_key = record.keys()[0]
-                block_data = record[main_key]
-                sorted_by = type(main_key)
-                if sorted_by == datetime:
-                    record_date = main_key.date()
-                    main_key = str(main_key.date())
-                # print main_key
-
-                add_main_key = QtGui.QTreeWidgetItem()
-                add_main_key.setText(0, main_key)
-
-                for key, val in block_data.items():
-                    # print key
-                    if type(key) == datetime:
-                        key = str(key.date())
-                        record_date = key.date()
-                    add_key = QtGui.QTreeWidgetItem()
-                    add_key.setFirstColumnSpanned(False)
-                    add_key.setText(0, key)
-                    daily_total = 0.0
-                    add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
-
-                    # Set an incrementer for the next loop
-                    for timesheet in val:
-                        # sheet = sheet_editor_button(self.ui.sheet_tree, add_key, timesheet)
-                        # add_key.addChild(sheet)
-                        # print(sheet)
-                        task_id = timesheet['entity']['id']
-                        task = timesheet['entity']['name']
-                        project = timesheet['project']['name']
-                        project_id = timesheet['project']['id']
-                        entity = timesheet['entity.Task.entity']
-                        entity_name = entity['name']
-                        entity_id = entity['id']
-                        start = timesheet['sg_task_start']
-                        start_date = start.date()
-                        if start_date == record_date:
-                            start = datetime.strftime(start, '%I:%M %p')
-                            # print(d)
-                            if timesheet['sg_task_end']:
-                                end = timesheet['sg_task_end']
-                            else:
-                                end = datetime.now()
-                            end = datetime.strftime(end, '%I:%M %p')
-                            duration = timesheet['duration'] / 60.0
-                            if task_id != lunch_task_id:
-                                daily_total += (timesheet['duration'] / 60.0)
-                            add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
-
-                            time_table = QtGui.QTreeWidgetItem(add_key, [str(timesheet['id']),
-                                                                         project,
-                                                                         entity_name,
-                                                                         task,
-                                                                         'start: %s' % start,
-                                                                         'end: %s' % end,
-                                                                         'total: %0.2f hrs' % duration,
-                                                                         'Double Click To Edit'
-                                                                         ]
-                                                               )
-                            add_key.addChild(time_table)
-                    add_main_key.addChild(add_key)
-
-                self.ui.sheet_tree.addTopLevelItem(add_main_key)
-
-            progress_total = 100
-            self.update_progress(['Finalizing and expanding...', progress_total])
-
-            self.ui.sheet_tree.itemDoubleClicked.connect(self.edit_timesheet)
-            self.ui.sheet_tree.expandAll()
-            self.ui.sheet_tree.resizeColumnToContents(True)
-            progress_total = 0
-            self.update_progress(['', progress_total])
-
     def edit_timesheet(self, data=None):
         self.ui.editor_status.setText('Edit triggered!')
         self.ui.editor_progress.setValue(10)
@@ -718,7 +629,8 @@ class sheets(QtGui.QWidget):
 
                     self.ui.editor_status.setText('Sending to the Editor...')
                     self.ui.editor_progress.setValue(100)
-                    ts = time_editor(tid=ts_id, proj=project, ent=entity, task=task, start=start, end=end, user=_user)
+                    ts = time_editor(tid=ts_id, proj=project, ent=entity, task=task, start=start, end=end, user=_user,
+                                     dropdowns=self.dropdowns)
                     ts.exec_()
                     self.ui.editor_status.setText('')
                     self.ui.editor_progress.setValue(0)
@@ -749,17 +661,37 @@ class sheets(QtGui.QWidget):
 
 
 class time_editor(QtGui.QDialog):
-    def __init__(self, parent=None, tid=None, proj=None, ent=None, task=None, start=None, end=None, user=None):
+    def __init__(self, parent=None, tid=None, proj=None, ent=None, task=None, start=None, end=None, user=None,
+                 dropdowns=None):
         QtGui.QDialog.__init__(self, parent)
 
+        self.dropdowns = dropdowns
         self.editor = editor.Ui_Editor()
         self.editor.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         self.setWindowTitle("Time Editor v%s" % __version__)
         self.editor.tid.setText('TID: %s' % tid)
-        self.editor.project.setText('PRJ: %s' % proj)
-        self.editor.entity.setText('ENT: %s' % ent)
-        self.editor.task.setText('TSK: %s' % task)
+        # FIXME: Have to convert these to drop downs.... ew.... with selections...
+        #       This may go into building a new algorithm for collecting all projects, assets, shots and tasks for
+        #       everything
+        projects = dropdowns.keys()
+        self.editor.project_dd.addItem('Select Project', 0)
+        for project in projects:
+            self.editor.project_dd.addItem(project, dropdowns[project]['__specs__']['id'])
+        self.editor.project_dd.setCurrentIndex(self.editor.project_dd.findText(proj))
+        entities = dropdowns[proj].keys()
+        self.editor.entity_dd.addItem('Select Entity', 0)
+        for entity in entities:
+            if entity != '__specs__':
+                self.editor.entity_dd.addItem(entity, dropdowns[proj][entity]['__specs__']['id'])
+        self.editor.entity_dd.setCurrentIndex(self.editor.entity_dd.findText(ent))
+        tasks = dropdowns[proj][ent].keys()
+        self.editor.task_dd.addItem('Select Task', 0)
+        for tsk in tasks:
+            if tsk != '__specs__':
+                self.editor.task_dd.addItem(tsk, dropdowns[proj][ent][tsk]['__specs__']['id'])
+        self.editor.task_dd.setCurrentIndex(self.editor.task_dd.findText(task))
+
         start_date = start.date()
         start_time = start.time()
         end_date = end.date()
@@ -773,6 +705,38 @@ class time_editor(QtGui.QDialog):
         self.editor.update_btn.clicked.connect(self.update_timesheet)
         self.editor.delete_btn.clicked.connect(self.delete_timesheet)
         self.editor.cancel_btn.clicked.connect(self.reject)
+
+        self.editor.project_dd.currentIndexChanged.connect(self.update_entities)
+        self.editor.entity_dd.currentIndexChanged.connect(self.update_tasks)
+
+    def update_entities(self):
+        project = self.editor.project_dd.currentText()
+        project_id = self.editor.project_dd.itemData(self.editor.project_dd.currentIndex())
+        self.editor.entity_dd.clear()
+        self.editor.entity_dd.addItem('Select Entity', 0)
+        self.editor.task_dd.clear()
+        self.editor.task_dd.addItem('Select Task', 0)
+        entities = self.dropdowns[project].keys()
+        if project_id != 0:
+            for entity in entities:
+                if entity != '__specs__':
+                    self.editor.entity_dd.addItem(entity, self.dropdowns[project][entity]['__specs__']['id'])
+
+    def update_tasks(self):
+        project = self.editor.project_dd.currentText()
+        project_id = self.editor.project_dd.itemData(self.editor.project_dd.currentIndex())
+        entity = self.editor.entity_dd.currentText()
+        entity_id = self.editor.entity_dd.itemData(self.editor.entity_dd.currentIndex())
+        print(project, entity)
+        self.editor.task_dd.clear()
+        self.editor.task_dd.addItem('Select Task', 0)
+        if project_id != 0 and entity_id != 0:
+            if entity:
+                tasks = self.dropdowns[project][entity].keys()
+                for task in tasks:
+                    if task != '__specs__':
+                        self.editor.task_dd.addItem(task, self.dropdowns[project][entity][task]['__specs__']['id'])
+
 
     def update_timesheet(self):
         tid = self.editor.tid.text()
@@ -793,6 +757,7 @@ class time_editor(QtGui.QDialog):
             start = datetime.combine(start_date, start_time)
             end = datetime.combine(end_date, end_time)
             logger.debug('Doing update...')
+            # TODO: Add a "Conflicting Timesheet" check!
             do_update = tl_time.update_current_times(user=user, tid=tid, start_time=start, end_time=end)
             logger.debug('Updated: %s' % do_update)
             self.accept()
