@@ -1747,7 +1747,7 @@ class time_lord_ui(QtGui.QMainWindow):
                 self.time_engine.kill()
                 self.time_engine.quit()
         if self.time_machine.isRunning():
-            if self.time_machine.isRunning():
+            while self.time_machine.isRunning():
                 self.time_machine.kill()
                 self.time_machine.quit()
         if self.time_lord.isRunning():
