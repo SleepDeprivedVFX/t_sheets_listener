@@ -2201,7 +2201,6 @@ if __name__ == '__main__':
     window = time_lord_ui()
     window.show()
     splash.finish(window)
-    # sys.excepthook()  # TODO: Get this to work.
     sys.exit(app.exec_())
 
 
