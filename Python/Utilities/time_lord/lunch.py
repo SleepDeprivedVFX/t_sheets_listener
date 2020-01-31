@@ -236,15 +236,6 @@ class lunch_break(QtGui.QWidget):
             current_timesheet_out = current_timesheet['sg_task_end']
 
         # Clock the user out of the current task at the start of lunch time.
-        # FIXME: This automatically clocks someone out, but that doesn't work for manually added lunch breaks.
-        #       Needs a way to check times against previous entries and next entries.
-        #       i.e. User lunch = start: 11:00 end: 12:00.
-        #           User adds this at 3:00, but has clocked into 3 other things already since then:
-        #           job1 start: 10:30 end: 12:15
-        #           job2 start: 12:15 end: 01:30
-        #           job3 start: 01:30 end:
-        #           Search: User start time: If before current record start, get previous record.  Repeat until current
-        #           record starts after other record.  Get that timesheet ID and do the following to that timesheet.
         tl_time.clock_out_time_sheet(timesheet=current_timesheet, clock_out=previous_out_time)
 
         # Create context and create a lunch entry.
@@ -257,8 +248,8 @@ class lunch_break(QtGui.QWidget):
                 'content': self.lunch_task_name
             }
         }
-        lunch_sheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
-        lunch_timesheet = tl_time.get_timesheet_by_id(tid=lunch_sheet['id'])
+        lunch_sheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time, entry='LunchTool')
+        lunch_timesheet = tl_time.get_timesheet_by_id(tid=int(lunch_sheet['id']))
         tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=end_time)
 
         # Build new context and clock the user back in to what they were clocked into before lunch
@@ -276,7 +267,8 @@ class lunch_break(QtGui.QWidget):
         if current_timesheet['id'] == latest_timesheet['id']:
             tl_time.create_new_timesheet(user=user, context=context, start_time=next_start_time)
         else:
-            next_timesheet = tl_time.get_next_timesheet(user=user, start_time=start_time, tid=current_timesheet['id'])
+            next_timesheet = tl_time.get_next_timesheet(user=user, start_time=start_time,
+                                                        tid=int(current_timesheet['id']))
             next_sheet_start = next_timesheet['sg_task_start']
             next_sheet_start = '%s %s:%s:%s' % (next_sheet_start.date(), next_sheet_start.time().hour,
                                                 next_sheet_start.time().minute, next_sheet_start.time().second)
