@@ -943,12 +943,16 @@ class time_lord(QtCore.QThread):
             self.time_signal.log.emit('Clocking in...')
             context = data[0]
             start_time = data[1]
-            self.time_signal.mutex_1.lock()
-            timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
-            self.time_signal.log.emit('New Timesheet: %s' % timesheet['id'])
-            self.time_signal.mutex_1.unlock()
-            self.set_user_output(user=user)
-            self.time_signal.user_has_clocked_in.emit(timesheet)
+            try:
+                self.time_signal.mutex_1.lock()
+                timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
+                self.time_signal.log.emit('New Timesheet: %s' % timesheet['id'])
+                self.time_signal.mutex_1.unlock()
+                self.set_user_output(user=user)
+                self.time_signal.user_has_clocked_in.emit(timesheet)
+            except Exception as e:
+                logger.error('Failed to clock in user!', e)
+                return False
 
     def set_user_output(self, user=None):
         if self.clocked_in:
