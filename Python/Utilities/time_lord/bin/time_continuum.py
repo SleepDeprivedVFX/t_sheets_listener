@@ -31,6 +31,7 @@ class continuum(object):
         # self.logger = logging.getLogger('time continuum')
         self.sg = sg
         self.comm = comm_system.comm_sys(sg=sg, config=config, sub='continuum')
+        self.config = config
 
         # Get the TLD Time Capsule File
         self.db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')
@@ -435,6 +436,22 @@ class continuum(object):
                     self.logger.error('Failed to save the file.  Trying again in a few seconds... %s' % e)
                     time.sleep(2)
                     self.save_time_capsule(data)
+
+                # Create Note
+                note = 'Initial Timesheet Creation by %s' % entry
+                n_data = {
+                    'subject': 'New Timesheet',
+                    'content': note,
+                    'project': {'type': 'Project', 'id': project_id},
+                    'time_log_sg_history_time_logs': [
+                        {'type': 'TimeLog', 'id': timesheet['id']}
+                    ]
+                }
+                try:
+                    self.sg.create('Note', n_data)
+                except Exception as e:
+                    print('Create Note Failed: %s' % e)
+                    self.logger.error('Could not create note: %s' % e)
             return timesheet
 
     def get_running_time(self, timesheet=None):
@@ -1176,7 +1193,8 @@ class continuum(object):
                 timesheets = []
         return timesheets
 
-    def update_current_times(self, user=None, tid=None, start_time=None, end_time=None):
+    def update_current_times(self, user=None, tid=None, start_time=None, end_time=None, proj_id=None,
+                             task_id=None, reason=None):
         update = None
         if user and tid and start_time:
             data = {
@@ -1185,6 +1203,23 @@ class continuum(object):
             }
             if end_time:
                 data['sg_task_end'] = end_time
+            if proj_id:
+                data['project'] = {'type': 'Project', 'id': proj_id}
+            if task_id:
+                data['entity'] = {'type': 'Task', 'id': task_id}
+            if reason:
+                r = 'The timesheet was edited by %s with the following comment: %s' % (user['name'], reason)
+                n_data = {
+                    'subject': 'Timesheet Update',
+                    'content': r,
+                    'project': {'type': 'Project', 'id': proj_id},
+                    'time_log_sg_history_time_logs': [
+                        {'type': 'TimeLog', 'id': tid}
+                    ]
+                }
+                note = self.sg.create('Note', n_data)
+                print('NOTE: %s' % note)
+                # data['sg_history'] = [note]
             try:
                 update = self.sg.update('TimeLog', tid, data)
                 self.logger.debug('update start time output: %s' % update)
