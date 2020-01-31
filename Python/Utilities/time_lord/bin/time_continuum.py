@@ -383,7 +383,7 @@ class continuum(object):
             if comment:
                 note = note + ' with the comment: %s' % comment
             n_data = {
-                'subject': 'New Timesheet',
+                'subject': 'Clock Out!',
                 'content': note,
                 'project': {'type': 'Project', 'id': project_id},
                 'time_log_sg_history_time_logs': [
@@ -467,7 +467,7 @@ class continuum(object):
                     self.save_time_capsule(data)
 
                 # Create Note
-                note = 'Initial Timesheet Creation by %s' % entry
+                note = 'Initial Timesheet Creation by %s at %s' % (entry, start_time)
                 n_data = {
                     'subject': 'New Timesheet',
                     'content': note,
@@ -928,6 +928,25 @@ class continuum(object):
                                     tries = 0
                                     try:
                                         update = self.sg.update('TimeLog', empty['id'], data)
+
+                                        # Create Note
+                                        project_id = int(empty['project']['id'])
+                                        note = 'Closed automatically at %s by the Cleanup Process for being an ' \
+                                               'extraneous timesheet.'
+                                        n_data = {
+                                            'subject': 'Cleanup Process',
+                                            'content': note,
+                                            'project': {'type': 'Project', 'id': project_id},
+                                            'time_log_sg_history_time_logs': [
+                                                {'type': 'TimeLog', 'id': empty['id']}
+                                            ]
+                                        }
+                                        try:
+                                            self.sg.create('Note', n_data)
+                                            self.logger.debug('Note created!')
+                                        except Exception as e:
+                                            print('Create Note Failed: %s' % e)
+                                            self.logger.error('Could not create note: %s' % e)
                                     except Exception as e:
                                         # FIXME: This does nothing!
                                         tries += 1
@@ -1014,6 +1033,23 @@ class continuum(object):
                     self.logger.debug('Update Needs Approval')
                     updates.append(update)
 
+                    # Create Note
+                    project_id = int(ordered_timesheets[ts]['project']['id'])
+                    note = 'Marked "Needs Approval" for going into another day by the automatic consistency checker.'
+                    n_data = {
+                        'subject': 'Consistency Cleanup',
+                        'content': note,
+                        'project': {'type': 'Project', 'id': project_id},
+                        'time_log_sg_history_time_logs': [
+                            {'type': 'TimeLog', 'id': ordered_timesheets[ts]['id']}
+                        ]
+                    }
+                    try:
+                        self.sg.create('Note', n_data)
+                    except Exception as e:
+                        print('Create Note Failed: %s' % e)
+                        self.logger.error('Could not create note: %s' % e)
+
             # Next check for durations greater than double time hours, or durations having negative values.
             # I am currently skipping durations over 8 hours because it would get ridiculous. 12 hours seems fair here.
             duration = ordered_timesheets[ts]['duration']
@@ -1024,6 +1060,23 @@ class continuum(object):
                 update = self.sg.update('TimeLog', ordered_timesheets[ts]['id'], data)
                 self.logger.debug('Update Needs Approval on Duration')
                 updates.append(update)
+
+                # Create Note
+                project_id = int(ordered_timesheets[ts]['project']['id'])
+                note = 'Marked "Needs Approval" for excessive or negative time by the automatic consistency checker.'
+                n_data = {
+                    'subject': 'Consistency Cleanup',
+                    'content': note,
+                    'project': {'type': 'Project', 'id': project_id},
+                    'time_log_sg_history_time_logs': [
+                        {'type': 'TimeLog', 'id': ordered_timesheets[ts]['id']}
+                    ]
+                }
+                try:
+                    self.sg.create('Note', n_data)
+                except Exception as e:
+                    print('Create Note Failed: %s' % e)
+                    self.logger.error('Could not create note: %s' % e)
 
             # Check against previous time sheets
             if (ts + 1) > ts_count:
@@ -1058,6 +1111,24 @@ class continuum(object):
                         update = self.sg.update('TimeLog', previous_id, data)
                         self.logger.debug('update output: %s' % update)
                         updates.append(update)
+
+                        # Create Note
+                        project_id = int(ordered_timesheets[ts]['project']['id'])
+                        note = 'End time was adjusted automatically to %s by the Consistency Cleanup ' \
+                               'Process' % previous_end
+                        n_data = {
+                            'subject': 'Consistency Cleanup',
+                            'content': note,
+                            'project': {'type': 'Project', 'id': project_id},
+                            'time_log_sg_history_time_logs': [
+                                {'type': 'TimeLog', 'id': ordered_timesheets[ts]['id']}
+                            ]
+                        }
+                        try:
+                            self.sg.create('Note', n_data)
+                        except Exception as e:
+                            print('Create Note Failed: %s' % e)
+                            self.logger.error('Could not create note: %s' % e)
                     except AttributeError as e:
                         self.logger.error('Failed to update the TimeLog.')
                         # NOTE: I could probably add a retry here.
