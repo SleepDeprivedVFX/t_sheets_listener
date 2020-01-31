@@ -1129,6 +1129,7 @@ class continuum(object):
                         except Exception as e:
                             print('Create Note Failed: %s' % e)
                             self.logger.error('Could not create note: %s' % e)
+
                     except AttributeError as e:
                         self.logger.error('Failed to update the TimeLog.')
                         # NOTE: I could probably add a retry here.
