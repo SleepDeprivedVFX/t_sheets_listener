@@ -1034,7 +1034,10 @@ class continuum(object):
                     updates.append(update)
 
                     # Create Note
-                    project_id = int(ordered_timesheets[ts]['project']['id'])
+                    try:
+                        project_id = int(ordered_timesheets[ts]['project']['id'])
+                    except:
+                        project_id = int(self.config['admin_proj_id'])
                     note = 'Marked "Needs Approval" for going into another day by the automatic consistency checker.'
                     n_data = {
                         'subject': 'Consistency Cleanup',
@@ -1062,7 +1065,10 @@ class continuum(object):
                 updates.append(update)
 
                 # Create Note
-                project_id = int(ordered_timesheets[ts]['project']['id'])
+                try:
+                    project_id = int(ordered_timesheets[ts]['project']['id'])
+                except:
+                    project_id = int(self.config['admin_proj_id'])
                 note = 'Marked "Needs Approval" for excessive or negative time by the automatic consistency checker.'
                 n_data = {
                     'subject': 'Consistency Cleanup',
@@ -1113,7 +1119,10 @@ class continuum(object):
                         updates.append(update)
 
                         # Create Note
-                        project_id = int(ordered_timesheets[ts]['project']['id'])
+                        try:
+                            project_id = int(ordered_timesheets[ts]['project']['id'])
+                        except:
+                            project_id = int(self.config['admin_proj_id'])
                         note = 'End time was adjusted automatically to %s by the Consistency Cleanup ' \
                                'Process' % previous_end
                         n_data = {
