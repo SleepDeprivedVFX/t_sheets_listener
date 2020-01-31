@@ -1037,11 +1037,13 @@ class time_lord_ui(QtGui.QMainWindow):
         # Setup and connect the last timesheet.
         # Declare Class Variables
         self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
+
+        # If the user has no previous timesheet, create an empty one here.
         if not self.latest_timesheet['project'] and not self.latest_timesheet['entity'] \
                 and not self.latest_timesheet['date'] and not self.latest_timesheet['sg_task_start']:
             project_id = int(config['admin_proj_id'])
             task_id = int(config['admin_task_id'])
-            entity_id = self.latest_timesheet['entity.Task.entity']
+            entity_id = self.latest_timesheet['entity.Task.entity']['id']
             context = {
                 'Project': {
                     'id': project_id
