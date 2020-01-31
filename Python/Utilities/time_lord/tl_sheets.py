@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.10'
+__version__ = '0.4.11'
 
 import shotgun_api3 as sgapi
 import os

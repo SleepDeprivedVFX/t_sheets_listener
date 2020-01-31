@@ -11,7 +11,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.10'
+__version__ = '0.4.11'
 
 import os
 import sys

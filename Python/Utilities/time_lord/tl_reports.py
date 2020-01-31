@@ -22,7 +22,7 @@ import webbrowser
 
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.10'
+__version__ = '0.4.11'
 
 config = configuration.get_configuration()
 

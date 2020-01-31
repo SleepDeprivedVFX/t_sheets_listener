@@ -18,3 +18,18 @@
 2020-01-29 15:00:46,710 - time_lord_continuum | INFO : 67 - Continuum Activated!
 2020-01-29 16:16:26,204 - time_lord_continuum | INFO : 67 - Continuum Activated!
 2020-01-29 16:17:28,943 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-29 18:10:24,265 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-29 18:11:09,802 - time_lord_continuum | INFO : 67 - Continuum Activated!
+2020-01-29 18:13:09,739 - time_lord_continuum | ERROR : 605 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2020-01-29 18:16:02,638 - time_lord_continuum | ERROR : 549 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
+2020-01-30 17:33:59,243 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-01-30 17:34:29,943 - time_lord_continuum | INFO : 370 - Successfully clocked out. {'duration': 193, 'sg_task_end': '2020-01-31 01:34:26 UTC', 'type': 'TimeLog', 'id': 6096}
+2020-01-30 17:34:29,943 - time_lord_continuum | INFO : 371 - Timesheet updated.
+2020-01-30 17:34:30,038 - time_lord_continuum | ERROR : 777 - Bad connection.  Trying again...
+2020-01-30 17:34:30,038 - time_lord_continuum | ERROR : 777 - Bad connection.  Trying again...
+2020-01-30 17:34:32,953 - time_lord_continuum | INFO : 434 - Time Capsule saved!
+2020-01-30 17:34:33,216 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: 'NoneType' object has no attribute 'connections'
+2020-01-30 17:34:36,563 - time_lord_continuum | ERROR : 621 - Failed to get the timesheet! 'NoneType' object has no attribute 'connections'
+2020-01-30 17:34:43,009 - time_lord_continuum | ERROR : 712 - Could not check clocked in: 'NoneType' object has no attribute 'connections'
+2020-01-30 17:34:46,016 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: 
+2020-01-30 17:34:50,191 - time_lord_continuum | ERROR : 565 - Time sheet failed to acquire: 'NoneType' object has no attribute 'connections'
