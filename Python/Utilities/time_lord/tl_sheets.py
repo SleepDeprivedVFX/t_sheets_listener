@@ -727,7 +727,6 @@ class time_editor(QtGui.QDialog):
         project_id = self.editor.project_dd.itemData(self.editor.project_dd.currentIndex())
         entity = self.editor.entity_dd.currentText()
         entity_id = self.editor.entity_dd.itemData(self.editor.entity_dd.currentIndex())
-        print(project, entity)
         self.editor.task_dd.clear()
         self.editor.task_dd.addItem('Select Task', 0)
         if project_id != 0 and entity_id != 0:
@@ -737,10 +736,20 @@ class time_editor(QtGui.QDialog):
                     if task != '__specs__':
                         self.editor.task_dd.addItem(task, self.dropdowns[project][entity][task]['__specs__']['id'])
 
-
     def update_timesheet(self):
         tid = self.editor.tid.text()
         tid = int(tid.split(': ')[1])
+        reason = self.editor.reason.toPlainText()
+        if len(reason) < 8:
+            alert = QtGui.QMessageBox()
+            alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+            alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+            alert.setText('The reason you gave for the change does not say enough.  Please put in a reason for changing '
+                          'this timesheet.')
+            alert.exec_()
+            self.editor.reason.setFocus()
+            return False
         update = QtGui.QMessageBox()
         update.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         update.setStyleSheet("background-color: rgb(100, 100, 100);\n"
@@ -756,9 +765,13 @@ class time_editor(QtGui.QDialog):
             end_time = self.editor.end_time.time().toPython()
             start = datetime.combine(start_date, start_time)
             end = datetime.combine(end_date, end_time)
+            proj = self.editor.project_dd.itemData(self.editor.project_dd.currentIndex())
+            task = self.editor.task_dd.itemData(self.editor.task_dd.currentIndex())
+
             logger.debug('Doing update...')
             # TODO: Add a "Conflicting Timesheet" check!
-            do_update = tl_time.update_current_times(user=user, tid=tid, start_time=start, end_time=end)
+            do_update = tl_time.update_current_times(user=user, tid=tid, start_time=start, end_time=end, proj_id=proj,
+                                                     task_id=task, reason=reason)
             logger.debug('Updated: %s' % do_update)
             self.accept()
         else:
