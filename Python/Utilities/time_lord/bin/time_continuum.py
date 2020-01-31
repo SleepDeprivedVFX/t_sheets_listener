@@ -321,7 +321,7 @@ class continuum(object):
                 return previous_timesheet
             return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
 
-    def clock_out_time_sheet(self, timesheet=None, clock_out=None, auto=None):
+    def clock_out_time_sheet(self, timesheet=None, clock_out=None, auto=None, comment=None):
         start = timesheet['sg_task_start']
         start_time = start.time()
         start_date = start.date()
@@ -347,7 +347,7 @@ class continuum(object):
                         'sg_task_end',
                         'project',
                         'entity',
-                'entity.Task.entity',
+                        'entity.Task.entity',
                         'code',
                         'sg_closed'
                     ]
@@ -372,6 +372,30 @@ class continuum(object):
             except Exception as e:
                 self.logger.error('Failed to connect.  Trying again... %s' % e)
                 update = self.clock_out_time_sheet(timesheet=timesheet, clock_out=clock_out)
+
+            # Create Note
+            project_id = int(timesheet['project']['id'])
+            if auto:
+                n_auto = ' automatically'
+            else:
+                n_auto = ''
+            note = 'Clocked out%s at %s' % (n_auto, clock_out)
+            if comment:
+                note = note + ' with the comment: %s' % comment
+            n_data = {
+                'subject': 'New Timesheet',
+                'content': note,
+                'project': {'type': 'Project', 'id': project_id},
+                'time_log_sg_history_time_logs': [
+                    {'type': 'TimeLog', 'id': timesheet['id']}
+                ]
+            }
+            try:
+                self.sg.create('Note', n_data)
+            except Exception as e:
+                print('Create Note Failed: %s' % e)
+                self.logger.error('Could not create note: %s' % e)
+
             return update
         return None
 
@@ -423,8 +447,13 @@ class continuum(object):
                 self.logger.debug(timesheet)
                 current_data = self.get_time_capsule()
                 self.logger.debug(current_data)
+                if type(current_data) == dict and 'EventLogID' in current_data.keys():
+                    event_id = current_data['EventLogID']
+                else:
+                    event_id = 0
+
                 data = {
-                    'EventLogID': current_data['EventLogID'],
+                    'EventLogID': event_id,
                     'TimeLogID': timesheet['id'],
                     'current': True
                 }
@@ -669,7 +698,7 @@ class continuum(object):
             try:
                 get_lunch = self.sg.find('TimeLog', filters, fields)
             except AttributeError as e:
-                self.logger.error('Get Lunch failed.  Trying again.')
+                self.logger.error('Get Lunch failed.  Trying again.', e)
                 get_lunch = self.get_todays_lunch(user=user, lunch_id=lunch_id, lunch_proj_id=lunch_proj_id)
             if get_lunch:
                 self.logger.debug('lunch_returns: %s' % get_lunch)
