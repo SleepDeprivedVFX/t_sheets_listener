@@ -90,7 +90,11 @@ class companions(object):
                 'groups',
                 'sg_hourly'
             ]
-            user = self.sg.find_one('HumanUser', filters, fields)
+            try:
+                user = self.sg.find_one('HumanUser', filters, fields)
+            except AttributeError as e:
+                self.logger.error('Get User By ID failed: %s' % e)
+                user = None
             if user:
                 return user
         return False
