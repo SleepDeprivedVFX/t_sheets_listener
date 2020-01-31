@@ -378,7 +378,7 @@ class payroll_engine(QtCore.QThread):
                                 artist_avg += ts['duration']
                                 tree_structure[proj][ent_type][entity][task]['_avgs_'][artist] = artist_avg
                     except Exception as e:
-                        print('Fit hit the shan: %s' % e)
+                        print('Start Projects Report: Fit hit the shan: %s' % e)
                         continue
 
                 return_data['__specs__'] = {'total_time': total_time}
@@ -398,6 +398,8 @@ class reports_ui(QtGui.QWidget):
 
         self.settings = QtCore.QSettings('Adam Benson', 'time_lord_reports')
         self.last_output = self.settings.value('last_output', '.')
+        self.saved_window_position = self.settings.value('geometry', '')
+        self.restoreGeometry(self.saved_window_position)
 
         self.engine = payroll_engine()
         self.engine.start()
@@ -674,14 +676,31 @@ class reports_ui(QtGui.QWidget):
         pass
 
     def closeEvent(self, *args, **kwargs):
+        self.update_saved_settings()
         if self.engine.isRunning():
             self.engine.exit()
+
+    def update_saved_settings(self):
+        """
+        Saves the window settings
+        :return:
+        """
+        self.settings.setValue('geometry', self.saveGeometry())
 
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
+    app.setOrganizationName('AdamBenson')
+    app.setOrganizationDomain('adamdbenson.com')
+    app.setApplicationName('TimeLordReports')
+    splash_pix = QtGui.QPixmap('ui/resources/Time_Lord_Logo.png')
+    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash.setMask(splash_pix.mask())
+    splash.show()
+    app.processEvents()
     w = reports_ui()
     w.show()
+    splash.finish(w)
     sys.exit(app.exec_())
 
 
