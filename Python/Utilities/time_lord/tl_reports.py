@@ -605,7 +605,7 @@ class reports_ui(QtGui.QWidget):
                             list.addItem(thing['code'], thing['id'])
                 elif drv_obj == 'Tasks':
                     list.addItem('All Tasks')
-                    all_tasks = sg_data.get_all_tasks()
+                    all_tasks = sg_data.get_all_task_steps()
                     if all_tasks:
                         for task in all_tasks:
                             list.addItem(task)
