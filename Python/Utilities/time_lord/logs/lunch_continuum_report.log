@@ -50,3 +50,5 @@
 2020-01-30 18:11:04,161 - lunch_continuum | ERROR : 361 - Couldn't find the key: 'sg_closed'
 2020-01-30 18:11:04,280 - lunch_continuum | INFO : 370 - Successfully clocked out. {'duration': 60, 'sg_task_end': '2020-01-30 22:00:00 UTC', 'type': 'TimeLog', 'id': 6171}
 2020-01-30 18:11:04,282 - lunch_continuum | INFO : 371 - Timesheet updated.
+2020-01-31 16:41:57,111 - lunch_continuum | INFO : 68 - Continuum Activated!
+2020-01-31 16:42:05,069 - lunch_continuum | INFO : 68 - Continuum Activated!

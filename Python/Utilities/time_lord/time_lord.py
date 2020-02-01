@@ -30,7 +30,7 @@ WISH LIST:
 #       the best, but still a major pain in the ass.  Consider it sooner than later.
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.12'
+__version__ = '0.4.13'
 
 import shotgun_api3 as sgapi
 import os

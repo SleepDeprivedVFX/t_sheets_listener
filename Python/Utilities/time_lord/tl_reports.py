@@ -22,7 +22,7 @@ import webbrowser
 
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.12'
+__version__ = '0.4.13'
 
 config = configuration.get_configuration()
 
@@ -378,7 +378,7 @@ class payroll_engine(QtCore.QThread):
                                 artist_avg += ts['duration']
                                 tree_structure[proj][ent_type][entity][task]['_avgs_'][artist] = artist_avg
                     except Exception as e:
-                        print('Start Projects Report: Fit hit the shan: %s' % e)
+                        logger.error('Start Projects Report: Fit hit the shan: %s | %s' % (e, ts))
                         continue
 
                 return_data['__specs__'] = {'total_time': total_time}
@@ -502,6 +502,7 @@ class reports_ui(QtGui.QWidget):
                 proj_label.setText(6, 'Total: %0.2f hrs' % proj_duration)
 
                 ent_type_count = len(details.keys())
+                # Entity typ will be Asset or Shot
                 for ent_type, entities in details.items():
                     # Get the current averages.
                     avg = 0.0
@@ -515,6 +516,7 @@ class reports_ui(QtGui.QWidget):
                         ent_type_label.setText(1, ent_type)
                         ent_type_duration = float(entities['_duration_']) / 60.0
                         ent_type_label.setText(6, 'Total: %0.2f hrs' % ent_type_duration)
+                        # FIXME: This average is wrong.  And I may need to just get rid of the _avg_time_ field
                         ent_type_avg = (sum(details['_avg_time_']) / float(ent_type_count)) / 60.0
                         ent_type_label.setText(7, 'Avg Time: %0.2f hrs' % ent_type_avg)
                         ent_type_label.setText(7, '%s avg: %0.2f hrs' % (ent_type, avg))
@@ -532,6 +534,7 @@ class reports_ui(QtGui.QWidget):
                                 entity_label.setText(2, entity)
                                 entity_duration = float(steps['_duration_']) / 60.0
                                 entity_label.setText(6, 'Total: %0.2f hrs' % entity_duration)
+                                # FIXME: I think this average is way wrong too
                                 entity_avg = (sum(steps['_avg_time_']) / float(entity_count)) / 60.0
                                 entity_label.setText(7, '%s avg: %0.2f hrs' % (entity, entity_avg))
                                 step_count = len(steps)
@@ -541,6 +544,7 @@ class reports_ui(QtGui.QWidget):
                                         step_label.setText(3, step)
                                         step_duration = float(tasks['_duration_']) / 60.0
                                         step_label.setText(6, 'Total: %0.2f hrs' % step_duration)
+                                        # FIXME: As well as this one...
                                         step_average = (sum(tasks['_avg_time_']) / float(step_count)) / 60.0
                                         step_label.setText(7, 'Avg Per: %0.2f hrs' % step_average)
                                         # print('task_items: %s' % tasks.items())
