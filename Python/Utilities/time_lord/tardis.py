@@ -118,6 +118,7 @@ image_collector_window = None
 ui_compiler_window = None
 rollout_machine_window = None
 gozer_window = None
+reports_window = None
 
 
 class POINT(Structure):
@@ -195,6 +196,7 @@ def chronograph():
     global overtime_tool_window
     global eod_tool_window
     global payroll_window
+    global reports_window
 
     while True:
         pos = query_mouse_position()
@@ -585,6 +587,7 @@ class tardis_events:
     global overtime_tool_window
     global eod_tool_window
     global payroll_window
+    global reports_window
 
     def default(self, event, session):
         pass
@@ -1063,6 +1066,20 @@ if __name__ == '__main__':
                 time_scope_window = None
         time_scope_window = subprocess.Popen('pythonw.exe %s' % scope_path)
 
+    def reports(tardis):
+        # Admin Reports
+        print('Reports and Actuals')
+        global reports_window
+        logger.info('%s has activated the Reports Tool' % user['name'])
+        path = sys.path[0]
+        reports_path = os.path.join(path, 'tl_reports.py')
+        if reports_window:
+            try:
+                reports_window.kill()
+            except:
+                reports_window = None
+        reports_window = subprocess.Popen('pythonw.exe %s' % reports_path)
+
     # ----------------------------------------------------------------------------------------
     # Start of the Studio Tools
     # ----------------------------------------------------------------------------------------
@@ -1157,6 +1174,6 @@ if __name__ == '__main__':
                     )
     tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll, scope=scope,
            file_lister=file_lister, image_collector=image_collector, ui_compiler=ui_compiler,
-           rollout_machine=rollout_machine, gozer=gozer, time_logs=sg_time_logs, all_sessions=True)
+           rollout_machine=rollout_machine, gozer=gozer, time_logs=sg_time_logs, reports=reports, all_sessions=True)
 
 
