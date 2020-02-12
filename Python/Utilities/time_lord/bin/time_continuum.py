@@ -374,7 +374,7 @@ class continuum(object):
                 update = self.clock_out_time_sheet(timesheet=timesheet, clock_out=clock_out)
 
             # Create Note
-            project_id = int(timesheet['project']['id'])
+            project_id = int(self.config['admin_proj_id'])
             if auto:
                 n_auto = ' automatically'
             else:
@@ -471,7 +471,7 @@ class continuum(object):
                 n_data = {
                     'subject': 'New Timesheet',
                     'content': note,
-                    'project': {'type': 'Project', 'id': project_id},
+                    'project': {'type': 'Project', 'id': int(self.config['admin_proj_id'])},
                     'time_log_sg_history_time_logs': [
                         {'type': 'TimeLog', 'id': timesheet['id']}
                     ]
@@ -930,7 +930,7 @@ class continuum(object):
                                         update = self.sg.update('TimeLog', empty['id'], data)
 
                                         # Create Note
-                                        project_id = int(empty['project']['id'])
+                                        project_id = int(self.config['admin_proj_id'])
                                         note = 'Closed automatically at %s by the Cleanup Process for being an ' \
                                                'extraneous timesheet.'
                                         n_data = {
@@ -1034,10 +1034,10 @@ class continuum(object):
                     updates.append(update)
 
                     # Create Note
-                    try:
-                        project_id = int(ordered_timesheets[ts]['project']['id'])
-                    except:
-                        project_id = int(self.config['admin_proj_id'])
+                    # try:
+                    #     project_id = int(ordered_timesheets[ts]['project']['id'])
+                    # except:
+                    project_id = int(self.config['admin_proj_id'])
                     note = 'Marked "Needs Approval" for going into another day by the automatic consistency checker.'
                     n_data = {
                         'subject': 'Consistency Cleanup',
@@ -1065,10 +1065,10 @@ class continuum(object):
                 updates.append(update)
 
                 # Create Note
-                try:
-                    project_id = int(ordered_timesheets[ts]['project']['id'])
-                except:
-                    project_id = int(self.config['admin_proj_id'])
+                # try:
+                #     project_id = int(ordered_timesheets[ts]['project']['id'])
+                # except:
+                project_id = int(self.config['admin_proj_id'])
                 note = 'Marked "Needs Approval" for excessive or negative time by the automatic consistency checker.'
                 n_data = {
                     'subject': 'Consistency Cleanup',
@@ -1119,10 +1119,10 @@ class continuum(object):
                         updates.append(update)
 
                         # Create Note
-                        try:
-                            project_id = int(ordered_timesheets[ts]['project']['id'])
-                        except:
-                            project_id = int(self.config['admin_proj_id'])
+                        # try:
+                        #     project_id = int(ordered_timesheets[ts]['project']['id'])
+                        # except:
+                        project_id = int(self.config['admin_proj_id'])
                         note = 'End time was adjusted automatically to %s by the Consistency Cleanup ' \
                                'Process' % previous_end
                         n_data = {
