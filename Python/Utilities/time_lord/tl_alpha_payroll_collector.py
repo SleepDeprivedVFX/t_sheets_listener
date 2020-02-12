@@ -92,7 +92,7 @@ class payroll_engine(QtCore.QThread):
 
     def collect_payroll(self, data={}):
         if data:
-            print('Data: %s' % data)
+            # print('Data: %s' % data)
             output = data['output']
             start = data['start']
             end = data['end']
