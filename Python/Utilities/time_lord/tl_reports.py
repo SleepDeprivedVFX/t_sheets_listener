@@ -8,6 +8,7 @@ goes.
 from ui import time_lord_reports as tlr
 from PySide import QtCore, QtGui
 import xlsxwriter as xls
+from openpyxl import Workbook as xlwb
 from bin.companions import companions
 from bin import configuration
 from bin import shotgun_collect
@@ -198,6 +199,7 @@ class payroll_engine(QtCore.QThread):
             all_time = data['all_time']
             start = data['start']
             end = data['end']
+            output_path = data['output']
 
             filters = [
                 ['entity_type', 'is', 'Asset']
@@ -246,9 +248,6 @@ class payroll_engine(QtCore.QThread):
                             duration += ts['duration']
                             tree_structure[proj]['_duration_'] = duration
                             tree_structure[proj].setdefault('_avg_time_', []).append(ts['duration'])
-                            # NOTE: The _avgs_ have to be based on totals of totals, thus the following line won't
-                            #       actually work.
-                            # tree_structure[proj].setdefault('_avgs_', []).append(ts['duration'])
 
                         # ----------------------------------------------------------------------------------------
                         # Get and set the Entity Type: Usually "Asset" or "Shot"
@@ -430,6 +429,7 @@ class reports_ui(QtGui.QWidget):
             driver=self.ui.quaternary_org,
             list=self.ui.quinternary_org)
                                                            )
+        self.ui.output_path.textChanged.connect(self.set_output)
 
         # Connect the buttons
         self.ui.run_btn.clicked.connect(self.run_reports)
@@ -438,7 +438,14 @@ class reports_ui(QtGui.QWidget):
         self.engine.signals.snd_report_project_hours.connect(self.project_hours_report)
 
         # Create Main EXCEL sheet
-        self.report = xls.Workbook('temp.xlsx')
+        output = self.ui.output_path.text()
+        if output:
+            self.report = xls.Workbook(output)
+        else:
+            self.report = xls.Workbook('temp.xlsx')
+
+    def set_output(self):
+        output = self.ui.output_path.text()
 
     def run_reports(self):
         primary = self.ui.primary_org.currentText()
@@ -454,6 +461,7 @@ class reports_ui(QtGui.QWidget):
         all_time = self.ui.all_time.isChecked()
         start = self.ui.start_time.dateTime().toPython()
         end = self.ui.end_time.dateTime().toPython()
+        output_path = self.ui.output_path.text()
 
         data = {
             'primary': primary,
@@ -469,6 +477,7 @@ class reports_ui(QtGui.QWidget):
             'all_time': all_time,
             'start': start,
             'end': end,
+            'output': output_path,
         }
         self.engine.signals.req_report.emit(data)
 
