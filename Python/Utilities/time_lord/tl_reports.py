@@ -8,7 +8,7 @@ goes.
 from ui import time_lord_reports as tlr
 from PySide import QtCore, QtGui
 import xlsxwriter as xls
-from openpyxl import Workbook as xlwb
+# from openpyxl import Workbook as xlwb
 from bin.companions import companions
 from bin import configuration
 from bin import shotgun_collect
@@ -438,12 +438,11 @@ class reports_ui(QtGui.QWidget):
         self.engine.signals.snd_report_project_hours.connect(self.project_hours_report)
 
         # Create Main EXCEL sheet
-        # output = self.ui.output_path.text()
-        # if output:
-        #     self.report = xls.Workbook(output)
-        # else:
-        #     self.report = xls.Workbook('temp.xlsx')
-        self.report = xlwb()
+        output = self.ui.output_path.text()
+        if output:
+            self.report = xls.Workbook(output)
+        else:
+            self.report = xls.Workbook('temp.xlsx')
 
     def set_output(self):
         output = self.ui.output_path.text()
@@ -505,8 +504,7 @@ class reports_ui(QtGui.QWidget):
             shot_steps = data['shot_steps']
             tree_structure = data['tree_structure']
 
-            report_page = self.report.create_sheet('Project Actuals', 0)
-            report_page.title = 'Project Actuals'
+            report_page = self.report.add_worksheet('Project Actuals')
             report_page.set_column('A:A', 20)
             bold = self.report.add_format({'bold': True})
             highlight = self.report.add_format({'bg_color': 'yellow'})
