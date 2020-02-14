@@ -538,7 +538,7 @@ class reports_ui(QtGui.QWidget):
                 # Excel
                 row += 1
                 report_page.write(row, 0, proj)
-                report_page.write(row, 5, '%0.2f hrs' % proj_duration)
+                report_page.write(row, 5, proj_duration)
 
                 for ent_type, entities in details.items():
 
@@ -553,7 +553,7 @@ class reports_ui(QtGui.QWidget):
                         # Excel
                         row += 1
                         report_page.write(row, 1, ent_type)
-                        report_page.write(row, 6, '%0.2f hrs' % ent_type_duration)
+                        report_page.write(row, 6, ent_type_duration)
                         report_page.write(row, 7, '%0.2f%%' % ent_type_avg)
 
                         for entity, steps in entities.items():
@@ -574,7 +574,7 @@ class reports_ui(QtGui.QWidget):
                                 # Excel
                                 row += 1
                                 report_page.write(row, 2, entity)
-                                report_page.write(row, 8, '%0.2f hrs' % entity_duration)
+                                report_page.write(row, 8, entity_duration)
                                 report_page.write(row, 9, '%0.2f%%' % entity_avg)
 
                                 for step, tasks in steps.items():
@@ -590,7 +590,7 @@ class reports_ui(QtGui.QWidget):
                                         # Excel
                                         row += 1
                                         report_page.write(row, 3, step)
-                                        report_page.write(row, 10, '%0.2f hrs' % step_duration)
+                                        report_page.write(row, 10, step_duration)
                                         report_page.write(row, 11, '%0.2f%%' % step_average)
 
                                         for artist, hours in step_artists.items():
@@ -604,7 +604,7 @@ class reports_ui(QtGui.QWidget):
                                             # Excel
                                             row += 1
                                             report_page.write(row, 4, artist)
-                                            report_page.write(row, 12, '%0.2f hrs' % (hours / 60.0))
+                                            report_page.write(row, 12, (hours / 60.0))
                                             report_page.write(row, 13, '%0.2f%%' % artist_avg)
 
                                         entity_label.addChild(step_label)

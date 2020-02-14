@@ -322,6 +322,7 @@ def chronograph():
                             except:
                                 eod_tool_window = None
                         eod_tool_window = subprocess.Popen('%s %s' % (process, eod_launch_path))
+                        eod_tool_window.wait()
                         logger.debug('eod_launch command: %s' % eod_tool_window)
                         # eod_tool_window.wait()
                         user_clocked_in = False
