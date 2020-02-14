@@ -1,14 +1,249 @@
-2020-01-31 14:26:15,296 - sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-01-31 14:32:17,378 - sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-01-31 14:32:27,509 - sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-01-31 14:32:31,255 - sg_collection | INFO : 54 - Getting active projects
-2020-01-31 14:32:31,345 - sg_collection | INFO : 75 - Projects collected!
-2020-01-31 14:34:36,448 - sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-01-31 14:34:39,632 - sg_collection | INFO : 54 - Getting active projects
-2020-01-31 14:34:39,736 - sg_collection | INFO : 75 - Projects collected!
-2020-01-31 14:35:30,710 - sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-01-31 14:35:33,229 - sg_collection | INFO : 54 - Getting active projects
-2020-01-31 14:35:33,315 - sg_collection | INFO : 75 - Projects collected!
-2020-01-31 14:36:45,177 - sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-01-31 14:36:49,509 - sg_collection | INFO : 54 - Getting active projects
-2020-01-31 14:36:49,601 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 13:06:05,752 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 13:07:00,924 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 13:07:01,048 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 13:57:22,996 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 13:57:26,819 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 13:57:27,141 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 14:17:01,391 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 14:17:04,676 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 14:17:04,790 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 14:17:35,375 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 14:17:39,249 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 14:17:39,377 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 14:20:56,997 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 14:21:00,349 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 14:21:00,815 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 15:55:14,506 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 15:55:18,686 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 15:55:18,796 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:02:29,214 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:02:32,877 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:02:32,989 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:33:56,042 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:34:00,483 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:34:00,602 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:42:00,463 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:42:06,878 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:42:06,983 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:42:56,213 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:43:10,115 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:43:10,598 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:43:45,423 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:43:53,155 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:43:54,431 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:47:22,573 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:47:27,957 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:47:28,607 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:54:05,571 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:54:08,772 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:54:09,181 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:56:03,476 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:56:07,161 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:56:07,270 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:56:30,730 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:56:34,013 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:56:34,131 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:57:36,446 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:57:40,438 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:57:40,819 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 16:59:34,859 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 16:59:39,851 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 16:59:39,959 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:00:12,210 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:00:17,516 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:00:17,637 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:01:27,256 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:01:30,704 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:01:31,052 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:02:18,489 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:02:22,237 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:02:22,354 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:12:12,530 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:12:17,233 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:12:17,700 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:20:49,454 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:20:52,256 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:20:52,395 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:24:02,831 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:24:07,526 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:24:07,653 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:37:22,315 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:37:35,388 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:37:35,802 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:54:13,052 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:54:16,706 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:54:16,811 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:55:06,535 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:55:10,579 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:55:11,029 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:55:30,621 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:55:33,323 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:55:33,430 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:58:30,125 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:58:33,585 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:58:33,703 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 17:59:54,177 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 17:59:57,546 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 17:59:58,128 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:01:13,279 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:01:17,703 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:01:17,828 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:02:15,720 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:02:24,395 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:02:24,503 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:08:02,661 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:08:05,410 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:08:05,532 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:10:51,924 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:10:54,959 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:10:55,361 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:15:16,476 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:15:20,013 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:15:20,131 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:17:39,647 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:17:49,767 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:17:50,038 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:18:58,986 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:19:02,474 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:19:02,585 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:29:46,786 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:29:50,443 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:29:50,559 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:31:07,967 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:31:12,260 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:31:12,644 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:32:15,546 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:32:18,532 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:32:18,667 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:33:11,167 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:33:14,503 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:33:15,075 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:34:02,625 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:34:06,802 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:34:06,917 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:34:47,456 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:34:50,588 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:34:50,698 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:35:36,470 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:35:39,938 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:35:40,036 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:38:26,049 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:38:29,517 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:38:30,066 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:39:09,890 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:39:13,407 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:39:13,871 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:41:02,221 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:41:04,950 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:41:05,072 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:41:31,631 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:41:35,905 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:41:36,006 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 18:57:14,549 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 18:57:18,605 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 18:57:18,713 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 19:15:36,319 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 19:15:40,871 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 19:15:40,976 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 19:19:40,411 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 19:19:45,190 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 19:19:45,667 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 19:26:13,401 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 19:26:17,816 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 19:26:18,275 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 19:29:49,259 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 19:29:52,852 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 19:29:52,960 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 19:32:55,697 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 19:32:59,503 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 19:32:59,946 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 19:35:42,507 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 19:35:46,516 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 19:35:47,068 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 19:38:33,384 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 19:38:37,148 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 19:38:37,253 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 19:56:51,703 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 19:56:54,986 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 19:56:55,092 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 20:02:34,921 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 20:02:38,694 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 20:02:38,796 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 20:39:42,346 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 20:39:53,617 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 20:39:59,075 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 20:39:59,176 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 20:41:32,545 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 20:41:37,279 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 20:41:37,397 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 20:43:07,414 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 20:43:12,749 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 20:43:12,851 - sg_collection | INFO : 75 - Projects collected!
+2020-02-11 20:44:59,381 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 20:45:16,742 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-11 20:45:26,049 - sg_collection | INFO : 54 - Getting active projects
+2020-02-11 20:45:26,158 - sg_collection | INFO : 75 - Projects collected!
+2020-02-12 10:25:53,075 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-12 10:25:57,039 - sg_collection | INFO : 54 - Getting active projects
+2020-02-12 10:25:57,145 - sg_collection | INFO : 75 - Projects collected!
+2020-02-12 10:49:31,585 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-12 10:49:35,852 - sg_collection | INFO : 54 - Getting active projects
+2020-02-12 10:49:35,953 - sg_collection | INFO : 75 - Projects collected!
+2020-02-12 10:51:13,852 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-12 10:51:21,474 - sg_collection | INFO : 54 - Getting active projects
+2020-02-12 10:51:21,595 - sg_collection | INFO : 75 - Projects collected!
+2020-02-12 11:37:13,582 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-12 11:37:18,513 - sg_collection | INFO : 54 - Getting active projects
+2020-02-12 11:37:18,628 - sg_collection | INFO : 75 - Projects collected!
+2020-02-12 12:21:52,766 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-12 12:38:27,884 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 11:09:15,792 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 11:09:19,190 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 11:09:19,302 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 11:43:55,380 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 11:44:08,861 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 11:44:08,966 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 11:46:55,859 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 11:47:00,214 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 11:47:00,312 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 11:56:02,477 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 11:56:06,165 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 11:56:06,262 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 11:59:18,500 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 11:59:22,950 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 11:59:23,069 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:00:03,539 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 12:00:09,809 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:00:09,913 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:00:33,934 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 12:00:41,042 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:00:41,131 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:19:21,234 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 12:19:29,844 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:19:29,937 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:22:03,586 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 12:22:06,286 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:22:06,394 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:26:36,375 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 12:26:39,267 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:26:39,368 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:26:39,611 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:26:39,710 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:26:39,822 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:26:39,926 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:26:40,108 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:26:40,206 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:26:42,187 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:26:42,286 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:28:09,362 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 12:28:11,852 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:28:11,943 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:29:38,973 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 12:29:42,029 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:29:42,124 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 12:43:51,249 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 12:43:57,089 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 12:43:57,183 - sg_collection | INFO : 75 - Projects collected!
+2020-02-13 18:24:26,474 - sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-02-13 18:24:30,453 - sg_collection | INFO : 54 - Getting active projects
+2020-02-13 18:24:30,558 - sg_collection | INFO : 75 - Projects collected!

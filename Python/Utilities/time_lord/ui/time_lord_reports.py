@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_reports.ui'
 #
-# Created: Thu Jan 23 15:55:24 2020
+# Created: Wed Feb 12 12:32:32 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -110,6 +110,22 @@ class Ui_Time_Lord_Reports(object):
         spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem5)
         self.verticalLayout_8.addLayout(self.horizontalLayout)
+        self.horizontalLayout_3 = QtGui.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem6)
+        self.output_path = QtGui.QLineEdit(Time_Lord_Reports)
+        self.output_path.setObjectName("output_path")
+        self.horizontalLayout_3.addWidget(self.output_path)
+        self.browse_btn = QtGui.QPushButton(Time_Lord_Reports)
+        self.browse_btn.setObjectName("browse_btn")
+        self.horizontalLayout_3.addWidget(self.browse_btn)
+        spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem7)
+        self.save_report_btn = QtGui.QPushButton(Time_Lord_Reports)
+        self.save_report_btn.setObjectName("save_report_btn")
+        self.horizontalLayout_3.addWidget(self.save_report_btn)
+        self.verticalLayout_8.addLayout(self.horizontalLayout_3)
         self.data_tree = QtGui.QTreeWidget(Time_Lord_Reports)
         self.data_tree.setFrameShape(QtGui.QFrame.NoFrame)
         self.data_tree.setAlternatingRowColors(True)
@@ -153,5 +169,7 @@ class Ui_Time_Lord_Reports(object):
         self.quaternary_org.setItemText(0, QtGui.QApplication.translate("Time_Lord_Reports", "None", None, QtGui.QApplication.UnicodeUTF8))
         self.quinternary_org.setItemText(0, QtGui.QApplication.translate("Time_Lord_Reports", "None", None, QtGui.QApplication.UnicodeUTF8))
         self.run_btn.setText(QtGui.QApplication.translate("Time_Lord_Reports", "Run", None, QtGui.QApplication.UnicodeUTF8))
+        self.browse_btn.setText(QtGui.QApplication.translate("Time_Lord_Reports", "Browse...", None, QtGui.QApplication.UnicodeUTF8))
+        self.save_report_btn.setText(QtGui.QApplication.translate("Time_Lord_Reports", "Save Report", None, QtGui.QApplication.UnicodeUTF8))
         self.data_tree.setSortingEnabled(True)
 
