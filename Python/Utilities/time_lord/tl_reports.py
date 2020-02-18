@@ -8,6 +8,7 @@ goes.
 from ui import time_lord_reports as tlr
 from PySide import QtCore, QtGui
 import xlsxwriter as xls
+# from openpyxl import Workbook as xlwb
 from bin.companions import companions
 from bin import configuration
 from bin import shotgun_collect
@@ -22,7 +23,7 @@ import webbrowser
 
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.0.1'
+__version__ = '0.5.1'
 
 config = configuration.get_configuration()
 
@@ -78,6 +79,8 @@ lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
 class report_signals(QtCore.QObject):
     output_monitor = QtCore.Signal(dict)
     get_payroll = QtCore.Signal(dict)
+    req_report = QtCore.Signal(dict)
+    snd_report_project_hours = QtCore.Signal(dict)
 
 
 class payroll_engine(QtCore.QThread):
@@ -88,9 +91,10 @@ class payroll_engine(QtCore.QThread):
         self.signals = report_signals()
 
         # Connections
-        self.signals.get_payroll.connect(self.make_reports)
+        self.signals.get_payroll.connect(self.make_payroll_reports)
+        self.signals.req_report.connect(self.start_project_reports)
 
-    def make_reports(self, data={}):
+    def make_payroll_reports(self, data={}):
         # This saves the data into an excel spreadsheet
         if data:
             print('Data: %s' % data)
@@ -178,13 +182,223 @@ class payroll_engine(QtCore.QThread):
             # Open the Excel sheet
             webbrowser.open(output)
 
+    def start_project_reports(self, data={}):
+        return_data = {}
+        highest_value = 0.0
+        if data:
+            primary = data['primary']
+            primary_id = data['primary_id']
+            secondary = data['secondary']
+            secondary_id = data['secondary_id']
+            trinary = data['trinary']
+            trinary_id = data['trinary_id']
+            quaternary = data['quaternary']
+            quaternary_id = data['quaternary_id']
+            quinternary = data['quinternary']
+            quinternary_id = data['quinternary_id']
+            all_time = data['all_time']
+            start = data['start']
+            end = data['end']
+            output_path = data['output']
+
+            filters = [
+                ['entity_type', 'is', 'Asset']
+            ]
+            fields = ['code', 'entity_type']
+            asset_steps = sg.find('Step', filters, fields)
+            filters = [
+                ['entity_type', 'is', 'Shot']
+            ]
+            shot_steps = sg.find('Step', filters, fields)
+
+            if primary == 'Projects':
+                if secondary_id == 1:
+                    all_timesheets = tl_time.get_all_timsheets_in_range(start=start, end=end, all_time=all_time)
+                else:
+                    all_timesheets = tl_time.get_all_timsheets_in_range(proj_id=secondary_id, start=start, end=end,
+                                                                        all_time=all_time)
+                total_time = 0.0
+                projects = []
+                artists = []
+                tasks = []
+
+                tree_structure = {}
+
+                for ts in all_timesheets:
+                    try:
+                        total_time += ts['duration']
+                        if ts['project']['name'] not in projects:
+                            projects.append(ts['project']['name'])
+                        if ts['user'] not in artists:
+                            artists.append(ts['user'])
+                        if ts['entity'] not in tasks:
+                            tasks.append(ts['entity'])
+
+                        # ----------------------------------------------------------------------------------------
+                        # Add the project database
+                        proj = ts['project']['name']
+                        if proj not in tree_structure.keys():
+                            tree_structure[proj] = {
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']],
+                                '_avgs_': {}
+                            }
+                        else:
+                            duration = tree_structure[proj]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj]['_duration_'] = duration
+                            tree_structure[proj].setdefault('_avg_time_', []).append(ts['duration'])
+
+                        # ----------------------------------------------------------------------------------------
+                        # Get and set the Entity Type: Usually "Asset" or "Shot"
+                        ent_type = ts['entity.Task.entity']['type']
+                        if ent_type not in tree_structure[proj].keys():
+                            tree_structure[proj][ent_type] = {
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']],
+                                '_avgs_': {}
+                            }
+
+                            # add the averages for the parent
+                            if ent_type not in tree_structure[proj]['_avgs_'].keys():
+                                tree_structure[proj]['_avgs_'][ent_type] = ts['duration']
+                            else:
+                                ent_type_avg = tree_structure[proj]['_avgs_'][ent_type]
+                                ent_type_avg += ts['duration']
+                                tree_structure[proj]['_avgs_'][ent_type] = ent_type_avg
+                        else:
+                            duration = tree_structure[proj][ent_type]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj][ent_type]['_duration_'] = duration
+                            tree_structure[proj][ent_type].setdefault('_avg_time_', []).append(ts['duration'])
+
+                            # Add the averages for the parent
+                            if ent_type not in tree_structure[proj]['_avgs_'].keys():
+                                tree_structure[proj]['_avgs_'][ent_type] = ts['duration']
+                            else:
+                                ent_type_avg = tree_structure[proj]['_avgs_'][ent_type]
+                                ent_type_avg += ts['duration']
+                                tree_structure[proj]['_avgs_'][ent_type] = ent_type_avg
+
+                        # ----------------------------------------------------------------------------------------
+                        # Get and set the Entity data
+                        entity = ts['entity.Task.entity']['name']
+                        if entity not in tree_structure[proj][ent_type].keys():
+                            tree_structure[proj][ent_type][entity] = {
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']],
+                                '_avgs_': {}
+                            }
+
+                            # add the averages for the parent
+                            if entity not in tree_structure[proj][ent_type]['_avgs_'].keys():
+                                tree_structure[proj][ent_type]['_avgs_'][entity] = ts['duration']
+                            else:
+                                entity_avg = tree_structure[proj][ent_type]['_avgs_'][entity]
+                                entity_avg += ts['duration']
+                                tree_structure[proj][ent_type]['_avgs_'][entity] = entity_avg
+                        else:
+                            duration = tree_structure[proj][ent_type][entity]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj][ent_type][entity]['_duration_'] = duration
+                            tree_structure[proj][ent_type][entity].setdefault('_avg_time_', []).append(ts['duration'])
+
+                            # add the averages for the parent
+                            if entity not in tree_structure[proj][ent_type]['_avgs_'].keys():
+                                tree_structure[proj][ent_type]['_avgs_'][entity] = ts['duration']
+                            else:
+                                entity_avg = tree_structure[proj][ent_type]['_avgs_'][entity]
+                                entity_avg += ts['duration']
+                                tree_structure[proj][ent_type]['_avgs_'][entity] = entity_avg
+
+                        # ----------------------------------------------------------------------------------------
+                        # Get and set the task level
+                        task = ts['entity']['name'].split('.')[0]
+                        if task not in tree_structure[proj][ent_type][entity].keys():
+                            tree_structure[proj][ent_type][entity][task] = {
+                                'timesheets': [ts],
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']],
+                                '_avgs_': {}
+                            }
+
+                            # add the averages for the parent
+                            if task not in tree_structure[proj][ent_type][entity]['_avgs_'].keys():
+                                tree_structure[proj][ent_type][entity]['_avgs_'][task] = ts['duration']
+                            else:
+                                task_avg = tree_structure[proj][ent_type][entity]['_avgs_'][task]
+                                task_avg += ts['duration']
+                                tree_structure[proj][ent_type][entity]['_avgs_'][task] = task_avg
+                        else:
+                            duration = tree_structure[proj][ent_type][entity][task]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj][ent_type][entity][task].setdefault('timesheets', []).append(ts)
+                            tree_structure[proj][ent_type][entity][task].setdefault('_avg_time_',
+                                                                                    []).append(ts['duration'])
+                            tree_structure[proj][ent_type][entity][task]['_duration_'] = duration
+
+                            # add the averages for the parent
+                            if task not in tree_structure[proj][ent_type][entity]['_avgs_'].keys():
+                                tree_structure[proj][ent_type][entity]['_avgs_'][task] = ts['duration']
+                            else:
+                                task_avg = tree_structure[proj][ent_type][entity]['_avgs_'][task]
+                                task_avg += ts['duration']
+                                tree_structure[proj][ent_type][entity]['_avgs_'][task] = task_avg
+
+                        # ----------------------------------------------------------------------------------------
+                        # Set the artist name
+                        artist = ts['user']['name']
+                        if artist not in tree_structure[proj][ent_type][entity][task].keys():
+                            tree_structure[proj][ent_type][entity][task][artist] = {
+                                '_duration_': ts['duration'],
+                                '_avg_time_': [ts['duration']],
+                                '_avgs': {}
+                            }
+
+                            # add the averages for the parent
+                            if artist not in tree_structure[proj][ent_type][entity][task]['_avgs_'].keys():
+                                tree_structure[proj][ent_type][entity][task]['_avgs_'][artist] = ts['duration']
+                            else:
+                                artist_avg = tree_structure[proj][ent_type][entity][task]['_avgs_'][artist]
+                                artist_avg += ts['duration']
+                                tree_structure[proj][ent_type][entity][task]['_avgs_'][artist] = artist_avg
+                        else:
+                            duration = tree_structure[proj][ent_type][entity][task][artist]['_duration_']
+                            duration += ts['duration']
+                            tree_structure[proj][ent_type][entity][task][artist]['_duration_'] = duration
+                            tree_structure[proj][ent_type][entity][task][artist].setdefault('_avg_time_',
+                                                                                            []).append(ts['duration'])
+
+                            # add the averages for the parent
+                            if artist not in tree_structure[proj][ent_type][entity][task]['_avgs_'].keys():
+                                tree_structure[proj][ent_type][entity][task]['_avgs_'][artist] = ts['duration']
+                            else:
+                                artist_avg = tree_structure[proj][ent_type][entity][task]['_avgs_'][artist]
+                                artist_avg += ts['duration']
+                                tree_structure[proj][ent_type][entity][task]['_avgs_'][artist] = artist_avg
+                    except Exception as e:
+                        logger.error('Start Projects Report: Fit hit the shan: %s | %s' % (e, ts))
+                        continue
+
+                return_data['__specs__'] = {'total_time': total_time}
+                return_data['timesheets'] = all_timesheets
+                return_data['projects'] = projects
+                return_data['artists'] = artists
+                return_data['tasks'] = tasks
+                return_data['asset_steps'] = asset_steps
+                return_data['shot_steps'] = shot_steps
+                return_data['tree_structure'] = tree_structure
+                self.signals.snd_report_project_hours.emit(return_data)
+
 
 class reports_ui(QtGui.QWidget):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
 
-        self.settings = QtCore.QSettings('Adam Benson', 'alpha_payroll_collector')
+        self.settings = QtCore.QSettings('Adam Benson', 'time_lord_reports')
         self.last_output = self.settings.value('last_output', '.')
+        self.saved_window_position = self.settings.value('geometry', '')
+        self.restoreGeometry(self.saved_window_position)
 
         self.engine = payroll_engine()
         self.engine.start()
@@ -202,6 +416,8 @@ class reports_ui(QtGui.QWidget):
         self.ui.quaternary_org.hide()
         self.ui.quinternary_org.hide()
 
+        self.ui.all_time.setChecked(True)
+
         # Make change set connections
         self.ui.primary_org.currentIndexChanged.connect(lambda: self.set_search_options(driver=self.ui.primary_org,
                                                                                         list=self.ui.secondary_org))
@@ -213,12 +429,193 @@ class reports_ui(QtGui.QWidget):
             driver=self.ui.quaternary_org,
             list=self.ui.quinternary_org)
                                                            )
+        self.ui.output_path.textChanged.connect(self.set_output)
+
+        # Connect the buttons
+        self.ui.run_btn.clicked.connect(self.run_reports)
+
+        # Connect report processors
+        self.engine.signals.snd_report_project_hours.connect(self.project_hours_report)
+
+        # Create Main EXCEL sheet
+        output = self.ui.output_path.text()
+        if output:
+            self.report = xls.Workbook(output)
+        else:
+            self.report = xls.Workbook('temp.xlsx')
+
+    def set_output(self):
+        output = self.ui.output_path.text()
+
+    def run_reports(self):
+        primary = self.ui.primary_org.currentText()
+        primary_id = self.ui.primary_org.itemData(self.ui.primary_org.currentIndex())
+        secondary = self.ui.secondary_org.currentText()
+        secondary_id = self.ui.secondary_org.itemData(self.ui.secondary_org.currentIndex())
+        trinary = self.ui.trinary_org.currentText()
+        trinary_id = self.ui.trinary_org.itemData(self.ui.trinary_org.currentIndex())
+        quaternary = self.ui.quaternary_org.currentText()
+        quaternary_id = self.ui.quaternary_org.itemData(self.ui.quaternary_org.currentIndex())
+        quinternary = self.ui.quinternary_org.currentText()
+        quinternary_id = self.ui.quinternary_org.itemData(self.ui.quinternary_org.currentIndex())
+        all_time = self.ui.all_time.isChecked()
+        start = self.ui.start_time.dateTime().toPython()
+        end = self.ui.end_time.dateTime().toPython()
+        output_path = self.ui.output_path.text()
+
+        data = {
+            'primary': primary,
+            'primary_id': primary_id,
+            'secondary': secondary,
+            'secondary_id': secondary_id,
+            'trinary': trinary,
+            'trinary_id': trinary_id,
+            'quaternary': quaternary,
+            'quaternary_id': quaternary_id,
+            'quinternary': quinternary,
+            'quinternary_id': quinternary_id,
+            'all_time': all_time,
+            'start': start,
+            'end': end,
+            'output': output_path,
+        }
+        self.engine.signals.req_report.emit(data)
 
     def guess_dates(self):
         guess_end_date = (datetime.today() - timedelta(days=(datetime.today().isoweekday() % 7) + 1)).date()
         guess_start_date = (guess_end_date - timedelta(days=13))
         self.ui.start_time.setDate(guess_start_date)
         self.ui.end_time.setDate(guess_end_date)
+
+    def project_hours_report(self, data=None):
+        if data:
+            self.ui.data_tree.clear()
+            # header = self.ui.data_tree.horizontalHeader()
+            # header.setResizeMode(2, QtGui.QHeaderView.Stretch)
+            # row = self.ui.graphs_table.rowCount()
+            # print(row)
+            specs = data['__specs__']
+            projects = data['projects']
+            artists = data['artists']
+            tasks = data['tasks']
+            timesheets = data['timesheets']
+            total_time = float(specs['total_time'])
+            asset_steps = data['asset_steps']
+            shot_steps = data['shot_steps']
+            tree_structure = data['tree_structure']
+
+            report_page = self.report.add_worksheet('Project Actuals')
+            report_page.set_column('A:A', 20)
+            bold = self.report.add_format({'bold': True})
+            highlight = self.report.add_format({'bg_color': 'yellow'})
+            heading = self.report.add_format({'bg_color': '#CCFFFF'})
+
+            report_page.write(0, 0, 'Actuals Report for Projects')
+            report_page.write('A3', 'Project', heading)
+            report_page.write('B3', 'Entity Type', heading)
+            report_page.write('C3', 'Entity', heading)
+            report_page.write('D3', 'Task', heading)
+            report_page.write('E3', 'Artist', heading)
+            report_page.write('F3', 'Proj Hrs', heading)
+            report_page.write('G3', 'Type Hrs', heading)
+            report_page.write('H3', 'Type %% Total', heading)
+            report_page.write('I3', 'Entity Hrs', heading)
+            report_page.write('J3', 'Entity %% Total', heading)
+            report_page.write('K3', 'Task Hrs', heading)
+            report_page.write('L3', 'Task %% Total', heading)
+            report_page.write('M3', 'Artist Hrs', heading)
+            report_page.write('N3', 'Artist %% Total', heading)
+
+            row = 3
+
+            # Build the tree
+            for proj, details in tree_structure.items():
+                proj_label = QtGui.QTreeWidgetItem()
+                proj_label.setText(0, proj)
+                proj_duration = float(details['_duration_']) / 60.0
+                proj_label.setText(5, '%0.2f hrs' % proj_duration)
+
+                # Excel
+                row += 1
+                report_page.write(row, 0, proj)
+                report_page.write(row, 5, proj_duration)
+
+                for ent_type, entities in details.items():
+
+                    if ent_type not in ['_duration_', '_avg_time_', '_avgs_']:
+                        ent_type_label = QtGui.QTreeWidgetItem()
+                        ent_type_label.setText(1, ent_type)
+                        ent_type_duration = float(entities['_duration_']) / 60.0
+                        ent_type_label.setText(5, '%0.2f hrs' % ent_type_duration)
+                        ent_type_avg = ((ent_type_duration / proj_duration) * 100)
+                        ent_type_label.setText(6, '%0.2f%% time' % ent_type_avg)
+
+                        # Excel
+                        row += 1
+                        report_page.write(row, 1, ent_type)
+                        report_page.write(row, 6, ent_type_duration)
+                        report_page.write(row, 7, '%0.2f%%' % ent_type_avg)
+
+                        for entity, steps in entities.items():
+                            # Get the current averages.
+                            avg = 0.0
+                            for k, v in entities['_avgs_'].items():
+                                if k == entity:
+                                    avg += v
+
+                            if entity not in ['_duration_', '_avg_time_', '_avgs_']:
+                                entity_label = QtGui.QTreeWidgetItem()
+                                entity_label.setText(2, entity)
+                                entity_duration = float(steps['_duration_']) / 60.0
+                                entity_label.setText(5, '%0.2f Hrs' % entity_duration)
+                                entity_avg = (float(entity_duration) / float(ent_type_duration)) * 100.0
+                                entity_label.setText(6, '%0.2f%% time' % entity_avg)
+
+                                # Excel
+                                row += 1
+                                report_page.write(row, 2, entity)
+                                report_page.write(row, 8, entity_duration)
+                                report_page.write(row, 9, '%0.2f%%' % entity_avg)
+
+                                for step, tasks in steps.items():
+                                    if step not in ['_duration_', '_avg_time_', '_avgs_']:
+                                        step_label = QtGui.QTreeWidgetItem()
+                                        step_label.setText(3, step)
+                                        step_duration = float(tasks['_duration_']) / 60.0
+                                        step_label.setText(5, '%0.2f hrs' % step_duration)
+                                        step_average = step_duration / entity_duration * 100.0
+                                        step_label.setText(6, '%0.2f%% time' % step_average)
+                                        step_artists = tasks['_avgs_']
+
+                                        # Excel
+                                        row += 1
+                                        report_page.write(row, 3, step)
+                                        report_page.write(row, 10, step_duration)
+                                        report_page.write(row, 11, '%0.2f%%' % step_average)
+
+                                        for artist, hours in step_artists.items():
+                                            artist_label = QtGui.QTreeWidgetItem()
+                                            artist_label.setText(4, artist)
+                                            artist_label.setText(5, '%0.2f Hrs' % (hours / 60.0))
+                                            artist_avg = (hours / 60.0) / step_duration * 100.0
+                                            artist_label.setText(6, '%0.2f%% time' % artist_avg)
+                                            step_label.addChild(artist_label)
+
+                                            # Excel
+                                            row += 1
+                                            report_page.write(row, 4, artist)
+                                            report_page.write(row, 12, (hours / 60.0))
+                                            report_page.write(row, 13, '%0.2f%%' % artist_avg)
+
+                                        entity_label.addChild(step_label)
+                                ent_type_label.addChild(entity_label)
+                        proj_label.addChild(ent_type_label)
+
+                self.ui.data_tree.addTopLevelItem(proj_label)
+            # self.ui.data_tree.resizeColumnToContents(5)
+            # self.ui.data_tree.resizeColumnToContents(6)
+            # self.ui.data_tree.resizeColumnToContents(7)
+            self.report.close()
 
     def set_search_options(self, driver=None, list=None):
         drv_obj = driver.currentText()
@@ -240,7 +637,7 @@ class reports_ui(QtGui.QWidget):
                     all_projects = sg_data.get_active_projects()
                     if all_projects:
                         for proj in all_projects:
-                            list.addItem(proj['name'], proj['id'])
+                            list.addItem(proj['name'], int(proj['id']))
                 elif drv_obj == 'Entities (Assets)':
                     list.addItem('All Assets', 1)
                     all_assets = sg_data.get_active_assets()
@@ -264,7 +661,7 @@ class reports_ui(QtGui.QWidget):
                             list.addItem(thing['code'], thing['id'])
                 elif drv_obj == 'Tasks':
                     list.addItem('All Tasks')
-                    all_tasks = sg_data.get_all_tasks()
+                    all_tasks = sg_data.get_all_task_steps()
                     if all_tasks:
                         for task in all_tasks:
                             list.addItem(task)
@@ -272,12 +669,14 @@ class reports_ui(QtGui.QWidget):
                     list.addItem('None', 0)
             elif drv_obj_name == 'secondary_org':
                 list.show()
-                list.addItem('All Data', 1)
+                list.addItem('Total Hours', 1)
                 if driver.findText('All Artists', 1) >= 0:
-                    list.addItem('Projects', 2)
-                    list.addItem('Assets', 3)
-                    list.addItem('Shots', 4)
-                    list.addItem('Tasks', 5)
+                    list.addItem('Hours', 2)
+                    list.addItem('Projects', 3)
+                    list.addItem('Assets', 4)
+                    list.addItem('Shots', 5)
+                    list.addItem('Tasks', 6)
+                    list.addItem('Lunches', 7)
                 if driver.findText('All Projects', 1) >= 0:
                     list.addItem('Artists', 2)
                     list.addItem('Assets', 3)
@@ -315,6 +714,11 @@ class reports_ui(QtGui.QWidget):
                             list.addItem(u['name'], u['id'])
                 else:
                     list.hide()
+            elif drv_obj_name == 'quaternary_org':
+                if drv_obj == 'All Artists':
+                    list.show()
+                    # TODO: Here I will probably need to start getting actual data:
+                    #       But it's going to depend on the primary organizer
         else:
             list.clear()
             list.addItem('None', 0)
@@ -326,14 +730,31 @@ class reports_ui(QtGui.QWidget):
         pass
 
     def closeEvent(self, *args, **kwargs):
+        self.update_saved_settings()
         if self.engine.isRunning():
             self.engine.exit()
+
+    def update_saved_settings(self):
+        """
+        Saves the window settings
+        :return:
+        """
+        self.settings.setValue('geometry', self.saveGeometry())
 
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
+    app.setOrganizationName('AdamBenson')
+    app.setOrganizationDomain('adamdbenson.com')
+    app.setApplicationName('TimeLordReports')
+    splash_pix = QtGui.QPixmap('ui/resources/Time_Lord_Logo.png')
+    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash.setMask(splash_pix.mask())
+    splash.show()
+    app.processEvents()
     w = reports_ui()
     w.show()
+    splash.finish(w)
     sys.exit(app.exec_())
 
 

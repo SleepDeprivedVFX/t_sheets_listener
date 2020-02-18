@@ -24,7 +24,7 @@ from bin.comm_system import comm_sys
 from ui import time_lord_scope as tls
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.5.1'
 
 config = bin.configuration.get_configuration()
 
@@ -118,12 +118,13 @@ class scope_engine(QtCore.QThread):
                     then = parser.parse('%s %s:%s:%s' % (_date, _hours, _minutes, _seconds))
 
                     lunch = d['lunch_time']
+                    total = d['total']
 
                     # Sub timer loop for getting lunch status.
                     if second % 60 == 0:
                         # Get the lunch break and add it to the mix
                         lunch_time = tl_time.get_todays_lunch(user={'id': u}, lunch_id=lunch_task_id,
-                                                             lunch_proj_id=lunch_proj_id)
+                                                              lunch_proj_id=lunch_proj_id)
                         if lunch_time:
                             l_start = lunch_time[0]['sg_task_start']
                             l_end = lunch_time[0]['sg_task_end']
@@ -132,10 +133,12 @@ class scope_engine(QtCore.QThread):
                                 ls_hour = l_start.hour
                                 ls_min = l_start.minute
                                 ls_sec = l_start.second
-                                l_start = parser.parse('%s %2d:%2d:%2d' % (ls_date, ls_hour, ls_min, ls_sec))
+                                l_start = parser.parse('%s %s:%s:%s' % (ls_date, ls_hour, ls_min, int(ls_sec)))
                                 l_end = datetime.now()
                             lunch_duration = l_end - l_start
                             lunch = '%s' % lunch_duration
+
+                        total = tl_time.get_daily_total(user={'id': u}, lunch_id=lunch_task_id)
 
                     duration = datetime.now() - then
                     split_duration = str(duration).split(':')
@@ -145,11 +148,12 @@ class scope_engine(QtCore.QThread):
                         'uid': u,
                         'row': d['row_id'],
                         'duration': duration,
+                        'total': total,
                         'lunch_time': lunch
                     }
                     self.scope_signals.user_running_time.emit(update)
 
-                if second % 10 == 0:
+                if second % 30 == 0:
                     active_timesheets = tl_time.get_active_timesheets()
 
                     # The compare_scope_to_timesheets() function sets the self.scope.  Which in turn gives us the
@@ -209,6 +213,14 @@ class scope_engine(QtCore.QThread):
                 task_id = task['id']
                 start_time = timesheet['sg_task_start']
 
+                get_entity = timesheet['entity.Task.entity']
+                if get_entity:
+                    entity = get_entity['name']
+                    entity_id = get_entity['id']
+                else:
+                    entity = None
+                    entity_id = None
+
                 lunch_time = tl_time.get_todays_lunch(user={'id': userid}, lunch_id=lunch_task_id,
                                                       lunch_proj_id=lunch_proj_id)
                 if lunch_time:
@@ -219,23 +231,29 @@ class scope_engine(QtCore.QThread):
                         ls_hour = l_start.hour
                         ls_min = l_start.minute
                         ls_sec = l_start.second
-                        l_start = parser.parse('%s %2d:%2d:%2d' % (ls_date, ls_hour, ls_min, ls_sec))
+                        l_start = parser.parse('%s %s:%s:%s' % (ls_date, ls_hour, ls_min, int(ls_sec)))
                         l_end = datetime.now()
                     lunch_duration = l_end - l_start
                     lunch_time = '%s' % lunch_duration
                 else:
                     lunch_time = '00:00:00'
 
+                total = tl_time.get_daily_total(user=_user, lunch_id=lunch_task_id)
+                if not total:
+                    total = 0.0
+
                 current_data = {
                     'name': username,
                     'project': proj_name,
                     'proj_id': proj_id,
-                    'entity': None,
+                    'entity': entity,
+                    'entity_id': entity_id,
                     'task': task_name,
                     'task_id': task_id,
                     'start_time': start_time,
                     'row_id': None,
-                    'lunch_time': lunch_time
+                    'lunch_time': lunch_time,
+                    'total': total
                 }
 
                 if userid not in self.scope.keys():
@@ -244,12 +262,14 @@ class scope_engine(QtCore.QThread):
                         'name': username,
                         'project': proj_name,
                         'proj_id': proj_id,
-                        'entity': None,
+                        'entity': entity,
+                        'entity_id': entity_id,
                         'task': task_name,
                         'task_id': task_id,
                         'start_time': start_time,
                         'lunch_time': lunch_time,
-                        'row_id': None
+                        'row_id': None,
+                        'total': total
                     }
                 elif userid in self.scope.keys() and self.scope[userid]['task_id'] != task_id:
                     logger.debug('WRONG TASK!')
@@ -312,8 +332,9 @@ class scope(QtGui.QWidget):
 
         # Setup column widths
         header = self.ui.slave_list.horizontalHeader()
-        header.setResizeMode(4, QtGui.QHeaderView.Stretch)
-        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Task', 'Time', 'Lunch', ''])
+        self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Entity', 'Task', 'Time', 'Total',
+                                                      'Lunch', ''])
+        header.setResizeMode(7, QtGui.QHeaderView.Stretch)
 
     def window_state(self):
         state = self.ui.stay_on_top.checkState()
@@ -330,9 +351,13 @@ class scope(QtGui.QWidget):
                 row = data['row']
                 duration = data['duration']
                 lunch = data['lunch_time']
+                total = data['total']
                 logger.debug('set_user_running_time: uid: %s | row: %s' % (userid, row))
-                self.ui.slave_list.cellWidget(row, 3).setText(str(duration))
-                self.ui.slave_list.cellWidget(row, 4).setText(str(lunch))
+                self.ui.slave_list.cellWidget(row, 4).setText(str(duration))
+                self.ui.slave_list.cellWidget(row, 5).setText('%0.2f hrs' % total)
+                if total > 8.0:
+                    self.ui.slave_list.cellWidget(row, 5).setStyleSheet('color: #AA0000;')
+                self.ui.slave_list.cellWidget(row, 6).setText(str(lunch))
                 self.scope_viewer[userid]['lunch_time'] = lunch
             except (KeyError, AttributeError) as e:
                 logger.error('There was an error updating the Time Scope! %s' % e)
@@ -363,9 +388,11 @@ class scope(QtGui.QWidget):
         project = u_data['project']
         proj_id = u_data['proj_id']
         entity = u_data['entity']
+        entity_id = u_data['entity_id']
         task = u_data['task']
         task_id = u_data['task_id']
         start_time = u_data['start_time']
+        total = u_data['total']
         lunch_time = u_data['lunch_time']
 
         row = self.ui.slave_list.rowCount()
@@ -376,40 +403,58 @@ class scope(QtGui.QWidget):
         # Add the user name and tool tip
         name_label = QtGui.QLabel()
         name_label.setText(name)
-        name_label.setToolTip('%s' % uid)
+        name_label.setToolTip(str(uid))
         self.ui.slave_list.setCellWidget(row, 0, name_label)
 
         # Add the project name and tool tip
         proj_label = QtGui.QLabel()
         proj_label.setText(project)
-        proj_label.setToolTip('Project ID: %s' % proj_id)
+        proj_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Project ID: %s'
+                              '</span></p></body></html>' % proj_id)
         self.ui.slave_list.setCellWidget(row, 1, proj_label)
+
+        # Add the entity name and tool tip
+        entity_label = QtGui.QLabel()
+        entity_label.setText(entity)
+        entity_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Entity ID: %s'
+                                '</span></p></body></html>' % entity_id)
+        self.ui.slave_list.setCellWidget(row, 2, entity_label)
 
         # Add the task name and tool tip
         task_label = QtGui.QLabel()
         task_label.setText(task)
         task_tool = 'Entity: %s\n' \
                     'Task ID: %s' % (entity, task_id)
-        task_label.setToolTip(task_tool)
-        self.ui.slave_list.setCellWidget(row, 2, task_label)
+        task_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">%s'
+                              '</span></p></body></html>' % task_tool)
+        self.ui.slave_list.setCellWidget(row, 3, task_label)
 
         # Add the start time
         start_time_label = QtGui.QLabel()
         start_time_label.setText(str(start_time))
-        start_time_label.setStyleSheet('color: #0000AA;')
-        self.ui.slave_list.setCellWidget(row, 3, start_time_label)
+        start_time_label.setStyleSheet('color: #00DD00;')
+        self.ui.slave_list.setCellWidget(row, 4, start_time_label)
+
+        # Add the Total Time
+        total_label = QtGui.QLabel()
+        total_label.setText('%0.2f hrs' % total)
+        total_label.setStyleSheet('color: #0000FF;')
+        self.ui.slave_list.setCellWidget(row, 5, total_label)
 
         # Add the lunch break
         lunch_time_label = QtGui.QLabel()
         lunch_time_label.setText(str(lunch_time))
-        self.ui.slave_list.setCellWidget(row, 4, lunch_time_label)
+        self.ui.slave_list.setCellWidget(row, 6, lunch_time_label)
 
         # Create the button
         clock_out_btn = QtGui.QPushButton()
         clock_out_btn.setText('Clock Out')
         clock_out_btn.setStyleSheet('background-color: #990000;')
-        clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid))
-        self.ui.slave_list.setCellWidget(row, 5, clock_out_btn)
+        clock_out_btn.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Clock Out %s?'
+                                 '</span></p></body></html>' % name)
+        clock_out_btn.clicked.connect(lambda: self.clock_out_user(uid=uid, button=clock_out_btn))
+        self.ui.slave_list.setCellWidget(row, 7, clock_out_btn)
+        self.ui.slave_list.updateEditorGeometries()
 
         self.scope_viewer[uid] = u_data
 
@@ -437,7 +482,7 @@ class scope(QtGui.QWidget):
 
         # Search through the table and find the UID?
         row_count = self.ui.slave_list.rowCount()
-        for i in range(0, row_count-1):
+        for i in range(0, row_count):
             this_uid = int(self.ui.slave_list.cellWidget(i, 0).toolTip())
             if uid == this_uid:
                 self.ui.slave_list.removeRow(i)
@@ -471,8 +516,11 @@ class scope(QtGui.QWidget):
                 logger.error('Cannot find key: %s' % e)
         self.scope_engine.scope_viewer = self.scope_viewer
 
-    def clock_out_user(self, uid=None):
+    def clock_out_user(self, uid=None, button=None):
         logger.debug('Clock out requested for %s!' % uid)
+        if button:
+            button.setStyleSheet('background-color: rgb(150, 150, 150);')
+            button.setDisabled(True)
         _user = users.get_user_by_id(uid)
         latest_timesheet = tl_time.get_latest_timesheet(user=_user)
         clocked_out = tl_time.clock_out_time_sheet(timesheet=latest_timesheet, clock_out=datetime.now())
@@ -485,7 +533,9 @@ class scope(QtGui.QWidget):
         self.settings.setValue('stayontop', self.ui.stay_on_top.isChecked())
         self.settings.setValue('geometry', self.saveGeometry())
         if self.scope_engine.isRunning():
-            self.scope_engine.kill_it = True
+            while self.scope_engine.isRunning():
+                self.scope_engine.kill_it = True
+                self.scope_engine.quit()
         self.scope_engine.kill_it = True
         time.sleep(1)
 

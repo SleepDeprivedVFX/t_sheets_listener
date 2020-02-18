@@ -1,6 +1,6 @@
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.5.1'
 
 import datetime
 import logging
@@ -181,7 +181,7 @@ class comm_sys(object):
                     self.logger.debug('Trying again...')
                     user_id = self.get_slack_user(email=email, auth_code=auth_code, url=url)
 
-            except KeyError, e:
+            except KeyError as e:
                 self.logger.error('Key not found! %s  Trying again...' % e)
                 try:
                     t = tries + 1
@@ -189,17 +189,17 @@ class comm_sys(object):
                     if t > 5:
                         raise Exception("Too many tries!  Skipping...")
                     user_id = self.get_slack_user(email=email, auth_code=auth_code, url=url, tries=t)
-                except Exception, e:
+                except Exception as e:
                     self.logger.error('There is no saving this thing: %s' % e)
                     return None
-            except Exception, e:
+            except Exception as e:
                 try:
                     t = tries + 1
                     if t > 10:
                         self.logger.error("Too many tries!  Skipping...")
                     user_id = self.get_slack_user(email=email, auth_code=auth_code, url=url,
                                                   tries=t)
-                except Exception, e:
+                except Exception as e:
                     self.logger.error('There is no saving this thing!: %s' % e)
                     return None
         return user_id

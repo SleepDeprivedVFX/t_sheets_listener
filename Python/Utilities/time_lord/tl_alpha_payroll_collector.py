@@ -22,7 +22,7 @@ import webbrowser
 
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.0.1'
+__version__ = '0.5.1'
 
 config = configuration.get_configuration()
 
@@ -92,7 +92,7 @@ class payroll_engine(QtCore.QThread):
 
     def collect_payroll(self, data={}):
         if data:
-            print('Data: %s' % data)
+            # print('Data: %s' % data)
             output = data['output']
             start = data['start']
             end = data['end']
@@ -271,6 +271,8 @@ class payroll_ui(QtGui.QWidget):
 
     def closeEvent(self, *args, **kwargs):
         if self.engine.isRunning():
+            while self.engine.isRunning():
+                self.engine.quit()
             self.engine.exit()
 
 

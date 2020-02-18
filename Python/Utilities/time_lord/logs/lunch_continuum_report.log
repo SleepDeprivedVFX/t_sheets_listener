@@ -1,61 +1,11 @@
-2020-01-08 15:22:27,904 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:23:30,210 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:24:17,388 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:24:59,243 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:28:54,676 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:29:42,913 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:31:59,061 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:48:37,079 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:54:00,114 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:54:37,861 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:55:20,084 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 15:56:30,638 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 16:00:37,440 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 16:06:36,252 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 16:11:07,128 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 16:15:22,720 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 16:15:34,619 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-08 16:23:24,996 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 14:03:47,760 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 14:04:00,752 - lunch_continuum | INFO : 283 - Successfully clocked out. {'duration': 214, 'sg_task_end': '2020-01-09 21:39:54 UTC', 'type': 'TimeLog', 'id': 4593}
-2020-01-09 14:04:00,753 - lunch_continuum | INFO : 284 - Timesheet updated.
-2020-01-09 14:04:00,987 - lunch_continuum | INFO : 347 - Time Capsule saved!
-2020-01-09 14:04:01,319 - lunch_continuum | INFO : 283 - Successfully clocked out. {'duration': 23, 'sg_task_end': '2020-01-09 22:03:45 UTC', 'type': 'TimeLog', 'id': 4614}
-2020-01-09 14:04:01,319 - lunch_continuum | INFO : 284 - Timesheet updated.
-2020-01-09 14:04:01,555 - lunch_continuum | INFO : 347 - Time Capsule saved!
-2020-01-09 14:51:03,029 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:01:01,908 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:04:02,892 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:25:13,250 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:33:47,532 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:35:52,647 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:37:20,671 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:37:49,476 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:40:15,003 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:41:01,706 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:41:25,480 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:43:04,157 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:44:07,890 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:44:40,510 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:45:27,690 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:46:43,944 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:48:18,930 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:50:14,098 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:52:29,450 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:53:49,459 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:56:49,984 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:58:19,361 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 15:59:04,526 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 16:00:07,211 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 16:00:07,585 - lunch_continuum | INFO : 582 - No lunch for you!
-2020-01-09 16:00:38,961 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 16:01:42,302 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 16:02:22,763 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 16:04:02,012 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 16:04:02,430 - lunch_continuum | INFO : 582 - No lunch for you!
-2020-01-09 16:06:32,721 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 16:06:33,091 - lunch_continuum | INFO : 582 - No lunch for you!
-2020-01-09 16:07:20,219 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-09 16:07:20,605 - lunch_continuum | INFO : 582 - No lunch for you!
-2020-01-09 16:07:40,875 - lunch_continuum | INFO : 67 - Continuum Activated!
-2020-01-10 13:35:28,457 - lunch_continuum | INFO : 67 - Continuum Activated!
+2020-02-10 14:24:02,463 - lunch_continuum | INFO : 68 - Continuum Activated!
+2020-02-10 14:24:02,993 - lunch_continuum | INFO : 715 - No lunch for you!
+2020-02-11 13:56:10,891 - lunch_continuum | INFO : 68 - Continuum Activated!
+2020-02-11 13:56:11,431 - lunch_continuum | INFO : 715 - No lunch for you!
+2020-02-11 13:56:19,072 - lunch_continuum | INFO : 370 - Successfully clocked out. {'duration': 238, 'sg_task_end': '2020-02-11 21:28:54 UTC', 'type': 'TimeLog', 'id': 6900}
+2020-02-11 13:56:19,075 - lunch_continuum | INFO : 371 - Timesheet updated.
+2020-02-11 13:56:19,871 - lunch_continuum | INFO : 463 - Time Capsule saved!
+2020-02-11 13:56:20,242 - lunch_continuum | ERROR : 361 - Couldn't find the key: 'sg_closed'
+2020-02-11 13:56:20,433 - lunch_continuum | INFO : 370 - Successfully clocked out. {'duration': 27, 'sg_task_end': '2020-02-11 21:56:05 UTC', 'type': 'TimeLog', 'id': 6903}
+2020-02-11 13:56:20,433 - lunch_continuum | INFO : 371 - Timesheet updated.
+2020-02-11 13:56:21,010 - lunch_continuum | INFO : 463 - Time Capsule saved!

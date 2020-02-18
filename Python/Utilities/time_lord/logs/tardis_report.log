@@ -1,758 +1,402 @@
-2020-01-06 11:31:35,328 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 11:31:35,852 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 11:31:35,956 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 11:31:36,073 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 11:31:36,170 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 11:31:36,253 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 11:32:11,539 - tardis_report | INFO : 859 - Adam Benson has quit their TARDIS!
-2020-01-06 11:32:35,552 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 11:32:36,078 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 11:32:36,164 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 11:32:36,267 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 11:32:36,346 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 11:32:36,421 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 11:32:55,151 - tardis_report | INFO : 859 - Adam Benson has quit their TARDIS!
-2020-01-06 11:33:29,842 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 11:33:30,357 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 11:33:30,453 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 11:33:30,575 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 11:33:30,654 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 11:33:30,730 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 11:33:47,267 - tardis_report | INFO : 859 - Adam Benson has quit their TARDIS!
-2020-01-06 11:36:06,082 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 11:36:06,611 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 11:36:06,694 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 11:36:06,802 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 11:36:06,887 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 11:36:06,984 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 11:44:56,335 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 11:46:12,506 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 11:46:39,184 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 11:52:34,002 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 11:52:59,744 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 11:54:49,138 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 11:55:49,209 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:01:24,223 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:02:09,371 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:05:11,990 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:06:24,131 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:06:35,289 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 12:06:35,769 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 12:06:35,849 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 12:06:35,967 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 12:06:36,046 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 12:06:36,131 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 12:06:50,624 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:07:45,686 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 12:07:46,181 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 12:07:46,267 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 12:07:46,365 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 12:07:46,440 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 12:07:46,525 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 12:07:50,678 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:08:43,418 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 12:08:43,951 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 12:08:44,105 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 12:08:44,210 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 12:08:44,305 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 12:08:44,398 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 12:09:02,582 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 12:09:03,141 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 12:09:03,232 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 12:09:03,351 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 12:09:03,440 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 12:09:03,535 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 12:09:44,052 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:12:13,242 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:12:45,302 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:34:59,290 - tardis_report | INFO : 865 - Adam Benson has activated the Payroll tool
-2020-01-06 12:35:06,315 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:40:21,154 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:42:36,463 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:43:13,329 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:44:13,203 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:47:06,548 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:48:13,092 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:48:47,549 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:50:08,206 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:50:29,104 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:51:58,361 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:52:25,119 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:55:42,776 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:58:20,658 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 12:59:22,644 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 13:01:17,519 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 13:02:53,917 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 13:04:19,799 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 13:15:02,403 - tardis_report | INFO : 859 - Adam Benson has quit their TARDIS!
-2020-01-06 14:07:20,351 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 14:07:20,872 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 14:07:20,961 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 14:07:21,085 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 14:07:21,184 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 14:07:21,272 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 14:33:54,213 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 14:38:58,569 - tardis_report | INFO : 844 - overtime.
-2020-01-06 14:39:45,413 - tardis_report | INFO : 844 - overtime.
-2020-01-06 14:39:58,069 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 14:40:48,043 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:07:52,200 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:10:32,940 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:11:38,318 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:11:57,388 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:13:26,582 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:20:31,683 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:22:57,729 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:25:15,236 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:25:55,209 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:27:09,688 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:30:21,506 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:30:47,881 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:31:55,885 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:46:40,454 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:48:12,765 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:50:33,773 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:50:48,351 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 15:52:49,075 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 16:22:10,101 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 19:21:55,865 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 19:21:56,585 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 19:21:56,670 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 19:21:56,776 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 19:21:56,862 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 19:21:56,944 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 19:22:02,651 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 19:22:32,157 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 19:23:10,029 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 19:30:43,765 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-06 19:30:44,397 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-06 19:30:44,476 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-06 19:30:44,568 - tardis_report | INFO : 84 - User information collected...
-2020-01-06 19:30:44,653 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-06 19:30:44,729 - tardis_report | INFO : 92 - Communication system online.
-2020-01-06 19:30:48,414 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-06 20:11:01,099 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-07 14:22:24,138 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-07 14:22:24,733 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-07 14:22:24,828 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-07 14:22:24,937 - tardis_report | INFO : 84 - User information collected...
-2020-01-07 14:22:25,020 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-07 14:22:25,165 - tardis_report | INFO : 92 - Communication system online.
-2020-01-07 14:37:02,673 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-07 14:46:50,506 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-07 14:48:25,691 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-07 17:48:12,141 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-07 17:48:12,701 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-07 17:48:12,790 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-07 17:48:12,891 - tardis_report | INFO : 84 - User information collected...
-2020-01-07 17:48:12,989 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-07 17:48:13,073 - tardis_report | INFO : 92 - Communication system online.
-2020-01-07 17:48:28,467 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-07 17:49:01,115 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-07 18:00:20,351 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-07 19:22:34,563 - tardis_report | INFO : 520 - End of day triggers have been met.  Requesting user confirmation...
-2020-01-07 19:22:49,770 - tardis_report | INFO : 535 - Adam Benson has chosen to stay logged in.
-2020-01-08 15:32:35,927 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 15:32:36,526 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 15:32:36,641 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 15:32:36,739 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 15:32:36,816 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 15:32:36,904 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 15:39:57,680 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 15:39:58,256 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 15:39:58,342 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 15:39:58,456 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 15:39:58,536 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 15:39:58,641 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 15:43:27,145 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 15:43:27,703 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 15:43:27,789 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 15:43:27,904 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 15:43:27,986 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 15:43:28,085 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 15:43:44,213 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 15:43:44,891 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 15:43:44,976 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 15:43:45,091 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 15:43:45,174 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 15:43:45,262 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 15:44:53,361 - tardis_report | INFO : 206 - Start the Lunch Timer
-2020-01-08 15:44:53,361 - tardis_report | INFO : 207 - Getting the most recent timesheet...
-2020-01-08 15:48:35,217 - tardis_report | INFO : 285 - End the lunch timer
-2020-01-08 15:53:47,266 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 15:53:47,819 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 15:53:47,904 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 15:53:48,019 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 15:53:48,109 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 15:53:48,184 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 15:54:22,690 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 15:54:23,311 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 15:54:23,411 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 15:54:23,526 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 15:54:23,628 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 15:54:23,714 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 15:55:06,493 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 15:55:07,069 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 15:55:07,148 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 15:55:07,250 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 15:55:07,336 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 15:55:07,427 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 15:58:01,015 - tardis_report | INFO : 206 - Start the Lunch Timer
-2020-01-08 15:58:01,015 - tardis_report | INFO : 207 - Getting the most recent timesheet...
-2020-01-08 16:00:35,665 - tardis_report | INFO : 285 - End the lunch timer
-2020-01-08 16:04:29,673 - tardis_report | INFO : 206 - Start the Lunch Timer
-2020-01-08 16:04:29,673 - tardis_report | INFO : 207 - Getting the most recent timesheet...
-2020-01-08 16:06:34,387 - tardis_report | INFO : 285 - End the lunch timer
-2020-01-08 16:09:00,467 - tardis_report | INFO : 206 - Start the Lunch Timer
-2020-01-08 16:09:00,467 - tardis_report | INFO : 207 - Getting the most recent timesheet...
-2020-01-08 16:11:05,398 - tardis_report | INFO : 285 - End the lunch timer
-2020-01-08 16:13:01,203 - tardis_report | INFO : 206 - Start the Lunch Timer
-2020-01-08 16:13:01,203 - tardis_report | INFO : 207 - Getting the most recent timesheet...
-2020-01-08 16:15:20,779 - tardis_report | INFO : 285 - End the lunch timer
-2020-01-08 16:21:20,696 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 16:21:21,288 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 16:21:21,375 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 16:21:21,490 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 16:21:21,578 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 16:21:21,665 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 16:21:44,697 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 16:21:45,278 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 16:21:45,365 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 16:21:45,464 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 16:21:45,545 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 16:21:45,622 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 16:22:40,783 - tardis_report | INFO : 860 - Adam Benson has quit their TARDIS!
-2020-01-08 16:23:09,726 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-08 16:23:10,326 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-08 16:23:10,474 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-08 16:23:10,608 - tardis_report | INFO : 84 - User information collected...
-2020-01-08 16:23:10,701 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-08 16:23:10,782 - tardis_report | INFO : 92 - Communication system online.
-2020-01-08 16:24:29,552 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-08 16:25:08,927 - tardis_report | INFO : 873 - Adam Benson has activeated the Time Lord Scope
-2020-01-09 11:53:39,701 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 11:53:40,259 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 11:53:40,351 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 11:53:40,457 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 11:53:40,546 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 11:53:40,634 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 11:53:48,157 - tardis_report | INFO : 882 - Adam Benson has launched the File Lister Tool.
-2020-01-09 11:54:38,631 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 11:54:39,223 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 11:54:39,313 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 11:54:39,433 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 11:54:39,526 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 11:54:39,618 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 11:54:51,914 - tardis_report | INFO : 890 - Adam Benson has launched the File Lister Tool.
-2020-01-09 12:45:36,526 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:45:37,150 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:45:37,243 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:45:37,352 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:45:37,493 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:45:37,573 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:45:55,576 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:45:56,160 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:45:56,259 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:45:56,367 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:45:56,470 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:45:56,548 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:46:07,625 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:46:08,213 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:46:08,298 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:46:08,424 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:46:08,516 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:46:08,592 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:47:27,042 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:47:27,591 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:47:27,668 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:47:27,770 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:47:27,852 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:47:27,941 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:48:27,586 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:48:28,217 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:48:28,315 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:48:28,461 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:48:28,552 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:48:28,638 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:48:49,177 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:48:49,993 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:48:50,071 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:48:50,170 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:48:50,256 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:48:50,336 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:49:35,668 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:49:36,252 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:49:36,342 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:49:36,454 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:49:36,545 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:49:36,621 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:56:06,138 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:56:06,923 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:56:07,020 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:56:07,125 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:56:07,210 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:56:07,296 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:56:49,493 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:56:50,051 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:56:50,137 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:56:50,237 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:56:50,338 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:56:50,420 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:57:45,792 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:57:46,433 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:57:46,513 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:57:46,618 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:57:46,703 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:57:46,778 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 12:58:05,681 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 12:58:06,466 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 12:58:06,552 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 12:58:06,658 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 12:58:06,736 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 12:58:06,823 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:00:54,309 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:00:54,946 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:00:55,058 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:00:55,187 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:00:55,279 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:00:55,354 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:01:26,233 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:01:26,940 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:01:27,013 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:01:27,107 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:01:27,188 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:01:27,266 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:10:50,918 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:10:51,499 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:10:51,582 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:10:51,700 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:10:51,789 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:10:51,874 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:11:27,515 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:11:28,282 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:11:28,372 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:11:28,486 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:11:28,569 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:11:28,648 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:11:39,138 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:11:39,872 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:11:39,960 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:11:40,079 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:11:40,167 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:11:40,263 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:15:48,756 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:15:49,414 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:15:49,555 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:15:49,700 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:15:49,788 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:15:49,884 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:17:05,421 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:17:06,203 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:17:06,301 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:17:06,430 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:17:06,516 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:17:06,595 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:17:42,517 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:17:43,119 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:17:43,234 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:17:43,361 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:17:43,450 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:17:43,529 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:18:06,835 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:18:07,549 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:18:07,628 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:18:07,743 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:18:07,832 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:18:07,917 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:20:04,920 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:20:05,562 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:20:05,686 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:20:05,796 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:20:05,877 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:20:05,951 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:20:40,877 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:20:41,492 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:20:41,575 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:20:41,676 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:20:41,753 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:20:41,832 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:21:57,918 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:21:58,469 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:21:58,555 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:21:58,668 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:21:58,747 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:21:58,836 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:22:57,681 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:22:58,250 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:22:58,382 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:22:58,519 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:22:58,598 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:22:58,703 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:23:10,996 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:23:11,844 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:23:11,957 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:23:12,086 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:23:12,210 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:23:12,305 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:24:23,709 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:24:24,299 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:24:24,391 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:24:24,535 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:24:24,631 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:24:24,710 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:24:42,151 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:24:42,944 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:24:43,038 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:24:43,153 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:24:43,244 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:24:43,323 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:26:03,177 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:26:03,812 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:26:03,901 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:26:04,019 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:26:04,150 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:26:04,233 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:28:57,299 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:28:57,990 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:28:58,082 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:28:58,186 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:28:58,273 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:28:58,351 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:29:55,766 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:29:56,316 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:29:56,398 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:29:56,529 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:29:56,608 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:29:56,687 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:30:48,697 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:30:49,374 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:30:49,482 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:30:49,609 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:30:49,706 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:30:49,796 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:31:23,696 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:31:24,398 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:31:24,476 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:31:24,605 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:31:24,693 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:31:24,778 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:32:02,071 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:32:02,644 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:32:02,734 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:32:02,849 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:32:02,937 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:32:03,029 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:32:11,000 - tardis_report | INFO : 893 - Adam Benson has launched the File Lister Tool.
-2020-01-09 13:32:18,029 - tardis_report | INFO : 884 - Adam Benson has activeated the Time Lord Scope
-2020-01-09 13:33:43,069 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:33:43,808 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:33:43,891 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:33:43,987 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:33:44,069 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:33:44,145 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:34:14,651 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:34:15,312 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:34:15,401 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:34:15,500 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:34:15,591 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:34:15,678 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:34:29,667 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 13:34:30,240 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 13:34:30,335 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 13:34:30,437 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 13:34:30,578 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 13:34:30,661 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 13:54:54,142 - tardis_report | INFO : 206 - Start the Lunch Timer
-2020-01-09 13:54:54,142 - tardis_report | INFO : 207 - Getting the most recent timesheet...
-2020-01-09 14:03:45,691 - tardis_report | INFO : 285 - End the lunch timer
-2020-01-09 14:08:05,486 - tardis_report | INFO : 891 - Adam Benson has launched the File Lister Tool.
-2020-01-09 14:08:16,789 - tardis_report | INFO : 899 - Adam Benson has launched the File Lister Tool.
-2020-01-09 14:09:52,631 - tardis_report | INFO : 891 - Adam Benson has launched the File Lister Tool.
-2020-01-09 14:10:19,098 - tardis_report | INFO : 882 - Adam Benson has activeated the Time Lord Scope
-2020-01-09 14:11:48,078 - tardis_report | INFO : 899 - Adam Benson has launched the File Lister Tool.
-2020-01-09 14:12:35,953 - tardis_report | INFO : 891 - Adam Benson has launched the File Lister Tool.
-2020-01-09 14:12:48,359 - tardis_report | INFO : 899 - Adam Benson has launched the File Lister Tool.
-2020-01-09 14:21:29,618 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:21:30,227 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:21:30,312 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:21:30,437 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:21:30,529 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:21:30,622 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:23:41,569 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:23:42,167 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:23:42,260 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:23:42,381 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:23:42,456 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:23:42,543 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:24:27,642 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:24:28,262 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:24:28,351 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:24:28,470 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:24:28,558 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:24:28,651 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:25:11,569 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:25:12,206 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:25:12,285 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:25:12,401 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:25:12,484 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:25:12,575 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:25:55,076 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:25:55,703 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:25:55,801 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:25:55,921 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:25:56,015 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:25:56,102 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:32:36,874 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:32:37,420 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:32:37,522 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:32:37,642 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:32:37,736 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:32:37,822 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:39:10,045 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:39:10,709 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:39:10,796 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:39:10,944 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:39:11,042 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:39:11,140 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:39:20,727 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:39:21,361 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:39:21,460 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:39:21,598 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:39:21,701 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:39:21,809 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:40:57,490 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:40:58,061 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:40:58,148 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:40:58,253 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:40:58,328 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:40:58,400 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:43:15,611 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:43:16,194 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:43:16,273 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:43:16,390 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:43:16,486 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:43:16,573 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:48:00,680 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:48:01,278 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:48:01,401 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:48:01,509 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:48:01,595 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:48:01,671 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:49:04,282 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:49:04,933 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:49:05,036 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:49:05,151 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:49:05,239 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:49:05,325 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:49:37,441 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:49:37,980 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:49:38,061 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:49:38,160 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:49:38,247 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:49:38,332 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:51:25,852 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:51:26,463 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:51:26,595 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:51:26,742 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:51:26,838 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:51:26,936 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:51:43,158 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:51:43,782 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:51:43,874 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:51:43,970 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:51:44,059 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:51:44,167 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:57:40,832 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:57:41,426 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:57:41,538 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:57:41,697 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:57:41,786 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:57:41,877 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 14:59:48,073 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 14:59:48,753 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 14:59:48,855 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 14:59:48,951 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 14:59:49,029 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 14:59:49,105 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 15:01:42,223 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 15:01:42,801 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 15:01:42,897 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 15:01:43,005 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 15:01:43,102 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 15:01:43,184 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 15:39:55,714 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 15:39:56,329 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 15:39:56,427 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 15:39:56,529 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 15:39:56,624 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 15:39:56,709 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 15:41:18,963 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 15:41:19,553 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 15:41:19,664 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 15:41:19,780 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 15:41:19,878 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 15:41:19,957 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 15:44:35,815 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 15:44:36,440 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 15:44:36,538 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 15:44:36,638 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 15:44:36,716 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 15:44:36,790 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 15:45:22,911 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 15:45:23,492 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 15:45:23,572 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 15:45:23,686 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 15:45:23,766 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 15:45:23,855 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 15:58:14,361 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 15:58:14,963 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 15:58:15,061 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 15:58:15,180 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 15:58:15,263 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 15:58:15,344 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 15:59:57,884 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 15:59:58,420 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 15:59:58,496 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 15:59:58,586 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 15:59:58,664 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 15:59:58,734 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 16:02:17,289 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 16:02:17,842 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 16:02:17,920 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 16:02:18,026 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 16:02:18,108 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 16:02:18,204 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 16:02:55,463 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 16:02:56,099 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 16:02:56,184 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 16:02:56,285 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 16:02:56,362 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 16:02:56,460 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 18:39:29,438 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 18:39:30,006 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 18:39:30,099 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 18:39:30,220 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 18:39:30,306 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 18:39:30,381 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 18:47:07,608 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 18:47:08,279 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 18:47:08,359 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 18:47:08,463 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 18:47:08,548 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 18:47:08,648 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 18:48:30,596 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 18:48:31,138 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 18:48:31,234 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 18:48:31,362 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 18:48:31,446 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 18:48:31,532 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 18:48:44,934 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 18:48:45,634 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 18:48:45,717 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 18:48:45,808 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 18:48:45,881 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 18:48:45,954 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 18:49:04,888 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 18:49:05,487 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 18:49:05,562 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 18:49:05,654 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 18:49:05,736 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 18:49:05,812 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 18:49:18,313 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 18:49:18,888 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 18:49:18,973 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 18:49:19,108 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 18:49:19,183 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 18:49:19,263 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 18:58:53,118 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 18:58:53,674 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 18:58:53,750 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 18:58:53,859 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 18:58:53,937 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 18:58:54,009 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 18:59:32,118 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 18:59:32,811 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 18:59:32,891 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 18:59:32,986 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 18:59:33,062 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 18:59:33,137 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 19:03:33,776 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 19:03:34,369 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 19:03:34,466 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 19:03:34,585 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 19:03:34,663 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 19:03:34,749 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 19:03:48,947 - tardis_report | INFO : 947 - Adam Benson has launched the UI Compiler.
-2020-01-09 19:04:16,933 - tardis_report | INFO : 953 - Adam Benson has launched the Rollout Machine.
-2020-01-09 19:04:55,091 - tardis_report | INFO : 953 - Adam Benson has launched the Rollout Machine.
-2020-01-09 19:05:48,493 - tardis_report | INFO : 959 - Adam Benson has launched Bull Gozer.
-2020-01-09 19:06:02,904 - tardis_report | INFO : 906 - Adam Benson has quit their TARDIS!
-2020-01-09 19:06:59,499 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 19:07:00,096 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 19:07:00,184 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 19:07:00,295 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 19:07:00,378 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 19:07:00,451 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 19:07:04,806 - tardis_report | INFO : 947 - Adam Benson has launched the UI Compiler.
-2020-01-09 19:07:22,861 - tardis_report | INFO : 947 - Adam Benson has launched the UI Compiler.
-2020-01-09 19:21:38,148 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-09 19:21:38,765 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-09 19:21:38,842 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-09 19:21:38,937 - tardis_report | INFO : 84 - User information collected...
-2020-01-09 19:21:39,015 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-09 19:21:39,092 - tardis_report | INFO : 92 - Communication system online.
-2020-01-09 19:21:49,663 - tardis_report | INFO : 891 - Sheets.
-2020-01-09 19:22:39,270 - tardis_report | INFO : 891 - Sheets.
-2020-01-09 19:24:16,260 - tardis_report | INFO : 891 - Sheets.
-2020-01-09 19:26:20,901 - tardis_report | INFO : 927 - Adam Benson has activeated the Time Lord Scope
-2020-01-09 19:29:37,996 - tardis_report | INFO : 891 - Sheets.
-2020-01-09 19:30:24,770 - tardis_report | INFO : 891 - Sheets.
-2020-01-09 19:43:07,931 - tardis_report | INFO : 891 - Sheets.
-2020-01-09 19:45:02,223 - tardis_report | INFO : 891 - Sheets.
-2020-01-09 19:50:20,125 - tardis_report | INFO : 919 - Adam Benson has activated the Payroll tool
-2020-01-09 20:06:23,448 - tardis_report | INFO : 891 - Sheets.
-2020-01-10 11:11:04,332 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-10 11:11:05,019 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-10 11:11:05,114 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-10 11:11:05,223 - tardis_report | INFO : 84 - User information collected...
-2020-01-10 11:11:05,322 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-10 11:11:05,414 - tardis_report | INFO : 92 - Communication system online.
-2020-01-10 11:11:17,898 - tardis_report | INFO : 954 - Adam Benson has launched the UI Compiler.
-2020-01-10 12:13:04,408 - tardis_report | INFO : 229 - Start the Lunch Timer
-2020-01-10 12:13:04,410 - tardis_report | INFO : 230 - Getting the most recent timesheet...
-2020-01-10 12:26:26,173 - tardis_report | INFO : 954 - Adam Benson has launched the UI Compiler.
-2020-01-10 13:08:51,180 - tardis_report | INFO : 229 - Start the Lunch Timer
-2020-01-10 13:08:51,180 - tardis_report | INFO : 230 - Getting the most recent timesheet...
-2020-01-10 13:35:26,196 - tardis_report | INFO : 308 - End the lunch timer
-2020-01-10 13:51:11,878 - tardis_report | INFO : 954 - Adam Benson has launched the UI Compiler.
-2020-01-10 13:53:57,250 - tardis_report | INFO : 954 - Adam Benson has launched the UI Compiler.
-2020-01-10 13:54:47,765 - tardis_report | INFO : 891 - Sheets.
-2020-01-10 14:04:17,431 - tardis_report | INFO : 954 - Adam Benson has launched the UI Compiler.
-2020-01-10 16:54:41,319 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-10 16:54:42,003 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-10 16:54:42,078 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-10 16:54:42,171 - tardis_report | INFO : 84 - User information collected...
-2020-01-10 16:54:42,244 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-10 16:54:42,321 - tardis_report | INFO : 92 - Communication system online.
-2020-01-10 16:55:03,378 - tardis_report | INFO : 891 - Sheets.
-2020-01-10 17:09:49,710 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-10 17:09:50,339 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-10 17:09:50,414 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-10 17:09:50,516 - tardis_report | INFO : 84 - User information collected...
-2020-01-10 17:09:50,601 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-10 17:09:50,684 - tardis_report | INFO : 92 - Communication system online.
-2020-01-10 18:58:09,446 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-10 18:58:10,358 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-10 18:58:10,456 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-10 18:58:10,566 - tardis_report | INFO : 84 - User information collected...
-2020-01-10 18:58:10,654 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-10 18:58:10,736 - tardis_report | INFO : 92 - Communication system online.
-2020-01-10 19:08:10,122 - tardis_report | INFO : 65 - The TARDIS has started!
-2020-01-10 19:08:10,766 - tardis_report | INFO : 77 - Opening a portal to the time continuum...
-2020-01-10 19:08:10,845 - tardis_report | INFO : 79 - time_continuum is opened...
-2020-01-10 19:08:10,944 - tardis_report | INFO : 84 - User information collected...
-2020-01-10 19:08:11,036 - tardis_report | INFO : 88 - Shotgun commands brought in.
-2020-01-10 19:08:11,125 - tardis_report | INFO : 92 - Communication system online.
-2020-01-10 19:10:29,499 - tardis_report | INFO : 891 - Sheets.
-2020-01-10 19:14:52,372 - tardis_report | INFO : 927 - Adam Benson has activeated the Time Lord Scope
-2020-01-10 19:27:04,780 - tardis_report | INFO : 927 - Adam Benson has activeated the Time Lord Scope
+2020-02-13 11:22:56,433 - tardis_report | INFO : 68 - The TARDIS has started!
+2020-02-13 11:22:57,003 - tardis_report | INFO : 80 - Opening a portal to the time continuum...
+2020-02-13 11:22:57,104 - tardis_report | INFO : 82 - time_continuum is opened...
+2020-02-13 11:22:57,256 - tardis_report | INFO : 87 - User information collected...
+2020-02-13 11:22:57,357 - tardis_report | INFO : 91 - Shotgun commands brought in.
+2020-02-13 11:22:57,450 - tardis_report | INFO : 95 - Communication system online.
+2020-02-13 11:25:00,280 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:02,688 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:05,108 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:07,523 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:09,951 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:12,346 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:14,767 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:17,184 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:19,647 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:22,033 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:24,441 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:26,828 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:29,223 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:31,605 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:34,007 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:36,415 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:38,819 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:41,200 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:43,592 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:45,987 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:48,381 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:50,763 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:53,163 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:55,542 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:25:57,930 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:00,424 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:02,809 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:05,217 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:07,637 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:10,019 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:12,413 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:14,825 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:17,240 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:19,703 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:22,107 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:24,512 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:26,933 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:29,345 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:31,750 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:34,132 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:36,546 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:38,940 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:41,361 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:43,755 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:46,158 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:48,576 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:50,987 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:53,424 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:55,841 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:26:58,233 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:00,836 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:03,213 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:05,612 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:08,127 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:10,558 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:12,986 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:15,377 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:17,812 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:20,220 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:22,628 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:25,032 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:27,421 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:29,835 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:32,263 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:34,673 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:37,052 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:39,466 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:41,859 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:44,279 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:46,661 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:49,051 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:51,447 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:53,854 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:56,266 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:27:58,638 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:01,167 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:03,563 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:05,940 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:08,321 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:10,707 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:13,102 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:15,492 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:17,888 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:20,290 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:22,698 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:25,082 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:27,467 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:29,844 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:32,220 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:34,602 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:36,986 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:39,391 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:41,795 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:44,171 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:46,615 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:48,999 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:51,407 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:53,806 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:56,194 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:28:58,713 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:01,194 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:03,584 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:05,970 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:08,398 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:10,822 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:13,397 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:15,772 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:18,180 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:20,582 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:23,035 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:25,450 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:27,841 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:30,250 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:32,628 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:35,036 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:37,433 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:39,835 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:42,217 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:44,612 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:47,007 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:49,403 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:51,786 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:54,176 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:56,598 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:29:58,996 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:01,463 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:03,901 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:06,336 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:08,726 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:11,237 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:13,653 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:16,043 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:18,417 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:20,835 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:23,247 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:25,644 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:28,023 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:30,427 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:32,829 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:35,237 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:37,772 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:40,167 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:42,562 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:44,990 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:47,394 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:49,806 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:52,674 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:55,082 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:57,598 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:30:59,989 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:02,471 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:04,858 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:07,276 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:09,707 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:12,112 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:14,503 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:16,904 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:19,325 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:21,783 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:24,209 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:26,592 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:28,971 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:31,372 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:33,779 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:36,168 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:38,556 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:40,960 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:43,352 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:45,729 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:48,119 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:50,513 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:52,891 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:55,282 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:31:57,704 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:32:00,224 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:32:02,634 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:32:05,035 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:32:07,434 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:32:09,823 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:32:12,246 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:33:54,434 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:33:56,858 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:33:59,243 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:01,755 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:04,144 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:06,539 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:08,933 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:11,331 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:13,755 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:16,144 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:18,529 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:20,927 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:23,369 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:25,836 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:28,224 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:30,618 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:34:33,131 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:29,086 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:31,483 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:33,920 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:36,321 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:38,724 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:41,125 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:43,533 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:45,970 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:48,421 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:50,819 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:53,198 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:55,615 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:40:57,996 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:00,539 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:02,915 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:05,305 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:07,701 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:10,112 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:12,529 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:14,937 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:17,328 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:19,721 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:22,127 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:24,539 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:26,917 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:29,576 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:31,969 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:34,354 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:36,746 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:39,147 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:41,545 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:43,947 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:46,365 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:48,769 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:51,180 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:53,556 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:55,946 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:41:58,355 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:00,871 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:03,262 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:05,640 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:08,023 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:10,421 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:12,848 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:15,256 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:17,647 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:20,048 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:22,451 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:24,838 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:27,338 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:29,733 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:32,111 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:42:34,503 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:52:23,471 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:52:25,921 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:52:28,349 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:53:33,657 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:53:36,040 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 11:53:38,434 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:05,273 - tardis_report | INFO : 262 - Start the Lunch Timer
+2020-02-13 12:03:05,273 - tardis_report | INFO : 263 - Getting the most recent timesheet...
+2020-02-13 12:03:05,743 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:08,153 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:10,555 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:12,953 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:15,339 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:17,786 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:20,193 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:22,607 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:25,035 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:27,433 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:03:29,845 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:05:48,273 - tardis_report | INFO : 262 - Start the Lunch Timer
+2020-02-13 12:05:48,273 - tardis_report | INFO : 263 - Getting the most recent timesheet...
+2020-02-13 12:05:48,585 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:05:50,973 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:05:53,365 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:07:10,607 - tardis_report | INFO : 262 - Start the Lunch Timer
+2020-02-13 12:07:10,607 - tardis_report | INFO : 263 - Getting the most recent timesheet...
+2020-02-13 12:07:11,046 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:07:13,433 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:07:15,825 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:07:18,227 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:14,349 - tardis_report | INFO : 262 - Start the Lunch Timer
+2020-02-13 12:09:14,349 - tardis_report | INFO : 263 - Getting the most recent timesheet...
+2020-02-13 12:09:14,775 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:17,174 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:19,576 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:21,963 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:24,359 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:26,759 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:29,137 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:31,549 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:33,927 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:36,414 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:38,789 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:41,183 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:43,572 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:45,947 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:48,319 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:50,719 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:53,112 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:55,497 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:09:57,890 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:00,378 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:02,770 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:05,157 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:07,542 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:09,927 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:12,322 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:14,703 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:17,105 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:19,522 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:21,914 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:24,313 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:26,703 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:29,085 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:31,470 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:33,874 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:36,288 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:38,678 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:41,085 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:43,477 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:45,845 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:48,232 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:50,625 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:53,007 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:55,381 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:10:57,776 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:11:00,242 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:08,973 - tardis_report | INFO : 262 - Start the Lunch Timer
+2020-02-13 12:16:08,973 - tardis_report | INFO : 263 - Getting the most recent timesheet...
+2020-02-13 12:16:09,430 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:11,875 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:14,299 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:16,681 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:19,078 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:21,457 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:23,845 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:26,250 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:28,657 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:31,052 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:33,440 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:35,828 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:38,233 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:40,608 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:43,006 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:45,411 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:47,798 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:50,188 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:52,572 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:54,970 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:57,357 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:16:59,759 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:19:00,086 - tardis_report | INFO : 262 - Start the Lunch Timer
+2020-02-13 12:19:00,086 - tardis_report | INFO : 263 - Getting the most recent timesheet...
+2020-02-13 12:19:00,438 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:19:02,842 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:19:05,240 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:25:45,676 - tardis_report | INFO : 262 - Start the Lunch Timer
+2020-02-13 12:25:45,676 - tardis_report | INFO : 263 - Getting the most recent timesheet...
+2020-02-13 12:25:46,088 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:25:48,474 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:25:50,887 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:25:53,289 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:25:55,676 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:25:58,072 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:26:00,542 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:26:02,917 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:26:05,326 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:26:07,706 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:26:10,095 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:26:12,480 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:26:14,904 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:26:17,298 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:36:32,184 - tardis_report | INFO : 262 - Start the Lunch Timer
+2020-02-13 12:36:32,184 - tardis_report | INFO : 263 - Getting the most recent timesheet...
+2020-02-13 12:36:32,617 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:36:35,009 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:36:37,401 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!
+2020-02-13 12:43:35,089 - tardis_report | INFO : 68 - The TARDIS has started!
+2020-02-13 12:43:35,671 - tardis_report | INFO : 80 - Opening a portal to the time continuum...
+2020-02-13 12:43:35,752 - tardis_report | INFO : 82 - time_continuum is opened...
+2020-02-13 12:43:35,868 - tardis_report | INFO : 87 - User information collected...
+2020-02-13 12:43:35,967 - tardis_report | INFO : 91 - Shotgun commands brought in.
+2020-02-13 12:43:36,046 - tardis_report | INFO : 95 - Communication system online.
+2020-02-13 15:15:13,206 - tardis_report | INFO : 68 - The TARDIS has started!
+2020-02-13 15:15:13,793 - tardis_report | INFO : 80 - Opening a portal to the time continuum...
+2020-02-13 15:15:13,871 - tardis_report | INFO : 82 - time_continuum is opened...
+2020-02-13 15:15:13,970 - tardis_report | INFO : 87 - User information collected...
+2020-02-13 15:15:14,053 - tardis_report | INFO : 91 - Shotgun commands brought in.
+2020-02-13 15:15:14,137 - tardis_report | INFO : 95 - Communication system online.
+2020-02-13 18:33:53,223 - tardis_report | INFO : 68 - The TARDIS has started!
+2020-02-13 18:33:53,815 - tardis_report | INFO : 80 - Opening a portal to the time continuum...
+2020-02-13 18:33:53,914 - tardis_report | INFO : 82 - time_continuum is opened...
+2020-02-13 18:33:54,026 - tardis_report | INFO : 87 - User information collected...
+2020-02-13 18:33:54,121 - tardis_report | INFO : 91 - Shotgun commands brought in.
+2020-02-13 18:33:54,206 - tardis_report | INFO : 95 - Communication system online.
+2020-02-13 18:35:08,407 - tardis_report | INFO : 311 - IT IS AFTER HOURS!!!

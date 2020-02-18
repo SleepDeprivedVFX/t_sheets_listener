@@ -3,7 +3,7 @@ The Shotgun Collect will grab data about projects, assets, shots and tasks.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.5.1'
 
 import logging
 from logging.handlers import TimedRotatingFileHandler
@@ -99,8 +99,9 @@ class sg_data(object):
             self.logger.debug('Assets List: %s' % assets)
             return assets
 
-    def get_active_assets(self):
-        active_projects = self.get_active_projects()
+    def get_active_assets(self, user=None, active_projects=[]):
+        if not active_projects:
+            active_projects = self.get_active_projects(user=user)
         filters = [
             {
                 "filter_operator": "any",
@@ -108,7 +109,8 @@ class sg_data(object):
             }
         ]
         fields = [
-            'code'
+            'code',
+            'project'
         ]
         try:
             assets = self.sg.find('Asset', filters, fields)
@@ -118,8 +120,9 @@ class sg_data(object):
             assets = None
         return assets
 
-    def get_active_shots(self):
-        active_projects = self.get_active_projects()
+    def get_active_shots(self, user=None, active_projects=[]):
+        if not active_projects:
+            active_projects = self.get_active_projects(user=user)
         filters = [
             {
                 "filter_operator": "any",
@@ -127,7 +130,8 @@ class sg_data(object):
             }
         ]
         fields = [
-            'code'
+            'code',
+            'project'
         ]
         try:
             shots = self.sg.find('Shot', filters, fields)
@@ -136,6 +140,28 @@ class sg_data(object):
             print("Active Shots failed %s" % e)
             shots = None
         return shots
+
+    def get_active_tasks(self, entities=[]):
+        tasks = []
+        if entities:
+            filters = [
+                {
+                    "filter_operator": "any",
+                    "filters": [['entity', 'is', {'type': x['type'], 'id': x['id']}] for x in entities]
+                }
+            ]
+            fields = [
+                'content',
+                'step',
+                'entity',
+                'project'
+            ]
+            try:
+                tasks = self.sg.find('Task', filters, fields)
+            except Exception as e:
+                self.logger.error('Failed to get tasks: %s' % e)
+                print('Failed to get tasks: %s' % e)
+        return tasks
 
     def get_project_shots(self, proj_id=None):
         if proj_id:
@@ -158,7 +184,7 @@ class sg_data(object):
 
     def get_entity_tasks(self, entity_id=None, entity_name=None, proj_id=None, t=0):
         if entity_id:
-            print('Getting entity tasks...', inspect.stack()[0][2], inspect.stack()[0][3],
+            self.logger.debug('Getting entity tasks...', inspect.stack()[0][2], inspect.stack()[0][3],
                   inspect.stack()[1][2], inspect.stack()[1][3])
             self.logger.info('Getting tasks for entity ID %s...' % entity_id)
             entity_type = self.get_entity_type(proj_id=proj_id, entity_name=entity_name)
@@ -187,7 +213,7 @@ class sg_data(object):
             return tasks
         return None
 
-    def get_all_tasks(self):
+    def get_all_task_steps(self):
         tasks = []
         filters = []
         fields = [
@@ -324,17 +350,6 @@ class sg_data(object):
                     break
         return entity_type
 
-    # def get_task_id(self, entity_id=None, task_name=None, entity_name=None, proj_id=None):
-    #     task_id = None
-    #     if entity_id and task_name:
-    #         tasks = self.get_entity_tasks(entity_id=entity_id, entity_name=entity_name, proj_id=proj_id)
-    #         if tasks:
-    #             for task in tasks:
-    #                 if task['content'] == task_name:
-    #                     task_id = task['id']
-    #                     break
-    #     return task_id
-
     def get_lunch_task(self, lunch_proj_id=None, task_name=None):
         if lunch_proj_id and task_name:
             filters = [
@@ -355,6 +370,12 @@ class sg_data(object):
         return False
 
     def get_entity_from_task(self, task_id=None):
+        """
+        Old routine that got task entities before I figured out how to get them from the timesheet.
+        It is currently obsolete, but may have a use in the future.
+        :param task_id:
+        :return:
+        """
         if task_id:
             filters = [
                 ['id', 'is', task_id]
@@ -365,9 +386,62 @@ class sg_data(object):
             try:
                 task = self.sg.find_one('Task', filters, fields)
             except Exception as e:
+                print('get_entity_from_task failure: %s' % e)
                 self.logger.error('Get Entity from Tasks failed: %s' % e)
                 time.sleep(2)
                 task = self.get_entity_from_task(task_id=task_id)
             return task
         return None
+
+    def get_all_project_dropdowns(self, user=None):
+        data = {}
+        if user:
+            projects = self.get_active_projects(user=user)
+
+            assets = self.get_active_assets(user=user, active_projects=projects)
+            shots = self.get_active_shots(user=user, active_projects=projects)
+            entities = assets + shots
+            tasks = self.get_active_tasks(entities=entities)
+
+            for project in projects:
+                project_name = project['name']
+                project_id = project['id']
+                if project_name not in data.keys():
+                    data[project_name] = {
+                        '__specs__': {
+                            'id': project_id
+                        }
+                    }
+
+                for entity in entities:
+                    entity_name = entity['code']
+                    entity_id = entity['id']
+                    if entity['project']['id'] == project_id:
+                        if entity_name not in data[project_name].keys():
+                            data[project_name][entity_name] = {
+                                '__specs__': {
+                                    'id': entity_id
+                                }
+                            }
+
+                            for task in tasks:
+                                # print(task)
+                                task_name = task['content']
+                                task_id = task['id']
+                                task_step = task['step']
+                                if task_step:
+                                    step_name = task_step['name']
+                                else:
+                                    step_name = None
+                                task_project_id = task['project']['id']
+                                task_entity_id = task['entity']['id']
+                                # print('task_entity_id: %s | entity_id: %s' % (task_entity_id, entity_id))
+                                if task_project_id == project_id and task_entity_id == entity_id:
+                                    if task_name not in data[project_name][entity_name].keys():
+                                        data[project_name][entity_name][task_name] = {
+                                            '__specs__': {
+                                                'id': task_id
+                                            }
+                                        }
+        return data
 

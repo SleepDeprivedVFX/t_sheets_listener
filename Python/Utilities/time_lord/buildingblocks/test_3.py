@@ -11,7 +11,7 @@ The TARDIS launches different applications based on conditions set in the config
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.5.1'
+__version__ = '0.4.12'
 
 import os
 import sys
@@ -103,23 +103,6 @@ if lunch_task_id:
     lunch_task_id = lunch_task_id['id']
 lunch_timesheet = False
 
-# -------------------------------------------------------------------------------------------------
-# Setup Global Window containers.
-# -------------------------------------------------------------------------------------------------
-time_lord_window = None
-time_sheets_window = None
-lunch_tool_window = None
-time_scope_window = None
-overtime_tool_window = None
-eod_tool_window = None
-payroll_window = None
-file_lister_window = None
-image_collector_window = None
-ui_compiler_window = None
-rollout_machine_window = None
-gozer_window = None
-reports_window = None
-
 
 class POINT(Structure):
     _fields_ = [("x", c_long), ("y", c_long)]
@@ -189,14 +172,6 @@ def chronograph():
     hour = 2
 
     global lunch_timesheet
-    global time_lord_window
-    global lunch_tool_window
-    global time_sheets_window
-    global time_scope_window
-    global overtime_tool_window
-    global eod_tool_window
-    global payroll_window
-    global reports_window
 
     while True:
         pos = query_mouse_position()
@@ -226,12 +201,7 @@ def chronograph():
                     process = 'pythonw.exe'
                 path = sys.path[0]
                 lunch_path = os.path.join(path, 'lunch.py')
-                if lunch_tool_window:
-                    try:
-                        lunch_tool_window.kill()
-                    except:
-                        lunch_tool_window = None
-                lunch_tool_window = subprocess.Popen('%s %s' % (process, lunch_path))
+                get_lunch = subprocess.Popen('%s %s' % (process, lunch_path))
                 # get_lunch.wait()
                 time.sleep(1)
 
@@ -290,12 +260,7 @@ def chronograph():
                         process = 'python.exe'
                     else:
                         process = 'pythonw.exe'
-                    if time_lord_window:
-                        try:
-                            time_lord_window.kill()
-                        except:
-                            time_lord_window = None
-                    time_lord_window = subprocess.Popen('%s %s' % (process, sod_launch_path))
+                    start_of_day = subprocess.Popen('%s %s' % (process, sod_launch_path))
                     # NOTE: I kinda want to leave this .wait() in here, but my fear is, someone won't close it for days
                     #       on end, and it will halt all the other processes, like the lunch check and the clock out.
                     #       thus, pausing it for now...
@@ -316,15 +281,9 @@ def chronograph():
                         else:
                             process = 'pythonw.exe'
                         logger.debug('Launching EOD...')
-                        if eod_tool_window:
-                            try:
-                                eod_tool_window.kill()
-                            except:
-                                eod_tool_window = None
-                        eod_tool_window = subprocess.Popen('%s %s' % (process, eod_launch_path))
-                        eod_tool_window.wait()
-                        logger.debug('eod_launch command: %s' % eod_tool_window)
-                        # eod_tool_window.wait()
+                        eod_launch = subprocess.Popen('%s %s' % (process, eod_launch_path))
+                        logger.debug('eod_launch command: %s' % eod_launch)
+                        eod_launch.wait()
                         user_clocked_in = False
                         time.sleep(2)
                         if tl_time.is_user_clocked_in(user=user):
@@ -365,13 +324,7 @@ def chronograph():
                         process = 'python.exe'
                     else:
                         process = 'pythonw.exe'
-
-                    if lunch_tool_window:
-                        try:
-                            lunch_tool_window.kill()
-                        except:
-                            lunch_tool_window = None
-                    lunch_tool_window = subprocess.Popen('%s %s -s "%s" -e "%s"' % (process, lunch_launch_path,
+                    get_lunch = subprocess.Popen('%s %s -s "%s" -e "%s"' % (process, lunch_launch_path,
                                                                             lunch_start.time(), lunch_end.time()))
                     # get_lunch.wait()
                     time.sleep(2)
@@ -471,12 +424,7 @@ def chronograph():
                         process = 'python.exe'
                     else:
                         process = 'pythonw.exe'
-                    if overtime_tool_window:
-                        try:
-                            overtime_tool_window.kill()
-                        except:
-                            overtime_tool_window = None
-                    overtime_tool_window = subprocess.Popen('%s %s' % (process, ot_launch_path))
+                    subprocess.Popen('%s %s' % (process, ot_launch_path))
                 elif ot_check == 1 or ot_check == 0 and daily_total > float(config['ot_hours']) and user['sg_hourly']:
                     # Check OT Approval statuses
                     latest_timesheet = tl_time.get_latest_timesheet(user=user)
@@ -520,12 +468,7 @@ def chronograph():
                         process = 'python.exe'
                     else:
                         process = 'pythonw.exe'
-                    if overtime_tool_window:
-                        try:
-                            overtime_tool_window.kill()
-                        except:
-                            overtime_tool_window = None
-                    overtime_tool_window = subprocess.Popen('%s %s' % (process, ot_launch_path))
+                    subprocess.Popen('%s %s' % (process, ot_launch_path))
                 elif datetime.now().time() < sod:
                     ot_check = 0
                     logger.debug('ot_check reset')
@@ -581,15 +524,6 @@ class tardis_events:
     ot_hours = float(config['ot_hours'])
     user_ignored = False
 
-    global time_lord_window
-    global lunch_tool_window
-    global time_sheets_window
-    global time_scope_window
-    global overtime_tool_window
-    global eod_tool_window
-    global payroll_window
-    global reports_window
-
     def default(self, event, session):
         pass
 
@@ -598,9 +532,6 @@ class tardis_events:
 
     def SessionLock(self, event, session):
         print('Session Lock Detected! %s' % datetime.now())
-
-        global eod_tool_window
-
         self.user_ignored = False
         if not self.set_timer:
             self.set_timer = 0
@@ -621,15 +552,10 @@ class tardis_events:
                     else:
                         process = 'pythonw.exe'
                     logger.debug('Launching EOD...')
-                    if eod_tool_window:
-                        try:
-                            eod_tool_window.kill()
-                        except:
-                            eod_tool_window = None
-                    eod_tool_window = subprocess.Popen('%s %s -o %s -t %s' % (process, eod_launch_path,
+                    eod_launch = subprocess.Popen('%s %s -o %s -t %s' % (process, eod_launch_path,
                                                                          datetime.now().date(), datetime.now().time()))
-                    logger.debug('eod_launch command: %s' % eod_tool_window)
-                    # eod_tool_window.wait()
+                    logger.debug('eod_launch command: %s' % eod_launch)
+                    eod_launch.wait()
                     launch_eod = False
                     time.sleep(10)
                     user_clocked_in = tl_time.is_user_clocked_in(user=user)
@@ -648,9 +574,6 @@ class tardis_events:
 
     def SessionUnlock(self, event, session):
         print('Session Unlock Detected! %s' % datetime.now())
-
-        global time_lord_window
-
         user_clocked_in = tl_time.is_user_clocked_in(user)
         if not user_clocked_in:
             print('%s is not clocked in.  Opening the Time Lord!' % user['name'])
@@ -660,12 +583,7 @@ class tardis_events:
                 process = 'python.exe'
             else:
                 process = 'pythonw.exe'
-            if time_lord_window:
-                try:
-                    time_lord_window.kill()
-                except:
-                    time_lord_window = None
-            time_lord_window = subprocess.Popen('%s %s' % (process, sod_launch_path))
+            subprocess.Popen('%s %s' % (process, sod_launch_path))
 
     def SessionLogoff(self, event, session):
         print('Session Log Off Detected. %s' % datetime.now())
@@ -677,9 +595,6 @@ class tardis_events:
 
     def SessionLogon(self, event, session):
         print('Session Logon Detected! %s' % datetime.now())
-
-        global time_lord_window
-
         user_clocked_in = tl_time.is_user_clocked_in(user)
         if not user_clocked_in:
             print('%s is not clocked in.  Opening the Time Lord!' % user['name'])
@@ -688,12 +603,7 @@ class tardis_events:
                 process = 'python.exe'
             else:
                 process = 'pythonw.exe'
-            if time_lord_window:
-                try:
-                    time_lord_window.kill()
-                except:
-                    time_lord_window = None
-            time_lord_window = subprocess.Popen('%s %s' % (process, sod_launch_path))
+            subprocess.Popen('%s %s' % (process, sod_launch_path))
 
 
 class tardis(object):
@@ -974,6 +884,8 @@ def non_string_iterable(obj):
         return not isinstance(obj, basestring)
 
 
+time_lord_window = None
+
 # Minimal self test. You'll need a bunch of ICO files in the current working
 # directory in order for this to work...
 if __name__ == '__main__':
@@ -987,51 +899,34 @@ if __name__ == '__main__':
         global time_lord_window
         path = sys.path[0]
         time_lord_path = os.path.join(path, 'time_lord.py')
-        if time_lord_window:
-            try:
+        if 'time_lord_window' in globals():
+            if time_lord_window:
                 time_lord_window.kill()
-            except:
-                time_lord_window = None
+            else:
+                del time_lord_window
         time_lord_window = subprocess.Popen('pythonw.exe %s' % time_lord_path)
+        # time.sleep(20)
 
 
     def sheets(tardis):
-        global time_sheets_window
         logger.info('Sheets.')
         path = sys.path[0]
         sheets_path = os.path.join(path, 'tl_sheets.py')
-        if time_sheets_window:
-            try:
-                time_sheets_window.kill()
-            except:
-                time_sheets_window = None
-        time_sheets_window = subprocess.Popen('pythonw.exe %s' % sheets_path)
+        subprocess.Popen('pythonw.exe %s' % sheets_path)
 
 
     def overtime(tardis):
-        global overtime_tool_window
         logger.info("overtime.")
         path = sys.path[0]
         ot_path = os.path.join(path, 'overtime.py')
-        if overtime_tool_window:
-            try:
-                overtime_tool_window.kill()
-            except:
-                overtime_tool_window = None
-        overtime_tool_window = subprocess.Popen('pythonw.exe %s' % ot_path)
+        subprocess.Popen('pythonw.exe %s' % ot_path)
 
 
     def lunch(tardis):
         # This will launch the Lunch Menu in a completely separate process
-        global lunch_tool_window
         path = sys.path[0]
         lunch_path = os.path.join(path, 'lunch.py')
-        if lunch_tool_window:
-            try:
-                lunch_tool_window.kill()
-            except:
-                lunch_tool_window = None
-        lunch_tool_window = subprocess.Popen('pythonw.exe %s' % lunch_path)
+        subprocess.Popen('pythonw.exe %s' % lunch_path)
 
     def bye(tardis):
         # Tardis killer.  May need to eventually kill all other processes as well.
@@ -1042,112 +937,56 @@ if __name__ == '__main__':
     def payroll(tardis):
         # Admin Payroll tool
         print('Payroll activated')
-        global payroll_window
         logger.info('%s has activated the Payroll tool' % user['name'])
         path = sys.path[0]
         payroll_path = os.path.join(path, 'tl_alpha_payroll_collector.py')
-        if payroll_window:
-            try:
-                payroll_window.kill()
-            except:
-                payroll_window = None
-        payroll_window = subprocess.Popen('pythonw.exe %s' % payroll_path)
+        subprocess.Popen('pythonw.exe %s' % payroll_path)
 
     def scope(tardis):
         # Runs the Time Lord Scope
-        global time_scope_window
         print('Time Lord Scope Activated!')
         logger.info('%s has activeated the Time Lord Scope' % user['name'])
         path = sys.path[0]
         scope_path = os.path.join(path, 'tl_scope.py')
-        if time_scope_window:
-            try:
-                time_scope_window.kill()
-            except:
-                time_scope_window = None
-        time_scope_window = subprocess.Popen('pythonw.exe %s' % scope_path)
-
-    def reports(tardis):
-        # Admin Reports
-        print('Reports and Actuals')
-        global reports_window
-        logger.info('%s has activated the Reports Tool' % user['name'])
-        path = sys.path[0]
-        reports_path = os.path.join(path, 'tl_reports.py')
-        if reports_window:
-            try:
-                reports_window.kill()
-            except:
-                reports_window = None
-        reports_window = subprocess.Popen('pythonw.exe %s' % reports_path)
+        subprocess.Popen('pythonw.exe %s' % scope_path)
 
     # ----------------------------------------------------------------------------------------
     # Start of the Studio Tools
     # ----------------------------------------------------------------------------------------
 
     def file_lister(tardis):
-        global file_lister_window
         # One of the tools menus that adds options for the artists
         # The tools will have hard-coded paths set here for convenience.
         print('Launching the file lister')
         logger.info('%s has launched the File Lister Tool.' % user['name'])
         path = r'\\skynet\Tools\scripts\python\utilities\fileLister\file_lister.py'
-        if file_lister_window:
-            try:
-                file_lister_window.kill()
-            except:
-                file_lister_window = None
-        file_lister_window = subprocess.Popen('pythonw.exe %s' % path)
+        subprocess.Popen('pythonw.exe %s' % path)
 
     def image_collector(tardis):
-        global image_collector_window
         # One of the tools menus that adds options for the artists
         # The tools will have hard-coded paths set here for convenience.
         print('Launching the file lister')
         logger.info('%s has launched the File Lister Tool.' % user['name'])
         path = r'\\skynet\Tools\scripts\python\utilities\image_collector\image_collector.py'
-        if image_collector_window:
-            try:
-                image_collector_window.kill()
-            except:
-                image_collector_window = None
-        image_collector_window = subprocess.Popen('pythonw.exe %s' % path)
+        subprocess.Popen('pythonw.exe %s' % path)
 
     def ui_compiler(tardis):
-        global ui_compiler_window
         print('Launching the UI Compiler')
         logger.info('%s has launched the UI Compiler.' % user['name'])
         path = r'\\skynet\tools\scripts\python\utilities\PySide_UI_Converter\ui_converter.py'
-        if ui_compiler_window:
-            try:
-                ui_compiler_window.kill()
-            except:
-                ui_compiler_window = None
-        ui_compiler_window = subprocess.Popen('pythonw.exe %s' % path)
+        subprocess.Popen('pythonw.exe %s' % path)
 
     def rollout_machine(tardis):
-        global rollout_machine_window
         print('Launching the Rollout Machine')
         logger.info('%s has launched the Rollout Machine.' % user['name'])
         path = r'\\skynet\tools\scripts\python\utilities\rolloutMachine\rolloutMachine.py'
-        if rollout_machine_window:
-            try:
-                rollout_machine_window.kill()
-            except:
-                rollout_machine_window = None
-        rollout_machine_window = subprocess.Popen('pythonw.exe %s' % path)
+        subprocess.Popen('pythonw.exe %s' % path)
 
     def gozer(tardis):
-        global gozer_window
         print('Launching Bull Gozer, The Destroyer of Files')
         logger.info('%s has launched Bull Gozer.' % user['name'])
         path = r'\\skynet\tools\scripts\python\utilities\BullGozer_TheDestroyer\bullgozer.py'
-        if gozer_window:
-            try:
-                gozer_window.kill()
-            except:
-                gozer_window = None
-        gozer_window = subprocess.Popen('pythonw.exe %s' % path)
+        subprocess.Popen('pythonw.exe %s' % path)
 
     def sg_time_logs(tardis):
         print('Opening Time Logs on Shotgun')
@@ -1159,12 +998,7 @@ if __name__ == '__main__':
     # Start the Time Lord for the first time on Tardis Startup
     path = sys.path[0]
     time_lord_path = os.path.join(path, 'time_lord.py')
-    if time_lord_window:
-        try:
-            time_lord_window.kill()
-        except:
-            time_lord_window = None
-    time_lord_window = subprocess.Popen('pythonw.exe %s' % time_lord_path)
+    subprocess.Popen('pythonw.exe %s' % time_lord_path)
 
     # Prep the menu and start the Tardis
     # ('Time Sheets', icons.next(), sheets),
@@ -1175,6 +1009,6 @@ if __name__ == '__main__':
                     )
     tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll, scope=scope,
            file_lister=file_lister, image_collector=image_collector, ui_compiler=ui_compiler,
-           rollout_machine=rollout_machine, gozer=gozer, time_logs=sg_time_logs, reports=reports, all_sessions=True)
+           rollout_machine=rollout_machine, gozer=gozer, time_logs=sg_time_logs, all_sessions=True)
 
 

@@ -29,7 +29,7 @@ from bin.comm_system import comm_sys
 from ui import time_lord_ot_alert as ot
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.5.1'
 
 config = bin.configuration.get_configuration()
 
@@ -185,19 +185,19 @@ class overtime_popup(QtGui.QWidget):
         self.ot_clock.signals.message.connect(self.set_main_message)
 
     def request_ot(self):
-        print('Request OT')
+        logger.debug('Request OT')
         admins = users.get_admins()
-        print('admins: %s' % admins)
+        logger.debug('admins: %s' % admins)
         if not self.timesheet:
             self.timesheet = tl_time.get_latest_timesheet(user=user)
-        print('timesheet: %s' % self.timesheet)
+        logger.debug('timesheet: %s' % self.timesheet)
         if admins:
             for admin in admins:
                 try:
                     comm.send_ot_message(user=admin, proj=self.timesheet['project'], entity=self.timesheet['entity'])
-                    print('Message Sent!')
+                    logger.debug('Message Sent!')
                 except Exception as e:
-                    print('What the fuck: %s' % e)
+                    logger.error('What the fuck: %s' % e)
         self.stay_opened = False
         self.close()
 

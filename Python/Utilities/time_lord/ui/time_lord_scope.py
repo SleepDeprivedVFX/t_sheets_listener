@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_scope.ui'
 #
-# Created: Tue Jan 07 17:47:13 2020
+# Created: Wed Jan 15 10:46:16 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,8 +12,8 @@ from PySide import QtCore, QtGui
 class Ui_WhosWorking(object):
     def setupUi(self, WhosWorking):
         WhosWorking.setObjectName("WhosWorking")
-        WhosWorking.resize(620, 520)
-        WhosWorking.setMinimumSize(QtCore.QSize(620, 481))
+        WhosWorking.resize(820, 520)
+        WhosWorking.setMinimumSize(QtCore.QSize(820, 481))
         WhosWorking.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         self.verticalLayout = QtGui.QVBoxLayout(WhosWorking)
@@ -45,7 +45,7 @@ class Ui_WhosWorking(object):
 "}")
         self.slave_list.setAlternatingRowColors(False)
         self.slave_list.setObjectName("slave_list")
-        self.slave_list.setColumnCount(6)
+        self.slave_list.setColumnCount(8)
         self.slave_list.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.slave_list.setHorizontalHeaderItem(0, item)
@@ -59,6 +59,10 @@ class Ui_WhosWorking(object):
         self.slave_list.setHorizontalHeaderItem(4, item)
         item = QtGui.QTableWidgetItem()
         self.slave_list.setHorizontalHeaderItem(5, item)
+        item = QtGui.QTableWidgetItem()
+        self.slave_list.setHorizontalHeaderItem(6, item)
+        item = QtGui.QTableWidgetItem()
+        self.slave_list.setHorizontalHeaderItem(7, item)
         self.slave_list.horizontalHeader().setVisible(True)
         self.slave_list.horizontalHeader().setCascadingSectionResizes(True)
         self.slave_list.verticalHeader().setVisible(False)
@@ -75,8 +79,10 @@ class Ui_WhosWorking(object):
         self.slave_list.setSortingEnabled(True)
         self.slave_list.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("WhosWorking", "Artist", None, QtGui.QApplication.UnicodeUTF8))
         self.slave_list.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("WhosWorking", "Project", None, QtGui.QApplication.UnicodeUTF8))
-        self.slave_list.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("WhosWorking", "Task", None, QtGui.QApplication.UnicodeUTF8))
-        self.slave_list.horizontalHeaderItem(3).setText(QtGui.QApplication.translate("WhosWorking", "Time", None, QtGui.QApplication.UnicodeUTF8))
-        self.slave_list.horizontalHeaderItem(4).setText(QtGui.QApplication.translate("WhosWorking", "Lunch", None, QtGui.QApplication.UnicodeUTF8))
-        self.slave_list.horizontalHeaderItem(5).setText(QtGui.QApplication.translate("WhosWorking", "Edit", None, QtGui.QApplication.UnicodeUTF8))
+        self.slave_list.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("WhosWorking", "Entity", None, QtGui.QApplication.UnicodeUTF8))
+        self.slave_list.horizontalHeaderItem(3).setText(QtGui.QApplication.translate("WhosWorking", "Task", None, QtGui.QApplication.UnicodeUTF8))
+        self.slave_list.horizontalHeaderItem(4).setText(QtGui.QApplication.translate("WhosWorking", "Time", None, QtGui.QApplication.UnicodeUTF8))
+        self.slave_list.horizontalHeaderItem(5).setText(QtGui.QApplication.translate("WhosWorking", "Total", None, QtGui.QApplication.UnicodeUTF8))
+        self.slave_list.horizontalHeaderItem(6).setText(QtGui.QApplication.translate("WhosWorking", "Lunch", None, QtGui.QApplication.UnicodeUTF8))
+        self.slave_list.horizontalHeaderItem(7).setText(QtGui.QApplication.translate("WhosWorking", "Edit", None, QtGui.QApplication.UnicodeUTF8))
 

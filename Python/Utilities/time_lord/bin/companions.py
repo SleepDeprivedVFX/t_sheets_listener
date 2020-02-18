@@ -3,7 +3,7 @@ The companions are the human users who run along with our Time Lord.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.5.1'
 
 import platform
 import logging
@@ -90,7 +90,11 @@ class companions(object):
                 'groups',
                 'sg_hourly'
             ]
-            user = self.sg.find_one('HumanUser', filters, fields)
+            try:
+                user = self.sg.find_one('HumanUser', filters, fields)
+            except AttributeError as e:
+                self.logger.error('Get User By ID failed: %s' % e)
+                user = None
             if user:
                 return user
         return False

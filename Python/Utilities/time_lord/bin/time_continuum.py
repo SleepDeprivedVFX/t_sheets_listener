@@ -11,7 +11,7 @@ This engine is going to handle the logic only.  Calls to users will be handled b
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.5.1'
 
 import datetime
 import logging
@@ -22,9 +22,8 @@ from dateutil import parser
 from dateutil import relativedelta
 import time
 import inspect
-# import comm_system
-from bin import comm_system
-import pickle
+import comm_system
+import cPickle as pickle
 
 
 class continuum(object):
@@ -32,6 +31,7 @@ class continuum(object):
         # self.logger = logging.getLogger('time continuum')
         self.sg = sg
         self.comm = comm_system.comm_sys(sg=sg, config=config, sub='continuum')
+        self.config = config
 
         # Get the TLD Time Capsule File
         self.db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')
@@ -212,6 +212,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'code',
                 'sg_closed'
             ]
@@ -225,6 +226,7 @@ class continuum(object):
                 self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
                 latest_timesheet = None
             if latest_timesheet:
+                # print('Latest: %s' % latest_timesheet)
                 return latest_timesheet
             return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
 
@@ -239,7 +241,87 @@ class continuum(object):
             self.logger.debug('End date assumed: %s' % new_datetime)
             return new_datetime
 
-    def clock_out_time_sheet(self, timesheet=None, clock_out=None, auto=None):
+    def get_previous_timesheet(self, user=None, start_time=None):
+        if user:
+            self.logger.debug('Finding the last timesheet for %s' % user['name'])
+            user_id = user['id']
+            self.logger.debug('USER ID: %s' % user_id)
+
+            # List all the timesheets for the user
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user_id}],
+                ['sg_task_start', 'less_than', start_time],
+                {
+                    "filter_operator": "any",
+                    "filters": [
+                        ['sg_task_start', 'in_calendar_day', 0],
+                        ['sg_task_start', 'in_calendar_day', -1]
+                    ]
+                }
+            ]
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'entity.Task.entity',
+                'code',
+                'sg_closed'
+            ]
+            try:
+                previous_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
+                                                                                          'direction': 'desc'},
+                                                                                         {'field_name': 'id',
+                                                                                          'direction': 'desc'}])
+                self.logger.debug('Timesheet found: %s' % previous_timesheet)
+            except (AttributeError, Exception) as e:
+                self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
+                previous_timesheet = None
+            if previous_timesheet:
+                if previous_timesheet['sg_task_end']:
+                    if previous_timesheet['sg_task_end'].date() == datetime.datetime.now().date():
+                        return previous_timesheet
+            return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
+
+    def get_next_timesheet(self, user=None, start_time=None, tid=None):
+        if user:
+            self.logger.debug('Finding the last timesheet for %s' % user['name'])
+            user_id = user['id']
+            self.logger.debug('USER ID: %s' % user_id)
+
+            # List all the timesheets for the user
+            filters = [
+                ['user', 'is', {'type': 'HumanUser', 'id': user_id}],
+                ['sg_task_start', 'greater_than', start_time],
+                ['duration', 'greater_than', 0.0]
+            ]
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'entity.Task.entity',
+                'code',
+                'sg_closed'
+            ]
+            try:
+                previous_timesheet = self.sg.find_one('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
+                                                                                        'direction': 'asc'},
+                                                                                       {'field_name': 'id',
+                                                                                        'direction': 'asc'}])
+                self.logger.debug('Timesheet found: %s' % previous_timesheet)
+            except (AttributeError, Exception) as e:
+                self.logger.error('Something unexpected happened while getting the last timesheet: %s' % e)
+                previous_timesheet = None
+            if previous_timesheet:
+                return previous_timesheet
+            return {'sg_task_end': None, 'entity': None, 'project': None, 'date': '', 'sg_task_start': None}
+
+    def clock_out_time_sheet(self, timesheet=None, clock_out=None, auto=None, comment=None):
         start = timesheet['sg_task_start']
         start_time = start.time()
         start_date = start.date()
@@ -250,29 +332,33 @@ class continuum(object):
         if timesheet:
             self.logger.debug('Timesheet: %s' % timesheet)
             # Check to see if the timesheet has already been closed.
-            if timesheet['sg_closed']:
-                # Find the next empty timesheet
-                filters = [
-                    ['user', 'is', {'type': 'HumanUser', 'id': timesheet['user']['id']}],
-                    ['sg_task_end', 'is', None],
-                    ['id', 'is_not', timesheet['id']]
-                ]
-                fields = [
-                    'user',
-                    'date',
-                    'sg_task_start',
-                    'sg_task_end',
-                    'project',
-                    'entity',
-                    'code',
-                    'sg_closed'
-                ]
-                empty_timesheets = self.sg.find('TimeLog', filters, fields,
-                                                order=[{'field_name': 'id', 'direction': 'desc'}])
-                if empty_timesheets:
-                    for e_ts in empty_timesheets:
-                        # figure out if the current timesheet
-                        self.logger.debug('Empty_Timesheet: %s' % e_ts)
+            try:
+                if timesheet['sg_closed']:
+                    # Find the next empty timesheet
+                    filters = [
+                        ['user', 'is', {'type': 'HumanUser', 'id': timesheet['user']['id']}],
+                        ['sg_task_end', 'is', None],
+                        ['id', 'is_not', timesheet['id']]
+                    ]
+                    fields = [
+                        'user',
+                        'date',
+                        'sg_task_start',
+                        'sg_task_end',
+                        'project',
+                        'entity',
+                        'entity.Task.entity',
+                        'code',
+                        'sg_closed'
+                    ]
+                    empty_timesheets = self.sg.find('TimeLog', filters, fields,
+                                                    order=[{'field_name': 'id', 'direction': 'desc'}])
+                    if empty_timesheets:
+                        for e_ts in empty_timesheets:
+                            # figure out if the current timesheet
+                            self.logger.debug('Empty_Timesheet: %s' % e_ts)
+            except KeyError as e:
+                self.logger.error('Couldn\'t find the key: %s' % e)
             data = {
                 'sg_task_end': clock_out,
                 'duration': total
@@ -286,6 +372,30 @@ class continuum(object):
             except Exception as e:
                 self.logger.error('Failed to connect.  Trying again... %s' % e)
                 update = self.clock_out_time_sheet(timesheet=timesheet, clock_out=clock_out)
+
+            # Create Note
+            project_id = int(self.config['admin_proj_id'])
+            if auto:
+                n_auto = ' automatically'
+            else:
+                n_auto = ''
+            note = 'Clocked out%s at %s' % (n_auto, clock_out)
+            if comment:
+                note = note + ' with the comment: %s' % comment
+            n_data = {
+                'subject': 'Clock Out!',
+                'content': note,
+                'project': {'type': 'Project', 'id': project_id},
+                'time_log_sg_history_time_logs': [
+                    {'type': 'TimeLog', 'id': timesheet['id']}
+                ]
+            }
+            try:
+                self.sg.create('Note', n_data)
+            except Exception as e:
+                print('Create Note Failed: %s' % e)
+                self.logger.error('Could not create note: %s' % e)
+
             return update
         return None
 
@@ -337,8 +447,13 @@ class continuum(object):
                 self.logger.debug(timesheet)
                 current_data = self.get_time_capsule()
                 self.logger.debug(current_data)
+                if type(current_data) == dict and 'EventLogID' in current_data.keys():
+                    event_id = current_data['EventLogID']
+                else:
+                    event_id = 0
+
                 data = {
-                    'EventLogID': current_data['EventLogID'],
+                    'EventLogID': event_id,
                     'TimeLogID': timesheet['id'],
                     'current': True
                 }
@@ -350,6 +465,22 @@ class continuum(object):
                     self.logger.error('Failed to save the file.  Trying again in a few seconds... %s' % e)
                     time.sleep(2)
                     self.save_time_capsule(data)
+
+                # Create Note
+                note = 'Initial Timesheet Creation by %s at %s' % (entry, start_time)
+                n_data = {
+                    'subject': 'New Timesheet',
+                    'content': note,
+                    'project': {'type': 'Project', 'id': int(self.config['admin_proj_id'])},
+                    'time_log_sg_history_time_logs': [
+                        {'type': 'TimeLog', 'id': timesheet['id']}
+                    ]
+                }
+                try:
+                    self.sg.create('Note', n_data)
+                except Exception as e:
+                    print('Create Note Failed: %s' % e)
+                    self.logger.error('Could not create note: %s' % e)
             return timesheet
 
     def get_running_time(self, timesheet=None):
@@ -561,12 +692,13 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'duration'
             ]
             try:
                 get_lunch = self.sg.find('TimeLog', filters, fields)
             except AttributeError as e:
-                self.logger.error('Get Lunch failed.  Trying again.')
+                self.logger.error('Get Lunch failed.  Trying again.', e)
                 get_lunch = self.get_todays_lunch(user=user, lunch_id=lunch_id, lunch_proj_id=lunch_proj_id)
             if get_lunch:
                 self.logger.debug('lunch_returns: %s' % get_lunch)
@@ -626,6 +758,7 @@ class continuum(object):
             'sg_task_end',
             'project',
             'entity',
+                'entity.Task.entity',
             'duration'
         ]
         conn_attempts = 0
@@ -647,6 +780,8 @@ class continuum(object):
 
     def get_timesheet_by_id(self, tid=None):
         if tid:
+            if type(tid) != int:
+                tid = int(tid)
             filters = [
                 ['id', 'is', tid]
             ]
@@ -656,6 +791,7 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'duration'
             ]
             conn_attempts = 0
@@ -674,6 +810,40 @@ class continuum(object):
                 if timesheet:
                     return timesheet
         return None
+
+    def get_all_timesheets_by_project(self, proj_id=None, users=None):
+        timesheets = []
+        if proj_id:
+            filters = [
+                ['project', 'is', {'type': 'Project', 'id': proj_id}],
+                ['duration', 'greater_than', 0.0]
+            ]
+            if users:
+                add_filters = []
+                for user in users:
+                    add_filters.append(['user', 'is', {'type': 'HumanUser', 'id': user['id']}])
+                filter_ops = {
+                    'filter_operator': 'any',
+                    'filters': add_filters
+                }
+                filters.append(filter_ops)
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'entity.Task.entity',
+                'code',
+                'sg_closed',
+                'duration'
+            ]
+            try:
+                timesheets = self.sg.find('TimeLog', filters, fields)
+            except Exception as e:
+                self.logger.error('Get all user timesheets by date failed.')
+        return timesheets
 
     def timesheet_cleanup(self, user=None):
         """
@@ -758,6 +928,25 @@ class continuum(object):
                                     tries = 0
                                     try:
                                         update = self.sg.update('TimeLog', empty['id'], data)
+
+                                        # Create Note
+                                        project_id = int(self.config['admin_proj_id'])
+                                        note = 'Closed automatically at %s by the Cleanup Process for being an ' \
+                                               'extraneous timesheet.'
+                                        n_data = {
+                                            'subject': 'Cleanup Process',
+                                            'content': note,
+                                            'project': {'type': 'Project', 'id': project_id},
+                                            'time_log_sg_history_time_logs': [
+                                                {'type': 'TimeLog', 'id': empty['id']}
+                                            ]
+                                        }
+                                        try:
+                                            self.sg.create('Note', n_data)
+                                            self.logger.debug('Note created!')
+                                        except Exception as e:
+                                            print('Create Note Failed: %s' % e)
+                                            self.logger.error('Could not create note: %s' % e)
                                     except Exception as e:
                                         # FIXME: This does nothing!
                                         tries += 1
@@ -844,6 +1033,26 @@ class continuum(object):
                     self.logger.debug('Update Needs Approval')
                     updates.append(update)
 
+                    # Create Note
+                    # try:
+                    #     project_id = int(ordered_timesheets[ts]['project']['id'])
+                    # except:
+                    project_id = int(self.config['admin_proj_id'])
+                    note = 'Marked "Needs Approval" for going into another day by the automatic consistency checker.'
+                    n_data = {
+                        'subject': 'Consistency Cleanup',
+                        'content': note,
+                        'project': {'type': 'Project', 'id': project_id},
+                        'time_log_sg_history_time_logs': [
+                            {'type': 'TimeLog', 'id': ordered_timesheets[ts]['id']}
+                        ]
+                    }
+                    try:
+                        self.sg.create('Note', n_data)
+                    except Exception as e:
+                        print('Create Note Failed: %s' % e)
+                        self.logger.error('Could not create note: %s' % e)
+
             # Next check for durations greater than double time hours, or durations having negative values.
             # I am currently skipping durations over 8 hours because it would get ridiculous. 12 hours seems fair here.
             duration = ordered_timesheets[ts]['duration']
@@ -854,6 +1063,26 @@ class continuum(object):
                 update = self.sg.update('TimeLog', ordered_timesheets[ts]['id'], data)
                 self.logger.debug('Update Needs Approval on Duration')
                 updates.append(update)
+
+                # Create Note
+                # try:
+                #     project_id = int(ordered_timesheets[ts]['project']['id'])
+                # except:
+                project_id = int(self.config['admin_proj_id'])
+                note = 'Marked "Needs Approval" for excessive or negative time by the automatic consistency checker.'
+                n_data = {
+                    'subject': 'Consistency Cleanup',
+                    'content': note,
+                    'project': {'type': 'Project', 'id': project_id},
+                    'time_log_sg_history_time_logs': [
+                        {'type': 'TimeLog', 'id': ordered_timesheets[ts]['id']}
+                    ]
+                }
+                try:
+                    self.sg.create('Note', n_data)
+                except Exception as e:
+                    print('Create Note Failed: %s' % e)
+                    self.logger.error('Could not create note: %s' % e)
 
             # Check against previous time sheets
             if (ts + 1) > ts_count:
@@ -888,6 +1117,28 @@ class continuum(object):
                         update = self.sg.update('TimeLog', previous_id, data)
                         self.logger.debug('update output: %s' % update)
                         updates.append(update)
+
+                        # Create Note
+                        # try:
+                        #     project_id = int(ordered_timesheets[ts]['project']['id'])
+                        # except:
+                        project_id = int(self.config['admin_proj_id'])
+                        note = 'End time was adjusted automatically to %s by the Consistency Cleanup ' \
+                               'Process' % previous_end
+                        n_data = {
+                            'subject': 'Consistency Cleanup',
+                            'content': note,
+                            'project': {'type': 'Project', 'id': project_id},
+                            'time_log_sg_history_time_logs': [
+                                {'type': 'TimeLog', 'id': ordered_timesheets[ts]['id']}
+                            ]
+                        }
+                        try:
+                            self.sg.create('Note', n_data)
+                        except Exception as e:
+                            print('Create Note Failed: %s' % e)
+                            self.logger.error('Could not create note: %s' % e)
+
                     except AttributeError as e:
                         self.logger.error('Failed to update the TimeLog.')
                         # NOTE: I could probably add a retry here.
@@ -937,10 +1188,10 @@ class continuum(object):
     def get_all_user_timesheets_by_date(self, user=None, date=None, order='desc'):
         if user and date:
             previous_date = date - datetime.timedelta(days=1)
-            print('previous date: %s' % previous_date)
-            print('date: %s' % date)
+            # print('previous date: %s' % previous_date)
+            # print('date: %s' % date)
             next_date = date + datetime.timedelta(days=1)
-            print('next_date: %s' % next_date)
+            # print('next_date: %s' % next_date)
             user_id = user['id']
 
             filters = [
@@ -961,8 +1212,10 @@ class continuum(object):
                 'sg_task_end',
                 'project',
                 'entity',
+                'entity.Task.entity',
                 'code',
-                'sg_closed'
+                'sg_closed',
+                'duration'
             ]
 
             try:
@@ -972,7 +1225,7 @@ class continuum(object):
                                                                               'direction': order}])
                 if timesheets:
                     for sheet in timesheets:
-                        if str(date.date()) != (sheet['sg_task_start'].date()):
+                        if str(date.date()) != str(sheet['sg_task_start'].date()):
                             index = timesheets.index(sheet)
                             timesheets.pop(index)
             except Exception as e:
@@ -980,4 +1233,129 @@ class continuum(object):
                 timesheets = []
                 # print self.get_latest_timesheet(user=user)
         return timesheets
+
+    def get_all_timsheets_in_range(self, proj_id=None, start=None, end=None, all_time=False, order='desc', users=[]):
+        timesheets = []
+        if start and end:
+            previous_start = start - datetime.timedelta(days=1)
+            next_end = end + datetime.timedelta(days=1)
+
+            filters = [
+                ['duration', 'greater_than', 0.0]
+            ]
+            if not all_time:
+                filters.append(
+                    {
+                        'filter_operator': 'all',
+                        'filters': [
+                            ['sg_task_start', 'greater_than', previous_start],
+                            ['sg_task_end', 'less_than', next_end]
+                        ]
+                    }
+                )
+            if proj_id:
+                filters.append(
+                    ['project', 'is', {'type': 'Project', 'id': int(proj_id)}]
+                )
+            if users:
+                if len(users) > 1:
+                    sub_filters = []
+                    for user in users:
+                        sub_filters.append(
+                            ['user', 'is', {'type': 'HumanUser', 'id': user['id']}]
+                        )
+                    filters.append(
+                        {
+                            'filter_operator': 'any',
+                            'filters': sub_filters
+                        }
+                    )
+                else:
+                    filters.append(
+                        ['user', 'is', {'type': 'HumanUser', 'id': users[0]['id']}]
+                    )
+            fields = [
+                'user',
+                'date',
+                'sg_task_start',
+                'sg_task_end',
+                'project',
+                'entity',
+                'entity.Task.entity',
+                'code',
+                'sg_closed',
+                'duration'
+            ]
+            try:
+                timesheets = self.sg.find('TimeLog', filters, fields, order=[{'field_name': 'sg_task_start',
+                                                                              'direction': order},
+                                                                             {'field_name': 'id',
+                                                                              'direction': order}])
+                if timesheets:
+                    for sheet in timesheets:
+                        if type(sheet['sg_task_start']) == datetime.datetime:
+                            if str(start.date()) > str(sheet['sg_task_start'].date()):
+                                index = timesheets.index(sheet)
+                                timesheets.pop(index)
+            except Exception as e:
+                print('Shit the bed: %s' % e)
+                self.logger.error('Cannot get all the timesheets! %s' % e)
+                timesheets = []
+        return timesheets
+
+    def update_current_times(self, user=None, tid=None, start_time=None, end_time=None, proj_id=None,
+                             task_id=None, reason=None):
+        update = None
+        if user and tid and start_time:
+            data = {
+                'sg_task_start': start_time,
+                'description': 'Updated by %s through Time Lord' % user['name']
+            }
+            if end_time:
+                data['sg_task_end'] = end_time
+            if proj_id:
+                data['project'] = {'type': 'Project', 'id': proj_id}
+            if task_id:
+                data['entity'] = {'type': 'Task', 'id': task_id}
+            if reason:
+                r = 'The timesheet was edited by %s with the following comment: %s' % (user['name'], reason)
+                n_data = {
+                    'subject': 'Timesheet Update',
+                    'content': r,
+                    'project': {'type': 'Project', 'id': proj_id},
+                    'time_log_sg_history_time_logs': [
+                        {'type': 'TimeLog', 'id': tid}
+                    ]
+                }
+                note = self.sg.create('Note', n_data)
+                print('NOTE: %s' % note)
+                # data['sg_history'] = [note]
+            try:
+                update = self.sg.update('TimeLog', tid, data)
+                self.logger.debug('update start time output: %s' % update)
+            except Exception as e:
+                print('Shit the bed: %s' % e)
+                self.logger.error('Timesheet update failed: %s' % e)
+            if update:
+                self.timesheet_consistency_cleanup(user=user)
+        return update
+
+    def delete_timelog_by_id(self, tid=None):
+        if tid:
+            deleted = self.sg.delete('TimeLog', int(tid))
+            return deleted
+
+    def pretty_date_time(self, date_time=None):
+        if date_time and type(date_time) == datetime.datetime:
+            _date = date_time.date()
+            _time = date_time.time()
+            try:
+                fmt_date = _date.strftime('%m/%d/%Y')
+                fmt_time = _time.strftime('%I:%M %p')
+                new_datetime = '%s %s' % (fmt_date, fmt_time)
+                return new_datetime
+            except Exception as e:
+                self.logger.error('Can\'t convert datetime', e)
+                return date_time
+
 

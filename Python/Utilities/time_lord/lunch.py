@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.4.5'
+__version__ = '0.5.1'
 
 import shotgun_api3 as sgapi
 import os
@@ -14,6 +14,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime, timedelta
 from dateutil import parser
+import time
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
@@ -72,20 +73,8 @@ lunch_task_id = sg_data.get_lunch_task(lunch_proj_id=lunch_proj_id, task_name=co
 if lunch_task_id:
     lunch_task_id = int(lunch_task_id['id'])
 
-# --------------------------------------------------------------------------------------------------
-# Signal Emitters
-# --------------------------------------------------------------------------------------------------
-class tardis_signals(QtCore.QObject):
-    yes = QtCore.Signal(str)
-    no = QtCore.Signal(str)
-    timer = QtCore.Signal(str)
-    start_time = QtCore.Signal(str)
-    end_time = QtCore.Signal(str)
-    launch_lunch = QtCore.Signal(str)
-
-
 # Check the system arguments and append current start and end times if they're missing.
-lock_times = True
+lock_times = False
 lunch_message = 'Hey %s!\nThe system detected you were at lunch during the times below. ' \
                 'Did you take your lunch?' % user['name'].split(' ')[0]
 skip_button = 'Not Now'
@@ -114,6 +103,45 @@ if len(sys.argv) < 2:
         ok_button = 'Record my lunch!'
         lock_times = False
     sys.argv += ['-s', str(start), '-e', str(end)]
+
+
+# --------------------------------------------------------------------------------------------------
+# Signal Emitters
+# --------------------------------------------------------------------------------------------------
+class tardis_signals(QtCore.QObject):
+    yes = QtCore.Signal(str)
+    no = QtCore.Signal(str)
+    timer = QtCore.Signal(str)
+    start_time = QtCore.Signal(str)
+    end_time = QtCore.Signal(str)
+    launch_lunch = QtCore.Signal(str)
+    kill_it = QtCore.Signal(bool)
+
+
+class self_destruct(QtCore.QThread):
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+        self.kill_me = False
+
+        # Setup a lunch window open time variable and a close time variable
+        self.close_time = datetime.now() + timedelta(hours=3)
+
+        self.signals = tardis_signals()
+
+    def run(self, *args, **kwargs):
+        self.check_time()
+
+    def kill(self):
+        self.kill_me = True
+
+    def check_time(self):
+        while not self.kill_me:
+            time.sleep(1)
+            # print('Looping....')
+            if datetime.now() > self.close_time:
+                print('SEND CLOSE')
+                self.kill_me = True
+                self.signals.kill_it.emit(True)
 
 
 class lunch_break(QtGui.QWidget):
@@ -177,6 +205,16 @@ class lunch_break(QtGui.QWidget):
             else:
                 self.ui.end_time.setEnabled(True)
 
+        # Connect the Kill It Timer
+        self.destruct = self_destruct()
+        self.destruct.signals.kill_it.connect(self.kill_it)
+        self.destruct.start()
+
+    def kill_it(self, death=False):
+        if death:
+            self.stay_opened = False
+            self.close()
+
     def take_lunch(self, message=None):
         self.signals.yes.emit(message)
         logger.info('Lunch taken... Recording...')
@@ -184,9 +222,18 @@ class lunch_break(QtGui.QWidget):
         get_end_time = self.ui.end_time.time().toString()
         start_time = parser.parse(get_start_time)
         end_time = parser.parse(get_end_time)
+        print('lunch: %s' % start_time)
+        # Take the lunch start time and use it to create a "previous" out time for the existing record.
         previous_out_time = start_time
         next_start_time = end_time
-        current_timesheet = tl_time.get_latest_timesheet(user=user)
+
+        latest_timesheet = tl_time.get_latest_timesheet(user=user)
+        current_timesheet = tl_time.get_previous_timesheet(user=user, start_time=start_time)
+        if current_timesheet['sg_task_start'] and current_timesheet['sg_task_end']:
+            current_timesheet_out = current_timesheet['sg_task_end']
+        else:
+            current_timesheet = latest_timesheet
+            current_timesheet_out = current_timesheet['sg_task_end']
 
         # Clock the user out of the current task at the start of lunch time.
         tl_time.clock_out_time_sheet(timesheet=current_timesheet, clock_out=previous_out_time)
@@ -201,8 +248,8 @@ class lunch_break(QtGui.QWidget):
                 'content': self.lunch_task_name
             }
         }
-        tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
-        lunch_timesheet = tl_time.get_latest_timesheet(user=user)
+        lunch_sheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time, entry='LunchTool')
+        lunch_timesheet = tl_time.get_timesheet_by_id(tid=int(lunch_sheet['id']))
         tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=end_time)
 
         # Build new context and clock the user back in to what they were clocked into before lunch
@@ -217,7 +264,21 @@ class lunch_break(QtGui.QWidget):
             }
         }
 
-        tl_time.create_new_timesheet(user=user, context=context, start_time=next_start_time)
+        if current_timesheet['id'] == latest_timesheet['id']:
+            tl_time.create_new_timesheet(user=user, context=context, start_time=next_start_time)
+        else:
+            next_timesheet = tl_time.get_next_timesheet(user=user, start_time=start_time,
+                                                        tid=int(current_timesheet['id']))
+            next_sheet_start = next_timesheet['sg_task_start']
+            next_sheet_start = '%s %s:%s:%s' % (next_sheet_start.date(), next_sheet_start.time().hour,
+                                                next_sheet_start.time().minute, next_sheet_start.time().second)
+            next_sheet_start = datetime.strptime(next_sheet_start, '%Y-%m-%d %H:%M:%S')
+            if next_sheet_start < end_time:
+                tl_time.update_current_times(user=user, tid=next_timesheet['id'], start_time=end_time)
+            elif next_sheet_start > end_time:
+                filler_timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=end_time)
+                if current_timesheet_out:
+                    tl_time.clock_out_time_sheet(timesheet=filler_timesheet, clock_out=current_timesheet_out)
         self.stay_opened = False
         self.close()
 
@@ -231,6 +292,10 @@ class lunch_break(QtGui.QWidget):
         if self.stay_opened:
             event.ignore()
             logger.warning('You can\'t close the window this way!')
+        if self.destruct.isRunning():
+            while self.destruct.isRunning():
+                self.destruct.kill_me = True
+                self.destruct.quit()
 
 
 if __name__ == '__main__':
