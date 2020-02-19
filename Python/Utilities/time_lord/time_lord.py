@@ -35,12 +35,12 @@ __version__ = '0.5.1'
 import shotgun_api3 as sgapi
 import os
 import sys
-from PySide import QtGui, QtCore
+from PySide2 import QtGui, QtCore, QtWidgets
 import logging
 from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime
 from dateutil import parser
-import cPickle as pickle
+import pickle
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
@@ -1016,10 +1016,10 @@ class time_lord(QtCore.QThread):
 # ------------------------------------------------------------------------------------------------------
 # User Interface
 # ------------------------------------------------------------------------------------------------------
-class time_lord_ui(QtGui.QMainWindow):
+class time_lord_ui(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         # super(time_lord_ui, self).__init__(parent=None)
-        QtGui.QMainWindow.__init__(self, parent)
+        QtWidgets.QMainWindow.__init__(self, parent)
 
         # --------------------------------------------------------------------------------------------------------
         # Set the saved settings
@@ -2145,7 +2145,7 @@ class time_lord_ui(QtGui.QMainWindow):
             logger.warning(message)
 
 
-class DateDialog(QtGui.QDialog):
+class DateDialog(QtWidgets.QDialog):
     def __init__(self, parent=None, _time=None):
         super(DateDialog, self).__init__(parent)
 
@@ -2189,12 +2189,12 @@ class DateDialog(QtGui.QDialog):
 
 
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     app.setOrganizationName('AdamBenson')
     app.setOrganizationDomain('adamdbenson.com')
     app.setApplicationName('TimeLord')
     splash_pix = QtGui.QPixmap('ui/resources/Time_Lord_Logo.png')
-    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
     splash.setMask(splash_pix.mask())
     splash.show()
     app.processEvents()

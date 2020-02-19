@@ -4,7 +4,7 @@ Highly simplistic tools for doing quick tests and repairs.
 import shotgun_api3 as sgapi
 import os
 import sys
-from PySide import QtGui, QtCore
+from PySide2 import QtGui, QtCore, QtWidgets
 import logging
 from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime, timedelta

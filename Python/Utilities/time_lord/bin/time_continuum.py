@@ -22,8 +22,8 @@ from dateutil import parser
 from dateutil import relativedelta
 import time
 import inspect
-import comm_system
-import cPickle as pickle
+from bin import comm_system
+import pickle
 
 
 class continuum(object):

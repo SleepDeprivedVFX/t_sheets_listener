@@ -6,7 +6,7 @@ goes.
 """
 
 from ui import time_lord_alpha_payroll_collector as apc
-from PySide import QtCore, QtGui
+from PySide2 import QtGui, QtCore, QtWidgets
 import xlsxwriter as xls
 from bin.companions import companions
 from bin import configuration

@@ -7,7 +7,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PySide import QtCore, QtGui
+from PySide2 import QtGui, QtCore, QtWidgets
 
 class Ui_Time_Lord_Reports(object):
     def setupUi(self, Time_Lord_Reports):

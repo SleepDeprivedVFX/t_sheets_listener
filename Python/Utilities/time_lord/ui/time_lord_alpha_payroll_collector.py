@@ -7,7 +7,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PySide import QtCore, QtGui
+from PySide2 import QtGui, QtCore, QtWidgets
 
 class Ui_QuickPayroll(object):
     def setupUi(self, QuickPayroll):

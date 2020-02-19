@@ -6,7 +6,7 @@ goes.
 """
 
 from ui import time_lord_reports as tlr
-from PySide import QtCore, QtGui
+from PySide2 import QtGui, QtCore, QtWidgets
 import xlsxwriter as xls
 # from openpyxl import Workbook as xlwb
 from bin.companions import companions
