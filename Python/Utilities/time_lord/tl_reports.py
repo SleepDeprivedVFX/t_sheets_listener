@@ -20,7 +20,9 @@ import os
 import sys
 import shotgun_api3 as sgapi
 import webbrowser
+import pprint
 
+pp = pprint.PrettyPrinter(indent=1)
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
 __version__ = '0.4.14'
@@ -97,7 +99,8 @@ class payroll_engine(QtCore.QThread):
     def make_payroll_reports(self, data={}):
         # This saves the data into an excel spreadsheet
         if data:
-            print('Data: %s' % data)
+            print('Data:')
+            pp.pprint(data)
             output = data['output']
             start = data['start']
             end = data['end']
