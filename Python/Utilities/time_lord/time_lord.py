@@ -52,6 +52,10 @@ from ui import time_lord_clock as tlu
 import time
 import socket
 import inspect
+import pprint
+
+# setup Pretty Printer
+pp = pprint.PrettyPrinter(indent=1)
 
 config = configuration.get_configuration()
 
@@ -693,7 +697,8 @@ class time_lord(QtCore.QThread):
             self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
             update_sheet = tl_time.update_current_times(user=user, tid=self.latest_timesheet['id'],
                                                         start_time=start_time)
-            print('update timesheet start returns: %s' % update_sheet)
+            print('update timesheet start returns:')
+            pp.pprint(update_sheet)
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
