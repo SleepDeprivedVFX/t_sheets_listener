@@ -10,6 +10,9 @@ from the mouse.
 The TARDIS launches different applications based on conditions set in the configuration file.
 """
 
+from __future__ import absolute_import
+from __future__ import print_function
+import six
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
 __version__ = '0.5.1'
 
@@ -346,7 +349,7 @@ def chronograph():
             # -------------------------------------------------------------------------------------
             # Lunch Timer
             # -------------------------------------------------------------------------------------
-            if set_timer > trigger and start_time < datetime.now().time() < end_time and lunch_start \
+            if lunch_start and set_timer > trigger and start_time < datetime.now().time() < end_time \
                     and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break) and not lunch_timesheet:
                 # If the timer has gone on long enough and been triggered...
                 logger.info('End the lunch timer')
@@ -375,7 +378,7 @@ def chronograph():
                                                                             lunch_start.time(), lunch_end.time()))
                     # get_lunch.wait()
                     time.sleep(2)
-            elif set_timer > trigger and datetime.now().time() > end_time and lunch_start \
+            elif lunch_start and set_timer > trigger and datetime.now().time() > end_time \
                     and (datetime.now() - lunch_start) > timedelta(seconds=lunch_break):
                 # If the user has been gone too long beyond lunch....
                 if user_clocked_in:
@@ -386,22 +389,6 @@ def chronograph():
                     clock_out = tl_time.clock_out_time_sheet(timesheet=lunch_timesheet, clock_out=lunch_start)
                     logger.debug('Auto Clocked Out: %s' % clock_out)
 
-            # --------------------------------------------------------------------------------------
-            # Start of Day
-            # --------------------------------------------------------------------------------------
-            # NOTE: This is an old start up routine that I am removing due to redundancy
-            #       The SessionUnlock() works far better
-            # now = '%02d:%02d:%02d' % (datetime.now().time().hour, datetime.now().time().minute,
-            #                           datetime.now().time().second)
-            # one_minute = str((datetime.combine(datetime.today(), early_sod) + timedelta(minutes=1)).time())
-            # if not user_clocked_in and one_minute >= str(now) >= str(early_sod):
-            #     time.sleep(62)
-            #     sod_launch_path = os.path.join(path, 'time_lord.py')
-            #     if debug == 'True' or debug == 'true' or debug == True:
-            #         process = 'python.exe'
-            #     else:
-            #         process = 'pythonw.exe'
-            #     subprocess.Popen('%s %s' % (process, sod_launch_path))
 
             # -----------------------------------------------------------------------------------------
             # End of Day
@@ -738,7 +725,7 @@ class tardis(object):
         self.gozer = gozer
         self.time_logs = time_logs
         self.reports = reports
-        print(self.icon)
+        print((self.icon))
 
         permission = user['permission_rule_set']['name']
         if permission in config['permissions']:
@@ -816,8 +803,8 @@ class tardis(object):
 
     def onSession(self, hwnd, message, event, sessionID):
         name = methods.get(event, 'unknown')
-        print('event %s on session %d' % (
-            methods.get(event, 'unknown(0x%x)' % event), sessionID))
+        print(('event %s on session %d' % (
+            methods.get(event, 'unknown(0x%x)' % event), sessionID)))
 
         events = tardis_events()
         try:
@@ -971,7 +958,7 @@ def non_string_iterable(obj):
     except TypeError:
         return False
     else:
-        return not isinstance(obj, basestring)
+        return not isinstance(obj, six.string_types)
 
 
 # Minimal self test. You'll need a bunch of ICO files in the current working
@@ -1168,12 +1155,12 @@ if __name__ == '__main__':
 
     # Prep the menu and start the Tardis
     # ('Time Sheets', icons.next(), sheets),
-    menu_options = (('Launch Time Lord', icons.next(), run_time_lord),
-                    ('Time Sheets', icons.next(), sheets),
-                    ('Lunch Break', icons.next(), lunch),
-                    ('Overtime Tool', icons.next(), overtime),
+    menu_options = (('Launch Time Lord', next(icons), run_time_lord),
+                    ('Time Sheets', next(icons), sheets),
+                    ('Lunch Break', next(icons), lunch),
+                    ('Overtime Tool', next(icons), overtime),
                     )
-    tardis(icons.next(), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll, scope=scope,
+    tardis(next(icons), hover_text, menu_options, on_quit=bye, default_menu_index=0, payroll=payroll, scope=scope,
            file_lister=file_lister, image_collector=image_collector, ui_compiler=ui_compiler,
            rollout_machine=rollout_machine, gozer=gozer, time_logs=sg_time_logs, reports=reports, all_sessions=True)
 
