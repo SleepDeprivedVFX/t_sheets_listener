@@ -725,7 +725,6 @@ class tardis(object):
         self.gozer = gozer
         self.time_logs = time_logs
         self.reports = reports
-        print((self.icon))
 
         permission = user['permission_rule_set']['name']
         if permission in config['permissions']:
@@ -741,7 +740,7 @@ class tardis(object):
             # menu_options = menu_options + (('Quit', None, self.QUIT),)
 
         groups = user['groups']
-        # print filter(lambda g: g['name'] == config['development'], groups)
+
         development = [g for g in groups if g['name'] == config['development']]
         if development:
             menu_options = menu_options + (('Dev', None, (('UI Compiler', None, self.ui_compiler),
@@ -803,8 +802,7 @@ class tardis(object):
 
     def onSession(self, hwnd, message, event, sessionID):
         name = methods.get(event, 'unknown')
-        print(('event %s on session %d' % (
-            methods.get(event, 'unknown(0x%x)' % event), sessionID)))
+        print('event %s on session %d' % (methods.get(event, 'unknown(0x%x)' % event), sessionID))
 
         events = tardis_events()
         try:
