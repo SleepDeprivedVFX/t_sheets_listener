@@ -199,9 +199,9 @@ class sheet_engine(QtCore.QThread):
         self.update_totals()
 
 
-class sheets(QtGui.QWidget):
+class sheets(QtWidgets.QWidget):
     def __init__(self):
-        QtGui.QWidget.__init__(self)
+        QtWidgets.QWidget.__init__(self)
 
         self.engine = sheet_engine()
 
@@ -315,7 +315,7 @@ class sheets(QtGui.QWidget):
         project = self.ui.new_project.itemData(project_index)
         project_name = self.ui.new_project.currentText()
         if project == 0:
-            alert = QtGui.QMessageBox()
+            alert = QtWidgets.QMessageBox()
             alert.setText('You Must Select A Project!')
             alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
             alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
@@ -326,7 +326,7 @@ class sheets(QtGui.QWidget):
         entity_index = self.ui.new_entity.currentIndex()
         entity = self.ui.new_entity.itemData(entity_index)
         if entity == 0:
-            alert = QtGui.QMessageBox()
+            alert = QtWidgets.QMessageBox()
             alert.setText('You Must Select an Asset or Shot!')
             alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
             alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
@@ -338,7 +338,7 @@ class sheets(QtGui.QWidget):
         task = self.ui.new_task.itemData(task_index)
         task_name = self.ui.new_task.currentText()
         if task == 0:
-            alert = QtGui.QMessageBox()
+            alert = QtWidgets.QMessageBox()
             alert.setText('You Must Select A Task!')
             alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
             alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
@@ -508,7 +508,7 @@ class sheets(QtGui.QWidget):
             expand = None
             expand_2 = None
 
-            primary_keys = data.keys()
+            primary_keys = list(data)
             if type(primary_keys[0]) == str:
                 sort_dir = 0
             primary_keys = sorted(primary_keys, reverse=sort_dir)
@@ -523,7 +523,7 @@ class sheets(QtGui.QWidget):
                 else:
                     key = primary
                     secondary_sort = sort_dir
-                add_main_key = QtGui.QTreeWidgetItem()
+                add_main_key = QtWidgets.QTreeWidgetItem()
                 add_main_key.setText(0, str(key))
 
                 # Check to expand the first row
@@ -537,7 +537,7 @@ class sheets(QtGui.QWidget):
                         record_date = secondary
                     else:
                         sub_key = secondary
-                    add_key = QtGui.QTreeWidgetItem()
+                    add_key = QtWidgets.QTreeWidgetItem()
                     add_key.setFirstColumnSpanned(False)
                     add_key.setText(0, str(sub_key))
                     if not expand_2:
@@ -545,7 +545,7 @@ class sheets(QtGui.QWidget):
                     daily_total = 0.0
                     add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
 
-                    these_timesheets = data[primary][secondary].values()[0]
+                    these_timesheets = list(data[primary][secondary].values())[0]
                     these_timesheets = sorted(these_timesheets, key=lambda i: i['sg_task_end'], reverse=sort_dir)
                     # print(these_timesheets)
                     for timesheet in these_timesheets:
@@ -572,15 +572,15 @@ class sheets(QtGui.QWidget):
                                 daily_total += (timesheet['duration'] / 60.0)
                             add_key.setText(6, 'Daily Total: %0.2f hrs' % daily_total)
 
-                            time_table = QtGui.QTreeWidgetItem(add_key, [str(timesheet['id']),
-                                                                         project,
-                                                                         entity_name,
-                                                                         task,
-                                                                         'start: %s' % start,
-                                                                         'end: %s' % end,
-                                                                         'total: %0.2f hrs' % duration,
-                                                                         'Double Click To Edit'
-                                                                         ]
+                            time_table = QtWidgets.QTreeWidgetItem(add_key, [str(timesheet['id']),
+                                                                             project,
+                                                                             entity_name,
+                                                                             task,
+                                                                             'start: %s' % start,
+                                                                             'end: %s' % end,
+                                                                             'total: %0.2f hrs' % duration,
+                                                                             'Double Click To Edit'
+                                                                             ]
                                                                )
                             add_key.addChild(time_table)
 
@@ -660,10 +660,10 @@ class sheets(QtGui.QWidget):
         self.engine.kill_it = True
 
 
-class time_editor(QtGui.QDialog):
+class time_editor(QtWidgets.QDialog):
     def __init__(self, parent=None, tid=None, proj=None, ent=None, task=None, start=None, end=None, user=None,
                  dropdowns=None):
-        QtGui.QDialog.__init__(self, parent)
+        QtWidgets.QDialog.__init__(self, parent)
 
         self.dropdowns = dropdowns
         self.editor = editor.Ui_Editor()
@@ -741,7 +741,7 @@ class time_editor(QtGui.QDialog):
         tid = int(tid.split(': ')[1])
         reason = self.editor.reason.toPlainText()
         if len(reason) < 8:
-            alert = QtGui.QMessageBox()
+            alert = QtWidgets.QMessageBox()
             alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
             alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
@@ -750,15 +750,15 @@ class time_editor(QtGui.QDialog):
             alert.exec_()
             self.editor.reason.setFocus()
             return False
-        update = QtGui.QMessageBox()
+        update = QtWidgets.QMessageBox()
         update.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         update.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         update.setText('Are you sure you want to update %s?' % tid)
-        update.addButton('Yes', QtGui.QMessageBox.AcceptRole)
-        update.addButton('No', QtGui.QMessageBox.RejectRole)
+        update.addButton('Yes', QtWidgets.QMessageBox.AcceptRole)
+        update.addButton('No', QtWidgets.QMessageBox.RejectRole)
         ret = update.exec_()
-        if ret == QtGui.QMessageBox.AcceptRole:
+        if ret == QtWidgets.QMessageBox.AcceptRole:
             start_date = self.editor.start_date.date().toPython()
             start_time = self.editor.start_time.time().toPython()
             end_date = self.editor.end_date.date().toPython()
@@ -781,15 +781,15 @@ class time_editor(QtGui.QDialog):
     def delete_timesheet(self):
         tid = self.editor.tid.text()
         tid = int(tid.split(': ')[1])
-        delete = QtGui.QMessageBox()
+        delete = QtWidgets.QMessageBox()
         delete.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         delete.setStyleSheet("background-color: rgb(100, 100, 100);\n"
 "color: rgb(230, 230, 230);")
         delete.setText('Are you sure you want to delete TID %s?  This can not be undone!' % tid)
-        delete.addButton('Delete', QtGui.QMessageBox.AcceptRole)
-        delete.addButton('Cancel', QtGui.QMessageBox.RejectRole)
+        delete.addButton('Delete', QtWidgets.QMessageBox.AcceptRole)
+        delete.addButton('Cancel', QtWidgets.QMessageBox.RejectRole)
         ret = delete.exec_()
-        if ret == QtGui.QMessageBox.AcceptRole:
+        if ret == QtWidgets.QMessageBox.AcceptRole:
             tl_time.delete_timelog_by_id(tid=tid)
             self.accept()
         else:
@@ -798,12 +798,12 @@ class time_editor(QtGui.QDialog):
 
 
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     app.setOrganizationName('AdamBenson')
     app.setOrganizationDomain('adamdbenson.com')
     app.setApplicationName('Sheets')
     splash_pix = QtGui.QPixmap('ui/resources/Time_Lord_Logo.png')
-    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
     splash.setMask(splash_pix.mask())
     splash.show()
     app.processEvents()
