@@ -15,7 +15,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QRadialGradient)
 from PySide2.QtWidgets import *
 
-import time_lord_resources_rc
+from .resources import time_lord_resources_rc
 
 class Ui_TimeLord(object):
     def setupUi(self, TimeLord):
