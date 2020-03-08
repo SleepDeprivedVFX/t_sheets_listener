@@ -1081,6 +1081,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.setWindowTitle("Time Lord v%s" % __version__)
         self.window_on_top_tested = False
         self.set_window_on_top()
+
         # Set main user info
         self.ui.artist_label.setText(user['name'])
 
@@ -2189,7 +2190,10 @@ class DateDialog(QtWidgets.QDialog):
 
 
 if __name__ == '__main__':
+    os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
     app = QtWidgets.QApplication(sys.argv)
+    app.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+    # app.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
     app.setOrganizationName('AdamBenson')
     app.setOrganizationDomain('adamdbenson.com')
     app.setApplicationName('TimeLord')
