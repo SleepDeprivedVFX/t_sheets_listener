@@ -178,9 +178,9 @@ class payroll_engine(QtCore.QThread):
             webbrowser.open(output)
 
 
-class payroll_ui(QtGui.QWidget):
+class payroll_ui(QtWidgets.QWidget):
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtWidgets.QWidget.__init__(self, parent)
 
         self.settings = QtCore.QSettings('Adam Benson', 'alpha_payroll_collector')
         self.last_output = self.settings.value('last_output', '.')
@@ -194,11 +194,12 @@ class payroll_ui(QtGui.QWidget):
 
         # Setup column widths
         header = self.ui.screen_output.horizontalHeader()
-        header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
-        header.setResizeMode(3, QtGui.QHeaderView.Stretch)
-        header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
+        # header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
+        header.resizeContentsPrecision()
+        # header.setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
+        # header.setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
+        # header.setResizeMode(3, QtGui.QHeaderView.Stretch)
+        # header.setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
 
         # Setup the connections.
         self.ui.file_output_btn.clicked.connect(self.set_output_file)
@@ -221,7 +222,7 @@ class payroll_ui(QtGui.QWidget):
         self.close()
 
     def set_output_file(self):
-        output = QtGui.QFileDialog.getSaveFileName(self, 'Save File As', self.settings.value('last_output'),
+        output = QtWidgets.QFileDialog.getSaveFileName(self, 'Save File As', self.settings.value('last_output'),
                                                    '*.xlsx *.xls')
         if output[0]:
             self.settings.setValue('last_output', output[0])
@@ -253,19 +254,19 @@ class payroll_ui(QtGui.QWidget):
             else:
                 row = 0
             self.ui.screen_output.insertRow(row)
-            name_label = QtGui.QLabel()
+            name_label = QtWidgets.QLabel()
             name_label.setText(name)
             self.ui.screen_output.setCellWidget(row, 0, name_label)
-            wage_label = QtGui.QLabel()
+            wage_label = QtWidgets.QLabel()
             wage_label.setText(wage_type)
             self.ui.screen_output.setCellWidget(row, 1, wage_label)
-            level_label = QtGui.QLabel()
+            level_label = QtWidgets.QLabel()
             level_label.setText(level)
             self.ui.screen_output.setCellWidget(row, 2, level_label)
-            dots = QtGui.QLabel()
+            dots = QtWidgets.QLabel()
             dots.setText('.' * 200)
             self.ui.screen_output.setCellWidget(row, 3, dots)
-            total_label = QtGui.QLabel()
+            total_label = QtWidgets.QLabel()
             total_label.setText(total)
             self.ui.screen_output.setCellWidget(row, 4, total_label)
 
@@ -277,7 +278,7 @@ class payroll_ui(QtGui.QWidget):
 
 
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     w = payroll_ui()
     w.show()
     sys.exit(app.exec_())
