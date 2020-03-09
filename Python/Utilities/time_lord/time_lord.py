@@ -248,6 +248,7 @@ class time_engine(QtCore.QThread):
     This engine runs the clock faces
     '''
     def __init__(self, parent=None):
+        time_test = time.time()
         super(time_engine, self).__init__(parent)
 
         self.time_signal = time_signals()
@@ -262,19 +263,24 @@ class time_engine(QtCore.QThread):
 
         self.user_start = None
         self.user_end = None
+        print('time_engine.__init__ runtime:', (time.time() - time_test))
 
     def kill(self):
         self.kill_it = True
 
     def set_latest_timesheet(self, ts=None):
+        test_time = time.time()
         self.time_signal.log.emit('Updating Engine Timesheet...')
         self.time_signal.debug.emit('time_engine: Last Timesheet Updated: %s' % ts)
         if ts:
             self.latest_timesheet = ts
             self.time_signal.log.emit('Engine Timesheet Updated.')
+        print('time_engine.set_latest_timeshett runting:', (time.time() - test_time))
 
     def run(self, *args, **kwargs):
+        test_time = time.time()
         self.chronograph()
+        print('time_engine.run/chronograph runtime:', (time.time() - test_time))
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -328,6 +334,8 @@ class time_engine(QtCore.QThread):
         self.time_signal.user_output.emit(set_message)
 
     def chronograph(self):
+        # FIXME: This routine seems to be the offending block of code (though I haven't finished writing out the timers)
+        #       I got a run time of over 679 seconds.
         self.time_signal.log.emit('Time Engine Chronograph has started.')
         second = int(datetime.now().second)
         day = datetime.now().day
@@ -365,7 +373,10 @@ class time_engine(QtCore.QThread):
                     self.time_signal.out_clock.emit(time)
 
                 # Setting the TRT
+                # test_time_sub1 = datetime.time(datetime.now())
                 rt = tl_time.get_running_time(timesheet=self.latest_timesheet)
+                # print('sub: time_engine.chronograph():tl_time.get_running_time()')
+                # print((datetime.time(datetime.now()).second - test_time_sub1.second))
                 running_time = rt['rt']
 
                 # Here we take the running time and emit it to the display.
@@ -405,6 +416,7 @@ class time_machine(QtCore.QThread):
 
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
+        test_time = time.time()
 
         # Get the TLD Time Capsule File
         self.db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')
@@ -418,9 +430,12 @@ class time_machine(QtCore.QThread):
         self.time_signal = time_signals()
         self.time_lord = time_lord()
         self.time_signal.log.emit('Time Machine Started.')
+        print('time_machine.__init__ runtime:', (time.time() - test_time))
 
     def run(self, *args, **kwargs):
+        test_time = time.time()
         self.listener()
+        print('time_machine.run/listener runtime:', (time.time() - test_time))
 
     def kill(self):
         self.kill_it = True
@@ -430,11 +445,13 @@ class time_machine(QtCore.QThread):
         This will open and collect the current time capsule file.
         :return:
         """
+        test_time = time.time()
         if os.path.exists(self.db_path):
             fh = open(self.db_path, 'rb')
             db_file = pickle.load(fh)
             fh.close()
             return db_file
+        print('time_machine.get_time_capsule runtime:', (time.time() - test_time))
 
     def save_time_capsule(self, data={}):
         """
@@ -447,17 +464,20 @@ class time_machine(QtCore.QThread):
                             }
         :return: None
         """
+        test_time = time.time()
         if data:
             if os.path.exists(self.db_path):
                 fh = open(self.db_path, 'wb')
                 pickle.dump(data, fh)
                 fh.close()
+        print('time_machine.save_time_capsule runtime:', (time.time() - test_time))
 
     def get_new_events(self):
         """
         This method will collect the latest EventLogEntry from the Shotgun database.
         :return: A list of new events
         """
+        test_time = time.time()
         # print 'Getting new events'
         next_event_id = None
         time_capsule = self.get_time_capsule()
@@ -522,6 +542,7 @@ class time_machine(QtCore.QThread):
                                                            inspect.stack()[1][2], inspect.stack()[1][3])
                         comm.send_error_alert(user=user, error=error)
                         break
+        print('time_machine.get_new_events runtime:', (time.time() - test_time))
         return []
 
     def listener(self):
@@ -529,6 +550,7 @@ class time_machine(QtCore.QThread):
         The main loop listener.  This is listening for Shotgun events, and specifically TimeLog events.
         :return:
         """
+        test_time = time.time()
         self.time_signal.debug.emit('Starting the main event listener loop...')
         self.time_signal.log.emit('Listener Loop Started')
         while not self.kill_it:
@@ -654,6 +676,7 @@ class time_machine(QtCore.QThread):
                                                           'seconds... %s' % e)
                             time.sleep(2)
                             self.save_time_capsule(data)
+        print('time_machine.listener runtime:', (time.time() - test_time))
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -667,6 +690,7 @@ class time_lord(QtCore.QThread):
     """
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
+        test_time = time.time()
         self.time_signal = time_signals()
         self.kill_it = False
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
@@ -684,16 +708,19 @@ class time_lord(QtCore.QThread):
         self.time_signal.user_clocked_in.connect(self.set_user_status)
         self.time_signal.snd_user_start.connect(self.update_timesheet_start)
         self.time_signal.log.emit('Time Lord Started.')
+        print('time_lord.__init__ runtime:', (time.time() - test_time))
 
     def kill(self):
         self.kill_it = True
 
     def update_timesheet_start(self, start_time=None):
+        test_time = time.time()
         if start_time:
             self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
             update_sheet = tl_time.update_current_times(user=user, tid=self.latest_timesheet['id'],
                                                         start_time=start_time)
             print('update timesheet start returns: %s' % update_sheet)
+        print('time_lord.update_timesheet_start runtime:', (time.time() - test_time))
 
     def set_trt_output(self, trt=None):
         # logger.debug('Set TRT: %s' % trt)
@@ -701,12 +728,15 @@ class time_lord(QtCore.QThread):
         self.time_signal.trt_output.emit(set_message)
 
     def send_project_update(self, message=None):
+        test_time = time.time()
         self.time_signal.debug.emit('Collecting projects for return')
         projects = sg_data.get_active_projects(user=user)
         self.time_signal.send_project_update.emit(projects)
+        print('time_lord.send_project_update runtime:', (time.time() - test_time))
         return projects
 
     def send_entity_update(self, proj_id=None):
+        test_time = time.time()
         self.time_signal.debug.emit('send_entity_update: %s' % proj_id)
         if proj_id:
             self.time_signal.debug.emit('Project ID received by Entity Update Request: %s' % proj_id)
@@ -718,8 +748,10 @@ class time_lord(QtCore.QThread):
             self.time_signal.debug.emit('Shots Collected: %s' % shot_entities)
             entities = asset_entities + shot_entities
             self.time_signal.send_entity_update.emit(entities)
+        print('time_lord.send_entity_update runtime:', (time.time() - test_time))
 
     def send_task_update(self, context=None):
+        test_time = time.time()
         self.time_signal.debug.emit('Send tasks activated! %s' % context)
         if context:
             self.time_signal.debug.emit('send_task_update context: %s' % context)
@@ -736,8 +768,10 @@ class time_lord(QtCore.QThread):
                 self.time_signal.send_task_update.emit(tasks)
                 self.time_signal.debug.emit('Task signal sent.')
                 self.time_signal.debug.emit('Tasks emitted: %s' % tasks)
+        print('time_lord.send_task_update runtime:', (time.time() - test_time))
 
     def req_start_end_output(self):
+        test_time = time.time()
         latest_timesheet = tl_time.get_latest_timesheet(user=user)
         last_in_time = latest_timesheet['sg_task_start']
         last_out_time = latest_timesheet['sg_task_end']
@@ -756,6 +790,7 @@ class time_lord(QtCore.QThread):
             error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
                                                inspect.stack()[1][2], inspect.stack()[1][3])
             comm.send_error_alert(user=user, error=error)
+        print('time_lord.req_start_end_output runtime:', (time.time() - test_time))
 
     def set_start_end_output(self, start=None, end=None):
         set_message = 'Start: %s\nEnd: %s' % (start, end)
@@ -785,6 +820,7 @@ class time_lord(QtCore.QThread):
         :param data: (dict) A collection of data from the UI or from the saved data.
         :return:
         """
+        test_time = time.time()
         mutex = QtCore.QMutexLocker(self.time_signal.mutex_1)
         self.time_signal.debug.emit('Update Detected: %s' % data)
         # print('update_ui:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
@@ -835,6 +871,7 @@ class time_lord(QtCore.QThread):
         self.time_signal.log.emit('==> SEND ENT: %s' % send_ent['name'])
         self.time_signal.log.emit('==> SEND TASK: %s' % send_task['name'])
         self.time_signal.log.emit('Three signals sent.')
+        print('time_lord.update_ui runtime:', (time.time() - test_time))
 
     def quick_update(self):
         """
@@ -842,14 +879,17 @@ class time_lord(QtCore.QThread):
         Updates the current timesheet and emits it back to the UI
         :return: self.time_signal.send_timesheet.emit(new_timesheet)
         """
+        test_time = time.time()
         self.time_signal.debug.emit('Communication received.  Updating....')
         new_timesheet = tl_time.get_latest_timesheet(user=user)
         if new_timesheet:
             self.time_signal.debug.emit('Timesheet collected!')
             self.time_signal.send_timesheet.emit(new_timesheet)
             self.latest_timesheet = new_timesheet
+        print('time_lord.quick_update runtime:', (time.time() - test_time))
 
     def get_active_projects(self, message=None):
+        test_time = time.time()
         if message:
             self.time_signal.debug.emit('Project List Requested!')
             active_projects = sg_data.get_active_projects(user=user)
@@ -860,6 +900,7 @@ class time_lord(QtCore.QThread):
                 else:
                     self.time_signal.set_project_list.emit(active_projects)
                     self.quick_update()
+        print('time_lord.get_active_projects runtime:', (time.time() - test_time))
 
     def set_daily_total(self, message=None):
         """
@@ -867,6 +908,7 @@ class time_lord(QtCore.QThread):
         :param message: A string of any kind to kick start the process and trigger a log
         :return:
         """
+        test_time = time.time()
         self.time_signal.debug.emit('set daily total: %s' % message)
         daily_total = None
         if message:
@@ -875,19 +917,23 @@ class time_lord(QtCore.QThread):
                 self.time_signal.debug.emit('Daily total!: %s' % daily_total)
                 self.time_signal.daily_total.emit(daily_total)
                 self.time_signal.debug.emit('Daily total emitted')
+        print('time_lord.set_daily_total runtime:', (time.time() - test_time))
         return daily_total
 
     def set_weekly_total(self, message=None):
         # Sets and emiits the Weekly Total function back to the UI
+        test_time = time.time()
         weekly_total = None
         if message:
             weekly_total = tl_time.get_weekly_total(user=user, lunch_id=int(lunch_task['id']))
             if weekly_total or weekly_total >= 0.0:
                 self.time_signal.weekly_total.emit(weekly_total)
                 self.time_signal.debug.emit('Weekly total emitted')
+        print('time_lord.set_weekly_total runtime:', (time.time() - test_time))
         return weekly_total
 
     def clock_out_user(self, data=None):
+        test_time = time.time()
         if data:
             latest_timesheet = data['timesheet']
             if 'end' in data.keys():
@@ -930,12 +976,14 @@ class time_lord(QtCore.QThread):
             self.time_signal.log.emit('Requesting Cleanup Process...')
             self.do_cleanup()
             # self.time_signal.update_timesheet.emit('Update')
+        print('time_lord.clock_out_user runtime:', (time.time() - test_time))
 
     def clock_in_user(self, data=None):
         """
         This may need some addition inputs, but for now... nothing.
         :return:
         """
+        test_time = time.time()
         # print('clock_in_user:', inspect.stack()[0][2], inspect.stack()[0][3], inspect.stack()[1][2],
         #       inspect.stack()[1][3])
         if data:
@@ -953,6 +1001,7 @@ class time_lord(QtCore.QThread):
             except Exception as e:
                 logger.error('Failed to clock in user!', e)
                 return False
+        print('time_lord.clock_in_user runtime:', (time.time() - test_time))
 
     def set_user_output(self, user=None):
         if self.clocked_in:
@@ -963,6 +1012,7 @@ class time_lord(QtCore.QThread):
         self.time_signal.user_output.emit(set_message)
 
     def get_entities(self, entity_id=None, r=False):
+        test_time = time.time()
         self.time_signal.debug.emit('get_entities activated: entity id: %s' % entity_id)
         if entity_id:
             asset_entities = sg_data.get_project_assets(proj_id=entity_id)
@@ -976,8 +1026,10 @@ class time_lord(QtCore.QThread):
             else:
                 self.time_signal.set_entity_list.emit((latest_timesheet, entities))
             self.time_signal.debug.emit('get_entities: %s' % entities)
+        print('time_lord.get_entities runtime:', (time.time() - test_time))
 
     def get_tasks(self, context=None, r=False):
+        test_time = time.time()
         self.time_signal.debug.emit('get_tasks activated: %s' % context)
         if context:
             entity_id = context['entity_id']
@@ -990,6 +1042,7 @@ class time_lord(QtCore.QThread):
                 else:
                     self.time_signal.set_task_list.emit(tasks)
                 self.time_signal.debug.emit('Tasks emitted: %s' % tasks)
+        print('time_lord.get_tasks runtime:', (time.time() - test_time))
 
     def set_latest_timesheet(self, message=None):
         if message:
@@ -1003,6 +1056,7 @@ class time_lord(QtCore.QThread):
         This method checks older timesheets and makes sure they are all properly clocked in and out.
         :return: True or False
         """
+        test_time = time.time()
         cleanup = tl_time.timesheet_cleanup(user=user)
         if cleanup:
             self.time_signal.debug.emit('CLEANUP: %s' % cleanup)
@@ -1011,6 +1065,7 @@ class time_lord(QtCore.QThread):
         if consistency_check:
             self.time_signal.debug.emit('Timesheet consistency check finished: %s' % consistency_check)
             self.time_signal.debug.emit('Consistency check: %s' % consistency_check)
+        print('time_lord.do_cleanup runtime:', (time.time() - test_time))
 
 
 # ------------------------------------------------------------------------------------------------------
