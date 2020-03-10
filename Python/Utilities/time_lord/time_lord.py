@@ -1048,7 +1048,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
                 and not self.latest_timesheet['date'] and not self.latest_timesheet['sg_task_start']:
             project_id = int(config['admin_proj_id'])
             task_id = int(config['admin_task_id'])
-            entity_id = self.latest_timesheet['entity.Task.entity']['id']
+            entity_id = None
             context = {
                 'Project': {
                     'id': project_id
