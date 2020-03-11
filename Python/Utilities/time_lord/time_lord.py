@@ -52,6 +52,7 @@ from ui import time_lord_clock as tlu
 import time
 import socket
 import inspect
+import pprint
 
 config = configuration.get_configuration()
 
@@ -1157,6 +1158,9 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_signal.rec_user_start.connect(self.update_user_start)
         self.time_engine.time_signal.rec_user_end.connect(self.update_user_end)
 
+        # Collect Projects Dropdowns
+        self.dropdowns = sg_data.get_all_project_dropdowns(user=user)
+
         # Dropdown Change Index Connections
         self.time_lord.time_signal.set_dropdown.connect(self.set_dropdown)
         self.ui.project_dropdown.currentIndexChanged.connect(self.req_update_entities)
@@ -1206,7 +1210,10 @@ class time_lord_ui(QtWidgets.QMainWindow):
             self.ui.task_dropdown.clear()
             self.latest_timesheet = received_timesheet
         logger.info('INITIALIZING UI...')
-        projects = sg_data.get_active_projects(user=user)
+        # FIXME: Use the new algorithm to try and minimize this
+        # projects = sg_data.get_active_projects(user=user)
+        projects = self.dropdowns
+        # print('PROJECT: %s' % projects)
         if projects:
             # Check the saved project against the current timesheet
             try:
@@ -1220,13 +1227,23 @@ class time_lord_ui(QtWidgets.QMainWindow):
                 comm.send_error_alert(user=user, error=error)
 
             # Update the dropdown list
+            # FIXME: THis can probably be replaced with the new algorithm
             self.update_projects_dropdown(projects)
             proj_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
 
             # Collect Entities
-            assets = sg_data.get_project_assets(proj_id=proj_id)
-            shots = sg_data.get_project_shots(proj_id=proj_id)
-            entities = assets + shots
+            # TODO: Replace all this with the existing projects database
+            #       { Project Name: {'__spec__': {'id': number}, 'Asset Name': {'__spec__': {other_data}}}}
+            #       How do I get this from the id
+            entities = None
+            for project, pid in projects.items():
+                if pid['__specs__']['id'] == proj_id:
+                    entities = pid
+                    break
+            print('ENTITIES: %s' % entities)
+            # assets = sg_data.get_project_assets(proj_id=proj_id)
+            # shots = sg_data.get_project_shots(proj_id=proj_id)
+            # entities = assets + shots
 
             # Get the timesheet entity and compare it to the saved entity
             try:
@@ -1853,8 +1870,9 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.ui.project_dropdown.clear()
         # Iterate through the list and add all the active projects to the dropdown
         if projects:
-            for project in projects:
-                self.ui.project_dropdown.addItem('%s' % project['name'], project['id'])
+            for project, data in projects.items():
+                proj_id = data['__specs__']['id']
+                self.ui.project_dropdown.addItem('%s' % project, proj_id)
         logger.debug('Getting default selection from settings.')
         # Get the index of the last project as listed in the UI
         proj_index = self.ui.project_dropdown.findData(self.saved_project_id)
@@ -1886,12 +1904,14 @@ class time_lord_ui(QtWidgets.QMainWindow):
         """
         logger.debug('update entity dropdown signal %s' % entities)
         logger.debug(entities)
-        if entities:
+        if entities and type(entities) != list:
             # Put in the Assets first... Oh!  Use the categories and Sequences?
             self.ui.entity_dropdown.clear()
             self.ui.entity_dropdown.addItem('Select Asset/Shot', 0)
-            for entity in entities:
-                self.ui.entity_dropdown.addItem(entity['code'], entity['id'])
+            for entity, data in entities.items():
+                if entity != '__specs__':
+                    ent_id = data['__specs__']['id']
+                    self.ui.entity_dropdown.addItem(entity, ent_id)
             self.ui.entity_dropdown.update()
         else:
             self.time_lord.time_signal.lower_output.emit('Project Dump: %s' % entities)

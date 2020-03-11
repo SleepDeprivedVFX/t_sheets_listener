@@ -38,3 +38,315 @@
 2020-03-07 16:30:15,204 - time_lord_continuum | ERROR : 397 - Could not create note: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
 2020-03-07 16:30:15,205 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
 2020-03-07 16:30:15,668 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:27:00,893 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:28:50,358 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:35:29,642 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:35:59,963 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:37:22,240 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:39:58,195 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:43:15,815 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:43:30,201 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:43:40,099 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:44:54,481 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:45:10,241 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:45:20,106 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:45:30,493 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:45:40,208 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:45:50,108 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:48:30,055 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:48:40,327 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:49:00,101 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:49:10,112 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:49:20,218 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:49:30,626 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-07 19:50:23,822 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-07 19:50:40,417 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:38:27,371 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 00:38:50,073 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:49:37,220 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 00:50:00,246 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:50:10,578 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:50:40,470 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:50:55,553 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 00:51:10,657 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:51:40,153 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL] internal error (_ssl.c:2508)
+2020-03-08 00:51:50,107 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL] internal error (_ssl.c:2508)
+2020-03-08 00:55:15,217 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 00:55:40,990 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:55:50,039 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:56:00,118 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:56:10,502 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:56:20,335 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:56:45,417 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 00:57:10,520 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:58:14,782 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 00:58:20,105 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:58:40,548 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:59:11,027 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 00:59:28,262 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 00:59:41,054 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:00:10,450 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:02:05,111 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 01:02:20,117 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:02:30,348 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:02:40,084 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:02:50,041 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:05:10,598 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 01:05:41,047 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:05:50,112 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:06:00,015 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:06:10,552 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:06:41,030 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:07:15,637 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 01:07:40,547 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:07:43,167 - time_lord_continuum | INFO : 463 - Time Capsule saved!
+2020-03-08 01:07:43,531 - time_lord_continuum | INFO : 463 - Time Capsule saved!
+2020-03-08 01:08:00,119 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:08:10,480 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:08:18,366 - time_lord_continuum | ERROR : 742 - Could not check clocked in: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:08:30,112 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:08:40,323 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:08:50,168 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:09:00,218 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:09:10,797 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:09:35,620 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 01:10:10,781 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:10:40,158 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:12:16,126 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 01:12:30,111 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:12:40,294 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 01:12:50,112 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 11:52:56,428 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 11:53:10,514 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 11:53:20,305 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:00:46,636 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 12:08:13,331 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 12:13:19,947 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 12:21:21,919 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 12:21:40,307 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:28:28,149 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 12:28:40,693 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:29:10,534 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:29:40,132 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:29:41,143 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:29:42,756 - time_lord_continuum | INFO : 463 - Time Capsule saved!
+2020-03-08 12:29:43,030 - time_lord_continuum | INFO : 463 - Time Capsule saved!
+2020-03-08 12:29:50,206 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:30:10,139 - time_lord_continuum | ERROR : 742 - Could not check clocked in: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:30:10,142 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:30:11,108 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 12:30:30,123 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 22:59:57,300 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:00:10,970 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:00:20,081 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:00:55,415 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:01:10,532 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:01:20,401 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:01:30,535 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:01:41,028 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:02:11,004 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:02:30,239 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:02:40,535 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:03:00,092 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:13:34,666 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:13:50,112 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:14:00,137 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:14:10,300 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:14:20,241 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:14:40,895 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:15:00,140 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:15:10,421 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:15:20,238 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:15:30,370 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:15:41,038 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:15:50,241 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:16:00,376 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:16:11,054 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:16:20,027 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:16:30,379 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:16:40,449 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:16:50,357 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:00,229 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:10,437 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:14,000 - time_lord_continuum | INFO : 463 - Time Capsule saved!
+2020-03-08 23:17:14,379 - time_lord_continuum | INFO : 463 - Time Capsule saved!
+2020-03-08 23:17:20,227 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:30,146 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:30,576 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:41,159 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:41,161 - time_lord_continuum | ERROR : 742 - Could not check clocked in: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:42,356 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:17:42,358 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:18:00,797 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:18:10,560 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:18:20,680 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:18:40,474 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:18:50,234 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:19:10,512 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:19:20,429 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:19:40,611 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:20:10,587 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:20:40,233 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:20:50,139 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:21:00,627 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:21:10,112 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:21:20,116 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:21:30,058 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:21:40,248 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:21:50,120 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:22:10,776 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:22:30,008 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:22:40,188 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:22:50,119 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:23:10,767 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:23:30,254 - time_lord_continuum | ERROR : 373 - Failed to connect.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:23:30,255 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:23:30,715 - time_lord_continuum | INFO : 370 - Successfully clocked out. {'type': 'TimeLog', 'id': 9322, 'sg_task_end': '2020-03-09 06:23:30 UTC', 'duration': 6}
+2020-03-08 23:23:30,715 - time_lord_continuum | INFO : 371 - Timesheet updated.
+2020-03-08 23:23:31,040 - time_lord_continuum | ERROR : 397 - Could not create note: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:24:40,096 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:24:50,062 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:38:10,851 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:41:55,130 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:44:38,728 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:45:49,957 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:46:00,376 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:46:34,664 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:47:10,505 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:47:16,093 - time_lord_continuum | ERROR : 444 - Failed to create timesheet!
+2020-03-08 23:47:20,125 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:47:20,126 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-08 23:53:36,434 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:54:12,502 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:55:36,336 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-08 23:59:14,802 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 10:33:07,359 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 10:33:30,147 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:49:31,944 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 10:54:17,398 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 10:54:50,204 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:55:00,108 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:55:09,103 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 10:55:20,136 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:55:30,304 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:55:40,294 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:55:50,280 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:56:00,125 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:56:10,052 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:56:14,625 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 10:56:50,098 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:57:00,053 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 10:57:10,208 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:20:27,709 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 11:21:00,362 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:21:20,130 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:21:30,072 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:21:40,025 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:22:10,294 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:22:20,328 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:22:30,308 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:31:57,599 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 11:32:20,102 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:32:30,104 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:33:03,637 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 11:33:10,030 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:33:20,068 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:33:30,106 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:34:20,118 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:34:30,098 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL] internal error (_ssl.c:2508)
+2020-03-09 11:37:26,308 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 11:38:00,116 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:38:10,110 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:38:20,077 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:38:30,095 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:38:40,050 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL] internal error (_ssl.c:2508)
+2020-03-09 11:38:40,051 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:39:10,280 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:39:20,316 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:39:30,298 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:39:40,349 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:40:00,120 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:40:10,130 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:40:20,109 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:40:30,129 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:40:40,111 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL] internal error (_ssl.c:2508)
+2020-03-09 11:40:50,085 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL] internal error (_ssl.c:2508)
+2020-03-09 11:41:00,061 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:41:10,100 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 11:41:20,098 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 18:17:19,664 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-09 18:17:30,290 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 18:17:40,289 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 18:17:50,215 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-09 18:18:00,110 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:52:41,712 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 13:53:00,734 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:53:50,476 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:54:10,111 - time_lord_continuum | ERROR : 373 - Failed to connect.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:54:10,111 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:54:10,429 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:54:10,430 - time_lord_continuum | ERROR : 373 - Failed to connect.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:54:10,848 - time_lord_continuum | INFO : 370 - Successfully clocked out. {'type': 'TimeLog', 'id': 9493, 'sg_task_end': '2020-03-10 20:54:10 UTC', 'duration': 35}
+2020-03-10 13:54:10,854 - time_lord_continuum | INFO : 371 - Timesheet updated.
+2020-03-10 13:54:11,190 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:54:11,190 - time_lord_continuum | ERROR : 397 - Could not create note: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:54:12,127 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 13:54:12,127 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-10 14:21:02,425 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 14:21:20,072 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:22:00,158 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:22:10,347 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:22:20,119 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:22:30,149 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:22:40,102 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:22:50,112 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:23:00,106 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:23:10,098 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:23:20,074 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:23:30,108 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:23:40,098 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:23:50,096 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:23:51,090 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:23:52,848 - time_lord_continuum | INFO : 463 - Time Capsule saved!
+2020-03-10 14:23:53,256 - time_lord_continuum | INFO : 463 - Time Capsule saved!
+2020-03-10 14:23:56,204 - time_lord_continuum | ERROR : 742 - Could not check clocked in: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:24:00,652 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:24:10,138 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:24:10,452 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:24:20,106 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 14:25:20,138 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL] internal error (_ssl.c:2508)
+2020-03-10 16:26:24,615 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 16:26:40,004 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 16:30:30,724 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 16:31:06,851 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 16:32:24,120 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 16:44:44,953 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 16:47:30,955 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:18:54,715 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:21:11,448 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:21:33,769 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:22:07,352 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:22:49,226 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:23:18,190 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:23:37,783 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:24:39,389 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:35:25,521 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:35:54,397 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:36:18,048 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:38:09,569 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 17:39:00,222 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 17:39:10,127 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 17:39:20,091 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 17:39:30,123 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 17:39:40,108 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 18:19:12,865 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 18:19:48,835 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 18:20:10,299 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 18:37:04,293 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 18:42:00,726 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 18:43:36,803 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 18:43:50,018 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 18:44:00,160 - time_lord_continuum | ERROR : 226 - Something unexpected happened while getting the last timesheet: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-10 18:44:54,206 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 18:45:40,321 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-10 18:45:50,270 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)

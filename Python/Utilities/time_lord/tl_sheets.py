@@ -200,6 +200,9 @@ class sheet_engine(QtCore.QThread):
 
 
 class sheets(QtWidgets.QWidget):
+    """
+    The main sheets UI.
+    """
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
 
@@ -663,6 +666,18 @@ class sheets(QtWidgets.QWidget):
 class time_editor(QtWidgets.QDialog):
     def __init__(self, parent=None, tid=None, proj=None, ent=None, task=None, start=None, end=None, user=None,
                  dropdowns=None):
+        """
+        The editor dialog that pops up when a user double clicks a time log in the main UI
+        :param parent: The main UI
+        :param tid: ID of the timesheet being edited
+        :param proj: Project of the timesheet being edited
+        :param ent: Entity of the timesheet being edited
+        :param task: Task of the timesheet being edited
+        :param start: Start time from the timesheet
+        :param end: End time from the timesheet
+        :param user: User whose timesheet is being edited
+        :param dropdowns: A list of the project dropdowns from the sg_data.get_all_project_dropdowns()
+        """
         QtWidgets.QDialog.__init__(self, parent)
 
         self.dropdowns = dropdowns
