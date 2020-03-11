@@ -1271,6 +1271,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
             entity_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
 
             # Collect Tasks
+            # TODO: Convert this to the new system
             tasks = sg_data.get_entity_tasks(entity_id=entity_id, entity_name=entity, proj_id=proj_id)
             self.update_task_dropdown(tasks=tasks)
 
