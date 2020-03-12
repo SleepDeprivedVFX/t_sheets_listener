@@ -108,17 +108,15 @@ class time_engine(QtCore.QThread):
     """
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
-
-        # Setup UI Editors
-        # self.time_hour = None
-        # self.time_minute = None
+        self.tick = None
+        self.kill_it = False
 
     def run(self):
-        while True:
+        while not self.kill_it:
             # Setup a clock system
             self.tick = QtCore.QTime.currentTime()
-            hour = (30 * (self.tick.hour() + (self.tick.minute() / 60.0)))
-            minute = (6 * (self.tick.minute() + (self.tick.second() / 60.0)))
+            hour = (30.0 * (self.tick.hour() + (self.tick.minute() / 60.0)))
+            minute = (6.0 * (self.tick.minute() + (self.tick.second() / 60.0)))
 
             # Create the main clock hands and compute rotations
             hour_rot = QtGui.QTransform()
@@ -138,14 +136,27 @@ class time_engine(QtCore.QThread):
             self.time_hour.update()
             self.time_minute.update()
 
-            # Hold the clcok for one second
+            # Hold the clock for one second
             time.sleep(1)
+
 
 # ------------------------------------------------------------------------------------------------------
 # Primary Engine
 # ------------------------------------------------------------------------------------------------------
 # NOTE: time_machine will continue to run services, an/or be the outside event listener.
 #       Or, it will be integrated into the clock? No. Probably not. I want time features to continue
+class time_machine(QtCore.QThread):
+    """
+    The timesheet engine
+    """
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+        self.kill_it = False
+
+    def run(self):
+        while not self.kill_it:
+
+            time.sleep(1)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -158,12 +169,13 @@ class time_lord(QtCore.QThread):
     """
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
+        self.kill_it = False
 
-        # Setup UI editors
-        self.latest_timesheet = None
-        self.project_dropdown = None
-        self.entity_dropdown = None
-        self.task_dropdown = None
+    def run(self):
+        while not self.kill_it:
+
+            # Wait a second
+            time.sleep(1)
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -191,38 +203,6 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.saved_window_position = self.settings.value('geometry', '')
         self.restoreGeometry(self.saved_window_position)
 
-        # --------------------------------------------------------------------------------------------------------
-        # Setup Time Engine
-        # --------------------------------------------------------------------------------------------------------
-        # Setup and connect the last timesheet.
-        # Declare Class Variables
-        self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
-
-        # FIXME: The following is all processes.  Should not be handled here.
-        # If the user has no previous timesheet, create an empty one here.
-        if not self.latest_timesheet['project'] and not self.latest_timesheet['entity'] \
-                and not self.latest_timesheet['date'] and not self.latest_timesheet['sg_task_start']:
-            project_id = int(config['admin_proj_id'])
-            task_id = int(config['admin_task_id'])
-            entity_id = None
-            context = {
-                'Project': {
-                    'id': project_id
-                },
-                'Task': {
-                    'id': task_id
-                },
-                'Entity': {
-                    'id': entity_id,
-                }
-            }
-            start_time = datetime.now()
-            first_sheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time)
-            if first_sheet:
-                tl_time.clock_out_time_sheet(timesheet=first_sheet, clock_out=start_time)
-
-        self.clocked_in = tl_time.is_user_clocked_in(user=user)
-
         # Connect to threads
         self.time_lord = time_lord()
         self.time_engine = time_engine()
@@ -238,9 +218,11 @@ class time_lord_ui(QtWidgets.QMainWindow):
         # self.set_window_on_top()
 
         # Setup UI editor threads
+        # Timesheet Elements
         self.time_lord.project_dropdown = self.ui.project_dropdown
         self.time_lord.entity_dropdown = self.ui.entity_dropdown
         self.time_lord.task_dropdown = self.ui.task_dropdown
+        # Clock Elements
         self.time_engine.time_hour = self.ui.time_hour
         self.time_engine.time_minute = self.ui.time_minute
 
