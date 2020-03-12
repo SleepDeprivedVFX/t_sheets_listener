@@ -147,13 +147,33 @@ class time_engine(QtCore.QThread):
 #       Or, it will be integrated into the clock? No. Probably not. I want time features to continue
 class time_machine(QtCore.QThread):
     """
-    The timesheet engine
+    The time_machine is the event listening engine that looks for new time sheets and updates the UI
+    to match.  It will essentially check for new time sheets and emit that data to the appropriate routines
+    for further processing.
     """
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
+
+        # Get the TLD Time Capsule File
+        self.db_path = os.path.join(sys.path[0], 'data_io/time_capsule.tld')
+        if not os.path.exists(self.db_path):
+            os.makedirs(self.db_path)
+
+        # Setup The main variables
         self.kill_it = False
 
+        # Setup the streams
+        self.time_signal = time_signals()
+        logger.info('Time Machine Started')
+
     def run(self):
+        self.listener()
+
+    def listener(self):
+        """
+        The main listener loop.  Checks for new time sheets and updates the other services.
+        :return:
+        """
         while not self.kill_it:
 
             time.sleep(1)
