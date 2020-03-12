@@ -97,10 +97,49 @@ class time_signals(QtCore.QObject):
     get_timesheet = QtCore.Signal(dict)
     set_timesheet = QtCore.Signal(dict)
 
+
 # -------------------------------------------------------------------------------------------------------------------
 # Clocks Engine
 # -------------------------------------------------------------------------------------------------------------------
 # NOTE: The clock engines will continue to run the UI clocks.
+class time_engine(QtCore.QThread):
+    """
+    This runs the clocks and continuous time calculations
+    """
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+
+        # Setup UI Editors
+        # self.time_hour = None
+        # self.time_minute = None
+
+    def run(self):
+        while True:
+            # Setup a clock system
+            self.tick = QtCore.QTime.currentTime()
+            hour = (30 * (self.tick.hour() + (self.tick.minute() / 60.0)))
+            minute = (6 * (self.tick.minute() + (self.tick.second() / 60.0)))
+
+            # Create the main clock hands and compute rotations
+            hour_rot = QtGui.QTransform()
+            minute_rot = QtGui.QTransform()
+            hour_rot.rotate(hour)
+            minute_rot.rotate(minute)
+
+            # Rotate the main clock images
+            hour_hand = QtGui.QPixmap(":/dial hands/elements/clock_1_hour.png")
+            minute_hand = QtGui.QPixmap(":/dial hands/elements/clock_1_minute.png")
+            hour_hand_rot = hour_hand.transformed(hour_rot)
+            minute_hand_rot = minute_hand.transformed(minute_rot)
+
+            # Set the main clock time
+            self.time_hour.setPixmap(hour_hand_rot)
+            self.time_minute.setPixmap(minute_hand_rot)
+            self.time_hour.update()
+            self.time_minute.update()
+
+            # Hold the clcok for one second
+            time.sleep(1)
 
 # ------------------------------------------------------------------------------------------------------
 # Primary Engine
@@ -108,10 +147,23 @@ class time_signals(QtCore.QObject):
 # NOTE: time_machine will continue to run services, an/or be the outside event listener.
 #       Or, it will be integrated into the clock? No. Probably not. I want time features to continue
 
+
 # ------------------------------------------------------------------------------------------------------
 # Primary Tools
 # ------------------------------------------------------------------------------------------------------
 # NOTE: time_lord currently does most of the processing
+class time_lord(QtCore.QThread):
+    """
+    The Time Lord is the main functional tool kit for the UI
+    """
+    def __init__(self, parent=None):
+        QtCore.QThread.__init__(self, parent)
+
+        # Setup UI editors
+        self.latest_timesheet = None
+        self.project_dropdown = None
+        self.entity_dropdown = None
+        self.task_dropdown = None
 
 
 # ------------------------------------------------------------------------------------------------------
@@ -171,6 +223,10 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
 
+        # Connect to threads
+        self.time_lord = time_lord()
+        self.time_engine = time_engine()
+
         # --------------------------------------------------------------------------------------------------------
         # Setup UI
         # --------------------------------------------------------------------------------------------------------
@@ -181,8 +237,19 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.window_on_top_tested = False
         # self.set_window_on_top()
 
+        # Setup UI editor threads
+        self.time_lord.project_dropdown = self.ui.project_dropdown
+        self.time_lord.entity_dropdown = self.ui.entity_dropdown
+        self.time_lord.task_dropdown = self.ui.task_dropdown
+        self.time_engine.time_hour = self.ui.time_hour
+        self.time_engine.time_minute = self.ui.time_minute
+
         # Set main user info
         self.ui.artist_label.setText(user['name'])
+
+        # Start your engines
+        self.time_lord.start()
+        self.time_engine.start()
 
 
 if __name__ == '__main__':
