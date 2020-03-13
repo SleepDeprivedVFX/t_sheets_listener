@@ -178,6 +178,7 @@ class time_machine(QtCore.QThread):
 
         # Setup the streams
         self.time_signal = time_signals()
+        # self.set_timesheet = QtCore.Signal(object)
         logger.info('Time Machine Started')
 
     def run(self):
@@ -314,7 +315,7 @@ class time_machine(QtCore.QThread):
                                     # Collect the entity
                                     ts_entity = timesheet_info['entity.Task.entity']
 
-                                    self.time_signal.set_timesheet.emit(timesheet_info)
+                                    self.set_timesheet.emit(timesheet_info)
                                     data = {
                                         'EventLogID': event['id'],
                                         'TimeLogID': event['entity']['id'],
@@ -357,12 +358,12 @@ class time_machine(QtCore.QThread):
 # Primary Tools
 # ------------------------------------------------------------------------------------------------------
 # NOTE: time_lord currently does most of the processing
-class time_lord(QtCore.QThread):
+class time_lord(QtCore.QObject):
     """
     The Time Lord is the main functional tool kit for the UI
     """
     def __init__(self, parent=None):
-        QtCore.QThread.__init__(self, parent)
+        QtCore.QObject.__init__(self, parent)
         self.kill_it = False
 
     def run(self):
@@ -424,8 +425,30 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.ui.artist_label.setText(user['name'])
 
         # Start your engines
-        self.time_lord.start()
+        # self.time_lord.start()
         self.time_engine.start()
+
+    def closeEvent(self, event: QtGui.QCloseEvent):
+        self.update_saved_settings()
+
+    def update_saved_settings(self):
+        """
+        The settings that are saved after the window is closed.
+        :return:
+        """
+        self.settings.setValue('project', self.ui.project_dropdown.currentText())
+        self.settings.setValue('project_id', self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex()))
+        self.settings.setValue('entity', self.ui.entity_dropdown.currentText())
+        self.settings.setValue('entity_id', self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex()))
+        self.settings.setValue('task', self.ui.task_dropdown.currentText())
+        self.settings.setValue('task_id', self.ui.task_dropdown.itemData(self.ui.task_dropdown.currentIndex()))
+        self.settings.setValue('geometry', self.saveGeometry())
+        self.saved_project = self.ui.project_dropdown.currentText()
+        self.saved_project_id = self.ui.project_dropdown.itemData(self.ui.project_dropdown.currentIndex())
+        self.saved_entity = self.ui.entity_dropdown.currentText()
+        self.saved_entity_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
+        self.saved_task = self.ui.task_dropdown.currentText()
+        self.saved_task_id = self.ui.task_dropdown.itemData(self.ui.task_dropdown.currentIndex())
 
 
 if __name__ == '__main__':
