@@ -120,7 +120,7 @@ class time_engine(QtCore.QThread):
 
     # @QtCore.Slot(object)
     def update_timesheet(self, timesheet=None):
-        print(timesheet)
+        print('timesheet:', timesheet)
 
     def run(self):
         self.chronograph()
@@ -132,6 +132,11 @@ class time_engine(QtCore.QThread):
             self.time_machine.quit()
 
     def chronograph(self):
+        # Start the Time Machine
+        print('time_engine > chronograph has started...')
+        self.time_machine.start()
+
+        # Run the clock loop
         while not self.kill_it:
             # Setup a clock system
             self.tick = QtCore.QTime.currentTime()
@@ -297,16 +302,25 @@ class time_machine(QtCore.QThread):
         The main listener loop.  Checks for new time sheets and updates the other services.
         :return:
         """
+        print('Time_machine > listener() has started...')
         while not self.kill_it:
             # Collect the events
             events = self.get_new_events()
+            time_capsule = self.get_time_capsule()
+            print('time_capsule returns: %s' % time_capsule, datetime.now().second)
             if events:
                 for event in events:
-                    time_capsule = self.get_time_capsule()
+                    print('event: %s' % event['id'])
                     if not event['entity']:
                         continue
                     if event['entity']['id'] >= time_capsule['TimeLogID'] and event['id'] > time_capsule['EventLogID']:
                         entity = event['entity']
+                        # TODO: At the end of this chain I still need to have it write out the current information,
+                        #       Currently, it is looping endlessly over future events, but doesn't record the latest
+                        #       until a new personal record is made, which means that it's constantly going through and
+                        #       checking the same junk events.
+                        #       Thus, I need to have it write out the save_time_capsule at the end of every loop, once
+                        #       instead of after applied events.
                         if entity:
                             entity_id = entity['id']
                             timesheet_info = tl_time.get_timesheet_by_id(tid=entity_id)
@@ -325,6 +339,7 @@ class time_machine(QtCore.QThread):
                                     ts_entity = timesheet_info['entity.Task.entity']
 
                                     self.set_timesheet.emit(timesheet_info)
+                                    print('set_timesheet emits: %s' % timesheet_info)
                                     data = {
                                         'EventLogID': event['id'],
                                         'TimeLogID': event['entity']['id'],
@@ -336,8 +351,10 @@ class time_machine(QtCore.QThread):
                                     except IOError as e:
                                         logger.warning('Failed to save the file.  Trying again in a few '
                                                        'seconds... %s' % e)
+                                        print('IOError... failed: %s' % e)
                                         time.sleep(2)
                                         self.save_time_capsule(data)
+
                                 elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
                                         event['entity']['id'] > time_capsule['TimeLogID']:
                                     # Now, the timesheet has an opened end time (still clocked in) and the capsule
@@ -358,7 +375,7 @@ class time_machine(QtCore.QThread):
 
                                     # TODO: In the original I emitted several conditions, and collected the latest
                                     #       timesheet
-
+                                    print('Clocked in... ts_id: %s' % ts_data)
 
             time.sleep(1)
 
@@ -373,13 +390,6 @@ class time_lord(QtCore.QObject):
     """
     def __init__(self, parent=None):
         QtCore.QObject.__init__(self, parent)
-        self.kill_it = False
-
-    def run(self):
-        while not self.kill_it:
-
-            # Wait a second
-            time.sleep(1)
 
 
 # ------------------------------------------------------------------------------------------------------
