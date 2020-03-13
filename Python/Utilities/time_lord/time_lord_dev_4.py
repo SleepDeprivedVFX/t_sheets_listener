@@ -169,12 +169,169 @@ class time_machine(QtCore.QThread):
     def run(self):
         self.listener()
 
+    def get_time_capsule(self):
+        """
+        This will open and collect the current time capsule file.
+        :return:
+        """
+        if os.path.exists(self.db_path):
+            fh = open(self.db_path, 'rb')
+            db_file = pickle.load(fh)
+            fh.close()
+            return db_file
+
+    def save_time_capsule(self, data={}):
+        """
+        Saves the last EventLogEntry and TimeLog to the time_capsule, allowing for checks of existing timesheets
+        and preventing the processing of events more than once.
+        :param data: (dict): A collection of 2 values:
+                   data =   {
+                                'EventLogID': 123,
+                                'TimeLogID': 456
+                            }
+        :return: None
+        """
+        if data:
+            if os.path.exists(self.db_path):
+                fh = open(self.db_path, 'wb')
+                pickle.dump(data, fh)
+                fh.close()
+
+    def get_new_events(self):
+        """
+        This method will collect the latest EventLogEntry from the Shotgun database.
+        :return: A list of new events
+        """
+        # print 'Getting new events'
+        next_event_id = None
+        time_capsule = self.get_time_capsule()
+        new_event_id = time_capsule['EventLogID']
+        if new_event_id and (next_event_id is None or new_event_id < next_event_id):
+            # print 'Setting next_event_id to %s' % new_event_id
+            next_event_id = new_event_id
+
+        if next_event_id:
+            # print 'next_event_id: %s' % next_event_id
+            filters = [
+                ['id', 'greater_than', next_event_id - 1],
+                {
+                    'filter_operator': 'any',
+                    'filters': [
+                        ['event_type', 'is', 'Shotgun_TimeLog_New'],
+                        ['event_type', 'is', 'Shotgun_TimeLog_Change']
+                    ]
+                }
+            ]
+            fields = [
+                'id',
+                'event_type',
+                'attribute_name',
+                'meta',
+                'entity',
+                'user',
+                'project',
+                'session_uuid',
+                'created_at'
+            ]
+            order = [
+                {
+                    'column': 'id',
+                    'direction': 'desc'
+                }
+            ]
+
+            conn_attempts = 0
+            while True:
+                try:
+                    events = sg.find('EventLogEntry', filters, fields, order=order, limit=100)
+                    # print 'found events: %s' % events
+                    if events:
+                        logger.debug('Events collected! %s' % events)
+                        # print 'New Events Collected!', events
+                        return events
+                except (sgapi.ProtocolError, sgapi.ResponseError, socket.error) as err:
+                    logger.warning('Shotgun API Failure.  Trying again... %s' % err)
+                    conn_attempts += 1
+                    time.sleep(5)
+                    if conn_attempts > 10:
+                        logger.error('Can\'t connect to shotgun!', err)
+                        break
+                except Exception as err:
+                    logger.debug('Unknown exception!  Trying again. %s' % err)
+                    conn_attempts += 1
+                    time.sleep(5)
+                    if conn_attempts > 10:
+                        logger.error('Something went wrong! %s' % err)
+                        error = '%s:\n%s | %s\n%s | %s' % (err, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                           inspect.stack()[1][2], inspect.stack()[1][3])
+                        comm.send_error_alert(user=user, error=error)
+                        break
+        return []
+
     def listener(self):
         """
         The main listener loop.  Checks for new time sheets and updates the other services.
         :return:
         """
         while not self.kill_it:
+            # Collect the events
+            events = self.get_new_events()
+            if events:
+                for event in events:
+                    time_capsule = self.get_time_capsule()
+                    if not event['entity']:
+                        continue
+                    if event['entity']['id'] >= time_capsule['TimeLogID'] and event['id'] > time_capsule['EventLogID']:
+                        entity = event['entity']
+                        if entity:
+                            entity_id = entity['id']
+                            timesheet_info = tl_time.get_timesheet_by_id(tid=entity_id)
+                        else:
+                            continue
+                        if timesheet_info:
+                            user_info = timesheet_info['user']
+                            user_id = user_info['id']
+                            if user_id == user['id']:
+                                if timesheet_info['sg_task_end'] and time_capsule['current'] and \
+                                        event['entity']['id'] == time_capsule['TimeLogID']:
+                                    # This is the first time the timesheet has been clocked out.
+
+                                    # Collect the entity
+                                    ts_entity = timesheet_info['entity.Task.entity']
+
+                                    # TODO: In the original, I emitted the timesheet info back to the UI here
+
+                                    data = {
+                                        'EventLogID': event['id'],
+                                        'TimeLogID': event['entity']['id'],
+                                        'current': False
+                                    }
+                                    try:
+                                        self.save_time_capsule(data)
+                                        logger.debug('Time Capsule saved!')
+                                    except IOError as e:
+                                        logger.warning('Failed to save the file.  Trying again in a few '
+                                                       'seconds... %s' % e)
+                                        time.sleep(2)
+                                        self.save_time_capsule(data)
+                                elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
+                                        event['entity']['id'] > time_capsule['TimeLogID']:
+
+                                    # Collect the entity
+                                    ts_entity = timesheet_info['entity.Task.entity']
+                                    logger.debug('NEW RECORD! %s' % event['id'])
+                                    ts_data = {
+                                        'project': timesheet_info['project']['name'],
+                                        'project_id': timesheet_info['project']['id'],
+                                        'entity': ts_entity['name'],
+                                        'entity_id': ts_entity['id'],
+                                        'task': timesheet_info['entity']['name'],
+                                        'task_id': timesheet_info['entity']['id']
+                                    }
+
+                                    # TODO: In the original I emitted several conditions, and collected the latest
+                                    #       timesheet
+
 
             time.sleep(1)
 
