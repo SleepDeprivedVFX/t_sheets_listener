@@ -125,6 +125,12 @@ class time_engine(QtCore.QThread):
     def run(self):
         self.chronograph()
 
+    def kill(self):
+        self.kill_it = True
+        if self.time_machine.isRunning():
+            self.time_machine.kill()
+            self.time_machine.quit()
+
     def chronograph(self):
         while not self.kill_it:
             # Setup a clock system
@@ -183,6 +189,9 @@ class time_machine(QtCore.QThread):
 
     def run(self):
         self.listener()
+
+    def kill(self):
+        self.kill_it = True
 
     def get_time_capsule(self):
         """
@@ -430,6 +439,9 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
     def closeEvent(self, event: QtGui.QCloseEvent):
         self.update_saved_settings()
+        if self.time_engine.isRunning():
+            self.time_engine.kill()
+            self.time_engine.quit()
 
     def update_saved_settings(self):
         """

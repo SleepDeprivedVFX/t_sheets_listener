@@ -2143,3 +2143,94 @@
 2020-03-10 18:45:46,098 - time_lord_sg_collection | INFO : 168 - Getting project shots...
 2020-03-10 18:45:46,211 - time_lord_sg_collection | INFO : 181 - Shots collected
 2020-03-10 18:45:46,324 - time_lord_sg_collection | INFO : 211 - Tasks collected
+2020-03-11 15:17:55,805 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 15:17:58,159 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-03-11 15:17:58,280 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-03-11 15:18:00,575 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 15:18:00,682 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 15:18:00,682 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 15:18:00,808 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 17:05:46,518 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 17:05:48,546 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-03-11 17:05:48,643 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-03-11 17:05:50,947 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 17:05:51,030 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 17:05:51,030 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 17:05:51,144 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 17:05:51,146 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 17:05:51,240 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 17:05:51,240 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 17:05:51,324 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 17:05:51,386 - time_lord_sg_collection | INFO : 189 - Getting tasks for entity ID 6244...
+2020-03-11 17:05:51,386 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 17:05:51,473 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 17:05:51,474 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 17:05:51,581 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 17:05:51,663 - time_lord_sg_collection | INFO : 211 - Tasks collected
+2020-03-11 17:05:51,668 - time_lord_sg_collection | INFO : 189 - Getting tasks for entity ID 6244...
+2020-03-11 17:05:51,668 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 17:05:51,745 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 17:05:51,746 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 17:05:51,851 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 17:05:51,941 - time_lord_sg_collection | INFO : 211 - Tasks collected
+2020-03-11 18:02:38,034 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:04:07,945 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:04:17,341 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:05:37,727 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:05:47,250 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:08:18,859 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:10:00,941 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:10:43,204 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:10:44,888 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-03-11 18:10:44,970 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-03-11 18:10:47,004 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 18:10:47,102 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 18:10:47,102 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 18:10:47,199 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 18:10:47,201 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 18:10:47,290 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 18:10:47,290 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 18:10:47,390 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 18:10:47,445 - time_lord_sg_collection | INFO : 189 - Getting tasks for entity ID 6244...
+2020-03-11 18:10:47,445 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 18:10:47,523 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 18:10:47,523 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 18:10:47,606 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 18:10:47,697 - time_lord_sg_collection | INFO : 211 - Tasks collected
+2020-03-11 18:10:47,709 - time_lord_sg_collection | INFO : 189 - Getting tasks for entity ID 6244...
+2020-03-11 18:10:47,709 - time_lord_sg_collection | INFO : 85 - Getting project assets...
+2020-03-11 18:10:47,793 - time_lord_sg_collection | INFO : 98 - Assets collected.
+2020-03-11 18:10:47,794 - time_lord_sg_collection | INFO : 168 - Getting project shots...
+2020-03-11 18:10:47,895 - time_lord_sg_collection | INFO : 181 - Shots collected
+2020-03-11 18:10:47,983 - time_lord_sg_collection | INFO : 211 - Tasks collected
+2020-03-11 18:11:50,956 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:19:33,743 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:32:18,805 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 18:36:35,023 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 22:37:55,216 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 23:44:19,410 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-11 23:45:47,802 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 00:27:03,337 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 00:37:56,513 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 12:39:53,995 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 12:43:26,524 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 17:42:14,205 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 21:05:49,239 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 22:43:30,298 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 22:47:50,592 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:04:35,427 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:06:01,488 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:06:22,853 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:14:10,625 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:17:24,359 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:18:15,123 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:46:12,260 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:46:49,575 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:47:18,526 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:47:34,058 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:49:21,394 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:49:34,005 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:49:55,603 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:50:08,958 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:53:43,975 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-03-12 23:54:34,738 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
