@@ -111,7 +111,21 @@ class time_engine(QtCore.QThread):
         self.tick = None
         self.kill_it = False
 
+        # Connect Signals
+        self.time_signal = time_signals()
+        self.time_machine = time_machine()
+
+        # Signal Connections
+        self.time_machine.time_signal.set_timesheet.connect(self.update_timesheet)
+
+    # @QtCore.Slot(object)
+    def update_timesheet(self, timesheet=None):
+        print(timesheet)
+
     def run(self):
+        self.chronograph()
+
+    def chronograph(self):
         while not self.kill_it:
             # Setup a clock system
             self.tick = QtCore.QTime.currentTime()
@@ -294,13 +308,13 @@ class time_machine(QtCore.QThread):
                             if user_id == user['id']:
                                 if timesheet_info['sg_task_end'] and time_capsule['current'] and \
                                         event['entity']['id'] == time_capsule['TimeLogID']:
-                                    # This is the first time the timesheet has been clocked out.
+                                    # At this point, there is a timestamp in the out time, and the time capsule reads it
+                                    # as the latest (current) timesheet, and both the event ID and the capsule id match
 
                                     # Collect the entity
                                     ts_entity = timesheet_info['entity.Task.entity']
 
-                                    # TODO: In the original, I emitted the timesheet info back to the UI here
-
+                                    self.time_signal.set_timesheet.emit(timesheet_info)
                                     data = {
                                         'EventLogID': event['id'],
                                         'TimeLogID': event['entity']['id'],
@@ -316,6 +330,9 @@ class time_machine(QtCore.QThread):
                                         self.save_time_capsule(data)
                                 elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
                                         event['entity']['id'] > time_capsule['TimeLogID']:
+                                    # Now, the timesheet has an opened end time (still clocked in) and the capsule
+                                    # is not listed as the current one, suggesting a new timesheet OR
+                                    # the event ID is higher that the one in the capsule.
 
                                     # Collect the entity
                                     ts_entity = timesheet_info['entity.Task.entity']
