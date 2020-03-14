@@ -306,21 +306,17 @@ class time_machine(QtCore.QThread):
         while not self.kill_it:
             # Collect the events
             events = self.get_new_events()
-            time_capsule = self.get_time_capsule()
-            print('time_capsule returns: %s' % time_capsule, datetime.now().second)
             if events:
                 for event in events:
-                    print('event: %s' % event['id'])
+                    time_capsule = self.get_time_capsule()
+                    event_id = time_capsule['EventLogID']
+                    timelog_id = time_capsule['TimeLogID']
+                    current = time_capsule['current']
+
                     if not event['entity']:
                         continue
                     if event['entity']['id'] >= time_capsule['TimeLogID'] and event['id'] > time_capsule['EventLogID']:
                         entity = event['entity']
-                        # TODO: At the end of this chain I still need to have it write out the current information,
-                        #       Currently, it is looping endlessly over future events, but doesn't record the latest
-                        #       until a new personal record is made, which means that it's constantly going through and
-                        #       checking the same junk events.
-                        #       Thus, I need to have it write out the save_time_capsule at the end of every loop, once
-                        #       instead of after applied events.
                         if entity:
                             entity_id = entity['id']
                             timesheet_info = tl_time.get_timesheet_by_id(tid=entity_id)
@@ -338,22 +334,11 @@ class time_machine(QtCore.QThread):
                                     # Collect the entity
                                     ts_entity = timesheet_info['entity.Task.entity']
 
-                                    self.set_timesheet.emit(timesheet_info)
+                                    self.time_signal.set_timesheet.emit(timesheet_info)
                                     print('set_timesheet emits: %s' % timesheet_info)
-                                    data = {
-                                        'EventLogID': event['id'],
-                                        'TimeLogID': event['entity']['id'],
-                                        'current': False
-                                    }
-                                    try:
-                                        self.save_time_capsule(data)
-                                        logger.debug('Time Capsule saved!')
-                                    except IOError as e:
-                                        logger.warning('Failed to save the file.  Trying again in a few '
-                                                       'seconds... %s' % e)
-                                        print('IOError... failed: %s' % e)
-                                        time.sleep(2)
-                                        self.save_time_capsule(data)
+                                    event_id = event['id']
+                                    timelog_id = event['entity']['id']
+                                    current = False
 
                                 elif not timesheet_info['sg_task_end'] and not time_capsule['current'] or \
                                         event['entity']['id'] > time_capsule['TimeLogID']:
@@ -376,6 +361,35 @@ class time_machine(QtCore.QThread):
                                     # TODO: In the original I emitted several conditions, and collected the latest
                                     #       timesheet
                                     print('Clocked in... ts_id: %s' % ts_data)
+                                    event_id = event['id']
+                                    timelog_id = event['entity']['id']
+                                    current = True
+                                else:
+                                    logger.debug('Event Skipped')
+                                    event_id = event['id']
+                                    timelog_id = timesheet_info['id']
+                                    current = time_capsule['current']
+                        elif event['entity']['id'] != time_capsule['TimeLogID'] \
+                                and event['id'] > time_capsule['EventLogID']:
+                            event_id = event['id']
+                            timelog_id = time_capsule['TimeLogID']
+                            current = time_capsule['current']
+
+                    data = {
+                        'EventLogID': event_id,
+                        'TimeLogID': timelog_id,
+                        'current': current
+                    }
+                    try:
+                        self.save_time_capsule(data)
+                        logger.debug('Time Capsule saved!')
+                    except IOError as e:
+                        logger.warning('Failed to save the file.  Trying again in a few '
+                                       'seconds... %s' % e)
+                        print('IOError... failed: %s' % e)
+                        time.sleep(2)
+                        self.save_time_capsule(data)
+
 
             time.sleep(1)
 
