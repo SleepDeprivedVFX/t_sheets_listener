@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_reports.ui'
+# Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_queue\ui\time_lord_reports.ui'
 #
 # Created: Wed Feb 12 12:32:32 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4

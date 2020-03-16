@@ -15,6 +15,7 @@ from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime
 from dateutil import parser
 import pickle
+import queue
 
 # Time Lord Libraries
 from bin.time_continuum import continuum
@@ -78,6 +79,9 @@ lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
 # --------------------------------------------------------------------------------------------------
 comm = comm_system.comm_sys(sg, config=config, sub='time_lord')
 logger.info('Communication system online.')
+
+# Setup the Time Queue
+q = queue.Queue(maxsize=0)
 
 # -------------------------------------------------------------------------------------------------------------------
 # Stream Handler
@@ -397,14 +401,21 @@ class time_machine(QtCore.QThread):
 # ------------------------------------------------------------------------------------------------------
 # Primary Tools
 # ------------------------------------------------------------------------------------------------------
-# NOTE: time_lord currently does most of the processing
-class time_lord(QtCore.QObject):
+# NOTE: time_queue currently does most of the processing
+class time_queue(QtCore.QThread):
     """
     The Time Lord is the main functional tool kit for the UI
     """
     def __init__(self, parent=None):
-        QtCore.QObject.__init__(self, parent)
+        QtCore.QThread.__init__(self, parent)
 
+    def run(self):
+        self.run_queue()
+
+    def run_queue(self):
+        while True:
+            package = q.get(block=True)
+            print(package)
 
 # ------------------------------------------------------------------------------------------------------
 # User Interface
@@ -432,7 +443,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.restoreGeometry(self.saved_window_position)
 
         # Connect to threads
-        self.time_lord = time_lord()
+        self.time_queue = time_queue()
         self.time_engine = time_engine()
 
         # --------------------------------------------------------------------------------------------------------
@@ -447,9 +458,9 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
         # Setup UI editor threads
         # Timesheet Elements
-        self.time_lord.project_dropdown = self.ui.project_dropdown
-        self.time_lord.entity_dropdown = self.ui.entity_dropdown
-        self.time_lord.task_dropdown = self.ui.task_dropdown
+        self.time_queue.project_dropdown = self.ui.project_dropdown
+        self.time_queue.entity_dropdown = self.ui.entity_dropdown
+        self.time_queue.task_dropdown = self.ui.task_dropdown
         # Clock Elements
         self.time_engine.time_hour = self.ui.time_hour
         self.time_engine.time_minute = self.ui.time_minute
@@ -458,7 +469,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.ui.artist_label.setText(user['name'])
 
         # Start your engines
-        # self.time_lord.start()
+        # self.time_queue.start()
         self.time_engine.start()
 
     def closeEvent(self, event: QtGui.QCloseEvent):

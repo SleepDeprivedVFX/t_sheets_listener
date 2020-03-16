@@ -1,5 +1,5 @@
 """
-This is a partial start-over for the time_lord.  I feel like the original system may have inadvertently become too
+This is a partial start-over for the time_queue.  I feel like the original system may have inadvertently become too
 cumbersome to make work, and was ending up being one patch after another, not really solving any of the problems, but
 covering them up with ever more inhibiting drives to collect data.
 
@@ -87,14 +87,14 @@ logger.debug('Shotgun is connected.')
 # Connect Time Lord Components
 # --------------------------------------------------------------------------------------------------
 # setup continuum
-tl_time = continuum(sg, config=config, sub='time_lord')
+tl_time = continuum(sg, config=config, sub='time_queue')
 
 # Setup and get users
-users = companions(sg, config=config, sub='time_lord')
+users = companions(sg, config=config, sub='time_queue')
 user = users.get_user_from_computer()
 
 # setup shotgun data connection
-sg_data = shotgun_collect.sg_data(sg, config=config, sub='time_lord')
+sg_data = shotgun_collect.sg_data(sg, config=config, sub='time_queue')
 
 lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
                                     task_name=config['lunch'])
@@ -102,7 +102,7 @@ lunch_task = sg_data.get_lunch_task(lunch_proj_id=int(config['admin_proj_id']),
 # --------------------------------------------------------------------------------------------------
 # Setup the comm system
 # --------------------------------------------------------------------------------------------------
-comm = comm_system.comm_sys(sg, config=config, sub='time_lord')
+comm = comm_system.comm_sys(sg, config=config, sub='time_queue')
 logger.info('Communication system online.')
 
 
@@ -565,7 +565,7 @@ class time_machine(QtCore.QThread):
                                     self.time_signal.log.emit('Sending UI Update signal')
                                     self.time_signal.debug.emit('Timesheet update emitted.')
 
-                                    # Update the time_lord ui
+                                    # Update the time_queue ui
                                     self.time_signal.update_ui.emit(timesheet_info)
 
                                     data = {
@@ -599,7 +599,7 @@ class time_machine(QtCore.QThread):
                                     self.time_lord.time_signal.update.emit(ts_data)
                                     self.time_lord.time_signal.wait_cond_1.wait(self.time_lord.time_signal.mutex_1)
                                     new_timesheet = tl_time.get_latest_timesheet(user=user)
-                                    # self.time_lord.time_signal.latest_timesheet.emit(new_timesheet)
+                                    # self.time_queue.time_signal.latest_timesheet.emit(new_timesheet)
                                     self.time_signal.latest_timesheet.emit(new_timesheet)
 
                                     data = {
@@ -1186,7 +1186,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
             'task': self.saved_task,
             'task_id': self.saved_task_id
         }
-        # self.time_lord.time_signal.update.emit(data)
+        # self.time_queue.time_signal.update.emit(data)
 
         # Initialize the dropdowns
         self.init_ui()
@@ -1540,7 +1540,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         if not self.clocked_in:
             # self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
             # self.timesheet_update.time_signal.ui_update.emit('Update!')
-            # self.time_lord.time_signal.ui_update.emit()
+            # self.time_queue.time_signal.ui_update.emit()
             try:
                 if self.user_end:
                     end_time = self.user_end
@@ -1678,7 +1678,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
     def set_dropdown(self, data=None):
         logger.debug('+++Update Signal received: %s | %s' % (data['type'], data['name']))
-        # self.time_lord.time_signal.mutex_2.lock()
+        # self.time_queue.time_signal.mutex_2.lock()
         if data:
             dd_type = data['type']
             dd_value = data['name']
@@ -1694,8 +1694,8 @@ class time_lord_ui(QtWidgets.QMainWindow):
                 if new_index:
                     widge.setCurrentIndex(new_index)
                     logger.debug('widge set')
-        # self.time_lord.time_signal.mutex_2.unlock()
-        # self.time_lord.time_signal.wait_cond_2.wakeAll()
+        # self.time_queue.time_signal.mutex_2.unlock()
+        # self.time_queue.time_signal.wait_cond_2.wakeAll()
 
     # ----------------------------------------------------------------------------------------------------------------
     # OUTPUT MONITORS

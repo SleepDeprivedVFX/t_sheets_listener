@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\time_lord_ot_alert.ui'
+# Form implementation generated from reading ui file 'C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_queue\ui\time_lord_ot_alert.ui'
 #
 # Created: Mon Nov 04 18:41:21 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
