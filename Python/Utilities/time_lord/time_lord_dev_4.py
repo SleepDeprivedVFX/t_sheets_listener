@@ -118,13 +118,48 @@ class time_engine(QtCore.QThread):
         # Connect Signals
         self.time_signal = time_signals()
         self.time_machine = time_machine()
+        self.time_queue = time_queue()
 
         # Signal Connections
         self.time_machine.time_signal.set_timesheet.connect(self.update_timesheet)
 
+        self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task)
+        self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
+
     # @QtCore.Slot(object)
     def update_timesheet(self, timesheet=None):
         print('timesheet:', timesheet)
+
+    def daily_output(self, message=None):
+        total = 'Daily Total: %0.2f' % message
+        self.output_daily.setPlainText(str(total))
+        print('daily output set')
+
+    def set_daily_total_needle(self, total):
+        '''
+        Set this to adjust the needs and the output monitor values simultaneously.
+        :param total: A total value of the daily total hours minus lunch and breaks
+        :return:
+        '''
+        if total:
+            # self.daily_output(total)
+            # Adjust the total down by a value known from the graphics?
+            total -= 4.0
+            angle = ((total / (float(config['ot_hours']) * 2.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
+
+            if angle < -50.0:
+                angle = -50.0
+            elif angle > 50.0:
+                angle = 50.0
+            meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
+            needle_rot = QtGui.QTransform()
+
+            needle_rot.rotate(angle)
+            meter_needle_rot = meter_needle.transformed(needle_rot)
+
+            self.day_meter.setPixmap(meter_needle_rot)
+            self.day_meter.update()
+            print('day_meter set')
 
     def run(self):
         self.chronograph()
@@ -135,10 +170,19 @@ class time_engine(QtCore.QThread):
             self.time_machine.kill()
             self.time_machine.quit()
 
+        if self.time_queue.isRunning():
+            self.time_queue.kill()
+            self.time_queue.quit()
+
+        if self.isRunning():
+            self.quit()
+
     def chronograph(self):
         # Start the Time Machine
         print('time_engine > chronograph has started...')
         self.time_machine.start()
+        self.time_queue.start()
+        sub_timer = 0
 
         # Run the clock loop
         while not self.kill_it:
@@ -164,6 +208,15 @@ class time_engine(QtCore.QThread):
             self.time_minute.setPixmap(minute_hand_rot)
             self.time_hour.update()
             self.time_minute.update()
+
+            if (sub_timer % 10) == 0:
+                sub_timer = 1
+                # Collect the Daily Total
+                self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task['id'])
+                self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task['id'])
+                self.set_daily_total_needle(self.daily_total)
+            else:
+                sub_timer += 1
 
             # Hold the clock for one second
             time.sleep(1)
@@ -200,6 +253,8 @@ class time_machine(QtCore.QThread):
         self.listener()
 
     def kill(self):
+        if self.isRunning():
+            self.quit()
         self.kill_it = True
 
     def get_time_capsule(self):
@@ -365,6 +420,7 @@ class time_machine(QtCore.QThread):
                                     # TODO: In the original I emitted several conditions, and collected the latest
                                     #       timesheet
                                     print('Clocked in... ts_id: %s' % ts_data)
+                                    self.time_signal.set_timesheet.emit(ts_data)
                                     event_id = event['id']
                                     timelog_id = event['entity']['id']
                                     current = True
@@ -408,14 +464,21 @@ class time_queue(QtCore.QThread):
     """
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
+        self.kill_it = False
 
     def run(self):
         self.run_queue()
 
     def run_queue(self):
-        while True:
+        while not self.kill_it:
             package = q.get(block=True)
+            print('package:')
             print(package)
+            q.task_done()
+
+    def kill(self):
+        self.kill_it = True
+
 
 # ------------------------------------------------------------------------------------------------------
 # User Interface
@@ -439,7 +502,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.saved_entity_id = self.settings.value('entity_id', '.')
         self.saved_task = self.settings.value('task', '.')
         self.saved_task_id = self.settings.value('task_id', '.')
-        self.saved_window_position = self.settings.value('geometry', '')
+        self.saved_window_position = self.settings.value('geometry')
         self.restoreGeometry(self.saved_window_position)
 
         # Connect to threads
@@ -464,6 +527,8 @@ class time_lord_ui(QtWidgets.QMainWindow):
         # Clock Elements
         self.time_engine.time_hour = self.ui.time_hour
         self.time_engine.time_minute = self.ui.time_minute
+        self.time_engine.day_meter = self.ui.day_meter
+        self.time_engine.output_daily = self.ui.output_daily
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])

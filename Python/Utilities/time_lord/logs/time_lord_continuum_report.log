@@ -1,1 +1,453 @@
 2020-03-15 22:21:41,827 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 20:05:26,871 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 20:07:28,454 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 20:17:23,369 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 20:17:52,020 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:44:18,359 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:45:27,634 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:46:34,628 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:47:02,704 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:47:37,966 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:48:13,889 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:48:38,428 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:49:20,696 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:49:48,581 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 22:50:04,191 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 23:04:16,222 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 23:07:19,857 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 23:19:54,676 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 23:23:14,367 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 23:23:32,472 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 23:25:04,547 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 23:26:02,611 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-16 23:28:28,141 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:15:35,259 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:23:17,996 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:23:19,348 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:23:21,012 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:23:23,318 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:23:24,403 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:23:25,485 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:23:26,585 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:23:26,586 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:23:28,303 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:23:29,314 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:23:29,315 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:24:06,654 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:24:09,560 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:24:10,488 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:24:12,020 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:24:13,114 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:24:14,447 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:24:15,557 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:24:17,145 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:24:57,363 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:24:59,951 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:25:00,953 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:25:02,527 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:25:03,611 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:25:04,704 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:12,482 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:26:13,760 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:13,840 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:14,754 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:26:15,231 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:16,334 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:16,620 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:17,723 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:17,816 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:18,907 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:18,987 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:20,189 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:26:20,716 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:22,029 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:22,117 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:23,211 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:23,298 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:24,383 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:24,467 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:46,962 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:26:50,878 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:50,977 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:51,908 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:26:52,436 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:53,530 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:53,618 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:54,913 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:54,991 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:56,087 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:56,364 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:57,497 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:26:58,690 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:59,786 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:26:59,875 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:00,963 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:01,688 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:05,067 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:27:05,464 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:06,549 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:06,642 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:07,743 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:08,029 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:09,120 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:09,206 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:10,324 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:27:10,655 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:11,741 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:11,821 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:12,913 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:27:12,998 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:43,998 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:30:47,121 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:47,201 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:49,889 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:30:50,406 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:51,522 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:51,610 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:52,702 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:52,791 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:53,877 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:53,957 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:56,777 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:30:57,133 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:58,220 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:58,508 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:59,592 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:30:59,676 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:00,762 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:00,856 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:43,012 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:31:46,621 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:46,701 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:47,847 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:31:48,372 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:49,461 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:49,544 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:50,640 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:50,722 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:51,833 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:31:52,117 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:14,300 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:32:18,485 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:18,767 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:22,644 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:32:22,934 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:24,018 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:24,096 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:25,198 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:25,297 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:49,353 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:32:53,191 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:53,276 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:57,690 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:32:58,024 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:59,115 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:32:59,194 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:00,285 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:00,366 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:33,366 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:33:34,182 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:34,262 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:37,988 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:33:38,302 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:39,393 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:39,487 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:40,572 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:40,659 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:41,954 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:42,036 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:43,151 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:33:43,593 - time_lord_continuum | ERROR : 652 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:33:44,691 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:23,410 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:34:24,184 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:24,265 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:24,871 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:34:25,362 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:26,452 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:26,536 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:27,826 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:27,912 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:28,997 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:34:29,077 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:35:15,311 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:35:24,054 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:35:24,133 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:35:24,895 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:35:32,202 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:38:08,953 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:38:10,526 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:38:10,617 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:38:11,987 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:38:25,502 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:38:25,506 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:38:39,962 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:38:39,963 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:38:50,746 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:38:50,747 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:38:55,556 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:38:55,557 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:39:06,090 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:39:06,090 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:39:19,702 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:39:19,703 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:39:30,673 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:39:30,677 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:39:34,452 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:39:34,452 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:39:45,390 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:39:45,391 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:40:06,336 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:40:06,339 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:40:17,674 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:40:17,675 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:40:20,993 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL] internal error (_ssl.c:2508)
+2020-03-17 00:40:20,997 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:47:47,314 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:47:53,656 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:47:53,934 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:47:58,338 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:48:09,958 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:48:09,958 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:49:13,846 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:49:14,572 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:49:14,665 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:49:15,560 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:50:16,130 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:50:22,254 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:50:22,336 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:50:23,177 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:52:52,120 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:52:54,833 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:52:54,918 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:52:55,988 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:53:09,484 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:53:09,484 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 00:54:07,566 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:54:10,383 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:54:10,485 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:54:14,258 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:56:41,414 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:56:42,057 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:56:42,143 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:56:42,707 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 00:57:12,243 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 00:57:12,939 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:57:13,234 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 00:57:13,915 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 11:00:49,192 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 11:00:49,997 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 11:00:50,064 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 11:00:50,509 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 11:01:00,757 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 11:01:00,758 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 11:01:11,074 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 11:01:11,075 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 11:01:31,702 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-17 11:01:31,702 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-17 11:11:44,294 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-17 11:11:44,818 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-17 11:11:44,882 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 10:54:41,540 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-18 10:54:42,480 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 10:54:42,545 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 10:54:43,053 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 14:33:07,694 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-18 14:33:08,239 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 14:33:08,325 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 14:33:08,716 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 14:33:18,984 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 14:33:18,984 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 14:33:29,291 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 14:33:29,291 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:44:43,475 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-18 15:44:44,296 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 15:44:44,362 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 15:44:44,876 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:44:55,182 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:44:55,182 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:45:05,468 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:45:05,469 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:45:26,123 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL] internal error (_ssl.c:2508)
+2020-03-18 15:45:26,124 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:45:36,403 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:45:36,404 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:45:46,713 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:45:46,713 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:45:57,079 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:45:57,080 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:50:14,554 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-18 15:50:15,077 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 15:50:15,142 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 15:50:15,628 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:50:25,994 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:50:25,994 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:50:36,337 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:50:36,338 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:53:43,992 - time_lord_continuum | INFO : 68 - Continuum Activated!
+2020-03-18 15:54:33,293 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 15:54:33,362 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! API read() invalid/missing entity hash integer 'id':
+{"type"=>"Task", "id"=>{"type"=>"Task", "id"=>22837}}
+2020-03-18 15:54:33,825 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:54:44,169 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL] internal error (_ssl.c:2508)
+2020-03-18 15:54:44,170 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:54:54,487 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:54:54,488 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:55:04,788 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL] internal error (_ssl.c:2508)
+2020-03-18 15:55:04,789 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:55:15,147 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:55:15,148 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:55:25,499 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:55:25,499 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:55:35,974 - time_lord_continuum | ERROR : 807 - Bad connection.  Trying again...
+2020-03-18 15:55:35,975 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:55:46,474 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:56:06,869 - time_lord_continuum | ERROR : 595 - Time sheet failed to acquire: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-18 15:56:17,400 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL] internal error (_ssl.c:2508)
+2020-03-18 15:56:37,916 - time_lord_continuum | ERROR : 651 - Failed to get the timesheet! [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
