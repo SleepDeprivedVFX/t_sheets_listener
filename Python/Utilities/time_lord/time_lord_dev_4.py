@@ -114,6 +114,7 @@ class time_engine(QtCore.QThread):
         QtCore.QThread.__init__(self, parent)
         self.tick = None
         self.kill_it = False
+        self.latest_timesheet = None
 
         # Connect Signals
         self.time_signal = time_signals()
@@ -126,19 +127,23 @@ class time_engine(QtCore.QThread):
         self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task)
         self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
 
+        self.update_timesheet()
+
     # @QtCore.Slot(object)
     def update_timesheet(self, timesheet=None):
         print('timesheet:', timesheet)
+        if not timesheet:
+            self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
+        else:
+            self.latest_timesheet = timesheet
 
     def daily_output(self, message=None):
         total = 'Daily Total: %0.2f' % message
         self.output_daily.setPlainText(str(total))
-        print('daily output set')
 
     def weekly_output(self, message=None):
         total = 'Weekly Total: %0.2f' % message
         self.output_weekly.setPlainText(str(total))
-        print('weekly output set')
 
     def set_daily_total_needle(self, total):
         '''
@@ -164,7 +169,6 @@ class time_engine(QtCore.QThread):
 
             self.day_meter.setPixmap(meter_needle_rot)
             self.day_meter.update()
-            print('day_meter set')
 
     def set_weekly_total_needle(self, total):
         if total:
@@ -182,7 +186,34 @@ class time_engine(QtCore.QThread):
 
             self.week_meter.setPixmap(meter_needle_rot)
             self.week_meter.update()
-            print('week_meter set')
+
+    def trt_output(self, message=None):
+        if message:
+            trt = 'TRT: %s:%s:%s' % (message['h'], message['m'], message['s'])
+        else:
+            trt = 'TRT: 00:00:00'
+        self.output_trt.setPlainText(trt)
+
+    def set_runtime_clock(self, t='000000'):
+        """
+        Sets the running time clock.
+        :param t: (str) - While this is a number value, it must be exactly 6 digits long, thus string to maintain
+                            the number of zeros needed for the default.
+        :return: Running time.
+        """
+        if len(t) == 6:
+            self.run_hour_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                            'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[0])
+            self.run_hour_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                            'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[1])
+            self.run_minute_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                              'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[2])
+            self.run_minute_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                              'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[3])
+            self.run_second_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                              'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[4])
+            self.run_second_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
+                                              'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[5])
 
     def run(self):
         self.chronograph()
@@ -245,6 +276,10 @@ class time_engine(QtCore.QThread):
                 self.weekly_output(self.weekly_total)
             else:
                 sub_timer += 1
+
+            trt = tl_time.get_running_time(timesheet=self.latest_timesheet)
+            self.trt_output(trt)
+            self.set_runtime_clock(trt['rt'])
 
             # Hold the clock for one second
             time.sleep(1)
@@ -559,6 +594,13 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.week_meter = self.ui.week_meter
         self.time_engine.output_weekly = self.ui.output_weekly
         self.time_engine.output_daily = self.ui.output_daily
+        self.time_engine.output_trt = self.ui.output_trt
+        self.time_engine.run_hour_ten = self.ui.run_hour_ten
+        self.time_engine.run_hour_one = self.ui.run_hour_one
+        self.time_engine.run_minute_ten = self.ui.run_minute_ten
+        self.time_engine.run_minute_one = self.ui.run_minute_one
+        self.time_engine.run_second_ten = self.ui.run_second_ten
+        self.time_engine.run_second_one = self.ui.run_second_one
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])
