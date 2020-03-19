@@ -115,6 +115,7 @@ class time_engine(QtCore.QThread):
         self.tick = None
         self.kill_it = False
         self.latest_timesheet = None
+        self.today = datetime.now().date().strftime('%m-%d-%y')
 
         # Connect Signals
         self.time_signal = time_signals()
@@ -122,12 +123,11 @@ class time_engine(QtCore.QThread):
         self.time_queue = time_queue()
 
         # Signal Connections
+        self.update_timesheet()
         self.time_machine.time_signal.set_timesheet.connect(self.update_timesheet)
 
         self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task)
         self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
-
-        self.update_timesheet()
 
     # @QtCore.Slot(object)
     def update_timesheet(self, timesheet=None):
@@ -215,6 +215,75 @@ class time_engine(QtCore.QThread):
             self.run_second_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
                                               'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[5])
 
+    def set_start_date_rollers(self, d='00-00-00'):
+        """
+        Sets the date rollers.
+        :param d: (str) A MM-DD-YY date format string.
+        :param which: (str) One of two acceptable values: 'start', 'end'
+        :return:
+        """
+        # set the start date roller
+        if d and d != '00-00-00':
+
+            split_date = d.split('-')
+            m = split_date[0]
+            d = split_date[1]
+            y = split_date[2]
+
+            m_tens = int(m[0])
+            m_ones = int(m[1])
+            d_tens = int(d[0])
+            d_ones = int(d[1])
+            y_tens = int(y[0])
+            y_ones = int(y[1])
+
+            self.start_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                'start_m_tens_%s.png);' % m_tens)
+            self.start_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                                'start_m_ones_%s.png);' % m_ones)
+            self.start_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                              'start_d_tens_%s.png);' % d_tens)
+            self.start_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                              'start_d_ones_%s.png);' % d_ones)
+            self.start_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                               'start_y_tens_%s.png);' % y_tens)
+            self.start_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                               'start_y_ones_%s.png);' % y_ones)
+
+    def set_end_date_rollers(self, d='00-00-00'):
+        """
+        Sets the date rollers.
+        :param d: (str) A MM-DD-YY date format string.
+        :return:
+        """
+        # set the end date roller
+        if d and d != '00-00-00':
+
+            split_date = d.split('-')
+            m = split_date[0]
+            d = split_date[1]
+            y = split_date[2]
+
+            m_tens = int(m[0])
+            m_ones = int(m[1])
+            d_tens = int(d[0])
+            d_ones = int(d[1])
+            y_tens = int(y[0])
+            y_ones = int(y[1])
+
+            self.end_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                              'end_m_tens_%s.png);' % m_tens)
+            self.end_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                              'end_m_ones_%s.png);' % m_ones)
+            self.end_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                            'end_d_tens_%s.png);' % d_tens)
+            self.end_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                            'end_d_ones_%s.png);' % d_ones)
+            self.end_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                             'end_y_tens_%s.png);' % y_tens)
+            self.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
+                                             'end_y_ones_%s.png);' % y_ones)
+
     def run(self):
         self.chronograph()
 
@@ -280,6 +349,13 @@ class time_engine(QtCore.QThread):
             trt = tl_time.get_running_time(timesheet=self.latest_timesheet)
             self.trt_output(trt)
             self.set_runtime_clock(trt['rt'])
+
+            timesheet_start_date = self.latest_timesheet['sg_task_start'].date()
+            short_start_date = timesheet_start_date.strftime('%m-%d-%y')
+            if short_start_date != self.today:
+                self.set_start_date_rollers(d=str(short_start_date))
+            else:
+                self.set_start_date_rollers(d=str(self.today))
 
             # Hold the clock for one second
             time.sleep(1)
@@ -592,8 +668,8 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_minute = self.ui.time_minute
         self.time_engine.day_meter = self.ui.day_meter
         self.time_engine.week_meter = self.ui.week_meter
-        self.time_engine.output_weekly = self.ui.output_weekly
         self.time_engine.output_daily = self.ui.output_daily
+        self.time_engine.output_weekly = self.ui.output_weekly
         self.time_engine.output_trt = self.ui.output_trt
         self.time_engine.run_hour_ten = self.ui.run_hour_ten
         self.time_engine.run_hour_one = self.ui.run_hour_one
@@ -601,6 +677,18 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.run_minute_one = self.ui.run_minute_one
         self.time_engine.run_second_ten = self.ui.run_second_ten
         self.time_engine.run_second_one = self.ui.run_second_one
+        self.time_engine.start_tens_month = self.ui.start_tens_month
+        self.time_engine.start_ones_month = self.ui.start_ones_month
+        self.time_engine.start_tens_day = self.ui.start_tens_day
+        self.time_engine.start_ones_day = self.ui.start_ones_day
+        self.time_engine.start_tens_year = self.ui.start_tens_year
+        self.time_engine.start_ones_year = self.ui.start_ones_year
+        self.time_engine.end_tens_month = self.ui.end_tens_month
+        self.time_engine.end_ones_month = self.ui.end_ones_month
+        self.time_engine.end_tens_day = self.ui.end_tens_day
+        self.time_engine.end_ones_day = self.ui.end_ones_day
+        self.time_engine.end_tens_year = self.ui.end_tens_year
+        self.time_engine.end_ones_year = self.ui.end_ones_year
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])
