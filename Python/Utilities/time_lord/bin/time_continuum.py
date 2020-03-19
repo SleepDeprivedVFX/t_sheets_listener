@@ -80,34 +80,34 @@ class continuum(object):
 
         # get time configurations
         self.double_time_mins = int(config['dt_hours']) * 60
-
-    def get_time_capsule(self):
-        """
-        This will open and collect the current time capsule file.
-        :return:
-        """
-        if os.path.exists(self.db_path):
-            fh = open(self.db_path, 'rb')
-            db_file = pickle.load(fh)
-            fh.close()
-            return db_file
-
-    def save_time_capsule(self, data={}):
-        """
-        Saves the last EventLogEntry and TimeLog to the time_capsule, allowing for checks of existing timesheets
-        and preventing the processing of events more than once.
-        :param data: (dict): A collection of 2 values:
-                   data =   {
-                                'EventLogID': 123,
-                                'TimeLogID': 456
-                            }
-        :return: None
-        """
-        if data:
-            if os.path.exists(self.db_path):
-                fh = open(self.db_path, 'wb')
-                pickle.dump(data, fh)
-                fh.close()
+    #
+    # def get_time_capsule(self):
+    #     """
+    #     This will open and collect the current time capsule file.
+    #     :return:
+    #     """
+    #     if os.path.exists(self.db_path):
+    #         fh = open(self.db_path, 'rb')
+    #         db_file = pickle.load(fh)
+    #         fh.close()
+    #         return db_file
+    #
+    # def save_time_capsule(self, data={}):
+    #     """
+    #     Saves the last EventLogEntry and TimeLog to the time_capsule, allowing for checks of existing timesheets
+    #     and preventing the processing of events more than once.
+    #     :param data: (dict): A collection of 2 values:
+    #                data =   {
+    #                             'EventLogID': 123,
+    #                             'TimeLogID': 456
+    #                         }
+    #     :return: None
+    #     """
+    #     if data:
+    #         if os.path.exists(self.db_path):
+    #             fh = open(self.db_path, 'wb')
+    #             pickle.dump(data, fh)
+    #             fh.close()
 
     def start_of_week(self):
         # Get the first day of the week
@@ -452,19 +452,20 @@ class continuum(object):
                 else:
                     event_id = 0
 
-                data = {
-                    'EventLogID': event_id,
-                    'TimeLogID': timesheet['id'],
-                    'current': True
-                }
+                # NOTE: I am currently disabling the time capsule write from here.  It is conflicting with the main UI
+                # data = {
+                #     'EventLogID': event_id,
+                #     'TimeLogID': timesheet['id'],
+                #     'current': True
+                # }
 
-                try:
-                    self.save_time_capsule(data)
-                    self.logger.info('Time Capsule saved!')
-                except IOError as e:
-                    self.logger.error('Failed to save the file.  Trying again in a few seconds... %s' % e)
-                    time.sleep(2)
-                    self.save_time_capsule(data)
+                # try:
+                #     self.save_time_capsule(data)
+                #     self.logger.info('Time Capsule saved!')
+                # except IOError as e:
+                #     self.logger.error('Failed to save the file.  Trying again in a few seconds... %s' % e)
+                #     time.sleep(0.66)
+                #     self.save_time_capsule(data)
 
                 # Create Note
                 note = 'Initial Timesheet Creation by %s at %s' % (entry, start_time)
@@ -554,7 +555,7 @@ class continuum(object):
                 self.comm.send_error_alert(user=user, error=error)
         return running_time
 
-    def get_daily_total(self, user=None, lunch_id=None, break_id=None):
+    def get_daily_total(self, user=None, lunch_id=None, break_id=None, tries=0):
         '''
         This method will search all of the timesheets for a given user, for a given day, and total up the hours.
         :param user: (dict) The main user data
@@ -592,9 +593,15 @@ class continuum(object):
                 # acquired.  Then I can iterate through them to get dates from "today"
                 timesheets = self.sg.find('TimeLog', filters, fields)
             except (AttributeError, Exception) as e:
-                self.logger.error('Time sheet failed to acquire: %s' % e)
-                timesheets = None
-            if timesheets:
+                if tries <= 5:
+                    self.logger.error('Could not connect.  Trying again...')
+                    tries += 1
+                    timesheets = self.get_daily_total(user=user, lunch_id=lunch_id, break_id=break_id, tries=tries)
+                else:
+                    self.logger.error('Time sheet failed to acquire: %s' % e)
+                    timesheets = None
+
+            if timesheets and type(timesheets) != float:
                 for timesheet in timesheets:
                     if not self.aint_today(timesheet['sg_task_start']):
                         if timesheet['sg_task_end']:
@@ -611,6 +618,8 @@ class continuum(object):
 
                         diff = end - start
                         total_duration += ((diff.total_seconds() / 60.0) / 60)
+            elif type(timesheets) == float:
+                total_duration = timesheets
         return total_duration
 
     def get_weekly_total(self, user=None, lunch_id=None, break_id=None):

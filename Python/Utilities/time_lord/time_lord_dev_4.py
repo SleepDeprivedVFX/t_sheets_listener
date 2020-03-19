@@ -135,6 +135,11 @@ class time_engine(QtCore.QThread):
         self.output_daily.setPlainText(str(total))
         print('daily output set')
 
+    def weekly_output(self, message=None):
+        total = 'Weekly Total: %0.2f' % message
+        self.output_weekly.setPlainText(str(total))
+        print('weekly output set')
+
     def set_daily_total_needle(self, total):
         '''
         Set this to adjust the needs and the output monitor values simultaneously.
@@ -160,6 +165,24 @@ class time_engine(QtCore.QThread):
             self.day_meter.setPixmap(meter_needle_rot)
             self.day_meter.update()
             print('day_meter set')
+
+    def set_weekly_total_needle(self, total):
+        if total:
+            # self.weekly_output(total)
+            angle = ((100 / (float(config['ot_hours']) * 10.0)) * total) - 50
+            if angle < -50.0:
+                angle = -50.0
+            elif angle > 50.0:
+                angle = 50.0
+            meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
+            needle_rot = QtGui.QTransform()
+
+            needle_rot.rotate(angle)
+            meter_needle_rot = meter_needle.transformed(needle_rot)
+
+            self.week_meter.setPixmap(meter_needle_rot)
+            self.week_meter.update()
+            print('week_meter set')
 
     def run(self):
         self.chronograph()
@@ -213,8 +236,13 @@ class time_engine(QtCore.QThread):
                 sub_timer = 1
                 # Collect the Daily Total
                 self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task['id'])
+                print('chron_dt: %s' % self.daily_total)
                 self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task['id'])
+                print('chron_wt: %s' % self.weekly_total)
                 self.set_daily_total_needle(self.daily_total)
+                self.set_weekly_total_needle(self.weekly_total)
+                self.daily_output(self.daily_total)
+                self.weekly_output(self.weekly_total)
             else:
                 sub_timer += 1
 
@@ -446,8 +474,8 @@ class time_machine(QtCore.QThread):
                     except IOError as e:
                         logger.warning('Failed to save the file.  Trying again in a few '
                                        'seconds... %s' % e)
-                        print('IOError... failed: %s' % e)
-                        time.sleep(2)
+                        print('IOError... failed.  Trying again...: %s' % e)
+                        time.sleep(0.35)
                         self.save_time_capsule(data)
 
 
@@ -528,6 +556,8 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_hour = self.ui.time_hour
         self.time_engine.time_minute = self.ui.time_minute
         self.time_engine.day_meter = self.ui.day_meter
+        self.time_engine.week_meter = self.ui.week_meter
+        self.time_engine.output_weekly = self.ui.output_weekly
         self.time_engine.output_daily = self.ui.output_daily
 
         # Set main user info
