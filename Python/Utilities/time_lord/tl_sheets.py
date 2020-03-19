@@ -238,7 +238,7 @@ class sheets(QtWidgets.QWidget):
 
         # Replace Saved settings
         self.settings = QtCore.QSettings(__author__, 'TimeSheets')
-        self.saved_window_position = self.settings.value('geometry', '')
+        self.saved_window_position = self.settings.value('geometry', None)
         self.saved_whose_timesheet = self.settings.value('whose_timesheet', '.')
         self.saved_sort_by = self.settings.value('sort_by', '.')
         self.saved_order = self.settings.value('order', '.')

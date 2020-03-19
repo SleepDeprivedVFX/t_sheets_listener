@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1070</width>
+    <width>1014</width>
     <height>571</height>
    </rect>
   </property>
@@ -186,7 +186,7 @@ QTabBar::tab:!selected {
 </string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="time_sheets_tab">
       <attribute name="title">
@@ -362,11 +362,11 @@ alternate-background-color: rgb(120, 120, 120);</string>
          <attribute name="headerCascadingSectionResizes">
           <bool>true</bool>
          </attribute>
-         <attribute name="headerDefaultSectionSize">
-          <number>120</number>
-         </attribute>
          <attribute name="headerMinimumSectionSize">
           <number>26</number>
+         </attribute>
+         <attribute name="headerDefaultSectionSize">
+          <number>120</number>
          </attribute>
          <column>
           <property name="text">
