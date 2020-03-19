@@ -144,7 +144,7 @@ class self_destruct(QtCore.QThread):
                 self.signals.kill_it.emit(True)
 
 
-class lunch_break(QtGui.QWidget):
+class lunch_break(QtWidgets.QWidget):
     def __init__(self):
         super(lunch_break, self).__init__(parent=None)
 
@@ -299,7 +299,7 @@ class lunch_break(QtGui.QWidget):
 
 
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     w = lunch_break()
     w.show()
     sys.exit(app.exec_())

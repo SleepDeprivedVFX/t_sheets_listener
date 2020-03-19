@@ -24,7 +24,6 @@ color: rgb(230, 230, 230);</string>
       <widget class="QLabel" name="lunch_title">
        <property name="styleSheet">
         <string notr="true">font: 24pt &quot;Algerian&quot;;
-color: rgb(250, 175, 24);
 border-color: rgb(24, 84, 148);
 border-width: 4px;</string>
        </property>
@@ -38,10 +37,7 @@ border-width: 4px;</string>
    <item>
     <widget class="QLabel" name="lunch_message">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(250, 175, 24);
-font: 10pt &quot;Arial Rounded MT Bold&quot;;
-color:rgb(239, 30, 36);
-padding: 5px;</string>
+      <string notr="true">padding: 5px;</string>
      </property>
      <property name="text">
       <string>Hey %s, The system detected you were gone to lunch between the following times.  Is this correct?</string>
@@ -123,8 +119,7 @@ padding: 5px;</string>
      <item>
       <widget class="QPushButton" name="skip_btn">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(24, 84, 148);
-color: rgb(250, 175, 24);</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>No</string>
@@ -147,8 +142,7 @@ color: rgb(250, 175, 24);</string>
      <item>
       <widget class="QPushButton" name="ok_btn">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(24, 84, 148);
-color: rgb(250, 175, 24);</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Yes! I Took My Lunch</string>

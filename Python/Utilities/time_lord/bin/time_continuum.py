@@ -444,13 +444,13 @@ class continuum(object):
                     self.logger.error('Failed to create timesheet!')
 
             if timesheet:
-                self.logger.debug(timesheet)
-                current_data = self.get_time_capsule()
-                self.logger.debug(current_data)
-                if type(current_data) == dict and 'EventLogID' in current_data.keys():
-                    event_id = current_data['EventLogID']
-                else:
-                    event_id = 0
+                # self.logger.debug(timesheet)
+                # current_data = self.get_time_capsule()
+                # self.logger.debug(current_data)
+                # if type(current_data) == dict and 'EventLogID' in current_data.keys():
+                #     event_id = current_data['EventLogID']
+                # else:
+                #     event_id = 0
 
                 # NOTE: I am currently disabling the time capsule write from here.  It is conflicting with the main UI
                 # data = {
