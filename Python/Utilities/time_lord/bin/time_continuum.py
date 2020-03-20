@@ -548,7 +548,7 @@ class continuum(object):
                         'm': m,
                         's': s
                     }
-            except (AttributeError, TypeError) as e:
+            except (AttributeError, TypeError, KeyError) as e:
                 self.logger.error('Yeah, the shit hit the fan: %s' % e)
                 error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
                                                    inspect.stack()[1][2], inspect.stack()[1][3])
