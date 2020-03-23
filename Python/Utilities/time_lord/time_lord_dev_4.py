@@ -108,6 +108,9 @@ class time_signals(QtCore.QObject):
     set_trt_runtime = QtCore.Signal(str)
     set_start_date_rollers = QtCore.Signal(str)
     set_end_date_rollers = QtCore.Signal(str)
+    set_in_clock = QtCore.Signal(tuple)
+    set_out_clock = QtCore.Signal(tuple)
+    set_main_clock = QtCore.Signal(float, float)
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -173,24 +176,10 @@ class time_engine(QtCore.QThread):
             self.tick = QtCore.QTime.currentTime()
             hour = (30.0 * (self.tick.hour() + (self.tick.minute() / 60.0)))
             minute = (6.0 * (self.tick.minute() + (self.tick.second() / 60.0)))
+            _time_ = (hour, minute)
 
             # Create the main clock hands and compute rotations
-            hour_rot = QtGui.QTransform()
-            minute_rot = QtGui.QTransform()
-            hour_rot.rotate(hour)
-            minute_rot.rotate(minute)
-
-            # Rotate the main clock images
-            hour_hand = QtGui.QPixmap(":/dial hands/elements/clock_1_hour.png")
-            minute_hand = QtGui.QPixmap(":/dial hands/elements/clock_1_minute.png")
-            hour_hand_rot = hour_hand.transformed(hour_rot)
-            minute_hand_rot = minute_hand.transformed(minute_rot)
-
-            # Set the main clock time
-            self.time_hour.setPixmap(hour_hand_rot)
-            self.time_minute.setPixmap(minute_hand_rot)
-            self.time_hour.update()
-            self.time_minute.update()
+            self.time_signal.set_main_clock.emit(hour, minute)
 
             if (sub_timer % 10) == 0:
                 sub_timer = 1
@@ -462,7 +451,6 @@ class time_machine(QtCore.QThread):
                         time.sleep(0.35)
                         self.save_time_capsule(data)
 
-
             time.sleep(1)
 
 
@@ -551,6 +539,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_signal.set_trt_runtime.connect(self.set_runtime_clock)
         self.time_engine.time_signal.set_start_date_rollers.connect(self.set_start_date_rollers)
         self.time_engine.time_signal.set_end_date_rollers.connect(self.set_end_date_rollers)
+        self.time_engine.time_signal.set_main_clock.connect(self.set_main_clock)
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])
@@ -705,6 +694,125 @@ class time_lord_ui(QtWidgets.QMainWindow):
                                                 'end_y_tens_%s.png);' % y_tens)
             self.ui.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
                                                 'end_y_ones_%s.png);' % y_ones)
+
+    def set_main_clock(self, hour, minute):
+        # Create the main clock hands and compute rotations
+        hour_rot = QtGui.QTransform()
+        minute_rot = QtGui.QTransform()
+        hour_rot.rotate(hour)
+        minute_rot.rotate(minute)
+
+        # Rotate the main clock images
+        hour_hand = QtGui.QPixmap(":/dial hands/elements/clock_1_hour.png")
+        minute_hand = QtGui.QPixmap(":/dial hands/elements/clock_1_minute.png")
+        hour_hand_rot = hour_hand.transformed(hour_rot)
+        minute_hand_rot = minute_hand.transformed(minute_rot)
+
+        # Set the main clock time
+        self.ui.time_hour.setPixmap(hour_hand_rot)
+        self.ui.time_minute.setPixmap(minute_hand_rot)
+        self.ui.time_hour.update()
+        self.ui.time_minute.update()
+
+    def set_in_clock(self, in_time):
+        """
+        This will check if the user is clocked in or not, and then set the clock accordingly.
+        If they are clocked in, display clock in time.  Otherwise, display current time.
+        Where it gets tricky is introducing a user set time.  i.e. user changes the time.
+        TODO: Figure out the user set time interruption.
+        :param in_time: (tuple) (hour, minute)
+        :return:
+        """
+        if self.clocked_in:
+            if self.user_start:
+                start_time = self.user_start
+            else:
+                start_time = self.latest_timesheet['sg_task_start']
+            if start_time:
+                hour = start_time.time().hour
+                minute = start_time.time().minute
+                second = start_time.time().second
+                hours = (30 * (hour + (minute / 60.0)))
+                minutes = (6 * (minute + (second / 60.0)))
+            else:
+                logger.warning('Bad Start Time!  Returning False', datetime.now())
+                return False
+        else:
+            hours = in_time[0]
+            minutes = in_time[1]
+
+        hour_rot = QtGui.QTransform()
+        minute_rot = QtGui.QTransform()
+        hour_rot.rotate(hours)
+        minute_rot.rotate(minutes)
+
+        hour_hand = QtGui.QPixmap(":/dial hands/elements/clock_2_hour.png")
+        minute_hand = QtGui.QPixmap(":/dial hands/elements/clock_2_minute.png")
+        hour_hand_rot = hour_hand.transformed(hour_rot)
+        minute_hand_rot = minute_hand.transformed(minute_rot)
+
+        self.ui.start_clock_hour.setPixmap(hour_hand_rot)
+        self.ui.start_clock_minute.setPixmap(minute_hand_rot)
+        self.ui.start_clock_hour.update()
+        self.ui.start_clock_minute.update()
+
+    def set_out_clock(self, in_time):
+        """
+        This will check if the user is clocked in or not, and then set the clock accordingly.
+        If they are clocked in, display clock in time.  Otherwise, display current time.
+        Where it gets tricky is introducing a user set time.  i.e. user changes the time.
+        TODO: Figure out the user set time interruption.
+        :param in_time: (tuple) (hour, minute)
+        :return:
+        """
+        if not self.clocked_in:
+            # self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
+            # self.timesheet_update.time_signal.ui_update.emit('Update!')
+            # self.time_queue.time_signal.ui_update.emit()
+            try:
+                if self.user_end:
+                    end_time = self.user_end
+                else:
+                    end_time = self.latest_timesheet['sg_task_end']
+                if end_time:
+                    logger.debug('end_time: %s' % end_time)
+                    hour = end_time.time().hour
+                    minute = end_time.time().minute
+                    second = end_time.time().second
+                    hours = (30 * (hour + (minute / 60.0)))
+                    minutes = (6 * (minute + (second / 60.0)))
+                else:
+                    end_time = datetime.now().time()
+                    logger.debug('The Proper end time was not sent. Using current time.')
+                    hour = end_time.hour
+                    minute = end_time.minute
+                    second = end_time.second
+                    hours = (30 * (hour + (minute / 60.0)))
+                    minutes = (6 * (minute + (second / 60.0)))
+            except Exception as e:
+                logger.error('The fit hit the shan: %s' % e)
+                error = '%s:\n%s | %s\n%s | %s' % (e, inspect.stack()[0][2], inspect.stack()[0][3],
+                                                   inspect.stack()[1][2], inspect.stack()[1][3])
+                comm.send_error_alert(user=user, error=error)
+                return False
+        else:
+            hours = in_time[0]
+            minutes = in_time[1]
+
+        hour_rot = QtGui.QTransform()
+        minute_rot = QtGui.QTransform()
+        hour_rot.rotate(hours)
+        minute_rot.rotate(minutes)
+
+        hour_hand = QtGui.QPixmap(":/dial hands/elements/clock_3_hour.png")
+        minute_hand = QtGui.QPixmap(":/dial hands/elements/clock_3_minute.png")
+        hour_hand_rot = hour_hand.transformed(hour_rot)
+        minute_hand_rot = minute_hand.transformed(minute_rot)
+
+        self.ui.end_clock_hour.setPixmap(hour_hand_rot)
+        self.ui.end_clock_minute.setPixmap(minute_hand_rot)
+        self.ui.end_clock_hour.update()
+        self.ui.end_clock_minute.update()
 
     def closeEvent(self, event: QtGui.QCloseEvent):
         self.update_saved_settings()
