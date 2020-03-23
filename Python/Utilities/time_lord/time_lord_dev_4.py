@@ -222,6 +222,7 @@ class time_engine(QtCore.QThread):
         :param which: (str) One of two acceptable values: 'start', 'end'
         :return:
         """
+        # NOTE: Some of these may need to be signals that shoot down to the main UI
         # set the start date roller
         if d and d != '00-00-00':
 
@@ -350,12 +351,25 @@ class time_engine(QtCore.QThread):
             self.trt_output(trt)
             self.set_runtime_clock(trt['rt'])
 
-            timesheet_start_date = self.latest_timesheet['sg_task_start'].date()
-            short_start_date = timesheet_start_date.strftime('%m-%d-%y')
+            if 'sg_task_start' in self.latest_timesheet.keys() \
+                    and hasattr(self.latest_timesheet['sg_task_start'], 'date'):
+                timesheet_start_date = self.latest_timesheet['sg_task_start'].date()
+                short_start_date = timesheet_start_date.strftime('%m-%d-%y')
+            else:
+                short_start_date = self.today
+            if 'sg_task_end' in self.latest_timesheet.keys() and hasattr(self.latest_timesheet['sg_task_end'], 'date'):
+                timesheet_end_date = self.latest_timesheet['sg_task_end'].date()
+                short_end_date = timesheet_end_date.strftime('%m-%d-%y')
+            else:
+                short_end_date = self.today
             if short_start_date != self.today:
                 self.set_start_date_rollers(d=str(short_start_date))
             else:
                 self.set_start_date_rollers(d=str(self.today))
+            if short_end_date != self.today:
+                self.set_end_date_rollers(d=str(short_end_date))
+            else:
+                self.set_end_date_rollers(d=str(self.today))
 
             # Hold the clock for one second
             time.sleep(1)
