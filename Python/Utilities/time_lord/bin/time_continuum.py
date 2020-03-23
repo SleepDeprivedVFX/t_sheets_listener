@@ -662,7 +662,7 @@ class continuum(object):
             if timesheets:
                 for timesheet in timesheets:
                     this_date = timesheet['sg_task_start'].date()
-                    if this_date > self.start_of_week().date():
+                    if this_date >= self.start_of_week().date():
                         if timesheet['sg_task_end']:
                             end_datetime = timesheet['sg_task_end']
                             end_date = end_datetime.date()
