@@ -104,7 +104,7 @@ class time_signals(QtCore.QObject):
     set_weekly_total_needle = QtCore.Signal(float)
     set_daily_total = QtCore.Signal(float)
     set_weekly_total = QtCore.Signal(float)
-    set_trt_output = QtCore.Signal(str)
+    set_trt_output = QtCore.Signal(dict)
     set_trt_runtime = QtCore.Signal(str)
     set_start_date_rollers = QtCore.Signal(str)
     set_end_date_rollers = QtCore.Signal(str)
@@ -201,7 +201,6 @@ class time_engine(QtCore.QThread):
                 print('chron_wt: %s' % self.weekly_total)
                 self.time_signal.set_daily_total_needle.emit(self.daily_total)
                 self.time_signal.set_weekly_total_needle.emit(self.weekly_total)
-                print(type(self.daily_total))
                 self.time_signal.set_daily_total.emit(self.daily_total)
                 self.time_signal.set_weekly_total.emit(self.weekly_total)
             else:
