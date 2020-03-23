@@ -110,7 +110,7 @@ class scope_engine(QtCore.QThread):
         while not self.kill_it:
             if second != int(datetime.now().second):
                 second = int(datetime.now().second)
-                for u, d in self.scope_viewer.items():
+                for u, d in list(self.scope_viewer.items()):
                     _date = d['start_time'].date()
                     _hours = d['start_time'].time().hour
                     _minutes = d['start_time'].time().minute
@@ -289,9 +289,9 @@ class scope_engine(QtCore.QThread):
                 del self.scope[uid]
 
 
-class scope(QtGui.QWidget):
+class scope(QtWidgets.QWidget):
     def __init__(self):
-        QtGui.QWidget.__init__(self)
+        QtWidgets.QWidget.__init__(self)
 
         self.scope_engine = scope_engine()
 
@@ -305,7 +305,7 @@ class scope(QtGui.QWidget):
 
         self.settings = QtCore.QSettings(__author__, 'TimeScope')
         self.stay_on_top = self.settings.value('stayontop', '.')
-        self.position = self.settings.value('geometry', '')
+        self.position = self.settings.value('geometry', None)
         self.restoreGeometry(self.position)
 
         if self.stay_on_top == 'true' or self.stay_on_top == True:
@@ -334,7 +334,19 @@ class scope(QtGui.QWidget):
         header = self.ui.slave_list.horizontalHeader()
         self.ui.slave_list.setHorizontalHeaderLabels(['Artist', 'Project', 'Entity', 'Task', 'Time', 'Total',
                                                       'Lunch', ''])
-        header.setResizeMode(7, QtGui.QHeaderView.Stretch)
+        # header.setResizeMode(7, QtGui.QHeaderView.Stretch)
+        # header.stretchLastSection()
+        # TODO: I need to get the resize to contents working.  It does not currently
+        header.setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
+
+        for column in range(header.count()):
+            header.setSectionResizeMode(column, QtWidgets.QHeaderView.ResizeToContents)
+            width = header.sectionSize(column)
+            header.setSectionResizeMode(column, QtWidgets.QHeaderView.Interactive)
+            header.resizeSection(column, width)
+        #     header.update()
+        header.setStretchLastSection(True)
+        header.update()
 
     def window_state(self):
         state = self.ui.stay_on_top.checkState()
@@ -382,7 +394,7 @@ class scope(QtGui.QWidget):
                             }
         :return:
         """
-        uid = data.keys()[0]
+        uid = list(data.keys())[0]
         u_data = data[uid]
         name = u_data['name']
         project = u_data['project']
@@ -401,27 +413,27 @@ class scope(QtGui.QWidget):
         u_data['row_id'] = row
 
         # Add the user name and tool tip
-        name_label = QtGui.QLabel()
+        name_label = QtWidgets.QLabel()
         name_label.setText(name)
         name_label.setToolTip(str(uid))
         self.ui.slave_list.setCellWidget(row, 0, name_label)
 
         # Add the project name and tool tip
-        proj_label = QtGui.QLabel()
+        proj_label = QtWidgets.QLabel()
         proj_label.setText(project)
         proj_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Project ID: %s'
                               '</span></p></body></html>' % proj_id)
         self.ui.slave_list.setCellWidget(row, 1, proj_label)
 
         # Add the entity name and tool tip
-        entity_label = QtGui.QLabel()
+        entity_label = QtWidgets.QLabel()
         entity_label.setText(entity)
         entity_label.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Entity ID: %s'
                                 '</span></p></body></html>' % entity_id)
         self.ui.slave_list.setCellWidget(row, 2, entity_label)
 
         # Add the task name and tool tip
-        task_label = QtGui.QLabel()
+        task_label = QtWidgets.QLabel()
         task_label.setText(task)
         task_tool = 'Entity: %s\n' \
                     'Task ID: %s' % (entity, task_id)
@@ -430,24 +442,24 @@ class scope(QtGui.QWidget):
         self.ui.slave_list.setCellWidget(row, 3, task_label)
 
         # Add the start time
-        start_time_label = QtGui.QLabel()
+        start_time_label = QtWidgets.QLabel()
         start_time_label.setText(str(start_time))
         start_time_label.setStyleSheet('color: #00DD00;')
         self.ui.slave_list.setCellWidget(row, 4, start_time_label)
 
         # Add the Total Time
-        total_label = QtGui.QLabel()
+        total_label = QtWidgets.QLabel()
         total_label.setText('%0.2f hrs' % total)
         total_label.setStyleSheet('color: #0000FF;')
         self.ui.slave_list.setCellWidget(row, 5, total_label)
 
         # Add the lunch break
-        lunch_time_label = QtGui.QLabel()
+        lunch_time_label = QtWidgets.QLabel()
         lunch_time_label.setText(str(lunch_time))
         self.ui.slave_list.setCellWidget(row, 6, lunch_time_label)
 
         # Create the button
-        clock_out_btn = QtGui.QPushButton()
+        clock_out_btn = QtWidgets.QPushButton()
         clock_out_btn.setText('Clock Out')
         clock_out_btn.setStyleSheet('background-color: #990000;')
         clock_out_btn.setToolTip('<html><head/><body><p><span style=\" color:#0a0a0a;\">Clock Out %s?'
@@ -477,7 +489,7 @@ class scope(QtGui.QWidget):
                             }
         :return:
         """
-        uid = data.keys()[0]
+        uid = list(data.keys())[0]
         u_data = data[uid]
 
         # Search through the table and find the UID?
@@ -541,7 +553,7 @@ class scope(QtGui.QWidget):
 
 
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     app.setOrganizationName('AdamBenson')
     app.setOrganizationDomain('adamdbenson.com')
     app.setApplicationName('TimeScope')
