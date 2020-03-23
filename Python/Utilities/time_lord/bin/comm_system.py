@@ -139,6 +139,7 @@ class comm_sys(object):
                 find_user = None
             except Exception as err:
                 self.logger.error('It really died this time: %s' % err)
+                find_user = None
 
             if find_user:
                 user_id = find_user['id']
