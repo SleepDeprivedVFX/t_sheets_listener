@@ -137,169 +137,12 @@ class time_engine(QtCore.QThread):
         self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task)
         self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
 
-    # @QtCore.Slot(object)
     def update_timesheet(self, timesheet=None):
         print('timesheet:', timesheet)
         if not timesheet:
             self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
         else:
             self.latest_timesheet = timesheet
-    #
-    # def daily_output(self, message=None):
-    #     # NOTE: This can be signaled back to the UI
-    #     total = 'Daily Total: %0.2f' % message
-    #     self.output_daily.setPlainText(str(total))
-    #
-    # def weekly_output(self, message=None):
-    #     # NOTE: This can be signaled back to the UI
-    #     total = 'Weekly Total: %0.2f' % message
-    #     self.output_weekly.setPlainText(str(total))
-    #
-    # def set_daily_total_needle(self, total):
-    #     # NOTE: THis heavy-ish thing (it's not really that heavy) can be signaled back into the UI
-    #     '''
-    #     Set this to adjust the needs and the output monitor values simultaneously.
-    #     :param total: A total value of the daily total hours minus lunch and breaks
-    #     :return:
-    #     '''
-    #     if total:
-    #         # self.daily_output(total)
-    #         # Adjust the total down by a value known from the graphics?
-    #         total -= 4.0
-    #         angle = ((total / (float(config['ot_hours']) * 2.0)) * 100.00) - 25.00  # I know my graphic spans 100 dgrs.
-    #
-    #         if angle < -50.0:
-    #             angle = -50.0
-    #         elif angle > 50.0:
-    #             angle = 50.0
-    #         meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
-    #         needle_rot = QtGui.QTransform()
-    #
-    #         needle_rot.rotate(angle)
-    #         meter_needle_rot = meter_needle.transformed(needle_rot)
-    #
-    #         self.day_meter.setPixmap(meter_needle_rot)
-    #         self.day_meter.update()
-    #
-    # def set_weekly_total_needle(self, total):
-    #     # NOTE: THis heavy-ish thing (it's not really that heavy) can be signaled back into the UI
-    #     if total:
-    #         # self.weekly_output(total)
-    #         angle = ((100 / (float(config['ot_hours']) * 10.0)) * total) - 50
-    #         if angle < -50.0:
-    #             angle = -50.0
-    #         elif angle > 50.0:
-    #             angle = 50.0
-    #         meter_needle = QtGui.QPixmap(":/dial hands/elements/meter_1_needle.png")
-    #         needle_rot = QtGui.QTransform()
-    #
-    #         needle_rot.rotate(angle)
-    #         meter_needle_rot = meter_needle.transformed(needle_rot)
-    #
-    #         self.week_meter.setPixmap(meter_needle_rot)
-    #         self.week_meter.update()
-    #
-    # def trt_output(self, message=None):
-    #     # NOTE: This can be signaled back to the UI
-    #     if message:
-    #         trt = 'TRT: %s:%s:%s' % (message['h'], message['m'], message['s'])
-    #     else:
-    #         trt = 'TRT: 00:00:00'
-    #     self.output_trt.setPlainText(trt)
-    #
-    # def set_runtime_clock(self, t='000000'):
-    #     # NOTE: This can be signaled back to the UI
-    #     """
-    #     Sets the running time clock.
-    #     :param t: (str) - While this is a number value, it must be exactly 6 digits long, thus string to maintain
-    #                         the number of zeros needed for the default.
-    #     :return: Running time.
-    #     """
-    #     if len(t) == 6:
-    #         self.run_hour_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
-    #                                         'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[0])
-    #         self.run_hour_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
-    #                                         'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[1])
-    #         self.run_minute_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
-    #                                           'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[2])
-    #         self.run_minute_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
-    #                                           'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[3])
-    #         self.run_second_ten.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
-    #                                           'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[4])
-    #         self.run_second_one.setStyleSheet('background-image: url(:/vaccuum_tube_numbers/elements/vt_%s.png);'
-    #                                           'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[5])
-    #
-    # def set_start_date_rollers(self, d='00-00-00'):
-    #     # NOTE: This can be signaled back to the UI
-    #     """
-    #     Sets the date rollers.
-    #     :param d: (str) A MM-DD-YY date format string.
-    #     :param which: (str) One of two acceptable values: 'start', 'end'
-    #     :return:
-    #     """
-    #     # NOTE: Some of these may need to be signals that shoot down to the main UI
-    #     # set the start date roller
-    #     if d and d != '00-00-00':
-    #
-    #         split_date = d.split('-')
-    #         m = split_date[0]
-    #         d = split_date[1]
-    #         y = split_date[2]
-    #
-    #         m_tens = int(m[0])
-    #         m_ones = int(m[1])
-    #         d_tens = int(d[0])
-    #         d_ones = int(d[1])
-    #         y_tens = int(y[0])
-    #         y_ones = int(y[1])
-    #
-    #         self.start_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                             'start_m_tens_%s.png);' % m_tens)
-    #         self.start_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                             'start_m_ones_%s.png);' % m_ones)
-    #         self.start_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                           'start_d_tens_%s.png);' % d_tens)
-    #         self.start_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                           'start_d_ones_%s.png);' % d_ones)
-    #         self.start_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                            'start_y_tens_%s.png);' % y_tens)
-    #         self.start_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                            'start_y_ones_%s.png);' % y_ones)
-    #
-    # def set_end_date_rollers(self, d='00-00-00'):
-    #     # NOTE: This can be signaled back to the UI
-    #     """
-    #     Sets the date rollers.
-    #     :param d: (str) A MM-DD-YY date format string.
-    #     :return:
-    #     """
-    #     # set the end date roller
-    #     if d and d != '00-00-00':
-    #
-    #         split_date = d.split('-')
-    #         m = split_date[0]
-    #         d = split_date[1]
-    #         y = split_date[2]
-    #
-    #         m_tens = int(m[0])
-    #         m_ones = int(m[1])
-    #         d_tens = int(d[0])
-    #         d_ones = int(d[1])
-    #         y_tens = int(y[0])
-    #         y_ones = int(y[1])
-    #
-    #         self.end_tens_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                           'end_m_tens_%s.png);' % m_tens)
-    #         self.end_ones_month.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                           'end_m_ones_%s.png);' % m_ones)
-    #         self.end_tens_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                         'end_d_tens_%s.png);' % d_tens)
-    #         self.end_ones_day.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                         'end_d_ones_%s.png);' % d_ones)
-    #         self.end_tens_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                          'end_y_tens_%s.png);' % y_tens)
-    #         self.end_ones_year.setStyleSheet('background-image: url(:/roller_numbers/elements/'
-    #                                          'end_y_ones_%s.png);' % y_ones)
 
     def run(self):
         self.chronograph()
@@ -356,28 +199,16 @@ class time_engine(QtCore.QThread):
                 print('chron_dt: %s' % self.daily_total)
                 self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task['id'])
                 print('chron_wt: %s' % self.weekly_total)
-                # NOTE: Replace the following with a signal
-                # self.set_daily_total_needle(self.daily_total)
                 self.time_signal.set_daily_total_needle.emit(self.daily_total)
-                # NOTE: Replace the following with a signal
-                # self.set_weekly_total_needle(self.weekly_total)
                 self.time_signal.set_weekly_total_needle.emit(self.weekly_total)
-                # NOTE: Replace the following with a signal
-                # self.daily_output(self.daily_total)
                 print(type(self.daily_total))
                 self.time_signal.set_daily_total.emit(self.daily_total)
-                # NOTE: Replace the following with a signal
-                # self.weekly_output(self.weekly_total)
                 self.time_signal.set_weekly_total.emit(self.weekly_total)
             else:
                 sub_timer += 1
 
             trt = tl_time.get_running_time(timesheet=self.latest_timesheet)
-            # NOTE: Replace the following with a signal
-            # self.trt_output(trt)
             self.time_signal.set_trt_output.emit(trt)
-            # NOTE: Replace the following with a signal
-            # self.set_runtime_clock(trt['rt'])
             self.time_signal.set_trt_runtime.emit(trt['rt'])
 
             if 'sg_task_start' in self.latest_timesheet.keys() \
@@ -392,20 +223,12 @@ class time_engine(QtCore.QThread):
             else:
                 short_end_date = self.today
             if short_start_date != self.today:
-                # NOTE: Replace the following with a signal
-                # self.set_start_date_rollers(d=str(short_start_date))
                 self.time_signal.set_start_date_rollers.emit(str(short_start_date))
             else:
-                # NOTE: Replace the following with a signal
-                # self.set_start_date_rollers(d=str(self.today))
                 self.time_signal.set_start_date_rollers.emit(str(self.today))
             if short_end_date != self.today:
-                # NOTE: Replace the following with a signal
-                # self.set_end_date_rollers(d=str(short_end_date))
                 self.time_signal.set_end_date_rollers.emit(str(short_end_date))
             else:
-                # NOTE: Replace the following with a signal
-                # self.set_end_date_rollers(d=str(self.today))
                 self.time_signal.set_end_date_rollers.emit(str(str(self.today)))
 
             # Hold the clock for one second
@@ -719,27 +542,6 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_minute = self.ui.time_minute
         self.time_engine.day_meter = self.ui.day_meter
         self.time_engine.week_meter = self.ui.week_meter
-        # self.time_engine.output_daily = self.ui.output_daily
-        # self.time_engine.output_weekly = self.ui.output_weekly
-        # self.time_engine.output_trt = self.ui.output_trt
-        # self.time_engine.run_hour_ten = self.ui.run_hour_ten
-        # self.time_engine.run_hour_one = self.ui.run_hour_one
-        # self.time_engine.run_minute_ten = self.ui.run_minute_ten
-        # self.time_engine.run_minute_one = self.ui.run_minute_one
-        # self.time_engine.run_second_ten = self.ui.run_second_ten
-        # self.time_engine.run_second_one = self.ui.run_second_one
-        # self.time_engine.start_tens_month = self.ui.start_tens_month
-        # self.time_engine.start_ones_month = self.ui.start_ones_month
-        # self.time_engine.start_tens_day = self.ui.start_tens_day
-        # self.time_engine.start_ones_day = self.ui.start_ones_day
-        # self.time_engine.start_tens_year = self.ui.start_tens_year
-        # self.time_engine.start_ones_year = self.ui.start_ones_year
-        # self.time_engine.end_tens_month = self.ui.end_tens_month
-        # self.time_engine.end_ones_month = self.ui.end_ones_month
-        # self.time_engine.end_tens_day = self.ui.end_tens_day
-        # self.time_engine.end_ones_day = self.ui.end_ones_day
-        # self.time_engine.end_tens_year = self.ui.end_tens_year
-        # self.time_engine.end_ones_year = self.ui.end_ones_year
 
         # Signal Connections
         self.time_engine.time_signal.set_daily_total_needle.connect(self.set_daily_total_needle)
@@ -759,17 +561,14 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.start()
 
     def daily_output(self, message=None):
-        # NOTE: This can be signaled back to the UI
         total = 'Daily Total: %0.2f' % message
         self.ui.output_daily.setPlainText(str(total))
 
     def weekly_output(self, message=None):
-        # NOTE: This can be signaled back to the UI
         total = 'Weekly Total: %0.2f' % message
         self.ui.output_weekly.setPlainText(str(total))
 
     def set_daily_total_needle(self, total):
-        # NOTE: THis heavy-ish thing (it's not really that heavy) can be signaled back into the UI
         '''
         Set this to adjust the needs and the output monitor values simultaneously.
         :param total: A total value of the daily total hours minus lunch and breaks
@@ -795,7 +594,6 @@ class time_lord_ui(QtWidgets.QMainWindow):
             self.ui.day_meter.update()
 
     def set_weekly_total_needle(self, total):
-        # NOTE: THis heavy-ish thing (it's not really that heavy) can be signaled back into the UI
         if total:
             # self.weekly_output(total)
             angle = ((100 / (float(config['ot_hours']) * 10.0)) * total) - 50
@@ -813,7 +611,6 @@ class time_lord_ui(QtWidgets.QMainWindow):
             self.ui.week_meter.update()
 
     def trt_output(self, message=None):
-        # NOTE: This can be signaled back to the UI
         if message:
             trt = 'TRT: %s:%s:%s' % (message['h'], message['m'], message['s'])
         else:
@@ -821,7 +618,6 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.ui.output_trt.setPlainText(trt)
 
     def set_runtime_clock(self, t='000000'):
-        # NOTE: This can be signaled back to the UI
         """
         Sets the running time clock.
         :param t: (str) - While this is a number value, it must be exactly 6 digits long, thus string to maintain
@@ -843,14 +639,12 @@ class time_lord_ui(QtWidgets.QMainWindow):
                                                  'background-repeat: none;background-color: rgba(0, 0, 0, 0);' % t[5])
 
     def set_start_date_rollers(self, d='00-00-00'):
-        # NOTE: This can be signaled back to the UI
         """
         Sets the date rollers.
         :param d: (str) A MM-DD-YY date format string.
         :param which: (str) One of two acceptable values: 'start', 'end'
         :return:
         """
-        # NOTE: Some of these may need to be signals that shoot down to the main UI
         # set the start date roller
         if d and d != '00-00-00':
 
@@ -880,7 +674,6 @@ class time_lord_ui(QtWidgets.QMainWindow):
                                                   'start_y_ones_%s.png);' % y_ones)
 
     def set_end_date_rollers(self, d='00-00-00'):
-        # NOTE: This can be signaled back to the UI
         """
         Sets the date rollers.
         :param d: (str) A MM-DD-YY date format string.
