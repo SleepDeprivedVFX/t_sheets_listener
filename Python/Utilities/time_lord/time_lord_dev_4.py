@@ -111,6 +111,9 @@ class time_signals(QtCore.QObject):
     set_in_clock = QtCore.Signal(tuple)
     set_out_clock = QtCore.Signal(tuple)
     set_main_clock = QtCore.Signal(float, float)
+    set_user_start = QtCore.Signal(tuple)
+    set_user_end = QtCore.Signal(tuple)
+    clock_button_press = QtCore.Signal(tuple)
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -136,6 +139,7 @@ class time_engine(QtCore.QThread):
         # Signal Connections
         self.update_timesheet()
         self.time_machine.time_signal.set_timesheet.connect(self.update_timesheet)
+        self.time_signal.clock_button_press.connect(self.big_button_pressed)
 
         self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task)
         self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
@@ -146,6 +150,9 @@ class time_engine(QtCore.QThread):
             self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
         else:
             self.latest_timesheet = timesheet
+
+    def big_button_pressed(self, button):
+        print(button)
 
     def run(self):
         self.chronograph()
@@ -180,6 +187,8 @@ class time_engine(QtCore.QThread):
 
             # Create the main clock hands and compute rotations
             self.time_signal.set_main_clock.emit(hour, minute)
+
+            # Set the User Clock in time
 
             if (sub_timer % 10) == 0:
                 sub_timer = 1
@@ -422,6 +431,7 @@ class time_machine(QtCore.QThread):
                                     #       timesheet
                                     print('Clocked in... ts_id: %s' % ts_data)
                                     self.time_signal.set_timesheet.emit(ts_data)
+                                    print('ts_data emitted.')
                                     event_id = event['id']
                                     timelog_id = event['entity']['id']
                                     current = True
@@ -491,6 +501,9 @@ class time_lord_ui(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         QtWidgets.QMainWindow.__init__(self, parent)
 
+        # Scope variables
+        self.user_start = None
+
         # --------------------------------------------------------------------------------------------------------
         # Set the saved settings
         # --------------------------------------------------------------------------------------------------------
@@ -540,6 +553,10 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_signal.set_start_date_rollers.connect(self.set_start_date_rollers)
         self.time_engine.time_signal.set_end_date_rollers.connect(self.set_end_date_rollers)
         self.time_engine.time_signal.set_main_clock.connect(self.set_main_clock)
+        self.time_engine.time_signal.set_user_start.connect(self.update_user_start)
+
+        # UI Connections
+        self.ui.clock_button.clicked.connect(self.big_clock_button)
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])
@@ -813,6 +830,12 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.ui.end_clock_minute.setPixmap(minute_hand_rot)
         self.ui.end_clock_hour.update()
         self.ui.end_clock_minute.update()
+
+    def update_user_start(self, user_start=None):
+        self.user_start = user_start
+
+    def big_clock_button(self):
+        self.time_engine.time_signal.clock_button_press.emit(('Hello', 'There'))
 
     def closeEvent(self, event: QtGui.QCloseEvent):
         self.update_saved_settings()
