@@ -137,6 +137,9 @@ class comm_sys(object):
             except AttributeError as e:
                 self.logger.error('Couldn\'t find user: %s ' % e)
                 find_user = None
+            except Exception as err:
+                self.logger.error('It really died this time: %s' % err)
+
             if find_user:
                 user_id = find_user['id']
                 sg_email = find_user['email']

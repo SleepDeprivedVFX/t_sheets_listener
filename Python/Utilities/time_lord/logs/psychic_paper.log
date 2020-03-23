@@ -1,295 +1,34 @@
-2020-03-15 22:06:32,712 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-15 22:15:23,652 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-15 22:15:43,892 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-15 22:20:49,790 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-15 22:21:40,620 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-15 22:21:42,535 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-15 22:21:43,155 - psychic_paper | INFO : 194 - Time Machine Started
-2020-03-16 20:05:26,582 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 20:05:27,246 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 20:05:27,584 - psychic_paper | INFO : 197 - Time Machine Started
-2020-03-16 20:07:27,315 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 20:07:28,822 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 20:07:28,896 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 20:07:52,968 - psychic_paper | WARNING : 394 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-16 20:17:23,073 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 20:17:23,728 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 20:17:23,824 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 20:17:51,743 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 20:17:52,362 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 20:17:52,458 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 22:17:27,683 - psychic_paper | INFO : 78 - The Time Lord has started!
-2020-03-16 22:17:31,987 - psychic_paper | INFO : 106 - Communication system online.
-2020-03-16 22:44:17,879 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:44:18,783 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:45:26,135 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:45:28,056 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:46:34,143 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:46:35,059 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:47:02,213 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:47:03,185 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:47:37,568 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:47:38,384 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:48:13,440 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:48:14,311 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:48:37,922 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:48:38,839 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:49:20,208 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:49:21,115 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:49:21,223 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 22:49:48,134 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:49:48,985 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:49:49,090 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 22:50:03,785 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 22:50:04,595 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 22:50:04,708 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 23:04:15,668 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 23:04:16,654 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 23:04:16,900 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 23:07:19,306 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 23:07:20,310 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 23:07:20,398 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 23:19:54,093 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 23:19:55,145 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 23:19:55,591 - psychic_paper | INFO : 199 - Time Machine Started
-2020-03-16 23:23:13,869 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 23:23:14,811 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 23:23:14,881 - psychic_paper | INFO : 203 - Time Machine Started
-2020-03-16 23:23:32,033 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 23:23:32,904 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 23:23:32,977 - psychic_paper | INFO : 203 - Time Machine Started
-2020-03-16 23:25:04,073 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 23:25:04,981 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 23:25:05,071 - psychic_paper | INFO : 203 - Time Machine Started
-2020-03-16 23:26:02,093 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 23:26:03,083 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 23:26:03,169 - psychic_paper | INFO : 203 - Time Machine Started
-2020-03-16 23:28:27,720 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-16 23:28:28,642 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-16 23:28:28,753 - psychic_paper | INFO : 203 - Time Machine Started
-2020-03-17 00:15:34,255 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:15:38,124 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:15:38,348 - psychic_paper | INFO : 203 - Time Machine Started
-2020-03-17 00:23:15,617 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:23:19,027 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:23:19,262 - psychic_paper | INFO : 208 - Time Machine Started
-2020-03-17 00:23:21,013 - psychic_paper | WARNING : 297 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:24:05,930 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:24:09,305 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:24:09,472 - psychic_paper | INFO : 209 - Time Machine Started
-2020-03-17 00:24:10,489 - psychic_paper | WARNING : 298 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:24:15,556 - psychic_paper | WARNING : 298 - Shotgun API Failure.  Trying again... [SSL] internal error (_ssl.c:2508)
-2020-03-17 00:24:56,715 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:24:59,666 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:24:59,868 - psychic_paper | INFO : 209 - Time Machine Started
-2020-03-17 00:25:00,955 - psychic_paper | WARNING : 298 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:26:11,704 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:26:13,524 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:26:13,681 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:26:14,755 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:26:20,190 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:26:46,130 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:26:50,564 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:26:50,770 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:26:51,908 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:26:57,494 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:27:05,064 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:27:10,321 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:30:43,210 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:30:46,848 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:30:47,027 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:30:49,890 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:30:56,779 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:31:42,434 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:31:46,367 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:31:46,539 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:31:47,847 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:32:13,578 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:32:17,896 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:32:18,052 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:32:22,640 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:32:48,638 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:32:52,852 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:32:53,031 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:32:57,690 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:33:32,902 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:33:33,986 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:33:34,099 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:33:37,989 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:33:43,151 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:34:21,641 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:34:23,933 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:34:24,099 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:34:24,871 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:35:14,638 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:35:23,811 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:35:23,974 - psychic_paper | INFO : 212 - Time Machine Started
-2020-03-17 00:35:24,897 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:35:32,207 - psychic_paper | WARNING : 301 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:38:07,028 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:38:10,270 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:38:10,444 - psychic_paper | INFO : 217 - Time Machine Started
-2020-03-17 00:38:11,984 - psychic_paper | WARNING : 306 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:47:45,180 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:47:53,431 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:47:53,571 - psychic_paper | INFO : 244 - Time Machine Started
-2020-03-17 00:47:58,340 - psychic_paper | WARNING : 333 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:49:12,834 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:49:14,313 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:49:14,484 - psychic_paper | INFO : 244 - Time Machine Started
-2020-03-17 00:49:15,558 - psychic_paper | WARNING : 333 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:50:15,410 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:50:21,991 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:50:22,146 - psychic_paper | INFO : 246 - Time Machine Started
-2020-03-17 00:50:23,181 - psychic_paper | WARNING : 335 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:52:51,217 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:52:54,526 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:52:54,746 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-17 00:52:55,990 - psychic_paper | WARNING : 336 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:54:07,095 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:54:10,009 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:54:10,292 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-17 00:54:14,257 - psychic_paper | WARNING : 336 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:56:40,823 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:56:41,827 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:56:41,979 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-17 00:56:42,709 - psychic_paper | WARNING : 336 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:56:49,101 - psychic_paper | WARNING : 443 - Failed to save the file.  Trying again in a few seconds... [Errno 22] Invalid argument: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-17 00:57:11,318 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 00:57:12,663 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 00:57:12,850 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-17 00:57:13,918 - psychic_paper | WARNING : 336 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 00:57:19,174 - psychic_paper | WARNING : 443 - Failed to save the file.  Trying again in a few seconds... [Errno 22] Invalid argument: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-17 11:00:48,939 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 11:00:49,545 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 11:00:49,935 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-17 11:00:50,509 - psychic_paper | WARNING : 336 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-17 11:01:14,828 - psychic_paper | WARNING : 443 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-17 11:01:19,759 - psychic_paper | WARNING : 443 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-17 11:01:24,741 - psychic_paper | WARNING : 443 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-17 11:01:29,628 - psychic_paper | WARNING : 443 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-17 11:11:44,000 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-17 11:11:44,670 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-17 11:11:44,749 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-18 10:54:41,231 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 10:54:41,952 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 10:54:42,412 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-18 10:54:43,054 - psychic_paper | WARNING : 336 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 14:33:07,422 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 14:33:08,088 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 14:33:08,166 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-18 14:33:08,717 - psychic_paper | WARNING : 336 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 14:33:22,805 - psychic_paper | WARNING : 443 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 15:44:43,196 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 15:44:43,861 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 15:44:44,221 - psychic_paper | INFO : 247 - Time Machine Started
-2020-03-18 15:44:44,875 - psychic_paper | WARNING : 336 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 15:50:14,296 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 15:50:14,892 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 15:50:15,002 - psychic_paper | INFO : 250 - Time Machine Started
-2020-03-18 15:50:15,628 - psychic_paper | WARNING : 341 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 15:53:43,703 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 15:53:44,367 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 15:53:44,427 - psychic_paper | INFO : 250 - Time Machine Started
-2020-03-18 15:54:33,825 - psychic_paper | WARNING : 341 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 15:55:46,475 - psychic_paper | WARNING : 341 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 15:56:06,869 - psychic_paper | WARNING : 341 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 15:56:17,401 - psychic_paper | WARNING : 341 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 15:56:37,917 - psychic_paper | WARNING : 341 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:05:50,314 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:05:50,911 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:05:51,001 - psychic_paper | INFO : 269 - Time Machine Started
-2020-03-18 16:05:51,568 - psychic_paper | WARNING : 360 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:06:38,827 - psychic_paper | WARNING : 467 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:06:43,477 - psychic_paper | WARNING : 467 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:06:48,122 - psychic_paper | WARNING : 467 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:06:52,753 - psychic_paper | WARNING : 467 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:07:00,168 - psychic_paper | WARNING : 467 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:07:43,062 - psychic_paper | WARNING : 467 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:07:52,901 - psychic_paper | WARNING : 467 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:08:40,312 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:08:40,904 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:08:41,003 - psychic_paper | INFO : 274 - Time Machine Started
-2020-03-18 16:08:41,643 - psychic_paper | WARNING : 365 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:09:36,562 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:09:37,167 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:09:37,278 - psychic_paper | INFO : 274 - Time Machine Started
-2020-03-18 16:09:37,860 - psychic_paper | WARNING : 365 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:16:49,257 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:16:49,855 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:16:49,961 - psychic_paper | INFO : 274 - Time Machine Started
-2020-03-18 16:16:50,608 - psychic_paper | WARNING : 365 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:18:49,082 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:18:49,692 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:18:49,785 - psychic_paper | INFO : 276 - Time Machine Started
-2020-03-18 16:18:50,415 - psychic_paper | WARNING : 367 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:19:11,286 - psychic_paper | WARNING : 367 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:19:32,556 - psychic_paper | WARNING : 474 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:21:08,381 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:21:08,998 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:21:09,085 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 16:21:09,614 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:21:39,141 - psychic_paper | WARNING : 476 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:21:44,484 - psychic_paper | WARNING : 476 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:21:58,584 - psychic_paper | WARNING : 476 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:22:09,264 - psychic_paper | WARNING : 476 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\adamb\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
-2020-03-18 16:26:54,629 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:26:55,221 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:26:55,300 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 16:26:55,822 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:27:08,494 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:27:09,117 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:27:09,192 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 16:27:09,732 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:30:35,204 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:30:35,828 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:30:35,971 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 16:30:36,552 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:31:16,572 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:31:17,192 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:31:17,268 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 16:31:17,833 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 16:33:33,048 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 16:33:33,627 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 16:33:33,719 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 16:33:34,299 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 17:33:19,326 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:33:20,207 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:33:20,511 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:33:21,368 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 17:33:31,910 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 17:40:52,984 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:40:53,613 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:40:53,704 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:40:55,150 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 17:42:14,097 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:42:14,708 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:42:14,803 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:42:32,940 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:42:33,586 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:42:33,674 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:43:47,319 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:43:47,923 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:43:48,004 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:44:10,566 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:44:11,203 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:44:11,285 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:44:19,305 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:44:19,927 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:44:20,015 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:44:36,222 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:44:36,862 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:44:36,963 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:44:37,911 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 17:46:19,750 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:46:20,996 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:46:21,095 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:46:23,420 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 17:47:18,566 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:47:19,144 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:47:19,253 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:47:20,270 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-18 17:50:35,196 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-18 17:50:35,858 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-18 17:50:35,985 - psychic_paper | INFO : 278 - Time Machine Started
-2020-03-18 17:50:36,924 - psychic_paper | WARNING : 369 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 20:56:48,779 - psychic_paper | INFO : 53 - The Time Lord has started!
+2020-03-22 20:56:50,254 - psychic_paper | INFO : 81 - Communication system online.
+2020-03-22 20:56:51,138 - psychic_paper | INFO : 403 - Time Machine Started
+2020-03-22 20:56:52,560 - psychic_paper | WARNING : 494 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:13:16,696 - psychic_paper | INFO : 53 - The Time Lord has started!
+2020-03-22 21:13:18,149 - psychic_paper | INFO : 81 - Communication system online.
+2020-03-22 21:13:18,428 - psychic_paper | INFO : 425 - Time Machine Started
+2020-03-22 21:13:22,270 - psychic_paper | WARNING : 516 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:46:30,225 - psychic_paper | INFO : 53 - The Time Lord has started!
+2020-03-22 21:46:33,763 - psychic_paper | INFO : 81 - Communication system online.
+2020-03-22 21:46:33,974 - psychic_paper | INFO : 439 - Time Machine Started
+2020-03-22 21:46:39,270 - psychic_paper | WARNING : 530 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:47:25,533 - psychic_paper | INFO : 53 - The Time Lord has started!
+2020-03-22 21:47:27,069 - psychic_paper | INFO : 81 - Communication system online.
+2020-03-22 21:47:27,342 - psychic_paper | INFO : 440 - Time Machine Started
+2020-03-22 21:47:31,146 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:48:05,183 - psychic_paper | INFO : 53 - The Time Lord has started!
+2020-03-22 21:48:10,438 - psychic_paper | INFO : 81 - Communication system online.
+2020-03-22 21:48:10,681 - psychic_paper | INFO : 440 - Time Machine Started
+2020-03-22 21:48:12,870 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:49:44,527 - psychic_paper | INFO : 53 - The Time Lord has started!
+2020-03-22 21:49:45,648 - psychic_paper | INFO : 81 - Communication system online.
+2020-03-22 21:49:45,809 - psychic_paper | INFO : 440 - Time Machine Started
+2020-03-22 21:49:47,552 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:49:55,314 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:50:05,110 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:51:15,176 - psychic_paper | INFO : 53 - The Time Lord has started!
+2020-03-22 21:51:16,475 - psychic_paper | INFO : 81 - Communication system online.
+2020-03-22 21:51:16,631 - psychic_paper | INFO : 440 - Time Machine Started
+2020-03-22 21:51:18,550 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:51:30,136 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:51:41,183 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:51:51,838 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-03-22 21:52:12,466 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
