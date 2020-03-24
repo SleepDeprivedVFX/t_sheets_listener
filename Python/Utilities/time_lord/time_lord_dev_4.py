@@ -114,6 +114,7 @@ class time_signals(QtCore.QObject):
     set_user_start = QtCore.Signal(tuple)
     set_user_end = QtCore.Signal(tuple)
     clock_button_press = QtCore.Signal(tuple)
+    update_drop_downs = QtCore.Signal(object)
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -153,6 +154,16 @@ class time_engine(QtCore.QThread):
 
     def big_button_pressed(self, button):
         print(button)
+
+    def set_up_dropdowns(self):
+        dropdowns = sg_data.get_all_project_dropdowns(user=user)
+        projects = list(dropdowns.keys())
+
+        self.project_dropdown.addItem('Select Project', 0)
+        for project in projects:
+            self.project_dropdown.addItem(project, dropdowns[project]['__specs__']['id'])
+        # TODO: Now I need to get the current project from the last or current timesheet...or saved selection
+        pass
 
     def run(self):
         self.chronograph()
@@ -534,9 +545,10 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
         # Setup UI editor threads
         # Timesheet Elements
-        self.time_queue.project_dropdown = self.ui.project_dropdown
-        self.time_queue.entity_dropdown = self.ui.entity_dropdown
-        self.time_queue.task_dropdown = self.ui.task_dropdown
+        self.time_engine.project_dropdown = self.ui.project_dropdown
+        self.time_engine.entity_dropdown = self.ui.entity_dropdown
+        self.time_engine.task_dropdown = self.ui.task_dropdown
+        self.time_engine.set_up_dropdowns()
         # Clock Elements
         self.time_engine.time_hour = self.ui.time_hour
         self.time_engine.time_minute = self.ui.time_minute
