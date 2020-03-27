@@ -156,6 +156,30 @@ class time_engine(QtCore.QThread):
     def big_button_pressed(self, button):
         print(button)
 
+    def update_entity_dropdown(self):
+        proj = self.project_dropdown.currentText()
+        proj_id = self.project_dropdown.currentIndex()
+        entities = list(self.dropdowns[proj].keys())
+        self.entity_dropdown.clear()
+        self.entity_dropdown.addItem('Select Entity', 0)
+        if proj_id != 0:
+            for entity in entities:
+                if entity != '__specs__':
+                    self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
+        self.update_task_dropdown()
+
+    def update_task_dropdown(self):
+        proj = self.project_dropdown.currentText()
+        ent = self.entity_dropdown.currentText()
+        ent_id = self.entity_dropdown.currentIndex()
+        self.task_dropdown.clear()
+        self.task_dropdown.addItem('Select Task', 0)
+        if ent_id != 0 and ent:
+            tasks = list(self.dropdowns[proj][ent].keys())
+            for task in tasks:
+                if task != '__specs__':
+                    self.task_dropdown.addItem(task, self.dropdowns[proj][ent]['__specs__']['id'])
+
     def set_up_dropdowns(self):
         # Set current project details:
         proj = self.latest_timesheet['project']['name']
@@ -165,27 +189,30 @@ class time_engine(QtCore.QThread):
         tsk = self.latest_timesheet['entity']['name']
         tsk_id = self.latest_timesheet['entity']['id']
 
-        dropdowns = sg_data.get_all_project_dropdowns(user=user)
-        projects = list(dropdowns.keys())
-        entities = list(dropdowns[proj].keys())
-        tasks = list(dropdowns[proj][ent].keys())
+        self.dropdowns = sg_data.get_all_project_dropdowns(user=user)
+        projects = list(self.dropdowns.keys())
+        entities = list(self.dropdowns[proj].keys())
+        tasks = list(self.dropdowns[proj][ent].keys())
 
         self.project_dropdown.addItem('Select Project', 0)
         for project in projects:
-            self.project_dropdown.addItem(project, dropdowns[project]['__specs__']['id'])
+            self.project_dropdown.addItem(project, self.dropdowns[project]['__specs__']['id'])
         self.project_dropdown.setCurrentIndex(self.project_dropdown.findText(proj))
 
         self.entity_dropdown.addItem('Select Entity', 0)
         for entity in entities:
             if entity != '__specs__':
-                self.entity_dropdown.addItem(entity, dropdowns[proj][entity]['__specs__']['id'])
+                self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
         self.entity_dropdown.setCurrentIndex(self.entity_dropdown.findText(ent))
 
         self.task_dropdown.addItem('Select Task', 0)
         for task in tasks:
             if task != '__specs__':
-                self.task_dropdown.addItem(task, dropdowns[proj][ent][task]['__specs__']['id'])
+                self.task_dropdown.addItem(task, self.dropdowns[proj][ent][task]['__specs__']['id'])
         self.task_dropdown.setCurrentIndex(self.task_dropdown.findText(tsk))
+
+        self.project_dropdown.currentIndexChanged.connect(self.update_entity_dropdown)
+        self.entity_dropdown.currentIndexChanged.connect(self.update_task_dropdown)
 
     def run(self):
         self.chronograph()
