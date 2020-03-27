@@ -113,8 +113,10 @@ class time_signals(QtCore.QObject):
     set_main_clock = QtCore.Signal(float, float)
     set_user_start = QtCore.Signal(tuple)
     set_user_end = QtCore.Signal(tuple)
+    set_button_state = QtCore.Signal(int)
     clock_button_press = QtCore.Signal(tuple)
     update_drop_downs = QtCore.Signal(object)
+    clocked_in = QtCore.Signal(bool)
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -131,6 +133,7 @@ class time_engine(QtCore.QThread):
         self.kill_it = False
         self.latest_timesheet = None
         self.today = datetime.now().date().strftime('%m-%d-%y')
+        self.button_state = 0
 
         # Connect Signals
         self.time_signal = time_signals()
@@ -151,10 +154,19 @@ class time_engine(QtCore.QThread):
             timesheet = self.latest_timesheet
         else:
             self.latest_timesheet = timesheet
-        print('timesheet:', timesheet)
+        self.clocked_in = tl_time.is_user_clocked_in(user=user)
+        self.time_signal.clocked_in.emit(self.clocked_in)
+        self.time_signal.set_timesheet.emit(self.latest_timesheet)
 
     def big_button_pressed(self, button):
-        print(button)
+        button_state = button[0]
+        prj = self.project_dropdown.currentText()
+        prj_id = self.project_dropdown.itemData(self.project_dropdown.currentIndex())
+        ent = self.entity_dropdown.currentText()
+        ent_id = self.entity_dropdown.itemData(self.entity_dropdown.currentIndex())
+        tsk = self.task_dropdown.currentText()
+        tsk_id = self.task_dropdown.itemData(self.task_dropdown.currentIndex())
+        # TODO: Now add this to the queue for processing.
 
     def update_entity_dropdown(self):
         proj = self.project_dropdown.currentText()
@@ -216,7 +228,29 @@ class time_engine(QtCore.QThread):
         self.task_dropdown.setCurrentIndex(self.task_dropdown.findText(tsk))
 
         self.project_dropdown.currentIndexChanged.connect(self.update_entity_dropdown)
+        self.project_dropdown.currentIndexChanged.connect(self.button_status)
         self.entity_dropdown.currentIndexChanged.connect(self.update_task_dropdown)
+        self.entity_dropdown.currentIndexChanged.connect(self.button_status)
+        self.task_dropdown.currentIndexChanged.connect(self.button_status)
+
+    def button_status(self):
+        match = True
+        prj = self.latest_timesheet['project']['name']
+        ent = self.latest_timesheet['entity.Task.entity']['name']
+        tsk = self.latest_timesheet['entity']['name']
+        if prj != self.project_dropdown.currentText():
+            match = False
+        if ent != self.entity_dropdown.currentText():
+            match = False
+        if tsk != self.task_dropdown.currentText():
+            match = False
+        if match and self.clocked_in:
+            self.button_state = 1
+        elif not match and self.clocked_in:
+            self.button_state = 2
+        elif not self.clocked_in:
+            self.button_state = 0
+        self.time_signal.set_button_state.emit(self.button_state)
 
     def run(self):
         self.chronograph()
@@ -567,6 +601,8 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
         # Scope variables
         self.user_start = None
+        self.clocked_in = False
+        self.latest_timesheet = None
 
         # --------------------------------------------------------------------------------------------------------
         # Set the saved settings
@@ -602,6 +638,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.entity_dropdown = self.ui.entity_dropdown
         self.time_engine.task_dropdown = self.ui.task_dropdown
         self.time_engine.set_up_dropdowns()
+        self.time_engine.button_status()
         # Clock Elements
         self.time_engine.time_hour = self.ui.time_hour
         self.time_engine.time_minute = self.ui.time_minute
@@ -619,6 +656,9 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_signal.set_end_date_rollers.connect(self.set_end_date_rollers)
         self.time_engine.time_signal.set_main_clock.connect(self.set_main_clock)
         self.time_engine.time_signal.set_user_start.connect(self.update_user_start)
+        self.time_engine.time_signal.set_timesheet.connect(self.update_timesheet)
+        self.time_engine.time_signal.clocked_in.connect(self.update_clocked_in)
+        self.time_engine.time_signal.set_button_state.connect(self.update_button_state)
 
         # UI Connections
         self.ui.clock_button.clicked.connect(self.big_clock_button)
@@ -629,6 +669,27 @@ class time_lord_ui(QtWidgets.QMainWindow):
         # Start your engines
         # self.time_queue.start()
         self.time_engine.start()
+
+    def update_clocked_in(self, clocked_in):
+        self.clocked_in = clocked_in
+
+    def update_timesheet(self, timesheet=None):
+        if timesheet:
+            self.latest_timesheet = timesheet
+            self.saved_project = self.latest_timesheet['project']['name']
+            self.saved_project_id = self.latest_timesheet['project']['id']
+            self.saved_entity = self.latest_timesheet['entity.Task.entity']['name']
+            self.saved_entity_id = self.latest_timesheet['entity.Task.entity']['id']
+            self.saved_task = self.latest_timesheet['entity']['name']
+            self.saved_task_id = self.latest_timesheet['entity']['id']
+
+    def update_button_state(self, state=0):
+        # A value of None for message means that there is not clock-out time and the sheet is still active.
+        self.ui.clock_button.setStyleSheet('background-image: url(:/lights buttons/elements/'
+                                           'clock_button_%i.png);'
+                                           'background-repeat: none;'
+                                           'background-color: rgba(0, 0, 0, 0);'
+                                           'border-color: rgba(0, 0, 0, 0);' % state)
 
     def daily_output(self, message=None):
         total = 'Daily Total: %0.2f' % message
