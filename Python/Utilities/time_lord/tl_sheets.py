@@ -686,9 +686,6 @@ class time_editor(QtWidgets.QDialog):
         self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
         self.setWindowTitle("Time Editor v%s" % __version__)
         self.editor.tid.setText('TID: %s' % tid)
-        # FIXME: Have to convert these to drop downs.... ew.... with selections...
-        #       This may go into building a new algorithm for collecting all projects, assets, shots and tasks for
-        #       everything
         projects = dropdowns.keys()
         self.editor.project_dd.addItem('Select Project', 0)
         for project in projects:
