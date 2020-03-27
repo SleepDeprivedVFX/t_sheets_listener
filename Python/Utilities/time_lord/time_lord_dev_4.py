@@ -114,7 +114,7 @@ class time_signals(QtCore.QObject):
     set_user_start = QtCore.Signal(tuple)
     set_user_end = QtCore.Signal(tuple)
     set_button_state = QtCore.Signal(int)
-    clock_button_press = QtCore.Signal(tuple)
+    clock_button_press = QtCore.Signal(object)
     update_drop_downs = QtCore.Signal(object)
     clocked_in = QtCore.Signal(bool)
 
@@ -159,14 +159,18 @@ class time_engine(QtCore.QThread):
         self.time_signal.set_timesheet.emit(self.latest_timesheet)
 
     def big_button_pressed(self, button):
-        button_state = button[0]
         prj = self.project_dropdown.currentText()
         prj_id = self.project_dropdown.itemData(self.project_dropdown.currentIndex())
         ent = self.entity_dropdown.currentText()
         ent_id = self.entity_dropdown.itemData(self.entity_dropdown.currentIndex())
         tsk = self.task_dropdown.currentText()
         tsk_id = self.task_dropdown.itemData(self.task_dropdown.currentIndex())
-        # TODO: Now add this to the queue for processing.
+        if self.button_state == 0:
+            print('Clock in')
+        elif self.button_state == 1:
+            print('Clock Out')
+        elif self.button_state == 2:
+            print('Switch Time')
 
     def update_entity_dropdown(self):
         proj = self.project_dropdown.currentText()
