@@ -138,7 +138,7 @@ class time_engine(QtCore.QThread):
         self.time_queue = time_queue()
 
         # Signal Connections
-        self.update_timesheet()
+        self.update_timesheet(self.latest_timesheet)
         self.time_machine.time_signal.set_timesheet.connect(self.update_timesheet)
         self.time_signal.clock_button_press.connect(self.big_button_pressed)
 
@@ -146,24 +146,46 @@ class time_engine(QtCore.QThread):
         self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
 
     def update_timesheet(self, timesheet=None):
-        print('timesheet:', timesheet)
         if not timesheet:
             self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
+            timesheet = self.latest_timesheet
         else:
             self.latest_timesheet = timesheet
+        print('timesheet:', timesheet)
 
     def big_button_pressed(self, button):
         print(button)
 
     def set_up_dropdowns(self):
+        # Set current project details:
+        proj = self.latest_timesheet['project']['name']
+        proj_id = self.latest_timesheet['project']['id']
+        ent = self.latest_timesheet['entity.Task.entity']['name']
+        ent_id = self.latest_timesheet['entity.Task.entity']['id']
+        tsk = self.latest_timesheet['entity']['name']
+        tsk_id = self.latest_timesheet['entity']['id']
+
         dropdowns = sg_data.get_all_project_dropdowns(user=user)
         projects = list(dropdowns.keys())
+        entities = list(dropdowns[proj].keys())
+        tasks = list(dropdowns[proj][ent].keys())
 
         self.project_dropdown.addItem('Select Project', 0)
         for project in projects:
             self.project_dropdown.addItem(project, dropdowns[project]['__specs__']['id'])
-        # TODO: Now I need to get the current project from the last or current timesheet...or saved selection
-        pass
+        self.project_dropdown.setCurrentIndex(self.project_dropdown.findText(proj))
+
+        self.entity_dropdown.addItem('Select Entity', 0)
+        for entity in entities:
+            if entity != '__specs__':
+                self.entity_dropdown.addItem(entity, dropdowns[proj][entity]['__specs__']['id'])
+        self.entity_dropdown.setCurrentIndex(self.entity_dropdown.findText(ent))
+
+        self.task_dropdown.addItem('Select Task', 0)
+        for task in tasks:
+            if task != '__specs__':
+                self.task_dropdown.addItem(task, dropdowns[proj][ent][task]['__specs__']['id'])
+        self.task_dropdown.setCurrentIndex(self.task_dropdown.findText(tsk))
 
     def run(self):
         self.chronograph()
