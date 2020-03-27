@@ -165,12 +165,51 @@ class time_engine(QtCore.QThread):
         ent_id = self.entity_dropdown.itemData(self.entity_dropdown.currentIndex())
         tsk = self.task_dropdown.currentText()
         tsk_id = self.task_dropdown.itemData(self.task_dropdown.currentIndex())
+        ts_id = self.latest_timesheet['id']
+
+        # TODO: Add the user start/end time feature to this
+        start_time = datetime.now()
+        end_time = datetime.now()
+
+        data = {
+            'context': {
+                'Project': {
+                    'name': prj,
+                    'id': prj_id
+                },
+                'Entity': {
+                    'name': ent,
+                    'id': ent_id
+                },
+                'Task': {
+                    'name': tsk,
+                    'id': tsk_id
+                }
+            },
+            'id': ts_id,
+            'start_time': start_time,
+            'end_time': end_time,
+            'timesheet': self.latest_timesheet
+        }
+
         if self.button_state == 0:
             print('Clock in')
+            data['type'] = 'clock_in'
+            q.put(data)
+            q.join()
         elif self.button_state == 1:
             print('Clock Out')
+            data['type'] = 'clock_out'
+            q.put(data)
+            q.join()
         elif self.button_state == 2:
+            data['type'] = 'switch'
             print('Switch Time')
+            q.put(data)
+            q.join()
+        data['type'] = 'cleanup'
+        q.put(data)
+        q.join()
 
     def update_entity_dropdown(self):
         proj = self.project_dropdown.currentText()
@@ -306,6 +345,7 @@ class time_engine(QtCore.QThread):
             else:
                 sub_timer += 1
 
+            print(self.latest_timesheet)
             trt = tl_time.get_running_time(timesheet=self.latest_timesheet)
             self.time_signal.set_trt_output.emit(trt)
             self.time_signal.set_trt_runtime.emit(trt['rt'])
@@ -586,6 +626,24 @@ class time_queue(QtCore.QThread):
             package = q.get(block=True)
             print('package:')
             print(package)
+            type = package['type']
+            context = package['context']
+            ts_id = package['id']
+            start_time = package['start_time']
+            end_time = package['end_time']
+            timesheet = package['timesheet']
+
+            if type == 'clock_in':
+                tl_time.create_new_timesheet(user=user, context=context, start_time=start_time, entry='Time Lord UI')
+            elif type == 'clock_out':
+                tl_time.clock_out_time_sheet(timesheet=timesheet, clock_out=end_time)
+            elif type == 'switch':
+                tl_time.clock_out_time_sheet(timesheet=timesheet, clock_out=end_time)
+                tl_time.create_new_timesheet(user=user, context=context, start_time=start_time, entry='Time Lord UI')
+            elif type == 'cleanup':
+                tl_time.timesheet_cleanup(user=user)
+                tl_time.timesheet_consistency_cleanup(user=user)
+
             q.task_done()
 
     def kill(self):
@@ -648,6 +706,11 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_minute = self.ui.time_minute
         self.time_engine.day_meter = self.ui.day_meter
         self.time_engine.week_meter = self.ui.week_meter
+        # Start/End Time Elements
+        self.time_engine.start_clock_hour = self.ui.start_clock_hour
+        self.time_engine.start_clock_minute = self.ui.start_clock_minute
+        self.time_engine.end_clock_hour = self.ui.end_clock_hour
+        self.time_engine.end_clock_minute = self.ui.end_clock_minute
 
         # Signal Connections
         self.time_engine.time_signal.set_daily_total_needle.connect(self.set_daily_total_needle)
