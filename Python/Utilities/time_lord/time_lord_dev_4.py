@@ -142,13 +142,14 @@ class time_engine(QtCore.QThread):
 
         # Signal Connections
         self.update_timesheet(self.latest_timesheet)
-        self.time_machine.time_signal.set_timesheet.connect(self.update_timesheet)
+        self.time_machine.time_signal.get_timesheet.connect(self.update_timesheet)
         self.time_signal.clock_button_press.connect(self.big_button_pressed)
 
         self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task)
         self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
 
     def update_timesheet(self, timesheet=None):
+        print('Updating timesheet...')
         if not timesheet:
             self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
             timesheet = self.latest_timesheet
@@ -156,7 +157,7 @@ class time_engine(QtCore.QThread):
             self.latest_timesheet = timesheet
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
         self.time_signal.clocked_in.emit(self.clocked_in)
-        self.time_signal.set_timesheet.emit(self.latest_timesheet)
+        self.time_signal.set_timesheet.emit(timesheet)
 
     def big_button_pressed(self, button):
         prj = self.project_dropdown.currentText()
@@ -545,7 +546,7 @@ class time_machine(QtCore.QThread):
                                     # Collect the entity
                                     ts_entity = timesheet_info['entity.Task.entity']
 
-                                    self.time_signal.set_timesheet.emit(timesheet_info)
+                                    self.time_signal.get_timesheet.emit(timesheet_info)
                                     print('set_timesheet emits: %s' % timesheet_info)
                                     event_id = event['id']
                                     timelog_id = event['entity']['id']
@@ -571,8 +572,9 @@ class time_machine(QtCore.QThread):
 
                                     # TODO: In the original I emitted several conditions, and collected the latest
                                     #       timesheet
+                                    print('TS INFO', timesheet_info)
                                     print('Clocked in... ts_id: %s' % ts_data)
-                                    self.time_signal.set_timesheet.emit(ts_data)
+                                    self.time_signal.get_timesheet.emit(timesheet_info)
                                     print('ts_data emitted.')
                                     event_id = event['id']
                                     timelog_id = event['entity']['id']
