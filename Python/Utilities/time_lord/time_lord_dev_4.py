@@ -194,6 +194,10 @@ class time_engine(QtCore.QThread):
         entities = list(self.dropdowns[proj].keys())
         tasks = list(self.dropdowns[proj][ent].keys())
 
+        self.project_dropdown.clear()
+        self.entity_dropdown.clear()
+        self.task_dropdown.clear()
+
         self.project_dropdown.addItem('Select Project', 0)
         for project in projects:
             self.project_dropdown.addItem(project, self.dropdowns[project]['__specs__']['id'])
