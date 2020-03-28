@@ -140,6 +140,10 @@ class time_engine(QtCore.QThread):
         self.time_machine = time_machine()
         self.time_queue = time_queue()
 
+        self.project_dropdown = QtWidgets.QComboBox()
+        self.entity_dropdown = QtWidgets.QComboBox()
+        self.task_dropdown = QtWidgets.QComboBox()
+
         # Signal Connections
         self.update_timesheet(self.latest_timesheet)
         self.time_machine.time_signal.get_timesheet.connect(self.update_timesheet)
@@ -158,6 +162,8 @@ class time_engine(QtCore.QThread):
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
         self.time_signal.clocked_in.emit(self.clocked_in)
         self.time_signal.set_timesheet.emit(timesheet)
+        self.button_status()
+        self.set_up_dropdowns()
 
     def big_button_pressed(self, button):
         prj = self.project_dropdown.currentText()
@@ -212,16 +218,22 @@ class time_engine(QtCore.QThread):
         q.put(data)
         q.join()
 
-    def update_entity_dropdown(self):
+    def update_entity_dropdown(self, tries=0):
         proj = self.project_dropdown.currentText()
         proj_id = self.project_dropdown.currentIndex()
-        entities = list(self.dropdowns[proj].keys())
-        self.entity_dropdown.clear()
-        self.entity_dropdown.addItem('Select Entity', 0)
-        if proj_id != 0:
-            for entity in entities:
-                if entity != '__specs__':
-                    self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
+        try:
+            entities = list(self.dropdowns[proj].keys())
+            self.entity_dropdown.clear()
+            self.entity_dropdown.addItem('Select Entity', 0)
+            if proj_id != 0:
+                for entity in entities:
+                    if entity != '__specs__':
+                        self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
+        except Exception as e:
+            tries += 1
+            while tries <=10:
+                self.update_entity_dropdown(tries=tries)
+            logger.error('Update Entity Dropdown failed.... ', e)
         self.update_task_dropdown()
 
     def update_task_dropdown(self):
@@ -279,22 +291,29 @@ class time_engine(QtCore.QThread):
 
     def button_status(self):
         match = True
+        self.clocked_in = tl_time.is_user_clocked_in(user=user)
         prj = self.latest_timesheet['project']['name']
         ent = self.latest_timesheet['entity.Task.entity']['name']
         tsk = self.latest_timesheet['entity']['name']
-        if prj != self.project_dropdown.currentText():
-            match = False
-        if ent != self.entity_dropdown.currentText():
-            match = False
-        if tsk != self.task_dropdown.currentText():
-            match = False
-        if match and self.clocked_in:
-            self.button_state = 1
-        elif not match and self.clocked_in:
-            self.button_state = 2
-        elif not self.clocked_in:
-            self.button_state = 0
-        self.time_signal.set_button_state.emit(self.button_state)
+        try:
+            if prj != self.project_dropdown.currentText():
+                match = False
+            if ent != self.entity_dropdown.currentText():
+                match = False
+            if tsk != self.task_dropdown.currentText():
+                match = False
+            if match and self.clocked_in:
+                self.button_state = 1
+            elif not match and self.clocked_in:
+                self.button_state = 2
+            elif not self.clocked_in:
+                self.button_state = 0
+            self.time_signal.set_button_state.emit(self.button_state)
+        except AttributeError as e:
+            logger.error('Button tried to call too early.  Passing')
+            logger.error(e)
+            print('Button tried to call too early.  Passing')
+            print(e)
 
     def run(self):
         self.chronograph()
@@ -332,13 +351,11 @@ class time_engine(QtCore.QThread):
 
             # Set the User Clock in time
 
-            if (sub_timer % 10) == 0:
+            if (sub_timer % 60) == 0:
                 sub_timer = 1
                 # Collect the Daily Total
                 self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task['id'])
-                print('chron_dt: %s' % self.daily_total)
                 self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task['id'])
-                print('chron_wt: %s' % self.weekly_total)
                 self.time_signal.set_daily_total_needle.emit(self.daily_total)
                 self.time_signal.set_weekly_total_needle.emit(self.weekly_total)
                 self.time_signal.set_daily_total.emit(self.daily_total)
@@ -346,7 +363,6 @@ class time_engine(QtCore.QThread):
             else:
                 sub_timer += 1
 
-            print(self.latest_timesheet)
             trt = tl_time.get_running_time(timesheet=self.latest_timesheet)
             self.time_signal.set_trt_output.emit(trt)
             self.time_signal.set_trt_runtime.emit(trt['rt'])
@@ -547,7 +563,7 @@ class time_machine(QtCore.QThread):
                                     ts_entity = timesheet_info['entity.Task.entity']
 
                                     self.time_signal.get_timesheet.emit(timesheet_info)
-                                    print('set_timesheet emits: %s' % timesheet_info)
+                                    print('get_timesheet emits: %s' % timesheet_info)
                                     event_id = event['id']
                                     timelog_id = event['entity']['id']
                                     current = False
@@ -561,19 +577,7 @@ class time_machine(QtCore.QThread):
                                     # Collect the entity
                                     ts_entity = timesheet_info['entity.Task.entity']
                                     logger.debug('NEW RECORD! %s' % event['id'])
-                                    ts_data = {
-                                        'project': timesheet_info['project']['name'],
-                                        'project_id': timesheet_info['project']['id'],
-                                        'entity': ts_entity['name'],
-                                        'entity_id': ts_entity['id'],
-                                        'task': timesheet_info['entity']['name'],
-                                        'task_id': timesheet_info['entity']['id']
-                                    }
-
-                                    # TODO: In the original I emitted several conditions, and collected the latest
-                                    #       timesheet
                                     print('TS INFO', timesheet_info)
-                                    print('Clocked in... ts_id: %s' % ts_data)
                                     self.time_signal.get_timesheet.emit(timesheet_info)
                                     print('ts_data emitted.')
                                     event_id = event['id']
