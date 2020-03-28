@@ -140,10 +140,6 @@ class time_engine(QtCore.QThread):
         self.time_machine = time_machine()
         self.time_queue = time_queue()
 
-        self.project_dropdown = QtWidgets.QComboBox()
-        self.entity_dropdown = QtWidgets.QComboBox()
-        self.task_dropdown = QtWidgets.QComboBox()
-
         # Signal Connections
         self.update_timesheet(self.latest_timesheet)
         self.time_machine.time_signal.get_timesheet.connect(self.update_timesheet)
@@ -162,8 +158,6 @@ class time_engine(QtCore.QThread):
         self.clocked_in = tl_time.is_user_clocked_in(user=user)
         self.time_signal.clocked_in.emit(self.clocked_in)
         self.time_signal.set_timesheet.emit(timesheet)
-        self.button_status()
-        self.set_up_dropdowns()
 
     def big_button_pressed(self, button):
         prj = self.project_dropdown.currentText()
@@ -218,22 +212,16 @@ class time_engine(QtCore.QThread):
         q.put(data)
         q.join()
 
-    def update_entity_dropdown(self, tries=0):
+    def update_entity_dropdown(self):
         proj = self.project_dropdown.currentText()
         proj_id = self.project_dropdown.currentIndex()
-        try:
-            entities = list(self.dropdowns[proj].keys())
-            self.entity_dropdown.clear()
-            self.entity_dropdown.addItem('Select Entity', 0)
-            if proj_id != 0:
-                for entity in entities:
-                    if entity != '__specs__':
-                        self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
-        except Exception as e:
-            tries += 1
-            while tries <=10:
-                self.update_entity_dropdown(tries=tries)
-            logger.error('Update Entity Dropdown failed.... ', e)
+        entities = list(self.dropdowns[proj].keys())
+        self.entity_dropdown.clear()
+        self.entity_dropdown.addItem('Select Entity', 0)
+        if proj_id != 0:
+            for entity in entities:
+                if entity != '__specs__':
+                    self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
         self.update_task_dropdown()
 
     def update_task_dropdown(self):
@@ -640,17 +628,33 @@ class time_queue(QtCore.QThread):
             timesheet = package['timesheet']
 
             if type == 'clock_in':
-                tl_time.create_new_timesheet(user=user, context=context, start_time=start_time, entry='Time Lord UI')
+                new_timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time,
+                                                             entry='Time Lord UI')
+                old_timesheeet = None
+                cleanup = None
+                consistency = None
             elif type == 'clock_out':
-                tl_time.clock_out_time_sheet(timesheet=timesheet, clock_out=end_time)
+                new_timesheet = None
+                old_timesheeet = tl_time.clock_out_time_sheet(timesheet=timesheet, clock_out=end_time)
+                cleanup = None
+                consistency = None
             elif type == 'switch':
-                tl_time.clock_out_time_sheet(timesheet=timesheet, clock_out=end_time)
-                tl_time.create_new_timesheet(user=user, context=context, start_time=start_time, entry='Time Lord UI')
+                old_timesheeet = tl_time.clock_out_time_sheet(timesheet=timesheet, clock_out=end_time)
+                new_timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time,
+                                                             entry='Time Lord UI')
+                cleanup = None
+                consistency = None
             elif type == 'cleanup':
-                tl_time.timesheet_cleanup(user=user)
-                tl_time.timesheet_consistency_cleanup(user=user)
+                cleanup = tl_time.timesheet_cleanup(user=user)
+                consistency = tl_time.timesheet_consistency_cleanup(user=user)
+                new_timesheet = None
+                old_timesheeet = None
 
             q.task_done()
+            print('old: %s' % old_timesheeet)
+            print('new: %s' % new_timesheet)
+            print('cleanup: %s' % cleanup)
+            print('consistency: %s' % consistency)
 
     def kill(self):
         self.kill_it = True
