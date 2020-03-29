@@ -144,6 +144,7 @@ class time_engine(QtCore.QThread):
         self.update_timesheet(self.latest_timesheet)
         self.time_machine.time_signal.get_timesheet.connect(self.update_timesheet)
         self.time_signal.clock_button_press.connect(self.big_button_pressed)
+        self.time_machine.time_signal.update_drop_downs.connect(self.set_up_dropdowns)
 
         self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task)
         self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
@@ -551,6 +552,7 @@ class time_machine(QtCore.QThread):
                                     ts_entity = timesheet_info['entity.Task.entity']
 
                                     self.time_signal.get_timesheet.emit(timesheet_info)
+                                    self.time_signal.update_drop_downs.emit('Do it')
                                     print('get_timesheet emits: %s' % timesheet_info)
                                     event_id = event['id']
                                     timelog_id = event['entity']['id']
