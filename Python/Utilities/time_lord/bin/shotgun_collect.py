@@ -400,7 +400,14 @@ class sg_data(object):
 
             assets = self.get_active_assets(user=user, active_projects=projects)
             shots = self.get_active_shots(user=user, active_projects=projects)
-            entities = assets + shots
+            if shots and assets:
+                entities = assets + shots
+            elif not shots and assets:
+                entities = assets
+            elif not assets and shots:
+                entities = shots
+            else:
+                entities = None
             tasks = self.get_active_tasks(entities=entities)
 
             for project in projects:
