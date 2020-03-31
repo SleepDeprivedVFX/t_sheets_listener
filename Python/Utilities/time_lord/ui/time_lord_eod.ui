@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>344</width>
-    <height>187</height>
+    <width>286</width>
+    <height>191</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>286</width>
+    <height>191</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>End of Day</string>
@@ -54,7 +60,14 @@ color: rgb(230, 230, 230);</string>
       </widget>
      </item>
      <item>
-      <widget class="QDateTimeEdit" name="last_time"/>
+      <widget class="QTimeEdit" name="last_time"/>
+     </item>
+     <item>
+      <widget class="QDateEdit" name="last_date">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item>
       <spacer name="horizontalSpacer_2">

@@ -3,7 +3,7 @@ The lunch pop-up for getting the lunch times.
 """
 
 __author__ = 'Adam Benson - AdamBenson.vfx@gmail.com'
-__version__ = '0.5.1'
+__version__ = '0.5.2'
 
 import shotgun_api3 as sgapi
 import os
@@ -95,6 +95,7 @@ class eod_timer(QtCore.QThread):
         self.eod_signals = eod_signals()
         self.kill_it = False
         self.set_time = None
+        self.set_date = None
         self.eod_signals.kill_signal.connect(self.kill)
         self.eod_signals.set_time.connect(self.out_time)
 
@@ -106,6 +107,10 @@ class eod_timer(QtCore.QThread):
         self.set_time = message
         # else:
         #     self.set_time = None
+
+    def out_date(self, message=None):
+        logger.info('out_date message: %s' % message)
+        self.set_date = message
 
     def kill(self):
         self.kill_it = True
@@ -134,6 +139,10 @@ class eod_timer(QtCore.QThread):
                     self.eod_signals.get_time.emit(True)
                     auto_clock_out = None
 
+                if self.set_date:
+                    set_date = parser.parse(self.set_date)
+                    auto_date_out = set_date
+
                 # Do an occasional check of user clock in status
                 if int(datetime.now().minute) != minute:
                     minute = int(datetime.now().minute)
@@ -144,7 +153,7 @@ class eod_timer(QtCore.QThread):
                 # Set the clocks
                 second = int(datetime.now().second)
                 if auto_clock_out:
-                    time_left = str(auto_clock_out - datetime.now())
+                    time_left = str(auto_clock_out - datetime.now())[:7]
                 else:
                     time_left = '00:00:00'
                 self.eod_signals.set_button.emit('Clock Out: %s' % time_left)
@@ -158,7 +167,7 @@ class eod_timer(QtCore.QThread):
 # -----------------------------------------------------------------------------------------------------------
 # Main Window
 # -----------------------------------------------------------------------------------------------------------
-class end_of_day(QtGui.QWidget):
+class end_of_day(QtWidgets.QWidget):
     def __init__(self):
         super(end_of_day, self).__init__(parent=None)
 
@@ -166,6 +175,7 @@ class end_of_day(QtGui.QWidget):
         arguments = sys.argv[1:]
         options = getopt.getopt(arguments, 'o:t', longopts=['out=', 'time='])
         time_out = None
+        date_out = None
         if options[0]:
             split_options = options[0]
             for opt, arg in split_options:
@@ -178,12 +188,13 @@ class end_of_day(QtGui.QWidget):
                 else:
                     time_out = None
 
-                if date_out and time_out:
-                    time_out = parser.parse('%s %s' % (date_out, time_out))
-                    logger.info('out time: %s' % time_out)
+                # if date_out and time_out:
+                #     time_out = parser.parse('%s %s' % (date_out, time_out))
+                #     logger.info('out time: %s' % time_out)
 
         if not time_out:
-            time_out = datetime.now()
+            time_out = datetime.now().time()
+            date_out = datetime.now().date()
 
         # Variables
         self.stay_opened = True
@@ -197,7 +208,8 @@ class end_of_day(QtGui.QWidget):
 
         self.ui.yes_btn.clicked.connect(self.stay_clocked_in)
         self.ui.no_btn.clicked.connect(self.clock_out)
-        self.ui.last_time.setDateTime(time_out)
+        self.ui.last_time.setTime(time_out)
+        self.ui.last_date.setDate(date_out)
 
         # Threads and connections
         self.eod_timer = eod_timer()
@@ -206,7 +218,7 @@ class end_of_day(QtGui.QWidget):
         self.eod_timer.eod_signals.set_button.connect(self.set_button)
         self.eod_timer.eod_signals.interrupt.connect(self.stay_clocked_in)
         self.eod_timer.start()
-        self.eod_timer.eod_signals.set_time.emit(time_out)
+        self.eod_timer.eod_signals.set_time.emit((time_out, date_out))
 
     def set_button(self, text=None):
         if text:
@@ -240,7 +252,8 @@ class end_of_day(QtGui.QWidget):
 
 
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
+    app = QtWidgets.QApplication(sys.argv)
     w = end_of_day()
     w.show()
     sys.exit(app.exec_())
