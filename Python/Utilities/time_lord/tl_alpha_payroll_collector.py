@@ -278,6 +278,7 @@ class payroll_ui(QtWidgets.QWidget):
 
 
 if __name__ == '__main__':
+    os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
     app = QtWidgets.QApplication(sys.argv)
     w = payroll_ui()
     w.show()

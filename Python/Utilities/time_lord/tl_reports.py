@@ -743,6 +743,7 @@ class reports_ui(QtGui.QWidget):
 
 
 if __name__ == '__main__':
+    os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
     app = QtGui.QApplication(sys.argv)
     app.setOrganizationName('AdamBenson')
     app.setOrganizationDomain('adamdbenson.com')
