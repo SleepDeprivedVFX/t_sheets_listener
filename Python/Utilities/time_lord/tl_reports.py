@@ -391,13 +391,13 @@ class payroll_engine(QtCore.QThread):
                 self.signals.snd_report_project_hours.emit(return_data)
 
 
-class reports_ui(QtGui.QWidget):
+class reports_ui(QtWidgets.QWidget):
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtWidgets.QWidget.__init__(self, parent)
 
         self.settings = QtCore.QSettings('Adam Benson', 'time_lord_reports')
         self.last_output = self.settings.value('last_output', '.')
-        self.saved_window_position = self.settings.value('geometry', '')
+        self.saved_window_position = self.settings.value('geometry', None)
         self.restoreGeometry(self.saved_window_position)
 
         self.engine = payroll_engine()
@@ -530,7 +530,7 @@ class reports_ui(QtGui.QWidget):
 
             # Build the tree
             for proj, details in tree_structure.items():
-                proj_label = QtGui.QTreeWidgetItem()
+                proj_label = QtWidgets.QTreeWidgetItem()
                 proj_label.setText(0, proj)
                 proj_duration = float(details['_duration_']) / 60.0
                 proj_label.setText(5, '%0.2f hrs' % proj_duration)
@@ -543,7 +543,7 @@ class reports_ui(QtGui.QWidget):
                 for ent_type, entities in details.items():
 
                     if ent_type not in ['_duration_', '_avg_time_', '_avgs_']:
-                        ent_type_label = QtGui.QTreeWidgetItem()
+                        ent_type_label = QtWidgets.QTreeWidgetItem()
                         ent_type_label.setText(1, ent_type)
                         ent_type_duration = float(entities['_duration_']) / 60.0
                         ent_type_label.setText(5, '%0.2f hrs' % ent_type_duration)
@@ -564,7 +564,7 @@ class reports_ui(QtGui.QWidget):
                                     avg += v
 
                             if entity not in ['_duration_', '_avg_time_', '_avgs_']:
-                                entity_label = QtGui.QTreeWidgetItem()
+                                entity_label = QtWidgets.QTreeWidgetItem()
                                 entity_label.setText(2, entity)
                                 entity_duration = float(steps['_duration_']) / 60.0
                                 entity_label.setText(5, '%0.2f Hrs' % entity_duration)
@@ -579,7 +579,7 @@ class reports_ui(QtGui.QWidget):
 
                                 for step, tasks in steps.items():
                                     if step not in ['_duration_', '_avg_time_', '_avgs_']:
-                                        step_label = QtGui.QTreeWidgetItem()
+                                        step_label = QtWidgets.QTreeWidgetItem()
                                         step_label.setText(3, step)
                                         step_duration = float(tasks['_duration_']) / 60.0
                                         step_label.setText(5, '%0.2f hrs' % step_duration)
@@ -594,7 +594,7 @@ class reports_ui(QtGui.QWidget):
                                         report_page.write(row, 11, '%0.2f%%' % step_average)
 
                                         for artist, hours in step_artists.items():
-                                            artist_label = QtGui.QTreeWidgetItem()
+                                            artist_label = QtWidgets.QTreeWidgetItem()
                                             artist_label.setText(4, artist)
                                             artist_label.setText(5, '%0.2f Hrs' % (hours / 60.0))
                                             artist_avg = (hours / 60.0) / step_duration * 100.0
@@ -670,31 +670,32 @@ class reports_ui(QtGui.QWidget):
             elif drv_obj_name == 'secondary_org':
                 list.show()
                 list.addItem('Total Hours', 1)
-                if driver.findText('All Artists', 1) >= 0:
+                print(driver.findText('All Artists', QtCore.Qt.MatchExactly))
+                if driver.findText('All Artists', QtCore.Qt.MatchExactly) >= 0:
                     list.addItem('Hours', 2)
                     list.addItem('Projects', 3)
                     list.addItem('Assets', 4)
                     list.addItem('Shots', 5)
                     list.addItem('Tasks', 6)
                     list.addItem('Lunches', 7)
-                if driver.findText('All Projects', 1) >= 0:
+                if driver.findText('All Projects', QtCore.Qt.MatchExactly) >= 0:
                     list.addItem('Artists', 2)
                     list.addItem('Assets', 3)
                     list.addItem('Shots', 4)
                     list.addItem('Tasks', 5)
-                if driver.findText('All Assets', 1) >= 0:
+                if driver.findText('All Assets', QtCore.Qt.MatchExactly) >= 0:
                     list.addItem('Artists', 2)
                     list.addItem('Projects', 3)
                     list.addItem('Tasks', 4)
-                if driver.findText('All Shots', 1) >= 0:
+                if driver.findText('All Shots', QtCore.Qt.MatchExactly) >= 0:
                     list.addItem('Artists', 2)
                     list.addItem('Projects', 3)
                     list.addItem('Tasks', 4)
-                if driver.findText('All Entities', 1) >= 0:
+                if driver.findText('All Entities', QtCore.Qt.MatchExactly) >= 0:
                     list.addItem('Artists', 2)
                     list.addItem('Projects', 3)
                     list.addItem('Tasks', 4)
-                if driver.findText('All Tasks', 1) >= 0:
+                if driver.findText('All Tasks', QtCore.Qt.MatchExactly) >= 0:
                     list.addItem('Artists', 2),
                     list.addItem('Projects', 3)
             elif drv_obj_name == 'trinary_org':
@@ -744,12 +745,12 @@ class reports_ui(QtGui.QWidget):
 
 if __name__ == '__main__':
     os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     app.setOrganizationName('AdamBenson')
     app.setOrganizationDomain('adamdbenson.com')
     app.setApplicationName('TimeLordReports')
     splash_pix = QtGui.QPixmap('ui/resources/Time_Lord_Logo.png')
-    splash = QtGui.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
+    splash = QtWidgets.QSplashScreen(splash_pix, QtCore.Qt.WindowStaysOnTopHint)
     splash.setMask(splash_pix.mask())
     splash.show()
     app.processEvents()

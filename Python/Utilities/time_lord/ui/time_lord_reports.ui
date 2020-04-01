@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1109</width>
-    <height>1000</height>
+    <height>662</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,7 +41,7 @@ color: rgb(230, 230, 230);</string>
         </widget>
        </item>
        <item>
-        <widget class="QDateTimeEdit" name="start_time">
+        <widget class="QDateEdit" name="start_time">
          <property name="calendarPopup">
           <bool>true</bool>
          </property>
@@ -52,14 +52,14 @@ color: rgb(230, 230, 230);</string>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="end_time_label">
          <property name="text">
           <string>End Time</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QDateTimeEdit" name="end_time">
+        <widget class="QDateEdit" name="end_time">
          <property name="calendarPopup">
           <bool>true</bool>
          </property>
