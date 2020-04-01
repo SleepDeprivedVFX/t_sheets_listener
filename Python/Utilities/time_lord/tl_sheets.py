@@ -748,47 +748,79 @@ class time_editor(QtWidgets.QDialog):
                     if task != '__specs__':
                         self.editor.task_dd.addItem(task, self.dropdowns[project][entity][task]['__specs__']['id'])
 
-    def update_timesheet(self):
-        tid = self.editor.tid.text()
-        tid = int(tid.split(': ')[1])
-        reason = self.editor.reason.toPlainText()
-        if len(reason) < 8:
-            alert = QtWidgets.QMessageBox()
-            alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
-            alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
-"color: rgb(230, 230, 230);")
-            alert.setText('The reason you gave for the change does not say enough.  Please put in a reason for changing '
-                          'this timesheet.')
-            alert.exec_()
-            self.editor.reason.setFocus()
-            return False
-        update = QtWidgets.QMessageBox()
-        update.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
-        update.setStyleSheet("background-color: rgb(100, 100, 100);\n"
-"color: rgb(230, 230, 230);")
-        update.setText('Are you sure you want to update %s?' % tid)
-        update.addButton('Yes', QtWidgets.QMessageBox.AcceptRole)
-        update.addButton('No', QtWidgets.QMessageBox.RejectRole)
-        ret = update.exec_()
-        if ret == QtWidgets.QMessageBox.AcceptRole:
-            start_date = self.editor.start_date.date().toPython()
-            start_time = self.editor.start_time.time().toPython()
-            end_date = self.editor.end_date.date().toPython()
-            end_time = self.editor.end_time.time().toPython()
-            start = datetime.combine(start_date, start_time)
-            end = datetime.combine(end_date, end_time)
-            proj = self.editor.project_dd.itemData(self.editor.project_dd.currentIndex())
-            task = self.editor.task_dd.itemData(self.editor.task_dd.currentIndex())
+    def check_time(self):
+        start_date = self.editor.start_date.date()
+        end_date = self.editor.end_date.date()
+        start_time = self.editor.start_time.time()
+        end_time = self.editor.end_time.time()
+        yesterday = (datetime.now().date() - timedelta(days=1))
+        tomorrow = (datetime.now().date() + timedelta(days=1))
+        message = None
 
-            logger.debug('Doing update...')
-            # TODO: Add a "Conflicting Timesheet" check!
-            do_update = tl_time.update_current_times(user=user, tid=tid, start_time=start, end_time=end, proj_id=proj,
-                                                     task_id=task, reason=reason)
-            logger.debug('Updated: %s' % do_update)
-            self.accept()
+        if end_date < start_date:
+            message = 'Your shit cannot start after it ends!'
+        elif yesterday > start_date.toPython() or start_date.toPython() > tomorrow:
+            message = 'Your start date cannot be before yesterday, or after tomorrow!'
+        elif yesterday > end_date.toPython() or end_date.toPython() > tomorrow:
+            message = 'Your end date cannot be before yesterday, or after tomorrow!'
+        elif start_time > end_time:
+            message = 'Your start time cannot be after your end time!'
         else:
-            logger.debug('Rejected!')
-            self.close()
+            print(start_date.toPython())
+            print(end_date.toPython())
+            print(yesterday)
+            print(tomorrow)
+
+        if message:
+            pop_up = QtWidgets.QMessageBox()
+            pop_up.setText(message)
+            pop_up.exec_()
+            return False
+        return True
+
+    def update_timesheet(self):
+        time_check = self.check_time()
+        if time_check:
+            tid = self.editor.tid.text()
+            tid = int(tid.split(': ')[1])
+            reason = self.editor.reason.toPlainText()
+            if len(reason) < 8:
+                alert = QtWidgets.QMessageBox()
+                alert.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+                alert.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+                alert.setText('The reason you gave for the change does not say enough.  Please put in a reason for changing '
+                              'this timesheet.')
+                alert.exec_()
+                self.editor.reason.setFocus()
+                return False
+            update = QtWidgets.QMessageBox()
+            update.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+            update.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+            update.setText('Are you sure you want to update %s?' % tid)
+            update.addButton('Yes', QtWidgets.QMessageBox.AcceptRole)
+            update.addButton('No', QtWidgets.QMessageBox.RejectRole)
+            ret = update.exec_()
+            if ret == QtWidgets.QMessageBox.AcceptRole:
+                start_date = self.editor.start_date.date().toPython()
+                start_time = self.editor.start_time.time().toPython()
+                end_date = self.editor.end_date.date().toPython()
+                end_time = self.editor.end_time.time().toPython()
+                start = datetime.combine(start_date, start_time)
+                end = datetime.combine(end_date, end_time)
+                proj = self.editor.project_dd.itemData(self.editor.project_dd.currentIndex())
+                task = self.editor.task_dd.itemData(self.editor.task_dd.currentIndex())
+
+                logger.debug('Doing update...')
+                # TODO: Add a "Conflicting Timesheet" check!
+                do_update = tl_time.update_current_times(user=user, tid=tid, start_time=start, end_time=end, proj_id=proj,
+                                                         task_id=task, reason=reason)
+                logger.debug('Updated: %s' % do_update)
+                self.accept()
+            else:
+                logger.debug('Rejected!')
+                self.close()
 
     def delete_timesheet(self):
         tid = self.editor.tid.text()
