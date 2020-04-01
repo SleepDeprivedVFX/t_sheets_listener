@@ -755,21 +755,17 @@ class time_editor(QtWidgets.QDialog):
         end_time = self.editor.end_time.time()
         yesterday = (datetime.now().date() - timedelta(days=1))
         tomorrow = (datetime.now().date() + timedelta(days=1))
+        start_datetime = datetime.combine(start_date.toPython(), start_time.toPython())
+        end_datetime = datetime.combine(end_date.toPython(), end_time.toPython())
+        difference = end_datetime - start_datetime
         message = None
 
         if end_date < start_date:
             message = 'Your shit cannot start after it ends!'
-        elif yesterday > start_date.toPython() or start_date.toPython() > tomorrow:
-            message = 'Your start date cannot be before yesterday, or after tomorrow!'
-        elif yesterday > end_date.toPython() or end_date.toPython() > tomorrow:
-            message = 'Your end date cannot be before yesterday, or after tomorrow!'
         elif start_time > end_time:
             message = 'Your start time cannot be after your end time!'
-        else:
-            print(start_date.toPython())
-            print(end_date.toPython())
-            print(yesterday)
-            print(tomorrow)
+        elif difference > timedelta(hours=12):
+            message = 'Twelve hours is a little too long for any one time sheet.'
 
         if message:
             pop_up = QtWidgets.QMessageBox()
