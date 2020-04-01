@@ -761,14 +761,20 @@ class time_editor(QtWidgets.QDialog):
         message = None
 
         if end_date < start_date:
-            message = 'Your shit cannot start after it ends!'
+            message = 'Your timesheet cannot start a day after it ends!\n' \
+                      'Check the Dates and times and try again.'
         elif start_time > end_time:
-            message = 'Your start time cannot be after your end time!'
+            message = 'Your start time cannot be after your end time!\n' \
+                      'Check the Dates and times and try again.'
         elif difference > timedelta(hours=12):
-            message = 'Twelve hours is a little too long for any one time sheet.'
+            message = 'Twelve hours is a little too long for any one time sheet.\n' \
+                      'Check the Dates and times and try again.'
 
         if message:
             pop_up = QtWidgets.QMessageBox()
+            pop_up.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+            pop_up.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
             pop_up.setText(message)
             pop_up.exec_()
             return False
