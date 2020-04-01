@@ -598,6 +598,7 @@ class time_machine(QtCore.QThread):
                         print('IOError... failed.  Trying again...: %s' % e)
                         time.sleep(0.35)
                         self.save_time_capsule(data)
+                        # continue
 
             time.sleep(1)
 
