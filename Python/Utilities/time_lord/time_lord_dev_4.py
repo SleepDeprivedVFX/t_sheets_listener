@@ -216,14 +216,15 @@ class time_engine(QtCore.QThread):
     def update_entity_dropdown(self):
         proj = self.project_dropdown.currentText()
         proj_id = self.project_dropdown.currentIndex()
-        entities = list(self.dropdowns[proj].keys())
-        self.entity_dropdown.clear()
-        self.entity_dropdown.addItem('Select Entity', 0)
-        if proj_id != 0:
-            for entity in entities:
-                if entity != '__specs__':
-                    self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
-        self.update_task_dropdown()
+        if proj_id and proj_id != 0 and proj != '':
+            entities = list(self.dropdowns[proj].keys())
+            self.entity_dropdown.clear()
+            self.entity_dropdown.addItem('Select Entity', 0)
+            if proj_id != 0:
+                for entity in entities:
+                    if entity != '__specs__':
+                        self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
+            self.update_task_dropdown()
 
     def update_task_dropdown(self):
         proj = self.project_dropdown.currentText()
@@ -376,6 +377,7 @@ class time_engine(QtCore.QThread):
             else:
                 self.time_signal.set_end_date_rollers.emit(str(str(self.today)))
 
+            self.button_status()
             # Hold the clock for one second
             time.sleep(1)
 
@@ -713,7 +715,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.entity_dropdown = self.ui.entity_dropdown
         self.time_engine.task_dropdown = self.ui.task_dropdown
         self.time_engine.set_up_dropdowns()
-        self.time_engine.button_status()
+        # self.time_engine.button_status()
         # Clock Elements
         self.time_engine.time_hour = self.ui.time_hour
         self.time_engine.time_minute = self.ui.time_minute
