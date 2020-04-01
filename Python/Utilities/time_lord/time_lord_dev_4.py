@@ -148,6 +148,8 @@ class time_engine(QtCore.QThread):
 
         self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task)
         self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task)
+        self.dropdowns = sg_data.get_all_project_dropdowns(user=user)
+        self.clocked_in = tl_time.is_user_clocked_in(user=user)
 
     def update_timesheet(self, timesheet=None):
         print('Updating timesheet...')
