@@ -15,6 +15,7 @@ from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime
 from dateutil import parser
 import pickle
+import json
 import queue
 
 # Time Lord Libraries
@@ -425,8 +426,8 @@ class time_machine(QtCore.QThread):
         :return:
         """
         if os.path.exists(self.db_path):
-            fh = open(self.db_path, 'rb')
-            db_file = pickle.load(fh)
+            fh = open(self.db_path, 'r')
+            db_file = json.load(fh)
             fh.close()
             return db_file
 
@@ -443,8 +444,9 @@ class time_machine(QtCore.QThread):
         """
         if data:
             if os.path.exists(self.db_path):
-                fh = open(self.db_path, 'wb')
-                pickle.dump(data, fh)
+                fh = open(self.db_path, 'w')
+                data = json.dumps(data, indent=4)
+                fh.write(data)
                 fh.close()
 
     def get_new_events(self):
