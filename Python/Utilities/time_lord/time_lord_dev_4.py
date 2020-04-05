@@ -333,10 +333,12 @@ class time_engine(QtCore.QThread):
 
         # Run the clock loop
         while not self.kill_it:
-            # Setup a clock system
+            # Setup a clock system: creates the time tick and then calculates the rotations
+            # of the hands of the clocks
             self.tick = QtCore.QTime.currentTime()
             hour = (30.0 * (self.tick.hour() + (self.tick.minute() / 60.0)))
             minute = (6.0 * (self.tick.minute() + (self.tick.second() / 60.0)))
+            # Make an alternate tuple for passing both at once where needed
             _time_ = (hour, minute)
 
             # Create the main clock hands and compute rotations
@@ -344,9 +346,10 @@ class time_engine(QtCore.QThread):
 
             # Set the User Clock in time
 
+            # Start a sub timer for heavier processes that don't need updates every second
             if (sub_timer % 60) == 0:
                 sub_timer = 1
-                # Collect the Daily Total
+                # Collect the Daily Total digital and needle outputs
                 self.daily_total = tl_time.get_daily_total(user=user, lunch_id=lunch_task['id'])
                 self.weekly_total = tl_time.get_weekly_total(user=user, lunch_id=lunch_task['id'])
                 self.time_signal.set_daily_total_needle.emit(self.daily_total)
@@ -356,10 +359,12 @@ class time_engine(QtCore.QThread):
             else:
                 sub_timer += 1
 
+            # Set up the total running time calculations and outputs
             trt = tl_time.get_running_time(timesheet=self.latest_timesheet)
             self.time_signal.set_trt_output.emit(trt)
             self.time_signal.set_trt_runtime.emit(trt['rt'])
 
+            # Set up the short date calculations for converting to the date rollers
             if 'sg_task_start' in self.latest_timesheet.keys() \
                     and hasattr(self.latest_timesheet['sg_task_start'], 'date'):
                 timesheet_start_date = self.latest_timesheet['sg_task_start'].date()
@@ -371,6 +376,7 @@ class time_engine(QtCore.QThread):
                 short_end_date = timesheet_end_date.strftime('%m-%d-%y')
             else:
                 short_end_date = self.today
+            # Find the right conditions and set the date rollers
             if short_start_date != self.today:
                 self.time_signal.set_start_date_rollers.emit(str(short_start_date))
             else:
@@ -380,7 +386,33 @@ class time_engine(QtCore.QThread):
             else:
                 self.time_signal.set_end_date_rollers.emit(str(str(self.today)))
 
+            # Set the Start and End time Clocks
+            if self.clocked_in:
+                get_start_hour = self.latest_timesheet['sg_task_start'].time().hour
+                end_hour = hour
+                get_start_minute = self.latest_timesheet['sg_task_start'].time().minute
+                start_second = self.latest_timesheet['sg_task_start'].time().second
+                end_minute = minute
+                start_hour = (30.0 * (get_start_hour + (get_start_minute / 60.0)))
+                start_minute = (6.0 * (get_start_minute + (start_second / 60.0)))
+            else:
+                start_hour = hour
+                get_end_hour = self.latest_timesheet['sg_task_end'].time().hour
+                start_minute = minute
+                get_end_minute = self.latest_timesheet['sg_task_end'].time().minute
+                end_second = self.latest_timesheet['sg_task_end'].time().second
+                end_hour = (30.0 * (get_end_hour + (get_end_minute / 60.0)))
+                end_minute = (6.0 * (get_end_minute + (end_second / 60.0)))
+
+            # Set the Start and End clocks
+            start_time = (start_hour, start_minute)
+            end_time = (end_hour, end_minute)
+            self.time_signal.set_in_clock.emit(start_time)
+            self.time_signal.set_out_clock.emit(end_time)
+
+            # Update the Clock button to show either red, green or yellow.
             self.button_status()
+
             # Hold the clock for one second
             time.sleep(1)
 
@@ -741,6 +773,8 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.time_engine.time_signal.set_start_date_rollers.connect(self.set_start_date_rollers)
         self.time_engine.time_signal.set_end_date_rollers.connect(self.set_end_date_rollers)
         self.time_engine.time_signal.set_main_clock.connect(self.set_main_clock)
+        self.time_engine.time_signal.set_in_clock.connect(self.set_in_clock)
+        self.time_engine.time_signal.set_out_clock.connect(self.set_out_clock)
         self.time_engine.time_signal.set_user_start.connect(self.update_user_start)
         self.time_engine.time_signal.set_timesheet.connect(self.update_timesheet)
         self.time_engine.time_signal.clocked_in.connect(self.update_clocked_in)
@@ -776,6 +810,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
                                            'background-repeat: none;'
                                            'background-color: rgba(0, 0, 0, 0);'
                                            'border-color: rgba(0, 0, 0, 0);' % state)
+        self.ui.clock_button.show()
 
     def daily_output(self, message=None):
         total = 'Daily Total: %0.2f' % message
@@ -1047,6 +1082,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.user_start = user_start
 
     def big_clock_button(self):
+        self.ui.clock_button.hide()
         self.time_engine.time_signal.clock_button_press.emit(('Hello', 'There'))
 
     def closeEvent(self, event: QtGui.QCloseEvent):
