@@ -163,59 +163,6 @@ class time_engine(QtCore.QThread):
         self.time_signal.clocked_in.emit(self.clocked_in)
         self.time_signal.set_timesheet.emit(timesheet)
 
-    def big_button_pressed(self, button):
-        prj = self.project_dropdown.currentText()
-        prj_id = self.project_dropdown.itemData(self.project_dropdown.currentIndex())
-        ent = self.entity_dropdown.currentText()
-        ent_id = self.entity_dropdown.itemData(self.entity_dropdown.currentIndex())
-        tsk = self.task_dropdown.currentText()
-        tsk_id = self.task_dropdown.itemData(self.task_dropdown.currentIndex())
-        ts_id = self.latest_timesheet['id']
-
-        # TODO: Add the user start/end time feature to this
-        start_time = datetime.now()
-        end_time = datetime.now()
-
-        data = {
-            'context': {
-                'Project': {
-                    'name': prj,
-                    'id': prj_id
-                },
-                'Entity': {
-                    'name': ent,
-                    'id': ent_id
-                },
-                'Task': {
-                    'name': tsk,
-                    'id': tsk_id
-                }
-            },
-            'id': ts_id,
-            'start_time': start_time,
-            'end_time': end_time,
-            'timesheet': self.latest_timesheet
-        }
-
-        if self.button_state == 0:
-            print('Clock in')
-            data['type'] = 'clock_in'
-            q.put(data)
-            q.join()
-        elif self.button_state == 1:
-            print('Clock Out')
-            data['type'] = 'clock_out'
-            q.put(data)
-            q.join()
-        elif self.button_state == 2:
-            data['type'] = 'switch'
-            print('Switch Time')
-            q.put(data)
-            q.join()
-        data['type'] = 'cleanup'
-        q.put(data)
-        q.join()
-
     def update_entity_dropdown(self):
         proj = self.project_dropdown.currentText()
         proj_id = self.project_dropdown.currentIndex()
@@ -287,6 +234,59 @@ class time_engine(QtCore.QThread):
             logger.error(e)
             time.sleep(1)
             self.set_up_dropdowns()
+
+    def big_button_pressed(self, button):
+        prj = self.project_dropdown.currentText()
+        prj_id = self.project_dropdown.itemData(self.project_dropdown.currentIndex())
+        ent = self.entity_dropdown.currentText()
+        ent_id = self.entity_dropdown.itemData(self.entity_dropdown.currentIndex())
+        tsk = self.task_dropdown.currentText()
+        tsk_id = self.task_dropdown.itemData(self.task_dropdown.currentIndex())
+        ts_id = self.latest_timesheet['id']
+
+        # TODO: Add the user start/end time feature to this
+        start_time = datetime.now()
+        end_time = datetime.now()
+
+        data = {
+            'context': {
+                'Project': {
+                    'name': prj,
+                    'id': prj_id
+                },
+                'Entity': {
+                    'name': ent,
+                    'id': ent_id
+                },
+                'Task': {
+                    'name': tsk,
+                    'id': tsk_id
+                }
+            },
+            'id': ts_id,
+            'start_time': start_time,
+            'end_time': end_time,
+            'timesheet': self.latest_timesheet
+        }
+
+        if self.button_state == 0:
+            print('Clock in')
+            data['type'] = 'clock_in'
+            q.put(data)
+            q.join()
+        elif self.button_state == 1:
+            print('Clock Out')
+            data['type'] = 'clock_out'
+            q.put(data)
+            q.join()
+        elif self.button_state == 2:
+            data['type'] = 'switch'
+            print('Switch Time')
+            q.put(data)
+            q.join()
+        data['type'] = 'cleanup'
+        q.put(data)
+        q.join()
 
     def button_status(self):
         match = True
