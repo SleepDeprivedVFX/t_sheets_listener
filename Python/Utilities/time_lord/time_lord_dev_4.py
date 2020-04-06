@@ -250,37 +250,43 @@ class time_engine(QtCore.QThread):
         tsk = self.latest_timesheet['entity']['name']
         tsk_id = self.latest_timesheet['entity']['id']
 
-        self.dropdowns = sg_data.get_all_project_dropdowns(user=user)
-        projects = list(self.dropdowns.keys())
-        entities = list(self.dropdowns[proj].keys())
-        tasks = list(self.dropdowns[proj][ent].keys())
+        try:
+            self.dropdowns = sg_data.get_all_project_dropdowns(user=user)
+            projects = list(self.dropdowns.keys())
+            entities = list(self.dropdowns[proj].keys())
+            tasks = list(self.dropdowns[proj][ent].keys())
 
-        self.project_dropdown.clear()
-        self.entity_dropdown.clear()
-        self.task_dropdown.clear()
+            self.project_dropdown.clear()
+            self.entity_dropdown.clear()
+            self.task_dropdown.clear()
 
-        self.project_dropdown.addItem('Select Project', 0)
-        for project in projects:
-            self.project_dropdown.addItem(project, self.dropdowns[project]['__specs__']['id'])
-        self.project_dropdown.setCurrentIndex(self.project_dropdown.findText(proj))
+            self.project_dropdown.addItem('Select Project', 0)
+            for project in projects:
+                self.project_dropdown.addItem(project, self.dropdowns[project]['__specs__']['id'])
+            self.project_dropdown.setCurrentIndex(self.project_dropdown.findText(proj))
 
-        self.entity_dropdown.addItem('Select Entity', 0)
-        for entity in entities:
-            if entity != '__specs__':
-                self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
-        self.entity_dropdown.setCurrentIndex(self.entity_dropdown.findText(ent))
+            self.entity_dropdown.addItem('Select Entity', 0)
+            for entity in entities:
+                if entity != '__specs__':
+                    self.entity_dropdown.addItem(entity, self.dropdowns[proj][entity]['__specs__']['id'])
+            self.entity_dropdown.setCurrentIndex(self.entity_dropdown.findText(ent))
 
-        self.task_dropdown.addItem('Select Task', 0)
-        for task in tasks:
-            if task != '__specs__':
-                self.task_dropdown.addItem(task, self.dropdowns[proj][ent][task]['__specs__']['id'])
-        self.task_dropdown.setCurrentIndex(self.task_dropdown.findText(tsk))
+            self.task_dropdown.addItem('Select Task', 0)
+            for task in tasks:
+                if task != '__specs__':
+                    self.task_dropdown.addItem(task, self.dropdowns[proj][ent][task]['__specs__']['id'])
+            self.task_dropdown.setCurrentIndex(self.task_dropdown.findText(tsk))
 
-        self.project_dropdown.currentIndexChanged.connect(self.update_entity_dropdown)
-        self.project_dropdown.currentIndexChanged.connect(self.button_status)
-        self.entity_dropdown.currentIndexChanged.connect(self.update_task_dropdown)
-        self.entity_dropdown.currentIndexChanged.connect(self.button_status)
-        self.task_dropdown.currentIndexChanged.connect(self.button_status)
+            self.project_dropdown.currentIndexChanged.connect(self.update_entity_dropdown)
+            self.project_dropdown.currentIndexChanged.connect(self.button_status)
+            self.entity_dropdown.currentIndexChanged.connect(self.update_task_dropdown)
+            self.entity_dropdown.currentIndexChanged.connect(self.button_status)
+            self.task_dropdown.currentIndexChanged.connect(self.button_status)
+        except KeyError as e:
+            logger.error('Failed to build menus... trying again...')
+            logger.error(e)
+            time.sleep(1)
+            self.set_up_dropdowns()
 
     def button_status(self):
         match = True
@@ -397,12 +403,16 @@ class time_engine(QtCore.QThread):
                 start_minute = (6.0 * (get_start_minute + (start_second / 60.0)))
             else:
                 start_hour = hour
-                get_end_hour = self.latest_timesheet['sg_task_end'].time().hour
                 start_minute = minute
-                get_end_minute = self.latest_timesheet['sg_task_end'].time().minute
-                end_second = self.latest_timesheet['sg_task_end'].time().second
-                end_hour = (30.0 * (get_end_hour + (get_end_minute / 60.0)))
-                end_minute = (6.0 * (get_end_minute + (end_second / 60.0)))
+                if self.latest_timesheet['sg_task_end']:
+                    get_end_hour = self.latest_timesheet['sg_task_end'].time().hour
+                    get_end_minute = self.latest_timesheet['sg_task_end'].time().minute
+                    end_second = self.latest_timesheet['sg_task_end'].time().second
+                    end_hour = (30.0 * (get_end_hour + (get_end_minute / 60.0)))
+                    end_minute = (6.0 * (get_end_minute + (end_second / 60.0)))
+                else:
+                    end_hour = hour
+                    end_minute = minute
 
             # Set the Start and End clocks
             start_time = (start_hour, start_minute)
@@ -458,9 +468,8 @@ class time_machine(QtCore.QThread):
         :return:
         """
         if os.path.exists(self.db_path):
-            fh = open(self.db_path, 'r')
-            db_file = json.load(fh)
-            fh.close()
+            with open(self.db_path, 'r') as fh:
+                db_file = json.load(fh)
             return db_file
 
     def save_time_capsule(self, data={}):
@@ -476,10 +485,9 @@ class time_machine(QtCore.QThread):
         """
         if data:
             if os.path.exists(self.db_path):
-                fh = open(self.db_path, 'w')
-                data = json.dumps(data, indent=4)
-                fh.write(data)
-                fh.close()
+                with open(self.db_path, 'w') as fh:
+                    data = json.dumps(data, indent=4)
+                    fh.write(data)
 
     def get_new_events(self):
         """
@@ -714,6 +722,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
         # Scope variables
         self.user_start = None
+        self.user_end = None
         self.clocked_in = False
         self.latest_timesheet = None
 
@@ -1030,9 +1039,10 @@ class time_lord_ui(QtWidgets.QMainWindow):
         :return:
         """
         if not self.clocked_in:
-            # self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
-            # self.timesheet_update.time_signal.ui_update.emit('Update!')
-            # self.time_queue.time_signal.ui_update.emit()
+            if not self.latest_timesheet:
+                self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
+                # self.timesheet_update.time_signal.ui_update.emit('Update!')
+                # self.time_queue.time_signal.ui_update.emit()
             try:
                 if self.user_end:
                     end_time = self.user_end
