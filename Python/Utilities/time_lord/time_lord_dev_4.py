@@ -791,6 +791,10 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
         # UI Connections
         self.ui.clock_button.clicked.connect(self.big_clock_button)
+        self.ui.start_date_button.clicked.connect(self.get_user_start_time)
+        self.ui.end_date_button.clicked.connect(self.get_user_end_time)
+        self.ui.clock_button.hide()
+        self.ui.red_light.hide()
 
         # Set main user info
         self.ui.artist_label.setText(user['name'])
@@ -1095,6 +1099,75 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.ui.clock_button.hide()
         self.time_engine.time_signal.clock_button_press.emit(('Hello', 'There'))
 
+    def get_user_start_time(self, user_start=None):
+        """
+        Eventually, this should return a user set start time from the UI.  Not sure right off hand yet how to do that.
+        :return:
+        """
+        # if user_start:
+        #     self.user_start = user_start
+        if self.clocked_in:
+            start_time = self.latest_timesheet['sg_task_start']
+        else:
+            start_time = datetime.now()
+        t, ok = DateDialog.getDateTime(_time=start_time.time())
+        if ok:
+            self.user_start = parser.parse(
+                '%s %s:%s:%s' % (datetime.now().date(), t.hour(), t.minute(), t.second()))
+            logger.debug('Setting the user start: %s' % self.user_start)
+            # self.time_engine.time_signal.snd_user_start.emit(self.user_start)
+            self.time_engine.user_start = self.user_start
+
+            if self.clocked_in:
+                update_question = QtWidgets.QMessageBox(self)
+                update_question.setWindowTitle('Update Start Time?')
+                update_question.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+                update_question.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+                                              "color: rgb(230, 230, 230);")
+                update_question.setText('Are you sure you want to update the current start time?')
+                update_question.addButton('Yes! Update', QtWidgets.QMessageBox.AcceptRole)
+                update_question.addButton('No!', QtWidgets.QMessageBox.RejectRole)
+                ask = update_question.exec_()
+
+                if ask == QtWidgets.QMessageBox.AcceptRole:
+                    logger.debug('Send the Timesheet update signal')
+                    self.time_engine.time_signal.snd_user_start.emit(self.user_start)
+
+                self.user_start = None
+                self.time_engine.user_start = None
+
+    def get_user_end_time(self):
+        """
+        Eventually, this should return a user set end time from the UI.  Same as above
+        :return:
+        """
+        t, ok = DateDialog.getDateTime()
+        if ok:
+            self.user_end = parser.parse('%s %s:%s:%s' % (datetime.now().date(), t.hour(), t.minute(), t.second()))
+            logger.debug('Setting the user end: %s' % self.user_end)
+            # self.time_engine.time_signal.snd_user_end.emit(self.user_end)
+            self.time_engine.user_end = self.user_end
+
+            if self.clocked_in:
+                update_question = QtWidgets.QMessageBox(self)
+                update_question.setWindowTitle('Clock Out At Specific Time?')
+                update_question.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+                update_question.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+                                              "color: rgb(230, 230, 230);")
+                update_question.setText('Setting an Out Time while clocked in will clock you out.\n'
+                                        'Go ahead and clock out?')
+                update_question.addButton('Yes! Clock Out', QtWidgets.QMessageBox.AcceptRole)
+                update_question.addButton('No!', QtWidgets.QMessageBox.RejectRole)
+                ask = update_question.exec_()
+
+                if ask == QtWidgets.QMessageBox.AcceptRole:
+                    logger.debug('Send the Timesheet update signal')
+                    self.time_lord.time_signal.clock_out_user.emit({'timesheet': self.latest_timesheet,
+                                                                    'end': self.user_end})
+
+                self.user_start = None
+                self.time_engine.user_start = None
+
     def closeEvent(self, event: QtGui.QCloseEvent):
         self.update_saved_settings()
         if self.time_engine.isRunning():
@@ -1119,6 +1192,54 @@ class time_lord_ui(QtWidgets.QMainWindow):
         self.saved_entity_id = self.ui.entity_dropdown.itemData(self.ui.entity_dropdown.currentIndex())
         self.saved_task = self.ui.task_dropdown.currentText()
         self.saved_task_id = self.ui.task_dropdown.itemData(self.ui.task_dropdown.currentIndex())
+
+
+class DateDialog(QtWidgets.QDialog):
+    def __init__(self, parent=None, _time=None):
+        super(DateDialog, self).__init__(parent)
+
+        if not _time:
+            _time = datetime.now()
+
+        layout = QtWidgets.QVBoxLayout(self)
+
+        # nice widget for editing the date
+        # self.set_date = QtWidgets.QDateEdit(self)
+        # self.set_date.setCalendarPopup(True)
+        # self.set_date.setDate(_time.date())
+        # layout.addWidget(self.set_date)
+        self.set_time = QtWidgets.QTimeEdit(self)
+        if type(_time) == datetime:
+            _time = QtCore.QTime.fromPython(_time)
+        self.set_time.setTime(_time)
+        layout.addWidget(self.set_time)
+
+        self.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"color: rgb(230, 230, 230);")
+
+        self.setWindowTitle('DateTime Lord')
+        self.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
+        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
+
+        # OK and Cancel buttons
+        buttons = QtWidgets.QDialogButtonBox(
+            QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel,
+            QtCore.Qt.Horizontal, self)
+        buttons.accepted.connect(self.accept)
+        buttons.rejected.connect(self.reject)
+        layout.addWidget(buttons)
+
+    # get current date and time from the dialog
+    def dateTime(self):
+        return self.set_time.time()
+
+    # static method to create the dialog and return (date, time, accepted)
+    @staticmethod
+    def getDateTime(parent=None, _time=None):
+        dialog = DateDialog(parent, _time=_time)
+        result = dialog.exec_()
+        sTime = dialog.set_time
+        return sTime.time(), result == QtWidgets.QDialog.Accepted
 
 
 if __name__ == '__main__':
