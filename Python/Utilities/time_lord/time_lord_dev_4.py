@@ -266,7 +266,8 @@ class time_engine(QtCore.QThread):
             'id': ts_id,
             'start_time': start_time,
             'end_time': end_time,
-            'timesheet': self.latest_timesheet
+            'timesheet': self.latest_timesheet,
+            'reason': None,
         }
 
         if self.button_state == 0:
@@ -676,33 +677,34 @@ class time_queue(QtCore.QThread):
             end_time = package['end_time']
             timesheet = package['timesheet']
 
+            new_timesheet = None
+            old_timesheeet = None
+            cleanup = None
+            consistency = None
+            update = None
+
             if type == 'clock_in':
                 new_timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time,
                                                              entry='Time Lord UI')
-                old_timesheeet = None
-                cleanup = None
-                consistency = None
             elif type == 'clock_out':
-                new_timesheet = None
                 old_timesheeet = tl_time.clock_out_time_sheet(timesheet=timesheet, clock_out=end_time)
-                cleanup = None
-                consistency = None
             elif type == 'switch':
                 old_timesheeet = tl_time.clock_out_time_sheet(timesheet=timesheet, clock_out=end_time)
                 new_timesheet = tl_time.create_new_timesheet(user=user, context=context, start_time=start_time,
                                                              entry='Time Lord UI')
-                cleanup = None
-                consistency = None
             elif type == 'cleanup':
                 cleanup = tl_time.timesheet_cleanup(user=user)
                 consistency = tl_time.timesheet_consistency_cleanup(user=user)
-                new_timesheet = None
-                old_timesheeet = None
+            elif type == 'update':
+                update = tl_time.update_current_times(user=user, tid=ts_id, start_time=start_time, end_time=end_time,
+                                                      proj_id=context['Project']['id'], task_id=context['Task']['id'],
+                                                      reason=context['reason'])
 
             q.task_done()
             print('old: %s' % old_timesheeet)
             print('new: %s' % new_timesheet)
             print('cleanup: %s' % cleanup)
+            print('update: %s' % update)
             print('consistency: %s' % consistency)
 
     def kill(self):
@@ -815,6 +817,8 @@ class time_lord_ui(QtWidgets.QMainWindow):
             self.saved_entity_id = self.latest_timesheet['entity.Task.entity']['id']
             self.saved_task = self.latest_timesheet['entity']['name']
             self.saved_task_id = self.latest_timesheet['entity']['id']
+        else:
+            self.latest_timesheet = tl_time.get_latest_timesheet(user=user)
 
     def update_button_state(self, state=0):
         # A value of None for message means that there is not clock-out time and the sheet is still active.
@@ -1132,6 +1136,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
                 ask = update_question.exec_()
 
                 if ask == QtWidgets.QMessageBox.AcceptRole:
+                    print(self.latest_timesheet)
                     logger.debug('Send the Timesheet update signal')
                     data = {
                         'context': {
@@ -1151,7 +1156,9 @@ class time_lord_ui(QtWidgets.QMainWindow):
                         'id': self.latest_timesheet['id'],
                         'start_time': self.user_start,
                         'end_time': self.user_end,
-                        'timesheet': self.latest_timesheet
+                        'timesheet': self.latest_timesheet,
+                        'type': 'update',
+                        'reason': 'Changed start time from the UI'
                     }
                     q.put(data)
                     q.join()
@@ -1206,7 +1213,9 @@ class time_lord_ui(QtWidgets.QMainWindow):
                         'id': self.latest_timesheet['id'],
                         'start_time': self.latest_timesheet['sg_task_start'],
                         'end_time': self.user_end,
-                        'timesheet': self.latest_timesheet
+                        'timesheet': self.latest_timesheet,
+                        'type': 'clock_out',
+                        'reason': None
                     }
                     q.put(data)
                     q.join()
