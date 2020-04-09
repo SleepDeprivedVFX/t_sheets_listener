@@ -1,8 +1,7 @@
-2020-03-19 15:29:11,944 - lunch_continuum | INFO : 68 - Continuum Activated!
-2020-03-19 15:29:12,393 - lunch_continuum | INFO : 724 - No lunch for you!
-2020-03-19 15:34:04,716 - lunch_continuum | INFO : 68 - Continuum Activated!
-2020-03-19 15:34:05,139 - lunch_continuum | INFO : 724 - No lunch for you!
-2020-03-19 15:36:01,535 - lunch_continuum | INFO : 68 - Continuum Activated!
-2020-03-19 15:36:01,976 - lunch_continuum | INFO : 724 - No lunch for you!
-2020-03-19 15:36:27,440 - lunch_continuum | INFO : 370 - Successfully clocked out. {'type': 'TimeLog', 'id': 10196, 'sg_task_end': '2020-03-19 21:36:01 UTC', 'duration': 246}
-2020-03-19 15:36:27,440 - lunch_continuum | INFO : 371 - Timesheet updated.
+2020-04-02 17:13:28,652 - lunch_continuum | INFO : 68 - Continuum Activated!
+2020-04-02 17:13:29,177 - lunch_continuum | INFO : 724 - No lunch for you!
+2020-04-02 17:13:32,494 - lunch_continuum | INFO : 370 - Successfully clocked out. {'type': 'TimeLog', 'id': 11020, 'sg_task_end': '2020-04-02 23:13:29 UTC', 'duration': 49}
+2020-04-02 17:13:32,494 - lunch_continuum | INFO : 371 - Timesheet updated.
+2020-04-02 17:13:33,382 - lunch_continuum | ERROR : 361 - Couldn't find the key: 'sg_closed'
+2020-04-02 17:13:33,529 - lunch_continuum | INFO : 370 - Successfully clocked out. {'type': 'TimeLog', 'id': 11045, 'sg_task_end': '2020-04-03 00:13:29 UTC', 'duration': 60}
+2020-04-02 17:13:33,531 - lunch_continuum | INFO : 371 - Timesheet updated.

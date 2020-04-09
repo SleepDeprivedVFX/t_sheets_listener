@@ -1,34 +1,282 @@
-2020-03-22 20:56:48,779 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-22 20:56:50,254 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-22 20:56:51,138 - psychic_paper | INFO : 403 - Time Machine Started
-2020-03-22 20:56:52,560 - psychic_paper | WARNING : 494 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:13:16,696 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-22 21:13:18,149 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-22 21:13:18,428 - psychic_paper | INFO : 425 - Time Machine Started
-2020-03-22 21:13:22,270 - psychic_paper | WARNING : 516 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:46:30,225 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-22 21:46:33,763 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-22 21:46:33,974 - psychic_paper | INFO : 439 - Time Machine Started
-2020-03-22 21:46:39,270 - psychic_paper | WARNING : 530 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:47:25,533 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-22 21:47:27,069 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-22 21:47:27,342 - psychic_paper | INFO : 440 - Time Machine Started
-2020-03-22 21:47:31,146 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:48:05,183 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-22 21:48:10,438 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-22 21:48:10,681 - psychic_paper | INFO : 440 - Time Machine Started
-2020-03-22 21:48:12,870 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:49:44,527 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-22 21:49:45,648 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-22 21:49:45,809 - psychic_paper | INFO : 440 - Time Machine Started
-2020-03-22 21:49:47,552 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:49:55,314 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:50:05,110 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:51:15,176 - psychic_paper | INFO : 53 - The Time Lord has started!
-2020-03-22 21:51:16,475 - psychic_paper | INFO : 81 - Communication system online.
-2020-03-22 21:51:16,631 - psychic_paper | INFO : 440 - Time Machine Started
-2020-03-22 21:51:18,550 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:51:30,136 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:51:41,183 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:51:51,838 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
-2020-03-22 21:52:12,466 - psychic_paper | WARNING : 531 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 19:07:00,132 - psychic_paper | INFO : 55 - The Time Lord has started!
+2020-04-08 19:07:01,026 - psychic_paper | INFO : 83 - Communication system online.
+2020-04-08 19:07:01,450 - psychic_paper | INFO : 456 - Time Machine Started
+2020-04-08 19:07:09,936 - psychic_paper | WARNING : 546 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 19:07:15,017 - psychic_paper | WARNING : 546 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:50:11,995 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 22:50:12,962 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 22:50:13,362 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 22:50:21,313 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:53:58,700 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 22:53:59,581 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 22:53:59,659 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 22:54:07,994 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:54:13,153 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:55:08,171 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:56:37,411 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 22:56:38,292 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 22:56:38,369 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 22:56:45,676 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:56:50,799 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:57:04,886 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:57:06,333 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:57:12,561 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:57:15,156 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:57:16,629 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:57:22,856 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:57:40,049 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:57:53,755 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL] internal error (_ssl.c:2508)
+2020-04-08 22:58:19,134 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:58:23,996 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:58:31,110 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:58:35,962 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 22:58:37,443 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:59:05,062 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 22:59:05,996 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 22:59:06,071 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 22:59:13,558 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:59:18,668 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:59:24,903 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:59:32,333 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:59:37,459 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:59:42,597 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:59:48,964 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 23:00:16,709 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:00:17,635 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:00:17,719 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:00:25,168 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:00:30,289 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:01:21,318 - psychic_paper | WARNING : 643 - Failed to save the file.  Trying again in a few seconds... [Errno 13] Permission denied: 'C:\\Users\\sleep\\OneDrive\\Documents\\Scripts\\Python\\Utilities\\time_lord\\data_io/time_capsule.tld'
+2020-04-08 23:01:30,663 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:19:27,352 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:19:28,949 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:19:29,179 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:19:50,815 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:19:55,935 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:20:00,947 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:20:19,218 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:20:21,334 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:20:21,615 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:20:37,340 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:20:44,261 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:20:49,341 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:21:08,424 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:21:33,171 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:21:38,756 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:21:38,940 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:22:01,454 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:22:06,552 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:22:33,387 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:22:36,552 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:22:36,810 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:22:53,619 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:23:01,468 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:23:08,121 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:23:16,473 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:23:21,595 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:23:31,790 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:23:38,364 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:27:17,041 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:27:19,251 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:27:19,404 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:27:35,899 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:27:40,914 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:27:47,034 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:27:52,539 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:27:59,980 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:28:05,907 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:28:14,805 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:32:15,244 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:32:22,254 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:32:22,456 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:32:46,131 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:32:51,654 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:32:57,487 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:33:02,802 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:33:07,868 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:35:01,760 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:35:04,143 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:35:04,357 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:35:17,783 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:35:31,339 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:35:37,524 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:36:30,718 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:36:33,321 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:36:33,631 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:36:51,747 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:36:56,977 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:37:02,296 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:37:19,368 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:37:24,553 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:39:04,529 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:39:06,830 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:39:07,066 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:39:24,265 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:39:29,378 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:39:35,802 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:39:44,688 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:40:06,805 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:40:12,378 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:40:12,579 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:40:47,121 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:40:53,552 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:44:40,898 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:44:44,321 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:44:44,648 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:44:59,218 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:45:10,952 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:46:10,595 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:46:14,842 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:46:15,010 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:46:33,799 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:46:41,092 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:46:48,960 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:46:54,842 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:54:24,717 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-08 23:54:29,494 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-08 23:54:29,782 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-08 23:54:45,616 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:54:52,423 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:54:59,847 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:55:02,272 - psychic_paper | WARNING : 1015 - Bad Start Time!  Returning False
+2020-04-08 23:55:03,379 - psychic_paper | WARNING : 1015 - Bad Start Time!  Returning False
+2020-04-08 23:55:04,495 - psychic_paper | WARNING : 1015 - Bad Start Time!  Returning False
+2020-04-08 23:55:05,772 - psychic_paper | WARNING : 1015 - Bad Start Time!  Returning False
+2020-04-08 23:55:06,946 - psychic_paper | WARNING : 1015 - Bad Start Time!  Returning False
+2020-04-08 23:55:08,068 - psychic_paper | WARNING : 1015 - Bad Start Time!  Returning False
+2020-04-08 23:55:09,585 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 23:55:10,629 - psychic_paper | WARNING : 1015 - Bad Start Time!  Returning False
+2020-04-09 00:07:33,209 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-09 00:07:35,496 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-09 00:07:35,809 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-09 00:07:58,287 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:08:04,852 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:08:11,694 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:08:17,824 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:08:24,847 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:08:40,764 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:08:45,844 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:08:50,874 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:09:09,558 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-09 00:09:12,023 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-09 00:09:12,400 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-09 00:09:32,576 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:09:39,845 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:09:52,840 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:10:01,839 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:10:06,898 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:10:11,908 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:10:19,419 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:10:24,838 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:10:30,537 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:10:41,246 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:10:52,842 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:11:01,776 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:11:11,021 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:11:17,812 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:11:26,483 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:11:32,489 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL] internal error (_ssl.c:2508)
+2020-04-09 00:11:38,125 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:11:44,864 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:11:51,231 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:11:56,573 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:12:04,774 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:12:13,782 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:12:23,455 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:12:34,123 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:12:40,404 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:12:45,688 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:12:50,709 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:13:06,940 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:13:14,834 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:13:24,834 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:13:31,066 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:13:38,343 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:13:44,777 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:13:52,839 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:13:58,211 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:14:08,714 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:14:18,320 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:14:23,985 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:14:31,105 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:14:37,499 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:14:42,587 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:14:48,215 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:14:55,573 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:15:03,845 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:15:08,940 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:15:16,594 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:15:31,100 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:15:36,619 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:15:58,428 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:16:03,437 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:16:13,476 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:16:23,490 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:16:30,758 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:16:36,051 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:16:43,628 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:16:52,416 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:16:57,461 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:17:11,028 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:17:16,146 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:17:24,393 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:17:29,783 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:17:38,885 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:17:52,841 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:02,122 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:09,261 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:16,416 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:22,843 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:30,239 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:37,849 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:44,841 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:50,151 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:18:58,706 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:19:24,701 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:19:31,632 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:19:43,109 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:19:51,897 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:19:56,947 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:20:02,248 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:20:07,277 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL] internal error (_ssl.c:2508)
+2020-04-09 00:20:16,511 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:20:23,883 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:20:34,435 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:20:39,741 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:20:52,842 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:21:06,987 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:21:12,030 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL] internal error (_ssl.c:2508)
+2020-04-09 00:21:17,177 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:21:22,196 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:21:37,685 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:21:42,792 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:21:48,732 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:21:55,597 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:00,753 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:05,948 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL] internal error (_ssl.c:2508)
+2020-04-09 00:22:12,289 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:17,581 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:23,492 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:28,645 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:37,182 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:44,377 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:49,580 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:22:59,877 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:23:05,541 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:23:15,992 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:27:40,838 - psychic_paper | INFO : 54 - The Time Lord has started!
+2020-04-09 00:27:42,606 - psychic_paper | INFO : 82 - Communication system online.
+2020-04-09 00:27:42,885 - psychic_paper | INFO : 455 - Time Machine Started
+2020-04-09 00:27:59,197 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:28:04,301 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:28:10,806 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:28:15,869 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:28:20,943 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:28:30,708 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:28:35,717 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:28:40,914 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:28:46,170 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:29:02,147 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:29:11,041 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:29:16,987 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:29:22,122 - psychic_paper | WARNING : 545 - Shotgun API Failure.  Trying again... [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)

@@ -1,7 +1,117 @@
-2020-03-22 20:56:50,044 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-03-22 21:13:17,622 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-03-22 21:46:32,333 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-03-22 21:47:26,647 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-03-22 21:48:10,248 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-03-22 21:49:45,454 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
-2020-03-22 21:51:16,279 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 19:07:00,832 - time_lord_sg_collection | INFO : 50 - Shotgun Collection Activated!
+2020-04-08 19:07:02,312 - time_lord_sg_collection | INFO : 55 - Getting active projects
+2020-04-08 19:07:02,413 - time_lord_sg_collection | INFO : 76 - Projects collected!
+2020-04-08 19:07:06,369 - time_lord_sg_collection | INFO : 55 - Getting active projects
+2020-04-08 19:07:06,483 - time_lord_sg_collection | INFO : 76 - Projects collected!
+2020-04-08 22:50:12,715 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 22:50:14,766 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:50:14,881 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 22:50:18,327 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:50:18,435 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 22:53:59,365 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 22:54:00,624 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:54:00,736 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 22:54:04,405 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:54:04,523 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 22:55:06,593 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:55:06,971 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 22:55:08,170 - time_lord_sg_collection | ERROR : 162 - Failed to get tasks: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-08 22:56:38,076 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 22:56:39,351 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:56:39,455 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 22:56:42,600 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:56:42,716 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 22:59:05,776 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 22:59:07,037 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:59:07,147 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 22:59:10,391 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 22:59:10,500 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:00:17,417 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:00:18,692 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:00:18,805 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:00:22,132 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:00:22,244 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:19:28,735 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:19:31,534 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:19:31,648 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:19:40,299 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:19:40,421 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:20:20,745 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:20:25,266 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:20:25,573 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:20:32,646 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:20:32,922 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:21:38,543 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:21:43,757 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:21:43,946 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:21:53,357 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:21:53,483 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:22:35,956 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:22:39,844 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:22:40,191 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:22:48,507 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:22:48,740 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:27:18,629 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:27:22,431 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:27:23,336 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:27:28,508 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:27:28,848 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:32:21,343 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:32:27,887 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:32:28,007 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:32:38,167 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:32:38,346 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:35:03,587 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:35:06,035 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:35:06,205 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:35:12,771 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:35:12,881 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:36:32,911 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:36:36,989 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:36:37,300 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:36:45,578 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:36:45,887 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:39:06,057 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:39:09,840 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:39:10,126 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:39:16,826 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:39:17,127 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:40:11,009 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:40:22,125 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:40:22,629 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:40:34,641 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:40:34,846 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:44:44,113 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:44:45,824 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:44:45,932 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:44:51,741 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:44:52,843 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:46:13,907 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:46:16,473 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:46:17,778 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:46:25,896 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:46:26,464 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:54:29,004 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-08 23:54:33,826 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:54:34,129 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-08 23:54:40,525 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-08 23:54:40,634 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-09 00:07:35,175 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-09 00:07:38,296 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-09 00:07:41,030 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-09 00:07:53,180 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-09 00:07:53,280 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-09 00:08:40,764 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-09 00:08:41,321 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-09 00:08:42,812 - time_lord_sg_collection | ERROR : 139 - Get Active Shots failed. [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:08:44,313 - time_lord_sg_collection | ERROR : 162 - Failed to get tasks: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2508)
+2020-04-09 00:09:11,103 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-09 00:09:13,962 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-09 00:09:14,098 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-09 00:09:22,708 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-09 00:09:22,993 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-09 00:27:42,412 - time_lord_sg_collection | INFO : 49 - Shotgun Collection Activated!
+2020-04-09 00:27:46,438 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-09 00:27:46,544 - time_lord_sg_collection | INFO : 75 - Projects collected!
+2020-04-09 00:27:54,149 - time_lord_sg_collection | INFO : 54 - Getting active projects
+2020-04-09 00:27:54,494 - time_lord_sg_collection | INFO : 75 - Projects collected!

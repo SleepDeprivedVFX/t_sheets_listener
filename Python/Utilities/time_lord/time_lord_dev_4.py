@@ -1012,7 +1012,7 @@ class time_lord_ui(QtWidgets.QMainWindow):
                 hours = (30 * (hour + (minute / 60.0)))
                 minutes = (6 * (minute + (second / 60.0)))
             else:
-                logger.warning('Bad Start Time!  Returning False', datetime.now())
+                logger.warning('Bad Start Time!  Returning False')
                 return False
         else:
             hours = in_time[0]
@@ -1111,13 +1111,15 @@ class time_lord_ui(QtWidgets.QMainWindow):
         else:
             start_time = datetime.now()
         t, ok = DateDialog.getDateTime(_time=start_time.time())
+        print('get_user_start_time: ok: %s' % ok)
         if ok:
+            print('ok: %s' % ok)
             self.user_start = parser.parse(
                 '%s %s:%s:%s' % (datetime.now().date(), t.hour(), t.minute(), t.second()))
             logger.debug('Setting the user start: %s' % self.user_start)
-            # self.time_engine.time_signal.snd_user_start.emit(self.user_start)
             self.time_engine.user_start = self.user_start
 
+            self.clocked_in = tl_time.is_user_clocked_in(user=user)
             if self.clocked_in:
                 update_question = QtWidgets.QMessageBox(self)
                 update_question.setWindowTitle('Update Start Time?')
@@ -1131,7 +1133,28 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
                 if ask == QtWidgets.QMessageBox.AcceptRole:
                     logger.debug('Send the Timesheet update signal')
-                    self.time_engine.time_signal.snd_user_start.emit(self.user_start)
+                    data = {
+                        'context': {
+                            'Project': {
+                                'name': self.ui.project_dropdown.currentText(),
+                                'id': self.ui.project_dropdown.findData(self.ui.project_dropdown.currentIndex())
+                            },
+                            'Entity': {
+                                'name': self.ui.entity_dropdown.currentText(),
+                                'id': self.ui.entity_dropdown.findData(self.ui.entity_dropdown.currentIndex())
+                            },
+                            'Task': {
+                                'name': self.ui.task_dropdown.currentText(),
+                                'id': self.ui.task_dropdown.findData(self.ui.task_dropdown.currentIndex())
+                            }
+                        },
+                        'id': self.latest_timesheet['id'],
+                        'start_time': self.user_start,
+                        'end_time': self.user_end,
+                        'timesheet': self.latest_timesheet
+                    }
+                    q.put(data)
+                    q.join()
 
                 self.user_start = None
                 self.time_engine.user_start = None
@@ -1142,13 +1165,16 @@ class time_lord_ui(QtWidgets.QMainWindow):
         :return:
         """
         t, ok = DateDialog.getDateTime()
+        print('get_user_end_time: ok: %s' % ok)
         if ok:
+            print('ok: %s' % ok)
             self.user_end = parser.parse('%s %s:%s:%s' % (datetime.now().date(), t.hour(), t.minute(), t.second()))
             logger.debug('Setting the user end: %s' % self.user_end)
-            # self.time_engine.time_signal.snd_user_end.emit(self.user_end)
             self.time_engine.user_end = self.user_end
 
+            self.clocked_in = tl_time.is_user_clocked_in(user=user)
             if self.clocked_in:
+                print('clocked in')
                 update_question = QtWidgets.QMessageBox(self)
                 update_question.setWindowTitle('Clock Out At Specific Time?')
                 update_question.setWindowIcon(QtGui.QIcon('icons/tl_icon.ico'))
@@ -1162,8 +1188,28 @@ class time_lord_ui(QtWidgets.QMainWindow):
 
                 if ask == QtWidgets.QMessageBox.AcceptRole:
                     logger.debug('Send the Timesheet update signal')
-                    self.time_lord.time_signal.clock_out_user.emit({'timesheet': self.latest_timesheet,
-                                                                    'end': self.user_end})
+                    data = {
+                        'context': {
+                            'Project': {
+                                'name': self.ui.project_dropdown.currentText(),
+                                'id': self.ui.project_dropdown.findData(self.ui.project_dropdown.currentIndex())
+                            },
+                            'Entity': {
+                                'name': self.ui.entity_dropdown.currentText(),
+                                'id': self.ui.entity_dropdown.findData(self.ui.entity_dropdown.currentIndex())
+                            },
+                            'Task': {
+                                'name': self.ui.task_dropdown.currentText(),
+                                'id': self.ui.task_dropdown.findData(self.ui.task_dropdown.currentIndex())
+                            }
+                        },
+                        'id': self.latest_timesheet['id'],
+                        'start_time': self.latest_timesheet['sg_task_start'],
+                        'end_time': self.user_end,
+                        'timesheet': self.latest_timesheet
+                    }
+                    q.put(data)
+                    q.join()
 
                 self.user_start = None
                 self.time_engine.user_start = None
@@ -1203,14 +1249,11 @@ class DateDialog(QtWidgets.QDialog):
 
         layout = QtWidgets.QVBoxLayout(self)
 
-        # nice widget for editing the date
-        # self.set_date = QtWidgets.QDateEdit(self)
-        # self.set_date.setCalendarPopup(True)
-        # self.set_date.setDate(_time.date())
-        # layout.addWidget(self.set_date)
+        # nice widget for editing the time
         self.set_time = QtWidgets.QTimeEdit(self)
         if type(_time) == datetime:
-            _time = QtCore.QTime.fromPython(_time)
+            convert_time = _time.strftime('%h:%m:%S')
+            _time = QtCore.QTime.fromString(convert_time)
         self.set_time.setTime(_time)
         layout.addWidget(self.set_time)
 

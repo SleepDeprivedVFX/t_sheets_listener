@@ -288,7 +288,7 @@ def chronograph():
                 if not user_clocked_in and one_minute >= str(now) >= str(early_sod):
                     time.sleep(62)
                     logger.info('Time to clock in!')
-                    sod_launch_path = os.path.join(path, 'time_queue.py')
+                    sod_launch_path = os.path.join(path, 'time_lord.py')
                     if debug == 'True' or debug == 'true' or debug == True:
                         process = 'python.exe'
                     else:
@@ -642,7 +642,7 @@ class tardis_events:
         if not user_clocked_in:
             print('%s is not clocked in.  Opening the Time Lord!' % user['name'])
             self.set_timer = None
-            sod_launch_path = os.path.join(path, 'time_queue.py')
+            sod_launch_path = os.path.join(path, 'time_lord.py')
             if debug == 'True' or debug == 'true' or debug == True:
                 process = 'python.exe'
             else:
@@ -670,7 +670,7 @@ class tardis_events:
         user_clocked_in = tl_time.is_user_clocked_in(user)
         if not user_clocked_in:
             print('%s is not clocked in.  Opening the Time Lord!' % user['name'])
-            sod_launch_path = os.path.join(path, 'time_queue.py')
+            sod_launch_path = os.path.join(path, 'time_lord.py')
             if debug == 'True' or debug == 'true' or debug == True:
                 process = 'python.exe'
             else:
@@ -971,7 +971,7 @@ if __name__ == '__main__':
         # This will launch the Time Lord in a completely separate process
         global time_lord_window
         path = sys.path[0]
-        time_lord_path = os.path.join(path, 'time_queue.py')
+        time_lord_path = os.path.join(path, 'time_lord_dev_4.py')
         if time_lord_window:
             try:
                 time_lord_window.kill()
@@ -1143,7 +1143,7 @@ if __name__ == '__main__':
 
     # Start the Time Lord for the first time on Tardis Startup
     path = sys.path[0]
-    time_lord_path = os.path.join(path, 'time_queue.py')
+    time_lord_path = os.path.join(path, 'time_lord_dev_4.py')
     if time_lord_window:
         try:
             time_lord_window.kill()

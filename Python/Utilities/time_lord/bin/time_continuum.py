@@ -1038,9 +1038,12 @@ class continuum(object):
                     data = {
                         'sg_needs_approval': True
                     }
-                    update = self.sg.update('TimeLog', ordered_timesheets[ts]['id'], data)
-                    self.logger.debug('Update Needs Approval')
-                    updates.append(update)
+                    try:
+                        update = self.sg.update('TimeLog', ordered_timesheets[ts]['id'], data)
+                        self.logger.debug('Update Needs Approval')
+                        updates.append(update)
+                    except Exception as shit:
+                        print('This took a shit because: %s' % shit)
 
                     # Create Note
                     # try:

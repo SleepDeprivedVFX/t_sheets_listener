@@ -28,8 +28,13 @@ class test_3():
     t1 = test_1
     t2 = test_2
 
-    emit('Fuck')
+    # emit('Fuck')
 
+import os
+import ssl
 
-test_3()
+print(ssl._ssl.__file__)
+print(os.environ['PYTHONPATH'])
+
+# test_3()
 

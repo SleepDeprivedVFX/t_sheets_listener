@@ -1,0 +1,1465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10b6742d-d9e9-4b05-b619-72f55193db28" name="Default Changelist" comment="Going to make the first roll out from here.">
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/riggingUtilities" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/riggingUtilities" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/time_lord.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/time_lord.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_io/time_capsule.tld" beforeDir="false" afterPath="$PROJECT_DIR$/data_io/time_capsule.tld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/companion_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/companion_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/continuum_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/continuum_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/psychic_paper.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/psychic_paper.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/shotgun_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/shotgun_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_companion_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_companion_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_continuum_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_continuum_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_shotgun_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_shotgun_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_lord.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_lord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tl_reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/tl_reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/time_lord_reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/time_lord_reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/time_lord_reports.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/time_lord_reports.ui" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.70846254">
+      <split-first>
+        <splitter split-orientation="horizontal" split-proportion="0.5275344">
+          <split-first>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/tardis.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="3026">
+                      <caret line="197" column="71" selection-start-line="197" selection-start-column="71" selection-end-line="197" selection-end-column="71" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/tl_sheets.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="8143">
+                      <caret line="657" selection-start-line="657" selection-end-line="657" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/lunch.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="2227">
+                      <caret line="147" selection-start-line="147" selection-end-line="147" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/eod.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="3757">
+                      <caret line="238" column="67" selection-start-line="238" selection-start-column="67" selection-end-line="238" selection-end-column="67" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/time_lord.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="4964">
+                      <caret line="311" column="50" selection-start-line="311" selection-start-column="50" selection-end-line="311" selection-end-column="50" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/ui/time_lord_sheets.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="255">
+                      <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/tl_reports.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="215">
+                      <caret line="274" column="41" selection-start-line="274" selection-start-column="41" selection-end-line="274" selection-end-column="41" />
+                      <folding>
+                        <element signature="e#312#351#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/time_lord.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="433">
+                      <caret line="2156" selection-start-line="2156" selection-end-line="2156" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/ui/time_lord_clock.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="9384">
+                      <caret line="552" selection-start-line="552" selection-end-line="552" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/tl_scope.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="8823">
+                      <caret line="539" column="21" selection-start-line="539" selection-start-column="21" selection-end-line="539" selection-end-column="21" />
+                      <folding>
+                        <element signature="e#155#183#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/tl_alpha_payroll_collector.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="4437">
+                      <caret line="276" selection-start-line="276" selection-end-line="276" />
+                      <folding>
+                        <element signature="e#312#367#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/overtime.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="2958">
+                      <caret line="192" column="47" selection-start-line="192" selection-start-column="47" selection-end-line="192" selection-end-column="47" />
+                      <folding>
+                        <element signature="e#442#470#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/tardis_config.cfg">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="493">
+                      <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/buildingblocks/test.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="1343">
+                      <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/bin/comm_system.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="5185">
+                      <caret line="315" column="21" selection-start-line="315" selection-start-column="21" selection-end-line="315" selection-end-column="21" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/tardis.py">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="4335">
+                      <caret line="274" column="17" selection-start-line="274" selection-start-column="17" selection-end-line="274" selection-end-column="17" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-second>
+        </splitter>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/bin/configuration.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="680">
+                  <caret line="42" column="25" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#172#191#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/bin/companions.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1003">
+                  <caret line="81" selection-start-line="81" selection-end-line="81" />
+                  <folding>
+                    <element signature="e#155#170#0" expanded="true" />
+                    <element signature="e#1950#2585#0" />
+                    <element signature="e#3124#3885#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/bin/time_continuum.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1275">
+                  <caret line="1095" selection-start-line="1095" selection-end-line="1095" />
+                  <folding>
+                    <element signature="e#0#732#1" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/data_io/time_capsule.tld">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="170">
+                  <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/bin/shotgun_collect.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="148">
+                  <caret line="176" column="72" selection-start-line="176" selection-start-column="72" selection-end-line="176" selection-end-column="72" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Setup Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>'entity'</find>
+      <find>% 10</find>
+      <find>__version__ = '0.4.5'</find>
+      <find>__version__ = '0.0.1'</find>
+      <find>eod</find>
+      <find>sys.argv</find>
+      <find>total</find>
+      <find>closeE</find>
+      <find>child_rows[w]</find>
+      <find>parser.parse</find>
+      <find>__version__ = '0.4.6'</find>
+      <find>style</find>
+      <find>%p</find>
+      <find>user start triggered</find>
+      <find>clean</find>
+      <find>layout</find>
+      <find>Editor</find>
+      <find>Session Lock Detected</find>
+      <find>Update requested.</find>
+      <find>__version__ = '0.4.</find>
+      <find>sod</find>
+      <find>__version__ = '0.4.7'</find>
+      <find>print</find>
+      <find>lunch_task_id</find>
+      <find>for</find>
+      <find>update</find>
+      <find>entity_dropdown</find>
+      <find>update_task_dropdown</find>
+      <find>__version__ = '0.4.8'</find>
+      <find>trinary_org</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>scope</replace>
+      <replace>__version__ = '0.4.1'</replace>
+      <replace>u_data</replace>
+      <replace>__version__ = '0.4.2'</replace>
+      <replace>__version__ = '0.4.3'</replace>
+      <replace>logger.error</replace>
+      <replace>self.logger.info</replace>
+      <replace>self.logger.error</replace>
+      <replace>__version__ = '0.4.4'</replace>
+      <replace>lunch_timesheet = F</replace>
+      <replace>lunch_proj_id</replace>
+      <replace>__version__ = '0.4.5'</replace>
+      <replace>self.logger.debug</replace>
+      <replace>.Popen(</replace>
+      <replace>as err:</replace>
+      <replace>parent</replace>
+      <replace>add_key</replace>
+      <replace>add_</replace>
+      <replace>start_time</replace>
+      <replace>__version__ = '0.4.6'</replace>
+      <replace>end_time</replace>
+      <replace>row[r]</replace>
+      <replace>self.verticalLayout</replace>
+      <replace>__version__ = '0.4.7'</replace>
+      <replace>self</replace>
+      <replace>__version__ = '0.4.8'</replace>
+      <replace>logger.debug</replace>
+      <replace>new_task</replace>
+      <replace>__version__ = '0.4.9'</replace>
+      <replace>new_entity</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin</dir>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui</dir>
+      <dir>C:\Users\sleep\OneDrive\Documents\Scripts\Python\Utilities\time_lord</dir>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Adam Benson &lt;adambenson.vfx@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../../.." value="python3_upgrade" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/time_continuum.py" />
+        <option value="$PROJECT_DIR$/tests_1.py" />
+        <option value="$PROJECT_DIR$/time_lord_dev_1.py" />
+        <option value="$PROJECT_DIR$/time_lord_dev_2.py" />
+        <option value="$PROJECT_DIR$/dalek.cfg" />
+        <option value="$PROJECT_DIR$/bin/after_hours.py" />
+        <option value="$PROJECT_DIR$/bin/overtime.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/Pop_up_tests.py" />
+        <option value="$PROJECT_DIR$/bin/lunch.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/error_notes.txt" />
+        <option value="$PROJECT_DIR$/buildingblocks/Test.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/time_lord_dev_1.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/time_lord_dev_3.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/hold_testing.py" />
+        <option value="$PROJECT_DIR$/logs/psychic_paper.log" />
+        <option value="$PROJECT_DIR$/time_lord_dev4.py" />
+        <option value="$PROJECT_DIR$/ui/time_lord_alpha_payroll_collector.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/time_lord_dev3_post.py" />
+        <option value="$PROJECT_DIR$/data_io/time_capsule.tld" />
+        <option value="$PROJECT_DIR$/buildingblocks/windows_session_test_01.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/windows_session_service_test_01.py" />
+        <option value="$PROJECT_DIR$/bin/comm_system.py" />
+        <option value="$PROJECT_DIR$/ui/time_lord_eod.py" />
+        <option value="$PROJECT_DIR$/ui/time_lord_scope.py" />
+        <option value="$PROJECT_DIR$/tardis_config.cfg" />
+        <option value="$PROJECT_DIR$/bin/configuration.py" />
+        <option value="$PROJECT_DIR$/clock_tools.py" />
+        <option value="$PROJECT_DIR$/buildingblocks/test.py" />
+        <option value="$PROJECT_DIR$/ui/time_lord_clock.py" />
+        <option value="$PROJECT_DIR$/ui/time_lord_edit_timesheet.py" />
+        <option value="$PROJECT_DIR$/tardis.py" />
+        <option value="$PROJECT_DIR$/tl_scope.py" />
+        <option value="$PROJECT_DIR$/tl_alpha_payroll_collector.py" />
+        <option value="$PROJECT_DIR$/eod.py" />
+        <option value="$PROJECT_DIR$/lunch.py" />
+        <option value="$PROJECT_DIR$/bin/companions.py" />
+        <option value="$PROJECT_DIR$/bin/time_continuum.py" />
+        <option value="$PROJECT_DIR$/tl_sheets.py" />
+        <option value="$PROJECT_DIR$/bin/shotgun_collect.py" />
+        <option value="$PROJECT_DIR$/overtime.py" />
+        <option value="$PROJECT_DIR$/time_lord.py" />
+        <option value="$PROJECT_DIR$/tl_reports.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="2514" />
+    <option name="height" value="1457" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="time_lord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="time_lord" type="462c0819:PsiDirectoryNode" />
+              <item name="time_lord.py" type="8704e2dd:PyFileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="T:/shotgun/wevr" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\icons" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\resources\elements" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\resources\bg" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\buildingblocks" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\buildingblocks" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.tl_reports">
+    <configuration name="python27" type="PythonConfigurationType" factoryName="Python">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python27\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tardis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tardis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="time_lord" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/time_lord.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tl_alpha_payroll_collector" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tl_alpha_payroll_collector.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tl_reports" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tl_reports.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tl_sheets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tl_sheets.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.python27" />
+      <item itemvalue="Python.tardis" />
+      <item itemvalue="Python.tl_sheets" />
+      <item itemvalue="Python.tl_alpha_payroll_collector" />
+      <item itemvalue="Python.time_lord" />
+      <item itemvalue="Python.tl_reports" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.tl_reports" />
+        <item itemvalue="Python.tardis" />
+        <item itemvalue="Python.tl_sheets" />
+        <item itemvalue="Python.time_lord" />
+        <item itemvalue="Python.tl_alpha_payroll_collector" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10b6742d-d9e9-4b05-b619-72f55193db28" name="Default Changelist" comment="" />
+      <created>1559150061279</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559150061279</updated>
+    </task>
+    <task id="LOCAL-00292" summary="Added Total column to the scope">
+      <created>1579060352230</created>
+      <option name="number" value="00292" />
+      <option name="presentableId" value="LOCAL-00292" />
+      <option name="project" value="LOCAL" />
+      <updated>1579060352230</updated>
+    </task>
+    <task id="LOCAL-00293" summary="Added commentary">
+      <created>1579060366284</created>
+      <option name="number" value="00293" />
+      <option name="presentableId" value="LOCAL-00293" />
+      <option name="project" value="LOCAL" />
+      <updated>1579060366284</updated>
+    </task>
+    <task id="LOCAL-00294" summary="Added an update timesheet routine">
+      <created>1579060383445</created>
+      <option name="number" value="00294" />
+      <option name="presentableId" value="LOCAL-00294" />
+      <option name="project" value="LOCAL" />
+      <updated>1579060383445</updated>
+    </task>
+    <task id="LOCAL-00295" summary="Added FIXME commentary for tomorrow.">
+      <created>1579060617337</created>
+      <option name="number" value="00295" />
+      <option name="presentableId" value="LOCAL-00295" />
+      <option name="project" value="LOCAL" />
+      <updated>1579060617337</updated>
+    </task>
+    <task id="LOCAL-00296" summary="Changed colors and fixed the last row issue with the scope.  Going to add the Entity now.">
+      <created>1579113930996</created>
+      <option name="number" value="00296" />
+      <option name="presentableId" value="LOCAL-00296" />
+      <option name="project" value="LOCAL" />
+      <updated>1579113930997</updated>
+    </task>
+    <task id="LOCAL-00297" summary="Sucessfully added the Entity.  Getting the entity does slow it down, so I changed the refresh time to 30 seconds, instead of 10 seconds.">
+      <created>1579115103504</created>
+      <option name="number" value="00297" />
+      <option name="presentableId" value="LOCAL-00297" />
+      <option name="project" value="LOCAL" />
+      <updated>1579115103504</updated>
+    </task>
+    <task id="LOCAL-00298" summary="Upgraded all version numbers.  When this version gets published, I will need to make sure I copy EVERYTHING!">
+      <created>1579115306847</created>
+      <option name="number" value="00298" />
+      <option name="presentableId" value="LOCAL-00298" />
+      <option name="project" value="LOCAL" />
+      <updated>1579115306847</updated>
+    </task>
+    <task id="LOCAL-00299" summary="I believe I may have solved the issue with the EOD utility.  It wasn't an issue with the EOD, but with the tardis not including the -o OUTTIME tag at the end of subprocess string.">
+      <created>1579116206949</created>
+      <option name="number" value="00299" />
+      <option name="presentableId" value="LOCAL-00299" />
+      <option name="project" value="LOCAL" />
+      <updated>1579116206949</updated>
+    </task>
+    <task id="LOCAL-00300" summary="Fixed an update issue with the daily total">
+      <created>1579120203177</created>
+      <option name="number" value="00300" />
+      <option name="presentableId" value="LOCAL-00300" />
+      <option name="project" value="LOCAL" />
+      <updated>1579120203177</updated>
+    </task>
+    <task id="LOCAL-00301" summary="Added Kill features to the time_lord() in order to try and fix the running queues on close.">
+      <created>1579120244026</created>
+      <option name="number" value="00301" />
+      <option name="presentableId" value="LOCAL-00301" />
+      <option name="project" value="LOCAL" />
+      <updated>1579120244026</updated>
+    </task>
+    <task id="LOCAL-00302" summary="Reworked the sheets but they still don't function.  I may have to take a whole other approach.">
+      <created>1579120800603</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1579120800603</updated>
+    </task>
+    <task id="LOCAL-00303" summary="Removing the Time Sheets Utility from the Tardis for the 0.4.6 release.  I'll have to rework it for 0.4.7">
+      <created>1579120905058</created>
+      <option name="number" value="00303" />
+      <option name="presentableId" value="LOCAL-00303" />
+      <option name="project" value="LOCAL" />
+      <updated>1579120905058</updated>
+    </task>
+    <task id="LOCAL-00304" summary="Fixed minor string format error">
+      <created>1579122397703</created>
+      <option name="number" value="00304" />
+      <option name="presentableId" value="LOCAL-00304" />
+      <option name="project" value="LOCAL" />
+      <updated>1579122397703</updated>
+    </task>
+    <task id="LOCAL-00305" summary="Fixed an issue with opened lunch breaks.  Minor fix, not rolling up numbers.  There's still a trailing decimal for active lunches, but that's for another time since it only affects Panida at the moment.">
+      <created>1579123170685</created>
+      <option name="number" value="00305" />
+      <option name="presentableId" value="LOCAL-00305" />
+      <option name="project" value="LOCAL" />
+      <updated>1579123170685</updated>
+    </task>
+    <task id="LOCAL-00306" summary="Forgot to add the sleep number">
+      <created>1579123502601</created>
+      <option name="number" value="00306" />
+      <option name="presentableId" value="LOCAL-00306" />
+      <option name="project" value="LOCAL" />
+      <updated>1579123502601</updated>
+    </task>
+    <task id="LOCAL-00307" summary="Test crap">
+      <created>1579125128485</created>
+      <option name="number" value="00307" />
+      <option name="presentableId" value="LOCAL-00307" />
+      <option name="project" value="LOCAL" />
+      <updated>1579125128485</updated>
+    </task>
+    <task id="LOCAL-00308" summary="Setting up the next version number after release">
+      <created>1579126762360</created>
+      <option name="number" value="00308" />
+      <option name="presentableId" value="LOCAL-00308" />
+      <option name="project" value="LOCAL" />
+      <updated>1579126762360</updated>
+    </task>
+    <task id="LOCAL-00309" summary="Added Clockout button colorization and disabling to the Scope.  Tool tips still don't work right">
+      <created>1579129736344</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1579129736344</updated>
+    </task>
+    <task id="LOCAL-00310" summary="Cracked the Tool Tip nut, and it's not pretty: '&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=\&quot; color:#0a0a0a;\&quot;&gt;%s&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;' % variable.  That's what you have to do to make the text black.">
+      <created>1579136667034</created>
+      <option name="number" value="00310" />
+      <option name="presentableId" value="LOCAL-00310" />
+      <option name="project" value="LOCAL" />
+      <updated>1579136667034</updated>
+    </task>
+    <task id="LOCAL-00311" summary="Sheets now puts out raw data with proper tool tip style sheets.  Must go back and try something else with the widgets.">
+      <created>1579137858720</created>
+      <option name="number" value="00311" />
+      <option name="presentableId" value="LOCAL-00311" />
+      <option name="project" value="LOCAL" />
+      <updated>1579137858720</updated>
+    </task>
+    <task id="LOCAL-00312" summary="Going back to go forward">
+      <created>1579138887422</created>
+      <option name="number" value="00312" />
+      <option name="presentableId" value="LOCAL-00312" />
+      <option name="project" value="LOCAL" />
+      <updated>1579138887422</updated>
+    </task>
+    <task id="LOCAL-00313" summary="Have the User Start and Stop times set to more current data, instead of defaulting to the current time.">
+      <created>1579142861108</created>
+      <option name="number" value="00313" />
+      <option name="presentableId" value="LOCAL-00313" />
+      <option name="project" value="LOCAL" />
+      <updated>1579142861108</updated>
+    </task>
+    <task id="LOCAL-00314" summary="Making good progress with editable Time sheets.">
+      <created>1579144225576</created>
+      <option name="number" value="00314" />
+      <option name="presentableId" value="LOCAL-00314" />
+      <option name="project" value="LOCAL" />
+      <updated>1579144225576</updated>
+    </task>
+    <task id="LOCAL-00315" summary="Added tool tips to all the UI parts">
+      <created>1579210376665</created>
+      <option name="number" value="00315" />
+      <option name="presentableId" value="LOCAL-00315" />
+      <option name="project" value="LOCAL" />
+      <updated>1579210376665</updated>
+    </task>
+    <task id="LOCAL-00316" summary="Working on patching holes in the Lunch utility.  Made improvements to the Time Lord UI.  Made progress on Time Sheets UI, and gave an acronym to the TARDIS">
+      <created>1579224107692</created>
+      <option name="number" value="00316" />
+      <option name="presentableId" value="LOCAL-00316" />
+      <option name="project" value="LOCAL" />
+      <updated>1579224107692</updated>
+    </task>
+    <task id="LOCAL-00317" summary="Added a get next timesheet routine for the continuum and I think I fixed the lunch break glitch as well.">
+      <created>1579227513489</created>
+      <option name="number" value="00317" />
+      <option name="presentableId" value="LOCAL-00317" />
+      <option name="project" value="LOCAL" />
+      <updated>1579227513489</updated>
+    </task>
+    <task id="LOCAL-00318" summary="This version of sheets mostly works, except for the editor actions.  I am considering a rewrite of the editor">
+      <created>1579231621571</created>
+      <option name="number" value="00318" />
+      <option name="presentableId" value="LOCAL-00318" />
+      <option name="project" value="LOCAL" />
+      <updated>1579231621571</updated>
+    </task>
+    <task id="LOCAL-00319" summary="Functional enough for now.  I'll add the workers tomorrow.">
+      <created>1579233313463</created>
+      <option name="number" value="00319" />
+      <option name="presentableId" value="LOCAL-00319" />
+      <option name="project" value="LOCAL" />
+      <updated>1579233313463</updated>
+    </task>
+    <task id="LOCAL-00320" summary="Added integer check">
+      <created>1579233334239</created>
+      <option name="number" value="00320" />
+      <option name="presentableId" value="LOCAL-00320" />
+      <option name="project" value="LOCAL" />
+      <updated>1579233334239</updated>
+    </task>
+    <task id="LOCAL-00321" summary="Fixed the EOD utility for the Session clock outs.  I should be able to put out 4.7 tomorrow.">
+      <created>1579235303403</created>
+      <option name="number" value="00321" />
+      <option name="presentableId" value="LOCAL-00321" />
+      <option name="project" value="LOCAL" />
+      <updated>1579235303403</updated>
+    </task>
+    <task id="LOCAL-00322" summary="Put to sleep a routine that opened the Time Lord first thing in the morning.  It was redundant with the Unlock window doing it more efficiently.">
+      <created>1579291828462</created>
+      <option name="number" value="00322" />
+      <option name="presentableId" value="LOCAL-00322" />
+      <option name="project" value="LOCAL" />
+      <updated>1579291828462</updated>
+    </task>
+    <task id="LOCAL-00323" summary="Considering a new approach to this that may be slightly destructive to a process that's kind of working.  I just fear this current method will have fatal flaws. It's already proving difficult to get data back from.">
+      <created>1579291884044</created>
+      <option name="number" value="00323" />
+      <option name="presentableId" value="LOCAL-00323" />
+      <option name="project" value="LOCAL" />
+      <updated>1579291884044</updated>
+    </task>
+    <task id="LOCAL-00324" summary="New method starting to work.">
+      <created>1579294019389</created>
+      <option name="number" value="00324" />
+      <option name="presentableId" value="LOCAL-00324" />
+      <option name="project" value="LOCAL" />
+      <updated>1579294019389</updated>
+    </task>
+    <task id="LOCAL-00325" summary="I got the Time Sheet and Editor to both edit and Delete records!  A Net win for the day!  Is it time to roll out 0.4.7?  It might be...">
+      <created>1579301414908</created>
+      <option name="number" value="00325" />
+      <option name="presentableId" value="LOCAL-00325" />
+      <option name="project" value="LOCAL" />
+      <updated>1579301414908</updated>
+    </task>
+    <task id="LOCAL-00326" summary="Updated logging.">
+      <created>1579301502505</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1579301502505</updated>
+    </task>
+    <task id="LOCAL-00327" summary="Removed the USER ID Tooltip formatting as it was causing an error, and no one really cares what it says anyways.">
+      <created>1579302226787</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1579302226787</updated>
+    </task>
+    <task id="LOCAL-00328" summary="Partially reinstated the steady state and error state lights.">
+      <created>1579303020191</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1579303020191</updated>
+    </task>
+    <task id="LOCAL-00329" summary="Reconnected sheets in the tardis and fixed a date issue with the sheets">
+      <created>1579304196334</created>
+      <option name="number" value="00329" />
+      <option name="presentableId" value="LOCAL-00329" />
+      <option name="project" value="LOCAL" />
+      <updated>1579304196334</updated>
+    </task>
+    <task id="LOCAL-00330" summary="Starting the 0.4.8 versions">
+      <created>1579307174838</created>
+      <option name="number" value="00330" />
+      <option name="presentableId" value="LOCAL-00330" />
+      <option name="project" value="LOCAL" />
+      <updated>1579307174838</updated>
+    </task>
+    <task id="LOCAL-00331" summary="Got reports added to the list">
+      <created>1579320019367</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
+      <option name="project" value="LOCAL" />
+      <updated>1579320019367</updated>
+    </task>
+    <task id="LOCAL-00332" summary="Added Daily Total to the Sheets.  Changed text color in UI.">
+      <created>1579551347065</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
+      <option name="project" value="LOCAL" />
+      <updated>1579551347065</updated>
+    </task>
+    <task id="LOCAL-00333" summary="Commented out routines that made data calls, but then went nowhere.  Also (mainly) added a check to see if the user is clocked in for the Lunch Break double checker">
+      <created>1579551593331</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1579551593331</updated>
+    </task>
+    <task id="LOCAL-00334" summary="Added a &quot;kill it&quot; feature to the Lunch pop up.">
+      <created>1579555240942</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1579555240942</updated>
+    </task>
+    <task id="LOCAL-00335" summary="Added improved thread closing to these files">
+      <created>1579555274288</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1579555274288</updated>
+    </task>
+    <task id="LOCAL-00336" summary="Got the daily and weekly totals to display at the top of the Time Sheets.  Must connect the manual timesheet add now.">
+      <created>1579561330939</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1579561330939</updated>
+    </task>
+    <task id="LOCAL-00337" summary="Added &quot;pretty_date_time&quot; routine and implemented it in the Monitor Output">
+      <created>1579569624094</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1579569624094</updated>
+    </task>
+    <task id="LOCAL-00338" summary="Got the manual card drop downs to work.  It still does not create records, but it is mostly functional.">
+      <created>1579571455077</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1579571455077</updated>
+    </task>
+    <task id="LOCAL-00339" summary="Replaced prints with logs and fixed the way it works.">
+      <created>1579576430717</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1579576430717</updated>
+    </task>
+    <task id="LOCAL-00340" summary="Rolling up numbers for the 0.4.9 updates and fixes.  Just rolled out 0.4.8">
+      <created>1579576504959</created>
+      <option name="number" value="00340" />
+      <option name="presentableId" value="LOCAL-00340" />
+      <option name="project" value="LOCAL" />
+      <updated>1579576504959</updated>
+    </task>
+    <option name="localTasksCounter" value="341" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="2175" height="1415" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4961929" visible="true" weight="0.13002807" />
+      <window_info id="Structure" order="1" sideWeight="0.5038071" side_tool="true" weight="0.11459308" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3276923" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1968254" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24538462" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32846153" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32615384" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32846153" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32846153" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Working on patching holes in the Lunch utility.  Made improvements to the Time Lord UI.  Made progress on Time Sheets UI, and gave an acronym to the TARDIS" />
+    <MESSAGE value="Added a get next timesheet routine for the continuum and I think I fixed the lunch break glitch as well." />
+    <MESSAGE value="This version of sheets mostly works, except for the editor actions.  I am considering a rewrite of the editor" />
+    <MESSAGE value="Functional enough for now.  I'll add the workers tomorrow." />
+    <MESSAGE value="Added integer check" />
+    <MESSAGE value="Fixed the EOD utility for the Session clock outs.  I should be able to put out 4.7 tomorrow." />
+    <MESSAGE value="Put to sleep a routine that opened the Time Lord first thing in the morning.  It was redundant with the Unlock window doing it more efficiently." />
+    <MESSAGE value="Considering a new approach to this that may be slightly destructive to a process that's kind of working.  I just fear this current method will have fatal flaws. It's already proving difficult to get data back from." />
+    <MESSAGE value="New method starting to work." />
+    <MESSAGE value="I got the Time Sheet and Editor to both edit and Delete records!  A Net win for the day!  Is it time to roll out 0.4.7?  It might be..." />
+    <MESSAGE value="Updated logging." />
+    <MESSAGE value="Removed the USER ID Tooltip formatting as it was causing an error, and no one really cares what it says anyways." />
+    <MESSAGE value="Partially reinstated the steady state and error state lights." />
+    <MESSAGE value="Reconnected sheets in the tardis and fixed a date issue with the sheets" />
+    <MESSAGE value="Starting the 0.4.8 versions" />
+    <MESSAGE value="Got reports added to the list" />
+    <MESSAGE value="Added Daily Total to the Sheets.  Changed text color in UI." />
+    <MESSAGE value="Commented out routines that made data calls, but then went nowhere.  Also (mainly) added a check to see if the user is clocked in for the Lunch Break double checker" />
+    <MESSAGE value="Added a &quot;kill it&quot; feature to the Lunch pop up." />
+    <MESSAGE value="Added improved thread closing to these files" />
+    <MESSAGE value="Got the daily and weekly totals to display at the top of the Time Sheets.  Must connect the manual timesheet add now." />
+    <MESSAGE value="Added &quot;pretty_date_time&quot; routine and implemented it in the Monitor Output" />
+    <MESSAGE value="Got the manual card drop downs to work.  It still does not create records, but it is mostly functional." />
+    <MESSAGE value="Replaced prints with logs and fixed the way it works." />
+    <MESSAGE value="Rolling up numbers for the 0.4.9 updates and fixes.  Just rolled out 0.4.8" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rolling up numbers for the 0.4.9 updates and fixes.  Just rolled out 0.4.8" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="python-exception">
+          <properties notifyOnlyOnFirst="true" notifyOnTerminate="true" ignoreLibraries="true" exception="BaseException">
+            <option name="ignoreLibraries" value="true" />
+            <option name="notifyOnTerminate" value="true" />
+            <option name="notifyOnlyOnFirst" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self" />
+        <watch expression="self" />
+        <watch expression="self" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://C:/Python27_32/Lib/logging/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="977">
+          <caret line="329" column="18" lean-forward="true" selection-start-line="329" selection-start-column="18" selection-end-line="329" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/tardis_report.log.2019-11-13_12" />
+    <entry file="file://$PROJECT_DIR$/logs/psychic_paper.log.2019-11-14_19" />
+    <entry file="file://$PROJECT_DIR$/logs/psychic_paper.log.2019-11-15_17" />
+    <entry file="file://$PROJECT_DIR$/launch_tardis.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildingblocks/time_lord_dev_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1173" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildingblocks/time_lord_dev3_post.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="645" column="8" selection-start-line="645" selection-end-line="654" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/psychic_paper.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/tardis_continuum_report.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21862" />
+      </provider>
+    </entry>
+    <entry file="file:////skynet/Tools/scripts/python/time_lord/tardis_config.cfg" />
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_lunch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="80" column="89" selection-start-line="80" selection-start-column="78" selection-end-line="80" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/tardis_report.log.2019-12-06" />
+    <entry file="file://$PROJECT_DIR$/logs/tardis_report.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="108" column="77" lean-forward="true" selection-start-line="108" selection-start-column="77" selection-end-line="108" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/site-packages/dateutil/parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="695" selection-start-line="695" selection-end-line="695" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/gzip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="368" selection-start-line="368" selection-end-line="368" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildingblocks/windows_session_service_test_01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildingblocks/windows_session_test_01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+          <folding>
+            <element signature="e#9#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2058581782/datetime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="204" column="8" selection-start-line="204" selection-start-column="8" selection-end-line="204" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_scope.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/after_hours.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/Python27_32/Lib/site-packages/shotgun_api3-3.2.2-py2.7.egg/shotgun_api3/shotgun.py" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2058581782/PySide/QtGui/QWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clock_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="134" column="25" lean-forward="true" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
+          <folding>
+            <element signature="e#67#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2058581782/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="1045" column="8" selection-start-line="1045" selection-start-column="8" selection-end-line="1045" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_eod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2058581782/PySide/QtGui/QDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding>
+            <element signature="e#138#177#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2058581782/PySide/QtGui/QAbstractButton.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_edit_timesheet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="60" column="37" lean-forward="true" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2058581782/PySide/QtCore/QThread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="179" selection-start-line="179" selection-end-line="179" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="823">
+          <caret line="1740" selection-start-line="1740" selection-end-line="1740" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_reports.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="781">
+          <caret line="121" column="16" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tl_sheets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8143">
+          <caret line="657" selection-start-line="657" selection-end-line="657" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lunch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2227">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3757">
+          <caret line="238" column="67" selection-start-line="238" selection-start-column="67" selection-end-line="238" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_sheets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_lord.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4964">
+          <caret line="311" column="50" selection-start-line="311" selection-start-column="50" selection-end-line="311" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/time_lord_clock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9384">
+          <caret line="552" selection-start-line="552" selection-end-line="552" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tl_scope.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8823">
+          <caret line="539" column="21" selection-start-line="539" selection-start-column="21" selection-end-line="539" selection-end-column="21" />
+          <folding>
+            <element signature="e#155#183#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tl_alpha_payroll_collector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4437">
+          <caret line="276" selection-start-line="276" selection-end-line="276" />
+          <folding>
+            <element signature="e#312#367#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/overtime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2958">
+          <caret line="192" column="47" selection-start-line="192" selection-start-column="47" selection-end-line="192" selection-end-column="47" />
+          <folding>
+            <element signature="e#442#470#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tardis_config.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildingblocks/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/comm_system.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5185">
+          <caret line="315" column="21" selection-start-line="315" selection-start-column="21" selection-end-line="315" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tardis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3026">
+          <caret line="197" column="71" selection-start-line="197" selection-start-column="71" selection-end-line="197" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/configuration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="42" column="25" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="25" />
+          <folding>
+            <element signature="e#172#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/companions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="e#155#170#0" expanded="true" />
+            <element signature="e#1950#2585#0" />
+            <element signature="e#3124#3885#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/time_continuum.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="1095" selection-start-line="1095" selection-end-line="1095" />
+          <folding>
+            <element signature="e#0#732#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_io/time_capsule.tld">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/shotgun_collect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="176" column="72" selection-start-line="176" selection-start-column="72" selection-end-line="176" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tl_reports.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="274" column="41" selection-start-line="274" selection-start-column="41" selection-end-line="274" selection-end-column="41" />
+          <folding>
+            <element signature="e#312#351#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

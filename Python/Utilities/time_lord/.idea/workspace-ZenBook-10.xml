@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10b6742d-d9e9-4b05-b619-72f55193db28" name="Default Changelist" comment="Upgrading the main Time Lord UI.">
+      <change afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/switch_witch/switch_witch_combined.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/riggingUtilities" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/riggingUtilities" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maya/RiggingTools/switch_witch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maya/RiggingTools/switch_witch/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/remote_auto_publish" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shotgun/remote_auto_publish" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shotgun/tardis/building_blocks/test_03.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shotgun/tardis/building_blocks/test_03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../queue_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../queue_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/psychic_paper.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/psychic_paper.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_companion_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_companion_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_continuum_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_continuum_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/time_lord_shotgun_report.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/time_lord_shotgun_report.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../twitter/auto_tweet_books/data/terms_keywords_hashtags.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../twitter/auto_tweet_books/data/terms_keywords_hashtags.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../twitter/auto_tweet_books/reader_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../twitter/auto_tweet_books/reader_bot.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Setup Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>__version__ = '0.4.10'</find>
+      <find>Latest:</find>
+      <find>ordered_timesheets[ts]['project']['id']</find>
+      <find>__version__ = '0.4.11'</find>
+      <find>Fit hit the shan:</find>
+      <find>_avg_time_</find>
+      <find>subprocess</find>
+      <find>__version__ = '0.4.12'</find>
+      <find>setText(6</find>
+      <find>setText(7</find>
+      <find>histo</find>
+      <find>self.config</find>
+      <find># Create Note</find>
+      <find>self.report</find>
+      <find>eod</find>
+      <find>__version__ = '0.4.13'</find>
+      <find>__version__ = '0.4.14'</find>
+      <find>from PySide import QtCore, QtGui</find>
+      <find>QtWidgets.</find>
+      <find>QtGui.</find>
+      <find>pickle</find>
+      <find>, QtWidgets.QApplication.UnicodeUTF8</find>
+      <find>early_end</find>
+      <find>print</find>
+      <find>user_start</find>
+      <find>self.dropdowns</find>
+      <find>mut</find>
+      <find>wait</find>
+      <find>self.time_hour</find>
+      <find>time_queue</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>as err:</replace>
+      <replace>parent</replace>
+      <replace>add_key</replace>
+      <replace>add_</replace>
+      <replace>start_time</replace>
+      <replace>__version__ = '0.4.6'</replace>
+      <replace>end_time</replace>
+      <replace>row[r]</replace>
+      <replace>self.verticalLayout</replace>
+      <replace>__version__ = '0.4.7'</replace>
+      <replace>self</replace>
+      <replace>__version__ = '0.4.8'</replace>
+      <replace>logger.debug</replace>
+      <replace>new_task</replace>
+      <replace>__version__ = '0.4.9'</replace>
+      <replace>new_entity</replace>
+      <replace>not in ['_duration_', '_avg_time_']</replace>
+      <replace>__version__ = '0.4.10'</replace>
+      <replace>__version__ = '0.4.11'</replace>
+      <replace>__version__ = '0.4.12'</replace>
+      <replace>__version__ = '0.4.13'</replace>
+      <replace>setText(5</replace>
+      <replace>setText(6</replace>
+      <replace>__version__ = '0.4.14'</replace>
+      <replace>__version__ = '0.5.1'</replace>
+      <replace>from PySide2 import QtGui, QtCore, QtWidgets</replace>
+      <replace>QtGui.</replace>
+      <replace>QtWidgets.</replace>
+      <replace>pp.pprint</replace>
+      <replace>time_lord</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin</dir>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui</dir>
+      <dir>C:\Users\sleep\OneDrive\Documents\Scripts\Python\Utilities\time_lord</dir>
+      <dir>C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Adam Benson &lt;adambenson.vfx@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../../.." value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\sleep\OneDrive\Documents\Scripts\Python\Utilities\time_lord\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZChnFoLo2r0TVopYzIKNTcoBK6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="C:/Python37" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\icons" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\resources\elements" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui\resources\bg" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\buildingblocks" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\buildingblocks" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\ui" />
+      <recent name="C:\Users\adamb\OneDrive\Documents\Scripts\Python\Utilities\time_lord\bin" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.time_lord_dev_4">
+    <configuration name="python27" type="PythonConfigurationType" factoryName="Python">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python27\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tardis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tardis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_5.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="time_lord" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/time_lord.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="time_lord_dev_4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/time_lord_dev_4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tl_sheets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="time_lord" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tl_sheets.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.python27" />
+      <item itemvalue="Python.tardis" />
+      <item itemvalue="Python.test_5" />
+      <item itemvalue="Python.time_lord" />
+      <item itemvalue="Python.time_lord_dev_4" />
+      <item itemvalue="Python.tl_sheets" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.time_lord_dev_4" />
+        <item itemvalue="Python.test_5" />
+        <item itemvalue="Python.time_lord" />
+        <item itemvalue="Python.tl_sheets" />
+        <item itemvalue="Python.tardis" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10b6742d-d9e9-4b05-b619-72f55193db28" name="Default Changelist" comment="" />
+      <created>1559150061279</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559150061279</updated>
+    </task>
+    <task id="LOCAL-00365" summary="Ran out a hot-fix to patch a hole in the previous timesheet routine.">
+      <created>1580424843651</created>
+      <option name="number" value="00365" />
+      <option name="presentableId" value="LOCAL-00365" />
+      <option name="project" value="LOCAL" />
+      <updated>1580424843651</updated>
+    </task>
+    <task id="LOCAL-00366" summary="Ok, I really think I fixed the lunch tool this time.  It seems to be accurately injecting a timesheet into the middle of the whole thing.">
+      <created>1580437788835</created>
+      <option name="number" value="00366" />
+      <option name="presentableId" value="LOCAL-00366" />
+      <option name="project" value="LOCAL" />
+      <updated>1580437788835</updated>
+    </task>
+    <task id="LOCAL-00367" summary="Added Commentary">
+      <created>1580437812109</created>
+      <option name="number" value="00367" />
+      <option name="presentableId" value="LOCAL-00367" />
+      <option name="project" value="LOCAL" />
+      <updated>1580437812109</updated>
+    </task>
+    <task id="LOCAL-00368" summary="Changed the function name">
+      <created>1580437847474</created>
+      <option name="number" value="00368" />
+      <option name="presentableId" value="LOCAL-00368" />
+      <option name="project" value="LOCAL" />
+      <updated>1580437847474</updated>
+    </task>
+    <task id="LOCAL-00369" summary="Added exception handling">
+      <created>1580437869890</created>
+      <option name="number" value="00369" />
+      <option name="presentableId" value="LOCAL-00369" />
+      <option name="project" value="LOCAL" />
+      <updated>1580437869890</updated>
+    </task>
+    <task id="LOCAL-00370" summary="Added history notes into the system.  Need to port that over to the Time Lord Connect tools in Shotgun.">
+      <created>1580437923387</created>
+      <option name="number" value="00370" />
+      <option name="presentableId" value="LOCAL-00370" />
+      <option name="project" value="LOCAL" />
+      <updated>1580437923387</updated>
+    </task>
+    <task id="LOCAL-00371" summary="Upgraded the Editor to include Project, Asset and Task drop downs as well as historian entries and a note area for the artist to give the reason for the change.">
+      <created>1580438072782</created>
+      <option name="number" value="00371" />
+      <option name="presentableId" value="LOCAL-00371" />
+      <option name="project" value="LOCAL" />
+      <updated>1580438072782</updated>
+    </task>
+    <task id="LOCAL-00372" summary="Rolled out version 0.4.10 with hot-fixes to the Lunch tool, a new system for recording histories, improvements to the Time Sheets Editor and other patches.">
+      <created>1580438884404</created>
+      <option name="number" value="00372" />
+      <option name="presentableId" value="LOCAL-00372" />
+      <option name="project" value="LOCAL" />
+      <updated>1580438884404</updated>
+    </task>
+    <task id="LOCAL-00373" summary="Added notes to the clock out routine and made minor adjustments to a few other functions.">
+      <created>1580498752296</created>
+      <option name="number" value="00373" />
+      <option name="presentableId" value="LOCAL-00373" />
+      <option name="project" value="LOCAL" />
+      <updated>1580498752296</updated>
+    </task>
+    <task id="LOCAL-00374" summary="Added notes to the cleanup and consistency processes.">
+      <created>1580501694816</created>
+      <option name="number" value="00374" />
+      <option name="presentableId" value="LOCAL-00374" />
+      <option name="project" value="LOCAL" />
+      <updated>1580501694816</updated>
+    </task>
+    <task id="LOCAL-00375" summary="Spacing">
+      <created>1580501889382</created>
+      <option name="number" value="00375" />
+      <option name="presentableId" value="LOCAL-00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1580501889382</updated>
+    </task>
+    <task id="LOCAL-00376" summary="Added Error handling">
+      <created>1580501996124</created>
+      <option name="number" value="00376" />
+      <option name="presentableId" value="LOCAL-00376" />
+      <option name="project" value="LOCAL" />
+      <updated>1580501996124</updated>
+    </task>
+    <task id="LOCAL-00377" summary="Hopefully patched a hole">
+      <created>1580503237377</created>
+      <option name="number" value="00377" />
+      <option name="presentableId" value="LOCAL-00377" />
+      <option name="project" value="LOCAL" />
+      <updated>1580503237377</updated>
+    </task>
+    <task id="LOCAL-00378" summary="Rolled out version 0.4.11.  Mostly patches and under the hood improvements.">
+      <created>1580509032874</created>
+      <option name="number" value="00378" />
+      <option name="presentableId" value="LOCAL-00378" />
+      <option name="project" value="LOCAL" />
+      <updated>1580509032875</updated>
+    </task>
+    <task id="LOCAL-00379" summary="Added saved settings">
+      <created>1580510059543</created>
+      <option name="number" value="00379" />
+      <option name="presentableId" value="LOCAL-00379" />
+      <option name="project" value="LOCAL" />
+      <updated>1580510059544</updated>
+    </task>
+    <task id="LOCAL-00380" summary="Removed old TODO">
+      <created>1580510070274</created>
+      <option name="number" value="00380" />
+      <option name="presentableId" value="LOCAL-00380" />
+      <option name="project" value="LOCAL" />
+      <updated>1580510070274</updated>
+    </task>
+    <task id="LOCAL-00381" summary="Got all of the windows in the Tardis to only allow for one window at a time!  Woo Hoo!  This is worth an early roll out.">
+      <created>1580517837356</created>
+      <option name="number" value="00381" />
+      <option name="presentableId" value="LOCAL-00381" />
+      <option name="project" value="LOCAL" />
+      <updated>1580517837356</updated>
+    </task>
+    <task id="LOCAL-00382" summary="Rolled out a major Tardis change to force only one of a given window at a time to be opened.">
+      <created>1580518349600</created>
+      <option name="number" value="00382" />
+      <option name="presentableId" value="LOCAL-00382" />
+      <option name="project" value="LOCAL" />
+      <updated>1580518349600</updated>
+    </task>
+    <task id="LOCAL-00383" summary="Ha ha!  I got the Project averages to start working properly!">
+      <created>1581474037569</created>
+      <option name="number" value="00383" />
+      <option name="presentableId" value="LOCAL-00383" />
+      <option name="project" value="LOCAL" />
+      <updated>1581474037570</updated>
+    </task>
+    <task id="LOCAL-00384" summary="Properly exports a project based reports system">
+      <created>1581479375570</created>
+      <option name="number" value="00384" />
+      <option name="presentableId" value="LOCAL-00384" />
+      <option name="project" value="LOCAL" />
+      <updated>1581479375570</updated>
+    </task>
+    <task id="LOCAL-00385" summary="Changed all logs to post to the Admin page">
+      <created>1581481900658</created>
+      <option name="number" value="00385" />
+      <option name="presentableId" value="LOCAL-00385" />
+      <option name="project" value="LOCAL" />
+      <updated>1581481900658</updated>
+    </task>
+    <task id="LOCAL-00386" summary="Minor print line adjustment">
+      <created>1581481946777</created>
+      <option name="number" value="00386" />
+      <option name="presentableId" value="LOCAL-00386" />
+      <option name="project" value="LOCAL" />
+      <updated>1581481946777</updated>
+    </task>
+    <task id="LOCAL-00387" summary="Added Reports to the Tardis">
+      <created>1581482847553</created>
+      <option name="number" value="00387" />
+      <option name="presentableId" value="LOCAL-00387" />
+      <option name="project" value="LOCAL" />
+      <updated>1581482847553</updated>
+    </task>
+    <task id="LOCAL-00388" summary="Converting from xlswriter to openpyxl">
+      <created>1581559815712</created>
+      <option name="number" value="00388" />
+      <option name="presentableId" value="LOCAL-00388" />
+      <option name="project" value="LOCAL" />
+      <updated>1581559815713</updated>
+    </task>
+    <task id="LOCAL-00389" summary="converting to the openpyxl is something that I will still need to do, but for the moment, I'm going to backtrack and continue forward with the xlsxwriter.  Time is the factor.  The main advantage that I get from openpyxl is the ability to open and read existing documents.  But the conversion is going to be more complicated than I feel like dealing with right now.  For now, the reports will be write only.">
+      <created>1581621575023</created>
+      <option name="number" value="00389" />
+      <option name="presentableId" value="LOCAL-00389" />
+      <option name="project" value="LOCAL" />
+      <updated>1581621575023</updated>
+    </task>
+    <task id="LOCAL-00390" summary="Reverted to xlsxwriter for now.  Leaving the other openpyxl in commented out for later use.">
+      <created>1581621710271</created>
+      <option name="number" value="00390" />
+      <option name="presentableId" value="LOCAL-00390" />
+      <option name="project" value="LOCAL" />
+      <updated>1581621710272</updated>
+    </task>
+    <task id="LOCAL-00391" summary="Got some of the Reports to work better, but the bigger patch is to the EOD tool.  I'm going to roll this out as is to make those fixes.">
+      <created>1581648023676</created>
+      <option name="number" value="00391" />
+      <option name="presentableId" value="LOCAL-00391" />
+      <option name="project" value="LOCAL" />
+      <updated>1581648023676</updated>
+    </task>
+    <task id="LOCAL-00392" summary="Versioning up for the next block">
+      <created>1581649615450</created>
+      <option name="number" value="00392" />
+      <option name="presentableId" value="LOCAL-00392" />
+      <option name="project" value="LOCAL" />
+      <updated>1581649615450</updated>
+    </task>
+    <task id="LOCAL-00393" summary="Building up the Python 3.7 conversion.  In doing so, I intend on trying to rebuild the Time Lord as well.">
+      <created>1582068165495</created>
+      <option name="number" value="00393" />
+      <option name="presentableId" value="LOCAL-00393" />
+      <option name="project" value="LOCAL" />
+      <updated>1582068165495</updated>
+    </task>
+    <task id="LOCAL-00394" summary="Working on upgrading the Time Lord to Python 3.7.  There are a few hurdles.">
+      <created>1582074535929</created>
+      <option name="number" value="00394" />
+      <option name="presentableId" value="LOCAL-00394" />
+      <option name="project" value="LOCAL" />
+      <updated>1582074535930</updated>
+    </task>
+    <task id="LOCAL-00395" summary="Added Pretty Printer">
+      <created>1582830091258</created>
+      <option name="number" value="00395" />
+      <option name="presentableId" value="LOCAL-00395" />
+      <option name="project" value="LOCAL" />
+      <updated>1582830091258</updated>
+    </task>
+    <task id="LOCAL-00396" summary="Added Pretty Printer">
+      <created>1582830545972</created>
+      <option name="number" value="00396" />
+      <option name="presentableId" value="LOCAL-00396" />
+      <option name="project" value="LOCAL" />
+      <updated>1582830545972</updated>
+    </task>
+    <task id="LOCAL-00397" summary="Added Early EOD to the Config system">
+      <created>1582830584406</created>
+      <option name="number" value="00397" />
+      <option name="presentableId" value="LOCAL-00397" />
+      <option name="project" value="LOCAL" />
+      <updated>1582830584406</updated>
+    </task>
+    <task id="LOCAL-00398" summary="Updated and ran python-modernize on the Tardis.  So far, so good.  Seems to be working, though this is very preliminary.">
+      <created>1583196697307</created>
+      <option name="number" value="00398" />
+      <option name="presentableId" value="LOCAL-00398" />
+      <option name="project" value="LOCAL" />
+      <updated>1583196697307</updated>
+    </task>
+    <task id="LOCAL-00399" summary="Removed unneeded prints">
+      <created>1583201250433</created>
+      <option name="number" value="00399" />
+      <option name="presentableId" value="LOCAL-00399" />
+      <option name="project" value="LOCAL" />
+      <updated>1583201250433</updated>
+    </task>
+    <task id="LOCAL-00400" summary="Got the time updater to be time only, removed the date.  Considering a rebuild of the entire UI, not from scratch, per se, but kind of a start over of sorts.  We'll see if I do it.">
+      <created>1583876433481</created>
+      <option name="number" value="00400" />
+      <option name="presentableId" value="LOCAL-00400" />
+      <option name="project" value="LOCAL" />
+      <updated>1583876433482</updated>
+    </task>
+    <task id="LOCAL-00401" summary="Made the entity None for the initial creation">
+      <created>1583877772600</created>
+      <option name="number" value="00401" />
+      <option name="presentableId" value="LOCAL-00401" />
+      <option name="project" value="LOCAL" />
+      <updated>1583877772600</updated>
+    </task>
+    <task id="LOCAL-00402" summary="I have converted two of the three drop-downs to the new algorithm.">
+      <created>1583891705734</created>
+      <option name="number" value="00402" />
+      <option name="presentableId" value="LOCAL-00402" />
+      <option name="project" value="LOCAL" />
+      <updated>1583891705734</updated>
+    </task>
+    <task id="LOCAL-00403" summary="Added a comment">
+      <created>1583891835436</created>
+      <option name="number" value="00403" />
+      <option name="presentableId" value="LOCAL-00403" />
+      <option name="project" value="LOCAL" />
+      <updated>1583891835436</updated>
+    </task>
+    <task id="LOCAL-00404" summary="Upgrading the main Time Lord UI.  Working on a new Dev 4">
+      <created>1583973750555</created>
+      <option name="number" value="00404" />
+      <option name="presentableId" value="LOCAL-00404" />
+      <option name="project" value="LOCAL" />
+      <updated>1583973750555</updated>
+    </task>
+    <task id="LOCAL-00405" summary="Laying out the most basic of UI setups">
+      <created>1583975868052</created>
+      <option name="number" value="00405" />
+      <option name="presentableId" value="LOCAL-00405" />
+      <option name="project" value="LOCAL" />
+      <updated>1583975868052</updated>
+    </task>
+    <task id="LOCAL-00406" summary="The main clock is working entirely in engine">
+      <created>1583995766509</created>
+      <option name="number" value="00406" />
+      <option name="presentableId" value="LOCAL-00406" />
+      <option name="project" value="LOCAL" />
+      <updated>1583995766510</updated>
+    </task>
+    <task id="LOCAL-00407" summary="Setup some of the engine bits. Going to try a global signalling system">
+      <created>1583997874333</created>
+      <option name="number" value="00407" />
+      <option name="presentableId" value="LOCAL-00407" />
+      <option name="project" value="LOCAL" />
+      <updated>1583997874333</updated>
+    </task>
+    <task id="LOCAL-00408" summary="Updated the Tardis .bat file to Python 3.7">
+      <created>1584041962879</created>
+      <option name="number" value="00408" />
+      <option name="presentableId" value="LOCAL-00408" />
+      <option name="project" value="LOCAL" />
+      <updated>1584041962879</updated>
+    </task>
+    <task id="LOCAL-00409" summary="Progress stop, but switching gears for the day">
+      <created>1584049363479</created>
+      <option name="number" value="00409" />
+      <option name="presentableId" value="LOCAL-00409" />
+      <option name="project" value="LOCAL" />
+      <updated>1584049363479</updated>
+    </task>
+    <task id="LOCAL-00410" summary="Started packing in the time_machine">
+      <created>1584060769351</created>
+      <option name="number" value="00410" />
+      <option name="presentableId" value="LOCAL-00410" />
+      <option name="project" value="LOCAL" />
+      <updated>1584060769351</updated>
+    </task>
+    <task id="LOCAL-00411" summary="Moving this to my laptop for a minute">
+      <created>1584141861586</created>
+      <option name="number" value="00411" />
+      <option name="presentableId" value="LOCAL-00411" />
+      <option name="project" value="LOCAL" />
+      <updated>1584141861586</updated>
+    </task>
+    <task id="LOCAL-00412" summary="Making progress with the Updates">
+      <created>1584152518960</created>
+      <option name="number" value="00412" />
+      <option name="presentableId" value="LOCAL-00412" />
+      <option name="project" value="LOCAL" />
+      <updated>1584152518960</updated>
+    </task>
+    <task id="LOCAL-00413" summary="Slowly making my way toward a queue system in a more round about triggering method.  Only two weeks left to get all this done.  Fuck">
+      <created>1584339409503</created>
+      <option name="number" value="00413" />
+      <option name="presentableId" value="LOCAL-00413" />
+      <option name="project" value="LOCAL" />
+      <updated>1584339409503</updated>
+    </task>
+    <option name="localTasksCounter" value="414" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="converting to the openpyxl is something that I will still need to do, but for the moment, I'm going to backtrack and continue forward with the xlsxwriter.  Time is the factor.  The main advantage that I get from openpyxl is the ability to open and read existing documents.  But the conversion is going to be more complicated than I feel like dealing with right now.  For now, the reports will be write only." />
+    <MESSAGE value="Reverted to xlsxwriter for now.  Leaving the other openpyxl in commented out for later use." />
+    <MESSAGE value="Got some of the Reports to work better, but the bigger patch is to the EOD tool.  I'm going to roll this out as is to make those fixes." />
+    <MESSAGE value="Versioning up for the next block" />
+    <MESSAGE value="Building up the Python 3.7 conversion.  In doing so, I intend on trying to rebuild the Time Lord as well." />
+    <MESSAGE value="Working on upgrading the Time Lord to Python 3.7.  There are a few hurdles." />
+    <MESSAGE value="Added Pretty Printer" />
+    <MESSAGE value="Added Early EOD to the Config system" />
+    <MESSAGE value="Updated and ran python-modernize on the Tardis.  So far, so good.  Seems to be working, though this is very preliminary." />
+    <MESSAGE value="Removed unneeded prints" />
+    <MESSAGE value="Got the time updater to be time only, removed the date.  Considering a rebuild of the entire UI, not from scratch, per se, but kind of a start over of sorts.  We'll see if I do it." />
+    <MESSAGE value="Made the entity None for the initial creation" />
+    <MESSAGE value="I have converted two of the three drop-downs to the new algorithm." />
+    <MESSAGE value="Added a comment" />
+    <MESSAGE value="Upgrading the main Time Lord UI.  Working on a new Dev 4" />
+    <MESSAGE value="Laying out the most basic of UI setups" />
+    <MESSAGE value="The main clock is working entirely in engine" />
+    <MESSAGE value="Setup some of the engine bits. Going to try a global signalling system" />
+    <MESSAGE value="Updated the Tardis .bat file to Python 3.7" />
+    <MESSAGE value="Progress stop, but switching gears for the day" />
+    <MESSAGE value="Started packing in the time_machine" />
+    <MESSAGE value="Moving this to my laptop for a minute" />
+    <MESSAGE value="Making progress with the Updates" />
+    <MESSAGE value="Slowly making my way toward a queue system in a more round about triggering method.  Only two weeks left to get all this done.  Fuck" />
+    <MESSAGE value="Made minor progress on the needles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made minor progress on the needles" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="403" y="178" key="#Inspections" timestamp="1584516148797" />
+    <state x="403" y="178" key="#Inspections/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148799" />
+    <state x="558" y="376" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1584516148799" />
+    <state x="558" y="376" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148799" />
+    <state x="464" y="114" key="CommitChangelistDialog2" timestamp="1584516148799" />
+    <state x="464" y="114" key="CommitChangelistDialog2/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148799" />
+    <state x="592" y="275" key="FileChooserDialogImpl" timestamp="1584516148799" />
+    <state x="592" y="275" key="FileChooserDialogImpl/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148799" />
+    <state width="1600" height="215" key="GridCell.Tab.0.bottom" timestamp="1584516148799" />
+    <state width="1600" height="215" key="GridCell.Tab.0.bottom/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148800" />
+    <state width="1600" height="215" key="GridCell.Tab.0.center" timestamp="1584516148800" />
+    <state width="1600" height="215" key="GridCell.Tab.0.center/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148800" />
+    <state width="1600" height="215" key="GridCell.Tab.0.left" timestamp="1584516148800" />
+    <state width="1600" height="215" key="GridCell.Tab.0.left/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148800" />
+    <state width="1600" height="215" key="GridCell.Tab.0.right" timestamp="1584516148800" />
+    <state width="1600" height="215" key="GridCell.Tab.0.right/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148800" />
+    <state x="590" y="231" key="RollbackChangesDialog" timestamp="1584516148800" />
+    <state x="590" y="231" key="RollbackChangesDialog/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148800" />
+    <state x="313" y="163" key="SettingsEditor" timestamp="1584516148800" />
+    <state x="313" y="163" key="SettingsEditor/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148800" />
+    <state x="403" y="253" key="Vcs.Push.Dialog.v2" timestamp="1584516148800" />
+    <state x="403" y="253" key="Vcs.Push.Dialog.v2/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148800" />
+    <state x="511" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584516255313">
+      <screen x="0" y="0" width="2160" height="1400" />
+    </state>
+    <state x="511" y="344" key="com.intellij.ide.util.TipDialog/0.0.1620.1040@0.0.1620.1040" timestamp="1584516148800" />
+    <state x="511" y="344" key="com.intellij.ide.util.TipDialog/0.0.2160.1400@0.0.2160.1400" timestamp="1584516255313" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="python-exception">
+          <properties notifyOnlyOnFirst="true" notifyOnTerminate="true" ignoreLibraries="true" exception="BaseException">
+            <option name="ignoreLibraries" value="true" />
+            <option name="notifyOnTerminate" value="true" />
+            <option name="notifyOnlyOnFirst" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self" />
+        <watch expression="self" />
+        <watch expression="self" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
